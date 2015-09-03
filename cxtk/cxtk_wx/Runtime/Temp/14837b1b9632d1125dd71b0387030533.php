@@ -1,0 +1,3 @@
+<?php
+//000000000010a:1:{i:0;a:15:{s:7:"cate_id";s:2:"30";s:4:"name";s:24:"保温盒ccccccccccccccc";s:2:"id";s:2:"25";s:7:"classid";s:2:"30";s:6:"siteid";s:1:"5";s:9:"saleprice";s:6:"100.00";s:5:"price";s:6:"200.00";s:7:"details";s:204:"<p>444444444444444444444</p><p>&nbsp; &nbsp;		</p><p>&nbsp; &nbsp;		</p><p>&nbsp; &nbsp;		</p><p>&nbsp; &nbsp;		</p><p>&nbsp; &nbsp;		</p><p>&nbsp; &nbsp;		</p><p>&nbsp; &nbsp;		</p><p>&nbsp; &nbsp;		</p>";s:8:"property";s:1:"2";s:3:"num";s:3:"222";s:3:"gid";s:2:"25";s:6:"photo1";s:39:"/Uploads/goods/201408/53f7ed1211ca8.jpg";s:6:"photo2";N;s:6:"photo3";N;s:6:"photo4";s:39:"/Uploads/goods/201408/53f85f214c2a5.jpg";}}
+?>

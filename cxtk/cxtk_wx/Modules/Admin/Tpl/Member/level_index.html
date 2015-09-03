@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<script type="text/javascript" src="__PUBLIC__/Js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Js/index.js"></script>
+<link rel="stylesheet" href="__PUBLIC__/Css/public.css" />
+<link rel="stylesheet" href="__PUBLIC__/Css/index.css" />
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<head>
+<style type="text/css">
+  
+  .td a{
+   padding: 4px 8px;
+font-family: Verdana, Arial, sans-serif;
+border-radius: 5px;
+font-size: 14px;
+color: #fff;
+  background-color: #1D3E83;
+}
+</style>
+</head>
+<body>
+  <table class="table">
+  <tr>
+    <td background="__PUBLIC__/images/bg_list.gif" colspan="5"><div style="padding-left:10px; font-weight:bold; color:#FFFFFF">等级列表</div></td>
+  </tr>
+    <tr>
+      <td>ID</td>
+      <td>名称</td>
+      <td>等级规则</td>
+      <td>等级优惠</td>
+      <td>操作</td>
+
+    </tr>
+
+    <foreach name="level" item="v">
+         <tr>
+           <td><{$v.id}></td>
+           <td><{$v.level_name}></td>
+           <td><{$v.level_rule}></td>
+           <td><{$v.level_favourable}></td>
+           <td class="td">
+              <a href="<{:U(GROUP_NAME . '/Member/delete_level', array('id' => $v['id']))}>">删除</a>
+             
+           </td>
+         </tr>
+    </foreach>
+  
+  </table>
+
+<form action="<{:U(GROUP_NAME . '/Member/run_level')}>" method="post">
+  <table class="table">
+    <tr>
+      <td colspan="2" background="__PUBLIC__/images/bg_list.gif"> <div style="padding-left:10px; font-weight:bold; color:#FFFFFF">添加等级</div></td>
+    </tr>
+    <tr>
+      <td align="right">等级名称：</td>
+      <td>
+        <input type="text" name="level_name" />
+      </td>
+    </tr>
+       <tr>
+      <td align="right">等级规则：</td>
+      <td>
+        <input type="text" name="level_rule" />
+        <label class="label">积分满多少自动升级会员级别</label>
+      </td>
+    </tr>
+           <tr>
+      <td align="right">等级优惠：</td>
+      <td>
+        <input type="text" name="level_favourable" />
+        <label class="label">相应的级别购物优惠百分比</label>
+      </td>
+    </tr>
+    <tr>
+      <td align="right">排序</td>
+      <td>
+        <input type="text" name="sort" value="1" />
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" align="center">
+        <input type="text" name="mid" value="<{$mid}>" />
+        <input type="submit" class="btn" value="保存添加"/>
+      </td>
+
+    </tr>
+  
+  </table>
+  </form>
+</body>
+</html>

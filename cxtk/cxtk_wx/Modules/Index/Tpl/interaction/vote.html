@@ -1,0 +1,148 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>微信投票</title>
+<meta name="viewport" content="height=device-height,width=320,initial-scale=1.0,mininum-scale=1.0,maximum-scale=1.0,user-scaleble=no">
+<link rel="stylesheet" type="text/css" href="__PUBLICI__/Microwall/public.css" media="all" />
+<script type="text/javascript" src="__PUBLICI__/Microwall/jquery.js"></script>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('.vote_a').click(function(){
+        var voteid=$(this).attr('vid');
+        var sid=$('.simple').attr('sid');
+        var voteurl=$(this).attr('vurl');
+        $.ajax({
+           type: "POST",
+           url: voteurl,
+           dataType:'json',
+           data: 'voteid='+voteid+'&sid='+sid,
+           success: function(msg){
+              if (msg.status==true) {
+                alert('恭喜您投票成功！');
+              }else{
+                 alert('你已经投过票了');
+              };
+           }
+
+        });
+
+    })
+
+
+
+  })
+    
+
+</script>
+<style type="text/css" media="all">
+.hidden{display:none; }
+header span {
+    background: none repeat scroll 0 0 #F3889D;
+    display: block;
+    height: 1px;
+    position: relative;
+    top: 48px;
+}
+header span {
+    color: #FFFFFF;
+    display: block;
+    font-family: 微软雅黑;
+    font-size: 26px;
+    font-style: inherit;
+    margin: auto;
+    position: static;
+    text-align: center;
+}
+
+header {
+    background: -moz-linear-gradient(center top , #F3889D, #F3889D) repeat scroll 0 0 transparent;
+    box-shadow: 0 1px 1px #CCCCCC;
+    height: 50px;
+}
+header{
+    height:50px;background:-webkit-gradient(linear,0 0,0 100%,from(#F3889D),to(#F3889D));
+    background:-moz-linear-gradient(top,#F3889D,#F3889D);box-shadow:0 1px 1px #cccccc;
+}
+
+
+.list li a .moreinfo span.simple strong, .list li a .moreinfo span.tags strong {
+    color: #F3889D;
+}
+.vote{
+    width: 100%;
+    height: auto;
+    display: block;
+}
+#votea{
+    display: inline-block;
+height: 26px;
+width: 40px;
+margin: 6px 0 0 6px;
+text-align: center;
+vertical-align: middle;
+float: right;
+color: #fff;
+background-color: #F3889D;
+line-height: 26px;
+font-size: 13px;
+float: right;
+margin-right: 3px;
+border-radius: 5px;
+position: relative;
+margin-top: 2px;
+}
+.list li a .moreinfo {
+padding: 5px;
+width: 80%;
+float: left;
+}
+.simple{
+
+    width: 90%;
+   
+}
+
+</style>
+</head>
+<body>
+<header>
+    <span>微信投票</span> 
+</header>
+<div class="vote">
+    <img src="<{$image_url}><{$img}>" width=100%>
+</div>
+<ul class="list" id="userlist">
+ <li>
+    <a>
+        <div class="moreinfo">
+                <span class="simple" sid="<{$vid}>">
+                   <strong> <{$name}></strong>    
+                </span>
+        </div>
+    </a>
+</li>
+ <volist name="votedata" id="v"> ﻿ 
+<li style="margin-top: -8px;">
+    <a>
+       
+        <div class="moreinfo">
+                <span class="simple">
+                  <strong><{$i}>.</strong> 
+                     <{$v.vname}> 
+                </span>
+        </div>
+       <span id="votea" class="vote_a" vid="<{$v.id}>" vurl="<{:U(GROUP_NAME . '/interaction/vote_ajax')}>">投票</span>
+    </a>
+</li>
+</volist>
+    </ul>
+
+<!-- <div class="bottom_bt">
+        
+            <div class="pages">
+              <{$page}>
+            </div>
+         </div> -->
+<img src="__PUBLICI__/Microwall/linetwo.png" style="display:block;margin:15px auto;width:235px;">
+
+
+</body></html>

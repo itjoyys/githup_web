@@ -1,0 +1,183 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<script type="text/javascript" src="__PUBLIC__/Js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Js/index.js"></script>
+<link rel="stylesheet" href="__PUBLIC__/Css/public.css" />
+<link rel="stylesheet" href="__PUBLIC__/Css/index.css" />
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<head>
+    <script type="text/javascript"> 
+$(document).ready(function(){
+    var id;
+    $('.kick').click(function(){
+      id=$(this).attr('did');
+      $('#index_tisi').css('display','block');
+    });
+       //对话框点击确定、删除
+    $('#cance1').click(function(){
+       $('#index_tisi').css("display","none");
+       location.href ="/weipan/index.php/Admin/Shop/cate_delete/id/"+id;
+    });
+    
+    //对话框点击取消、
+    $('#cance2').click(function(){
+       $('#index_tisi').css("display","none");
+    })
+
+}) 
+</script>
+<style type="text/css">
+  
+  #index_tisi,#index_tisi2 {
+margin-top: 180px;
+left: 50%;
+position: fixed;
+margin-left: -215px;
+border-radius: 10px;
+padding: 10px;
+opacity: 1;
+-webkit-transform: scale(1);
+-webkit-transition: all 0.20s ease-in-out;
+transform: scale(1);
+transition: all 0.20s ease-in-out;
+position: absolute;
+z-index: 1000000;
+margin-right: auto!important;
+}
+#index_tisi，#index_tisi2 header{
+
+font-weight: bold;
+font-size: 12px;
+color: #F0890E;
+margin: 0;
+padding: 0;
+display: block !important;
+}
+.jqPopup div {
+font-size: 14px;
+margin: 10px 0 10px 10px;
+color: #fff;
+text-align: center;
+}
+.jqPopup footer {
+width: 100%;
+text-align: center;
+display: block !important;
+color: #fff;
+}
+.jqPopup .button {
+background: #98B037;
+height: 21px;
+display: inline-block;
+line-height: 21px;
+font-weight: normal;
+font-size: 12px;
+text-shadow: none;
+width: 100px;
+background: #FC0B3B;
+margin-right: 5px;
+}
+</style>
+<style>
+
+.td a{
+padding: 4px 8px;
+font-family: Verdana, Arial, sans-serif;
+border-radius: 5px;
+background: #1D3E83;
+}
+</style>
+</head>
+<body>
+    <div id="index_tisi" class="jqPopup" style="display: none;width: 300px;background: #006bb2;">                  
+             <header class="">提示</header>                  
+             <div>
+             <div style="width:1px;height:1px;-webkit-transform:translate3d(0,0,0);float:right"></div>
+             确定是否删除！</div>                 
+           <footer style="clear:both;">                    
+             <a onclick="return false;" href="#" class="button center" id="cance1" style="
+             text-shadow:none;width: 100px;background: #FC0B3B;margin-right: 5px;color:#fff;">确定</a> 
+             <a class="button center" onclick="return false;" href="#" id="cance2" style="text-shadow:none;width: 100px;background: #FC0B3B;color:#fff;">取消</a>                      
+           </footer>               
+        </div>
+  <table class="table">
+  <tr>
+    <td background="__PUBLIC__/images/bg_list.gif" colspan="5"><div style="padding-left:10px; font-weight:bold; color:#FFFFFF">分类列表</div></td>
+  </tr>
+    <tr>
+      <td>ID</td>
+      <td>名称</td>
+      <td>图片</td>
+      <td>排序</td>
+      <td>操作</td>
+
+    </tr>
+
+    <foreach name="cate" item="v">
+         <tr>
+           <td><{$v.id}></td>
+           <td><{$v.name}></td>
+           <td><img src="<{$image_url}><{$v.img}>" width=80 height=40></td>
+           <td><{$v.sort}></td>
+           <td class="td">
+            <if condition ="$v.down_state neq 0"> 
+               <a href="<{:U(GROUP_NAME . '/Shop/shop_cate', array('id' => $v['id']))}>">下级分类</a></if>
+            <if condition ="$v.down_state eq 0"> 
+              <a href="<{:U(GROUP_NAME . '/Shop/add_property', array('id' => $v['id']))}>">添加属性</a>
+              <a href="<{:U(GROUP_NAME . '/Shop/add_goods', array('id' => $v['id']))}>">添加商品</a>
+            </if>
+			        <a href="<{:U(GROUP_NAME . '/Shop/revisecate', array('id' => $v['id']))}>">编辑</a>
+              <a class="kick" onclick="return false;" did="<{$v.id}>" href="#">删除</a>
+             
+           </td>
+         </tr>
+    </foreach>
+  </table>
+
+<form action="<{:U(GROUP_NAME . '/Shop/run_shop_cate')}>" enctype="multipart/form-data" method="post">
+  <table class="table">
+    <tr>
+      <td colspan="2" background="__PUBLIC__/images/bg_list.gif"> <div style="padding-left:10px; font-weight:bold; color:#FFFFFF">添加分类</div></td>
+    </tr>
+    <tr>
+      <td align="right">分类名称：</td>
+      <td>
+        <input type="text" name="name" />
+      </td>
+    </tr>
+  
+        <tr>
+      <td align="right" width="10%">顶级分类：</td>
+      <td>
+        <select name="pid">
+          <option value="<{$pid}>">---请选择---</option>
+          <foreach name='cate' item='v'>
+            <option value="<{$v.id}>"><{$v.name}></option>
+          </foreach>
+        </select>
+      </td>
+    </tr>
+	 <tr>
+      <td align="right">图片：</td>
+      <td>
+        <input type="file" name="img" />
+      </td>
+    </tr>
+    <tr>
+      <td align="right">排序</td>
+      <td>
+        <input type="text" name="sort" value="1" />
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" align="center">
+        <input type="hidden" name="siteid" value="<{$siteid}>" />
+        <input type="submit" class="btn" value="保存添加"/>
+      </td>
+
+    </tr>
+  
+  </table>
+  </form>
+</body>
+</html>

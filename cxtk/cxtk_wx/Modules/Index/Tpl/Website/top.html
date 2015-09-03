@@ -1,0 +1,56 @@
+<?php 
+      $siteid=$_SESSION['siteid'];
+      $openid=$_SESSION['openid'];
+      $image_url=C("image_url");
+      $indexurl=$image_url.'/index.php/Index/Website/siteid'.'/'.$siteid.'?openid='.$openid;
+      $c_meau= M('websitecolumn') ->where(array('siteid' => $siteid))-> order('sort ASC')-> select();
+      $config= M('websiteconfig') ->where(array('siteid' => $siteid))-> select();
+        $cnum=count($c_meau);
+        for ($i=0; $i < $cnum; $i++) { 
+          if ($c_meau[$i]['url']=='' && $c_meau[$i]['classid']=='1' ) {
+             //栏目地址
+             $c_meau[$i]['url']=$image_url.'/index.php/Index/Website/websitelist/pid'.'/'.$c_meau[$i]['id'];
+           
+          }elseif($c_meau[$i]['url']=='' && $c_meau[$i]['classid']=='0'){
+           $c_meau[$i]['url']=$image_url.'/index.php/Index/Website/websitedetail/pid'.'/'.$c_meau[$i]['id'];
+
+          }
+        }
+        $this->c_meau=$c_meau;
+        $this->indexurl=$indexurl;
+        $this->tel=$config[0]['tel'];
+        
+ ?>
+ 
+
+ <div class="top_bar">
+      <nav>
+        <ul class="top_menu">
+          <li onclick="window.history.go(-1);">
+            <span class="icon-chevron-sign-left"></span>
+          </li>
+          <li>
+            <a href="<{$indexurl}>">
+            <span class="icon-home"></span>
+          </a>
+          </li>
+          <li>
+            <a href="tel:<{$tel}>">
+              <span class="icon-phone"></span>
+            </a>
+          </li>
+          <li onclick="$(&#39;#menu_font&#39;).toggleClass(&#39;hidden&#39;);">
+            <span class="icon-list-ul"></span>
+            <ul id="menu_font" class="menu_font hidden" onclick="$(&#39;#menu_font&#39;).toggleClass(&#39;hidden&#39;);">
+           <volist name="c_meau" id="v">
+              <li>
+                <a href="<{$v.url}>" class="icon-smile"><{$v.title}></a>
+              </li>
+
+           </volist>
+              
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </div>

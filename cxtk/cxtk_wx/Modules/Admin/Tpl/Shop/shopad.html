@@ -1,0 +1,180 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<script type="text/javascript" src="__PUBLIC__/Js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Js/index.js"></script>
+<link rel="stylesheet" href="__PUBLIC__/Css/public.css" />
+<link rel="stylesheet" href="__PUBLIC__/Css/index.css" />
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<head>
+  <script type="text/javascript"> 
+$(document).ready(function(){
+    var id;
+    $('.kick').click(function(){
+      id=$(this).attr('did');
+      $('#index_tisi').css('display','block');
+    });
+
+    $('.kick2').click(function(){
+      id=$(this).attr('did');
+      $('#index_tisi2').css('display','block');
+    });
+    
+       //对话框点击确定、删除
+    $('#cance1').click(function(){
+       $('#index_tisi').css("display","none");
+       location.href ="/weipan/index.php/Admin/Shop/adlist_delete/id/"+id;
+    });
+
+           //对话框点击确定、删除
+    $('#cancek').click(function(){
+       $('#index_tisi2').css("display","none");
+       location.href ="/weipan/index.php/Admin/Shop/ad_delete/id/"+id;
+    });
+    
+    //对话框点击取消、
+    $('#cance2').click(function(){
+       $('#index_tisi').css("display","none");
+    })
+
+}) 
+</script>
+<style type="text/css">
+  
+  #index_tisi,#index_tisi2 {
+margin-top: 180px;
+left: 50%;
+position: fixed;
+margin-left: -215px;
+border-radius: 10px;
+padding: 10px;
+opacity: 1;
+-webkit-transform: scale(1);
+-webkit-transition: all 0.20s ease-in-out;
+transform: scale(1);
+transition: all 0.20s ease-in-out;
+position: absolute;
+z-index: 1000000;
+margin-right: auto!important;
+}
+#index_tisi，#index_tisi2 header{
+
+font-weight: bold;
+font-size: 12px;
+color: #F0890E;
+margin: 0;
+padding: 0;
+display: block !important;
+}
+.jqPopup div {
+font-size: 14px;
+margin: 10px 0 10px 10px;
+color: #fff;
+text-align: center;
+}
+.jqPopup footer {
+width: 100%;
+text-align: center;
+display: block !important;
+color: #fff;
+}
+.jqPopup .button {
+background: #98B037;
+height: 21px;
+display: inline-block;
+line-height: 21px;
+font-weight: normal;
+font-size: 12px;
+text-shadow: none;
+width: 100px;
+background: #FC0B3B;
+margin-right: 5px;
+}
+</style>
+</head>
+<body>
+  <div id="index_tisi" class="jqPopup" style="display: none;width: 300px;background: #006bb2;">                  
+             <header class="">提示</header>                  
+             <div>
+             <div style="width:1px;height:1px;-webkit-transform:translate3d(0,0,0);float:right"></div>
+             确定是否删除！</div>                 
+           <footer style="clear:both;">                    
+             <a onclick="return false;" href="#" class="button center" id="cance1" style="
+             text-shadow:none;width: 100px;background: #FC0B3B;margin-right: 5px;color:#fff;">确定</a> 
+             <a class="button center" onclick="return false;" href="#" id="cance2" style="text-shadow:none;width: 100px;background: #FC0B3B;color:#fff;">取消</a>                      
+           </footer>               
+        </div>
+    <div id="index_tisi2" class="jqPopup" style="display: none;width: 300px;background: #006bb2;">                  
+             <header class="">提示</header>                  
+             <div>
+             <div style="width:1px;height:1px;-webkit-transform:translate3d(0,0,0);float:right"></div>
+             确定是否删除！</div>                 
+           <footer style="clear:both;">                    
+             <a onclick="return false;" href="#" class="button center" id="cancek" style="
+             text-shadow:none;width: 100px;background: #FC0B3B;margin-right: 5px;color:#fff;">确定</a> 
+             <a class="button center" onclick="return false;" href="#" id="cance2" style="text-shadow:none;width: 100px;background: #FC0B3B;color:#fff;">取消</a>                      
+           </footer>               
+        </div>
+  <table class="table" width="100%" border="0" align="center" cellpadding="0" cellspacing="1">
+  <tr> 
+  <td colspan="6"  align="left" background="__PUBLIC__/images/bg_list.gif"> 
+      <div style="padding-left:10px; font-weight:bold; color:#FFFFFF">幻灯片管理[<a href="<{:U(GROUP_NAME . '/Shop/add_Adlist')}>">添加图片</a>]</div>
+      </td>
+  </tr>
+    <tr>
+      <td>ID</td>
+      <td>标题</td>
+      <td>图片</td>
+      <td>排序</td>
+      <td>操作</td>
+
+    </tr>
+
+    <foreach name="adlist" item="v">
+         <tr>
+           <td width="td"><{$v.id}></td>
+           <td class="td"><{$v.title}></td>
+           <td class="td"><img src="<{$image_url}><{$v.photo}>" height="50" ></td>
+           <td class="td"><{$v.sort}></td>
+           <td class="td">
+                          
+              [<a class="kick" onclick="return false;" did="<{$v.id}>" href="#">删除</a>]
+             
+           </td>
+
+         </tr>
+
+    </foreach>
+  </table>
+
+    <table class="table" width="100%" border="0" align="center" cellpadding="0" cellspacing="1">
+  <tr> 
+  <td colspan="6"  align="left" background="__PUBLIC__/images/bg_list.gif"> 
+      <div style="padding-left:10px; font-weight:bold; color:#FFFFFF">广告管理[<a href="<{:U(GROUP_NAME . '/Shop/add_ad')}>">添加广告</a>]</div>
+      </td>
+  </tr>
+    <tr>
+      <td>ID</td>
+      <td>标题</td>
+      <td>图片</td>
+      <td>类别</td>
+      <td>操作</td>
+
+    </tr>
+
+    <foreach name="ads" item="v">
+         <tr>
+           <td width="td"><{$v.id}></td>
+           <td class="td"><{$v.title}></td>
+           <td class="td"><img src="<{$image_url}><{$v.img}>" height="50" ></td>
+           <td class="td"><{$v.cid}></td>
+           <td class="td">         
+              [<a class="kick2" onclick="return false;" did="<{$v.id}>" href="#">删除</a>]
+           </td>
+
+         </tr>
+
+    </foreach>
+  </table>
+
+</body>
+</html>

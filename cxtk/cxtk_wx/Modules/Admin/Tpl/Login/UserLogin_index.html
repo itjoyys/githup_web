@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>杭州微盘信息技术有限公司</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<script type="text/javascript" src="__PUBLIC__/js/jquery.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/js/script.js"></script>
+	<style>
+	
+	   * {
+	margin: 0;
+	padding: 0;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	box-sizing: border-box;
+	font-family: 'Arial';
+}
+
+body {
+	background-color: #2D3538;
+}
+
+header h1 {
+	width: 95%;
+	max-width: 550px;
+	color: #ddd;
+	text-align: center;
+	margin: 20px auto 0;
+}
+
+/* ==== Wrapper of the forms ==== */
+#wrapper {
+	max-width: 550px;
+	min-width: 250px;
+	width: 95%;
+	margin: 180px auto 0px;
+	position: relative;
+}
+
+/* ==== Sign-In and Register Tabs ==== */
+#sign-in-tab, #register-tab {
+	color: #ddd;
+	display: inline-block;
+	font-size: 16px;
+	text-align: center;
+	max-width: 40%;
+	padding: 10px;
+	cursor: pointer;
+}
+ /* ==== The active Sign-In and Register Tab ==== */
+.active {
+	background-color: #3D484C; /* here you can change the background color of the active tab */
+	border-radius: 4px 4px 0px 0px;
+}
+
+/* ==== The form section styling of elements ==== */
+#form-section {
+	border-radius: 0px 0px 4px 4px;
+	background: #3D484C; /* here you can change the background color of the form */
+	padding: 25px;
+
+	-webkit-transition: all 1s ease-in-out;
+	-moz-transition: all 1s ease-in-out;
+	-o-transition: all 1s ease-in-out;
+	-ms-transition: all 1s ease-in-out;
+	transition: all 1s ease-in-out;
+}
+
+#form-section li {
+	list-style: none;
+}
+
+#form-section label span {
+	cursor: pointer;
+	color: #ddd;
+	display: block;
+	margin: 5px 0;
+	font-size: 15px;
+}
+
+.left-column { /* left column from the two column input row */
+	float: left;
+	width: 49%;
+}
+
+.right-column { /* right column from the two column input row */
+	width: 49%;
+	float: right;
+}
+
+@media (max-width: 400px) { /* takes care of the responsive behavior of the two column inputs */
+	.left-column {
+		width: 100%;
+	}
+
+	.right-column {
+		width: 100%;
+	}
+}
+
+/* ==== Inputs and Buttons of the form, with hover and focus behavior ==== */
+#form-section input { /* here you can change the properties of the input fields */
+	width: 100%;
+	border: 1px solid #3D484C;
+	background: #2D3538; 
+	margin: 0 0 5px;
+	padding: 10px;
+	border-radius: 5px;
+	font-size: 14px;
+	padding-right: 30px;
+	color: #ddd;
+}
+
+#form-section input:hover {
+	border: 1px solid #666;
+	-webkit-transition: border-color 0.2s ease-in-out;
+	-moz-transition: border-color 0.2s ease-in-out;
+	-o-transition: border-color 0.2s ease-in-out;
+	-ms-transition: border-color 0.2s ease-in-out;
+	transition: border-color 0.2s ease-in-out;
+}
+
+#form-section button[type="submit"] { /* here you can change the properties of the submit button */
+	cursor: pointer;
+	width: 100%;
+	height: 38px;
+	line-height: 38px;
+	border: none;
+	color: #FFF;
+	margin: 20px 0 5px;
+	border-radius: 3px;
+	display: block;
+	font-size: 15px;
+	background: #94B84B;
+	-webkit-box-shadow: 0 4px 0 #729131;
+	box-shadow: 0 4px 0 #729131;
+}
+
+#form-section button[type="submit"]:hover {
+	background-color: #729131;
+	-webkit-transition: background 0.3s ease-in-out;
+	-moz-transition: background 0.3s ease-in-out;
+	-o-transition: background 0.3s ease-in-out;
+	-ms-transition: background 0.3s ease-in-out;
+	transition: background 0.3s ease-in-out;
+}
+
+#form-section input:focus {
+	outline: 0;
+	border: 1px solid #666;
+}
+
+#form-section input.facebook-login { 
+	cursor: pointer;
+	width: 100%;
+	height: 38px;
+	border: none;
+	background: #466ab5;
+	-webkit-box-shadow: 0 4px 0 #3c5a9a;
+	box-shadow: 0 4px 0 #3c5a9a;
+	color: #FFF;
+	margin: 20px 0 5px;
+	border-radius: 3px;
+	display: block;
+	font-size: 15px;
+	padding-left: 20px;
+}
+
+#form-section input.facebook-login:hover {
+	background-color: #3c5a9a;
+	-webkit-transition: background 0.3s ease-in-out;
+	-moz-transition: background 0.3s ease-in-out;
+	-o-transition: background 0.3s ease-in-out;
+	-ms-transition: background 0.3s ease-in-out;
+	transition: background 0.3s ease-in-out;
+}
+
+#form-section input.google-login {
+	cursor: pointer;
+	width: 100%;
+	height: 38px;
+	border: none;
+	background: #c7362f;
+	-webkit-box-shadow: 0 4px 0 #aa251f;
+	box-shadow: 0 4px 0 #aa251f;
+	color: #FFF;
+	margin: 20px 0 5px;
+	border-radius: 3px;
+	display: block;
+	font-size: 15px;
+}
+
+#form-section input.google-login:hover {
+	background-color: #aa251f;
+	-webkit-transition: background 0.3s ease-in-out;
+	-moz-transition: background 0.3s ease-in-out;
+	-o-transition: background 0.3s ease-in-out;
+	-ms-transition: background 0.3s ease-in-out;
+	transition: background 0.3s ease-in-out;
+}
+
+/* === The section numbering from the registration form === */
+#form-section p {
+	padding-bottom: 15px;
+	margin: 15px 0px;
+	font-size: 15px;
+	font-weight: bold;
+	border-bottom: 1px dashed #2D3538;
+}
+
+span.register-numbering {
+	padding: 3px 8px;
+	background-color: #94B84B;
+	color: #333;
+	margin-right: 10px;
+	border-radius: 3px;
+}
+
+span.register-numbering-text {
+	color: #ddd;
+}
+
+/* === Footer section === */
+footer {
+	max-width: 550px;
+	min-width: 250px;
+	width: 95%;
+	margin: 15px auto 0px;
+	position: relative;
+	font-size: 12px;
+	color: #999;
+	text-align: center;
+}
+
+footer a:link, a:visited {
+	color: white;
+}
+
+/* === Register form, which is hidden at first === */
+.register-form {
+	display: none;
+}
+
+/* ==== Placeholder customization ==== */
+::-webkit-input-placeholder {
+	color: #888;
+}
+
+:-moz-placeholder {
+	color: #888;
+}
+
+::-moz-placeholder {
+	color: #888;
+}
+
+:-ms-input-placeholder {
+	color: #888;
+}
+/* ==== End of placeholder customization ==== */
+
+/* === HTML5 validation styles === */
+#form-section input:required:valid {
+	background: #2D3538 url(valid-icon.png) no-repeat 99% 50%;
+	background-position: right 6px center;
+}
+
+#form-section input:focus:invalid {
+	background: #2D3538 url(invalid-icon.png) no-repeat 99% 50%;
+	background-position: right 6px center;
+}
+
+/* === Custom checkbox (Remember me checkbox) === */
+
+#checkbox li {
+	margin-top: 10px;
+	border-radius: 4px;
+	position: relative;
+	display: inline-block;
+	border: 1px solid #2D3538;
+	top: 5px;
+}
+
+#checkbox li:hover {
+	border: 1px solid #666;
+	-webkit-transition: border-color 0.2s ease-in-out;
+	-moz-transition: border-color 0.2s ease-in-out;
+	-o-transition: border-color 0.2s ease-in-out;
+	-ms-transition: border-color 0.2s ease-in-out;
+	transition: border-color 0.2s ease-in-out;
+}
+
+#checkbox li input {
+	display: none;
+}
+
+#checkbox label {
+	font-size: 14px;
+	margin-left: 6px;
+	color: #ddd;
+}
+
+#checkbox .selected {
+	background-color: #333;
+}
+
+#checkbox .selected span.unchecked-state {
+	display: none;
+}
+
+span.unchecked-state {
+	display: block;
+	width: 22px;
+	height: 22px;
+	color: #fff;
+	cursor: pointer;
+	background-color: #2D3538;
+	border-radius: 4px;
+}
+
+span.checked-state {
+	display: none;
+	width: 22px;
+	height: 22px;
+	cursor: pointer;
+	background-color: #2D3538;
+	background-image: url(checkmark-icon.png);
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+	border-radius: 4px;
+}
+
+#checkbox li.selected span.checked-state {
+	display: block;
+}
+
+/* ==== HTML5 Custom Validation Bubble for Chrome ===== */
+::-webkit-validation-bubble-message {
+	background-color: #E5534E;
+	font-size: 14px;
+	top: -4px;
+	left: 0px;
+	width: auto;
+	margin: 0;
+	border: none;
+	text-align: left;
+	display: block;
+	padding: 6px;
+	border-radius: 4px;
+
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	text-indent: -22px;
+}
+
+::-webkit-validation-bubble-message > div > div + * {
+	font-size: 16px;
+	line-height: 32px;
+	font-family: sans-serif;
+	color: #000;
+}
+
+::-webkit-validation-bubble-icon {
+	background-color: transparent;
+	padding: 0px;
+	text-indent: 0px;
+	display: inline-block;
+	position: relative;
+	background-image: none;
+	background-repeat: none;
+
+	-webkit-background-size: 100%;
+	-moz-background-size: 100%;
+	background-size: 100%;
+	float: left;
+}
+
+::-webkit-validation-bubble-arrow {
+	background-color: transparent;
+	border: none;
+	position: absolute;
+	top: 5px;
+	color: #E5534E;
+}
+
+::-webkit-validation-bubble-arrow:before {
+	position: absolute;
+	content: "\25E4";
+} 
+
+/* ==== End of validation bubbles customization ==== */
+	
+	
+	</style>
+</head>
+<body>
+	<header>
+		<h1>杭州微盘信息技术有限公司</h1>
+	</header>
+	<!-- BEGIN WRAPPER DIV -->
+	<div id="wrapper">
+		<h3 id="sign-in-tab" class="active">登录</h3>
+		<!-- <h3 id="register-tab">Register</h3> -->
+		<!-- BEGIN FORM SECTION -->
+		<ul id="form-section">
+			<!-- BEGIN SIGN IN FORM -->
+			<form class="sign-in-form" action="<{:U('Admin/Login/UserLogin')}>" method="post">
+			<li>
+				<label>
+					<span>账号</span>
+					<input placeholder="Please enter your username" name="username" pattern="[a-zA-Z0-9]{6,}" type="text" tabindex="1" title="It must contain the username that you have chosen at registration" required autofocus>
+				</label>
+			</li>
+			<li>
+				<label>
+					<span>密码</span>
+					<input placeholder="Please enter your password" name="password" pattern=".{6,}" type="password" tabindex="2" title="It must contain the password that you have chosen at registration" required>
+				</label>
+			</li>
+			<!-- <div id="checkbox">
+				<li>
+					<input name="remember-me" type="checkbox" id="remember-me"/>
+					<span class="unchecked-state"></span>
+					<span class="checked-state"></span>
+				</li>
+				<label for="remember-me">Remember me next time</label>
+			</div> -->
+			<li>
+				<button name="sign-in-submit" type="submit" id="sign-in-submit">登录</button>
+			</li>
+		<!-- 	<li>
+				<label class="left-column">
+					<input type="button" class="facebook-login" value="Login with Facebook">
+				</label>
+				<label class="right-column">
+					<input type="button" class="google-login" value="Login with Google">
+				</label>
+			</li> -->
+			<div style="clear: both;"></div>
+			</form><!-- END OF SIGN IN FORM -->
+
+			<!-- BEGIN REGISTER FORM -->
+			<form class="register-form" action="" method="post">
+			<p><span class="register-numbering">1</span><span class="register-numbering-text">Basic information</span></p>
+			<li>
+				<label class="left-column">
+					<span>First Name*</span>
+					<input type="text" name="fname" tabindex="1" pattern="[a-zA-Z ]{2,}"  placeholder="Please enter your first name" required autofocus title="It must contain only letters and a length of minimum 2 characters!">
+				</label>
+				<label class="right-column">
+					<span>Last Name*</span>
+					<input type="text" name="lname" tabindex="2" pattern="[a-zA-Z ]{2,}" placeholder="Please enter your last name" title="It must contain only letters and a length of minimum 2 characters!" required>
+				</label>
+			</li>
+			<div style="clear: both;"></div>
+			<li>
+				<label>
+					<span>Email*</span>
+					<input type="email" name="email" tabindex="3" placeholder="Please enter a valid email address" title="It must contain a valid email address e.g. 'someone@provider.com' !" required>
+				</label>
+			</li>
+			<li>
+				<label>
+					<span>Telephone*</span>
+					<input type="tel" name="telephone" pattern="(\+?\d[- .]*){7,13}" tabindex="4" placeholder="Please enter your phone number" title="It must contain a valid phone number formed only by numerical values and a length between 7 and 13 characters !" required>
+				</label>
+			</li>
+			<p><span class="register-numbering">2</span><span class="register-numbering-text">Location details</span></p>
+			<li>
+				<label>
+					<span>Address*</span>
+					<input type="text" name="address" tabindex="5" pattern="[a-zA-Z0-9. - , ]{10,}"  placeholder="Please enter your street address" title="It must contain letters and/or separators and a length of minimum 10 characters !" required>
+				</label>
+			</li>
+			<li>
+				<label class="left-column">
+					<span>Country*</span>
+					<input type="text" name="country" tabindex="6" pattern="[a-zA-Z- ]{2,}"  placeholder="Please enter your country" title="It must contain only letters and a length of minimum 2 characters !" required>
+				</label>
+			</li>
+			<li>
+				<label class="right-column">
+					<span>ZIP Code*</span>
+					<input type="text" name="zipcode" tabindex="7" pattern="[0-9 ]{3,}" placeholder="Please enter your zip code" title="It must contain only numbers and a length of minimum 3 characters !" required>
+				</label>
+			</li>
+			<div style="clear: both;"></div>
+			<p><span class="register-numbering">3</span><span class="register-numbering-text">Account credentials</span></p>
+			<li>
+				<label>
+					<span>Username*</span>
+					<input type="text" name="username" tabindex="8" pattern="[a-zA-Z0-9]{6,}"  placeholder="Please enter your username" title="It must contain alphanumeric characters and a length of minimum 6 characters !" required>
+				</label>
+			</li>
+			<li>
+				<label>
+					<span>Password*</span>
+					<input type="password" name="password" tabindex="9" pattern=".{6,}"  placeholder="Please enter your password" title="It can contain all types of characters and a length of minimum 6 characters!" required>
+				</label>
+			</li>
+			<div style="clear: both;"></div>
+			<li>
+				<button name="submit" tabindex="11" type="submit" id="create-account-submit">Create Account</button>
+			</li>
+			</form><!-- END OF REGISTER FORM -->
+		</ul><!-- END OF FORM SECTION -->
+	</div><!-- END OF WRAPPER DIV -->
+</body>
+</html>

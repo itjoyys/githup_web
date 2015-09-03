@@ -1,0 +1,290 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<script type="text/javascript" src="__PUBLIC__/Js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Js/index.js"></script>
+<link rel="stylesheet" href="__PUBLIC__/Css/public.css" />
+<link rel="stylesheet" href="__PUBLIC__/Css/index.css" />
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<head>
+<style>
+
+.td a{
+padding: 4px 8px;
+font-family: Verdana, Arial, sans-serif;
+border-radius: 5px;
+background: #1D3E83;
+}
+</style>
+<script type="text/javascript">
+  
+
+
+$(document).ready(function(){
+  var oldselect = [];
+  $(".editselect").each(function(){
+    var t = $(this).val().split(",");
+    //alert(t[0]+'---'+ parseInt(t[1])+'---'+  t[2]+'---'+  t[3]+'---'+  t[4]+'---'+  t[5]+'---'+  t[6]);
+    oldselect[t[1] + '_' + t[3]] = new Array(t[0], t[1], t[2], t[3], t[4], t[5], t[6], t[7]);
+  });
+  $(".color").click(function(){
+    var selectValue = [];
+    var html = '';
+    var header = '<tr><th width="130">产品外观</th><th width="130">产品规格</th><th width="130">价格</th><th width="130">会员价</th><th width="130">数量</th></tr>';
+    if ($(".norms").html() == null) {
+      $(".color").each(function(){
+        if ($(this).attr('checked')) {
+          var color = $(this).attr('atr');
+          var colorid = $(this).val();
+          selectValue[colorid + '_' + 0] = new Array(0, colorid, color, 0, '', 0, 0, 0);
+        }
+      });
+    } else {
+      $(".color").each(function(){
+        if ($(this).attr('checked')) {
+          var color = $(this).attr('atr');
+          var colorid = $(this).val();
+          $(".norms").each(function(){
+            if ($(this).attr('checked')) {
+              var norms = $(this).attr('atr');
+              var normsid = $(this).val();
+              selectValue[colorid + '_' + normsid] = new Array(0, colorid, color, normsid, norms, 0, 0, 0);
+              //selectValue[colorid + '_' + normsid] = '<tr class="tnorms"><td width="130">' + color + '<input type="hidden" value="' + colorid + '"/></td><td width="130">' + norms + '<input type="hidden" value="' + normsid + '"/></td><td width="130"><input type="text" class="px" style="width:60px;"/></td><td width="130"><input type="text" class="px" style="width:60px;"/></td><td><input type="hidden" value="0"/></td></tr>';
+            }
+          });
+        }
+      });
+    }
+    for (var index in selectValue) {
+      if (oldselect[index] != null && oldselect[index] != '') {
+        html += '<tr class="tnorms"><td width="130">' + oldselect[index][2] + '<input type="hidden" value="' + oldselect[index][1] + '"/></td>';
+        html += '<td width="130">' + oldselect[index][4] + '<input type="hidden" value="' + oldselect[index][3] + '"/></td>';
+        html += '<td width="130"><input type="text" class="px" style="width:60px;" value="' + oldselect[index][5] + '"/></td>';
+        html += '<td width="130"><input type="text" class="px" style="width:60px;" value="' + oldselect[index][6] + '"/></td>';
+        html += '<td width="130"><input type="text" class="px" style="width:60px;" value="' + oldselect[index][7] + '"/></td>';
+        html += '<td><input type="hidden" value="' + oldselect[index][0] + '"/></td></tr>';
+      } else {
+        html += '<tr class="tnorms"><td width="130">' + selectValue[index][2] + '<input type="hidden" value="' + selectValue[index][1] + '"/></td>';
+        html += '<td width="130">' + selectValue[index][4] + '<input type="hidden" value="' + selectValue[index][3] + '"/></td>';
+        html += '<td width="130"><input type="text" class="px" style="width:60px;" value="' + selectValue[index][5] + '"/></td>';
+        html += '<td width="130"><input type="text" class="px" style="width:60px;" value="' + selectValue[index][6] + '"/></td>';
+        html += '<td width="130"><input type="text" class="px" style="width:60px;" value="' + selectValue[index][7] + '"/></td>';
+        html += '<td><input type="hidden" value="' + selectValue[index][0] + '"/></td></tr>';
+      }
+      //html += selectValue[index];
+    }
+    if (html != '') {
+      $("#priceList").html(header + html);
+    } else {
+      $("#priceList").html('');
+    }
+  });
+  $(".norms").click(function(){
+    var selectValue = [];
+    var html = '';
+    var header = '<tr><th width="130">产品外观</th><th width="130">产品规格</th><th width="130">价格</th><th width="130">会员价</th><th width="130">数量</th></tr>';
+    if ($(".color").html() == null) {
+      $(".norms").each(function(){
+        if ($(this).attr('checked')) {
+          var norms = $(this).attr('atr');
+          var normsid = $(this).val();
+          selectValue[0 + '_' + normsid] = new Array(0, 0, '', normsid, norms, 0, 0, 0);
+          //selectValue[colorid + '_' + normsid] = '<tr class="tnorms"><td width="130">' + color + '<input type="hidden" value="' + colorid + '"/></td><td width="130">' + norms + '<input type="hidden" value="' + normsid + '"/></td><td width="130"><input type="text" class="px" style="width:60px;"/></td><td width="130"><input type="text" class="px" style="width:60px;"/></td><td><input type="hidden" value="0"/></td></tr>';
+        }
+      });
+    } else {
+      $(".color").each(function(){
+        if ($(this).attr('checked')) {
+          var color = $(this).attr('atr');
+          var colorid = $(this).val();
+          $(".norms").each(function(){
+            if ($(this).attr('checked')) {
+              var norms = $(this).attr('atr');
+              var normsid = $(this).val();
+              selectValue[colorid + '_' + normsid] = new Array(0, colorid, color, normsid, norms, 0, 0, 0);
+              //selectValue[colorid + '_' + normsid] = '<tr class="tnorms"><td width="130">' + color + '<input type="hidden" value="' + colorid + '"/></td><td width="130">' + norms + '<input type="hidden" value="' + normsid + '"/></td><td width="130"><input type="text" class="px" style="width:60px;"/></td><td width="130"><input type="text" class="px" style="width:60px;"/></td><td><input type="hidden" value="0"/></td></tr>';
+            }
+          });
+        }
+      });
+    }
+    for (var index in selectValue) {
+      if (oldselect[index] != null && oldselect[index] != '') {
+        html += '<tr class="tnorms"><td width="130">' + oldselect[index][2] + '<input type="hidden" value="' + oldselect[index][1] + '"/></td>';
+        html += '<td width="130">' + oldselect[index][4] + '<input type="hidden" value="' + oldselect[index][3] + '"/></td>';
+        html += '<td width="130"><input type="text" class="px" style="width:60px;" value="' + oldselect[index][5] + '"/></td>';
+        html += '<td width="130"><input type="text" class="px" style="width:60px;" value="' + oldselect[index][6] + '"/></td>';
+        html += '<td width="130"><input type="text" class="px" style="width:60px;" value="' + oldselect[index][7] + '"/></td>';
+        html += '<td><input type="hidden" value="' + oldselect[index][0] + '"/></td></tr>';
+      } else {
+        html += '<tr class="tnorms"><td width="130">' + selectValue[index][2] + '<input type="hidden" value="' + selectValue[index][1] + '"/></td>';
+        html += '<td width="130">' + selectValue[index][4] + '<input type="hidden" value="' + selectValue[index][3] + '"/></td>';
+        html += '<td width="130"><input type="text" class="px" style="width:60px;" value="' + selectValue[index][5] + '"/></td>';
+        html += '<td width="130"><input type="text" class="px" style="width:60px;" value="' + selectValue[index][6] + '"/></td>';
+        html += '<td width="130"><input type="text" class="px" style="width:60px;" value="' + selectValue[index][7] + '"/></td>';
+        html += '<td><input type="hidden" value="' + selectValue[index][0] + '"/></td></tr>';
+      }
+      //html += selectValue[index];
+    }
+    if (html != '') {
+      $("#priceList").html(header + html);
+    } else {
+      $("#priceList").html('');
+    }
+  });
+  $("#save").click(function(){
+    var name = $("#name").val();
+    if (name.length < 1) {
+      art.dialog({title:'消息提示', ok:true, width:300, height:200, content:'名称不能为空'});
+      return false;
+    }
+    var num = $("#num").val();
+    if (isNaN(num)) {
+      art.dialog({title:'消息提示', ok:true, width:300, height:200, content:'库存应该是为正整数'});
+      return false;
+    }
+    var price = $("#price").val();
+    var vprice = $("#vprice").val();
+    var oprice = $("#oprice").val();
+    var mailprice = $("#mailprice").val();
+    var keyword = $("#keyword").val();
+    var pic = $("#pic").val();
+    editor.sync();
+    var intro =  $("#intro").val();
+    
+    
+    var attribute = [];
+    var i = 0;
+    var str = '';
+    $(".attribute").each(function(){
+      attribute[i]= {'name':$(this).attr('atr'), 'value':$(this).val(), 'aid':$(this).attr('aid'), 'id':$(this).attr('id')};//new Array($(this).attr('atr'), $(this).val());
+      i ++;
+    });
+    var norms = [];
+    var i = 0;
+    var tnum = 0;
+    $(".tnorms").each(function(){
+      tnum += parseInt($(this).children('td').eq(4).children('input').val());
+      norms[i]= {'color':$(this).children('td').eq(0).children('input').val(), 'format':$(this).children('td').eq(1).children('input').val(), 'price':$(this).children('td').eq(2).children('input').val(), 'vprice':$(this).children('td').eq(3).children('input').val(), 'num':$(this).children('td').eq(4).children('input').val(), 'id':$(this).children('td').eq(5).children('input').val()};
+      i ++;
+    });
+    if (tnum > 0) {
+      num = tnum;
+    }
+    //num = num > tnum ? num : tnum;
+    var image1 = $("#image1").val();
+    var image2 = $("#image2").val();
+    var image3 = $("#image3").val();
+    var image4 = $("#image4").val();
+    var image5 = $("#image5").val();
+    var image6 = $("#image6").val();
+    var imageid1 = parseInt($("#image1").attr('imageid'));
+    var imageid2 = parseInt($("#image2").attr('imageid'));
+    var imageid3 = parseInt($("#image3").attr('imageid'));
+    var imageid4 = parseInt($("#image4").attr('imageid'));
+    var imageid5 = parseInt($("#image5").attr('imageid'));
+    var imageid6 = parseInt($("#image6").attr('imageid'));
+    var images = [];
+    images[0] = {'id':imageid1, 'image':image1};
+    images[1] = {'id':imageid2, 'image':image2};
+    images[2] = {'id':imageid3, 'image':image3};
+    images[3] = {'id':imageid4, 'image':image4};
+    images[4] = {'id':imageid5, 'image':image5};
+    images[5] = {'id':imageid6, 'image':image6};
+    var data = {pid:$("#pid").val(),
+          name:name,
+          num:num,
+          price:price,
+          vprice:vprice,
+          oprice:oprice,
+          mailprice:mailprice,
+          keyword:keyword,
+          pic:pic,
+          intro:intro,
+          attribute:JSON.stringify(attribute),
+          norms:JSON.stringify(norms),
+          images:JSON.stringify(images),
+          token:'weipan0815',
+          catid:'28',
+          sort:$("#sort").val()
+          };
+
+      </script>
+</head>
+<body>
+<form  action="<{:U(GROUP_NAME . '/Category/sortCate')}>" method="post">
+  <table class="table">
+  <tr>
+    <td background="__PUBLIC__/images/bg_list.gif" colspan="5"><div style="padding-left:10px; font-weight:bold; color:#FFFFFF">分类列表</div></td>
+  </tr>
+    <tr>
+      <td>ID</td>
+      <td>名称</td>
+      <td>级别</td>
+	
+      <td>排序</td>
+      <td>操作</td>
+
+    </tr>
+
+    <foreach name="cate" item="v">
+         <tr>
+           <td><{$v.id}></td>
+           <td><{$v.html}><{$v.name}></td>
+           <td><{$v.level}></td>
+		   
+           <td>
+             <input type="text" name='<{$v.id}>' value='<{$v.sort}>' />
+           </td>
+           <td class="td">
+              <a href="<{:U(GROUP_NAME . '/Category/addCate', array('pid' => $v['id']))}>">添加子分类</a>
+			  <a href="<{:U(GROUP_NAME . '/Category/revisecate', array('id' => $v['id']))}>">编辑</a>
+              <a href="<{:U(GROUP_NAME . '/Category/deleteCate', array('id' => $v['id']))}>">删除</a>
+             
+           </td>
+         </tr>
+    </foreach>
+  
+    <tr>
+       <td colspan="5" align="center">
+            <input type="submit" value="排序" class="btn" />
+      </td>
+    </tr>
+  </table>
+  </form>
+
+<form action="<{:U(GROUP_NAME . '/Category/runAddCate')}>" enctype="multipart/form-data" method="post">
+  <table class="table">
+    <tr>
+      <td colspan="2" background="__PUBLIC__/images/bg_list.gif"> <div style="padding-left:10px; font-weight:bold; color:#FFFFFF">添加分类</div></td>
+    </tr>
+    <tr>
+      <td align="right">分类名称：</td>
+      <td>
+        <input type="text" name="name" />
+      </td>
+    </tr>
+	 <tr>
+      <td align="right">图片：</td>
+      <td>
+        <input type="file" name="img" />
+      </td>
+    </tr>
+    <tr>
+      <td align="right">排序</td>
+      <td>
+        <input type="text" name="sort" value="1" />
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" align="center">
+        <input type="hidden" name="pid" value="<{$pid}>" />
+        <input type="hidden" name="siteid" value="<{$siteid}>" />
+        <input type="submit" class="btn" value="保存添加"/>
+      </td>
+
+    </tr>
+  
+  </table>
+  </form>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<script type="text/javascript" src="__PUBLIC__/Js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Js/index.js"></script>
+<link rel="stylesheet" href="__PUBLIC__/Css/public.css" />
+<link rel="stylesheet" href="__PUBLIC__/Css/index.css" />
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<head>
+<style>
+.td a{
+padding: 4px 8px;
+font-family: Verdana, Arial, sans-serif;
+border-radius: 5px;
+background: #1D3E83;
+}
+</style>
+</head>
+<body>
+<form  action="<{:U(GROUP_NAME . '/Website/sortWebsite')}>"  method="post">
+  <table class="table">
+  <tr>
+    <td background="__PUBLIC__/images/bg_list.gif" colspan="5"><div style="padding-left:10px; font-weight:bold; color:#FFFFFF">微站栏目[<a href="<{:U(GROUP_NAME . '/Website/addW_column', array('pid' => $pid))}>">添加栏目</a>] 
+    [<a href="<{:U(GROUP_NAME . '/Website/addT_column', array('pid' => $pid))}>">添加图文</a>]</div> </td>
+  </tr>
+    <tr>
+      <td>ID</td>
+      <td>名称</td>
+      <td>图片</td>
+      <td>排序</td>
+      <td>操作</td>
+
+    </tr>
+
+    <foreach name="column" item="v">
+         <tr>
+           <td><{$v.id}></td>
+           <td><{$v.title}></td>
+           <td><img src="<{$image_url}><{$v.img}>" width="60" height="40"></td>
+           <td>
+             <input type="text" name='<{$v.id}>' value='<{$v.sort}>' />
+           </td>
+           <td class="td">
+             <if condition="$v.classid eq 0">
+			       <a href="<{:U(GROUP_NAME . '/Website/revisecolumn', array('id' => $v['id']))}>">修改</a>
+                   <a href="<{:U(GROUP_NAME . '/Website/deletecolumn', array('id' => $v['id']))}>">删除</a>
+				   
+               <else />
+                    <a href="<{:U(GROUP_NAME . '/Website/i_column', array('pid' => $v['id']))}>">下级内容</a>
+					   <a href="<{:U(GROUP_NAME . '/Website/revisecolumn', array('id' => $v['id']))}>">修改</a>
+              <a href="<{:U(GROUP_NAME . '/Website/deletecolumn', array('id' => $v['id']))}>">删除</a>
+             </if>
+                                       
+           </td>
+         </tr>
+    </foreach>
+  
+    <tr>
+       <td colspan="5" align="center">
+            <input type="submit" value="排序" class="btn" />
+      </td>
+    </tr>
+  </table>
+  </form>
+</body>
+</html>

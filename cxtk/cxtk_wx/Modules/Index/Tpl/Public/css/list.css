@@ -1,0 +1,44 @@
+body, dd, dl, dt, form, h1, h2, h3, h4, li, ol, p, td, ul { margin: 0; padding: 0; font-size: 100%; }
+ul { list-style: none; }
+img { display: block; margin-left: auto; margin-right: auto; }
+a{text-decoration: none;color: #000;}
+.clear{clear: both;}
+
+/*列表页样式*/
+.main { height:auto; }
+.goods_lits_box { margin-left: auto; margin-right: auto; }
+.goods_list { padding: 0; background-color: #f2f2f2; border-top: 4px solid #f2f2f2; border-bottom: 4px solid #f2f2f2; border-left: 4px solid #f2f2f2; border-right: 4px solid #f2f2f2; margin-top: 0; margin-bottom: 0; font-family: Microsoft Yahei, ff-tisa-web-pro-1, ff-tisa-web-pro-2, "Lucida Grande", "Hiragino Sans GB", "Hiragino Sans GB W3"; }
+.goods_list_li { background: transparent; margin: 0; box-shadow: none; position: relative; float: left; width: 50%; padding: 0; }
+.goods_list_li a { display: block; border: 1px solid #d8d8d8; border-radius: 0px; margin: 4px 4px; background: #FFF; position: relative; box-shadow: 1px 1px 3px rgba(0,0,0,.2); }
+.goods_title { line-height: 18px; height: 36px; text-align: justify; border-top: 1px solid #DDD; padding: 5px 10px 0; font-size: 12px; margin-bottom: 5px; overflow: hidden;color: rgb(153, 153, 153); }
+.goods_price { padding-left: 10px; padding-right: 10px; padding-bottom: 7px; color: #f34;font-size: 12px; }
+
+/* 底部导航 */
+.dhf { height: 44px; background-image: url(../images/bottombg.jpg); float: left; position: fixed; bottom: 0px; z-index: 100; left: 0px; width: 100%; margin: auto }
+.dhf ul { width: 320px; margin: 0 auto }
+.dh a { width: 20%; float: left; height: 44px; display: inline-block ;}
+.dh a:link { color: #666 }
+.dh a:visited { color: #666 }
+.dhf a span { height: 20px; width: 100%; display: inline-block; text-align: center; font-size: 12px }
+.dhf a:active, .dhf a.con { background: url(../images/bottombgchange.jpg); color: #fff }
+.dhf a { width: 64px; float: left; height: 44px; display: inline-block; }
+.dh a span:first-child { margin-top: 2px }
+.dh a span:last-child { margin-bottom: 2px }
+.dhf a span.shouye { background: url(../images/nav3_home.png) no-repeat center; background-size: 18px 18px; }
+.dhf a.con span.shouye { background-size: 18px 18px; background-image: url(../images/nav3_home_chose.png); background-position: center; background-repeat: no-repeat; }
+.dhf a span.fenlei { background-size: 18px 18px; background-image: url(../images/nav3_classification.png); background-position: center; background-repeat: no-repeat; }
+.dhf a.con span.fenlei { background-size: 18px 18px; background-image: url(../images/nav3_classification.png); background-position: center; background-repeat: no-repeat; }
+.dhf a span.gouwu { background-size: 18px 18px; background-image: url(../images/nav_shop.png); background-position: center; background-repeat: no-repeat; }
+.dhf a.con span.gouwu { background-size: 18px 18px; background-image: url(../images/nav_shop.png); background-position: center; background-repeat: no-repeat; }
+.dhf a span.huiyuan { background-size: 18px 18px; background-image: url(../images/nav3_personal_center.png); background-position: center; background-repeat: no-repeat; }
+.dhf a.con span.huiyuan { background-size: 18px 18px; background-image: url(../images/nav3_personal_center.png); background-position: center; background-repeat: no-repeat; }
+.dh a span.shoucj { background: url(../images/nav3_collection.png) no-repeat center; background-size: 18px 18px; }
+.dh a.con span.shoucj { background: url(../images/nav3_collection_chose.png) no-repeat center; background-size: 18px 18px; }
+/*尾部 */
+#foot { width: 310px; height: 90px; padding-bottom: 33px; margin: 0 auto; background-color: #f3f2f2; font-size: 14px; color: #6e6e6e; text-align: center; }
+.footer_login { height: 2px; width: 298px; padding-left: 12px; line-height: 27px; color: #fff; text-align: left; background-color: #a8a8a8; }
+.footer_login a { color: #fff; }
+.back_top { margin-left: 135px; }
+.copyright { background-color: #e2e5e6; height: 43px; padding-top: 10px; }
+.copyright p { font-size: 12px; }
+

@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <link rel="stylesheet" href="__PUBLIC__/Css/public.css" />
+  <link rel="stylesheet" href="__PUBLIC__/Css/node.css" />
+ </head>
+ <body>
+	<div id="wrap" class="">
+			<a href="{:U('Admin/Rbac/addNode')}" class="add-app">添加应用</a>
+			
+			<foreach name='node' item='app'>
+			
+				<div id="" class="app">
+					<p>
+						<strong>{$app.title}</strong>
+						[<a href="{:U('Admin/Rbac/addNode',array('pid' => $app['id'],'level' => 2))}">添加控制器</a>]
+						[<a href="">删除</a>]
+						[<a href="">修改</a>]
+					</p>
+		
+
+				<foreach name='app.child' item='action'>
+					<dl>
+						<dt><strong>{$action.title}</strong>
+						[<a href="{:U('Admin/Rbac/addNode',array('pid' => $action['id'],'level' => 3))}">添加方法</a>]
+						</dt>
+					
+
+					<foreach name='action.child' item='method'>
+						<dd>
+							<span>{$method.title}</span>
+							[<a href="">删除</a>]
+							[<a href="">修改</a>]
+						</dd>
+					</foreach>
+					</dl>
+				</foreach>
+						
+				</div>	
+
+			</foreach>
+	</div>
+
+  
+ </body>
+</html>

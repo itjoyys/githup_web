@@ -1,0 +1,55 @@
+/**喜帖封面背景*/
+.p1bg{background: url('./p1.jpg') no-repeat;background-size:100%}
+/**喜帖主页背景*/
+.p2bg{background: url('./p2.jpg') no-repeat;background-size:100%}
+/**我们的故事背景*/
+.p3bg{position:absolute;z-index:3; background:url('./p3.png') no-repeat;background-size:100%;width:100%;height:100%;}
+/**邀请视频背景*/
+.p4bg{background: url('./p4.jpg') no-repeat;background-size:100%;}
+/**友情帮助背景*/
+.p5bg{background: url('./p5.jpg') no-repeat;background-size:100%;}
+/**现场互动背景*/
+.p6bg{background: url('./p6.jpg') no-repeat;background-size:100%;}
+/**关注我们背景*/
+.p7bg{background: url('./p7.jpg?v=1') no-repeat;background-size:100%;}
+
+/**桃心样式*/
+#lovephoto{position:absolute;z-index:2;width:100%;height:100%}
+#lovephoto img{width:100%;display:block;position: relative;left:50%;border:none;padding:0;margin:53px 0px 0px 0px}
+/*容器背景**/
+.p3cotainer{position:relative;margin:0;top:0px;left:0px;width:100%;height:100%;}
+
+/**结婚时间*/
+#jhsj{position:relative;top:23%;}
+#jhsj p{margin:0;padding:0;font-size:12px;color:#fe639d}
+/**新郎新娘*/
+#xlxn{color:#9d6a4a;position:relative;top:38%;}
+#xlxn p{margin:0;padding:0;font-size:14px;font-weight: bold;color:#fe639d}
+/**婚礼地址样式*/
+#hldz{position:relative;top:19%;}
+#hldz p{margin:0;padding:0;font-size:12px;color:#fe639d}
+
+/*拨打电话透明按钮**/
+#callphoneBtn{position: relative;left:35.5%;top:29%;width:50px;height:50px;z-index: 4; background-image: url('./images/150_btn.png');}
+/*显示地图透明按钮**/
+#showmapBtn{position: relative;left:53.5%;top:29%;width:50px;height:50px;z-index: 4;background-image: url('./images/150_btn.png');}
+/*显示座位安排透明按钮**/
+#showzwapBtn{position: relative;left:35.5%;top:31%;width:50px;height:50px;z-index: 4;background-image: url('./images/150_btn.png');}
+/**祝福墙透明按钮*/
+#zfqBtn{position: relative;left:24%;top:49%;width:50px;height:50px;z-index: 4; background-image: url('./images/150_btn.png');}
+/**现场花絮透明按钮*/
+#xchxBtn{position:relative;left:61%;top:36%;width:50px;height:50px;z-index: 4;background-image: url('./images/150_btn.png');}
+
+/*关注我们样式*/
+/**右侧*/
+.p7bg .rightinfo{position: relative;top:30%;float:right;right:5%;}
+/*经销商logo*/
+.jxslogo{margin-bottom:50px !important;width:120px;height:120px;display: block;float:right;}
+.jxslogo img{width:120px;height:120px;border:none}
+
+.rightinfo p{color:#7b6e65;padding:0;margin:0;text-align: right;font-size:9px;clear:both}
+.black{color:#000 !important;font-size:12px !important;margin-bottom: 5px !important;font-weight: bold;}
+.rightinfo em{padding-right:5px;}
+/**电话号码样式 去掉蓝色*/
+#tel{color:#7b6e65;text-decoration: none;}
+#lxdz{width:120px !important;margin-top:5px;float:right}

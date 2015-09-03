@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<script type="text/javascript" src="__PUBLIC__/Js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Js/index.js"></script>
+<link rel="stylesheet" href="__PUBLIC__/Css/public.css" />
+<link rel="stylesheet" href="__PUBLIC__/Css/index.css" />
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<head>
+</head>
+<body>
+<form  action="<{:U(GROUP_NAME . '/Goods/')}>" method="post">
+  <table class="table" width="100%" border="0" align="center" cellpadding="0" cellspacing="1">
+  <tr> 
+  <td colspan="8"  align="left" background="__PUBLIC__/images/bg_list.gif"> 
+      <div style="padding-left:10px; font-weight:bold; color:#FFFFFF">菜品列表[<a href="<{:U(GROUP_NAME . '/Bookdinner/addfood')}>">增加菜品</a>]</div>
+      </td>
+  </tr>
+    <tr>
+      <td>ID</td>
+      <td>名称</td>
+      <td>图片</td>
+      <td>类别</td>
+      <td>价格</td>
+      <td>操作</td>
+
+    </tr>
+
+    <foreach name="food" item="v">
+         <tr>
+           <td width="td"><{$v.id}></td>
+    
+           <td class="td"><{$v.name}></td>
+           <td class="td"><img src="<{$image_url}><{$v.pic}>" width=30 height=30></td>
+           <td class="td"><{$v.cid}></td>
+         
+           <td class="td"><{$v.price}></td>
+         
+
+           <td class="td">
+              
+            [<a href="<{:U(GROUP_NAME . '/Goods/goodsrevise', array('goodsid' => $v['goodsid']))}>">修改商品</a>]
+            [<a href="<{:U(GROUP_NAME . '/Goods/goodsdelete', array('goodsid' => $v['goodsid']))}>">删除</a>]
+             
+           </td>
+
+         </tr>
+
+    </foreach>
+
+    <tr>
+      <td colspan="8" align="center"> <{$page}></td>
+    </tr>
+  </table>
+  </form>
+
+</body>
+</html>

@@ -1,0 +1,19 @@
+<?php
+  $member_card=$_SESSION['member_card'];
+  $image_url=C('image_url');
+  if (empty($member_card)) {
+      $this->error('请重新访问');
+  }else{
+      $murl=$image_url.'/index.php/Index/Member/mid/'.$member_card['mid'].'?openid='.$member_card['openid'];
+  }
+?>
+<div class="menu_header">
+    <div class="menu_topbar">
+        <strong class="head-title">会员卡首页</strong>       
+        <span class="head_btn_left">
+            <a href="javascript:history.go(-1);"><span>返回</span></a>
+            <b></b></span>
+            <a class="head_btn_right" href="<{$murl}>"><span><i 
+class="menu_header_home"></i></span><b></b>       </a>
+   </div>
+</div>

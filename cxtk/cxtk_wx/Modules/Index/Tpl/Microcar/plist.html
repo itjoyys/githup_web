@@ -1,0 +1,106 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="__PUBLICI__/Microcar/reset.css" media="all">
+    <link rel="stylesheet" type="text/css" href="__PUBLICI__/Microcar/weimob-ui-1-1.css" media="all">
+    <link rel="stylesheet" type="text/css" href="__PUBLICI__/Microcar/common.css" media="all">
+    <link rel="stylesheet" type="text/css" href="__PUBLICI__/Microcar/font-awesome.css">
+    <title><{$title}></title>
+    <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+    <meta name="Keywords" content="<{$keywords}>">
+    <meta name="Description" content="<{$description}>">
+    <!-- Mobile Devices Support @begin -->
+    <meta content="no-cache,must-revalidate" http-equiv="Cache-Control">
+    <meta content="no-cache" http-equiv="pragma">
+    <meta content="0" http-equiv="expires">
+    <meta content="telephone=no, address=no" name="format-detection">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!-- apple devices fullscreen -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Mobile Devices Support @end -->
+</head>
+<body onselectstart="return true;" ondragstart="return false;">
+ 
+        <div class="logo">
+            <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tbody>
+                    <tr>
+                        <td valign="top" align="right">
+                            <a href="http://m.bohaocar.com/Index.aspx?U=4000101000">
+                                <img src="<{$bg}>"></a>
+                        </td>
+                        <td align="left" width="12">
+                            <img src="./选车中心_files/logo_line.gif"></td>
+                        <td valign="top" align="left">
+                            <ul>
+                                <li style="font-size: 14px; font-weight: bold; margin-bottom: 2px;">博豪客服</li>
+                                <li> <strong style="color: #FF0004; font-size: 18px; font-family: arial;">4000101000</strong>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="weimob-page">
+            <div class="weimob-content">
+
+                <section>
+                    <ul class="list_ul2">
+                      <volist name="catecar" id="v">
+                        <li>
+                            <a href="<{:U(GROUP_NAME . '/Microcar/carlist', array('id' => $v['id']))}>">
+                                <figure>
+                                    <div style="text-align:center;">
+                                        <img src="<{$image_url}><{$v.img}>"></div>
+                                    <figcaption><{$v.name}></figcaption>
+                                </figure>
+                            </a>
+                        </li>
+                      </volist>
+                      
+                    </ul>
+                </section>
+
+                <section>
+                    <ul class="list_ul3">
+                      <volist name="cate_car" id="v">
+                        <li>
+                            <a href="<{:U(GROUP_NAME . '/Microcar/car_list', array('id' => $v['id']))}>" class="White"><{$v.name}></a>
+                        </li>
+                      </volist>
+                      
+                    </ul>
+                </section>
+
+                 <section>
+                <ul class="list_ul4">
+                  
+                    <li>
+                    <a href="">
+                        <figure>
+                            <div style="text-align:center;"><img src="./选车中心_files/br6.jpg"></div>
+                        </figure>
+                    </a>
+                    <figcaption>奥迪</figcaption>
+                    </li>
+                    </ul>
+            </section>
+
+            </div>
+        </div>
+
+        <footer style="overflow: visible;">
+            <div class="weimob-copyright" style="padding-bottom:50px;">
+                <a href="http://m.bohaocar.com/Index.aspx?U=4000101000">© 博豪名车广场 技术支持：杭州微盘</a>
+            </div>
+
+
+        </footer>
+   
+
+</body>
+</html>

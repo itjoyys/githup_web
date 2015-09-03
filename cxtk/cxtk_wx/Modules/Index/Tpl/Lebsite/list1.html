@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" type="text/css" href="__PUBLICI__/Website/css/w-ui-1-1.css" media="all" />
+<link rel="stylesheet" type="text/css" href="__PUBLICI__/Website/css/common.css" media="all" />
+<link rel="stylesheet" type="text/css" href="__PUBLICI__/Website/css/list-1.css" media="all" />
+<script type="text/javascript" src="__PUBLICI__/Website/js/jquery.js"></script>
+<script type="text/javascript" src="__PUBLICI__/Website/js/swipe.js"></script>
+<script type="text/javascript" src="__PUBLICI__/Website/js/zepto.js"></script>
+<title><{$title}></title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+		<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+       <meta name="Keywords" content="<{$Keywords}>" />
+        <meta name="Description" content="<{$Description}>" />
+        <!-- Mobile Devices Support @begin -->
+            <meta content="application/xhtml+xml;charset=UTF-8" http-equiv="Content-Type">
+            <meta content="no-cache,must-revalidate" http-equiv="Cache-Control">
+            <meta content="no-cache" http-equiv="pragma">
+            <meta content="0" http-equiv="expires">
+            <meta content="telephone=no, address=no" name="format-detection">
+            <meta content="width=device-width, initial-scale=1.0" name="viewport">
+            <meta name="apple-mobile-web-app-capable" content="yes" /> 
+            <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <!-- Mobile Devices Support @end -->        
+        <style>
+            img{width:100%!important;}
+        </style>
+    </head>
+    <body onselectstart="return true;" ondragstart="return false;">
+        <link rel="stylesheet" type="text/css" href="__PUBLICI__/Website/css/font-awesome.css" media="all" />
+<div class="w-page">
+    <div class="top_bar">
+        <nav>
+            <ul class="top_menu">
+                <li onclick="window.history.go(-1);"><span class="icon-chevron-sign-left"></span></li>
+                <li onclick=""><span class="icon-home"></span></li>
+                <li onclick="$('#menu_font').toggleClass('hidden');">
+                    <span class="icon-list-ul"></span>
+                    <ul id="menu_font" class="menu_font hidden" onclick="$('#menu_font').toggleClass('hidden');">
+						#foreach( $list in $ColumnList )
+						<li><a href="$list.Links" class="icon-smile">$list.Columns</a></li>
+						#end
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </div>
+	<div class="w-content">
+		<div class="w-list">
+
+			#foreach( $li in $LiList )
+				<a class="w-list-item" href="$li.Links">
+					<div class="w-list-item-line">
+						<div class="w-list-item-title">$li.Columns</div>
+					</div>
+					<div class="w-list-item-icon-two icon-arrow-r" style="display:none;"></div>
+				</a>
+			#end
+
+		</div>
+	</div>
+</div>        			
+<footer>
+	<a class="w-copyright" href="$CopyrightUrl">$Copyright</a><br>
+    <a class="w-support" href="$TechSupportUrl">$TechSupport</a>
+</footer>
+
+
+</body>
+</html>

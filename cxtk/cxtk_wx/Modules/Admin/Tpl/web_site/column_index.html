@@ -1,0 +1,127 @@
+<include file="web_site:header" />
+<body>
+<style type="text/css">
+
+</style>
+<script type="text/javascript">
+  function img_up(id){
+    $("#img_id").val(id);
+    easyDialog.open({
+          container : 'logo_up',
+          fixed : false
+    });
+}
+
+</script>
+  <div class="content-box role">
+    <div class="content-box-header">
+      <h3>微站栏目 <a class="add_cost" href="add_web_cate?pid=<{$pid}>&type=1">添加栏目</a>
+      <a class="add_cost" href="add_web_cate?pid=<{$pid}>&type=0">添加图文</a></h3>
+      <div class="clear"></div>
+    </div>
+    <div class="content-box-content ">
+    <form  action="<{:U(GROUP_NAME . '/Website/sortWebsite')}>"  method="post">
+      <table class="table">
+       <thead>
+        <tr>
+          <th class="sort"><div class="header">排序</div></th>
+          <th><div class="header">栏目名称</div></th>
+          <th style="width:120px;"><div class="header">栏目图片</div></th>
+          <th><div class="header">模板</div></th>
+          <th style="width:130px;"><div class="header">添加时间</div></th>
+          <th style="width:260px;"><div class="header" >操作</div></th>
+
+        </tr>
+       </thead>
+        <foreach name="column" item="v">
+          
+             <tr <if condition="($key%2)==0">class="td_one" </if>>
+               <td class="sort"><span class="severity3"><{$v.sort}></span></td> 
+               <td><{$v.name}></td>
+               <td style="text-align: center;"><if condition="empty($v['img'])">
+                      <font style="color:red;" class="view" onclick="img_up('<{$v['id']}>')">【上传】
+                     </font>
+                <else />
+                     <font style="color:#1A6102;" class="view" onclick="view('<{$v['img']}>','<{$v['width']}>','<{$v['height']}>')">【预览】
+                     </font>
+ <font style="color:#000;" class="view" onclick="if(confirm('确定删除')){ window.location.href='web_cate_img_del?id=<{$v['id']}>';}">【删除】
+                     </font>
+               </if>
+
+              </td>
+              <td style="width:85px;text-align: center;">
+                  <{$v.template_id}> 
+               </td>
+               <td style="text-align: center;">
+                <{$v.add_date}> 
+               </td>
+               <td class="td" style="text-align: center;">
+                   <a href="<{:U(GROUP_NAME . '/Website/column_d_tpl', array('id' => $v['id']))}>">模板</a>
+                   <a href="web_cate_edit?id=<{$v['id']}>&type=<{$v['type']}>">修改</a>
+                   
+                 <if condition="$v.type eq 0">
+                   <else />
+                   <a href="column_index?pid=<{$v['id']}>">下级内容</a>
+                 </if>
+                    <a style="background-color: #e86829;color:#fff;"  onclick="return confirm('确定删除');"
+                    href="web_cate_del?id=<{$v['id']}>&type=<{$v['type']}>">删除</a>
+                 
+               </td>
+             </tr>
+        </foreach>
+         <tr>
+           <td colspan="8" align="center">
+               <{$page}>
+          </td>
+        </tr>
+      </table>
+      </form>
+  </div>
+</div>
+
+  <!-- 图片上传-->
+<div id="logo_up" style="display:none;background-color:white;" class="con_menu">
+  <form action="up_web_cate_img" method="post" enctype="multipart/form-data" name="add_form" onsubmit="return checkForm_img()" >
+    <input name="id" id="img_id" value="" type="hidden">
+    <table class="m_tab" style="width:300px;margin:0;">
+        <tbody><tr class="de_title">
+            <td colspan="2" height="27" class="table_bg" align="center">
+            <span id="de_title">上传图片</span>
+            </td>
+        </tr>
+        <tr class="m_title">
+            <td>选择文件</td>
+            <td class="de_td">
+                <div class="uploader blue">
+                <input type="text" class="filename" readonly="readonly" name="filename">
+                <input type="button" name="file" class="button B_button" value="Browse...">
+                <input type="file" size="30" name="img">
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center">
+                <input type="submit" value="提交" class="botton_a">
+                <input type="reset" value="关闭" onclick="easyDialog.close();" class="botton_a">
+            </td>
+        </tr>
+    </tbody></table>
+</form>
+    </div>
+<script type="text/javascript">
+$(function(){
+  $("input[type=file]").change(function(){$(this).parents(".uploader").find(".filename").val($(this).val());});
+  $("input[type=file]").each(function(){
+  if($(this).val()==""){$(this).parents(".uploader").find(".filename").val("");}
+  })
+})
+
+function checkForm_img (){
+ if($("input[class=filename]").val() == ''){
+    alert('请先选择图片');
+    return false;
+ }
+}
+</script>
+</body>
+</html>

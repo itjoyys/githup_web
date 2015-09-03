@@ -1,0 +1,42 @@
+<?php 
+      $siteid=$_SESSION['siteid'];
+      $site=M('site')->where(array('sid' => $siteid))-> select();
+      $copyright=$site[0]['copyright'];
+      $surl=$site[0]['surl'];
+      $support=$site[0]['support'];
+ ?>
+
+
+    <section>
+                <div class="copyright">
+                    <p>Copyright © 2013-2014 <{$copyright}></p>
+                    
+                        <p>技术支持：
+
+                        <a href="<{$surl}>"><{$support}></a></p>
+                    
+                </div>
+    </section>
+
+</body>
+<style type="text/css">
+.footer-nav {
+padding-top: 10px;
+text-align: center;
+}
+.copyright {
+font-size: 12px;
+text-align: center;
+}
+.copy_box{height: 100px; position:fixed;
+    left:0px;
+    z-index:900;
+background-color: #f2f2f2;
+box-shadow: inset 0 1px 1px rgba(0,0,0,.2);}
+.copyright {
+background-color: #e2e5e6;
+height: 53px;
+padding-top: 10px;
+}
+</style>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<script type="text/javascript" src="__PUBLIC__/Js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Js/index.js"></script>
+<link rel="stylesheet" href="__PUBLIC__/Css/public.css" />
+<link rel="stylesheet" href="__PUBLIC__/Css/index.css" />
+<script type="text/javascript">
+   window.UEDITOR_HOME_URL='__ROOT__/APP/Data/ueditor/';
+   window.onload=function(){
+     window.UEDITOR_CONFIG.initialFrameWidth=800;    
+     window.UEDITOR_CONFIG.initialFrameHeight=400;
+     window.UEDITOR_CONFIG.savePath= ['details'];
+     window.UEDITOR_CONFIG.imageUrl="<{:U(GROUP_NAME . '/Goods/upload')}>";            
+     window.UEDITOR_CONFIG.imagePath="__ROOT__/Uploads/details/";  
+     UE.getEditor('details');
+
+   }
+
+</script>
+<js file="__ROOT__/APP/Data/ueditor/ueditor.config.js" />
+<js file="__ROOT__/APP/Data/ueditor/ueditor.all.min.js" />
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+
+</head>
+<body>
+<form action="<{:U(GROUP_NAME . '/Bookdinner/runaddfood')}>" enctype="multipart/form-data"  method="post">
+  <table class="table">
+    <tr>
+      <td colspan="2" background="__PUBLIC__/images/bg_list.gif">
+       <div style="padding-left:10px; font-weight:bold; color:#FFFFFF">添加菜品</div>
+      
+      </td>
+
+    </tr>
+    <tr>
+    	<td align="right" width="10%">菜品种类：</td>
+    	<td>
+    		<select name="cid">
+    			<option value="">---请选择---</option>
+    			<foreach name='cate' item='v'>
+    				<option value="<{$v.id}>"><{$v.name}></option>
+    			</foreach>
+    		</select>
+    	</td>
+    </tr>
+    <tr>
+    	<td align="right">菜品名称：</td>
+    	<td>
+    		<input type="text" name="name" />
+    	</td>
+    </tr>
+     <tr>
+    	<td align="right">菜品价格：</td>
+    	<td>
+    		<input type="text" name="price" />
+    	</td>
+    </tr>
+     <tr>
+            <td align="right"> 图片上传：</td>
+            <td height="30">
+               <input name="photo" type="file" size="2000000" /><br>
+            </td>
+            
+        </tr>
+
+
+    <tr>
+       <td colspan="5" align="center">
+            <input type="hidden" name="siteid" value="<{$siteid}>" />
+            <input type="submit" value="提交" class="btn" />
+       </td>
+    </tr>
+
+  </table>
+  </form>
+</body>
+</html>

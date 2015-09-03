@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<script type="text/javascript" src="__PUBLIC__/Js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Js/index.js"></script>
+<link rel="stylesheet" href="__PUBLIC__/Css/public.css" />
+<link rel="stylesheet" href="__PUBLIC__/Css/index.css" />
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<head>
+</head>
+<body>
+
+<form  action="<{:U(GROUP_NAME . '/Website/runwbooking')}>"  method="post">
+  <table class="table">
+  <tr>
+    <td background="__PUBLIC__/images/bg_list.gif" colspan="2"><div style="padding-left:10px; font-weight:bold; color:#FFFFFF">添加字段</div> </td>
+  </tr>
+    <tr>
+      <td align="right" width="10%">选择类型：</td>
+      <td>
+        <select name="wfield">
+          <option value="0">---请选择---</option>         
+          <option value="1">单行文字</option>
+          <option value="2">下拉字段</option>
+          <option value="3">文本内容</option>
+        </select>
+      </td>
+    </tr>
+      <tr>
+      <td align="right">字段名称：</td>
+      <td>
+        <input type="text" name="name" />
+      </td>
+    </tr>
+     <tr>
+      <td align="right">字段标识：</td>
+      <td>
+        <input type="text" name="fieldname" />
+      </td>
+    </tr>
+    <tr>
+      <td align="right">字段内容：</td>
+      <td>
+        <input type="text" name="content" style="width:350px;" />
+      </td>
+    </tr>
+
+       <tr>
+      <td align="right">排序：</td>
+      <td>
+        <input type="text" name="sort" value="1" />
+      </td>
+    </tr>
+    <tr>
+       <td colspan="2" align="center">
+            <input type="hidden" value="<{$siteid}>" name="siteid"/>
+            <input type="submit" value="提交" class="btn" />
+      </td>
+    </tr>
+  </table>
+  </form>
+</body>
+</html>

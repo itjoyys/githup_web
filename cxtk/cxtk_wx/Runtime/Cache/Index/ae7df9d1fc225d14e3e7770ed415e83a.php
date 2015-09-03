@@ -1,0 +1,179 @@
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html>
+<html lang="zh-CN"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>订单确认</title>    
+<meta charset="UTF-8">
+<meta name="viewport" content=" initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<link href="http://x.wx0571.com/Show/css/shop/style.css" rel="stylesheet">
+<link href="http://x.wx0571.com/Show/css/shop/templates.css" rel="stylesheet"> 
+<link rel="stylesheet" href="__PUBLICI__/css/list.css">
+</head>
+<body>
+    
+<div class="lay_header" style="height: 45px">
+    <div class="lay_toptab mod_tab" id="lay_head">
+        <div class="tab_item go_back"><i class="qb_icon icon_goback"></i></div>        
+        <a class="tab_item" href="http://x.wx0571.com/show/shop/MemberCenter.aspx?siteid=130&openid=,o7-66uJ0vwxucpNj2Q6o7D9nc0ro"><i class="qb_icon icon_icenter"></i></a>
+        <a class="tab_item" href="http://x.wx0571.com/show/shop/Cart.aspx?siteid=130&openid=,o7-66uJ0vwxucpNj2Q6o7D9nc0ro">
+        <i class="qb_icon icon_cart"></i>
+        <i class="qb_icon icon_number_bubble qb_none">1</i></a>
+    </div>
+    <div class="lay_toptab mod_tab fixed qb_none" id="lay_head_fixed">
+        <div class="tab_item go_back"><i class="qb_icon icon_goback"></i></div>        
+        <a class="tab_item" href="http://x.wx0571.com/show/shop/MemberCenter.aspx?siteid=130&openid=,o7-66uJ0vwxucpNj2Q6o7D9nc0ro"><i class="qb_icon icon_icenter"></i></a>
+        <a class="tab_item" href="http://x.wx0571.com/show/shop/Cart.aspx?siteid=130&openid=,o7-66uJ0vwxucpNj2Q6o7D9nc0ro">
+            <i class="qb_icon icon_cart"></i>
+            <i class="qb_icon icon_number_bubble qb_none"></i>
+        </a>
+    </div>
+</div>
+
+    <div class="lay_page page_order current" id="page_order">
+        <div class="lay_page_wrap">
+            <ul class="mod_addresslist ui_mt15 ui_mb15">
+                <li class="address_item arrow" id="toAddrList" evttag="toAddrList">
+                    <div class="address_detail">
+                        <p evttag="toAddrList">
+                            收件人：我是<span class="ui_color_weak"> 13650818551 </span>
+                            <!--<span id="goaddlist" style="display: none" addr="/my/recvaddr/getAddrList.html?addrId=14513">dsfsdf</span>-->
+                        </p>
+                        <p evttag="toAddrList" class="address qb_fs_m">天津市辖区河东区 拱墅区新文路33号4号楼</p>
+                    </div>
+                </li>
+            </ul>
+            <form name="form1" method="post" action="http://x.wx0571.com/Show/Shop/ConfirmOrder.aspx?siteid=130&openid=%2co7-66uJ0vwxucpNj2Q6o7D9nc0ro&payType=0&payType=1&payType=148.00&itemList=12%7c148.00%7c1%2c&cart=1&t=&SourceUrl=%2fshow%2fshop%2fCart.aspx" id="form1">
+<div>
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwULLTE2NDcyMzY5MzMPZBYCZg9kFgZmDxAPFgYeDURhdGFUZXh0RmllbGQFBU5hbWVzHg5EYXRhVmFsdWVGaWVsZAUCSUQeC18hRGF0YUJvdW5kZ2QQFQIV6K+36YCJ5oup6YWN6YCB5pa55byPDOW/q+mAkumFjemAgRUCAi0xATIUKwMCZ2dkZAIBDxAPFgYfAAUFTmFtZXMfAQUCSUQfAmdkEBUCFeivt+mAieaLqeaUr+S7mOaWueW8jwzotKfliLDku5jmrL4VAgItMQEyFCsDAmdnZGQCAg8WAh4LXyFJdGVtQ291bnQCARYCZg9kFgJmDxUFAjEyLC9VcGxvYWRGaWxlLzEzMC8yMDE0LTEvMjAxNDAxMTEwOTQ3MTA2NDQuanBnWDIwMTPnp4vlhqzlraPmlrDmrL7lpbPpnovmrKfnvo7ml7blsJrkuKTnqb/kv53mmpbnnJ/nmq7lpbPpnbTpmLLmsLTlj7Dnspfot5/pq5jot5/nn63pnbQBMQYxNDguMDBkZA==">
+</div>
+
+            <div class="mod_cell ui_p10">
+                <div class="qb_flex">
+                    <div class="mod_select select_block flex_box">
+                    <select name="ddlDist_Type" id="ddlDist_Type">
+    <option value="-1">请选择配送方式</option>
+    <option value="2">快递配送</option>
+
+</select>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="mod_cell ui_p10">
+                <div class="qb_flex">
+                    <div class="mod_select select_block flex_box">
+                    <select name="ddlPay_Type" id="ddlPay_Type">
+    <option value="-1">请选择支付方式</option>
+    <option value="2">货到付款</option>
+
+</select>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="mod_cell_hr"></div>
+            <div class="mod_cell">
+                <div class="mod_celltitle">商品详情</div>
+                <div class="ui_color_weak qb_mb10"></div>
+                <ul class="mod_list">
+                    
+                    
+                    <li class="list_item qb_mb10 qb_bfc">
+                        <a href="http://x.wx0571.com/show/shop/Detail.aspx?siteid=130&openid=,o7-66uJ0vwxucpNj2Q6o7D9nc0ro&pid=12" class="bfc_f">
+                            <img src="./订单确认_files/20140111094710644.jpg" width="100" height="100" alt=""></a>
+                            <div class="bfc_c">
+                                <p>2013秋冬季新款女鞋欧美时尚两穿保暖真皮女靴防水台粗跟高跟短靴</p>
+                                <p class="qb_fs_s ui_color_weak">数量: 1 &nbsp;&nbsp;价格：<strong class="mod_color_strong">￥ 148.00元 </strong> </p>
+                            </div>
+                    </li>
+                   
+                    
+                </ul>
+                <div class="qb_flex qb_mb10" id="coupon-node" index="0"></div>
+                <div class="qb_flex qb_mb10" id="promote-node" index="0"></div>
+                <div class="mod_cell_hr"></div>
+                <div class="ui_mb10">
+                    <p class="ui_align_right qb_none" id="free-div"></p>
+                    <p class="ui_align_right qb_none" id="dealoff-div">优惠金额：<strong class="mod_color_strong"><span id="dealoff-price"></span></strong></p>
+                    <p class="ui_align_right">应付金额：<strong class="mod_color_strong"><span id="total-price">148.00</span></strong></p>
+                </div>
+            </div>
+            
+                <input type="hidden" value="130" id="siteid" name="siteid">
+                <input type="hidden" value=",o7-66uJ0vwxucpNj2Q6o7D9nc0ro" id="openid" name="openid">
+                <input type="hidden" value="10" id="payType" name="payType">
+                <input type="hidden" value="" id="itemList" name="itemList">
+                <input type="hidden" value="14513" id="adid" name="adid">
+                <input type="hidden" value="7-1-5" id="prePageId" name="prePageId">
+                <input type="hidden" value="" id="gcfa" name="gcfa">
+                <input type="hidden" value="" id="icfa" name="icfa">
+                <input name="hitotleNum" type="hidden" id="hitotleNum" value="1">
+                <input name="hitotlePrice" type="hidden" id="hitotlePrice" value="148.00">
+                <div class="ui_gap">
+                    <input type="submit" name="submit" value="提交订单" id="submit" class="mod_btn btn_strong btn_block" style="width:100%">                
+                    <!--<a id="submit-order" evttag="submitOrder" class="mod_btn btn_strong btn_block" href="pay_tips.aspx">提交订单</a>-->
+                </div>
+            </form>
+            <div class="qb_gap"></div>
+        </div>
+    </div>
+    <div class="qb_quick_tip qb_none" id="bubble"></div>
+    <div class="mod_dialog qb_none" id="message-notice">
+        <div class="dialog_mask"></div>
+        <div class="dialog_main qb_br qb_tac">
+            <div class="dialog_bd" id="notice-content"></div>
+            <div class="dialog_ft qb_flex">
+                <a href="javascript:void(0);" class="flex_box" id="notice-cancel">取消</a>
+                <a href="javascript:void(0);" class="flex_box" id="notice-sure">确定</a>
+            </div>
+        </div>
+    </div>
+       
+	<!--底部浮动菜单-->
+		<div class="dhf">
+			<ul>
+				<li>
+					<a href="" class="con" style="line-height:1;">
+						<span class="shouye"></span>
+						<span >首页</span>
+					</a>
+				</li>
+				<li>
+					<a href="fenlei.html" class="con" style="line-height:1;">
+						<span class="fenlei"></span>
+						<span>类别</span>
+					</a>
+				</li>
+				<li>
+					<a href="" class="con" style="line-height:1;">
+						<span class="gouwu"></span>
+						<span>购物车</span>
+					</a>
+				</li>
+				<li>
+					<a href="" class="con" style="line-height:1;">
+						<span class="huiyuan"></span>
+						<span>会员中心</span>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<!--尾部样式-->
+	<div id="foot">
+		<div class="footer_login">
+		
+		</div>
+		<div class="copyright">
+			<p>Copyright © 2012-2013  奔达版权所有$copyright</p>
+			<p>
+				技术支持：
+				<a href="">杭州微盘信息技术有限公司</a>
+			</p>
+		</div>
+	</div>
+   
+
+
+</body></html>

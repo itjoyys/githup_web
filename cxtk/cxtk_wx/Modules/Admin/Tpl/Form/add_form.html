@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<script type="text/javascript" src="__PUBLIC__/Js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Js/index.js"></script>
+<link rel="stylesheet" href="__PUBLIC__/Css/public.css" />
+<link rel="stylesheet" href="__PUBLIC__/Css/index.css" />
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<head>
+</head>
+<body>
+  <form action="<{:U(GROUP_NAME . '/Form/run_add_form')}>"  enctype="multipart/form-data" method="post">
+  <table class="table">
+    <tr>
+      <td colspan="3" background="__PUBLIC__/images/bg_list.gif"> <div style="padding-left:10px; font-weight:bold; color:#FFFFFF">添加表单</div></td>
+    </tr>
+      <tr>
+      <td align="right">表单地址：</td>
+      <td>
+        <{$form_url}>
+      </td>
+    </tr>
+    <tr>
+      <td align="right">表单名称：</td>
+      <td>
+        <input type="text" name="title" value="<{$form['title']}>"/>
+      </td>
+    </tr>
+    <tr>
+      <td align="right">电话：</td>
+      <td>
+        <input type="text" name="tel" value="<{$form['tel']}>"/>
+      </td>
+    </tr>
+     <tr>
+      <td align="right">地址：</td>
+      <td>
+        <input type="text" name="address" value="<{$form['address']}>"/>
+      </td>
+    </tr>
+         <tr>
+      <td align="right">地址坐标X：</td>
+      <td>
+        <input type="text" name="coordinate_x" value="<{$form['coordinate_x']}>"/>
+      </td>
+    </tr>
+      <tr>
+      <td align="right">地址坐标Y：</td>
+      <td>
+        <input type="text" name="coordinate_y" value="<{$form['coordinate_y']}>"/>
+      </td>
+    </tr>
+     <tr>
+      <td align="right">关注账号才能参与：</td>
+      <td>
+        <input type="radio" name="is_openid" value="1"/>是  
+        <input type="radio" name="is_openid" value="0"/>否
+      </td>
+    </tr>
+        <tr>
+      <td align="right">图片：</td>
+      <td>
+        <input type="file" name="img" size="2000000" />
+        <p><img src="<{$image_url}><{$form['img']}>" width="180" height="90"></p>
+      </td>
+    </tr>
+    <tr>
+      <td align="right">表单说明：</td>
+      <td>
+        <textarea type="text" name= "intro" style="width:300px;height:160px;">
+           <{$form['intro']}> 
+        </textarea>
+      </td>
+    </tr>
+
+    <tr>
+      <td colspan="3" align="center">
+        <input type="hidden" name="siteid" value="<{$siteid}>" />
+        <input type="hidden" name="id" value="<{$form['id']}>" />
+        <input type="submit" class="btn" value="保存添加"/>
+      </td>
+
+    </tr>
+  
+  </table>
+  </form>
+</body>
+</html>

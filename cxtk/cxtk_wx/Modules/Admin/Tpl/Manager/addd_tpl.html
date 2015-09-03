@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<script type="text/javascript" src="__PUBLIC__/Js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Js/index.js"></script>
+<link rel="stylesheet" href="__PUBLIC__/Css/public.css" />
+<link rel="stylesheet" href="__PUBLIC__/Css/index.css" />
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<head>
+<style type="text/css">
+  .table{color: #fff;}
+  
+</style>
+</head>
+<body>
+
+  <table class="table">
+  <tr>
+    <td background="__PUBLIC__/images/bg_list.gif" colspan="5"><div style="padding-left:10px; font-weight:bold; color:#FFFFFF">详细页模板</div></td>
+  </tr>
+    <tr>
+      <td>ID</td>
+      <td>对应编号</td>
+      <td>图片</td>
+      <td>操作</td>
+
+    </tr>
+
+    <foreach name="detail" item="v">
+         <tr>
+           <td><{$v.id}></td>
+           <td><{$v.tpl_id}></td>
+           <td><img src="<{$image_url}><{$v.img}>" width="100" height="45"></td>
+        
+           <td>
+              [<a href="<{:U(GROUP_NAME . '/Manager/deleted_tpl', array('id' => $v['id']))}>">删除</a>]
+             
+           </td>
+         </tr>
+    </foreach>
+      <tr>
+      <td colspan="4" align="center"> <{$page}></td>
+    </tr>
+   
+  </table>
+  </form>
+
+<form action="<{:U(GROUP_NAME . '/Manager/runaddd_tpl')}>" enctype="multipart/form-data" method="post">
+  <table class="table">
+    <tr>
+      <td colspan="2" background="__PUBLIC__/images/bg_list.gif"> <div style="padding-left:10px; font-weight:bold; color:#FFFFFF">添加模板</div></td>
+    </tr>
+    <tr>
+      <td align="right">模板编号：</td>
+      <td>
+        <input type="text" name="tpl_id" />
+      </td>
+    </tr>
+      <tr>
+      <td align="right">图片：</td>
+      
+      <td height="30">
+         <input name="img" type="file" size="2000000">
+      </td>
+    </tr>
+    <tr>
+      <td align="right">排序</td>
+      <td>
+        <input type="text" name="sort" value="1" />
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" align="center">
+
+        <input type="submit" class="btn" value="保存添加"/>
+      </td>
+
+    </tr>
+  
+  </table>
+  </form>
+</body>
+</html>

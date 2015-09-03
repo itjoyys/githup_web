@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<title><{$name}></title>
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<link rel="stylesheet" type="text/css" href="__PUBLICI__/interaction/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="__PUBLICI__/interaction/main.css">
+	<script async="" src="__PUBLICI__/interaction/analytics.js"></script>
+	<script type="text/javascript" src="__PUBLICI__/interaction/zepto.js"></script>
+	<script type="text/javascript" src="__PUBLICI__/interaction/zepto.zxxbox.3.0-min.js"></script>
+	<style type="text/css">
+	#zxxBlank{position:absolute;z-index:2000;left:0;top:0;width:100%;height:0;background:black;}
+	.wrap_out{padding:5px;background:#eee;box-shadow:0 0 6px rgba(0,0,0,.5);position:absolute;z-index:2000;left:-9999px;-webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 5px;}
+	.wrap_in{background:#fafafa;border:1px solid #ccc;-webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 5px;}
+	.wrap_bar{border-bottom:1px solid #ddd;background:#f0f0f0;background:-moz-linear-gradient(top, #fafafa, #eee);background:-o-linear-gradient(top, #fafafa, #eee);background:-webkit-linear-gradient(top, #fafafa, #eee);background:linear-gradient(top, #fafafa, #eee);}
+	.wrap_title{line-height:30px;padding-left:10px;margin:0;font-weight:bold;font-size:14px;}
+	.wrap_close{position:relative;}
+	.wrap_close a{width:20px;height:20px;text-align:center;margin-top:-25px;color:#34538b;font:bold 1em/20px Tahoma;text-decoration:none;cursor:pointer;position:absolute;right:6px;}
+	.wrap_close a:hover{text-decoration:none;color:#f30;}
+	.wrap_body{background:white;}.wrap_remind{padding:20px 20px;color:#333;min-width:200px;}
+	.wrap_remind p{margin:10px 0 0;}
+	.submit_btn, .cancel_btn{width:100px;}
+	.submit_btn{}
+	.submit_btn:hover{}
+	.cancel_btn{}</style>
+	<style type="text/css">body{background-color:#E5E5E5;}</style>
+</head>
+
+<body>
+	<div class="wid" id="coupontop">
+		<img src="<{$image_url}><{$img}>" height="166"></div>
+	<div class="couponbox">
+		<div>
+			<div class="ctitle">恭喜您领到优惠券啦</div>
+			<div class="couponline">
+				<span>你抢到:</span>
+				<span class="red"><{$name}></span>
+			</div>
+			<div class="couponline">
+				<span>SN码</span>
+				<span class="red"><{$sn}></span>
+			</div>
+			<div class="couponline red">提交手机号码之后，您可在个人中心获取优惠券！</div>
+			<div class="couponline red"></div>
+			<div class="couponline">
+				<input type="hidden" name="sn" id="sn" value="<{$sn}>">
+				<div id="usersubmitbox" aurl="<{:U(GROUP_NAME . '/interaction/coupon_ajax')}>">
+
+				    <input type="text" name="name" id="name" placeholder="用户输入姓名">
+					<input type="text" name="mobile" id="mobile" placeholder="用户输入手机号">
+					<input type="hidden" name="id" id="id" value="<{$id}>">
+					<input type="button" name="usersubmit" id="usersubmit" value="用户提交" class="btn"></div>
+				
+			</div>
+		</div>
+	</div>
+	<div class="couponbox">
+		<div>
+			<div class="ctitle">使用说明</div>
+			<{$use}>
+		</div>
+	</div>
+	<div class="couponbox">
+		<div>
+			<div class="ctitle">活动说明</div>
+			<p class="p0"></p>
+			<p class="p0"><{$description}></p>
+			<p></p>
+			<p class="p0">地址地址地址</p>
+			<p class="p0">联系电话</p>
+		</div>
+	</div>
+	<script type="text/javascript">
+$("#usersubmit").on('click', function(){
+    var sn = $.trim($("#sn").val());
+	var mobile = $.trim($("#mobile").val());
+	var name = $.trim($("#name").val());
+	var id = $.trim($("#id").val());
+	var aurl=$('#usersubmitbox').attr('aurl');
+	if(sn=='')
+	{	
+		$.zxxbox.remind("sn码不能为空", null, {bg: false,delay:3000});
+		return false;
+	}
+		if(name=='')
+	{	
+		$.zxxbox.remind("姓名不能为空", null, {bg: false,delay:3000});
+		return false;
+	}
+	if(mobile=='')
+	{	
+		$.zxxbox.remind("手机号不能为空", null, {bg: false,delay:3000});
+		return false;
+	}
+
+	    $.ajax({
+         url:aurl,
+         type:'POST',
+         data:'name='+name+'&mobile='+mobile+'&sn='+sn+'&id='+id,
+         dataType:'json',
+         success:function(result){
+           
+             if (result.status===1) {
+               //$('#order_success').css("display","block");
+               alert(1233);
+              
+         }
+       }
+      })
+	
+})
+
+</script>
+	<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-7161351-11', 'netpopo.net');
+  ga('send', 'pageview');
+</script>
+
+</body>
+</html>

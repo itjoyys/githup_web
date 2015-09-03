@@ -1,0 +1,136 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<script type="text/javascript" src="__PUBLIC__/Js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Js/index.js"></script>
+<link rel="stylesheet" href="__PUBLIC__/Css/public.css" />
+<link rel="stylesheet" href="__PUBLIC__/Css/index.css" />
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<head>
+</head>
+<body>
+
+  <table class="table">
+  <tr>
+    <td background="__PUBLIC__/images/bg_list.gif" colspan="5"><div style="padding-left:10px; font-weight:bold; color:#FFFFFF">物流列表</div></td>
+  </tr>
+    <tr>
+      <td>ID</td>
+      <td>地区</td>
+      <td>费用</td>
+      <td>操作</td>
+
+    </tr>
+
+    <foreach name="list" item="v">
+         <tr>
+           <td><{$v.id}></td>
+           <td><{$v.area}></td>
+           <td><{$v.freight}></td>
+          
+           <td>
+             
+              [<a href="<{:U(GROUP_NAME . '/Shop/wuliu_delete', array('id' => $v['id']))}>">删除</a>]
+             
+           </td>
+         </tr>
+    </foreach>
+  
+ 
+  </table>
+
+
+
+<form action="<{:U(GROUP_NAME . '/Shop/tprice_post')}>" method="post">
+  <table class="table">
+    <tr>
+      <td colspan="2" background="__PUBLIC__/images/bg_list.gif"> <div style="padding-left:10px; font-weight:bold; color:#FFFFFF">设置包邮费用</div></td>
+    </tr>
+
+    <tr>
+      <td align="right">多少包邮</td>
+      <td>
+        <input type="text" name="tprice" />
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" align="center">
+      
+        <input type="hidden" name="siteid" value="<{$siteid}>" />
+        <input type="submit" class="btn" value="保存提交"/>
+      </td>
+
+    </tr>
+  
+  </table>
+  </form>
+
+
+
+<form action="<{:U(GROUP_NAME . '/Shop/wuliu_post')}>" method="post">
+  <table class="table">
+    <tr>
+      <td colspan="2" background="__PUBLIC__/images/bg_list.gif"> <div style="padding-left:10px; font-weight:bold; color:#FFFFFF">添加地区邮费</div></td>
+    </tr>
+    <tr>
+    <td>地区选择</td>
+    <td>  
+       <select name="area">
+          <option value="">---请选择地区---</option>
+                <option value="北京市">北京市</option>
+                <option value="天津市">天津市</option>
+                <option value="上海市">上海市</option>
+                <option value="重庆市">重庆市</option>
+                <option value="河北省">河北省</option>
+                <option value="山西省">山西省</option>
+                <option value="内蒙古">内蒙古</option>
+                <option value="辽宁省">辽宁省</option>
+                <option value="吉林省">吉林省</option>
+                <option value="黑龙江省">黑龙江省</option>
+                <option value="江苏省">江苏省</option>
+                <option value="浙江省">浙江省</option>
+                <option value="安徽省">安徽省</option>
+                <option value="福建省">福建省</option>
+                <option value="江西省">江西省</option>
+                <option value="山东省">山东省</option>
+                <option value="河南省">河南省</option>
+                <option value="湖北省">湖北省</option>
+                <option value="湖南省">湖南省</option>
+                <option value="广东省">广东省</option>
+                <option value="广西">广西</option>
+                <option value="海南省">海南省</option>
+                <option value="四川省">四川省</option>
+                <option value="贵州省">贵州省</option>
+                <option value="云南省">云南省</option>
+                <option value="西藏">西藏</option>
+                <option value="陕西省">陕西省</option>
+                <option value="甘肃省">甘肃省</option>
+                <option value="青海省">青海省</option>
+                <option value="宁夏">宁夏</option>
+                <option value="新疆">新疆</option>
+                <option value="香港">香港</option>
+                <option value="澳门">澳门</option>
+                <option value="台湾省">台湾省</option>
+          
+         
+        </select></td>
+     
+    </tr>
+    <tr>
+      <td align="right">邮费</td>
+      <td>
+        <input type="text" name="freight"  />
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" align="center">
+      
+        <input type="hidden" name="siteid" value="<{$siteid}>" />
+        <input type="submit" class="btn" value="保存提交"/>
+      </td>
+
+    </tr>
+  
+  </table>
+  </form>
+</body>
+</html>

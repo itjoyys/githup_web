@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<script type="text/javascript" src="__PUBLIC__/Js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Js/index.js"></script>
+<link rel="stylesheet" href="__PUBLIC__/Css/public.css" />
+<link rel="stylesheet" href="__PUBLIC__/Css/index.css" />
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<head>
+<style type="text/css">
+table{color: #fff;
+  background-color: #242424;
+}
+.table, .table td {
+border: solid 1px #333333;
+}
+#remark{width: 320px;height: 180px;
+}
+.btn{width: 135px;
+}
+input{height: 20px; width: 250px;
+}
+</style>
+</head>
+<body>
+<form  action="<{:U(GROUP_NAME . '/Category/sortCate')}>" method="post">
+  <table class="table">
+  <tr>
+    <td background="__PUBLIC__/images/bg_list.gif" colspan="10"><div style="padding-left:10px; font-weight:bold; color:#FFFFFF">代理商列表</div></td>
+  </tr>
+    <tr>
+      <td>AID</td>
+      <td>名称</td>
+      <td>账号</td>
+      <td>联系人</td>
+      <td>状态</td>
+      <td>电话</td>
+      <td>手机</td> 
+      <td>地址</td>
+      <td>备注</td>
+      <td>操作</td>
+
+    </tr>
+
+    <foreach name="agent" item="v">
+         <tr>
+           <td><{$v.aid}></td>
+           <td><{$v.agentname}></td>
+           <td><{$v.name}></td>
+           <td><{$v.linkman}></td>
+           <td><{$v.state}></td>
+           <td><{$v.tphone}></td>
+           <td><{$v.phone}></td>
+           <td><{$v.address}></td>
+           <td><{$v.remark}></td>
+           <td>
+              [<a href="">解封</a>]
+              [<a href="">冻结</a>]
+             
+           </td>
+         </tr>
+    </foreach>
+  
+    <tr>
+       <td colspan="10" align="center">
+            <input type="submit" value="排序" class="btn" />
+      </td>
+    </tr>
+  </table>
+  </form>
+</body>
+</html>

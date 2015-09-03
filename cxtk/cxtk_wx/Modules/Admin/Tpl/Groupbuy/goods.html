@@ -1,0 +1,194 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<script type="text/javascript" src="__PUBLIC__/Js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Js/index.js"></script>
+<link rel="stylesheet" href="__PUBLIC__/Css/public.css" />
+<link rel="stylesheet" href="__PUBLIC__/Css/index.css" />
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<head>
+      <script type="text/javascript"> 
+$(document).ready(function(){
+    var id;
+    $('.kick').click(function(){
+      id=$(this).attr('did');
+      $('#index_tisi').css('display','block');
+    });
+       //对话框点击确定、删除
+    $('#cance1').click(function(){
+       $('#index_tisi').css("display","none");
+       location.href ="/weipan/index.php/Admin/Groupbuy/delete_goods/id/"+id;
+    });
+    
+    //对话框点击取消、
+    $('#cance2').click(function(){
+       $('#index_tisi').css("display","none");
+    })
+
+}) 
+</script>
+<style>
+.td a{
+padding: 4px 8px;
+font-family: Verdana, Arial, sans-serif;
+border-radius: 5px;
+background: #1D3E83;
+}
+</style>
+<style type="text/css">
+
+  .searchgrid {
+padding: 2px 5px;
+clear: both;
+color: #1D3E83;
+background: #DBE3FF;
+border: 1px solid #CAD8E5;
+line-height: 29px;
+}
+#tjun{
+  border-color: #6E9FDE #C4DEFF #C4DEFF #6E9FDE;
+border-style: solid;
+border-width: 1px;
+margin-top: 3px;
+margin-bottom: 3px;
+height: 20px;
+} 
+  
+  #index_tisi,#index_tisi2 {
+margin-top: 180px;
+left: 50%;
+position: fixed;
+margin-left: -215px;
+border-radius: 10px;
+padding: 10px;
+opacity: 1;
+-webkit-transform: scale(1);
+-webkit-transition: all 0.20s ease-in-out;
+transform: scale(1);
+transition: all 0.20s ease-in-out;
+position: absolute;
+z-index: 1000000;
+margin-right: auto!important;
+}
+#index_tisi，#index_tisi2 header{
+
+font-weight: bold;
+font-size: 12px;
+color: #F0890E;
+margin: 0;
+padding: 0;
+display: block !important;
+}
+.jqPopup div {
+font-size: 14px;
+margin: 10px 0 10px 10px;
+color: #fff;
+text-align: center;
+}
+.jqPopup footer {
+width: 100%;
+text-align: center;
+display: block !important;
+color: #fff;
+}
+.jqPopup .button {
+background: #98B037;
+height: 21px;
+display: inline-block;
+line-height: 21px;
+font-weight: normal;
+font-size: 12px;
+text-shadow: none;
+width: 100px;
+background: #FC0B3B;
+margin-right: 5px;
+}
+
+</style>
+</head>
+<body>
+      <div id="index_tisi" class="jqPopup" style="display: none;width: 300px;background: #006bb2;">                  
+             <header class="">提示</header>                  
+             <div>
+             <div style="width:1px;height:1px;-webkit-transform:translate3d(0,0,0);float:right"></div>
+             确定是否删除！</div>                 
+           <footer style="clear:both;">                    
+             <a onclick="return false;" href="#" class="button center" id="cance1" style="
+             text-shadow:none;width: 100px;background: #FC0B3B;margin-right: 5px;color:#fff;">确定</a> 
+             <a class="button center" onclick="return false;" href="#" id="cance2" style="text-shadow:none;width: 100px;background: #FC0B3B;color:#fff;">取消</a>                      
+           </footer>               
+        </div>
+  <table class="table" width="100%" border="0" align="center" cellpadding="0" cellspacing="1">
+  <tr> 
+  <td colspan="8"  align="left" background="__PUBLIC__/images/bg_list.gif"> 
+      <div style="padding-left:10px; font-weight:bold; color:#FFFFFF">商品列表
+        [<a href="<{:U(GROUP_NAME . '/Groupbuy/add_goods')}>">添加商品</a>]
+      </div>
+      </td>
+  </tr>
+<!--       <tr>
+    <td colspan="8">
+      <div class="searchgrid">
+      <form method="post" action="<{:U(GROUP_NAME . '/Goods/goodssearch')}>" name="Form" id="Form1">
+           <label>商品编号</label>
+               <input type="text" name="goodsid" id="tjun">      
+           <label>商品分类</label>
+             <select name="classid" id="tjlevel_id" style="padding: 5px;
+background: #fff;">
+               <option value="" selected="selected">选择商品分类</option>
+                <foreach name='cate' item='v'>
+                  <option value="<{$v.id}>"><{$v.html}><{$v.name}></option>
+                </foreach>
+              </select>
+              <input type="hidden" name="siteid" value="<{$siteid}>">     
+
+      <input type="submit" class="button" value="查询" style="padding: 4px 8px;font-family: Verdana, Arial, sans-serif;
+        background: #1D3E83 url('/media/images/ht/4bg-button-green.gif') top left repeat-x !important;
+        border: 1px solid #254fa6 !important;
+
+        _padding: 4px 2px 4px 2px !important;
+        color: #fff !important;
+        font-size: 12px !important;
+        cursor: pointer;
+        height: 24px;
+        line-height: 16px;
+        }">   
+      </form>
+    </div>
+    </td>
+  </tr> -->
+    <tr>
+      <td>ID</td>
+      <td>名称</td>
+      <td>参团人数</td>
+      <td>结束时间</td>
+      <td style="width:50px;">库存</td>
+      <td>团购价</td>
+      <td>市场价</td>
+      <td>操作</td>
+    </tr>
+
+    <volist name="goods" id="v">
+         <tr <if condition="$i%2 == 1">style="background: #e7ecf0;"</if>>
+           <td width="td"><{$v.id}></td>
+           <td width="td"><{$v.name}></td>
+           <td class="td"><{$v.num_buyer}></td>
+           <td class="td"><{$v.finish}></td>
+           <td class="td"><{$v.num}></td>
+           <td class="td"><{$v.saleprice}></td>
+           <td class="td"><{$v.price}></td>
+           <td class="td">
+              <a href="<{:U(GROUP_NAME . '/Groupbuy/revise_goods', array('id' => $v['id']))}>">修改商品</a>
+              <a class="kick" onclick="return false;" did="<{$v.id}>" href="#">删除</a>
+           </td>
+
+         </tr>
+
+    </volist>
+
+    <tr>
+      <td colspan="8" align="center"> <{$page}></td>
+    </tr>
+  </table>
+
+</body>
+</html>

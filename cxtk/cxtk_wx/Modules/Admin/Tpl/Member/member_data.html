@@ -1,0 +1,156 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<script type="text/javascript" src="__PUBLIC__/Js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Js/index.js"></script>
+<link rel="stylesheet" href="__PUBLIC__/Css/public.css" />
+<link rel="stylesheet" href="__PUBLIC__/Css/index.css" />
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<head>
+<style>
+
+
+.td_a{
+ padding: 4px 8px;
+font-family: Verdana, Arial, sans-serif;
+border-radius: 5px;
+font-size: 14px;
+color: #fff;
+ background-color: #088ecb;
+}
+.td_b{
+ padding: 4px 8px;
+font-family: Verdana, Arial, sans-serif;
+border-radius: 5px;
+font-size: 14px;
+color: #fff;
+  background-color: #d93d8e;
+}
+.td_c{
+   padding: 4px 8px;
+font-family: Verdana, Arial, sans-serif;
+border-radius: 5px;
+font-size: 14px;
+color: #fff;
+  background-color: #e2ae24;
+}
+.td_d{
+   padding: 4px 8px;
+font-family: Verdana, Arial, sans-serif;
+border-radius: 5px;
+font-size: 14px;
+color: #fff;
+  background-color: #e86829;
+}
+
+.td_e{
+   padding: 4px 8px;
+font-family: Verdana, Arial, sans-serif;
+border-radius: 5px;
+font-size: 14px;
+color: #fff;
+  background-color: #92bd18;
+}
+.td_f{
+   padding: 4px 8px;
+font-family: Verdana, Arial, sans-serif;
+border-radius: 5px;
+font-size: 14px;
+color: #fff;
+  background-color: #1D3E83;
+}
+#index_tisi {
+margin-top: 180px;
+left: 50%;
+position: fixed;
+margin-left: -215px;
+border-radius: 10px;
+padding: 10px;
+opacity: 1;
+-webkit-transform: scale(1);
+-webkit-transition: all 0.20s ease-in-out;
+transform: scale(1);
+transition: all 0.20s ease-in-out;
+position: absolute;
+z-index: 1000000;
+margin-right: auto!important;
+}
+#index_tisi header{
+
+font-weight: bold;
+font-size: 12px;
+color: #F0890E;
+margin: 0;
+padding: 0;
+display: block !important;
+}
+.jqPopup div {
+font-size: 14px;
+margin: 10px 0 10px 10px;
+color: #fff;
+text-align: center;
+}
+.jqPopup footer {
+width: 100%;
+text-align: center;
+display: block !important;
+color: #fff;
+}
+.jqPopup .button {
+background: #98B037;
+height: 21px;
+display: inline-block;
+line-height: 21px;
+font-weight: normal;
+font-size: 12px;
+text-shadow: none;
+width: 100px;
+background: #FC0B3B;
+margin-right: 5px;
+}
+</style>
+</head>
+<body>
+  <table class="table">
+  <tr>
+    <td background="__PUBLIC__/images/bg_list.gif" colspan="8"><div style="padding-left:10px; font-weight:bold; color:#FFFFFF">会员列表</div> </td>
+  </tr>
+    <tr>
+      <td>ID</td>
+      <td>名称</td>
+      <td>卡号</td>
+      <td>积分</td>
+      <td>等级</td>
+      <td>电话</td>
+      <td>获取时间</td>
+      <td>操作</td>
+
+    </tr>
+
+    <foreach name="member_data" item="v">
+         <tr <if condition="$v.state eq 0">style="background:rgb(187, 187, 18);" </if>>
+           <td><{$key}></td>
+           <td><{$v.name}></td>
+           <td><{$v.card_id}></td>
+           <td><{$v.total_integral}></td>
+           <td><empty name="v['level_name']">普通会员</empty><{$v.level_name}></td>
+           <td><{$v.tel}></td> 
+           <td><{$v.date}></td> 
+           <td>
+            <a class="td_a" href="<{:U(GROUP_NAME . '/Member/manage', array('mid' => $v['did']))}>">管理</a>
+            <a class="td_d" href="<{:U(GROUP_NAME . '/Member/r_member_data', array('mid' => $v['did']))}>">编辑</a>
+          <if condition="$v.state eq 0">
+            <a class="td_b" href="<{:U(GROUP_NAME . '/Member/not_freeze', array('mid' => $v['did']))}>">解冻</a>
+          <else />
+             <a class="td_f" href="<{:U(GROUP_NAME . '/Member/freeze', array('mid' => $v['did']))}>">冻结</a>
+          </if>
+        
+           </td>
+         </tr>
+    </foreach>
+    <tr><td colspan="8" style="text-align: center;"><{$page}></td></tr>
+  
+ 
+  </table>
+ 
+</body>
+</html>

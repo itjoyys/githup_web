@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="__PUBLICI__/website/css/onlinebooking.css" media="all">
+    <link rel="stylesheet" type="text/css" href="__PUBLICI__/website/css/datepicker.css" media="all">
+    <link rel="stylesheet" type="text/css" href="__PUBLICI__/website/css/weimob-ui-1-1.css" media="all">
+    <link rel="stylesheet" type="text/css" href="__PUBLICI__/website/css/common.css" media="all">
+    <title><{$field['title']}></title>
+    <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+    <!-- Mobile Devices Support @begin -->
+
+    <meta content="no-cache,must-revalidate" http-equiv="Cache-Control">
+    <meta content="no-cache" http-equiv="pragma">
+    <meta content="0" http-equiv="expires">
+    <meta content="telephone=no, address=no" name="format-detection">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!-- apple devices fullscreen -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Mobile Devices Support @end -->
+    <style>img{max-width:100%!important;}</style>
+</head>
+<body onselectstart="return true;" ondragstart="return false;" id="onlinebooking">
+    <div class="qiandaobanner">
+        <img src="<{$image_url}><{$form['img']}>"></div>
+    <div class="cardexplain">
+        <!--后台可控制是否显示-->
+        <notempty name="$form['intro']">
+        <ul class="round">
+            <li>
+                <h2>预约说明</h2>
+                <div class="text"><{$form['intro']}></div>
+            </li>
+        </ul>
+       </notempty>
+        <!--后台可控制是否显示-->
+        <ul class="round">
+            <li class="addr">
+                <a href="<{$aurl}>">
+                    <span style="font-size: 14px;">地址：<{$form['address']}></span>
+                </a>
+            </li>
+            <li class="tel">
+                <a href="tel:<{$form['tel']}>">
+                    <span style="font-size: 14px;">电话：<{$form['tel']}></span>
+                </a>
+            </li>
+        </ul>
+
+        <ul class="round">
+            <form action="<{:U(GROUP_NAME . '/Form/run_add_form')}>" method="post" enctype="multipart/form-data">
+                <li class="title mb">
+                    <span class="none"><{$form['title']}></span>
+                </li>
+            <volist name="fields" id="v">
+            
+                  <li class="nob">
+                    <table class="kuang" border="0" cellpadding="0" cellspacing="0" width="100%">
+                        <tbody>
+
+                          <if condition="$v['cate'] eq 1">
+                            <tr>
+                                <th><{$v.name}></th>
+                                <td>
+                                    <input name="<{$v.field_name}>" class="px" id="truename" value="" placeholder="请输入<{$v.name}>" type="text"></td>
+                            </tr>
+                            <elseif condition="$v['cate'] eq 2"/>
+                              <tr>
+                                <th><{$v.name}></th>
+                                <td>
+                                    <select name="<{$v.field_name}>"  class="dropdown-select">
+                                        <foreach name="v['f_content']" item="vo">
+                                           <option value="<{$vo}>"><{$vo}></option>
+                                        </foreach>                    
+                                    </select>
+                                </td>
+                            </tr>
+                              <elseif condition="$v['cate'] eq 3"/>
+                              <tr>
+                                <th><{$v.name}></th>
+                                <td>
+                                    <select name="<{$v.field_name}>"  class="dropdown-select">
+                                        <foreach name="v['f_content']" item="vo">
+                                           <option value="<{$vo}>"><{$vo}></option>
+                                        </foreach>                    
+                                   
+                                </td>
+                            </tr>
+                              <elseif condition="$v['cate'] eq 4"/>
+                              <tr>
+                                <th><{$v.name}></th>
+                                <td>
+                                    <select name="<{$v.fieldname}>"  class="dropdown-select">
+                                        <foreach name="v['content']" item="vo">
+                                           <option value="<{$vo}>"><{$vo}></option>
+                                        </foreach>                    
+                                    </select>
+                                </td>
+                            </tr>  
+                              <elseif condition="$v['cate'] eq 5"/>
+                              <tr>
+                                <th><{$v.name}></th>
+                                <td>
+                                    <input type="file" name="<{$v.field_name}>" size="2000000" />
+                                </td>
+                            </tr>  
+                            <elseif condition="$v['cate'] eq 6 "/> 
+                            <tr>
+                                <th class="thtop" valign="top"><{$v.name}></th>
+                                <td>
+                                    <textarea name="<{$v.field_name}>" class="pxtextarea" style=" height:99px;overflow-y:visible" id="info" placeholder="请输入<{$v.name}>"></textarea>
+                                </td>
+                            </tr> 
+                         </if>
+                        </tbody>
+                    </table>
+                </li>
+             </volist>
+             <div class="footReturn">
+               <input name="form_id" class="px" id="truename" value="<{$form_id}>" type="hidden">
+               <input name="openid" class="px" id="truename" value="<{$openid}>" type="hidden">
+               <input name="is_img" class="px" id="truename" value="<{$is_img}>" type="hidden">
+             <input id="showcard" class="submit" value="提交消息" type="submit" style="width:100%;">
+            </div>
+            </form>
+        </ul>
+       
+    </div>
+    <footer style="text-align:center; color:#ffd800;margin-right:20px;margin-top:0px;">
+        <a href="">版权所有</a>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <link rel="stylesheet" href="__PUBLIC__/Css/public.css">
+ </head>
+ <body>
+	<table class="table">
+		<tr>
+			<th>ID</th>
+			<th>发布者</th>
+			<th>内容</th>
+			<th>发布时间</th>
+			<th>操作</th>
+		</tr>
+
+		<foreach name='wish' item='v'>
+			<tr>
+				<td>{$v.id}</td>
+				<td>{$v.username}</td>
+				<td>{$v.content|replace_phiz=###}</td>
+				<td>{$v.time|date='y-m-d H:i',###}</td>
+				<td><a href="{:U('Admin/MsgManage/delete',array('id' => $v['id'])),''}">删除</a></td>
+			</tr>
+		</foreach>
+		<tr>
+			<td colspan='5' align='center'>
+				{$page}
+			</td>
+		</tr>
+	</table>
+  
+ </body>
+</html>

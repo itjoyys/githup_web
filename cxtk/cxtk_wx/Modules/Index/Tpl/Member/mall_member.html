@@ -1,0 +1,84 @@
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script type="text/javascript" src="__PUBLICI__/Member/js/accordian_pack.js"></script>
+    <title>礼品卡</title>
+    <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" type="text/css" href="__PUBLICI__/Member/css/lipin.css" media="all">
+    <link href="__PUBLICI__/Member/css/msp.css" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="__PUBLICI__/Member/css/card.css" media="all">
+</head>
+
+<body id="cardpower" ondragstart="return false;" onselectstart="return false;" class="mode_webapp">
+<include file='Member:top' />
+<script type="text/javascript">
+    document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+        //WeixinJSBridge.call('hideToolbar');
+        //WeixinJSBridge.call('showOptionMenu');
+    });
+</script>
+<section class="body">
+    <div class="qiandaobanner">
+        <a>
+            <img src="__PUBLICI__/Member/images/gift.jpg">
+        </a>
+    </div>
+    <div id="basic-accordian">
+        <div id="test0-header" class="accordion_headings header_highlight">
+            <div class="tab  vip">
+                <span class="title">积分换礼品<p>您的当前积分为：
+                    <font color="#FF3300" style="font-size:14px; font-family:Arial; font-weight:bold;"><{$jifen['total_integral']}></font>分
+                    </p>
+                </span>
+            </div>
+        </div>
+    </div>
+    <ul class="round" style="margin:0 2.5%;">
+        <li class="title mb"><span class="none">积分换礼</span></li>
+        <li class="nob">
+            <div class="beizhu">积分换大礼！</div>
+        </li>
+
+        <li class="nob">
+            <div class="clearfix a-msp-index" id="tbh5v0">
+                <div id="bodyCont" class="fullscreen" style="position: relative;">
+
+                    <section class="bd list">
+                        <div class="block first">
+                            <ul>
+                              <foreach name="member_mall" item="v">
+                                <li style="-webkit-box-shadow: 2px 2px 10px #909090;margin-bottom:8px;">
+                                    <a href="<{$v.url}>" title="">
+                                        <div><img class="loading-img" src="<{$image_url}><{$v.img}>"></div>
+                                        <p class="tit"><{$v.title}></p>
+                                        <p class="price">
+                                            <{$v.jifen}>分
+                                          </p>
+                                    </a>
+                                </li>
+                              </foreach>
+                            </ul>
+                        </div>
+
+
+
+                    </section>
+
+                </div>
+
+            </div>
+        </li>
+
+    </ul>
+
+    <!---->
+    <script>
+        window.onload = function(){
+            new Accordian('basic-accordian',2,'header_highlight');
+        }
+    </script>
+</section>
+<include file='Member:bar' />
+</body></html>

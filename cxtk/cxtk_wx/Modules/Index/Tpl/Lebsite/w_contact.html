@@ -1,0 +1,112 @@
+<html>
+<head>
+  <title><{$title}></title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+  <meta name="keywords" content="<{$Keywords}>">
+  <meta name="description" content="<{$Description}>">
+    <link rel="stylesheet" type="text/css" href="__PUBLICI__/website/css/w-ui-1-1.css" media="all">
+    <link rel="stylesheet" type="text/css" href="__PUBLICI__/website/css/common.css" media="all">
+    <link rel="stylesheet" type="text/css" href="__PUBLICI__/website/css/list-1.css" media="all">
+    <script type="text/javascript" src="__PUBLICI__/website/js/zepto.js"></script>
+    <!-- Mobile Devices Support @begin -->
+
+    <meta content="no-cache,must-revalidate" http-equiv="Cache-Control">
+    <meta content="no-cache" http-equiv="pragma">
+    <meta content="0" http-equiv="expires">
+    <meta content="telephone=no, address=no" name="format-detection">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Mobile Devices Support @end -->
+    <style>
+    .main{
+margin: 0 auto;
+height: auto;
+background-color: #E8ECEC;
+-moz-border-radius: 5px;
+-webkit-border-radius: 5px;
+border-radius: 5px;
+padding: 2%;
+
+    }
+
+.contactbox{
+    margin:10px 10px;
+}
+.contactgroup{overflow: hidden;margin-bottom:15px; border-radius:5px; box-shadow:0 0 5px rgba(0, 0, 0, 0.5); background:-webkit-gradient(linear,left top,left bottom,from(#ffffff), to(#f1f1f1)); color: #000000;}
+.contactgroup h5{position:relative;line-height:30px;  background:-webkit-gradient(linear,left top,left bottom,from(#d5d5d5), to(#c0c0c0)); padding:0 8px; border-top-left-radius:5px; border-top-right-radius:5px; font-size:14px; overflow:hidden; color: #ffffff; }
+
+.contactgroup.nearest h5{
+    background:-webkit-gradient(linear,left top,left bottom,from(#80d50a), to(#39c013));
+}
+
+.contactgroup .dis{
+    position: absolute;
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    background: #818181;
+    color: #FFFFFF;
+    right: 5px;
+    top:50%;
+    margin-top: -11px;
+    font-size: 12px;
+    line-height: 15px;
+    padding: 3px;
+    display: none;
+}
+
+.contactgroup.nearest .dis{
+    background:none;
+}
+
+.add,.tel{position: relative; padding:15px 15px 10px 35px; display:block; color:#fff; text-decoration:none; font-size:13px;border-bottom: 1px solid #ccc;}
+.add{ background-image: url(../Public/Website/images/1.png); background-position: 8px; background-repeat: no-repeat; }
+.tel{background:url(../Public/Website/images/2.png) no-repeat 6px;border-top:1px solid rgba(255, 255, 255, 0.1);}
+
+.line{background:url(../Public/Website/images/juchi.jpg) top repeat-x; height:4px;}
+.weipan-list-item-icon {
+position: absolute;
+right: 12px;
+top: 50%;
+margin-top: -9px;
+width: 18px;
+height: 18px;
+background-position: -108px -1px;
+background-color: rgba(0,0,0,.4);
+background-image: url(../Public/Website/images/icons-18-white.png);
+background-repeat: no-repeat;
+border-radius: 9px;
+-moz-border-radius: 9px;
+-webkit-border-radius: 9px;
+}
+
+	</style>
+</head>
+
+<body >
+    <include file='Website:top'/>
+  <div><img src="<{$image_url}><{$img}>" width="100%" height="150"></div>
+	<div class="main">
+    <volist name="store" id="v">
+     <div class="weipan-content">
+            <div class="contactbox tpl-linkus">
+                <div class="contactgroup tpl-linkus-group" lng="103.843212" lat="36.060069">
+                    <h5><span class="tpl-linkus-group-head"><{$v.title}></span><span class="dis tpl-linkus-dis">0m</span></h5>
+                    <a class="add tpl-linkus-address" href="<{$v.url}>">
+                        <span class="tpl-linkus-address-text"><{$v.name}></span> 
+                        <div class="weipan-list-item-icon icon-arrow-r"></div></a>
+                    <!--<a href="#" class="tel">010-62702998</a>-->
+                    <a href="tel:<{$v.telephone}>" class="tel"><{$v.telephone}></a>
+                    <a href="tel:<{$v.phone}>" class="tel"><{$v.phone}></a>
+                </div>
+            </div>
+        </div>
+    </volist>
+
+      
+    </div>
+
+
+	<include file='Website:footer'/>

@@ -1,0 +1,41 @@
+﻿<!--
+body {;font-size: 12px;color: #000000; margin:0 10px ; background-color:#FFFFFF;font-family: 宋体;SCROLLBAR-FACE-COLOR:#0F70C7; SCROLLBAR-HIGHLIGHT-COLOR:#0F70C7; SCROLLBAR-SHADOW-COLOR:#cccccc; SCROLLBAR-3DLIGHT-COLOR:buttonface; SCROLLBAR-ARROW-COLOR:#FFF; SCROLLBAR-TRACK-COLOR:#eaf0f5; SCROLLBAR-DARKSHADOW-COLOR:#ffffff; }
+.td{BORDER-bottom: #BBDCF1 1px solid;}
+td{font-size:12px; line-height:20px;}
+a {font-size: 12px;color: #000000;}
+a:link {text-decoration: none;}
+a:visited {text-decoration: none;color: #000000;}
+a:hover {text-decoration: underline;color: #cc0000; }
+a:active {text-decoration: none;color: #FF3300;}
+
+input,select{vertical-align:middle;} 
+img{border:0}
+.btn{font-size:12px;background:url(button_bg.gif);border:1px solid #BDC5CA; height:25px;  color:#333333}
+.btn2{font-size:12px;background:url(button_bg.gif);border:1px solid #BDC5CA; height:20px;  color:#333333}
+
+input,select,img{vertical-align:middle;} 
+/*标题12字样*/
+.box12{margin:0;padding-left:0px; font-size:12px; color:#666666; text-align:left;}
+.box12 ul{margin-left:0px;list-style:none;padding:0;border:0;margin:0px 0 0px 5px;}
+.box12 li{padding:5px;border-bottom:1px #CCCCCC dashed;position:relative;background:url(arrow_box.gif) no-repeat left 45%; padding-left:15px; margin:0 auto;}
+.box12 li a{font-size:14px; line-height:25px;}
+
+<!--
+.cop{font-size:12px;color:#666666;}
+.t2 {color:#FF6600;font-size: 14px;font-weight:bold;}
+.t1 {font-size: 20px; font-weight:bold;}
+.main{BORDER-RIGHT: #ccc 1px solid; PADDING-RIGHT: 0px; BORDER-TOP: #ccc 1px solid; PADDING-LEFT: 7px; BACKGROUND: #f7f7f7; PADDING-BOTTOM: 4px; MARGIN-LEFT: 10px; BORDER-LEFT: #ccc 1px solid; MARGIN-RIGHT: 20px; PADDING-TOP: 4px; BORDER-BOTTOM: #ccc 1px solid;width:200px;height:20px;}
+.sbut {display:block; width:62px; height:62px; background:url(login.gif) no-repeat; border:0px; padding:0px; margin:0px; cursor:pointer;}
+.input{
+font-size:14px; font-family:Arial, Helvetica, sans-serif;
+border-top:#084B8A 1px solid;
+border-left:#084B8A 1px solid;
+border-right:#084B8A 1px solid;
+border-bottom:#084B8A 1px solid;
+height:20px;color:#FFFFFF;
+vertical-align:middle;
+padding:3px 5px 3px 5px;
+letter-spacing:0px;
+background-color:#045FB4;
+}
+.sffocus {background-color:#0174DF;}

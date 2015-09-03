@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html class="">
+    <!--<![endif]-->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <title>提交信息</title>
+  
+    <script type="text/javascript" src="__PUBLICI__/Bookdinner/js/jquery-1.4.1.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="__PUBLICI__/Bookdinner/css/jq.ui.css" />
+    <link href="__PUBLICI__/Bookdinner/css/base.css?t=20140410" rel="stylesheet" type="text/css" />
+    <link href="__PUBLICI__/Bookdinner/css/boilerplate.css" rel="stylesheet" type="text/css" />
+    <link href="__PUBLICI__/Bookdinner/css/jq.datepicker.css" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+        .sleft {
+        width: 72px;
+        text-align: right;
+        float: left;
+        line-height: 33px;
+        margin-top: 5px;
+        }
+
+        .sright {
+            width: 70%;
+            text-align: left;
+            float: left;
+            }
+
+            .inkorderin {
+            float: left;
+            width: 70%;
+            }
+
+       .inkorderin {
+        border-top-width: 1px;
+        border-right-width: 1px;
+        border-bottom-width: 2px;
+        border-left-width: 1px;
+        border-top-style: solid;
+        border-right-style: solid;
+        border-bottom-style: solid;
+        border-left-style: solid;
+        border-top-color: #CCC;
+        border-right-color: #CCC;
+        border-bottom-color: #CCC;
+        border-left-color: #CCC;
+        margin: 5px 10px 5px 10px;
+        -moz-border-radius: 5px;
+        -webkit-border-radius: 5px;
+        border-radius: 5px;
+        color: #666;
+        clear: both;
+        font-size: 16px;
+        text-align: left;
+        padding: 5px 5px;
+        }
+
+        .jc {
+        color: #FFCC00;
+        display: none;
+        margin-top: 15px;
+        float: left;
+        }
+
+        .rtop {
+         padding: 0.5em 0.7em;
+         border-radius: 3px;
+         margin-left: auto;
+         margin-right: auto;
+        }
+                                         
+
+    </style>
+
+</head>
+<body>
+    <div id="jQUi">
+     
+        <!-- this is the main container div.  This way, you can have only part of your app use UI -->
+        <!-- this is the header div at the top -->
+    
+        <div id="content" style="top: 0px; bottom: 0px;">
+            <!-- here is where you can add your panels -->
+            <div title="" id="main" class="panel" selected="true" style="background-color: rgb(255, 255, 255); overflow: hidden; display: block;" js-scrolling="yes">
+                <div title="null" id="null" class="jqmScrollPanel" style="background-color: rgb(255, 255, 255); -webkit-transform: translate3d(0px, 0px, 0px); -webkit-transition: 0ms linear; transition: 0ms linear;" js-scrolling="yes">
+                    <div class="Orders_Box Orders_Box2 footerRest">
+                    
+                        <form action="<{:U(GROUP_NAME . '/Lebsite/ajaxorder')}>" method="post">
+                          <div class="Orders_title">提交信息：</div>
+                          <div class="Orders_date Orders_bg1 ">
+                             <div class="Orders_date_text Orders_date_text2">
+                                <ul><li>联系姓名：<input type="text" class="text" name="order_name" id="contactName" value="" placeholder="如：张先生、王小姐"></li>
+                                <li>联系电话：<input type="text" class="text" name="order_tel" id="telnum" value="" placeholder="填写您的常用手机"></li>
+                                </ul>
+                            </div>
+                        </div>
+                          <div class="Orders_Sub" style="align:center;">
+                          <input class="sub_orders touchover" type="submit" style="margin:0 auto;width:90px;height:40px;" data-func="SubmitTakoutOrder" >提交信息/></div>
+                          </form>
+
+                        
+                        <!--operaList end-->
+                     
+                        <!--toShare end--> </div>
+                    <!--Orders_Box end-->
+                    <div class="copy2">技术支持：杭州微盘</div>
+                 
+                    <!--savemenu thickLay end -->
+              
+                    <!--SelectSeatDlg thickLay end-->
+              
+                    <!--PurcharseOrderSuccess thickLay end--> </div>
+               
+            </div>
+         
+        </div>
+        <!-- bottom navbar. Add additional tabs here -->
+        <div id="navbar" style="display: none;"></div>
+        <div id="menu" style="overflow: hidden;">
+            <div id="menu_scroller" style="-webkit-transform: translate3d(0px, 0px, 0px); -webkit-transition: 0ms linear; transition: 0ms linear;"></div>
+            <div class="jqmScrollbar" style="position: absolute; width: 5px; height: 20px; border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; opacity: 0; background-color: black; top: 0px; background-position: initial initial; background-repeat: initial initial;"></div>
+        </div>
+        <div id="order_tisi" class="jqPopup" style="top: 281.2px; display: none;">     <header>提示</header>                         
+             <div>
+                <div style="width:1px;height:1px;-webkit-transform:translate3d(0,0,0);float:right"></div>请填写完整信息
+            </div>  
+            <footer style="clear:both;">
+                    <a href="#" class="button center" id="cancel">确定</a>                                
+                  
+            </footer>                       
+      </div>
+         <div id="order_success" class="jqPopup" style="top: 281.2px; left: 105px;display: none;">     <header>提示</header>                         
+             <div>
+                <div style="width:1px;height:1px;-webkit-transform:translate3d(0,0,0);float:right"></div>提交信息成功
+            </div>  
+            <footer style="clear:both;">
+                    <a href="#" class="button center" id="osuccess">确定</a>                                
+                   
+            </footer>                       
+      </div>
+
+
+    </div>
+  
+    <div style="display:none;" img="http://img01.emicro.cn/weixin/2014/03/53338f2e30b02.png!iconm" sms="杭州微盘" short=" " data-url="Index/Menu" id="shareDiv"></div>
+    <div style="position:absolute;top:2000px;left:-200px;">
+
+    </div>
+  
+</body>
+</html>

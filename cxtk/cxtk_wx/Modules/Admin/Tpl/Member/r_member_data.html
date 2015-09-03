@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<script type="text/javascript" src="__PUBLIC__/Js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Js/index.js"></script>
+<link rel="stylesheet" href="__PUBLIC__/Css/public.css" />
+<link rel="stylesheet" href="__PUBLIC__/Css/index.css" />
+<js file="__ROOT__/APP/Data/ueditor/ueditor.config.js" />
+<js file="__ROOT__/APP/Data/ueditor/ueditor.all.min.js" />
+
+<style type="text/css">
+*{margin:0;padding:0;list-style-type:none;}
+a,img{border:0;}
+body{font:12px/180% Arial, Helvetica, sans-serif, "新宋体";}
+
+
+.iptgroup{width:620px;height:60px;margin:20px auto 0 auto;}
+.iptgroup li{float:left;height:30px;line-height:30px;padding:5px;}
+.iptgroup li .ipticon{background:url(blue/date_icon.gif) 98% 50% no-repeat;border:1px #CFCFCF solid;padding:3px;}
+</style>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+
+</head>
+<body>
+<form action="<{:U(GROUP_NAME . '/Member/run_r_data')}>" enctype="multipart/form-data" method="post">
+  <table class="table">
+    <tr>
+      <td colspan="3" background="__PUBLIC__/images/bg_list.gif">
+       <div style="padding-left:10px; font-weight:bold; color:#FFFFFF">编辑会员信息</div>
+      
+      </td>
+
+    </tr>
+
+    <tr>
+    	<td align="right">姓名：</td>
+    	<td colspan="2">
+    		<input type="text" name="name" value="<{$member_data['name']}>" />
+    	</td>
+    </tr>
+      <tr>
+      <td align="right">电话：</td>
+      <td colspan="2">
+        <input type="text" name="tel" value="<{$member_data['tel']}>" />
+      </td>
+    </tr>
+     <tr>
+    	<td align="right">地址：</td>
+    	<td colspan="2">
+        <input type="text" name="address"  value="<{$member_data['address']}>"/>
+    	</td>
+    </tr>
+        <tr>
+      <td align="right">QQ：</td>
+      <td colspan="2">
+        <input type="text" name="qq" value="<{$member_data['qq']}>"/>
+      </td>
+    </tr>
+    <tr>
+       <td colspan="3" align="center">
+            <input type="hidden" name="id" value="<{$id}>" />
+            <input type="submit" value="提交" class="btn" />
+       </td>
+    </tr>
+
+  </table>
+  </form>
+
+  <form action="<{:U(GROUP_NAME . '/Member/run_m_level')}>" enctype="multipart/form-data" method="post">
+  <table class="table">
+    <tr>
+      <td colspan="3" background="__PUBLIC__/images/bg_list.gif">
+       <div style="padding-left:10px; font-weight:bold; color:#FFFFFF">编辑会员等级</div>
+      
+      </td>
+
+    </tr>
+
+    <tr>
+      <td align="right">选择等级：</td>
+      <td colspan="2">
+        <select name="level_id">
+          <option value="0">---请选择---</option>
+          <foreach name='level' item='v'>
+            <option value="<{$v.id}>"><{$v.levle_name}></option>
+          </foreach>
+        </select>
+      </td>
+    </tr>
+   
+    <tr>
+       <td colspan="3" align="center">
+            <input type="hidden" name="id" value="<{$id}>" />
+            <input type="submit" value="提交" class="btn" />
+       </td>
+    </tr>
+
+  </table>
+  </form>
+
+</body>
+</html>

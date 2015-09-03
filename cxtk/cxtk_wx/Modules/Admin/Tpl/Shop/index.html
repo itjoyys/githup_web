@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<script type="text/javascript" src="__PUBLIC__/Js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Js/index.js"></script>
+<link rel="stylesheet" href="__PUBLIC__/Css/public.css" />
+<link rel="stylesheet" href="__PUBLIC__/Css/index.css" />
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+
+</head>
+<body>
+<form action="<{:U(GROUP_NAME . '/Shop/Shopconfig')}>" enctype="multipart/form-data" method="post">
+  <table class="table">
+    <tr>
+      <td colspan="3" background="__PUBLIC__/images/bg_list.gif">
+       <div style="padding-left:10px; font-weight:bold; color:#FFFFFF">微商城设置</div>
+      
+      </td>
+
+    </tr>
+    <tr>
+    	<td align="right" style="width:170px;">商城地址：</td>
+    	<td colspan="2">
+    		<{$shopurl}>
+    	</td>
+    </tr>
+    <tr>
+    	<td align="right">微商城标题：</td>
+    	<td colspan="2">
+    		<input type="text" name="title" value="<{$title}>" />
+    	</td>
+    </tr>
+     <tr>
+    	<td align="right">微商城Keywords参数：</td>
+    	<td colspan="2">
+    		<input type="text" name="Keywords"  value="<{$Keywords}>"/>
+    	</td>
+    </tr>
+     <tr>
+    	<td align="right">微商城Description参数：</td>
+    	<td colspan="2">
+    		<input type="text" name="Description"  value="<{$Description}>"/>
+    	</td>
+    </tr>
+     <tr>
+      <td align="right">客服电话：</td>
+      <td colspan="2">
+        <input type="text" name="tel"  value="<{$tel}>"/>
+      </td>
+    </tr>
+     <tr>
+      <td align="right">包邮设置：<p style="color:red;">【100表示满100元包邮】</p></td>
+      <td colspan="2">
+        <input type="text" name="tprice"  value="<{$tprice}>"/>
+      </td>
+    </tr>
+    <tr>
+      <td align="right">商城logo：<p style="color:red;">【不选择表示不更改】</p></td>
+      <td class="td" height="30" width="100"><img src="<{$image_url}><{$logo}>" height="50" ></td>
+      
+      <td height="30">
+         <input name="shoplogo" type="file" size="2000000">
+       </td>
+    </tr>
+      <tr>
+      <td align="right">背景图片：<p style="color:red;">【不选择表示不更改】</p></td>
+      <td class="td" height="30" width="100"><img src="<{$image_url}><{$bg}>" height="50" ></td>
+      <td height="30">
+         <input name="shopbg" type="file" size="2000000">
+       </td>
+    </tr>
+
+    <tr>
+       <td colspan="3" align="center">
+            <input type="hidden" name="siteid" value="<{$siteid}>" />
+            <input type="submit" value="提交" class="btn" />
+       </td>
+    </tr>
+
+  </table>
+  </form>
+  <form action="<{:U(GROUP_NAME . '/Shop/notes')}>" enctype="multipart/form-data" method="post">
+  <table class="table">
+    <tr>
+      <td colspan="3" background="__PUBLIC__/images/bg_list.gif">
+       <div style="padding-left:10px; font-weight:bold; color:#FFFFFF">购买须知</div>
+      
+      </td>
+
+    </tr>
+
+     <tr>
+    	<td align="right">购买须知：</td>
+    	<td colspan="2">
+    		<textarea name="notes" style="margin: 0px; height: 122px; width:500px;">
+			   <{$notes}>
+    		</textarea>
+    	</td>
+    </tr>
+
+
+    <tr>
+       <td colspan="3" align="center">
+            <input type="hidden" name="siteid" value="<{$siteid}>" />
+            <input type="submit" value="提交" class="btn" />
+       </td>
+    </tr>
+
+  </table>
+  </form>
+</body>
+</html>

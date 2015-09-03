@@ -1,0 +1,6 @@
+[ 2014-09-13T20:10:57+08:00 ] 0.0.0.0 /weipan/
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001001s ]
+ERR: 非法操作:index
+

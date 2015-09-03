@@ -1,0 +1,64 @@
+ul, li { list-style: none; padding: 0; margin: 0; }
+body, h2, p { padding: 0; margin: 0; }
+body { min-width: 320px; line-height: 1.25em; font-size: 1em; font-family: 'microsoft yahei', Verdana, Arial, Helvetica, sans-serif; color: #000; -webkit-text-size-adjust: none; }
+a { color: #000; text-decoration: none; }
+img { display: block; }
+/*商品列表 */
+.shop_list_box { margin: 10px; background: #fff; border: #ddd solid 1px; border-radius: 5px; font-family: 'Microsoft YaHei'; }
+.shop_list_li { position: relative; border-top: #DBDBDB 1px dashed; height: 70px; padding: 10px; clear: both; }
+.shop_list_li img { float: left; width: 70px; height: 70px; margin-right: 10px; }
+.shop_list_title { font-size: 100%; color: #333; font-size: 14px; height: 30px; overflow: hidden; margin-bottom: 5px; }
+.shop_list_miao { font-size: 12px; min-width: 186px; font-size: 14px; color: #e4393c; }
+.shop_list_price { color: #F00; width:
+}
+.new-paging { margin: 15px 0; }
+.new-tbl-type { display: table; width: 100%; }
+.new-paging .new-tbl-cell:first-child { text-align: right; }
+.new-tbl-cell { display: table-cell; }
+.new-paging .new-tbl-cell span.new-a-prve, .new-paging .new-tbl-cell span.new-a-next { display: block; font-size: 12px; color: #aeaeae; }
+.new-paging .new-tbl-cell .new-a-prve, .new-paging .new-tbl-cell span.new-a-prve { padding-right: 18px; }
+.new-paging .new-tbl-cell span.new-a-prve span { padding-left: 13px; background: url(../images/icon.png) 0 -1358px no-repeat; }
+.new-paging .new-tbl-cell .new-a-page { padding: 3px; font-size: 12px; color: #545353; border: 1px solid #d6d6d6; background: -webkit-gradient(linear, left top, left bottom, from(#f7f7f7), to(#efefef)); background: -moz-linear-gradient(top, #f7f7f7, #efefef); }
+.new-paging .new-tbl-cell .new-a-page span.new-open { padding-right: 20px; background: url(../images/icon.png) 0 -1358px no-repeat; }
+.new-select { position: absolute; top: 0; left: 0; z-index: 10; width: 100%; height: 30px; opacity: 0; }
+.new-paging .new-tbl-cell .new-a-next span { padding-right: 13px; background: url(../images/icon.png) 100% -804px no-repeat; }
+.new-paging .new-tbl-cell a { font-size: 12px; color: #545353; }
+/*商品详细页 */
+.shop_detail_box { background: #FFF; border-radius: 5px; border: 1px solid #CCC; margin: 13px; padding: 8px 7px; box-shadow: 2px 2px 4px #ededed; -moz-box-shadow: 2px 2px 2px #ededed; -webkit-box-shadow: 2px 2px 4px #ededed; }
+.shop_detail_box h2 { color: #333; font-size: 16px; padding: 0 5px 6px; }
+.shop_detail_box ul { border-top: 1px dashed #e5e5e5; padding: 9px 0 0 30px; }
+.shop_detail_box ul li { list-style: disc outside; word-wrap: break-word; }
+/*分类页面 */
+.new-header { position: relative; z-index: 8888; height: 44px; background: #e4393c; }
+.new-header-v1 { background: #edecec; }
+.new-header h2 { height: 44px; line-height: 44px; font-weight: normal; font-size: 16px; color: #fff; text-align: center; }
+.new-header-v1 h2 { color: #000; }
+.new-a-home { position: absolute; top: 6px; left: 6px; width: 56px; height: 32px; background: url(/images/touch2013/icon.png) 0 0 no-repeat; font-size: 14px; line-height: 32px; color: #6e6e6e; text-indent: 18px; }
+.new-a-jd { position: absolute; top: 6px; right: 7px; width: 37px; height: 30px; }
+.new-a-jd span { display: inline-block; width: 21px; height: 21px; margin: 5px 0 0 8px; background: url(/images//icon2b.png) -125px -24px no-repeat; background-size: 180px 180px; text-indent: -9999px; }
+.new-a-back { position: absolute; top: 6px; left: 6px; width: 30px; height: 32px; }
+.new-a-back span { display: inline-block; width: 10px; height: 18px; margin-top: 6px; background: url(/images/icon2b.png) -60px 0 no-repeat; background-size: 180px 180px; text-indent: -9999px; }
+.new-ct { min-height: 300px; background-color: #fff; }
+.new-category { padding: 30px 12px 20px; }
+.new-category .new-category-lst { border: 1px solid #ded6c9; background-color: #fff; }
+.new-category .new-category-lst .new-category-li .new-category-a, .new-category .new-category2-lst .new-category2-li .new-category2-a { border-bottom: 1px solid #ded6c9; }
+.new-category .new-category-lst .new-category-li:last-child .new-category-a { border-bottom: none; }
+.new-category .new-category-lst .new-category-li .new-category-a { display: block; padding: 11px 13px 10px; background: url(/images/touch2013/icon.png) 98% -839px no-repeat; font-size: 14px; color: #6e6e6e; }
+.new-category .new-category-lst .new-category-li .new-category-a.new-on { background: url(/images/touch2013/icon.png) 98% -893px no-repeat; }
+.new-category .new-category-lst .new-category-li .new-category-a .icon { display: inline-block; width: 7px; height: 7px; margin: 0 5px 2px 0; border-radius: 7px; background-color: #e4393c; }
+.new-category .new-category2-lst .new-category2-li .new-category2-a { border-top: 1px solid #fff; }
+.new-category .new-category-lst .new-category-li:last-child .new-category2-lst .new-category2-li:first-child { border-top: 1px solid #ded6c9; }
+.new-category .new-category-lst .new-category-li:last-child .new-category2-lst .new-category2-li:last-child .new-category2-a { border-bottom: none; }
+.new-category .new-category2-lst { background-color: #fff; }
+.new-category .new-category2-lst .new-category2-li { display: table; width: 100%; }
+.new-category .new-category2-lst .new-category2-li .new-category2-a { display: table-cell; width: 33.9%; padding: 10px 0; font-size: .75em; color: #6e6e6e; text-align: center; }
+.new-category .new-category2-lst .new-category2-li .new-category2-a .new-bar { float: left; width: 1px; height: 12px; margin-top: 3px; border-bottom: 1px solid #fff; background-color: #ded6c9; vertical-align: middle; }
+.new-category .new-category2-lst .new-category2-li .new-category2-a:first-child .new-bar { border: none; background: none; }
+/*尾部 */
+.new-footer { margin-top: 10px; background-color: #f3f2f2; font-size: 14px; color: #6e6e6e; text-align: center; }
+.new-footer .new-f-login { position: relative; padding: 0 12px; background-color: #a8a8a8; line-height: 27px; color: #fff; text-align: left; heigth: 27px; }
+.new-footer .new-f-login .new-back-top { position: absolute; right: 18px; }
+.new-footer .new-f-login .new-bar2 { margin: 0 5px; }
+.new-footer .new-f-login a { color: #fff; }
+.copyright { height: 43px; padding-top: 10px; }
+.copyright p { font-size: 12px; }

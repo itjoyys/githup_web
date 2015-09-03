@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>微信答题</title>
+<meta name="viewport" content="height=device-height,width=320,initial-scale=1.0,mininum-scale=1.0,maximum-scale=1.0,user-scaleble=no">
+<link rel="stylesheet" type="text/css" href="__PUBLICI__/Microwall/public.css" media="all" />
+<script type="text/javascript" src="__PUBLICI__/Microwall/jquery.js"></script>
+<script type="text/javascript" src="__PUBLICI__/Microwall/weibouser.js"></script>
+<style type="text/css" media="all">
+.hidden{display:none; }
+header span {
+    background: none repeat scroll 0 0 #F3889D;
+    display: block;
+    height: 1px;
+    position: relative;
+    top: 48px;
+}
+header span {
+    color: #FFFFFF;
+    display: block;
+    font-family: 微软雅黑;
+    font-size: 26px;
+    font-style: inherit;
+    margin: auto;
+    position: static;
+    text-align: center;
+}
+
+header {
+    background: -moz-linear-gradient(center top , #F3889D, #F3889D) repeat scroll 0 0 transparent;
+    box-shadow: 0 1px 1px #CCCCCC;
+    height: 50px;
+}
+header{
+	height:50px;background:-webkit-gradient(linear,0 0,0 100%,from(#F3889D),to(#F3889D));
+	background:-moz-linear-gradient(top,#F3889D,#F3889D);box-shadow:0 1px 1px #cccccc;
+}
+
+
+.list li a .moreinfo span.simple strong, .list li a .moreinfo span.tags strong {
+    color: #F3889D;
+}
+
+</style>
+</head>
+<body>
+<header>
+	<span>在线答题</span>
+</header>
+<form action="<{:U(GROUP_NAME . '/Microinteraction/runanswer')}>" enctype="multipart/form-data" method="post">
+<ul class="list" id="userlist">
+ <volist name="answer" id="v"> ﻿ 
+<li>
+	<a>
+		<div class="topinfo">
+			<div class="pro">
+			  <span class="name"></span>
+				<span class="area"> <{$v.problem}></span>
+			</div>
+		</div>
+		<div class="moreinfo">
+				<span class="simple"><strong>选项：</strong> 
+                 
+                   <input type="radio" name="answer[<{$v.id}>]" value="A" ><label for="home30"><{$v.optionsa}></label>
+                   &nbsp;&nbsp;&nbsp;
+                    <input type="radio" name="answer[<{$v.id}>]" value="B" ><label for="home30"><{$v.optionsb}></label>
+                   &nbsp;&nbsp;&nbsp;
+                    <input type="radio" name="answer[<{$v.id}>]" value="C" ><label for="home30"><{$v.optionsc}></label>
+                   &nbsp;&nbsp;&nbsp;
+                    <input type="radio" name="answer[<{$v.id}>]" value="D" ><label for="home30"><{$v.optionsd}></label>
+                   &nbsp;&nbsp;&nbsp;
+             
+                 </span>
+		</div>
+	</a>
+</li>
+</volist>
+    </ul>
+     <div class="bottom_bt">
+     <input value="提交答案" class="morebtn " type="submit" style="display: block;
+height: 40px;
+border-radius: 30px;
+background: -webkit-gradient(linear,0 0,0 100%,from(#FDFDFD),to(#E0E0E0));
+color: #E18A77;
+font-size: 16px;
+text-align: center;
+
+margin-left:auto;
+margin-right:auto;
+box-shadow: 0 1px 1px #B6AFAF,0 1px 0 #fff inset;
+text-shadow: 0 1px 0 #fff;">
+   </div> 
+</form>
+<!-- <div class="bottom_bt">
+		
+			<div class="pages">
+		      <{$page}>
+			</div>
+		 </div> -->
+<img src="__PUBLICI__/Microwall/linetwo.png" style="display:block;margin:15px auto;width:235px;">
+
+
+</body></html>

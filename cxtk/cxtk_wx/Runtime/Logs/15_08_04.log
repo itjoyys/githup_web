@@ -1,0 +1,185 @@
+[ 2015-08-04T22:27:26+08:00 ] 127.0.0.1 /cxtk/index.php/Admin/
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.002000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.012000s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.013001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.013001s ]
+NOTIC: [8] A session had already been started - ignoring session_start() D:\phpStudy\WWW\cxtk\Sys\Common\functions.php 第 566 行.
+NOTIC: [8] Undefined index: siteid D:\phpStudy\WWW\cxtk\cxtk_wx\Modules\Admin\Action\IndexAction.class.php 第 8 行.
+SQL: SHOW COLUMNS FROM `wx_site` [ RunTime:0.108006s ]
+SQL: SELECT `module` FROM `wx_site`  [ RunTime:0.001000s ]
+ERR: 1054:Unknown column 'module' in 'field list'
+ [ SQL语句 ] : SELECT `module` FROM `wx_site` 
+SQL: SHOW COLUMNS FROM `wx_modules` [ RunTime:0.011001s ]
+ERR: 1146:Table 'cxtk_wx.wx_modules' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `wx_modules`
+SQL: SELECT `url` FROM `wx_modules` WHERE ( `mid` = '' )  [ RunTime:0.000000s ]
+ERR: 1146:Table 'cxtk_wx.wx_modules' doesn't exist
+ [ SQL语句 ] : SELECT `url` FROM `wx_modules` WHERE ( `mid` = '' ) 
+NOTIC: [8] Undefined variable: reurl D:\phpStudy\WWW\cxtk\cxtk_wx\Modules\Admin\Action\IndexAction.class.php 第 20 行.
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined variable: detail_id D:\phpStudy\WWW\cxtk\cxtk_wx\Runtime\Cache\Admin\e5b34fbaf2c56bc73e6b2122d8253333.php 第 19 行.
+NOTIC: [8] Undefined variable: v D:\phpStudy\WWW\cxtk\cxtk_wx\Runtime\Cache\Admin\e5b34fbaf2c56bc73e6b2122d8253333.php 第 20 行.
+NOTIC: [8] Undefined variable: serid D:\phpStudy\WWW\cxtk\cxtk_wx\Runtime\Cache\Admin\e5b34fbaf2c56bc73e6b2122d8253333.php 第 22 行.
+NOTIC: [8] Undefined variable: serid D:\phpStudy\WWW\cxtk\cxtk_wx\Runtime\Cache\Admin\e5b34fbaf2c56bc73e6b2122d8253333.php 第 23 行.
+NOTIC: [8] Undefined variable: serid D:\phpStudy\WWW\cxtk\cxtk_wx\Runtime\Cache\Admin\e5b34fbaf2c56bc73e6b2122d8253333.php 第 24 行.
+NOTIC: [8] Undefined variable: serid D:\phpStudy\WWW\cxtk\cxtk_wx\Runtime\Cache\Admin\e5b34fbaf2c56bc73e6b2122d8253333.php 第 25 行.
+INFO: ParseTemplate Behavior ::run [ RunTime:0.178010s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.178010s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.045003s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.005000s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.011001s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.063004s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.002000s ]
+INFO: [ view_end ] --END-- [ RunTime:0.002000s ]
+
+[ 2015-08-04T22:27:26+08:00 ] 127.0.0.1 /cxtk/index.php/Admin/Index/top.html
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.001000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] A session had already been started - ignoring session_start() D:\phpStudy\WWW\cxtk\Sys\Common\functions.php 第 566 行.
+NOTIC: [8] Constant THEME_NAME already defined D:\phpStudy\WWW\cxtk\Sys\Lib\Core\View.class.php 第 223 行.
+NOTIC: [8] Constant THEME_PATH already defined D:\phpStudy\WWW\cxtk\Sys\Lib\Core\View.class.php 第 171 行.
+NOTIC: [8] Constant APP_TMPL_PATH already defined D:\phpStudy\WWW\cxtk\Sys\Lib\Core\View.class.php 第 172 行.
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.053003s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.053003s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.001000s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.000000s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.001000s ]
+INFO: [ view_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2015-08-04T22:27:26+08:00 ] 127.0.0.1 /cxtk/index.php/Admin/Index/main.html
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.001000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] A session had already been started - ignoring session_start() D:\phpStudy\WWW\cxtk\Sys\Common\functions.php 第 566 行.
+NOTIC: [8] Constant THEME_NAME already defined D:\phpStudy\WWW\cxtk\Sys\Lib\Core\View.class.php 第 223 行.
+NOTIC: [8] Constant THEME_PATH already defined D:\phpStudy\WWW\cxtk\Sys\Lib\Core\View.class.php 第 171 行.
+NOTIC: [8] Constant APP_TMPL_PATH already defined D:\phpStudy\WWW\cxtk\Sys\Lib\Core\View.class.php 第 172 行.
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.008000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008000s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.002000s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.001000s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.001000s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.004000s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.000000s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2015-08-04T22:27:26+08:00 ] 127.0.0.1 /cxtk/index.php/Admin/Index/left.html
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.000000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] A session had already been started - ignoring session_start() D:\phpStudy\WWW\cxtk\Sys\Common\functions.php 第 566 行.
+NOTIC: [8] Constant THEME_NAME already defined D:\phpStudy\WWW\cxtk\Sys\Lib\Core\View.class.php 第 223 行.
+NOTIC: [8] Constant THEME_PATH already defined D:\phpStudy\WWW\cxtk\Sys\Lib\Core\View.class.php 第 171 行.
+NOTIC: [8] Constant APP_TMPL_PATH already defined D:\phpStudy\WWW\cxtk\Sys\Lib\Core\View.class.php 第 172 行.
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined index: siteid D:\phpStudy\WWW\cxtk\cxtk_wx\Runtime\Cache\Admin\c4ef0bb0a5b7b7fc305f55bd678c5087.php 第 2 行.
+SQL: SHOW COLUMNS FROM `wx_site` [ RunTime:0.005000s ]
+SQL: SELECT `module` FROM `wx_site`  [ RunTime:0.000000s ]
+ERR: 1054:Unknown column 'module' in 'field list'
+ [ SQL语句 ] : SELECT `module` FROM `wx_site` 
+SQL: SHOW COLUMNS FROM `wx_modules` [ RunTime:0.005000s ]
+ERR: 1146:Table 'cxtk_wx.wx_modules' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `wx_modules`
+SQL: SELECT `url` FROM `wx_modules` WHERE ( `mid` = '' )  [ RunTime:0.000000s ]
+ERR: 1146:Table 'cxtk_wx.wx_modules' doesn't exist
+ [ SQL语句 ] : SELECT `url` FROM `wx_modules` WHERE ( `mid` = '' ) 
+NOTIC: [8] Undefined variable: reurl D:\phpStudy\WWW\cxtk\cxtk_wx\Runtime\Cache\Admin\c4ef0bb0a5b7b7fc305f55bd678c5087.php 第 2 行.
+INFO: ParseTemplate Behavior ::run [ RunTime:0.049002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.049002s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.001000s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.000000s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.000000s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2015-08-04T22:27:27+08:00 ] 127.0.0.1 /cxtk/index.php/Admin/Index/style.css
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.000000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001001s ]
+NOTIC: [8] A session had already been started - ignoring session_start() D:\phpStudy\WWW\cxtk\Sys\Common\functions.php 第 566 行.
+ERR: 非法操作:style.css
+
+[ 2015-08-04T22:27:29+08:00 ] 127.0.0.1 /cxtk/index.php/Admin/WeChat/index.html
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.001000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] A session had already been started - ignoring session_start() D:\phpStudy\WWW\cxtk\Sys\Common\functions.php 第 566 行.
+NOTIC: [8] Undefined index: siteid D:\phpStudy\WWW\cxtk\cxtk_wx\Modules\Admin\Action\WeChatAction.class.php 第 6 行.
+SQL: SHOW COLUMNS FROM `wx_api` [ RunTime:0.126007s ]
+NOTIC: [8] Undefined index: site_id D:\phpStudy\WWW\cxtk\cxtk_wx\Modules\Admin\Action\WeChatAction.class.php 第 8 行.
+SQL: SELECT * FROM `wx_api` LIMIT 1   [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined variable: url D:\phpStudy\WWW\cxtk\cxtk_wx\Runtime\Cache\Admin\2174713d694107947f4b88aa9af25160.php 第 28 行.
+INFO: ParseTemplate Behavior ::run [ RunTime:0.080005s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.080005s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.000000s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.001000s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.001000s ]
+INFO: [ view_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2015-08-04T22:27:33+08:00 ] 127.0.0.1 /cxtk/index.php/Admin/WeChat/index.html
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.001000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] A session had already been started - ignoring session_start() D:\phpStudy\WWW\cxtk\Sys\Common\functions.php 第 566 行.
+NOTIC: [8] Undefined index: siteid D:\phpStudy\WWW\cxtk\cxtk_wx\Modules\Admin\Action\WeChatAction.class.php 第 6 行.
+SQL: SHOW COLUMNS FROM `wx_api` [ RunTime:0.003000s ]
+NOTIC: [8] Undefined index: site_id D:\phpStudy\WWW\cxtk\cxtk_wx\Modules\Admin\Action\WeChatAction.class.php 第 8 行.
+SQL: SELECT * FROM `wx_api` LIMIT 1   [ RunTime:0.001000s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined variable: url D:\phpStudy\WWW\cxtk\cxtk_wx\Runtime\Cache\Admin\2174713d694107947f4b88aa9af25160.php 第 28 行.
+INFO: ParseTemplate Behavior ::run [ RunTime:0.007001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.007001s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.000000s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.001000s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.000000s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000000s ]
+

@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<script type="text/javascript" src="__PUBLIC__/Js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Js/index.js"></script>
+<link rel="stylesheet" href="__PUBLIC__/Css/public.css" />
+<link rel="stylesheet" href="__PUBLIC__/Css/index.css" />
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<head>
+</head>
+<body>
+<form  action="<{:U(GROUP_NAME . '/Goods/')}>" method="post">
+  <table class="table" width="100%" border="0" align="center" cellpadding="0" cellspacing="1">
+  <tr> 
+  <td colspan="7"  align="left" background="__PUBLIC__/images/bg_list.gif"> 
+      <div style="padding-left:10px; font-weight:bold; color:#FFFFFF">订单详情</div>
+      </td>
+  </tr>
+    <tr>
+      <td>商品编号</td>
+      <td>商品名称</td>
+      <td>商品数量</td>
+      <td>订单时间</td>
+      <td>操作</td>
+
+    </tr>
+
+    <foreach name="goods" item="v">
+         <tr>
+           <td class="td"><{$v.goodsid}></td>
+           <td class="td"><{$v.goodsname}></td>
+           <td class="td"><{$v.goodsnum}></td>
+           <td class="td">
+              [<a href="<{:U(GROUP_NAME . '/Shop/orderdelete', array('id' => $v['id']))}>">删除</a>]
+             
+           </td>
+
+         </tr>
+
+    </foreach>
+
+    <tr>
+      <td colspan="7" align="center"> <{$page}></td>
+    </tr>
+  </table>
+  </form>
+
+</body>
+</html>

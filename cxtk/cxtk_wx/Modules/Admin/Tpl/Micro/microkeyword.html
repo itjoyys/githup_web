@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<script type="text/javascript" src="__PUBLIC__/Js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Js/index.js"></script>
+<link rel="stylesheet" href="__PUBLIC__/Css/public.css" />
+<link rel="stylesheet" href="__PUBLIC__/Css/index.css" />
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<head>
+<style>
+
+.td a{
+padding: 4px 8px;
+font-family: Verdana, Arial, sans-serif;
+border-radius: 5px;
+background: #1D3E83;
+}
+</style>
+</head>
+<body>
+
+  <table class="table">
+  <tr>
+    <td background="__PUBLIC__/images/bg_list.gif" colspan="5"><div style="padding-left:10px; font-weight:bold; color:#FFFFFF">关键词列表</div></td>
+  </tr>
+    <tr>
+      <td>ID</td>
+      <td>关键词</td>
+
+      <td>操作</td>
+
+    </tr>
+
+    <foreach name="keyword" item="v">
+         <tr>
+           <td><{$v.id}></td>
+           <td><{$v.keyword}></td>
+     
+      
+          
+                <td class="td">
+              <a href="<{:U(GROUP_NAME . '/Micro/keyword_x', array('id' => $v['id']))}>">添加信息</a>
+              <a href="<{:U(GROUP_NAME . '/Micro/deletekeyword', array('id' => $v['id']))}>">删除</a>
+             
+           </td>
+             
+          
+         </tr>
+    </foreach>
+  
+   
+  </table>
+  </form>
+
+<form action="<{:U(GROUP_NAME . '/Micro/runmicrokeyword')}>" enctype="multipart/form-data" method="post">
+  <table class="table">
+    <tr>
+      <td colspan="3" background="__PUBLIC__/images/bg_list.gif"> <div style="padding-left:10px; font-weight:bold; color:#FFFFFF">添加关键词</div></td>
+    </tr>
+     <tr>
+      <td align="right">关键词：</td>
+      <td colspan="2">
+        <input type="text" name="keyword" />
+      </td>
+    </tr>
+ 
+    <tr>
+      <td colspan="3" align="center">
+
+        <input type="hidden" name="siteid" value="<{$siteid}>" />
+        <input type="submit" class="btn" value="保存添加"/>
+      </td>
+
+    </tr>
+  
+  </table>
+  </form>
+</body>
+</html>

@@ -1,0 +1,269 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<script type="text/javascript" src="__PUBLIC__/Js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Js/index.js"></script>
+<link rel="stylesheet" href="__PUBLIC__/Css/public.css" />
+<link rel="stylesheet" href="__PUBLIC__/Css/index.css" />
+<script type="text/javascript" src="__PUBLIC__/Js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Js/doubleDate2.0.js"></script>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<link href="__PUBLIC__/Js/blue/doubleDate.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript">
+$(function(){
+  
+  $('.doubledate').kuiDate({
+    className:'doubledate',
+    isDisabled: "0"  // isDisabled为可选参数，“0”表示今日之前不可选，“1”标志今日之前可选
+  });
+
+});
+$(document).ready(function(){
+  //增加奖项
+  $('.add_p').click(function(){
+   var t = $('.tnorms').length + 1;
+   if (t == 5) {
+       t = '五等奖';
+   }else if (t == 6) {
+       t = '六等奖';
+   }else if (t == 7) {
+       t = '七等奖';
+   }else if (t == 8) {
+       t = '八等奖';
+   }else if (t == 9) {
+       t = '九等奖';
+   }else if (t == 10) {
+       t = '十等奖';
+   }else{
+     return false;
+   }
+   var main = '<tr class="tnorms"><td style="width:120px;"><span class="delete_span">删除</span>'+t+'<input type="hidden" value="'+t+'" name="level_name[]"></td><td style="width:80px;"><input type="text" class="jp" name="name[]"></td><td style="width:80px;"><input type="text" class="px" name="num[]"></td><td style="width:80px;"><input type="text" class="px" name="chance[]" ></td></tr>';
+   $("#priceList").append(main);
+
+})
+  //删除奖项
+  $('.delete_span').live("click",function(){
+      $(this).parent().parent().remove();
+  })
+
+})
+</script>
+<style type="text/css">
+*{margin:0;padding:0;list-style-type:none;}
+a,img{border:0;}
+body{font:12px/180% Arial, Helvetica, sans-serif, "新宋体";}
+
+
+.iptgroup{width:620px;height:60px;margin:20px auto 0 auto;}
+.iptgroup li{float:left;height:30px;line-height:30px;padding:5px;}
+.iptgroup li .ipticon{background:url(blue/date_icon.gif) 98% 50% no-repeat;border:1px #CFCFCF solid;padding:3px;}
+#priceList{
+  width: 600px;
+  text-align: center;
+}
+#priceList th{
+  text-align: center;
+  height: 25px;
+}
+#priceList input{
+  width: 100px;
+  height: 25px;
+}
+#priceList .jp{
+  width: 180px;
+}
+.add_p ,.delete_span{
+  padding: 2px;
+  width: 60px;
+border-radius: 10px;
+background: #d93d8e;
+color: #fff;
+text-align: center;
+margin-left: 5px;
+font-size: 8px;
+}
+.delete_span{
+  width: 40px;
+  height: 20px;
+  float: left;
+}
+</style>
+</head>
+<body>
+<form action="<{:U(GROUP_NAME . '/interaction/run_add_scratch')}>" enctype="multipart/form-data" method="post">
+  <table class="table">
+    <tr>
+      <td colspan="3" background="__PUBLIC__/images/bg_list.gif">
+       <div style="padding-left:10px; font-weight:bold; color:#FFFFFF">添加刮刮乐</div>
+     </td>
+
+    </tr>
+    <tr>
+    	<td align="right" width="10%">刮刮乐地址：</td>
+    	<td colspan="2">
+    		<{$surl}>
+    	</td>
+    </tr>
+    <tr>
+      <td align="right">活动名称：</td>
+      <td colspan="2">
+        <input type="text" name="title" value="<{$scratch['title']}>" />
+      </td>
+    </tr>
+    <tr>
+    	<td align="right">触发关键词：</td>
+    	<td colspan="2">
+    		<input type="text" name="keyword" value="<{$scratch['keyword']}>" />
+    	</td>
+    </tr>
+     <tr>
+    	<td align="right">活动开始时间：</td>
+    	<td colspan="2">
+    		<input type="text" name="start" readonly="readonly" value = "<{$scratch['start']}>" class="doubledate ipticon"/>
+    	</td>
+    </tr>
+     <tr>
+    	<td align="right">活动结束时间：</td>
+    	<td colspan="2">
+    		<input type="text" name="finish" readonly="readonly" value="<{$scratch['finish']}>" class="doubledate ipticon"/>
+    	</td>
+    </tr>
+    <tr>
+      <td align="right">活动展示图片：<p style="color:red;">【不选择表示不更新】</p></td>
+      <td class="td" height="30" width="100">
+       <img src="<{$image_url}><{$scratch['img']}>" height="100" width="180"></td>
+      
+      <td height="30">
+         <input name="img" type="file" size="2000000">
+       </td>
+    </tr>
+      <tr>
+      <td align="right">活动说明：</td>
+      <td colspan="2">
+        <textarea style="width:300px; height:150px;" name="description">
+         <{$scratch['description']}>
+        </textarea>
+      </td>
+    </tr>
+        <tr>
+      <td align="right">中奖提示：</td>
+      <td colspan="2">
+         <textarea style="width:300px; height:150px;" name="draw_info">
+            <{$scratch['draw_info']}>
+         </textarea>
+      </td>
+    </tr>
+       <tr>
+      <td align="right">活动结束说明：</td>
+      <td colspan="2">
+         <textarea style="width:300px; height:150px;" name="finish_info">
+            <{$scratch['finish_info']}>
+         </textarea>
+      </td>
+    </tr>
+      <tr>
+      <td align="right">奖项设置：<p class="add_p">增加奖项</p></td>
+      <td colspan="2">
+          <table id="priceList">
+             <tbody>
+                 <tr>
+                  <th style="width:120px;">奖品等级</th>
+                  <th style="width:80px;">奖品名称</th>
+                  <th style="width:80px;">奖品数量</th>
+                  <th style="width:80px;">中奖概率<p style="color:red;">【整数】</p></th>
+                 </tr>
+                 <empty name="prize_data">
+                    <tr class="tnorms">
+                   <td style="width:120px;">一等奖 <input type="hidden" value="一等奖" name="level_name[]"></td>
+                   <td style="width:80px;">
+                   <input type="text" class="jp"  name="name[]"></td>
+                   <td style="width:80px;">
+                   <input type="text" class="px" name="num[]" ></td>
+                   <td style="width:80px;">
+                   <input type="text" class="px" name="chance[]" ></td>
+                 </tr>
+                  <tr class="tnorms">
+                   <td style="width:120px;">二等奖<input type="hidden" value="二等奖" name="level_name[]"></td>
+                   <td style="width:80px;">
+                   <input type="text" class="jp"  name="name[]"></td>
+                   <td style="width:80px;">
+                   <input type="text" class="px" name="num[]"></td>
+                   <td style="width:80px;">
+                   <input type="text" class="px" name="chance[]" ></td>
+                 </tr>
+                      <tr class="tnorms">
+                   <td style="width:120px;">三等奖<input type="hidden" value="三等奖" name="level_name[]"></td>
+                   <td style="width:80px;">
+                   <input type="text" class="jp"  name="name[]"></td>
+                   <td style="width:80px;">
+                   <input type="text" class="px" name="num[]" ></td>
+                   <td style="width:80px;">
+                   <input type="text" class="px" name="chance[]" ></td>
+                 </tr>
+                      <tr class="tnorms">
+                   <td style="width:120px;">四等奖<input type="hidden" value="四等奖" name="level_name[]"></td>
+                   <td style="width:80px;">
+                   <input type="text" class="jp" name="name[]"></td>
+                   <td style="width:80px;">
+                   <input type="text" class="px" name="num[]" ></td>
+                   <td style="width:80px;">
+                   <input type="text" class="px" name="chance[]"></td>
+                 </tr>
+                 <else /> 
+                     <volist name="prize_data" id="v">
+                           <tr class="tnorms">
+                             <td style="width:120px;"><span class="delete_span">删除</span><{$v.level_name}>
+                             <input type="hidden" value="<{$v.level_name}>" name="level_name[]"></td>
+                             <td style="width:80px;">
+                             <input type="text" class="jp" value="<{$v.name}>" name="name[]"></td>
+                             <td style="width:80px;">
+                             <input type="text" class="px" name="num[]" value="<{$v.num}>"></td>
+                             <td style="width:80px;">
+                             <input type="text" class="px" name="chance[]" value="<{$v.chance}>"></td>
+                           </tr>
+                     </volist>
+                 </empty>
+
+            </tbody>
+         </table>
+      </td>
+    </tr>
+          <tr>
+      <td align="right">每人最多次数：</td>
+      <td colspan="2">
+        <input type="text" name="person_max_num" value="<{$scratch['person_max_num']}>"/>
+      </td>
+    </tr>
+          <tr>
+      <td align="right">每天最多次数：</td>
+      <td colspan="2">
+        <input type="text" name="day_max_num" value="<{$scratch['day_max_num']}>"/>
+      </td>
+    </tr>
+          <tr>
+      <td align="right">是否显示奖品数量：</td>
+      <td colspan="2">
+        <input type="radio" <if condition="$scratch['is_member'] eq 1">checked=true</if> name="is_show_num"  value="1"/>是 
+        &nbsp; &nbsp;
+        <input type="radio" <if condition="$scratch['is_member'] eq 0">checked=true</if> name="is_show_num"  value="0"/>否
+      </td>
+    </tr>
+          <tr>
+      <td align="right">会员才能参与：</td>
+      <td colspan="2">
+        <input type="radio"  <if condition="$scratch['is_member'] eq 1">checked=true</if>  name="is_member" value="1"/>是 &nbsp; &nbsp;
+        <input type="radio" <if condition="$scratch['is_member'] eq 0">checked=true</if> name="is_member"  value="0"/>否
+      </td>
+    </tr>
+    <tr>
+       <td colspan="3" align="center">
+            <input type="hidden" name="siteid" value="<{$siteid}>" />
+            <input type="hidden" name="id" value="<{$scratch['id']}>" />
+            <input type="submit" value="提交" class="btn" />
+       </td>
+    </tr>
+
+  </table>
+  </form>
+</body>
+</html>

@@ -1,0 +1,92 @@
+/* 内容基础 */
+.show_a { padding: 10px; margin-bottom: 1px; border-bottom: 1px solid #E9E9E9; box-shadow: 0 1px 0 0 #fff; padding-bottom:6px}
+.showpic { position: relative; z-index: 1; background: #333; }
+.showpic img { width: 100%; display: block; }
+#shoucang,
+#share { position: absolute; bottom: 10px; right: 1%; width: 35px; height: 45px; text-indent: -9999px; display: block; z-index: 2; padding-left: 15px; }
+#share { bottom: 55px }
+#share { }
+#shoucang span,
+#share span { margin: 5px 0; border-radius: 15px; display: block; background: url(../images/share.png) no-repeat center center rgba(255, 255, 255, 0.5); background-size: 20px auto; padding: 5px; font-size: 14px; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25); width: 20px; height: 20px; text-indent: -9999px; }
+#shoucang span { background: url(../images/kXsI9ITmWF.png) no-repeat center center rgba(255, 255, 255, 0.5); background-size: 20px auto; }
+.device .active span { background: url(../images/kXsI9ITmWF.png) no-repeat center center #ff4c00 !important; background-size: 20px auto !important; }
+.show_a .title { padding: 0 0 8px 0; font-size: 16px; border-bottom: 1px solid #E9E9E9; box-shadow: 0 1px 0 0 #fff; }
+.show_a .title h1 { line-height: 1.4; font-size: 16px; }
+.show_a .title p { margin-top: 3px; font-size: 16px; }
+.show_a .title p i { font-style: normal; }
+.summary .m-prices { font-size: 16px; }
+.show_item dt { font-size: 16px; }
+.summary del { color: #999; }
+.summary .p-price { line-height: 22px; }
+.summary .m-prices { line-height: 22px; padding-bottom: 5px; }
+.summary .m-prices li { display: block; padding: 5px 0; border-bottom: 1px solid #E9E9E9; box-shadow: 0 1px 0 0 #fff; }
+.summary .m-prices b { color: #f60; font-size: 22px; }
+.show_item dl,
+.order_content dl { margin-top: 7px; }
+.show_item dl dt,
+.order_content dl dt { float: left; line-height: 44px; }
+.show_item dl dd,
+.order_content dl dd { display: block; overflow: hidden; line-height: 32px; }
+.show_item dl dd ul li { float: left; margin: 0 5px 5px 0; }
+.show_item dl dd ul li a { display: block; line-height: 32px; height: 32px; border: 1px solid #edeeef; background: #fff; font-size: 12px; padding: 0 10px; min-width: 20px; text-align: center; }
+.show_item dl dd ul li a.current { border: 1px solid #ff9900; position: relative; color: #fff; font-size: 12px; background-color: #ff9900 }
+.show_item dl dd .num { border: 1px solid #eaeaea; height: 32px; background-color: #FFF; overflow: hidden; display: inline-block; }
+.show_item dl dd .num .minus { position: relative; text-align: center; display: block; width: 44px; height: 32px; border-right: 1px solid #eaeaea; overflow: hidden; float: left; }
+.show_item dl dd .num .minus:after { content: ""; position: absolute; top: 15px; left: 14px; border-top: 2px solid #333; width: 15px; }
+.show_item dl dd .num .add { position: relative; text-align: center; display: block; width: 44px; height: 32px; border-left: 1px solid #eaeaea; overflow: hidden; float: left; }
+.show_item dl dd .num .add:before { content: ""; position: absolute; height: 16px; border-left: 2px solid #333; top: 8px; left: 21px; }
+.show_item dl dd .num .add:after { content: ""; position: absolute; width: 16px; border-top: 2px solid #333; top: 15px; left: 14px; }
+.show_item dl dd .num a:active { background-color: #f5f5f5; }
+.show_item dl dd .num a .qb_icon { display: inline-block; background-repeat: no-repeat; }
+.show_item dl dd .num input { -webkit-appearance: none; width: 44px; height: 32px; text-align: center; background: transparent; border: 0; vertical-align: top; font-size: 16px; float: left; }
+.show_a_btn { margin: 15px 0px 15px 0px }
+.show_a_btn a { width: 48% }
+.show_a img,
+.show_b img,
+.show_c img { width: 100%; display: block; }
+.show_b { margin: 10px; background-color: #fff; font-size: 14px; }
+.show_a .handle { position: relative; display: inline-block; min-width: 30px; padding: 3px 10px; height: 20px; top: -1px; border-width: 1px; border-style: solid; background-color: #fff; border-color: #ffffff #eaeaea #eaeaea; box-shadow: 1px 1px 0 #fdfdfd; }
+.show_a .handle:after { background-image: url(../images/arrow.png); background-repeat: no-repeat; background-position: 0 0; content: ""; position: absolute; width: 10px; height: 5px; left: 20px; top: 10px; }
+.show_a .arrow:after { background-image: url(../images/arrow.png); background-repeat: no-repeat; background-position: 0 -5px; content: ""; position: absolute; width: 10px; height: 5px; left: 20px; top: 10px; }
+.show_a .fold_arrow { height: auto; display: block; text-align: center; margin-bottom: 10px; }
+.show_b p { margin: 0 0 8px 0; }
+.show_submod { border-bottom: 1px solid #E9E9E9; box-shadow: 0 1px 0 0 #fff; background-color: #fff }
+.show_submod h3 { padding: 5px 10px; font-size: 16px; }
+.show_submod2 h3 { padding: 5px 10px 5px 5px; font-size: 16px; }
+.show_submod2 { }
+.device { width: 100%; height: 230px; margin: 0 auto; background-color: #222; position: relative; }
+.device .arrow-left,
+.device .arrow-right { background: url(../images/arrows.png) no-repeat; position: absolute; top: 50%; margin-top: -15px; width: 50px; height: 30px; z-index: 99; opacity: 0.5; display: block; padding-bottom: 10px }
+.device .arrow-left { background-position: 10px 5px; left: 10px }
+.device .arrow-right { background-position: 21px -35px; right: 10px }
+.device .arrow-left:active { opacity: 1; }
+.device .arrow-right:active { opacity: 1; }
+.device .swiper-container { height: 235px; width: 100%; }
+.device .content-slide { padding: 10px; color: #fff; }
+.device .content-slide>a { width: 50%; float: left; text-align: center; color: #fff; overflow: hidden; margin-bottom: 15px; }
+.device .content-slide>a .mbg { display: block; overflow: hidden; margin: 0 5px; }
+.device .title { font-size: 12px; margin: 3px 0 5px 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.device .ico img { display: block; width: 200px; height: 200px; margin-left: auto; margin-right: auto; border-radius: 3px; box-shadow: 0 0 6px 0 #000; }
+.device .pagination { position: absolute; left: 0; text-align: center; bottom: 10px; width: 100%; z-index: 100; margin: 0; }
+.device .swiper-pagination-switch { display: inline-block; width: 8px; height: 8px; border-radius: 8px; background: #999; box-shadow: 0px 1px 2px #555 inset; margin: 0 4px; cursor: pointer; }
+.device .swiper-active-switch { background: #fff; }
+.device .mainbg { position: fixed; z-index: 1; width: 100%; }
+.device .mainbg img { width: 100%; }
+.device { width: 100%; height: 230px; margin: 0 auto; background-color: #222; position: relative; }
+.device .arrow-left,
+.device .arrow-right { background: url(../images/arrows.png) no-repeat; position: absolute; top: 50%; margin-top: -15px; width: 50px; height: 30px; z-index: 99; opacity: 0.5; display: block; padding-bottom: 10px }
+.device .arrow-left { background-position: 10px 5px; left: 10px }
+.device .arrow-right { background-position: 21px -35px; right: 10px }
+.device .arrow-left:active { opacity: 1; }
+.device .arrow-right:active { opacity: 1; }
+.device .swiper-container { height: 235px; width: 100%; }
+.device .content-slide { padding: 10px; color: #fff; }
+.device .content-slide>a { width: 50%; float: left; text-align: center; color: #fff; overflow: hidden; margin-bottom: 15px; }
+.device .content-slide>a .mbg { display: block; overflow: hidden; margin: 0 5px; }
+.device .title { font-size: 12px; margin: 3px 0 5px 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.device .ico img { display: block; width: 200px; height: 200px; margin-left: auto; margin-right: auto; border-radius: 3px; box-shadow: 0 0 6px 0 #000; }
+.device .pagination { position: absolute; left: 0; text-align: center; bottom: 10px; width: 100%; z-index: 100; margin: 0; }
+.device .swiper-pagination-switch { display: inline-block; width: 8px; height: 8px; border-radius: 8px; background: #999; box-shadow: 0px 1px 2px #555 inset; margin: 0 4px; cursor: pointer; }
+.device .swiper-active-switch { background: #fff; }
+.device .mainbg { position: fixed; z-index: 1; width: 100%; }
+.device .mainbg img { width: 100%; }

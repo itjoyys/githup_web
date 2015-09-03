@@ -1,0 +1,56 @@
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content=" initial-scale=1.0, minimum-scale = 1, maximum-scale = 1">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<title>列表页</title>
+<link rel="stylesheet" href="__PUBLICI__/css/list.css">
+
+</head>
+<body>
+<div class="main">
+<div class="banner_list">
+	<img src="<{$image_url}><{$ads}>" width="100%">
+</div>
+ <div class="goods_list_box">
+     <div class="goods_list">
+       <ul>
+       	<foreach name='goods' item='v'>
+               
+           	<li class="goods_list_li" > 
+					<a test="" href="<{:U(GROUP_NAME . '/Detail/Index', array('goodsid' => $v['goodsid']))}>" > 
+					   <img width="100%" src="<{$image_url}><{$v.photo1}>">
+						<div class="goods_title"><{$v.name}></div>
+						<div class="goods_price">¥<{$v.saleprice}></div>
+					</a> 
+			</li>
+       	</foreach>
+		
+							
+       </ul>
+     	
+
+     </div>
+ 	
+ </div>
+ <div class="clear"></div>
+	
+</div>
+
+	<!--尾部样式-->
+		<div id="foot">
+		<div class="footer_login">
+		
+		</div>
+		<div class="copyright">
+			<p>Copyright © 2013-2014 <{$title}></p>
+			<p>
+				技术支持：
+				<a href="">杭州微盘信息技术有限公司</a>
+			</p>
+		</div>
+	</div>
+  <include file='Common:footer' />

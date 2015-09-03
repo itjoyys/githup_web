@@ -1,0 +1,185 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="text/javascript" src="__PUBLIC__/Js/jquery.min.js"></script>
+    <link rel="stylesheet" href="__PUBLIC__/Css/styletpl.css" />
+    <link rel="stylesheet" href="__PUBLIC__/Css/product.css" />
+    <link rel="stylesheet" href="__PUBLIC__/Css/stylet.css" />
+    <link rel="stylesheet" href="__PUBLIC__/Css/style_2_common.css" />
+    <style type="text/css">
+   html {
+    HEIGHT: 100%
+}
+body {
+    HEIGHT: 100%
+}
+a {
+    TEXT-DECORATION: none
+}
+img {
+    BORDER-TOP-STYLE: none; BORDER-RIGHT-STYLE: none; BORDER-LEFT-STYLE: none; BORDER-BOTTOM-STYLE: none
+}
+ul {
+    LIST-STYLE-TYPE: none
+}
+.vv {
+    VISIBILITY: visible! important
+}
+    ul,li{padding: 0;margin: 0;}
+      .cateradio {
+padding-top: 20px;
+}
+label {
+display: block;
+margin-bottom: 5px;
+}
+img {
+border: 0 none;
+height: auto;
+max-width: 100%;
+vertical-align: middle;
+}
+input[type="radio"] {
+-moz-box-sizing: border-box;
+background: none repeat scroll 0 0 white;
+border: 1px solid #DCDCDC;
+border-radius: 1px 1px 1px 1px;
+height: 13px;
+position: relative;
+width: 13px;
+}
+.cateradio li {
+background: url("/show/img/radio_iphone0.png") no-repeat scroll center top transparent;
+float: left;
+height: 283px;
+margin: 0 0 20px 20px;
+position: relative;
+text-align: center;
+width: 160px;
+}
+.cateradio li {
+background: url("/show/img/radio_iphone0.png") no-repeat scroll center top transparent;
+float: left;
+height: 283px;
+margin: 0 0 20px 20px;
+position: relative;
+text-align: center;
+width: 160px;
+}
+.cateradio li img{
+    width: 160px;
+	height:240px;
+}
+.innerCon li {
+background: url("/show/img/radio_iphone0.png") no-repeat scroll center top transparent;
+float: left;
+height: 283px;
+margin: 0 0 20px 20px;
+position: relative;
+text-align: center;
+width: 160px;
+}
+.innerCon li img{width: 230px;}
+.s_button{
+    width: 140px;
+line-height: 38px;
+text-align: center;
+font-weight: bold;
+color: #fff;
+text-shadow: 1px 1px 1px #333;
+border-radius: 5px;
+margin: 0 20px 20px 0;
+position: relative;
+overflow: hidden;
+border: 1px solid #b42323;
+box-shadow: 0 1px 2px #e99494 inset,0 -1px 0 #954b4b inset,0 -2px 3px #e99494 inset;
+background: -webkit-linear-gradient(top,#d53939,#b92929);
+background: -moz-linear-gradient(top,#d53939,#b92929);
+}
+
+
+    </style>
+<script type="text/javascript">
+    $(document).ready(function(){
+
+        $(".radio").click(function(){
+                var list_tpl=$(this).val();
+                var column_id=$(this).attr("cid");
+                $.ajax({
+                       type: "POST",
+                       url: "http://localhost:8077/weipan/index.php/Admin/Website/column_ajax",
+                       data: "list_tpl="+list_tpl+"&column_id="+column_id,
+                       success: function(msg){
+                         alert(msg);
+                       }
+                    });
+            });
+    })
+
+
+
+
+</script>
+
+</head>
+
+<body>
+  
+    <div class="general feature_tour" style="margin-top:-5px;background:#e3e3e3;border-bottom: #b9baba 1px solid;">
+
+        <div class="middle">
+        
+            <div class="content">
+
+    <div class="msgWrap form">
+<!--首页模板选择-->
+
+
+        <div id="tagContent">
+        <div class="tagContent selectTag" id="tagContent0" style="display: block;">
+            <fieldset style="border:none;border-top:#ccc 1px solid">
+                <div class="g filterBox" style="background:#C4C9CC;margin-top:10px;padding:10px 0;">
+                  <h1>模板选择:</h1>
+                  <ul class="filterBtn">                        
+                <!--     <li class="filter" data-filter="ck"><p>我选中的模版</p><i></i></li> -->
+                  <!--   <a href="<{:U(GROUP_NAME . '/Website/Website_index')}>"><li class="filter on active" data-filter="all"><p>首页模版</p><i></i></li></a> -->
+                    <a href="<{:U(GROUP_NAME . '/Website/Website_list')}>"><li class="filter" data-filter="sub"><p>列表页模板</p><i></i></li></a>
+                  <!--   <a href="<{:U(GROUP_NAME . '/Website/Website_details')}>"><li class="filter" data-filter="focu"><p>内容页模板</p><i></i></li></a> -->
+                 <!--    <li class="filter" data-filter="bg"><p>首页自定义</p><i></i></li>
+                    <li class="filter" data-filter="thumb"><p>列表页自定义</p><i></i></li>
+                    <li class="filter" data-filter="filt"><p>内容页自定义</p><i></i></li> -->
+                  </ul>
+
+                  
+                </div>
+                
+                <ul class="cateradio g grid" id="grid">
+                     <volist name="list" id="v">
+                       <li class="mix thumb  mix_all" style="display: inline-block; opacity: 1;">
+                      
+                            <label>
+                                <img src="<{$image_url}><{$v.img}>">
+                                <input <if condition="$column_l_tpl eq $v['tpl_id']"> checked </if> class="radio radio_i" type="radio" cid="<{$column_id}>" name="list_tpl" value="<{$v.tpl_id}>">
+                                首页<{$v.tpl_id}> </label>
+                        </li>
+                      </volist>
+                      <div style="clear:both"></div>
+                </ul>
+            </fieldset>
+        </div> 
+        
+        </div>
+
+ 
+        <div class="clr"></div>
+    </div>
+
+</div>
+          
+            
+        </div>
+    </div>
+   
+</body>
+</html>

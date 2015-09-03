@@ -1,0 +1,153 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>注册会员信息</title>
+<meta name="viewport" content="height=device-height,width=320,initial-scale=1.0,mininum-scale=1.0,maximum-scale=1.0,user-scaleble=no">
+<style type="text/css">
+* {
+padding: 0;
+margin: 0;
+}
+body {
+font-family: Microsoft YaHei,Helvitica,Verdana,Tohoma,Arial,san-serif;
+}
+body, td, input, textarea {
+color: #666666;
+font-size: 14px;
+}
+.cardexplain {
+margin: 11px 10px 20px 9px;
+min-width: 301px;
+}
+.round li.title {
+background-color: #E1E1E1;
+background-image: linear-gradient(bottom,#E7E7E7 0,#f9f9f9 100%);
+background-image: -o-linear-gradient(bottom,#E7E7E7 0,#f9f9f9 100%);
+background-image: -moz-linear-gradient(bottom,#E7E7E7 0,#f9f9f9 100%);
+background-image: -webkit-linear-gradient(bottom,#E7E7E7 0,#f9f9f9 100%);
+background-image: -ms-linear-gradient(bottom,#E7E7E7 0,#f9f9f9 100%);
+background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0,#E7E7E7),color-stop(1,#f9f9f9));
+-webkit-box-shadow: 0 1px 0 #FFF inset,0 1px 0 #EEE;
+-moz-box-shadow: 0 1px 0 #FFF inset,0 1px 0 #EEE;
+box-shadow: 0 1px 0 #FFF inset,0 1px 0 #EEE;
+-webkit-border-radius: 5px 5px 0 0;
+-moz-border-radius: 5px 5px 0 0;
+-o-border-radius: 5px 5px 0 0;
+border-radius: 5px 5px 0 0;
+}
+.round li.title span {
+padding: 5px 15px 4px 0;
+font-size: 14px;
+color: #666;
+text-shadow: 0 1px #FFF;
+}
+ul.round li {
+border: solid #C6C6C6;
+border-width: 0;
+padding: 0 10px 0 10px;
+}
+.kuang td {
+color: #999;
+padding: 0;
+}
+.kuang th {
+color: #333;
+padding: 0;
+font-size: 16px;
+font-weight: normal;
+text-align: left;
+width: 79px;
+}
+.kuang th.thtop {
+padding: 10px 0 0 0;
+}
+ul.round {
+border: 1px solid #C6C6C6;
+background-color: rgba(255,255,255,0.9);
+text-align: left;
+font-size: 14px;
+line-height: 24px;
+border-radius: 5px;
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+-moz-box-shadow: 0 1px 1px #f6f6f6;
+-webkit-box-shadow: 0 1px 1px #f6f6f6;
+box-shadow: 0 1px 1px #f6f6f6;
+margin-bottom: 11px;
+display: block;
+}
+.round li.nob .px {
+border-radius: 5px;
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+background-color: #FFF;
+border: 1px solid #E8E8E8;
+margin: 5px 0 4px;
+padding: 5px 10px;
+}
+.px {
+position: relative;
+color: #999;
+display: block;
+width: 100%;
+font-size: 16px;
+margin: 0 auto;
+font-family: Arial,Helvetica,sans-serif;
+-webkit-appearance: none;
+}
+.dd {
+background: #1ff07a;
+background-image: -webkit-linear-gradient(top, #7aba00, #469400);
+background-image: -moz-linear-gradient(top, #7aba00, #469400);
+background-image: -ms-linear-gradient(top, #7aba00, #469400);
+background-image: -o-linear-gradient(top, #7aba00, #469400);
+background-image: linear-gradient(to bottom, #7aba00, #469400);
+-webkit-border-radius: 4;
+-moz-border-radius: 4;
+border-radius: 4px;
+-webkit-box-shadow: 0px 1px 3px #666666;
+-moz-box-shadow: 0px 1px 3px #666666;
+box-shadow: 0px 1px 3px #666666;
+font-family: Arial;
+color: #ffffff;
+font-size: 12px;
+width: 150px;
+height: 35px;
+padding: 1px 10px 1px 5px;
+border: solid #46e810 1px;
+text-decoration: none;
+}
+</style>
+</head>
+<body>
+<div class="cardexplain">
+			
+	        <form name="form" method="post" action="<{:U(GROUP_NAME . '/Microforum/runforummember')}>" id="form">
+			<ul class="round">
+				<li class="title mb"><span class="none">注册会员信息</span></li>
+				<li class="nob">
+					<table width="100%" border="0" cellspacing="0" cellpadding="0" class="kuang">
+						<tbody><tr>
+							<th>昵称</th>
+							<td><input name="name" type="text" id="userName" class="px" placeholder="请输入您的昵称"></td>
+						</tr>
+					</tbody></table>
+				</li>
+				<li class="nob">
+					<table width="100%" border="0" cellspacing="0" cellpadding="0" class="kuang">
+						<tbody><tr>
+							<th>手机号码</th>
+							<td><input name="phone" type="text" id="tel" class="px" placeholder="请输入您的手机号"></td>
+						</tr>
+					</tbody></table>
+				</li>
+			</ul>
+	
+			<div class="footReturn" style="text-align: center;width:100%;">
+			    <input name="openid" type="hidden" class="px" value="<{$openid}>"></td>
+				<input type="submit" name="btnSubmit" value="注册信息" id="btnSubmit" class="dd">                     
+			</div>
+            </form>
+		</div>
+
+
+</body></html>

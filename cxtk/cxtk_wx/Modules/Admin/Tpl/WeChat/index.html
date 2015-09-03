@@ -1,0 +1,57 @@
+<include file="web_site:header" />
+<body>
+<form action="<{:U(GROUP_NAME . '/WeChat/wechat_do')}>"  method="post" onsubmit="che">
+  <table class="table">
+    <tr>
+      <td colspan="3" background="__PUBLIC__/images/bg_list.gif">
+       <div style="padding-left:10px; font-weight:bold; color:#FFFFFF">接口设置</div> 
+      </td>
+    </tr>
+    <tr>
+      <td align="right" width="150">接口地址：</td>
+      <td colspan="2">
+        <{$url}>
+      </td>
+    </tr>
+    <tr>
+      <td align="right">TOKEN：</td>
+      <td colspan="2">
+        <input class="input" type="text" name="token" value="<{$data['token']}>" />
+      </td>
+    </tr>
+   <tr>
+      <td align="right">原始ID：</td>
+      <td colspan="2">
+        <input class="input" type="text" name="oid" value="<{$data['oid']}>" />
+      </td>
+    </tr>
+     <tr>
+      <td align="right">AppID：</td>
+      <td colspan="2">
+        <input class="input" type="text" name="appid"  value="<{$data['appid']}>"/>
+      </td>
+    </tr>
+     <tr>
+      <td align="right">AppSecret：</td>
+      <td colspan="2">
+        <input class="input" type="text" name="appsecret"  value="<{$data['appsecret']}>"/>
+      </td>
+    </tr>
+       <tr>
+      <td align="right">EncodingAESKey：</td>
+      <td colspan="2">
+        <input class="input" type="text" name="EncodingAESKey"  value="<{$data['EncodingAESKey']}>"/>
+      </td>
+    </tr>
+    <tr>
+       <td colspan="3" align="center">
+            <input type="hidden" name="id" value="<{$data['id']}>"/>
+            <input type="submit" value="提交" class="btn" />
+       </td>
+    </tr>
+
+  </table>
+  </form>
+
+</body>
+</html>

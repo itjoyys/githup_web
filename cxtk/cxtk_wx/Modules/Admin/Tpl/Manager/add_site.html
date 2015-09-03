@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<script type="text/javascript" src="__PUBLIC__/Js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Js/index.js"></script>
+<link rel="stylesheet" href="__PUBLIC__/Css/public.css" />
+<link rel="stylesheet" href="__PUBLIC__/Css/index.css" />
+
+<style type="text/css">
+li{font-size: 12px;height: 20px;}
+table{color: #fff;
+  background-color: #242424;
+}
+.table, .table td {
+border: solid 1px #333333;
+}
+#remark{width: 320px;height: 180px;
+}
+.btn{width: 135px;
+}
+input{height: 20px; width: 250px;
+}
+  
+</style>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+
+</head>
+<body>
+<form action="<{:U(GROUP_NAME . '/Manager/add_site')}>"  method="post">
+  <table class="table">
+    <tr>
+      <td colspan="2" background="__PUBLIC__/images/bg_list.gif">
+       <div style="padding-left:10px; font-weight:bold; color:#FFFFFF">站点添加</div>
+      
+      </td>
+
+    </tr>
+    <tr>
+    	<td align="right">公司名称：</td>
+    	<td>
+    		<input type="text" name="sitename" value="<{$name}>" />
+    	</td>
+    </tr>
+      <tr>
+      <td align="right">版权：</td>
+      <td>
+        <input type="text" name="copyright" value="<{$copyright}>"/>
+      </td>
+    </tr>
+      <tr>
+      <td align="right">技术支持：</td>
+      <td>
+        <input type="text" name="support" value="<{$support}>"/>
+      </td>
+    </tr>
+       <tr>
+      <td align="right">技术支持URL：</td>
+      <td>
+        <input type="text" name="surl" value="<{$surl}>"/>
+      </td>
+    </tr>
+    <tr>
+    	<td align="right">功能权限：</td>
+    	<td>
+       <div style="margin-right:10px; ">
+       <ul>
+         
+      <li><input type="checkbox" name="module[]" value="<1>" style="width:20px;" />微信设置&nbsp;&nbsp;&nbsp;&nbsp;</li>
+		  <li><input type="checkbox" name="module[]" value="<16>" style="width:20px;"/>自定义菜单&nbsp;&nbsp;&nbsp;&nbsp;</li>
+      <li><input type="checkbox" name="module[]" value="<2>" style="width:20px;"/>微信网站&nbsp;&nbsp;&nbsp;&nbsp;</li>
+      <li> <input type="checkbox" name="module[]" value="<7>" style="width:20px;"/>微信墙&nbsp;&nbsp;&nbsp;&nbsp;</li>
+		  <li> <input type="checkbox" name="module[]" value="<21>" style="width:20px;"/>微汽车&nbsp;&nbsp;&nbsp;&nbsp;</li>
+      <li> <input type="checkbox" name="module[]" value="<3>" style="width:20px;"/>微信商城&nbsp;&nbsp;&nbsp;&nbsp;</li>
+		 <li> <input type="checkbox" name="module[]" value="<17>" style="width:20px;"/>微信楼盘&nbsp;&nbsp;&nbsp;&nbsp;</li>
+		 <li> <input type="checkbox" name="module[]" value="<20>" style="width:20px;"/>微信活动&nbsp;&nbsp;&nbsp;&nbsp;</li>
+         <li> <input type="checkbox" name="module[]" value="<4>" style="width:20px;"/>微信相册&nbsp;&nbsp;&nbsp;&nbsp;</li>
+         <li> <input type="checkbox" name="module[]" value="<9>" style="width:20px;"/>微信互动&nbsp;&nbsp;&nbsp;&nbsp;</li>
+         <li> <input type="checkbox" name="module[]" value="<6>" style="width:20px;"/>微信团购&nbsp;&nbsp;&nbsp;&nbsp;</li>
+		 <li> <input type="checkbox" name="module[]" value="<11>" style="width:20px;"/>微信喜帖&nbsp;&nbsp;&nbsp;&nbsp;</li>
+		 <li> <input type="checkbox" name="module[]" value="<13>" style="width:20px;"/>微信订餐&nbsp;&nbsp;&nbsp;&nbsp;</li>
+		 <li> <input type="checkbox" name="module[]" value="<15>" style="width:20px;"/>微信权限&nbsp;&nbsp;&nbsp;&nbsp;</li>
+		 <li> <input type="checkbox" name="module[]" value="<22>" style="width:20px;"/>微信查询&nbsp;&nbsp;&nbsp;&nbsp;</li>
+       </ul>
+      </td>
+    </tr>
+
+    <tr>
+       <td colspan="5" align="center">
+            <input type="hidden" name="uid" value="<{$uid}>" />
+            <input type="hidden" name="siteid" value="<{$siteid}>" />
+            <input type="submit" value="提交" class="btn" />
+       </td>
+    </tr>
+
+  </table>
+  </form>
+</body>
+</html>

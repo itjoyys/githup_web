@@ -1,0 +1,107 @@
+﻿a {
+text-decoration: none;
+cursor: pointer;
+}
+H1 {
+PADDING-BOTTOM: 0px;
+PADDING-TOP: 0px;
+PADDING-LEFT: 0px;
+MARGIN: 0px;
+PADDING-RIGHT: 0px;
+}
+P {
+PADDING-BOTTOM: 0px;
+PADDING-TOP: 0px;
+PADDING-LEFT: 0px;
+MARGIN: 0px;
+PADDING-RIGHT: 0px;
+display: block;
+-webkit-margin-before: 1em;
+-webkit-margin-after: 1em;
+-webkit-margin-start: 0px;
+-webkit-margin-end: 0px;
+}
+
+#page_order {
+padding-bottom: 8px;
+background-color: #e9e9eb;
+overflow-x: hidden;
+}
+#page_order section {
+border: 1px solid #dbdbdd;
+background-color: #fff;
+box-shadow: 1px 1px 2px #e3e3e5,-1px -1px 2px #e3e3e5;
+padding: 0 10px;
+height: 122px;
+margin-bottom: 5px;
+}
+#page_order section article {
+min-height: 76px;
+overflow: hidden;
+padding-left: 88px;
+border-bottom: 1px solid #e7eaeb;
+position: relative;
+}
+#page_order section span {
+left: 3px;
+top: 10px;
+z-index: 0;
+}
+#page_order section span, #page_order section span:before, #page_order section span:after {
+position: absolute;
+background-color: #fff;
+display: inline-block;
+width: 72px;
+height: 52px;
+}
+#page_order section p {
+line-height: 17px;
+color: #969696;
+font-size: 12px;
+margin:0px;
+}
+#page_order section H1 {
+OVERFLOW: hidden;
+FONT-SIZE: 16px;
+HEIGHT: 32px;
+COLOR: #5e6060;
+PADDING-TOP: 3px;
+LINE-HEIGHT: 32px;
+}
+#page_order section UL {
+OVERFLOW: hidden;
+HEIGHT: 30px;
+PADDING-TOP: 9px;
+CLEAR: both;
+MARGIN: 0px auto;
+WIDTH: 99%;
+}
+#page_order section LI {
+HEIGHT: 30px;
+BORDER-RIGHT: #e8eaeb 1px solid;
+FLOAT: left;
+TEXT-ALIGN: center;
+DISPLAY: inline-block;
+WIDTH: 49%;
+}
+#page_order section LI.last {
+	BORDER-RIGHT: #e8eaeb 0px solid;
+}
+#page_order section LI A {
+FONT-SIZE: 13px;
+HEIGHT: 24px;
+BACKGROUND-REPEAT: no-repeat;
+BACKGROUND-POSITION: 0px 0px;
+COLOR: #36b35f;
+PADDING-LEFT: 26px;
+DISPLAY: inline-block;
+LINE-HEIGHT: 24px;
+-webkit-background-size: 23px 24px;
+background-size: 23px 24px;
+}
+#page_order section LI A.order {
+BACKGROUND-IMAGE: url(../images/icon_order.png);
+}
+#page_order section LI A.gps {
+BACKGROUND-IMAGE: url(../images/icon_gps2.png);
+}

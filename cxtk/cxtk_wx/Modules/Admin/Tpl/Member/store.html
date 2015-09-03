@@ -1,0 +1,252 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<script type="text/javascript" src="__PUBLIC__/Js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Js/index.js"></script>
+<link rel="stylesheet" href="__PUBLIC__/Css/public.css" />
+<link rel="stylesheet" href="__PUBLIC__/Css/index.css" />
+    <link rel="stylesheet" href="__PUBLIC__/Css/styletpl.css" />
+    <link rel="stylesheet" href="__PUBLIC__/Css/product.css" />
+    <link rel="stylesheet" href="__PUBLIC__/Css/stylet.css" />
+    <link rel="stylesheet" href="__PUBLIC__/Css/style_2_common.css" />
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<head>
+<style type="text/css">
+  
+  .td a{
+   padding: 4px 8px;
+font-family: Verdana, Arial, sans-serif;
+border-radius: 5px;
+font-size: 14px;
+color: #fff;
+  background-color: #1D3E83;
+}
+#index_tisi {
+margin-top: 180px;
+left: 50%;
+position: fixed;
+margin-left: -215px;
+border-radius: 10px;
+padding: 10px;
+opacity: 1;
+-webkit-transform: scale(1);
+-webkit-transition: all 0.20s ease-in-out;
+transform: scale(1);
+transition: all 0.20s ease-in-out;
+position: absolute;
+z-index: 1000000;
+margin-right: auto!important;
+}
+#index_tisi header{
+
+font-weight: bold;
+font-size: 12px;
+color: #F0890E;
+margin: 0;
+padding: 0;
+display: block !important;
+}
+.jqPopup div {
+font-size: 14px;
+margin: 10px 0 10px 10px;
+color: #fff;
+text-align: center;
+}
+.jqPopup footer {
+width: 100%;
+text-align: center;
+display: block !important;
+color: #fff;
+}
+.jqPopup .button {
+background: #98B037;
+height: 21px;
+display: inline-block;
+line-height: 21px;
+font-weight: normal;
+font-size: 12px;
+text-shadow: none;
+width: 100px;
+background: #FC0B3B;
+margin-right: 5px;
+}
+</style>
+<script type="text/javascript"> 
+$(document).ready(function(){
+    var id;
+
+    $('.kick').click(function(){
+      id=$(this).attr('did');
+      $('#index_tisi').css('display','block');
+    });
+    
+       //对话框点击确定、删除地区分类
+    $('#cance1').click(function(){
+       $('#index_tisi').css("display","none");
+       location.href ="/weipan/index.php/Admin/Member/delete_class_store/id/"+id;
+    });
+    
+    //对话框点击取消、
+    $('#cance2').click(function(){
+       $('#index_tisi').css("display","none");
+    })
+
+}) 
+</script>
+</head>
+<body>
+      <div id="index_tisi" class="jqPopup" style="display: none;width: 300px;background: #006bb2;">                  
+             <header class="">提示</header>                  
+             <div>
+             <div style="width:1px;height:1px;-webkit-transform:translate3d(0,0,0);float:right"></div>
+             确定是否删除！</div>                 
+           <footer style="clear:both;">                    
+             <a onclick="return false;" href="#" class="button center" id="cance1" style="
+             text-shadow:none;width: 100px;background: #FC0B3B;margin-right: 5px;color:#fff;">确定</a> 
+             <a class="button center" onclick="return false;" href="#" id="cance2" style="text-shadow:none;width: 100px;background: #FC0B3B;color:#fff;">取消</a>                      
+           </footer>               
+        </div>
+      
+  <table class="table">
+
+  <tr>
+    <td background="__PUBLIC__/images/bg_list.gif" colspan="6"><div style="padding-left:10px; font-weight:bold; color:#FFFFFF">分店列表</div></td>
+  </tr>
+        <tr>
+   <td align="right">门店地址：</td>
+      <td>
+        <{$surl}>
+      </td>
+    </tr>
+    <tr>
+      <td>ID</td>
+      <td>名称</td>
+      <td>排序</td>
+      <td>操作</td>
+
+    </tr>
+
+    <foreach name="store_class" item="v">
+         <tr>
+           <td><{$v.id}></td>
+           <td><{$v.name}></td>
+           <td><{$v.sort}></td>
+        
+           <td class="td">
+                <a href="<{:U(GROUP_NAME . '/Member/store', array('pid' => $v['id']))}>">查看数据</a> 
+                <a href="<{:U(GROUP_NAME . '/Member/revise_c_store', array('pid' => $v['id']))}>">编辑</a> 
+                <a href="<{:U(GROUP_NAME . '/Member/add_store', array('id' => $v['id']))}>">添加门店</a> 
+                <a class="kick" onclick="return false;" href="#" did="<{$v.id}>">删除</a> 
+           </td>
+         </tr>
+    </foreach>
+  </table>
+
+      <form action="<{:U(GROUP_NAME . '/Member/run_class_store')}>" method="post">
+  <table class="table">
+    <tr>
+      <td colspan="3" background="__PUBLIC__/images/bg_list.gif"> <div style="padding-left:10px; font-weight:bold; color:#FFFFFF">添加地区</div></td>
+    </tr>
+    <tr>
+      <td align="right">地区名称：</td>
+      <td>
+        <input type="text" name="name" />
+      </td>
+    </tr>
+        <tr>
+      <td align="right" width="10%">顶级地区：</td>
+      <td>
+        <select name="pid">
+          <option value="<{$pid}>">---请选择---</option>
+          <foreach name='store_class' item='v'>
+            <option value="<{$v.id}>"><{$v.name}></option>
+          </foreach>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td align="right">排序</td>
+      <td>
+        <input type="text" name="sort" value="1" />
+      </td>
+    </tr>
+
+    <tr>
+      <td colspan="3" align="center">
+        <input type="hidden" name="siteid" value="<{$siteid}>" />
+        <input type="submit" class="btn" value="保存添加"/>
+      </td>
+
+    </tr>
+  
+  </table>
+  </form>
+
+     <div class="general feature_tour" style="margin-top:-5px;background:#e3e3e3;border-bottom: #b9baba 1px solid;">
+
+        <div class="middle">
+        
+            <div class="content">
+
+    <div class="msgWrap form">
+<!--首页模板选择-->
+
+
+        <div id="tagContent">
+        <div class="tagContent selectTag" id="tagContent0" style="display: block;">
+            <fieldset style="border:none;border-top:#ccc 1px solid">
+                <div class="g filterBox" style="background:#C4C9CC;margin-top:10px;padding:10px 0;">
+                  <h1>样式选择:</h1>
+                  <ul class="filterBtn">                        
+                    <a><li class="filter on active" data-filter="all"><p>门店模版</p><i></i></li></a>
+                  </ul>   
+                </div>
+                
+                <ul class="cateradio g grid" id="grid">
+                     <volist name="store_tpl" id="v">
+                       <li class="mix thumb  mix_all" style="display: inline-block; opacity: 1;">
+                           <!--  <div class="mbtip"></div> -->
+                            <label>
+                                <img src="<{$v.image}>">
+                                <input <if condition="$store['store_tpl'] eq $v['tpl_id']"> checked </if> class="radio radio_i" type="radio" name="store_tpl" value="<{$v.tpl_id}>">
+                                样式<{$v.tpl_id}> </label>
+                        </li>
+                      </volist>
+                      <div style="clear:both"></div>
+                </ul>
+            </fieldset>
+        </div> 
+        
+        </div>
+
+  <script type="text/javascript">
+    $(document).ready(function(){
+
+        $(".radio").click(function(){
+                var store_tpl=$(this).val();
+                $.ajax({
+                       type: "POST",
+                       url: "store_ajax",
+                       data: "store_tpl="+store_tpl,
+                       success: function(msg){
+                         alert(msg);
+                       }
+                    });
+            });
+    })
+
+
+
+
+</script>
+
+ 
+        <div class="clr"></div>
+    </div>
+
+</div>
+          
+            
+        </div>
+    </div>
+</body>
+</html>

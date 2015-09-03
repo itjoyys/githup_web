@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title><{$name}></title>
+  <meta name="author" content="m.jd.com">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no">
+  <meta http-equiv="Expires" content="-1">
+  <meta http-equiv="Cache-Control" content="no-cache">
+  <meta http-equiv="Pragma" content="no-cache">
+  <link rel="stylesheet" type="text/css" href="__PUBLICI__/Microsearch/base2013.css" charset="gbk">
+  <link rel="stylesheet" type="text/css" href="__PUBLICI__/Microsearch/index.css" charset="gbk">
+  <script type="text/javascript" src="__PUBLICI__/Bookdinner/js/jquery-1.4.1.min.js"></script>
+  <style type="text/css">
+    .btn-search span {
+display: inline-block;
+width: 1.42em;
+height: 1.42em;
+margin-top: .21em;
+background: url(__PUBLICI__/Microsearch/icon.png) 0 0 no-repeat;
+text-indent: -9999px;
+background-size: 7.15em 7.15em;
+}
+.new-srch-lst{
+ 
+  color:red;display:none;height:50px;width:300px;
+}
+
+  </style>
+  <script type="text/javascript">
+
+     $(document).ready(function(){
+  $('.btn-search').click(function(){
+     var keyword=$('#newkeyword').val();
+     var url=$('#newkeyword').attr('purl');
+
+     if (keyword=="") return false;
+      form();
+
+  });
+
+
+  function form()
+  {
+  document.getElementById('searchForm').submit();
+  }
+
+})
+
+  </script>
+</head>
+
+<body id="body" style="background-color: rgb(213, 213, 214); background-position: initial initial; background-repeat: initial initial;">
+
+<div class="new-ct main">
+  
+  <div class="logo">
+    <img src="<{$image_url}><{$img}>" alt="logo"></div>
+
+  <div class="search" style="position:relative">
+    <span class="input-box">
+      <form action="<{:U(GROUP_NAME . '/Microsearch/search')}>" id="searchForm">
+        <input name="keyword" purl="<{:U(GROUP_NAME . '/Microsearch/search')}>" type="text" id="newkeyword" class="new-input" style="color:#333;"></form>
+      <a class="btn-search">
+        <span class="btn">search</span>
+      </a>
+    </span>
+    <div class="new-srch-lst" id="shelper">没有相关数据</div>
+  </div>
+
+
+</div>
+</body>
+</html>

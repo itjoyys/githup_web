@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html class="">
+  <!--<![endif]-->
+  <head>
+    <meta name="generator" content="HTML Tidy for HTML5 (experimental) for Windows https://github.com/w3c/tidy-html5/tree/c63cc39" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+    <title>杭州微盘</title>
+    
+    <script type="text/javascript" src="__PUBLICI__/Bookdinner/js/jquery-1.4.1.min.js"></script>
+    <script type="text/javascript" src="__PUBLICI__/Bookdinner/js/js.js"></script>
+    <link rel="stylesheet" type="text/css" href="__PUBLICI__/Bookdinner/css/jq.ui.css" />
+    <link href="__PUBLICI__/Bookdinner/css/base.css?t=20140410" rel="stylesheet" type="text/css" />
+    <link href="__PUBLICI__/Bookdinner/css/boilerplate.css" rel="stylesheet" type="text/css" />
+    <link href="__PUBLICI__/Bookdinner/css/jq.datepicker.css" rel="stylesheet" type="text/css" />
+
+      <style>
+
+      .pro_list dl dd label.current {
+        border: #519426 1px solid;
+        background: url(__PUBLICI__/Bookdinner/images/checked2.png) no-repeat center;
+        background-size: 80%;
+        }
+
+
+        .panel
+        {
+            overflow: auto;
+            -webkit-overflow-scrolling: touch;
+            z-index: 0;
+        }
+    </style>
+   
+  </head>
+  <body>
+  <div id="jQUi">
+    <div id="jQui_modal" style="overflow: hidden;">
+      <div id="modalContainer"
+      style="-webkit-transform: translate3d(0px, 0px, 0px); -webkit-transition: 0ms linear; transition: 0ms linear;"></div>
+      <div class="jqmScrollbar"
+      style="position: absolute; width: 5px; height: 20px; border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; opacity: 0; top: 0px; background: black;">
+      </div>
+    </div>
+    <!-- this is the main container div.  This way, you can have only part of your app use UI -->
+    <!-- this is the header div at the top -->
+    <div id="header" class="hasMenu off">
+      <a id="backButton" href="javascript:;" class="button" style="visibility: hidden;">杭州微盘</a>
+      <h1 id="pageTitle" style="text-align: left; padding-left: 3%; text-shadow: none;">精致冷碟</h1>
+      <h5 class="touchover" data-func="ShowCart" onclick="location.href='<{:U(GROUP_NAME . '/Bookdinner/cart')}>'">
+      <img src="__PUBLICI__/Bookdinner/images/cart.png" />
+      
+      <span id="goodsNum" url="<{:U(GROUP_NAME . '/Bookdinner/updateGoodsNum')}>"><{$goodsNum}></span></h5>
+    </div>
+    <div id="content" style="width: 72%; left: 28% !important; top: 0px; bottom: 0px;" class="hasMenu off">
+      <!-- here is where you can add your panels -->
+      <div title="棉花糖演示餐厅" id="main" class="panel" selected="true"
+      style="overflow: hidden; display: block; background-color: rgb(255, 255, 255); overflow-y: scroll; width:100%;" js-scrolling="yes">
+        <div title="null" id="null" class="jqmScrollPanel"
+        style="-webkit-transform: translate3d(0px, 0px, 0px); -webkit-transition: 500ms linear; transition: 500ms linear; background-color: rgb(255, 255, 255); "
+       >
+          <div class="pro_list">
+           <volist name="food" id="v">
+           <dl class="">
+              <dt itemid="10359" ordercount="332" class="touchover" data-func="ShowBigImage"
+              imgurl="http://img01.emicro.cn/Product/2012/12/50ceaa6416f40.jpg?t=2014052720"
+              detailurl="./TakeOut/Detail/IsTakeOut/true?ItemId=10359&amp;ShopId=169728">
+                <img src="__PUBLICI__/Bookdinner/images/1.jpg" />
+              </dt>
+              <dd>
+              <h3><{$v.name}></h3>
+              <strong><{$v.price}>元/例</strong> 
+              <span style="display:">332人点过</span></dd>
+              <dd class="check">
+                <label id="label_check" tastes="" goodsid="<{$v.id}>"></label>
+              </dd>
+            </dl>
+
+            </volist>
+
+          
+      
+        
+          </div>
+          <!--pro_list end-->
+          <div class="copy2">技术支持：杭州微盘</div>
+        </div>
+        <div class="jqmScrollbar"
+        style="position: absolute; width: 5px; height: 20px; border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; opacity: 0; top: 0px; background: black;">
+        </div>
+      </div>
+      <div id="jQui_ajax" data-crc="jQui_ajax" class="panel" js-scrolling="yes" style="overflow: hidden;">
+        <div id="null" data-crc="jQui_ajax" class="jqmScrollPanel" js-scrolling="yes" style="overflow: hidden;" title="null">
+          <div id="null" data-crc="jQui_ajax" class="jqmScrollPanel" js-scrolling="yes" title="null"></div>
+          <div class="jqmScrollbar"
+          style="position: absolute; width: 5px; height: 20px; border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; opacity: 0; top: 0px; background: black;">
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- bottom navbar. Add additional tabs here -->
+ 
+    <!-- this is the default left side nav menu.  If you do not want any, do not include these -->
+    <div id="tasteSelect" class="thickLay productLay">
+      <div class="layCon">
+        <div class="touchover closeLay">×</div>
+        <div class="tasteSelect">
+        <label class="current">
+        <input type="radio" name="taste" value="微辣" id="kouwei_0" /> 微辣</label> 
+        <label>
+        <input type="radio" name="taste" value="中辣" id="kouwei_1" /> 中辣</label> 
+        <label>
+        <input type="radio" name="taste" value="重辣" id="kouwei_2" /> 重辣</label></div>
+      </div>
+    </div>
+    <div id="navbar" class="hasMenu off" style="display: none;"></div>
+    <div id="menu" style="overflow: hidden; display: block;overflow-y: scroll;">
+      <div id="menu_scroller"
+      style="-webkit-transform: translate3d(0px, 0px, 0px); -webkit-transition: 0ms linear; transition: 0ms linear;">
+        <a class="closebutton jqMenuClose" href="javascript:;"></a>
+        <div class="jqMenuHeader" style="visibility: hidden;">Menu</div>
+        <ul>
+        <volist name="cate" id="v">
+          <li>
+            <a href="<{:U(GROUP_NAME . '/Bookdinner/foodlist', array('cid' => $v['id']))}>" data-func="ChangeCategory" catname="<{$v.name}>"
+            class="touchover current"><{$v.name}></a>
+          </li>
+        </volist>
+        </ul>
+      </div>
+      <div class="jqmScrollbar"
+      style="position: absolute; width: 5px; height: 20px; border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; opacity: 0; top: 0px; -webkit-transition: 0ms; transition: 0ms; background: black;">
+      </div>
+    </div>
+  </div>
+  <div id="productIntro" class="thickLay productLay">
+    <div class="layCon">
+      <div class="closeLay touchover" data-func="HideBigProductPhoto">×</div>
+      <div class="productLIntro">
+        <div class="productLImg">
+          <img src="./%C3%A6%C2%A3%C2%89%C3%A8%C2%8A%C2%B1%C3%A7%C2%B3%C2%96%C3%A6%C2%99%C2%BA%C3%A6%C2%85%C2%A7%C3%A9%C2%A4%C2%90%C3%A5%C2%8E%C2%85_files/productLImg.jpg"
+          alt="" />
+        </div>
+        <div class="productLTT clearfix">
+          <h5>- 
+          <span>0/例</span></h5>
+          <div>0人点过</div>
+        </div>
+        <div class="productLInfo clearfix">
+          <p class="productDes"></p>
+          <p class="more">
+            <a href="http://nwct.mht01.com/100013/#" class="touchover" data-url="">查看全文</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="display:none;" img="http://img01.emicro.cn/weixin/2014/03/53338f2e30b02.png!iconm" sms="棉花糖智慧餐厅"
+  short="" data-url="/TakeOut/Index/FUID/" id="shareDiv"></div>
+  <div id="sorryAlert" class="thickLay productLay">
+    <div class="layCon">
+      <div class="touchover closeLay" data-func="CloseThickLay">×</div>
+      <div class="sorryAlertBox">
+        <div class="sAlertMain clearfix">
+          <div class="logo">
+            <img src="./%C3%A6%C2%A3%C2%89%C3%A8%C2%8A%C2%B1%C3%A7%C2%B3%C2%96%C3%A6%C2%99%C2%BA%C3%A6%C2%85%C2%A7%C3%A9%C2%A4%C2%90%C3%A5%C2%8E%C2%85_files/53338f2e30b02.png!iconm" />
+          </div>
+          <div class="info">
+            <h6>SORRY</h6>
+            <p>请关注餐厅官方微信哦！</p>
+            <p class="mt">微信名： 
+            <strong>棉花糖智慧餐厅</strong></p>
+            <p>微信号： 
+            <strong>mht_canting</strong></p>
+          </div>
+        </div>
+        <div class="sAlertBtnBox">
+          <div class="sAlertBtn touchover" data-func="CloseThickLay">我知道了</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="position:absolute;top:2000px;left:-200px;">
+
+  
+  <a href="http://www.cnzz.com/stat/website.php?web_id=5810585" target="_blank" title="站长统计">站长统计</a></div>
+  </body>
+</html>

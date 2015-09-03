@@ -1,0 +1,101 @@
+html {
+  height: 100%;
+}
+body {
+  margin: 0;
+  padding:0;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 13px;
+  /*line-height: 1.5;
+  position: relative;*/
+  height: 100%;
+  -webkit-user-select:none;
+  -webkit-text-size-adjust:none;
+  background-color: #313030
+}
+.swiper-container{
+  width: 100%;
+  height: 100%;
+  color: #fff;
+  text-align: center;
+  position: absolute;
+}
+.swiper-slide .title {
+  font-style: italic;
+  font-size: 42px;
+  margin-top: 80px;
+  margin-bottom: 0;
+  line-height: 45px;
+}
+.pagination {
+  position: absolute;
+  z-index: 20;
+  left: 80px;
+  bottom: 50px;
+}
+.swiper-pagination-switch {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  border-radius: 30px;
+  background: #222;
+  margin-right: 30px;
+  opacity: 0.8;
+  border: 1px solid #fff;
+  cursor: pointer;
+}
+.swiper-visible-switch {
+  background: #aaa;
+}
+.swiper-active-switch {
+  background: #fff;
+}
+/**延迟加载层样式**/
+.lazyContent{
+  width: 100%;
+  height: 100%;
+  color: #fff;
+  position: absolute;
+  z-index: 50;
+  top:0px;
+  left:100%;
+  display: none;
+}
+
+
+.loadingCls{
+	width:100%;
+	height:100%;
+	background-color: #fff;
+	color:red;
+	position: absolute;
+	z-index:100
+}
+.loading{
+	left:45%;
+	top:40%;
+	position: relative;
+}
+.loadingText{
+    left:40%;
+	top:40%;
+	position: relative;
+	color:#9d6a4a;
+	font-size:10px;
+}
+
+/**返回按钮*/
+#backBtn{position:fixed ;top:8%;left:10%;z-index: 10;width:30px;height:30px;}
+#backBtn img{width:100%;height:100%}
+/**iframe 样式*/
+#lzcontent iframe{width:100%;height:100%;background-color: #fff;/*box-shadow: -2px 2px 2px #ebebeb;*/}
+
+/*播放器*/
+#yqspvideoCotainer{width:100%;height:100%;background-color: #000;display: none;position: absolute;top:0px;z-index: 20}
+/*头部*/
+.container2{position: relative;width:100%;height:100%}
+.container2 .header{width:100%;line-height: 50px;text-align: left;text-indent: 10px;background-color: #bcb8b8;position: absolute;z-index: 2;top:0px;left:0px}
+.container2 .header a{text-decoration: none;color:#fff;line-height:50px;display:block;}
+/**视频部分 位置垂直居中*/
+.videocls{width:100%;height: 100%;position: absolute;z-index: 1;top:0px;left:0px}
+.videocls table{width:100%;height: 100%;}

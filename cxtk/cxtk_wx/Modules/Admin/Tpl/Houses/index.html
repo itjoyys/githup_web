@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<script type="text/javascript" src="__PUBLIC__/Js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Js/index.js"></script>
+<link rel="stylesheet" href="__PUBLIC__/Css/public.css" />
+<link rel="stylesheet" href="__PUBLIC__/Css/index.css" />
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+
+</head>
+<body>
+<form action="<{:U(GROUP_NAME . '/Houses/run_houses')}>" method="post">
+  <table class="table">
+    <tr>
+      <td colspan="3" background="__PUBLIC__/images/bg_list.gif">
+       <div style="padding-left:10px; font-weight:bold; color:#FFFFFF">微楼盘设置</div>
+      
+      </td>
+
+    </tr>
+    <tr>
+    	<td align="right" width="10%">微楼盘地址：</td>
+    	<td colspan="2">
+    		<{$housesurl}>
+    	</td>
+    </tr>
+    <tr>
+    	<td align="right">微楼盘标题：</td>
+    	<td colspan="2">
+    		<input type="text" name="title" value="<{$title}>" />
+    	</td>
+    </tr>
+     <tr>
+    	<td align="right">微楼盘Keywords参数：</td>
+    	<td colspan="2">
+    		<input type="text" name="Keywords"  value="<{$Keywords}>"/>
+    	</td>
+    </tr>
+     <tr>
+    	<td align="right">微楼盘Description参数：</td>
+    	<td colspan="2">
+    		<input type="text" name="Description"  value="<{$Description}>"/>
+    	</td>
+    </tr>
+
+    <tr>
+       <td colspan="3" align="center">
+            <input type="hidden" name="siteid" value="<{$siteid}>" />
+            <input type="submit" value="提交" class="btn" />
+       </td>
+    </tr>
+
+  </table>
+  </form>
+
+  <form action="<{:U(GROUP_NAME . '/Shop/addshopbg')}>" enctype="multipart/form-data" method="post">
+  <table class="table">
+    <tr>
+      <td colspan="3" background="__PUBLIC__/images/bg_list.gif">
+       <div style="padding-left:10px; font-weight:bold; color:#FFFFFF">商城背景图片</div>
+      
+      </td>
+
+    </tr>
+
+    <tr>
+      <td align="right">背景图片：</td>
+      <td class="td" height="30" width="100"><img src="<{$image_url}><{$logo}>" height="50" ></td>
+      
+      <td height="30">
+         <input name="shopbg" type="file" size="2000000">
+       </td>
+    </tr>
+    <tr>
+       <td colspan="3" align="center">
+            <input type="hidden" name="siteid" value="<{$siteid}>" />
+            <input type="submit" value="提交" class="btn" />
+       </td>
+    </tr>
+
+  </table>
+  </form>
+</body>
+</html>

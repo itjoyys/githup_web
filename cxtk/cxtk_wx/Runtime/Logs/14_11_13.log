@@ -1,0 +1,470 @@
+[ 2014-11-13T14:34:11+08:00 ] 127.0.0.1 /weipan/
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.010000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.011000s ]
+ERR: 非法操作:index
+
+[ 2014-11-13T14:34:16+08:00 ] 127.0.0.1 /weipan/admin%E2%80%98
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.004001s ]
+INFO: [ route_check ] --END-- [ RunTime:0.004001s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined variable: group D:\phpStudy\WWW\weipan\ThinkPHP\Lib\Core\App.class.php 第 95 行.
+ERR: 无法加载模块:admin‘
+
+[ 2014-11-13T14:34:22+08:00 ] 127.0.0.1 /weipan/admin
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.001000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: siteid D:\phpStudy\WWW\weipan\APP\Modules\Admin\Action\IndexAction.class.php 第 8 行.
+SQL: SHOW COLUMNS FROM `comm_site` [ RunTime:0.006000s ]
+SQL: SELECT `module` FROM `comm_site` WHERE ( `sid` = null )  [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `comm_modules` [ RunTime:0.006000s ]
+SQL: SELECT `url` FROM `comm_modules` WHERE ( `mid` = '' )  [ RunTime:0.146008s ]
+NOTIC: [8] Undefined variable: reurl D:\phpStudy\WWW\weipan\APP\Modules\Admin\Action\IndexAction.class.php 第 20 行.
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.056003s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.056003s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.001000s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.013001s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.002000s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.017001s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.009000s ]
+INFO: [ view_end ] --END-- [ RunTime:0.009000s ]
+
+[ 2014-11-13T14:34:22+08:00 ] 127.0.0.1 /weipan/index.php/admin/Index/top.html
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.001000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Constant THEME_NAME already defined D:\phpStudy\WWW\weipan\ThinkPHP\Lib\Core\View.class.php 第 223 行.
+NOTIC: [8] Constant THEME_PATH already defined D:\phpStudy\WWW\weipan\ThinkPHP\Lib\Core\View.class.php 第 171 行.
+NOTIC: [8] Constant APP_TMPL_PATH already defined D:\phpStudy\WWW\weipan\ThinkPHP\Lib\Core\View.class.php 第 172 行.
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.035002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.035002s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.001000s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.000000s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.001000s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.001000s ]
+INFO: [ view_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2014-11-13T14:34:22+08:00 ] 127.0.0.1 /weipan/index.php/admin/Index/left.html
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.001000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Constant THEME_NAME already defined D:\phpStudy\WWW\weipan\ThinkPHP\Lib\Core\View.class.php 第 223 行.
+NOTIC: [8] Constant THEME_PATH already defined D:\phpStudy\WWW\weipan\ThinkPHP\Lib\Core\View.class.php 第 171 行.
+NOTIC: [8] Constant APP_TMPL_PATH already defined D:\phpStudy\WWW\weipan\ThinkPHP\Lib\Core\View.class.php 第 172 行.
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined index: siteid D:\phpStudy\WWW\weipan\APP\Runtime\Cache\Admin\989211913b42f789731be69a69228204.php 第 2 行.
+SQL: SHOW COLUMNS FROM `comm_site` [ RunTime:0.004000s ]
+SQL: SELECT `module` FROM `comm_site` WHERE ( `sid` = null )  [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `comm_modules` [ RunTime:0.003000s ]
+SQL: SELECT `url` FROM `comm_modules` WHERE ( `mid` = '' )  [ RunTime:0.001000s ]
+NOTIC: [8] Undefined variable: reurl D:\phpStudy\WWW\weipan\APP\Runtime\Cache\Admin\989211913b42f789731be69a69228204.php 第 2 行.
+INFO: ParseTemplate Behavior ::run [ RunTime:0.028002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.028002s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.000000s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.000000s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.001000s ]
+INFO: [ view_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2014-11-13T14:34:22+08:00 ] 127.0.0.1 /weipan/index.php/admin/Index/main.html
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.001000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Constant THEME_NAME already defined D:\phpStudy\WWW\weipan\ThinkPHP\Lib\Core\View.class.php 第 223 行.
+NOTIC: [8] Constant THEME_PATH already defined D:\phpStudy\WWW\weipan\ThinkPHP\Lib\Core\View.class.php 第 171 行.
+NOTIC: [8] Constant APP_TMPL_PATH already defined D:\phpStudy\WWW\weipan\ThinkPHP\Lib\Core\View.class.php 第 172 行.
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.009001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.009001s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.001000s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.001000s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003000s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.001000s ]
+INFO: [ view_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2014-11-13T14:34:22+08:00 ] 127.0.0.1 /weipan/index.php/admin/Index/style.css
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.001000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+ERR: 非法操作:style.css
+
+[ 2014-11-13T14:34:22+08:00 ] 127.0.0.1 /weipan/index.php/admin/Index/left.html
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.000000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Constant THEME_NAME already defined D:\phpStudy\WWW\weipan\ThinkPHP\Lib\Core\View.class.php 第 223 行.
+NOTIC: [8] Constant THEME_PATH already defined D:\phpStudy\WWW\weipan\ThinkPHP\Lib\Core\View.class.php 第 171 行.
+NOTIC: [8] Constant APP_TMPL_PATH already defined D:\phpStudy\WWW\weipan\ThinkPHP\Lib\Core\View.class.php 第 172 行.
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined index: siteid D:\phpStudy\WWW\weipan\APP\Runtime\Cache\Admin\989211913b42f789731be69a69228204.php 第 2 行.
+SQL: SHOW COLUMNS FROM `comm_site` [ RunTime:0.003000s ]
+SQL: SELECT `module` FROM `comm_site` WHERE ( `sid` = null )  [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `comm_modules` [ RunTime:0.003000s ]
+SQL: SELECT `url` FROM `comm_modules` WHERE ( `mid` = '' )  [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: reurl D:\phpStudy\WWW\weipan\APP\Runtime\Cache\Admin\989211913b42f789731be69a69228204.php 第 2 行.
+INFO: ParseTemplate Behavior ::run [ RunTime:0.033002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.033002s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.001000s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.001000s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.000000s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2014-11-13T14:34:25+08:00 ] 127.0.0.1 /weipan/index.php/admin/Member/index.html
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.001000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: siteid D:\phpStudy\WWW\weipan\APP\Modules\Admin\Action\MemberAction.class.php 第 8 行.
+SQL: SHOW COLUMNS FROM `comm_member` [ RunTime:0.003000s ]
+SQL: SELECT * FROM `comm_member` WHERE ( `siteid` = null )  [ RunTime:0.041002s ]
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.018001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.018001s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.001000s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.001000s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.001000s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.004000s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.001000s ]
+INFO: [ view_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2014-11-13T14:34:25+08:00 ] 127.0.0.1 /weipan/index.php/admin/Member/index.html
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.001001s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001001s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: siteid D:\phpStudy\WWW\weipan\APP\Modules\Admin\Action\MemberAction.class.php 第 8 行.
+SQL: SHOW COLUMNS FROM `comm_member` [ RunTime:0.003000s ]
+SQL: SELECT * FROM `comm_member` WHERE ( `siteid` = null )  [ RunTime:0.001000s ]
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.008000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008000s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.000000s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.001000s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.001001s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002001s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.000000s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2014-11-13T14:34:25+08:00 ] 127.0.0.1 /weipan/index.php/admin/Member/index.html
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.001000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: siteid D:\phpStudy\WWW\weipan\APP\Modules\Admin\Action\MemberAction.class.php 第 8 行.
+SQL: SHOW COLUMNS FROM `comm_member` [ RunTime:0.003000s ]
+SQL: SELECT * FROM `comm_member` WHERE ( `siteid` = null )  [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.008001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008001s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.000000s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.001000s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.000000s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2014-11-13T14:34:26+08:00 ] 127.0.0.1 /weipan/index.php/admin/Member/add_member.html
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.000000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: siteid D:\phpStudy\WWW\weipan\APP\Modules\Admin\Action\MemberAction.class.php 第 20 行.
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined variable: name D:\phpStudy\WWW\weipan\APP\Runtime\Cache\Admin\dbfa7806c94701d93c93dfd16e29f5a0.php 第 64 行.
+NOTIC: [8] Undefined variable: keyword D:\phpStudy\WWW\weipan\APP\Runtime\Cache\Admin\dbfa7806c94701d93c93dfd16e29f5a0.php 第 70 行.
+NOTIC: [8] Undefined variable: pic D:\phpStudy\WWW\weipan\APP\Runtime\Cache\Admin\dbfa7806c94701d93c93dfd16e29f5a0.php 第 88 行.
+NOTIC: [8] Undefined variable: image_url D:\phpStudy\WWW\weipan\APP\Runtime\Cache\Admin\dbfa7806c94701d93c93dfd16e29f5a0.php 第 89 行.
+NOTIC: [8] Undefined variable: pic D:\phpStudy\WWW\weipan\APP\Runtime\Cache\Admin\dbfa7806c94701d93c93dfd16e29f5a0.php 第 89 行.
+NOTIC: [8] Undefined variable: img D:\phpStudy\WWW\weipan\APP\Runtime\Cache\Admin\dbfa7806c94701d93c93dfd16e29f5a0.php 第 95 行.
+NOTIC: [8] Undefined variable: logo D:\phpStudy\WWW\weipan\APP\Runtime\Cache\Admin\dbfa7806c94701d93c93dfd16e29f5a0.php 第 101 行.
+NOTIC: [8] Undefined variable: num D:\phpStudy\WWW\weipan\APP\Runtime\Cache\Admin\dbfa7806c94701d93c93dfd16e29f5a0.php 第 107 行.
+NOTIC: [8] Undefined variable: company D:\phpStudy\WWW\weipan\APP\Runtime\Cache\Admin\dbfa7806c94701d93c93dfd16e29f5a0.php 第 113 行.
+NOTIC: [8] Undefined variable: address D:\phpStudy\WWW\weipan\APP\Runtime\Cache\Admin\dbfa7806c94701d93c93dfd16e29f5a0.php 第 119 行.
+NOTIC: [8] Undefined variable: tel D:\phpStudy\WWW\weipan\APP\Runtime\Cache\Admin\dbfa7806c94701d93c93dfd16e29f5a0.php 第 125 行.
+NOTIC: [8] Undefined variable: coordinate_x D:\phpStudy\WWW\weipan\APP\Runtime\Cache\Admin\dbfa7806c94701d93c93dfd16e29f5a0.php 第 131 行.
+NOTIC: [8] Undefined variable: coordinate_y D:\phpStudy\WWW\weipan\APP\Runtime\Cache\Admin\dbfa7806c94701d93c93dfd16e29f5a0.php 第 137 行.
+NOTIC: [8] Undefined variable: integral D:\phpStudy\WWW\weipan\APP\Runtime\Cache\Admin\dbfa7806c94701d93c93dfd16e29f5a0.php 第 143 行.
+NOTIC: [8] Undefined variable: details D:\phpStudy\WWW\weipan\APP\Runtime\Cache\Admin\dbfa7806c94701d93c93dfd16e29f5a0.php 第 152 行.
+NOTIC: [8] Undefined variable: details D:\phpStudy\WWW\weipan\APP\Runtime\Cache\Admin\dbfa7806c94701d93c93dfd16e29f5a0.php 第 162 行.
+NOTIC: [8] Undefined variable: details D:\phpStudy\WWW\weipan\APP\Runtime\Cache\Admin\dbfa7806c94701d93c93dfd16e29f5a0.php 第 172 行.
+INFO: ParseTemplate Behavior ::run [ RunTime:0.034002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.034002s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.001000s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.000000s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.001000s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.001000s ]
+INFO: [ view_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2014-11-13T14:34:27+08:00 ] 127.0.0.1 /weipan/index.php/admin/Member/index.html
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.001000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: siteid D:\phpStudy\WWW\weipan\APP\Modules\Admin\Action\MemberAction.class.php 第 8 行.
+SQL: SHOW COLUMNS FROM `comm_member` [ RunTime:0.003000s ]
+SQL: SELECT * FROM `comm_member` WHERE ( `siteid` = null )  [ RunTime:0.001000s ]
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.008001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008001s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.001000s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.000000s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.001000s ]
+INFO: [ view_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2014-11-13T14:34:31+08:00 ] 127.0.0.1 /weipan/index.php/admin/Groupbuy/index.html
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.001000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: siteid D:\phpStudy\WWW\weipan\APP\Modules\Admin\Action\GroupbuyAction.class.php 第 8 行.
+SQL: SHOW COLUMNS FROM `comm_groupbuy_config` [ RunTime:0.004000s ]
+SQL: SELECT * FROM `comm_groupbuy_config` WHERE ( `siteid` = null ) LIMIT 1   [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.014001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.014001s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.000000s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.001000s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.001000s ]
+INFO: [ view_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2014-11-13T14:34:32+08:00 ] 127.0.0.1 /weipan/index.php/admin/Groupbuy/goods.html
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.002000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: siteid D:\phpStudy\WWW\weipan\APP\Modules\Admin\Action\GroupbuyAction.class.php 第 51 行.
+SQL: SHOW COLUMNS FROM `comm_groupbuy_goods` [ RunTime:0.004000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `comm_groupbuy_goods` WHERE ( `siteid` = null ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT * FROM `comm_groupbuy_goods` WHERE ( `siteid` = null ) ORDER BY id DESC LIMIT 0,12   [ RunTime:0.004000s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined variable: cate D:\phpStudy\WWW\weipan\APP\Runtime\Cache\Admin\a13131db513817cfdc76c0fb6b00f97f.php 第 138 行.
+INFO: ParseTemplate Behavior ::run [ RunTime:0.024002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.024002s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.001000s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.001000s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003000s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.000000s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2014-11-13T14:34:32+08:00 ] 127.0.0.1 /weipan/index.php/admin/Groupbuy/goods.html
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.002000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: siteid D:\phpStudy\WWW\weipan\APP\Modules\Admin\Action\GroupbuyAction.class.php 第 51 行.
+SQL: SHOW COLUMNS FROM `comm_groupbuy_goods` [ RunTime:0.003000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `comm_groupbuy_goods` WHERE ( `siteid` = null ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT * FROM `comm_groupbuy_goods` WHERE ( `siteid` = null ) ORDER BY id DESC LIMIT 0,12   [ RunTime:0.001000s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined variable: cate D:\phpStudy\WWW\weipan\APP\Runtime\Cache\Admin\a13131db513817cfdc76c0fb6b00f97f.php 第 138 行.
+INFO: ParseTemplate Behavior ::run [ RunTime:0.009001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.009001s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.000000s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.001000s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003000s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.001000s ]
+INFO: [ view_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2014-11-13T14:34:33+08:00 ] 127.0.0.1 /weipan/index.php/admin/Groupbuy/order.html
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.001000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: siteid D:\phpStudy\WWW\weipan\APP\Modules\Admin\Action\GroupbuyAction.class.php 第 192 行.
+SQL: SHOW COLUMNS FROM `comm_groupbuy_order` [ RunTime:0.004000s ]
+ERR: 1146:Table 'wx_shop.comm_groupbuy_order' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `comm_groupbuy_order`
+SQL: SELECT COUNT(*) AS tp_count FROM `comm_groupbuy_order` WHERE ( `siteid` = null ) LIMIT 1   [ RunTime:0.001000s ]
+ERR: 1146:Table 'wx_shop.comm_groupbuy_order' doesn't exist
+ [ SQL语句 ] : SELECT COUNT(*) AS tp_count FROM `comm_groupbuy_order` WHERE ( `siteid` = null ) LIMIT 1  
+SQL: SELECT * FROM `comm_groupbuy_order` WHERE ( `siteid` = null ) ORDER BY id DESC LIMIT 0,12   [ RunTime:0.001000s ]
+ERR: 1146:Table 'wx_shop.comm_groupbuy_order' doesn't exist
+ [ SQL语句 ] : SELECT * FROM `comm_groupbuy_order` WHERE ( `siteid` = null ) ORDER BY id DESC LIMIT 0,12  
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.014001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.014001s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.001000s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.001000s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003000s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.001000s ]
+INFO: [ view_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2014-11-13T14:34:34+08:00 ] 127.0.0.1 /weipan/index.php/admin/Groupbuy/index.html
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.001000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: siteid D:\phpStudy\WWW\weipan\APP\Modules\Admin\Action\GroupbuyAction.class.php 第 8 行.
+SQL: SHOW COLUMNS FROM `comm_groupbuy_config` [ RunTime:0.003001s ]
+SQL: SELECT * FROM `comm_groupbuy_config` WHERE ( `siteid` = null ) LIMIT 1   [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.006000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.006000s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.001000s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.000000s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.001000s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.001000s ]
+INFO: [ view_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2014-11-13T14:34:35+08:00 ] 127.0.0.1 /weipan/index.php/admin/Groupbuy/goods.html
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.001000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [8] Undefined index: siteid D:\phpStudy\WWW\weipan\APP\Modules\Admin\Action\GroupbuyAction.class.php 第 51 行.
+SQL: SHOW COLUMNS FROM `comm_groupbuy_goods` [ RunTime:0.004000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `comm_groupbuy_goods` WHERE ( `siteid` = null ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT * FROM `comm_groupbuy_goods` WHERE ( `siteid` = null ) ORDER BY id DESC LIMIT 0,12   [ RunTime:0.001000s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined variable: cate D:\phpStudy\WWW\weipan\APP\Runtime\Cache\Admin\a13131db513817cfdc76c0fb6b00f97f.php 第 138 行.
+INFO: ParseTemplate Behavior ::run [ RunTime:0.008001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008001s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.001000s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.000000s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.001000s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.001000s ]
+INFO: [ view_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2014-11-13T14:34:37+08:00 ] 127.0.0.1 /weipan/index.php/admin/Groupbuy/add_goods.html
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.002000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [8] Undefined index: siteid D:\phpStudy\WWW\weipan\APP\Modules\Admin\Action\GroupbuyAction.class.php 第 65 行.
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined index: name D:\phpStudy\WWW\weipan\APP\Runtime\Cache\Admin\a29fa04e3db4090327b6dae0b3059676.php 第 59 行.
+NOTIC: [8] Undefined index: discount D:\phpStudy\WWW\weipan\APP\Runtime\Cache\Admin\a29fa04e3db4090327b6dae0b3059676.php 第 65 行.
+NOTIC: [8] Undefined index: finish D:\phpStudy\WWW\weipan\APP\Runtime\Cache\Admin\a29fa04e3db4090327b6dae0b3059676.php 第 71 行.
+NOTIC: [8] Undefined variable: image_url D:\phpStudy\WWW\weipan\APP\Runtime\Cache\Admin\a29fa04e3db4090327b6dae0b3059676.php 第 79 行.
+NOTIC: [8] Undefined index: img D:\phpStudy\WWW\weipan\APP\Runtime\Cache\Admin\a29fa04e3db4090327b6dae0b3059676.php 第 79 行.
+NOTIC: [8] Undefined variable: image_url D:\phpStudy\WWW\weipan\APP\Runtime\Cache\Admin\a29fa04e3db4090327b6dae0b3059676.php 第 86 行.
+NOTIC: [8] Undefined index: pic D:\phpStudy\WWW\weipan\APP\Runtime\Cache\Admin\a29fa04e3db4090327b6dae0b3059676.php 第 86 行.
+NOTIC: [8] Undefined index: num_buyer D:\phpStudy\WWW\weipan\APP\Runtime\Cache\Admin\a29fa04e3db4090327b6dae0b3059676.php 第 92 行.
+NOTIC: [8] Undefined index: saleprice D:\phpStudy\WWW\weipan\APP\Runtime\Cache\Admin\a29fa04e3db4090327b6dae0b3059676.php 第 98 行.
+NOTIC: [8] Undefined index: price D:\phpStudy\WWW\weipan\APP\Runtime\Cache\Admin\a29fa04e3db4090327b6dae0b3059676.php 第 104 行.
+NOTIC: [8] Undefined index: num D:\phpStudy\WWW\weipan\APP\Runtime\Cache\Admin\a29fa04e3db4090327b6dae0b3059676.php 第 110 行.
+NOTIC: [8] Undefined index: detail D:\phpStudy\WWW\weipan\APP\Runtime\Cache\Admin\a29fa04e3db4090327b6dae0b3059676.php 第 125 行.
+NOTIC: [8] Undefined variable: id D:\phpStudy\WWW\weipan\APP\Runtime\Cache\Admin\a29fa04e3db4090327b6dae0b3059676.php 第 132 行.
+INFO: ParseTemplate Behavior ::run [ RunTime:0.026001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.026001s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.001000s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.000000s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.001000s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.001000s ]
+INFO: [ view_end ] --END-- [ RunTime:0.001000s ]
+

@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<script type="text/javascript" src="__PUBLIC__/Js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Js/index.js"></script>
+<link rel="stylesheet" href="__PUBLIC__/Css/public.css" />
+<link rel="stylesheet" href="__PUBLIC__/Css/index.css" />
+<script type="text/javascript">
+   window.UEDITOR_HOME_URL='__ROOT__/APP/Data/ueditor/';
+   window.onload=function(){
+     window.UEDITOR_CONFIG.initialFrameWidth=700;    
+     window.UEDITOR_CONFIG.initialFrameHeight=200;
+     window.UEDITOR_CONFIG.savePath= ['details'];
+     window.UEDITOR_CONFIG.imageUrl="<{:U(GROUP_NAME . '/Goods/upload')}>";            
+     window.UEDITOR_CONFIG.imagePath="__ROOT__/Uploads/details/";  
+     UE.getEditor('details');
+     UE.getEditor('detailj');
+     UE.getEditor('detailsj');
+   }
+
+</script>
+<js file="__ROOT__/APP/Data/ueditor/ueditor.config.js" />
+<js file="__ROOT__/APP/Data/ueditor/ueditor.all.min.js" />
+<script type="text/javascript" src="__PUBLIC__/Js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Js/doubleDate2.0.js"></script>
+<link href="__PUBLIC__/Js/blue/doubleDate.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript">
+$(function(){
+  
+  $('.doubledate').kuiDate({
+    className:'doubledate',
+    isDisabled: "0"  // isDisabled为可选参数，“0”表示今日之前不可选，“1”标志今日之前可选
+  });
+
+});
+</script>
+<style type="text/css">
+*{margin:0;padding:0;list-style-type:none;}
+a,img{border:0;}
+body{font:12px/180% Arial, Helvetica, sans-serif, "新宋体";}
+
+
+.iptgroup{width:620px;height:60px;margin:20px auto 0 auto;}
+.iptgroup li{float:left;height:30px;line-height:30px;padding:5px;}
+.iptgroup li .ipticon{background:url(blue/date_icon.gif) 98% 50% no-repeat;border:1px #CFCFCF solid;padding:3px;}
+.label{
+  color: red;
+}
+</style>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+
+</head>
+<body>
+<form action="<{:U(GROUP_NAME . '/Member/run_grade')}>" method="post">
+  <table class="table">
+    <tr>
+      <td colspan="3" background="__PUBLIC__/images/bg_list.gif">
+       <div style="padding-left:10px; font-weight:bold; color:#FFFFFF">会员卡高级设置</div>
+      
+      </td>
+
+    </tr>
+    <tr>
+      <td align="right">会员等级是否开启：</td>
+      <td colspan="2">
+           <input type="checkbox" value="1"
+            <if condition="$member_function['level'] eq 1 "> checked="checked"
+           </if> 
+           name="member_function_level"  style="width:15px;">
+          <label class="label">（只有定义了会员等级才开启）</label>
+      </td>
+    </tr>
+      <tr>
+      <td align="right">多门店会员卡是否开启：</td>
+      <td colspan="2">
+          <input type="checkbox" value="1"
+            <if condition="$member_function['store'] eq 1 "> checked="checked"
+           </if> 
+           name="member_function_store"  style="width:15px;">
+          <label class="label">（只有多门店会员用户才开启）</label>
+      </td>
+    </tr>
+         <tr>
+      <td align="right">门店列表是否开启：</td>
+      <td colspan="2"> 
+        <input type="checkbox" value="1" <if condition="$member_function['mstore'] eq 1 "> checked="checked"
+           </if>
+        name="member_function_mstore" style="width:15px;">
+        <label class="label">（只有添加了门店才开启）</label>
+      </td>
+    </tr>
+        <tr>
+      <td align="right">订单中心是否开启：</td>
+      <td colspan="2">
+        <input type="checkbox" value="1" <if condition="$member_function['order'] eq 1 "> checked="checked"
+           </if>
+        name="member_function_order" style="width:15px;">
+        <label class="label">（只有商城订餐团购用户才开启）</label>
+      </td>
+    </tr>
+    <tr>
+       <td colspan="3" align="center">
+            <input type="hidden" name="siteid" value="<{$siteid}>" />
+            <input type="hidden" name="mid" value="<{$mid}>" />
+            <input type="submit" value="提交" class="btn" />
+       </td>
+    </tr>
+
+  </table>
+  </form>
+
+</body>
+</html>

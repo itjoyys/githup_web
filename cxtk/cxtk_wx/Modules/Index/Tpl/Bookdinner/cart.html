@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html class="">
+    <!--<![endif]-->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <title>杭州微盘餐厅</title>
+  
+    <script type="text/javascript" src="__PUBLICI__/Bookdinner/js/jquery-1.4.1.min.js"></script>
+    <script type="text/javascript" src="__PUBLICI__/Bookdinner/js/js.js"></script>
+    <link rel="stylesheet" type="text/css" href="__PUBLICI__/Bookdinner/css/jq.ui.css" />
+    <link href="__PUBLICI__/Bookdinner/css/base.css?t=20140410" rel="stylesheet" type="text/css" />
+    <link href="__PUBLICI__/Bookdinner/css/boilerplate.css" rel="stylesheet" type="text/css" />
+    <link href="__PUBLICI__/Bookdinner/css/jq.datepicker.css" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+        .sleft {
+        width: 72px;
+        text-align: right;
+        float: left;
+        line-height: 33px;
+        margin-top: 5px;
+        }
+
+        .sright {
+            width: 70%;
+            text-align: left;
+            float: left;
+            }
+
+            .inkorderin {
+            float: left;
+            width: 70%;
+            }
+
+       .inkorderin {
+        border-top-width: 1px;
+        border-right-width: 1px;
+        border-bottom-width: 2px;
+        border-left-width: 1px;
+        border-top-style: solid;
+        border-right-style: solid;
+        border-bottom-style: solid;
+        border-left-style: solid;
+        border-top-color: #CCC;
+        border-right-color: #CCC;
+        border-bottom-color: #CCC;
+        border-left-color: #CCC;
+        margin: 5px 10px 5px 10px;
+        -moz-border-radius: 5px;
+        -webkit-border-radius: 5px;
+        border-radius: 5px;
+        color: #666;
+        clear: both;
+        font-size: 16px;
+        text-align: left;
+        padding: 5px 5px;
+        }
+
+        .jc {
+        color: #FFCC00;
+        display: none;
+        margin-top: 15px;
+        float: left;
+        }
+
+        .rtop {
+         padding: 0.5em 0.7em;
+         border-radius: 3px;
+         margin-left: auto;
+         margin-right: auto;
+        }
+                                         
+
+    </style>
+    <script type="text/javascript">
+        $(document).ready(function(){
+           $('#order_success').click(function(){
+
+             $('#osuccess').css("display","none");
+              location.href ="<{$url}>";
+          })
+
+
+        });
+      
+
+    </script>
+
+</head>
+<body>
+    <div id="jQUi">
+        <div id="jQui_modal" style="overflow: hidden;">
+            <div id="modalContainer" style="-webkit-transform: translate3d(0px, 0px, 0px); -webkit-transition: 0ms linear; transition: 0ms linear;"></div>
+            <div class="jqmScrollbar" style="position: absolute; width: 5px; height: 20px; border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; opacity: 0; background-color: black; top: 0px; background-position: initial initial; background-repeat: initial initial;"></div>
+        </div>
+        <!-- this is the main container div.  This way, you can have only part of your app use UI -->
+        <!-- this is the header div at the top -->
+        <div id="header" style="background:-webkit-gradient(linear, left top, left bottom, from(#59BDD5), to(#39A4BB));">
+            <a id="backButton" href="javascript:;" class="button" style="visibility: hidden;">Back</a>
+            <h1 id="pageTitle"></h1>
+            <h3 style="width:1.8em; top:0.6em">
+                <img src="__PUBLICI__/Bookdinner/images/cart.png"></h3>
+            <h6>
+                一共消费:
+                <span id="p_span"><{$tailprice}></span>元
+            </h6>
+        </div>
+        <div id="content" style="top: 0px; bottom: 0px;">
+            <!-- here is where you can add your panels -->
+            <div title="" id="main" class="panel" selected="true" style="background-color: rgb(255, 255, 255); overflow: hidden; display: block;" js-scrolling="yes">
+                <div title="null" id="null" class="jqmScrollPanel" style="background-color: rgb(255, 255, 255); -webkit-transform: translate3d(0px, 0px, 0px); -webkit-transition: 0ms linear; transition: 0ms linear;" js-scrolling="yes">
+                    <div class="Orders_Box Orders_Box2 footerRest">
+                      <!--   <div class="orderPrice" style="display: block;">
+                            会员折扣：
+                            <span class="discount mr18">9折</span>
+                            折扣价：
+                            <span class="price mr18">元</span>
+                            为您节省 <b>0</b>
+                            元
+                        </div> -->
+                        <div class="mycart2">
+                            <div class="title">
+                                <h3>我的菜单</h3>
+                                <h4>
+                                    <span class="touchover" onclick="location.href='<{$url}>'"> 
+                                    <strong>+</strong>
+                                        加菜
+                                    </span>
+                                    <span class="touchover" data-func="EmptyCart" onclick="location.href='<{:U(GROUP_NAME . '/Bookdinner/clearcart')}>'"> 
+                                    <strong><img src="__PUBLICI__/Bookdinner/images/remove.png">
+                                    </strong>
+                                        清空
+                                    </span>
+                                </h4>
+                            </div>
+                            <ul>
+                              <volist name="goods" id="v">
+                                <li>
+                                    <h3>
+                                        <{$v.name}>
+                                        <span><{$v.price}>元/例</span>
+                                    </h3>
+                                    <div class="cartQuantity" itemid="169728_10359_0" volumeindex="0" tasteindex="0">
+                                        <div class="cartdelQuantity touchover" data-func="Decrease">-</div>
+                                        <div class="cartQuantity_text">
+                                          <input id="<{$v.goodsid}>" type="text" class="textBox" value="<{$v.goodsNum}>" readonly=""></div>
+                                        <div class="cartaddQuantity touchover" url="<{:U(GROUP_NAME . '/Bookdinner/updateCartNum')}>" data-func="Increase" gid="<{$v.goodsid}>">+</div>
+                                    </div>
+                                </li>
+                                </volist>
+                             
+
+                            </ul>
+                        </div>
+                        <!--mycart2 end-->
+                         <div class="Orders_title">费用信息：</div>
+
+                          <div class="Orders_date Orders_bg1"><div class="Orders_date_text"><span>总价:</span><b id="p_b" style="font-weight:normal;" class=""><{$tailprice}></b>元</div><div class="Orders_date_text" style="padding-left:80px"><span class="">还需支付：</span><strong id="p_s"><{$tailprice}></strong>元</div></div>
+                    
+                        
+                          <div class="Orders_title">收货信息：</div>
+                          <div class="Orders_date Orders_bg1 ">
+                             <div class="Orders_date_text Orders_date_text2">
+                                <ul><li>联系姓名：<input type="text" class="text" id="contactName" value="" placeholder="如：张先生、王小姐"></li>
+                                <li>联系电话：<input type="text" class="text" id="telnum" value="" placeholder="填写您的常用手机"></li>
+                                <li>送餐地址：<input type="text" class="text" id="address" value="" oldvalue="" placeholder="如：浦东大道1097弄16号3D"></li>
+                                <li>订单备注：<input type="text" class="text" id="note" placeholder="如：不要放辣椒，麻烦快点送到"></li>
+                                </ul>
+                            </div>
+                        </div>
+
+
+                          <div class="Orders_title">支付方式：</div>
+                          <div class="Orders_date Orders_bg1 distribution">
+                          <div class="Orders_date_text2">
+                            <ul>
+                              <li class="paymethod current" value="1">货到付款<em>√</em></li></ul></div></div>
+
+                          <div class="Orders_Sub">
+                          <div class="sub_orders touchover" url="<{:U(GROUP_NAME . '/Bookdinner/ajaxorder')}>" data-func="SubmitTakoutOrder" ourl="<{:U(GROUP_NAME . '/Bookdinner/orderlist')}>">提交订单</div></div>
+
+                        
+                        <!--operaList end-->
+                     
+                        <!--toShare end--> </div>
+                    <!--Orders_Box end-->
+                    <div class="copy2">技术支持：杭州微盘</div>
+                 
+                    <!--savemenu thickLay end -->
+              
+                    <!--SelectSeatDlg thickLay end-->
+              
+                    <!--PurcharseOrderSuccess thickLay end--> </div>
+                <div class="jqmScrollbar" style="position: absolute; width: 5px; height: 558.4833795013851px; border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; opacity: 0; background-color: black; top: 0px; -webkit-transform: translate3d(0px, 0px, 0px); right: 0px; background-position: initial initial; background-repeat: initial initial;"></div>
+            </div>
+            <div id="jQui_ajax" data-crc="jQui_ajax" class="panel" js-scrolling="yes" style="overflow: hidden;">
+                <div id="null" data-crc="jQui_ajax" class="jqmScrollPanel" js-scrolling="yes" style="overflow: hidden;" title="null">
+                    <div id="null" data-crc="jQui_ajax" class="jqmScrollPanel" js-scrolling="yes" title="null"></div>
+                    <div class="jqmScrollbar" style="position: absolute; width: 5px; height: 20px; border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; opacity: 0; background-color: black; top: 0px; background-position: initial initial; background-repeat: initial initial;"></div>
+                </div>
+            </div>
+        </div>
+        <!-- bottom navbar. Add additional tabs here -->
+        <div id="navbar" style="display: none;"></div>
+        <div id="menu" style="overflow: hidden;">
+            <div id="menu_scroller" style="-webkit-transform: translate3d(0px, 0px, 0px); -webkit-transition: 0ms linear; transition: 0ms linear;"></div>
+            <div class="jqmScrollbar" style="position: absolute; width: 5px; height: 20px; border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; opacity: 0; background-color: black; top: 0px; background-position: initial initial; background-repeat: initial initial;"></div>
+        </div>
+        <div id="order_tisi" class="jqPopup" style="top: 281.2px; display: none;">     <header>提示</header>                         
+             <div>
+                <div style="width:1px;height:1px;-webkit-transform:translate3d(0,0,0);float:right"></div>请填写完整信息
+            </div>  
+            <footer style="clear:both;">
+                    <a href="#" class="button center" id="cancel">确定</a>                                
+                  
+            </footer>                       
+      </div>
+
+
+        <div id="order_success" class="jqPopup" style="top: 281.2px; left: 105px;display: none;">     <header>提示</header>                         
+             <div>
+                <div style="width:1px;height:1px;-webkit-transform:translate3d(0,0,0);float:right"></div>提交订单成功
+            </div>  
+            <footer style="clear:both;">
+                    <a href="#" class="button center" id="osuccess">确定</a>                                
+                   
+            </footer>                       
+      </div>
+    </div>
+    <script type="text/html" id="item_tpl"><li><h3><%=name%><span><%=showPrice%>元/例</span></h3><div class="cartQuantity" itemId="<%=showid%>" volumeIndex="<%=volumeIndex%>" tasteIndex="<%=tasteIndex%>"><div class="cartdelQuantity touchover" data-func="Decrease">-</div><div class="cartQuantity_text"><input type="text" class="textBox" value="<%=count%>" readonly></div><div class="cartaddQuantity touchover" data-func="Increase">+</div></div></li></script>
+  
+    <div style="display:none;" img="http://img01.emicro.cn/weixin/2014/03/53338f2e30b02.png!iconm" sms="杭州微盘" short=" " data-url="Index/Menu" id="shareDiv"></div>
+    <div style="position:absolute;top:2000px;left:-200px;">
+   
+    <a href="" target="_blank" title="站长统计">站长统计</a>
+    </div>
+  
+</body>
+</html>

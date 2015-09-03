@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="__PUBLICI__/website/css/onlinebooking.css" media="all">
+    <link rel="stylesheet" type="text/css" href="__PUBLICI__/website/css/datepicker.css" media="all">
+    <link rel="stylesheet" type="text/css" href="__PUBLICI__/website/css/weimob-ui-1-1.css" media="all">
+    <link rel="stylesheet" type="text/css" href="__PUBLICI__/website/css/common.css" media="all">
+    <title>在线预约</title>
+    <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+    <!-- Mobile Devices Support @begin -->
+
+    <meta content="no-cache,must-revalidate" http-equiv="Cache-Control">
+    <meta content="no-cache" http-equiv="pragma">
+    <meta content="0" http-equiv="expires">
+    <meta content="telephone=no, address=no" name="format-detection">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!-- apple devices fullscreen -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Mobile Devices Support @end -->
+    <style>img{max-width:100%!important;}</style>
+</head>
+<body onselectstart="return true;" ondragstart="return false;" id="onlinebooking">
+    <div class="qiandaobanner">
+        <img src="__PUBLICI__/website/images/head_pic.jpg"></div>
+    <div class="cardexplain">
+        <!--后台可控制是否显示-->
+        <ul class="round">
+            <li>
+                <h2>预约说明</h2>
+                <div class="text"><{$instructions}></div>
+            </li>
+        </ul>
+
+        <!--后台可控制是否显示-->
+        <ul class="round">
+            <li class="addr">
+                <a href="<{$aurl}>">
+                    <span>地址：<{$address}></span>
+                </a>
+            </li>
+            <li class="tel">
+                <a href="tel:<{$tel}>">
+                    <span>预约电话：<{$tel}></span>
+                </a>
+            </li>
+        </ul>
+
+        <ul class="round">
+            <form action="<{:U(GROUP_NAME . '/Website/runwbook')}>" method="post">
+                <li class="title mb">
+                    <span class="none">填写表单</span>
+                </li>
+            <volist name="booking" id="v">
+            
+                  <li class="nob">
+                    <table class="kuang" border="0" cellpadding="0" cellspacing="0" width="100%">
+                        <tbody>
+
+                          <if condition="$v['wfield'] eq 1">
+                            <tr>
+                                <th><{$v.name}></th>
+                                <td>
+                                    <input name="<{$v.fieldname}>" class="px" id="truename" value="" placeholder="请输入您的真实姓名" type="text"></td>
+                            </tr>
+                            <elseif condition="$v['wfield'] eq 2"/>
+                              <tr>
+                                <th><{$v.name}></th>
+                                <td>
+                                    <select name="<{$v.fieldname}>"  class="dropdown-select">
+                                        <foreach name="v['content']" item="vo">
+                                           <option value="<{$vo}>"><{$vo}></option>
+                                        </foreach>                    
+                                    </select>
+                                </td>
+                            </tr> 
+                            <else /> 
+                            <tr>
+                                <th class="thtop" valign="top"><{$v.name}></th>
+                                <td>
+                                    <textarea name="<{$v.fieldname}>" class="pxtextarea" style=" height:99px;overflow-y:visible" id="info" placeholder="请输入备注信息"></textarea>
+                                </td>
+                            </tr> 
+
+
+                         </if>
+
+
+
+
+                        </tbody>
+                    </table>
+                </li>
+             </volist>
+              <div class="footReturn">
+            <input id="showcard" class="submit" value="提交消息" type="submit" style="width:100%;">
+        </div>
+            </form>
+        </ul>
+       
+    </div>
+    <footer style="text-align:center; color:#ffd800;margin-right:20px;margin-top:0px;">
+        <a href="">©--杭州微盘技术支持</a>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<script type="text/javascript" src="__PUBLIC__/Js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Js/index.js"></script>
+<link rel="stylesheet" href="__PUBLIC__/Css/public.css" />
+<link rel="stylesheet" href="__PUBLIC__/Css/index.css" />
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<head>
+</head>
+<body>
+
+<form action="<{:U(GROUP_NAME . '/Website/runCustomWebsitetpl')}>" method="post">
+  <table class="table">
+    <tr>
+      <td colspan="2" background="__PUBLIC__/images/bg_list.gif"> <div style="padding-left:10px; font-weight:bold; color:#FFFFFF">首页模板</div></td>
+    </tr>
+
+    <tr>
+      <td align="right">首页模板</td>
+      <td>
+        <textarea name="index_tpl" id="content" rows="3" cols="100" style="width:950px;height:200px;"> <{$index_tpl}></textarea>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" align="center">
+      
+        <input type="hidden" name="siteid" value="<{$siteid}>" />
+        <input type="submit" class="btn" value="保存提交"/>
+      </td>
+
+    </tr>
+  
+  </table>
+  </form>
+
+
+<form action="<{:U(GROUP_NAME . '/Website/runCustomWebsitetpl')}>" method="post">
+  <table class="table">
+    <tr>
+      <td colspan="2" background="__PUBLIC__/images/bg_list.gif"> <div style="padding-left:10px; font-weight:bold; color:#FFFFFF">列表页模板</div></td>
+    </tr>
+
+    <tr>
+      <td align="right">列表页模板</td>
+      <td>
+        <textarea name="list_tpl" id="content" rows="3" cols="100" style="width:950px;height:200px;">
+          <{$list_tpl}>
+        </textarea>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" align="center">
+      
+        <input type="hidden" name="siteid" value="<{$siteid}>" />
+        <input type="submit" class="btn" value="保存提交"/>
+      </td>
+
+    </tr>
+  
+  </table>
+  </form>
+<form action="<{:U(GROUP_NAME . '/Website/runCustomWebsitetpl')}>" method="post">
+  <table class="table">
+    <tr>
+      <td colspan="2" background="__PUBLIC__/images/bg_list.gif"> <div style="padding-left:10px; font-weight:bold; color:#FFFFFF">内容页模板</div></td>
+    </tr>
+
+    <tr>
+      <td align="right">内容页模板</td>
+      <td>
+        <textarea name="detail_tpl" id="content" rows="3" cols="100" style="width:950px;height:200px;"></textarea>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" align="center">
+      
+        <input type="hidden" name="siteid" value="<{$siteid}>" />
+        <input type="submit" class="btn" value="保存提交"/>
+      </td>
+
+    </tr>
+  
+  </table>
+  </form>
+
+</body>
+</html>

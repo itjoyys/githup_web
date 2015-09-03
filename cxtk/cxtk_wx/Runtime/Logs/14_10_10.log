@@ -1,0 +1,70 @@
+[ 2014-10-10T14:11:31+08:00 ] 127.0.0.1 /weipan/index.php/Admin/interaction/scratch_index.html
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.005000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.005000s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `comm_scratch` [ RunTime:0.018001s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `comm_scratch` WHERE ( `siteid` = '3' ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT * FROM `comm_scratch` WHERE ( `siteid` = '3' ) ORDER BY id DESC LIMIT 0,12   [ RunTime:0.013001s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined variable: v D:\phpStudy\WWW\weipan\APP\Runtime\Cache\Admin\ebddf9f5db3483664d9fea52ad08dc68.php 第 124 行.
+INFO: ParseTemplate Behavior ::run [ RunTime:0.038002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.038002s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.006001s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.005000s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.002000s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.014001s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.009001s ]
+INFO: [ view_end ] --END-- [ RunTime:0.009001s ]
+
+[ 2014-10-10T14:11:32+08:00 ] 127.0.0.1 /weipan/index.php/Admin/Microwall/microwall.html
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.001000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `comm_microwall` [ RunTime:0.173010s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `comm_microwall` WHERE ( `siteid` = '3' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SELECT * FROM `comm_microwall` WHERE ( `siteid` = '3' ) ORDER BY id desc LIMIT 0,12   [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.050003s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.050003s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.001000s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.000000s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.001000s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003000s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.000000s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2014-10-10T14:11:32+08:00 ] 127.0.0.1 /weipan/index.php/Admin/Microwall/microwall.html
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.001000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `comm_microwall` [ RunTime:0.004000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `comm_microwall` WHERE ( `siteid` = '3' ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT * FROM `comm_microwall` WHERE ( `siteid` = '3' ) ORDER BY id desc LIMIT 0,12   [ RunTime:0.001001s ]
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.007000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.007000s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.001000s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.000000s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.001000s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003000s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.000000s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000000s ]
+

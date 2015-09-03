@@ -1,0 +1,270 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>商品详细信息</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" type="text/css" href="__PUBLICI__/css/all_html5.css" charset="gbk">
+    <link rel="stylesheet" href="__PUBLICI__/css/style.css">
+    <link rel="stylesheet" href="__PUBLICI__/css/templates.css">
+    <link rel="stylesheet" href="__PUBLICI__/Shop/css/idangerous.swiper.css">
+    <link rel="stylesheet" href="__PUBLICI__/Shop/css/detail1.css">
+    <script type="text/javascript" src="__PUBLICI__/Shop/js/idangerous.swiper-2.1.min.js"></script>
+    <script type="text/javascript" src="__PUBLICI__/Bookdinner/js/jquery-1.4.1.min.js"></script>
+    <script type="text/javascript" src="__PUBLICI__/js/ProductDetail.js"></script>
+    <script type="text/javascript" src="__PUBLICI__/Shop/js/jquery.min.js"></script>
+
+    <style type="text/css">
+    .bx_wrap {
+    margin-left: 0px;
+    border-radius: 5px;
+}
+.bx_wrap ul img { border: 2px solid #DDD; }
+
+    .buy{
+        outline: 0;
+        padding: 5px 12px;
+        width: 42%;
+        font-size: 12px;
+        line-height: 30px;
+        height: 28px;
+        float: left;
+        display: block;
+        color: #fff;
+        margin-right: auto;
+        margin-left: auto;
+        font-weight: bold;
+        text-shadow: 1px 1px #1f272b;
+        border: 1px solid #1c252b;
+        border-radius: 5px;
+        -moz-border-radius: 5px;
+        -webkit-border-radius: 5px;
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(3%,#515B62), color-stop(5%,#444E55), color-stop(100%,#394147));
+        box-shadow: 1px 1px 1px rgba(0,0,0,0.2);
+        -moz-box-shadow: 1px 1px 1px rgba(0,0,0,0.2);
+        -webkit-box-shadow: 1px 1px 1px rgba(0,0,0,0.2);
+    }
+    .buynow {
+outline: 0;
+padding: 5px 12px;
+width: 42%;
+line-height: 30px;
+height: 28px;
+font-size: 12px;
+float: right;
+display: block;
+color: #fff;
+margin-right: auto;
+margin-left: auto;
+font-weight: bold;
+text-shadow: 1px 1px #F50B1E;
+border: 1px solid #F51C36;
+border-radius: 5px;
+-moz-border-radius: 5px;
+-webkit-border-radius: 5px;
+background: -webkit-gradient(linear, left top, left bottom, color-stop(3%,#F81430), color-stop(5%,#F31933), color-stop(100%,#D61212));
+box-shadow: 1px 1px 1px rgba(0,0,0,0.2);
+-moz-box-shadow: 1px 1px 1px rgba(0,0,0,0.2);
+-webkit-box-shadow: 1px 1px 1px rgba(0,0,0,0.2);
+}
+    .info{padding: 10px;padding-left: 15px;
+}
+    .buynum{height: auto;
+    padding: 0px 0;}
+    .price{padding-left: 15px;}
+    .title{padding-left: 15px;}
+    .qb_hr {
+    border: 0;
+    border-top: 1px solid #eaeaea;
+    border-bottom: 1px solid #FFF;
+    clear: both;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    }
+    .clear{clear: both;height: 0;}
+    span{padding: 0;margin: 0;text-align: center;}
+
+    .cartQuantity {
+        width: 123px;
+    float: left;
+    margin-left: 5px;
+-webkit-box-pack: end;
+display: -webkit-box;
+height: 30px;
+border: #C3C3C3 1px solid;
+border-radius: 5px;
+overflow: hidden;
+}
+.cartdelQuantity {
+border-radius: 5px 0 0 5px;
+}
+.cartQuantity_text input {
+height: 2.1em;
+width: 40px;
+line-height: 1.9em;
+border: #fff 1px solid;
+border-radius: 0;
+background-color: #fff;
+font-size: 1em;
+text-align: center;
+color: #3f3937;
+box-shadow: rgba(0,0,0,0.7) 1px 1px 2px inset;
+margin-top: -1px;
+}
+.cartdelQuantity, .cartaddQuantity {
+background-image: -webkit-gradient(linear, left top, left bottom, from(#EDEAE6), to(#DBDBD8));
+font-size: 1.2em;
+color: #FFF;
+width: 2.24em;
+text-align: center;
+font-weight: normal;
+line-height: 1.5em;
+}
+
+   </style>  
+   <script type="text/javascript">
+        var mySwiper = new Swiper('.swiper-container',{
+                pagination: '.pagination',
+                loop:true,
+                grabCursor: true,
+                paginationClickable: true
+            });
+            
+            $('.arrow-left').on('click', function(e){
+                e.preventDefault();
+                mySwiper.swipePrev();
+            });
+            
+            $('.arrow-right').on('click', function(e){
+                e.preventDefault();
+                mySwiper.swipeNext();
+            });
+   </script>  
+
+
+</head>
+
+<body id="body">
+     <div class="device">
+            <div class="swiper-container" style="cursor: -webkit-grab;">
+                        <div class="swiper-wrapper" style="width: 1830px; height: 235px; -webkit-transform: translate3d(-1098px, 0px, 0px); transition: 0.3s; -webkit-transition: 0.3s;">
+                        <div class="swiper-slide" style="width: 366px; height: 235px;">
+                                <div class="content-slide">
+                                    <div class="mbg">
+                                       <p class="ico">
+                                            <img src="<{$image_url}><{$goods['photo1']}>">
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pagination"><span class="swiper-pagination-switch"></span><span class="swiper-pagination-switch"></span><span class="swiper-pagination-switch swiper-visible-switch swiper-active-switch"></span></div>
+                    </div> 
+         </div> 
+    <div class="lay_page page_detail current" id="page_detail">
+        <div class="lay_page_wrap">
+              <!--商品图片展示-->
+                   <div class="device">
+            <div class="swiper-container" style="cursor: -webkit-grab;">
+                        <div class="swiper-wrapper" style="width: 1830px; height: 235px; -webkit-transform: translate3d(-1098px, 0px, 0px); transition: 0.3s; -webkit-transition: 0.3s;">
+                        <div class="swiper-slide" style="width: 366px; height: 235px;">
+                                <div class="content-slide">
+                                    <div class="mbg">
+                                       <p class="ico">
+                                            <img src="<{$image_url}><{$goods['photo1']}>">
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pagination"><span class="swiper-pagination-switch"></span><span class="swiper-pagination-switch"></span><span class="swiper-pagination-switch swiper-visible-switch swiper-active-switch"></span></div>
+                    </div> 
+         </div> 
+          
+    
+            <!--商品信息展示-->
+           <form action="<{:U(GROUP_NAME . '/Cart/index')}>"  method="post">
+               <div class="shop_detail_box" id="<{$goodsid}>" detailsurl="<{$goodsid}>">
+                <h1 class="title"><{$name}></h1>
+                <hr class="qb_hr">
+                <div class="price">
+                    现价：<strong class="mod_color_strong" id="price">￥<{$saleprice}></strong>                    
+                    <del class="mod_color_weak qb_fs_s">￥<{$price}></del>                    
+                    <br>
+                </div>
+              <!--选择 购买 数量-->
+               <div style="height:30px;line-height:30px;margin-bottom:10px;margin-top:5px;">
+
+                <span style="float:left;margin-left:15px;">数量:</span>   
+                <div class="cartQuantity" itemid="169728_10359_0" volumeindex="0" tasteindex="0">
+                     <div class="cartdelQuantity touchover" data-func="Decrease">-</div>
+                      <div class="cartQuantity_text">
+                         <input id="<{$v.goodsid}>" type="text" class="textBox" value="1" readonly=""></div>
+                     <div class="cartaddQuantity touchover" data-func="Increase" gid="<{$v.goodsid}>">+</div>
+                 </div>
+
+               </div>
+                <span class="buy" id="addcart" addurl="<{:U(GROUP_NAME . '/Detail/addcart')}>">加入购物车</span>
+                <span class="buynow" type="submit" buyurl="<{:U(GROUP_NAME . '/Cart/index')}>">立即购买</span>    
+                <div class="clear"></div>
+                </div>
+           </form>  
+
+         <div id="order_tisi" class="jqPopup">     
+            <header>提示</header>                         
+             <div>
+                <div style="width:1px;height:1px;-webkit-transform:translate3d(0,0,0);float:right"></div>
+                添加商品成功
+            </div>  
+            <footer style="clear:both;">
+                    <a href="<{$homeurl}>" class="button center" id="cancel">再逛逛</a>  
+                    <a href="<{:U(GROUP_NAME . '/Cart/index')}>" class="button center" id="cancel">去购物车结算</a>                               
+            </footer>                       
+      </div>
+ 
+        </div>
+    </div> 
+    
+     <div class="shop_detail_box">
+        <h2 gaevent="imt/deal/terms">
+            <span class="icon-fonts">J</span>
+            购买须知
+        </h2>
+        <ul>
+            <li>商家QQ：</li>
+            <li>产品咨询：商家电话：；联系时间：9:00-24:00</li>
+            <li>配送范围：全国（除港澳台、新疆、西藏外）均可配送</li>
+            <li>快递公司：本单使用韵达快递（400-821-6789）全峰快递（400-100-0001）</li>
+            <li>配送费用：本单包邮，配送范围内无需再额外支付邮费</li>
+            <li>配送时间：购买成功后3天内发货，5-7天送达</li>
+            <li>查询修改：购买成功后可在我的订单中查询物流和修改订单</li>
+            <li>售后保障：如需退换货，请联系商家，详情请见物流售后保障</li>
+        </ul>
+    </div>
+    <div class="shop_detail_box">
+        <h2 gaevent="imt/deal/terms">
+            <span class="icon-fonts">D</span>
+            商品参数：
+        </h2>
+        <ul>
+            <{$details}>产品说明 产品说明 产品说明
+           
+        </ul>
+    </div>
+   
+    <div id="foot">
+        <div class="footer_login">
+        
+        </div>
+        <div class="copyright">
+            <p>Copyright © 2013-2014 <{$title}></p>
+            <p>
+                技术支持：
+                <a href="">杭州微盘信息技术有限公司</a>
+            </p>
+        </div>
+    </div>
+
+</body>
+</html>

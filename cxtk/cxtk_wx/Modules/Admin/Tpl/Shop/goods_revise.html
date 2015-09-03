@@ -1,0 +1,345 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<script type="text/javascript" src="__PUBLIC__/Js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Js/index.js"></script>
+<link rel="stylesheet" href="__PUBLIC__/Css/public.css" />
+<link rel="stylesheet" href="__PUBLIC__/Css/index.css" />
+<script type="text/javascript">
+   window.UEDITOR_HOME_URL='__ROOT__/APP/Data/ueditor/';
+   window.onload=function(){
+     window.UEDITOR_CONFIG.initialFrameWidth=800;    
+     window.UEDITOR_CONFIG.initialFrameHeight=400;
+     window.UEDITOR_CONFIG.savePath= ['details'];
+     window.UEDITOR_CONFIG.imageUrl="<{:U(GROUP_NAME . '/Shop/upload')}>";            
+     window.UEDITOR_CONFIG.imagePath="__ROOT__/Uploads/details/";  
+     UE.getEditor('details');
+
+   }
+
+</script>
+<style type="text/css">
+  .p_span{
+  padding: 4px;
+  border-radius: 4px;
+  background: #d93d8e;
+  color: #fff;
+  margin-top:5px;
+  margin-left: 5px;
+  font-size: 12px;
+}
+#priceList td{
+  text-align: center;
+  font-size: 12px;
+}
+#priceList th{
+  width: 60px;
+  text-align: center;
+}
+#priceList input{
+  height: 26px;
+}
+
+.tnorms{
+  height: 30px;
+}
+.photo img{
+ width: 100px;
+ height: 50px;
+}
+</style>
+<script type="text/javascript">
+   var i=0;
+   var sname1;
+   var sname2;
+   var main='';
+   var property=new Array();
+   $(document).ready(function(){
+      var gid = $(".gid").val();
+      var t=$(".property_o").length; //判断属性种类个数
+      $(".p_1").click(function(){
+           $(".p_1").each(function(){
+                if ($(this).attr('checked')) {
+                   var pname1 = $(this).attr('pname');//属性值
+                   sname1 = $(this).attr('sname');//属性类型
+                   var cid = $(this).val();
+                   property[i] = 'p1_'+cid+'_'+pname1;
+                   i++;
+                 }else{
+                   var pname1 = $(this).attr('pname');//属性值
+                   var cid = $(this).val();
+                   property.remove('p1_'+cid+'_'+pname1);
+                  }
+            })
+            $(".p_2").each(function(){
+                  if ($(this).attr('checked')) {
+                     var pname2 = $(this).attr('pname');//属性值
+                     sname2 = $(this).attr('sname');//属性类型
+                     var cid = $(this).val();
+                     property[i] = 'p2_'+cid+'_'+pname2;
+                     i++;
+                   }else{
+                     var pname2 = $(this).attr('pname');//属性值
+                     var cid = $(this).val();
+                     property.remove('p2_'+cid+'_'+pname2);
+                    }
+          })
+          property = unique(property);//去掉重复
+          property.join(',');
+          $.ajax({
+               type: "POST",
+               url: "http://localhost:8077/weipan/index.php/Admin/Shop/r_goods_property",
+               data: "property="+property+'&sname1='+sname1+'&sname2='+sname2+'&t='+t+'&gid='+gid,
+               dataType: "json",
+               success: function(data){
+                 if (data[0].p2 == undefined) {
+                     //只有一个属性
+ var header = '<tbody><tr><th width="80">'+data[0].p1+'</th><th width="80">销售价格</th><th width="80">市场价</th><th width="80">数量</th></tr>';
+
+                  for (var i = 1; i < data.length; i++) {
+                    var main ='<tr class="tnorms"><td>'+data[i].p1+'<input type="hidden" name="shop_p[]" value="'+data[i].shop_p+'"><input type="hidden" name="property1[]" value="'+data[i].p1_id+'"></td><td><input type="text" class="px" name="goodsSaleprice[]" value="'+data[i].goodsSaleprice+'"></td><td><input type="text" name="goodsPrice[]" class="px" value="'+data[i].goodsPrice+'"></td><td><input type="text" class="px" value="'+data[i].goodsNum+'" name="goodsNum[]"></td></tr>'+main;
+                  }
+                   main = header+main +'</tbody>';
+
+                 }else{
+                     //两个属性
+                    var header = '<tbody><tr><th height="30">'+data[0].p1+'</th><th width="80">'+data[0].p2+'</th><th width="80">销售价格</th><th width="80">市场价</th><th width="100">数量</th></tr>';
+
+                    for (var i = 1; i < data.length; i++) {
+                     var main ='<tr class="tnorms"><td>'+data[i].p1+'<input type="hidden" name="shop_p[]" value="'+data[i].shop_p+'"><input type="hidden" name="property1[]" value="'+data[i].p1_id+'"></td><td>'+data[i].p2+'<input type="hidden" name="property2[]" value="'+data[i].p2_id+'"></td><td><input type="text" class="px" value="'+data[i].goodsSaleprice+'" name="goodsSaleprice[]"></td><td><input type="text" class="px" value="'+data[i].goodsPrice+'" name="goodsPrice[]"></td><td width="130"><input type="text" class="px" value="'+data[i].goodsNum+'" name="goodsNum[]"></td></tr>'+main;
+                   }
+                     main = header+main +'</tbody>';
+
+                   }
+                 $("#priceList").html(main);
+   
+               }
+          });
+    })
+
+       $(".p_2").click(function(){
+        var t=$(".property_o").length; //判断属性种类个数
+          $(".p_1").each(function(){
+                if ($(this).attr('checked')) {
+                   var pname1 = $(this).attr('pname');//属性值
+                   sname1 = $(this).attr('sname');//属性类型
+                   var cid = $(this).val();
+                   property[i] = 'p1_'+cid+'_'+pname1;
+                   i++;
+                 }else{
+                   var pname1 = $(this).attr('pname');//属性值
+                   var cid = $(this).val();
+                   property.remove('p1_'+cid+'_'+pname1);
+                  }
+            })
+         $(".p_2").each(function(){
+            if ($(this).attr('checked')) {
+               var pname2 = $(this).attr('pname');//属性值
+               sname2 = $(this).attr('sname');//属性类型
+               var cid = $(this).val();
+               property[i] = 'p2_'+cid+'_'+pname2;
+               i++;
+             }else{
+               var pname2 = $(this).attr('pname');//属性值
+               var cid = $(this).val();
+               property.remove('p2_'+cid+'_'+pname2);
+              }
+          })
+          property = unique(property); //去掉重复
+          property.join(',');
+                 $.ajax({
+               type: "POST",
+               url: "http://localhost:8077/weipan/index.php/Admin/Shop/r_goods_property",
+               data: "property="+property+'&sname1='+sname1+'&sname2='+sname2+'&t='+t+'&gid='+gid,
+               dataType: "json",
+               success: function(data){
+                 if (data[0].p2 == undefined) {
+                     //只有一个属性
+ var header = '<tbody><tr><th width="100">'+data[0].p1+'</th><th width="100">价格</th><th width="100">会员价</th><th width="100">数量</th></tr>';
+
+                  for (var i = 1; i < data.length; i++) {
+                    var main ='<tr class="tnorms"><td width="130" height="30">'+data[i].p1+'<input type="hidden" name="shop_p[]" value="'+data[i].shop_p+'"><input type="hidden" value="'+data[i].p1_id+'" name="property1[]"></td><td width="130"><input type="text" class="px" name="goodsSaleprice[]" value="'+data[i].goodsSaleprice+'"></td><td width="130"><input type="text" class="px" value="'+data[i].goodsPrice+'" name="goodsPrice[]"></td><td width="130"><input type="text" class="px" value="'+data[i].goodsNum+'" name="goodsNum[]"></td></tr>'+main;
+                  }
+                   main = header+main +'</tbody>';
+
+                 }else{
+                     //两个属性
+                    var header = '<tbody><tr><th height="30">'+data[0].p1+'</th><th width="80">'+data[0].p2+'</th><th width="80">销售价格</th><th width="80">市场价</th><th width="100">数量</th></tr>';
+
+                    for (var i = 1; i < data.length; i++) {
+                     var main ='<tr class="tnorms"><td width="130" height="30">'+data[i].p1+'<input type="hidden" name="shop_p[]" value="'+data[i].shop_p+'"><input type="hidden" value="'+data[i].p1_id+'" name="property1[]"></td><td width="130">'+data[i].p2+'<input type="hidden" value="'+data[i].p2_id+'" name="property2[]"></td><td width="130"><input type="text" class="px" value="'+data[i].goodsSaleprice+'" name="goodsSaleprice[]"></td><td width="130"><input type="text" class="px" name="goodsPrice[]" value="'+data[i].goodsPrice+'"></td><td width="130"><input type="text" class="px" name="goodsNum[]" value="'+data[i].goodsNum+'"></td></tr>'+main;
+                   }
+                     main = header+main +'</tbody>';
+
+                   }
+                 $("#priceList").html(main);
+   
+               }
+          });
+    })
+   })
+
+  //删除js数组指定值
+   Array.prototype.indexOf = function(val) {
+            for (var i = 0; i < this.length; i++) {
+                if (this[i] == val) return i;
+            }
+            return -1;
+        };
+    Array.prototype.remove = function(val) {
+            var index = this.indexOf(val);
+            if (index > -1) {
+                this.splice(index, 1);
+            }
+        };
+    //去掉数组中重复元素
+        function unique(data){ 
+          data = data || []; 
+          var a = {}; 
+          for (var i=0; i<data.length; i++) { 
+          var v = data[i]; 
+          if (typeof(a[v]) == 'undefined'){ 
+          a[v] = 1; 
+          } 
+          }; 
+          data.length=0; 
+          for (var i in a){ 
+          data[data.length] = i; 
+          } 
+          return data; 
+          } 
+</script>
+<js file="__ROOT__/APP/Data/ueditor/ueditor.config.js" />
+<js file="__ROOT__/APP/Data/ueditor/ueditor.all.min.js" />
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+
+</head>
+<body>
+<form action="<{:U(GROUP_NAME . '/Shop/run_add_goods')}>" enctype="multipart/form-data"  method="post">
+  <table class="table">
+    <tr>
+      <td colspan="2" background="__PUBLIC__/images/bg_list.gif">
+       <div style="padding-left:10px; font-weight:bold; color:#FFFFFF">添加商品</div>
+      </td>
+    </tr>
+    <tr>
+    	<td align="right">商品名称：</td>
+    	<td>
+    		<input type="text" name="name" value="<{$goods['name']}>"/>
+    	</td>
+    </tr>
+        <volist name="property" id="v" key="z">
+            <tr class="property_o">
+              <td align="right"><{$v.name}>：</td>
+              <td>
+                <volist name = "v['child']" id="j">
+                   <span class="p_span"><input class="p_<{$z}>" <if condition="$j.pstate eq 1"> checked="checked"</if> gid="<{$v.cid}>" type="checkbox" sname="<{$v.name}>" pname="<{$j.name}>" value="<{$j.id}>"/><{$j.name}>
+                   </span>
+                </volist>
+              </td>
+            </tr>
+       </volist>
+     <!-- <tr>
+    	<td align="right">商品编号：</td>
+    	<td>
+    		<input type="text" name="goodsid" /><label>格式:A201402001</label>
+    	</td>
+    </tr> -->
+      <tr>
+        <td align="right">商品信息：</td>
+        <td>
+             <table id="priceList">
+             <notempty name="property_g">
+              <volist name = "property_t" id="v" offset="0" length="1">
+                <tbody>
+                  <tr>
+                    <th height="30"><{$v.p1}></th>
+                    <notempty name="v['p2']"><th width="80"><{$v.p2}></th></notempty>  
+                    <th width="80">销售价格</th>
+                    <th width="80">市场价</th>
+                    <th width="100">数量</th></tr>
+              </volist>
+              <volist name = "property_t" id="v" offset="1" length="20">
+                  <tr class="tnorms">
+                    <td><{$v.p1}>
+                    <input type="hidden" name="shop_p[]" value="<{$v.shop_p}>">
+                    <input type="hidden" name="property1[]" value="<{$v.p1_id}>"></td>
+                    <notempty name="v['p2']"> <td><{$v.p2}><input type="hidden" name="property2[]" value="<{$v.p2_id}>"></td></notempty>
+                    <td><input type="text" class="px" value="<{$v.goodsSaleprice}>" name="goodsSaleprice[]"></td>
+                    <td><input type="text" class="px" value="<{$v.goodsPrice}>" name="goodsPrice[]"></td>
+                    <td width="130"><input type="text" class="px" value="<{$v.goodsNum}>" name="goodsNum[]"></td>
+                  </tr>
+              </volist>
+               </tbody>
+                   </notempty>
+             </table>
+        </td>
+    </tr> 
+
+
+     <tr>
+    	<td align="right">销售价格：</td>
+    	<td>
+    		<input type="text" name="saleprice" value="<{$goods['saleprice']}>"/>
+    	</td>
+    </tr>
+     <tr>
+    	<td align="right">市场价格：</td>
+    	<td>
+    		<input type="text" name="price" value="<{$goods['price']}>"/>
+    	</td>
+    </tr>
+    <tr>
+      <td align="right">库存数量：<p style="color:red;">【最大数量9999件】</p></td>
+      <td>
+        <input type="text" name="num" value="<{$goods['num']}>"/>
+      </td>
+    </tr>
+    <tr>
+    	<td align="right">商品属性：<p style="color:red;">【最多勾选一种可以不勾选】</p></td>
+    	<td>
+       <label style="margin-right:10px;">
+         <input type="checkbox" name="property" 
+            <if condition = "$goods['property'] eq 1"> checked = selected</if>  value="1" />热卖商品&nbsp;&nbsp;&nbsp;&nbsp;
+         <input type="checkbox" name="property" 
+            <if condition = "$goods['property'] eq 2"> checked = selected</if> value="2"/>最新商品&nbsp;&nbsp;&nbsp;&nbsp;
+         <input type="checkbox" name="property"  
+            <if condition = "$goods['property'] eq 3"> checked = selected</if> value="3"/>特价商品
+       </label>
+
+      </td>
+    </tr>
+     <tr>
+            <td align="right"> 图片上传：<p style="color:red;">【最多上传4张最少一张】</p><p style="color:red;">【编辑时如果不选择表示不更改】</p></td>
+            <td height="30">
+               <span class="photo"><img src="<{$image_url}><{$goods['photo1']}>"> <input name="photo1" type="file" size="2000000" /></span><br>
+               <span class="photo"><img src="<{$image_url}><{$goods['photo2']}>"> <input name="photo2" type="file" size="2000000" /></span><br>
+               <span class="photo"><img src="<{$image_url}><{$goods['photo3']}>"> <input name="photo3" type="file" size="2000000" /></span><br>
+              <span class="photo"><img src="<{$image_url}><{$goods['photo4']}>"> <input name="photo4" type="file" size="2000000" /></span>
+            </td>
+            
+        </tr>
+    <tr>
+    	<td align="right">
+    		商品详情：
+    	</td>
+    	<td>
+    		<textarea name="details" id="details">
+           <{$goods['details']}>
+    		</textarea>
+    	</td>
+    </tr>
+
+    <tr>
+       <td colspan="5" align="center">
+            <input type="hidden" name="siteid" value="<{$siteid}>" />
+            <input type="hidden" class="gid" name="gid" value="<{$gid}>" />
+            <input type="hidden" name="classid" value="<{$classid}>" />
+            <input type="submit" value="提交" class="btn" />
+       </td>
+    </tr>
+
+  </table>
+  </form>
+</body>
+</html>

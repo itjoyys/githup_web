@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="__PUBLICI__/Website/css/reset.css" media="all">
+    <link rel="stylesheet" type="text/css" href="__PUBLICI__/Website/css/snower.css" media="all">
+    <link rel="stylesheet" type="text/css" href="__PUBLICI__/Website/css/common.css" media="all">
+    <link rel="stylesheet" type="text/css" href="__PUBLICI__/Website/css/font-awesome.css" media="all">
+    <link rel="stylesheet" type="text/css" href="__PUBLICI__/Website/css/home-40.css" media="all">
+    <script type="text/javascript" async="" src="__PUBLICI__/Website/js/wtj.js"></script>
+    <script type="text/javascript" src="__PUBLICI__/Website/js/maivl.js"></script>
+    <script type="text/javascript" src="__PUBLICI__/Website/js/jQuery.js"></script>
+    <script type="text/javascript" src="__PUBLICI__/Website/js/zepto.js"></script>
+    <script type="text/javascript" src="__PUBLICI__/Website/js/swipe.js"></script>
+    <title><{$title}></title>
+
+    <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+    <meta name="keywords" content="<{$Keywords}>">
+    <meta name="description" content="<{$Description}>">
+    <!-- Mobile Devices Support @begin -->
+
+    <meta content="no-cache,must-revalidate" http-equiv="Cache-Control">
+    <meta content="no-cache" http-equiv="pragma">
+    <meta content="0" http-equiv="expires">
+    <meta content="telephone=no, address=no" name="format-detection">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!-- apple devices fullscreen -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Mobile Devices Support @end -->
+    <script charset="utf-8" src="__PUBLICI__/Website/js/v.js"></script>
+    <script type="text/javascript" src="__PUBLICI__/Website/js/socket.io.js"></script>
+</head>
+<body onselectstart="return true;" ondragstart="return false;">
+    <style type="text/css">
+body{
+    background:url(http://stc.weimob.com/img/template/lib/v42_bg.jpg);
+}
+</style>
+    <div class="body">
+        <!--
+    幻灯片管理
+    -->
+        <div style="-webkit-transform:translate3d(0,0,0);">
+            <div id="banner_box" class="box_swipe" style="visibility: visible;">
+                <ul style="list-style: none; width: 3200px; transition: 500ms; -webkit-transition: 500ms; -webkit-transform: translate3d(-640px, 0px, 0px);">
+                  <volist name="slide" id="v">
+                    <li style="width: 640px; display: table-cell; vertical-align: top;">
+                        <a onclick="return false;">
+                            <img src="" alt="BMWZ4" style="width:100%;"></a>
+                    </li>
+                    </volist>
+                    <li style="width: 640px; display: table-cell; vertical-align: top;">
+                        <a onclick="return false;">
+                            <img src="./绿地宝马5S店_files/20131008133525_24378.jpg" alt="BMWX6" style="width:100%;"></a>
+                    </li>
+                    <li style="width: 640px; display: table-cell; vertical-align: top;">
+                        <a onclick="return false;">
+                            <img src="./绿地宝马5S店_files/20131008133701_19454.jpg" alt="BMWX5" style="width:100%;"></a>
+                    </li>
+                    <li style="width: 640px; display: table-cell; vertical-align: top;">
+                        <a onclick="return false;">
+                            <img src="./绿地宝马5S店_files/20131008133809_45799.jpg" alt="BMW5系" style="width:100%;"></a>
+                    </li>
+                    <li style="width: 640px; display: table-cell; vertical-align: top;">
+                        <a onclick="return false;">
+                            <img src="./绿地宝马5S店_files/20131008133921_59925.jpg" alt="BMW3系" style="width:100%;"></a>
+                    </li>
+                </ul>
+                <ol>
+                    <li class=""></li>
+                    <li class="on"></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ol>
+            </div>
+        </div>
+        <script>
+        $(function(){
+            new Swipe(document.getElementById('banner_box'), {
+                speed:500,
+                auto:3000,
+                callback: function(){
+                    var lis = $(this.element).next("ol").children();
+                    lis.removeClass("on").eq(this.index).addClass("on");
+                }
+            });
+        });
+    </script>
+        <br>
+        <header>
+            <div class="snower">
+                <script type="text/javascript"></script>
+                <script type="text/javascript" src="./绿地宝马5S店_files/snower.js"></script>
+            </div>
+        </header>
+        <section>
+            <div>
+                <ul class="ofh ul_list">
+                    <li>
+                        <a href="http://www.weimob.com/Webcar/SeriesModelList?pid=9797&wechatid=fromUsername&title=%E5%85%A8%E9%83%A8%E8%BD%A6%E5%9E%8B&wxref=mp.weixin.qq.com" style="background-image:url(http://img.weimob.com/static/ac/9d/ba/image/20131126/20131126161435_52559.png);">
+                            <label>BMW车型</label>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://www.weimob.com/weisite/list?pid=9797&bid=7443&wechatid=fromUsername&ltid=31162&wxref=mp.weixin.qq.com" style="background-image:url(http://img.weimob.com/static/ac/9d/ba/image/20131126/20131126160522_38222.jpg);">
+                            <label>最新资讯</label>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://www.weimob.com/Webcar/CarReserveBook?pid=9797&wechatid=fromUsername&type=2&title=%E9%A2%84%E7%BA%A6%E8%AF%95%E9%A9%BE&wxref=mp.weixin.qq.com" style="background-image:url(http://img.weimob.com/static/ac/9d/ba/image/20131126/20131126155607_29036.png);">
+                            <label>预约试驾</label>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://www.weimob.com/weisite/list?pid=9797&bid=7443&wechatid=fromUsername&ltid=31161&wxref=mp.weixin.qq.com" style="background-image:url(http://img.weimob.com/static/ac/9d/ba/image/20131126/20131126163945_60551.png);">
+                            <label>优惠活动</label>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://www.weimob.com/Webcar/CarCaseIndex?pid=9797&wechatid=fromUsername&title=%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7&wxref=mp.weixin.qq.com" style="background-image:url(http://img.weimob.com/static/ac/9d/ba/image/20131126/20131126155722_59045.png);">
+                            <label>车主关怀</label>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://www.weimob.com/Webcar/SellList?pid=9797&wechatid=fromUsername&title=%E8%81%94%E7%B3%BB%E9%94%80%E5%94%AE&wxref=mp.weixin.qq.com" style="background-image:url(http://img.weimob.com/static/ac/9d/ba/image/20131126/20131126164443_73547.png);">
+                            <label>联系销售</label>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://www.weimob.com/weisite/list?pid=9797&bid=7443&wechatid=fromUsername&ltid=31163&wxref=mp.weixin.qq.com" style="background-image:url(http://img.weimob.com/static/ac/9d/ba/image/20131126/20131126164650_22310.png);">
+                            <label>尊选二手车</label>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://www.weimob.com/Webmessage/Comment?wechatid=fromUsername&pid=9797&wxid=413155f93359a4414d86de4ec752afa1&wxref=mp.weixin.qq.com" style="background-image:url(http://img.weimob.com/static/ac/9d/ba/image/20131126/20131126173121_41192.jpg);">
+                            <label>意见回馈</label>
+                        </a>
+                    </li>
+                    <ol style="background-image:url(http://img.weimob.com/static/ac/9d/ba/image/20131224/20131224135239_75763.jpg);"></ol>
+                </ul>
+            </div>
+        </section>
+    </div>
+    <!--
+导航菜单
+   后台设置的快捷菜单
+-->
+
+    <!--
+分享前控制
+-->
+
+    <footer style="overflow:visible;">
+        <div class="weimob-copyright" style="padding-bottom:50px;">
+            <a href=""><{$copyright}></a>
+        </div>
+        <span class="weimob-support" style="display:none;"><{$support}></span>
+    </footer>
+    <div mark="stat_code" style="width:0px; height:0px; display:none;"></div>
+    <script src="__PUBLICI__/Website/js/h.js" type="text/javascript"></script>
+    <script type="text/javascript" src="__PUBLICI__/Website/js/ChatFloat.js"></script>
+
+
+</body>
+</html>

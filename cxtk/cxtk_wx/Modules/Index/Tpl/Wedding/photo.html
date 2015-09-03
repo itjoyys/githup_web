@@ -1,0 +1,67 @@
+﻿
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <base href=".">
+  <title>我们故事</title>
+  <meta http-equiv="pragma" content="no-cache">
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+  <meta http-equiv="expires" content="0">
+  <script src="jquery-1.10.1.min(1).js"></script>
+  <script type="text/javascript" src="iscroll.js"></script>
+  <link rel="stylesheet" type="text/css" href="mystory.css">
+  <script type="text/javascript">var g_xtid = "f20c503cac9349308c3a87ecbae5908c"</script>
+  <script type="text/javascript">var g_basePath = "http://wxt.wedoor.com:80/"</script>
+
+  <script type="text/javascript" src="mystory.js"></script>
+</head>
+<body style="">
+  <!-- <div class="info"></div>
+-->
+<!-- 内容浮动层 支持滚动 -->
+<div class="storyContainer">
+  <div id="wrapper" style="overflow: hidden;">
+    <div id="scroller" style="-webkit-transition: -webkit-transform 0ms cubic-bezier(0.33, 0.66, 0.66, 1); transition: -webkit-transform 0ms cubic-bezier(0.33, 0.66, 0.66, 1); -webkit-transform-origin: 0px 0px; -webkit-transform: translate(0px, -290px) scale(1) translateZ(0px);">
+      <div class="container">
+       <foreach name ="photo" item="v">
+        <p class="imgcontainer">
+          <img src="<{$image_url}><{$v.photo}>" alt="1"></p>
+        <p class="text"></p>
+        <p class="line"></p>
+       </foreach>
+        <p class="imgcontainer">
+          <img src="f382020045ad4523a76dd65aa0331062.jpg" alt="1"></p>
+        <p class="text"></p>
+        <p class="line"></p>
+        <p class="imgcontainer">
+          <img src="e8dbe50bf9b540f7a36fc3a3350d3145.jpg" alt="1"></p>
+        <p class="text"></p>
+        <p class="line"></p>
+        <p class="imgcontainer">
+          <img src="f0124e23460a4eb79c55eb51e3144c77.jpg" alt="1"></p>
+        <p class="text"></p>
+        <p class="line"></p>
+        <p class="imgcontainer">
+          <img src="c4bcdad4a9814fd7906d62b5c5fa2fab.jpg" alt="1"></p>
+        <p class="text"></p>
+        <p class="line"></p>
+      </div>
+      <div id="pullUp">
+        <span class="pullUpIcon"></span>
+        <span class="pullUpLabel">向上拉获取更多</span>
+      </div>
+    </div>
+    <div style="position: absolute; z-index: 100; width: 7px; bottom: 2px; top: 2px; right: 1px; pointer-events: none; -webkit-transition: opacity 0ms 0ms; transition: opacity 0ms 0ms; overflow: hidden; opacity: 1;">
+      <div style="position: absolute; z-index: 100; background-color: rgba(0, 0, 0, 0.498039); border: 1px solid rgba(255, 255, 255, 0.901961); -webkit-background-clip: padding-box; box-sizing: border-box; width: 100%; border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; pointer-events: none; -webkit-transition: -webkit-transform 0ms cubic-bezier(0.33, 0.66, 0.66, 1); transition: -webkit-transform 0ms cubic-bezier(0.33, 0.66, 0.66, 1); -webkit-transform: translate(0px, 61.74829931972789px) translateZ(0px); height: 85px;"></div>
+    </div>
+  </div>
+</div>
+<!-- 底层背景框 -->
+<div style="position: relative;">
+  <div style="position: absolute;margin:0;z-index:0;top:0px;left:0px;width:100%;height:100%;">
+    <img src="p3-storybg.jpg" style="width:100%;height:100%;"></div>
+</div>
+<script type="text/javascript" src="touch.js"></script>
+</body>
+</html>

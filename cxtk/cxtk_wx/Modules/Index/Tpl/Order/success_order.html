@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>完成订单</title>    
+<meta charset="UTF-8">
+<meta name="viewport" content=" initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<link href="http://x.wx0571.com/Show/css/shop/style.css" rel="stylesheet">
+<link href="http://x.wx0571.com/Show/css/shop/templates.css" rel="stylesheet">
+<link rel="stylesheet" href="__PUBLICI__/css/list.css"></head>
+</head>
+<body>
+      
+<div class="lay_header" style="height: 45px">
+    <div class="lay_toptab mod_tab" id="lay_head">
+        <div class="tab_item go_back"><i class="qb_icon icon_goback"></i></div>        
+        <a class="tab_item" href=""><i class="qb_icon icon_icenter"></i></a>
+        <a class="tab_item" href="">
+        <i class="qb_icon icon_cart"></i>
+        <i class="qb_icon icon_number_bubble qb_none">1</i></a>
+    </div>
+    <div class="lay_toptab mod_tab fixed qb_none" id="lay_head_fixed">
+        <div class="tab_item go_back"><i class="qb_icon icon_goback"></i></div>        
+        <a class="tab_item" href=""><i class="qb_icon icon_icenter"></i></a>
+        <a class="tab_item" href="">
+            <i class="qb_icon icon_cart"></i>
+            <i class="qb_icon icon_number_bubble qb_none"></i>
+        </a>
+    </div>
+</div>
+
+    <div class="lay_page page_order_result">
+        <div class="lay_page_wrap">
+            <div class="mod_cell ui_mt15">
+                <div class="ui_pt10"><strong class="ui_color_strong">下单成功</strong></div>
+                <dl class="mod_dl dl_tabel">
+                    <dt class="ui_color_weak ui_align_right">订单编号：</dt>
+                    <dd class=""><{$orderid}></dd>
+                    <dt class="ui_color_weak ui_align_right">需付金额：</dt>
+                    <dd class=""><span class="ui_color_strong">￥                 
+                    <{$tailprice}>
+
+                    元</span></dd>
+                </dl>
+                <div class="mod_cell_hr"></div>
+                <div class="qb_flex qb_mb10">
+                    
+                    <a href="http://www.weipan.wx0571.com/weipan/index.php/Index/Index/siteid/<{$siteid}>">再逛逛</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+ <include file='Common:footer' />

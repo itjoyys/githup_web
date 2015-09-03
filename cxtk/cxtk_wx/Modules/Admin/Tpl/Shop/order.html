@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<script type="text/javascript" src="__PUBLIC__/Js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Js/index.js"></script>
+<link rel="stylesheet" href="__PUBLIC__/Css/public.css" />
+<link rel="stylesheet" href="__PUBLIC__/Css/index.css" />
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<head>
+<style type="text/css">
+
+  .searchgrid {
+padding: 2px 5px;
+clear: both;
+color: #1D3E83;
+background: #DBE3FF;
+border: 1px solid #CAD8E5;
+line-height: 29px;
+}
+#tjun{
+  border-color: #6E9FDE #C4DEFF #C4DEFF #6E9FDE;
+border-style: solid;
+border-width: 1px;
+margin-top: 3px;
+margin-bottom: 3px;
+height: 20px;
+} 
+.td a{padding: 4px 8px;
+font-family: Verdana, Arial, sans-serif;
+border-radius: 5px;
+background: #1D3E83}
+</style>
+</head>
+<body>
+<form  action="<{:U(GROUP_NAME . '/Goods/')}>" method="post">
+  <table class="table" width="100%" border="0" align="center" cellpadding="0" cellspacing="1">
+  <tr> 
+  <td colspan="9"  align="left" background="__PUBLIC__/images/bg_list.gif"> 
+      <div style="padding-left:10px; font-weight:bold; color:#FFFFFF">订单列表</div>
+      </td>
+  </tr>
+  
+        <tr>
+    <td colspan="9">
+      <div class="searchgrid">
+      <form method="post" action="<{:U(GROUP_NAME . '/Shop/ordersearch')}>" name="Form" id="Form1">
+           <label>订单编号</label>
+               <input type="text" name="orderid" id="tjun">      
+          
+              <input type="hidden" name="siteid" value="<{$siteid}>">     
+
+      <input type="submit" class="button" value="查询" style="padding: 4px 8px;font-family: Verdana, Arial, sans-serif;
+background: #1D3E83 url('/media/images/ht/4bg-button-green.gif') top left repeat-x !important;
+border: 1px solid #254fa6 !important;
+
+_padding: 4px 2px 4px 2px !important;
+color: #fff !important;
+font-size: 12px !important;
+cursor: pointer;
+height: 24px;
+line-height: 16px;
+}">   
+      </form>
+
+    </div>
+      
+    </td>
+    
+  </tr>
+    <tr>
+      <td>ID</td>
+      <td>订单编号</td>
+      <td>订单总价</td>
+	  <td>姓名</td>
+	  <td>地址</td>
+	  <td>电话</td>
+    
+     
+      <td>物流方式</td>
+      <td>订单时间</td>
+      
+      <td>操作</td>
+
+    </tr>
+
+    <foreach name="order" item="v">
+         <tr>
+           <td width="td"><{$v.id}></td>
+           <td class="td"><{$v.orderid}></td>
+           <td class="td"><{$v.tailprice}></td>
+		   <td class="td"><{$v.name}></td>
+		   <td class="td"><{$v.address}></td>
+		   <td class="td"><{$v.phone}></td>
+          
+           <td class="td"><{$v.wuliu}></td>
+           <td class="td"><{$v.date}></td>
+          
+
+           <td class="td">
+              <a href="<{:U(GROUP_NAME . '/Shop/orderdetails', array('orderid' => $v['orderid']))}>">订单详情</a>
+            
+              <a href="<{:U(GROUP_NAME . '/Shop/orderdelete', array('id' => $v['id']))}>">删除</a>
+             
+           </td>
+
+         </tr>
+
+    </foreach>
+
+    <tr>
+      <td colspan="9" align="center"> <{$page}></td>
+    </tr>
+  </table>
+  </form>
+
+</body>
+</html>

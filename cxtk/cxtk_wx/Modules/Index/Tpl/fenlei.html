@@ -1,0 +1,201 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>全部分类 </title> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" type="text/css" href="css/all_html5.css" charset="gbk">
+    <script src="js/zepto.min.js"></script>
+</head>
+
+<body id="body">
+<a name="top"></a>
+<header>
+    <div class="new-header">
+        <a href="" class="new-a-back">
+            <span>返回</span>
+        </a>
+        <h2>商品分类</h2>
+        <a href="" class="new-a-jd">
+            <span>首页</span>
+        </a>
+    </div>
+</header>
+<div class="new-ct">
+    <div class="new-category">
+        <ul class="new-category-lst">
+            <li class="new-category-li">
+                <a href="javascript:void(0)" id="1315" class="new-category-a">
+                    <span class="icon"></span>
+                    大分类
+                </a>
+                <ul class="new-category2-lst" id="category1315" style="display:none">
+                    <li class="new-category2-li">
+                        <a href="" class="new-category2-a">
+                            <span class="new-bar"></span>
+                            小分类
+                        </a>
+                        <a href="" class="new-category2-a">
+                            <span class="new-bar"></span>
+                            小分类
+                        </a>
+                        <a href="" class="new-category2-a">
+                            <span class="new-bar"></span>
+                            小分类
+                        </a>
+                    </li>
+                  
+                </ul>
+            </li>
+            <li class="new-category-li">
+                <a href="javascript:void(0)" id="9987" class="new-category-a">
+                    <span class="icon"></span>
+                   大分类
+                </a>
+                <ul class="new-category2-lst" id="category9987" style="display:none">
+                    <li class="new-category2-li">
+                        <a href="" class="new-category2-a">
+                            <span class="new-bar"></span>
+                            小分类
+                        </a>
+                        <a href="" class="new-category2-a">
+                            <span class="new-bar"></span>
+                            小分类
+                        </a>
+                        <a href="" class="new-category2-a">
+                            <span class="new-bar"></span>
+                            小分类
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="new-category-li">
+                <a href="javascript:void(0)" id="652" class="new-category-a">
+                    <span class="icon"></span>
+                  大分类
+                </a>
+                <ul class="new-category2-lst" id="category652" style="display:none">
+                    <li class="new-category2-li">
+                        <a href="" class="new-category2-a">
+                            <span class="new-bar"></span>
+                           小分类
+                        </a>
+                        <a href="" class="new-category2-a">
+                            <span class="new-bar"></span>
+                            小分类
+                        </a>
+                        <a href="" class="new-category2-a">
+                            <span class="new-bar"></span>
+                            小分类
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="new-category-li">
+                <a href="javascript:void(0)" id="670" class="new-category-a">
+                    <span class="icon"></span>
+                    大分类 
+                </a>
+                <ul class="new-category2-lst" id="category670" style="display:none">
+                    <li class="new-category2-li">
+                        <a href="" class="new-category2-a">
+                            <span class="new-bar"></span>
+                            小分类
+                        </a>
+                        <a href="" class="new-category2-a">
+                            <span class="new-bar"></span>
+                            小分类
+                        </a>
+                        <a href="" class="new-category2-a">
+                            <span class="new-bar"></span>
+                            小分类
+                        </a>
+                    </li>
+                    <li class="new-category2-li">
+                        <a href="" class="new-category2-a">
+                            <span class="new-bar"></span>
+                            小分类
+                        </a>
+                        <a href="" class="new-category2-a">
+                            <span class="new-bar"></span>
+                            小分类
+                        </a>
+                        <a href="" class="new-category2-a">
+                            <span class="new-bar"></span>
+                            小分类
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="new-category-li">
+                <a href="javascript:void(0)" id="1316" class="new-category-a">
+                    <span class="icon"></span>
+                    大分类
+                </a>
+                <ul class="new-category2-lst" id="category1316" style="display:none">
+                    <li class="new-category2-li">
+                        <a href="" class="new-category2-a">
+                            <span class="new-bar"></span>
+                           小分类
+                        </a>
+                        <a href="" class="new-category2-a">
+                            <span class="new-bar"></span>
+                            小分类
+                        </a>
+                        <a href="" class="new-category2-a">
+                            <span class="new-bar"></span>
+                            小分类
+                        </a>
+                    </li> 
+                </ul>
+            </li>
+              
+        </ul>
+    </div>
+</div>
+
+<script language="javascript">
+    $(function(){
+        $("li.new-category-li>a").click(function(){
+            var obj = $(this).parent().children().eq(1);
+            if(obj.css('display')=='none'){
+                $(".new-category2-lst").hide();
+                obj.fadeIn();
+                $("li.new-category-li>a").removeClass("new-category-a new-on").addClass("new-category-a");
+                $(this).addClass("new-category-a new-on");
+            }else{
+                obj.fadeOut();
+                $("li.new-category-li>a").removeClass("new-category-a new-on").addClass("new-category-a");
+                $(this).removeClass("new-category-a new-on").addClass("new-category-a");
+            }
+        })
+    });
+</script>
+<footer>
+    <div class="new-footer">
+        <div class="new-f-login">
+            <a href="">登录</a>
+            <span class="new-bar2">|</span>
+            <a href="">注册</a>
+            <span class="new-back-top">     
+                <a href="#top">回到顶部</a>
+            </span>
+        </div>
+        <div class="copyright">
+                <p>Copyright © 2012-2013  奔达版权所有</p>
+            <p>
+                技术支持：
+                <a href="">杭州微盘信息技术有限公司</a>
+            </p>
+        </div>
+        
+    </div>
+</footer>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,549 @@
+﻿<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+  <meta http-equiv="description" content="This is my page">
+  <title><{$title}></title>
+  <link rel="stylesheet" href="__PUBLICI__/Wedding/idangerous.swiper.css">
+  <link rel="stylesheet" href="__PUBLICI__/Wedding/common.css?r=1396056899">
+  <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+</head>
+<body>
+<div class="loadingCls">
+    <div class="loading">
+        <img src="http://wxt.wedoor.com:80/theme/base/images/loading.gif">
+    </div>
+    <div class="loadingText">
+        正在加载喜帖..
+    </div>
+ </div>
+ <div class="swiper-container">
+    <div class="swiper-wrapper">
+      <!-- 喜帖封面 -->
+      <div class="swiper-slide p1bg">
+      </div>
+      <!-- 请帖主页 -->
+      <div class="swiper-slide p2bg">
+        <div id="jhsj"><p><{$date}></p></div>
+        <div id="xlxn"><p><{$name}></p></div>
+        <div id="hldz"><p><{$address}></p></div>
+      </div>
+      <!-- 我们的故事 -->
+      <div class="swiper-slide p3cotainer" onclick="showWeStory()">
+                <!-- 背景在上方浮动 -->
+                <div class="p3bg"></div>
+                <!-- 桃心 -->
+                <div id="lovephoto"><img src="<{$image_url}><{$logo}>"></div>
+      </div>
+      <!-- 邀请视频播放 -->
+      <div class="swiper-slide p4bg"  onclick="showYqsp()">
+          <!-- 使用标记可以解决 退出视频后刷新页面的问题 -->
+          
+            <video src="" id="yqspvideo" style="opacity:0"></video>
+          
+      </div>
+      <!-- 现场互动 -->
+     <div class="swiper-slide p5bg">
+         <!-- 操控层 -->
+         <div  id="callphoneBtn" onclick="showPhoneInfo()"></div>
+         <div  id="showmapBtn" onclick="showMap()"></div>
+         <div  id="showzwapBtn" onclick="showZwap()"></div>
+      </div>
+      <!-- 现场花絮和祝福墙 -->
+      <div class="swiper-slide p6bg">
+        <div id="zfqBtn" onclick="showZfq()"></div>
+        <div id="xchxBtn" onclick="showXchx()"></div>
+      </div>
+      <!-- 关注我们 -->
+      <div class="swiper-slide p7bg">
+           <!-- 个人制作显示微喜帖团队信息 -->
+           
+                <div class="rightinfo">
+                     <p class="black">微喜帖</p>
+                     <p><em>SITE</em>www.wx0571.com</p>
+                     <p><em>TEL</em>29002341</p>
+                     <p><em>SINA</em>@杭州微盘</p>
+                </div>
+           
+           <!-- 经销商制作 显示他们的信息 -->
+             
+      </div>
+    </div>
+  </div>
+  
+ 
+  <!-- 延迟加载层容器 -->
+  <div class="lazyContent">
+        <!-- 返回按钮 -->
+        <span id="backBtn" onclick="backToMain()">
+           <img src="http://wxt.wedoor.com:80/theme/base/images/story_back.png">
+        </span>
+        <div id="lzcontent">
+            <iframe id="innerPageFrame" frameborder="0"></iframe>
+        </div>
+  </div>
+  
+  
+  <!-- android 下内部打开播放器窗口 不使用外部浏览器或者播放器打开 -->
+  
+          
+  <script src="__PUBLICI__/Wedding/jquery-1.10.1.min.js"></script>
+  <script src="__PUBLICI__/Wedding/idangerous.swiper-2.1.min.js"></script>
+  <!-- 背景音乐 -->
+  
+    
+
+
+     <style>
+      .audio{display:none}
+     </style>
+     <!-- android 支持自动播放 -->
+     
+         
+              <!-- iphone 需要额外处理 -->
+             <script type="text/javascript">
+             var g_audio = window.g_audio = new Audio();  //创建一个audio播放器
+             var g_event = window.g_event =new function(){
+             var events = ['load','abort','canplay','canplaythrough',
+                           'durationchange','emptied','ended','error',
+                           'loadeddata','loadedmetadata','loadstart',
+                           'pause','play','playing','progress',
+                           'ratechange','seeked','seeking','stalled',
+                           'suspend','timeupdate','volumechange','waiting', 'mediachange'];
+             g_audio.loop = true;
+             g_audio.autoplay = true;
+             g_audio.isLoadedmetadata = false;
+             g_audio.touchstart = true;
+             g_audio.audio = true;
+             g_audio.elems = {};
+             g_audio.isSupportAudio = function(type){
+                 type=type||"audio/mpeg";
+                 try{
+                     var r=g_audio.canPlayType(type);
+                     return g_audio.canPlayType&&(r=="maybe"||r=="probably")
+                 }catch(e){return false;}
+             };
+             g_audio.push = function(meta){
+                 g_audio.previousId = g_audio.id;
+                 g_audio.id = meta.song_id;
+                 g_audio.previousSrc = g_audio.src;
+                 g_audio.previousTime = 0.00;
+                 g_audio.src = g_audio.currentSrc = meta.song_fileUrl;
+                 g_audio.isLoadedmetadata = false;
+                 g_audio.autobuffer = true;
+                 g_audio.load();
+                 g_audio.play();
+                 if(g_audio.previousSrc !== g_audio.src){
+                 g_audio.play();
+                 }
+             };
+
+             for(var i = 0, l = events.length; i < l; i++){
+                 (function(e){
+                 var fs = [];
+                 this[e] = function(fn){
+                     if(typeof fn!== 'function'){
+                     for (var k = 0; k<fs.length; k++){
+                         fs[k].apply(g_audio);
+                     }
+                     return ;
+                     }
+                     fs.push(fn);
+                     g_audio.addEventListener(e, function(){
+                     fn.apply(this);
+                     });
+                 };
+                 }).apply(this, [events[i]]);
+             }
+
+             this.ended(function(){  //播放结束
+                
+             });
+
+             this.load(function(){  //加载
+                 this.pause();
+                 this.play();
+             });
+
+             this.loadeddata(function(){
+                 this.pause();
+                 this.play();
+             });
+
+             this.loadedmetadata(function(){
+                 this.isLoadedmetadata = true;
+             });
+             this.error(function(){   //请求资源时遇到错误
+                
+             });
+             this.pause(function(){  //歌曲暂停播放
+             });
+             this.play(function(){  //歌曲播放
+                
+             });
+             };
+            
+             g_audio.elems["id"] = "A010";
+             g_audio.push({song_id:"A010",song_fileUrl:"http://wxt.wedoor.com//music/07mp3/07.m3u8"});
+             </script>
+         
+         
+     
+
+  
+  <script>
+  
+  //初始化swiper
+  var mySwiper = new Swiper('.swiper-container',{
+    paginationClickable: true
+  });
+  
+  //显示邀请视频
+  function showYqsp(){
+      //暂停音乐播放 打标记
+      try{
+          //iphone 会自动停止 android 不会需要判断
+          if(false){
+              document.getElementById("bgAudio").pause();
+          }
+          if(true){
+              //iphone 
+              g_audio.pause();
+          }
+      }catch(e){}
+      var video = document.getElementById('yqspvideo');
+      var url = "http://wxt.wedoor.com//videos/yqsp/demo/demo.m3u8";
+      if("false"=="true"){
+          url = "http://wxt.wedoor.com/";
+      }
+      //video.src = url;
+      if(false){
+          video.src = url;
+          $('#yqspvideoCotainer').css({top:0+"px"}).show();
+          video.play();
+          //全屏播放
+          video.webkitEnterFullscreen();
+      }else{
+        video.src = url;
+        video.play();
+      }
+  }
+  
+  function closeYqspWin(){
+      var video = document.getElementById('yqspvideo');
+      $('#yqspvideoCotainer').hide();
+      //把视频重新定位到开始的地方并暂停
+      video.play();
+      video.pause();
+      //e.preventDefault();
+      
+      
+  }
+  
+  //加载二级页面
+  function loadPage(src){
+      //设置高度自适应 并显示
+      var $frame =  $("#innerPageFrame");
+      $frame.height($(window).height());
+      $(".lazyContent").show();
+      $('.lazyContent').animate({left:'0px'},'slow',function(){
+          $frame.get(0).src="http://wxt.wedoor.com:80/"+src; 
+      }); //duration:700,queue:false
+     
+  }
+  //返回按钮点击调用
+  function backToMain(){
+      var $frame =  $("#innerPageFrame");
+      $('.lazyContent').animate({left:'100%'},'slow',function(){
+          $frame.get(0).src = "http://wxt.wedoor.com:80/phone/blank.jsp";
+          $(".lazyContent").hide();
+      });
+  }
+   
+  //加载我们的故事
+  function showWeStory(){
+      chageBackBtnSrc(2);
+      //loadPage("mystoryAction.do?method=getMyStroy&xtid=f20c503cac9349308c3a87ecbae5908c");
+      loadPage("phone/mystory.jsp?xtid=f20c503cac9349308c3a87ecbae5908c");
+  }
+  
+  //关闭延迟加载层  过时的函数 可以删除
+  function closeLazyContent(){
+      backToMain();
+  }
+  //显示拨打电话
+  function showPhoneInfo(){
+          if(location.href.indexOf("#mp.weixin.qq.com")>0){
+               location.href = "tel://15215136355";
+          }else if(false){
+              alert("抱歉，Android系统用户不支持在此直接拨打电话，请自行拨打号码  15215136355.");
+              return ;
+          }else{
+              location.href = "tel://15215136355"; 
+          }
+  }
+  //显示地图
+  function showMap(){
+      chageBackBtnSrc(2);
+      loadPage("phone/map.jsp?x=121.511784&y=25.004919&hldz="+encodeURIComponent('台湾省台北市101酒店')); 
+  }
+  
+  //显示座位安排信息
+  function showZwap(){
+      chageBackBtnSrc(2);
+      loadPage("phone/zwap.jsp?zwaplj=http://wxt.wedoor.com//images/zwap/demo.jpg&t=1396056899904"); 
+  }
+  //改变返回图片链接
+  function chageBackBtnSrc(flag){
+      if(!flag) flag = "";
+      var src = "http://wxt.wedoor.com:80/theme/base/images/story_back"+flag+".png";
+      $('#backBtn>img').attr("src",src);
+  }
+
+  //显示祝福墙
+  function showZfq(){
+      chageBackBtnSrc();
+      loadPage("wish"); 
+  }
+
+  
+  //显示现场花絮
+  function showXchx(){
+      chageBackBtnSrc(2);
+      loadPage("phone/xchx.jsp?xtid=f20c503cac9349308c3a87ecbae5908c&hlyqm=Z6NI"); 
+  }
+  
+  window.onload = function(){
+        //慢慢变淡LOADING
+        $('.loadingCls').fadeOut(500,function(){
+            
+            //删除loading条    
+            $(this).remove();
+        });
+        
+        //设置桃心的 margin-left= ( - 图片宽度/2)
+        var loveimg = $('#lovephoto>img');
+        loveimg.css({"margin-left":-(loveimg.width()/2)});
+   }
+   //android 屏幕考虑计算宽高比例然后进行缩放居中显示
+   function fit(){
+    //if(false){
+         var sw  = 640;
+         var sh = 780;
+         var targetW = $(window).width();
+         var targetH = parseInt ((targetW*sh)/sw);
+         //top<=0的时候注意了
+         //alert(($(window).height()-targetH)/2)
+         var _top = ($(window).height()-targetH)/2;
+         _top = (_top<=0)?0:_top;
+         $('.swiper-container').width(targetW).height(targetH).css({
+             top:_top
+         });
+        
+     }
+     fit();
+  </script>
+  <!-- 等适应屏幕后在注入样式 否则会有问题 -->
+  <link rel="stylesheet" href="__PUBLICI__/Wedding/style.css?r=1396056899">
+  
+     <link rel="stylesheet" href="__PUBLICI__/Wedding/iphoneAdapter.css">
+  
+   
+   
+   <script src="__PUBLICI__/Wedding/jquery-1.8.3.min176ed4.js"></script>
+   <script  src="__PUBLICI__/Wedding/wxm-core176ed4.js"></script>
+    <script id="txt-desc" type="txt/text">分享内容</script>
+    <script id="txt-title" type="txt/text">分享标题</script>
+    <script id="txt-sourceurl" type="txt/text"></script>
+    
+    <script>
+        function getStrFromTxtDom(selector) {
+            var url = jQuery('#txt-' + selector).html().replace(/&lt;/g, '<')
+                    .replace(/&gt;/g, '>');
+            return jQuery.trim(url);
+        }
+
+        function report_article() {
+            var url = getStrFromTxtDom('sourceurl');
+            if (url == "")
+                url = location.href;
+            var query = [ '微想', location.href, getStrFromTxtDom('title'), url ]
+                    .join("|WXM|");
+            location.href = '/mp/readtemplate?t=wxm-appmsg-inform&__biz=MjM5ODY2Njg2MQ==&info='
+                    + encodeURIComponent(query) + "#wechat_redirect";
+        }
+
+    
+        function getStrFromTxtDomAndDecode(selector) {
+            return 'http://' + window.location.host + '/mp/redirect?url='
+                    + encodeURIComponent(getStrFromTxtDom(selector));
+        }
+
+        function viewSource() {
+            
+            jQuery.ajax({
+                url : '/mp/appmsg/show-ajax' + location.search, //location.href
+                async : false,
+                type : 'POST',
+                timeout : 2000,
+                data : {
+                    url : getStrFromTxtDom('sourceurl')
+                },
+                complete : function() {
+                    location.href = getStrFromTxtDomAndDecode('sourceurl');
+                }
+            });
+            return false;
+        };
+        function report(link, fakeid, action_type) {
+            var parse_link = parseUrl(link);
+            if (parse_link == null) {
+                return;
+            }
+            var query_obj = parseParams(parse_link['query_str']);
+            query_obj['action_type'] = action_type;
+            query_obj['uin'] = fakeid;
+            var report_url = '/mp/appmsg/show?' + jQuery.param(query_obj);
+            jQuery.ajax({
+                url : report_url,
+                type : 'POST',
+                timeout : 2000
+            })
+        };
+
+        function share_scene(link, scene_type) {
+            var parse_link = parseUrl(link);
+            if (parse_link == null) {
+                return link;
+            }
+            var query_obj = parseParams(parse_link['query_str']);
+            query_obj['scene'] = scene_type;
+            var share_url = 'http://' + parse_link['domain']
+                    + parse_link['path'] + '?' + jQuery.param(query_obj)
+                    + (parse_link['sharp'] ? parse_link['sharp'] : '');
+            return share_url;
+        };
+
+        //report("http://mp.weixin.qq.com/mp/appmsg/show?__biz=MjM5ODY2Njg2MQ==&appmsgid=10000096&itemidx=1&sign=b9008c0e74217eaaad6aaa782205a567#wechat_redirect",1);
+        //console.log('share url %s', share_scene("http://mp.weixin.qq.com/mp/appmsg/show?__biz=MjM5ODY2Njg2MQ==&appmsgid=10000096&itemidx=1&sign=b9008c0e74217eaaad6aaa782205a567#wechat_redirect", 1));
+        (function() {
+            var onBridgeReady = function() {
+                WeixinJSBridge.call('hideToolbar');
+                setTimeout(fit,200)
+                var appId = '', imgUrl = "http://wxt.wedoor.com//images/xtlg/42412288fa5e4a7db11b102062cc0106.jpg", 
+                link = location.href, 
+                        title = htmlDecode("王力宏和李靓蕾结婚典礼"),
+                        desc = htmlDecode("时间：2015-01-01&nbsp;12:08\n地点:台湾省台北市101酒店"),
+                        fakeid = "MTI0MDUxOTY0MA==", 
+                        desc = desc || link;
+
+                if ("1" == "0") {
+                    WeixinJSBridge.call("hideOptionMenu");
+                }
+
+                jQuery("#post-user").click(function() {
+                    WeixinJSBridge.invoke('profile', {
+                        'username' : 'gh_fc01ac51b472',
+                        'scene' : '57'
+                    });
+                })
+
+                // 发送给好友; 
+                WeixinJSBridge.on('menu:share:appmessage', function(argv) {
+
+                    WeixinJSBridge.invoke('sendAppMessage', {
+                        "appid" : appId,
+                        "img_url" : imgUrl,
+                        "img_width" : "640",
+                        "img_height" : "640",
+                        "link" : share_scene(link, 1),
+                        "desc" : desc,
+                        "title" : title
+                    }, function(res) {
+                        report(link, fakeid, 1);
+                    });
+                });
+                // 分享到朋友圈;
+                WeixinJSBridge.on('menu:share:timeline', function(argv) {
+                    report(link, fakeid, 2);
+                    WeixinJSBridge.invoke('shareTimeline', {
+                        "img_url" : imgUrl,
+                        "img_width" : "640",
+                        "img_height" : "640",
+                        "link" : share_scene(link, 2),
+                        "desc" : desc,
+                        "title" : title
+                    }, function(res) {
+                    });
+
+                });
+
+                // 分享到微博;
+                var weiboContent = '';
+                WeixinJSBridge.on('menu:share:weibo', function(argv) {
+
+                    WeixinJSBridge.invoke('shareWeibo', {
+                        "content" : title + share_scene(link, 3),
+                        "url" : share_scene(link, 3)
+                    }, function(res) {
+                        report(link, fakeid, 3);
+                    });
+                });
+
+                // 分享到Facebook
+                WeixinJSBridge.on('menu:share:facebook', function(argv) {
+                    report(link, fakeid, 4);
+                    WeixinJSBridge.invoke('shareFB', {
+                        "img_url" : imgUrl,
+                        "img_width" : "640",
+                        "img_height" : "640",
+                        "link" : share_scene(link, 4),
+                        "desc" : desc,
+                        "title" : title
+                    }, function(res) {
+                    });
+                });
+
+                // 隐藏右上角的选项菜单入口;
+                //WeixinJSBridge.call('hideOptionMenu');
+            };
+            if (document.addEventListener) {
+                document.addEventListener('WeixinJSBridgeReady', onBridgeReady,
+                        false);
+            } else if (document.attachEvent) {
+                document.attachEvent('WeixinJSBridgeReady', onBridgeReady);
+                document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
+            }
+        })();
+    
+        
+        
+        //播放背景音乐
+        $(document).ready(function(){   
+             if(/i(Phone|P(o|a)d)/.test(navigator.userAgent)){
+                 $(document).one('touchstart', function (e) {
+                 g_audio.touchstart = true;
+                 g_audio.play();
+                 g_audio.pause();
+                 return false;
+                 });
+             }
+             
+        });
+        
+        
+          //google 代码跟踪
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+          ga('create', 'UA-46024327-1', 'wedoor.com');
+          ga('send', 'pageview');
+
+        
+        
+    </script>
+</body>
+</html>

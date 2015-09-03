@@ -1,0 +1,89 @@
+<include file="web_site:header" />
+<body>
+<form action="<{:U(GROUP_NAME . '/web_site/web_config_do')}>" enctype="multipart/form-data" method="post">
+  <table class="table">
+    <tr>
+      <td colspan="3" background="__PUBLIC__/images/bg_list.gif">
+       <div style="padding-left:10px; font-weight:bold; color:#FFFFFF">基本设置</div> 
+      </td>
+    </tr>
+    <tr>
+    	<td align="right" width="10%">地址：</td>
+    	<td colspan="2">
+    		<{$url}>
+    	</td>
+    </tr>
+    <tr>
+    	<td align="right">标题：</td>
+    	<td colspan="2">
+    		<input type="text" class="input" name="title" value="<{$data['title']}>" />
+    	</td>
+    </tr>
+	 <tr>
+      <td align="right">电话：</td>
+      <td colspan="2">
+        <input type="text" class="input" name="tel" value="<{$data['tel']}>" />
+      </td>
+    </tr>
+       <tr>
+      <td align="right">QQ：</td>
+      <td colspan="2">
+        <input type="text" class="input" name="qq" value="<{$data['qq']}>" />
+      </td>
+    </tr>
+          <tr>
+      <td align="right">地址：</td>
+      <td colspan="2">
+        <input type="text" class="input" name="address" value="<{$data['address']}>" />
+      </td>
+    </tr>
+     <tr>
+    	<td align="right">Keywords：</td>
+    	<td colspan="2">
+    		<input type="text" class="input" name="Keywords"  value="<{$data['Keywords']}>"/>
+    	</td>
+    </tr>
+     <tr>
+    	<td align="right">Description：</td>
+    	<td colspan="2">
+    		<input type="text" class="input" name="Description"  value="<{$data['Description']}>"/>
+    	</td>
+    </tr>
+    <tr>
+       <td colspan="3" align="center">
+            <input type="hidden" name="id" value="<{$data['id']}>" />
+            <input type="submit" value="提交" class="btn" />
+       </td>
+    </tr>
+
+  </table>
+  </form>
+  
+<!--     <form action="<{:U(GROUP_NAME . '/Website/Websitebg')}>" enctype="multipart/form-data" method="post">
+  <table class="table">
+    <tr>
+      <td colspan="3" background="__PUBLIC__/images/bg_list.gif">
+       <div style="padding-left:10px; font-weight:bold; color:#FFFFFF">微网站图片</div>
+      
+      </td>
+
+    </tr>
+    <tr>
+      <td align="right">微网站图片：</td>
+      <td class="td" height="30" width="100"><img src="<{$image_url}><{$bg}>" height="110" ></td>
+      
+      <td height="30">
+         <input name="bg" type="file" size="2000000">
+       </td>
+    </tr>
+    <tr>
+       <td colspan="3" align="center">
+            <input type="hidden" name="siteid" value="<{$siteid}>" />
+            <input type="submit" value="提交" class="btn" />
+       </td>
+    </tr>
+
+  </table>
+  </form> -->
+</body>
+</html>
