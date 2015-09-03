@@ -1,0 +1,163 @@
+<{include file="info_header.html"}>
+<{config_load file="public.conf" section="public"}>
+<body>
+<script>
+var color;
+function dep_config(title,id,state){
+    $("#id").val(id);
+    $("#state").val(state);
+    $("#title").val(title);
+    easyDialog.open({
+          container : 'delevel',
+          fixed : false
+    });
+}
+
+</script>
+<style type="text/css">
+.de_title{
+    background-color: #081425;
+    height: 30px;
+    line-height: 30px;
+    overflow: hidden;
+    color: #666;
+    padding: 0 10px;
+    font-size: 14px;
+    border-bottom: 1px solid #e5e5e5;
+    background: #f7f7f7;
+    border-radius: 4px 4px 0 0;
+}
+#delevel,#logo_up{
+  border-radius: 4px 4px 0 0;
+  color: #444;
+  border: 3px solid rgba(0,0,0,0);
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+#de_title{
+    font-size: 14px;
+    color: #000;
+    font: bold 9pt/100% Arial, Helvetica, sans-serif;
+    font-weight: 200;
+}
+.de_td{
+      padding: 1px 0;
+      line-height: 34px;
+}
+.de_input{
+   border-color:#ccc;
+   width: 230px;
+}
+input{
+   height: 20px;
+}
+.de_select{
+  float: left;
+  margin-left: 8px;
+}
+.laydate-icon{
+  float: left;
+  margin-left: 8px;
+}
+
+.view{
+  cursor:pointer;
+}
+
+.flash_a{
+  background: #000;padding: 3px 8px;
+  font-family: Verdana, Arial, sans-serif;
+  border-radius: 10px;
+  font-size: 12px;
+  color: #fff
+}
+</style>
+<div class="content-box role">
+    <div class="content-box-header">
+        <h3>左右浮动图片管理</h3>
+        <div class="clear"></div>
+    </div>
+    <div class="content-box-content">
+        <div class="default-tab">
+            <div class="tab-content default-tab">
+                <table>
+                    <thead>
+                    <tr>
+                        <th style="width: 50px;">编号</th>
+                        <th>名称</th>
+                        <th style="width:115px;">类型</th>
+                        <th style="width:90px;">状态</th>
+                        <th style="width:200px;">操作</th>
+                    </tr>
+
+                    </thead>
+                    <tbody>
+                    <{foreach from=$float item=v}>
+                    <tr>
+                        <td><{$v['id']}></td>
+                        <td><a href="#" <{if $v['case_state']==0 }>onclick="dep_config('<{$v['title']}>','<{$v['id']}>','<{$v['state']}>')" <{/if}>><{$v['title']}></a>
+                        </td>
+                        <td><{$v['type_z']}></td>
+                        <td><{$v['state_z']}></td>
+                        <td class="td">
+                        <{if $v['case_state']==0 }><a style="background: #e86829;" class="revise_a" href="info_float_e?id=<{$v['id']}>">编辑</a>  <a class="revise_a" onclick="if(confirm('确定存储案件!!!')){document.location='float_case?fid=<{$v['id']}>'}" href="javascript:void(0)">存储案件</a>
+                            <{else}>
+                            <font color="red">已建立案件</font>
+                            <{/if}>
+                        </td>
+                    </tr>
+                    <{/foreach}>
+
+                    </tbody>
+                </table>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+  <!-- 移动弹窗 -->
+<div id="delevel" style="display:none;background-color:white;" class="con_menu">
+  <form action="float_title_do" method="post" name="add_form" onsubmit="return check_title()">
+    <input name="id" id="id" value="" type="hidden">
+    <table class="m_tab" style="width:300px;margin:0;">
+        <tbody><tr class="de_title">
+            <td colspan="2" height="27" class="table_bg" align="left">
+            <span id="de_title">是否确定修改!!!</span>
+            <span style="float:right;"><a style="color:white;" href="javascript:void(0)" title="关闭窗口" onclick="easyDialog.close();">×</a></span>
+            </td>
+        </tr>
+        <tr class="m_title">
+            <td>标题</td>
+            <td class="de_td"><input name="title" id="title" class="de_input" value=""></td>
+        </tr>
+         <tr class="m_title">
+            <td>是否启用</td>
+            <td class="de_td">
+              <select class="de_select" name="state" id="state">
+                <option value="1">是</option>
+                <option value="2">否</option>
+              </select>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center">
+                <input type="submit" value="提交" class="botton_a">
+                <input type="reset" value="关闭" onclick="easyDialog.close();" class="botton_a">
+            </td>
+        </tr>
+    </tbody></table>
+</form>
+    </div>
+</body>
+<script>
+function check_title(){
+   if($("#title").val() == ''){
+      alert('请输入标题');
+      return false;
+   }
+}
+</script>
+</html>

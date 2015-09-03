@@ -1,0 +1,251 @@
+<{config_load file="public.conf" section="public" }>
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<title>member</title>
+<link href="<{#css#}>/standard.css" rel="stylesheet" type="text/css">
+<link href="<{#css#}>/jquery-ui-1.8.21.custom.css" rel="stylesheet" type="text/css">
+</head>
+
+<style type="text/css">
+
+#memCash_body {
+    font-family: "宋体",arial;
+    background-color: transparent;
+    font-size: 12px;
+    color: #FFF;
+}
+ #memCash_body .memCash_tit {
+    background: url(<{#images#}>/welcome.png) no-repeat;
+    padding-left: 140px;
+    color: #FFF;
+    height: 50px;
+    line-height: 65px;
+    text-shadow: 2px 1px 1px black;
+}
+#myFORM p {
+    height: auto;
+    min-height: 26px;
+}
+#memCash_body label {
+    float: left;
+    height: 25px;
+    line-height: 25px;
+    text-align: right;
+    width: 135px;
+    color:#fff;
+}
+#memCash_body fieldset {
+    border: 1px solid #6E6E6E;
+    margin: 10px;
+    padding: 10px;
+}
+.JM_content {
+    padding: 10px 10px 10px 20px;
+}
+#memCash_body .JM_content p {
+    line-height: 16px;
+    height: auto;
+}
+#memCash_body legend {
+    color: #FFF;
+    font-weight: bold;
+}
+#memCash_body label {
+    float: left;
+    height: 25px;
+    line-height: 25px;
+    text-align: right;
+    width: 135px;
+}
+input {
+    padding-left: 6px;
+    padding-right: 6px;
+}
+input, select {
+    height: 20px;
+    line-height: 20px;
+}
+#myFORM input[type=text], #myFORM input[type=password], #myFORM select {
+    border: 1px solid #666666;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    box-shadow: 0 0 6px #3A3A3A;
+    -moz-box-shadow: 0 0 6px #3A3A3A;
+    -webkit-box-shadow: 0 0 6px #3A3A3A;
+}
+#memCash_body .star {
+    color: #F00;
+    font-weight: bold;
+    vertical-align: -2px;
+}
+#memCash_body .memCash_text {
+    display: block;
+    padding: 5px 0 0 135px;
+    min-height: 26px;
+}
+
+#memCash_body a {
+    text-decoration: none;
+    color: #F00;
+}
+ #memCash_body #ui-datepicker-div a {
+    color:#000;
+}
+/* us by validation */
+.FormError {
+    position: absolute;
+    top: 300px;
+    left: 300px;
+    display: block;
+    z-index: 500;
+}
+.FormError .FormErrorC {
+    width: 100%;
+    background: #ee0101;
+    position:relative;
+    z-index:501;
+    color: #fff;
+    font-family: tahoma;
+    font-size: 11px;
+    line-height: 14px;
+    border: 2px solid #ddd;
+    box-shadow: 0 0 6px #000;
+    -moz-box-shadow: 0 0 6px #000;
+    -webkit-box-shadow: 0 0 6px #000;
+    padding: 4px 10px 4px 10px;
+    border-radius: 6px;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+}
+.FormError .FormErrorA {
+    width: 15px;
+    margin: -2px 0 0 13px;
+    position:relative;
+    z-index: 506;
+}
+.FormError .FormErrorABottom {
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    margin: 0px 0 0 12px;
+    top:2px;
+}
+.FormError .FormErrorA div {
+    border-left: 2px solid #ddd;
+    border-right: 2px solid #ddd;
+    box-shadow: 0 2px 3px #444;
+    -moz-box-shadow: 0 2px 3px #444;
+    -webkit-box-shadow: 0 2px 3px #444;
+    font-size: 0px;
+    height: 1px;
+    background: #ee0101;
+    margin: 0 auto;
+    line-height: 0;
+    font-size: 0;
+    display: block;
+}
+.FormError .FormErrorABottom div {
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+}
+/*  ADVANCED STYLES */
+.top_testresult{
+    font-weight: bold;
+    font-size:13px;
+    font-family: arail,helvetica,san-serif;
+    color:#FFF;
+    padding:0;
+    margin:0 0 2px 0;
+}
+.top_testresult span{
+    padding:6px ;
+    margin:0;
+}
+.top_shortPass{
+    background:#FF0000;
+}
+.top_badPass{
+    background:#000000;
+}
+.top_goodPass{
+    background:#0029AA;
+}
+.top_strongPass{
+    background:#128511;
+}
+</style>   
+<body id="memCash_body">
+       <h3 class="memCash_tit"><{$data['title']}></h3>
+    <div class="JM_content JM_content_t">
+        <div id="joinmem"><div><{$data['content']}></div>
+        </div>
+    </div>
+        <form name="myFORM" id="myFORM" target="_parent" action="index.php?a=shiwan_reg" method="post" ovalidate="novalidate">
+            <!--會員資料-->
+            <fieldset>
+                <legend class="join-acc">试玩註冊</legend>
+                <p style="position:relative;min-height:1px;"><a style="position:absolute;top:0px;"></a></p>
+    
+                <!-- 帳號 -->
+                <p id="js-username">
+                    <label><span class="star">*&nbsp;</span>帳 號：</label><{$username}>&nbsp;
+                    <input name="zcname" id="zcname" value="<{$username}>" type="hidden">
+                    <input type='hidden' name='pk_token' value='<{$pk_token}>'/>
+                </p>
+                      <p>
+            <label><span class="star">*&nbsp;</span>密 码：</label>
+            <input type="password" maxlength="12" size="15" class="password_adv" value="" id="zcpwd1" name="zcpwd1">
+        </p>
+        <p class="memCash_text">*密码规则：须为<font color="red"><b>4~11码英文或数字</b></font>且符合0~9或a~z字元</p>
+        <!-- 確認密碼 -->
+        <p>
+            <label><span class="star">*&nbsp;</span>确认密码：</label>
+            <input type="password" maxlength="12" size="15" value="" id="zcpwd2" name="zcpwd2">
+        </p>
+
+            </fieldset>
+            <div id="js-agree" style="display: block;">
+                <p id="memCash-agree" style="padding-left: 20px;"><input type="checkbox" name="agree" id="check1" value="Y" style="height:13px;" checked="">我已屆滿合法博彩年齡，且同意各項開戶條約。<a href="javascript:void(0);" id="AGREEMENT">"開戶協議"</a></p>
+            </div>
+            <br>
+            <!-- 確認/重設 -->
+            <div id="memCash-confirm" align="center">
+                    <input type="submit" value="确认" class="joinform_submit" id="OK2" name="OK2">
+        <input type="reset" value="重设" class="joinform_cancel" id="CANCEL2" name="CANCEL2">
+            </div>
+                <!-- 備註 -->
+      </form>
+<div style="display: none" id="Dialog"></div>
+<script src="<{#js#}>/jquery-1.7.2.min.js" type="text/javascript"></script>
+<script src="<{#js#}>/jquery-ui-1.8.21.custom.min.js" type="text/javascript"></script>
+<script src="<{#js#}>/jquery.validate.min.js" type="text/javascript"></script>
+<script src="<{#js#}>/password_strength.js" type="text/javascript"></script>
+<script src="<{#js#}>/mem_cash_shiwan.js" type="text/javascript"></script>
+    <div id="ywxy" style="display: none; z-index: 1002; outline: 0px none; height: auto; width: 600px; top: 1px; left: 64px;" class="ui-dialog ui-widget ui-widget-content ui-corner-all ui-draggable" tabindex="-1" role="dialog" aria-labelledby="ui-dialog-title-Dialog">
+        <div class="ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix"><span class="ui-dialog-title" id="ui-dialog-title-Dialog">"開戶協議"</span>
+         <a href="#" class="ui-dialog-titlebar-close ui-corner-all" role="button"><span onclick="closeDiv()" class="ui-icon ui-icon-closethick">close</span></a></div>
+        <div style="width: auto; min-height: 0px; height: 285px;" id="Div1" class="ui-dialog-content ui-widget-content" scrolltop="0" scrollleft="0">
+            
+        </div>
+    </div>
+</body>
+<script>
+ $('#AGREEMENT').click(function(){
+    $.get('./index.php?a=get_agreement', function(data){
+        $("#Div1").html(data);
+    });
+    $('#ywxy').slideDown();
+})
+function closeDiv() {
+    $('#ywxy').hide();
+}
+</script>
+
+
+
+

@@ -1,0 +1,19 @@
+
+body#MSG { margin:0; padding:0;}
+#MSG #box { width:600px;margin:0 auto}
+#box_top { width:600px;position:fixed; top:0px; left:0px; z-index:1000;}
+.top b{background:  url("../images/title_bg_002.gif") no-repeat left top;}
+.his_box {position:fixed; top:0px; left:0px; z-index:1000;}
+th { padding:4px!important;}
+#all { margin-right: 6px; margin-left:1px;}
+#today ,#yesterday, #before {margin:auto 6px; }
+.info { width:476px;}
+.m_lef { width:476px;}
+.mem_top { border: 2px solid #BC9A3F; border-top-width: 0; border-bottom:1px solid #D7D7C1; padding:3px; background-color:#D7D7C1; clear:both;}
+.his_top { border-bottom:none; padding-bottom:0;}
+.his_body { border-top: none; padding-top:0;}
+.search { width:230px ; text-align:right;}
+.ccroll_input { width:130px; height:14px; margin:0 ; padding:3px; border:solid 1px #666; font-size:12px;}
+.ccroll_btn { font-size:12px;cursor:hand; cursor:pointer;margin:0 0 0 1px; width:85px; height:26px; border:none; padding-top:2px; color:#FFF; font-weight:bold; background: #3D3D3D url("../images/order_btn.gif") no-repeat 0 -80px;}
+.b_rig {white-space: normal;}
+.bg_color {background: #FBFDCA}

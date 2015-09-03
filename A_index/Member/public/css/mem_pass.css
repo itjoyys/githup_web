@@ -1,0 +1,46 @@
+/*2010-09-20-For NewSI2 =======chg passwd ======*/
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~ chg_passwd~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+html, body { margin:0; padding:0; text-align:center; background-color:#FFF;}
+form { margin:0; padding:0;}
+.main {margin: 0 auto;width:532px; height:257px; font: 12px  Arial, Helvetica, sans-serif; text-align:left; background-color:#493721;}
+h1 {margin: 0px;padding-top: 12px; padding-left:38px;height:25px; *height:37px;font-size: 12px;color:#F8C100;background:url(../images/pass_head.gif) no-repeat 0 0;}
+h2 {clear:right; height: 46px; font-size:12px; margin:0 0 2px 20px; padding:15px 10px 0 63px; text-align:left; font-weight:normal; background:url(../images/chg_icon.gif) no-repeat 0 0px;}
+html>body h2 { height:31px;}
+/*����*/
+span.close_box:hover { color: #C60;}
+
+.main_bg { clear:right; margin:0 10px; /*height:210px; */background-color:#FFF;}
+.main_box { height:154px;*height:164px; padding-top:10px;}
+em{width:86px; font-style:normal;white-space: nowrap;color:#000;text-align:right;font-size: 12px;}
+table { margin-left:32px;}
+p { margin:0; padding:5px 0; text-align:right;}
+.keyin { text-align: left; width:200px;}
+.info { vertical-align: top; padding-left:32px; padding-top:5px;  line-height:18px;font: 12px  Arial, Helvetica, sans-serif;}
+.info span { display:block; margin-bottom:5px;}
+tt { margin-left:-14px;}
+.bb { display:block; font-weight:bold;}
+.txt { width:108px;}
+.foot { height:36px;*height:46px;padding-top:12px; padding-right:8px; text-align:right; background-color:#D5D4C8}
+.bottom { height:10px; padding:0; background: url(../images/pass_foot.gif) no-repeat 0 100%;}
+
+.yes,.no {color:#F9C100; *cursor:hand; cursor:pointer; height: 26px; width: 99px; margin-right:1px; padding-top:2px; border:0; font:12px Arial, Helvetica, sans-serif; font-weight:bold; background: url(../images/mem_league_btn.gif) no-repeat;}
+/* For fireFox */
+@-moz-document url-prefix() {
+  .yes,.no {
+	 padding-top:0px;
+  }
+}
+
+/*�t�}������*/
+body#BLUE {}
+.min_main { width:304px; height:176px; font: 12px  Arial, Helvetica, sans-serif;background:  url(../images/pass_head_min.gif) no-repeat 0 0;}
+h3 {margin: 0px;padding-top: 12px; padding-left:38px;height:25px; *height:37px; text-align:left;font-size: 12px;color:#F8C100;}
+.title { margin:20px 0 0 95px; width:162px; text-align:center;}
+.min_box { width:284px; height:130px; text-align:left; border:1px solid #F90;}
+.min_info { margin:5px 0 0 95px;width:162px;}
+.show td {width:54px ;height:20px; line-height:20px; text-align:center; font-weight:bold; font: 12px  Arial, Helvetica, sans-serif;}
+.bar_1,.bar_2,.bar_3 { width:54px; height:12px; padding:0; }
+.bar_1 { background-color:#FF1D1E;}
+.bar_2 { background-color:#FF0;}
+.bar_3 { background-color:#5FDA43;}
+#BLUE .foot { background-color: none;}

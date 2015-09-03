@@ -1,0 +1,28 @@
+@charset "UTF-8";
+
+.pr_cen {	background-color: #EEDF68; text-align:center;white-space:nowrap;}
+.pr_rig {background-color:#EEDF68; text-align:right;white-space:nowrap;}
+.pr_lef {background-color:#EEDF68; text-align:left;white-space:nowrap;}
+.pr_1st {background-color:#EEDF68;text-align: center; white-space:nowrap;}
+.pr_1stR {background-color:#EEDF68;text-align: right;white-space:nowrap;}
+
+
+.IN{ width:40px;}
+.IN .show_p3 , .game_team .show_p3 { height:16px;}
+.IN .show_p3 td , .game_team .show_p3 td  { height:16px;font-size:11px;font-family:Arial; font-weight:bold; vertical-align:top; color:#000;}
+
+
+.game td .IN{ text-align:right;padding-right:0;}
+.game_team .show_p3 { position:absolute;right:25px; color:#000; margin-right:5px; margin-top:2px;}
+
+.IN .show_p3 .em , .game_team .show_p3 .em { width:11px;  padding:0; background:url("../images/show_p3_bg.gif") no-repeat 0 0;}
+
+.IN .show_p3 .p3_num1, .game_team .show_p3 .p3_num1 { padding:0 1px 0 3px; line-height:12px;background:url("../images/show_p3_left.gif") no-repeat 0 0; white-space:nowrap;}
+.IN .show_p3 .p3_num2, .game_team .show_p3 .p3_num2 { padding:0 4px 0 0px; line-height:12px;background:url("../images/show_p3_right.gif") no-repeat 100% 0;}
+
+
+html > body .game_team .show_p3 { margin-top:-14px;margin-right:0;} 
+html > body .game td .IN{ text-align:right!important;}
+html > body .game td .IN .show_p3 { position:absolute; margin-right:8px; margin-top:-7px;right: 0px;}
+
+

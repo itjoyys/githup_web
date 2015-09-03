@@ -1,0 +1,175 @@
+<{include file="info_header.html"}>
+<{config_load file="public.conf" section="public"}>
+<body>
+<script src="<{#js#}>/jquery.min.js"></script>
+<script src="<{#js#}>/jquery.minicolors.js"></script>
+<link rel="stylesheet" href="<{#css#}>/jquery.minicolors.css">
+<script>
+var color;
+function dep_config(title,id,state,color,code){
+    $("#code").val(code);
+    $("#id").val(id);
+    $("#state").val(state);
+    $("#title").val(title)
+    easyDialog.open({
+          container : 'delevel',
+          fixed : false
+    });
+   $("#hue-demo").minicolors({
+        control: $(this).attr('data-control') || 'hue',
+        defaultValue: $(this).attr('data-defaultValue') || color,
+        inline: $(this).attr('data-inline') === 'true',
+        letterCase: $(this).attr('data-letterCase') || 'lowercase',
+        opacity: $(this).attr('data-opacity'),
+        position: $(this).attr('data-position') || 'bottom left',
+        change: function(hex, opacity) {
+            if( !hex ) return;
+            if( opacity ) hex += ', ' + opacity;
+            try {
+                console.log(hex);
+            } catch(e) {}
+        },
+        theme: 'bootstrap'
+    });
+}
+
+</script>
+<style type="text/css">
+.de_title{
+    background-color: #081425;
+    height: 30px;
+    line-height: 30px;
+    overflow: hidden;
+    color: #666;
+    padding: 0 10px;
+    font-size: 14px;
+    border-bottom: 1px solid #e5e5e5;
+    background: #f7f7f7;
+    border-radius: 4px 4px 0 0;
+}
+#delevel{
+ border-radius: 4px 4px 0 0;
+  color: #444;
+  border: 3px solid rgba(0,0,0,0);
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+#de_title{
+    font-size: 14px;
+    color: #000;
+    font-weight: 100;
+}
+
+.minicolors-theme-bootstrap .minicolors-swatch {
+   top: 1px; 
+  left: 10px;
+  width: 22px;
+  height: 22px;
+  border-radius: 3px;
+}
+.de_td{
+      padding: 1px 0;
+      line-height: 34px;
+}
+.de_input{
+   border-color: #ccc;
+   width: 230px;
+}
+input{
+   height: 20px;
+}
+.de_select{
+  float: left;
+  margin-left: 8px;
+}
+#hue-demo{
+  float: left;
+  margin-left: 8px;
+}
+</style>
+<div class="content-box role">
+    <div class="content-box-header">
+        <h3>存款文案列表管理</h3>
+        <div class="clear"></div>
+    </div>
+    <div class="content-box-content">
+        <div class="default-tab">
+            <div class="tab-content default-tab">
+                <table>
+                    <thead>
+                    <tr>
+                        <th style="width: 50px;">代码</th>
+                        <th>文案标题</th>
+                        <th>状态</th>
+                        <th>文案类别</th> 
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+    <{foreach from=$deposit item=v}>
+    <tr>
+        <td><{$v['code']}></td>
+        <td><a href="#"  <{if $v['case_state']==0 }>onclick="dep_config('<{$v['title']}>','<{$v['id']}>','<{$v['state']}>','<{$v['color']}>','<{$v['code']}>')" <{/if}>><{$v['title']}></a></td>
+        <td><{$v['state_z']}></td>
+        <td><{$v['name']}></td>
+        <td class="td"> 
+            <{if $v['case_state']==0 }><a style="background: #e86829;" class="revise_a" href="deposit_edit?id=<{$v['id']}>">编辑内容</a> 
+            <a style="background: #000;" class="revise_a" onclick=" if(confirm('确定存储案件!!!')){document.location='deposit_case?id=<{$v['id']}>&case_state=<{$v['case_state']}>'}" href="javascript:void(0)">储存案件</a>
+            <{else}>
+            <font color="red">已建立案件</font>
+            <{/if}>
+        </td>
+    </tr>
+    <{/foreach}>
+                    </tbody>
+                </table>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+  <!-- 移动弹窗 -->
+<div id="delevel" style="display:none;background-color:white;" class="con_menu">
+  <form action="deposit_title_do" method="post" name="add_form">
+    <input name="id" id="id" value="" type="hidden">
+    <table class="m_tab" style="width:300px;margin:0;">
+        <tbody><tr class="de_title">
+            <td colspan="2" height="27" class="table_bg" align="left">
+            <span id="de_title">是否确定修改!!!</span>
+            <span style="float:right;"><a style="color:white;" href="javascript:void(0)" title="关闭窗口" onclick="easyDialog.close();">×</a></span>
+            </td>
+        </tr>
+          <tr class="m_title">
+            <td>文案代码</td>
+            <td class="de_td"><input class="de_input" readonly="true" id="code" value=""></td>
+        </tr>
+        <tr class="m_title">
+            <td>标题</td>
+            <td class="de_td"><input name="title" id="title" class="de_input" value=""></td>
+        </tr>
+         <tr class="m_title">
+            <td>是否启用</td>
+            <td class="de_td">
+              <select class="de_select" name="state" id="state">
+                <option value="1">是</option>
+                <option value="2">否</option>
+              </select>
+            </td>
+        </tr>
+         <tr class="m_title">
+            <td>标题颜色</td>
+            <td><input type="text" id="hue-demo" class="form-control demo" data-control="hue" name="color" style="width:80px;" value=""></td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center">
+                <input type="submit" value="提交" class="botton_a">
+                <input type="reset" value="关闭" onclick="easyDialog.close();" class="botton_a">
+            </td>
+        </tr>
+    </tbody></table>
+</form>
+    </div>
+</body>
+</html>

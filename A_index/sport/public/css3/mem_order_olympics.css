@@ -1,0 +1,86 @@
+rb_over
+
+
+
+
+#euro_close { margin-top:10px;cursor: hand; cursor:pointer; color:#FFF; width:216px; height:33px; background:url("http://cdn.wbapi.com/cl/tpl/commonFile/images/member/euro_title_out_tw.gif?=593");}
+#euro_open { margin-top:10px;}
+
+
+#oly_title { width: 216px; height:33px; background:url("http://cdn.wbapi.com/cl/tpl/commonFile/images/member/oly_title_in.gif?=593") no-repeat;}
+
+#euro_menu { width: 216px; height:31px;*padding-bottom: 0px;	}
+
+
+#euro_menu .rb_btn {
+	cursor: hand;
+	float: left;
+	width:216px;
+	height:31px;
+	background: url("../images/oly_roll_ball_tw.gif?=593") no-repeat 0 0;
+}
+#euro_menu .hot_btn {
+	cursor: hand;
+	float: left;
+	width:72px;
+	height:31px;
+	background: url("http://cdn.wbapi.com/cl/tpl/commonFile/images/member/oly_hot_game_tw.gif") no-repeat 0 0;
+}
+#euro_menu .early_btn {cursor: hand;float: right;width:72px; height: 31px; background: url("../images/oly_hot_game_early_tw.gif") no-repeat right 0;}
+html>body #euro_menu .rb_btn { padding-top: 12px;height: 19px;}
+html>body #euro_menu .early_btn { padding-top: 12px;height: 19px;}
+
+
+#euro_menu .rb_over {cursor: hand; float: left;width:216px;height:31px; background: url("../images/oly_roll_ball_tw.gif") no-repeat 0 -31px;}
+#euro_menu .hot_over {cursor: hand;float: left;width:72px;height:31px; background: url("../images/oly_hot_game_tw.gif?=593") no-repeat right -31px;}
+#euro_menu .early_over {cursor: hand;float: right;width:72px;height:31px; background: url("../images/oly_hot_game_early_tw.gif") no-repeat right -31px;}
+
+
+#euro_menu .rb_up {cursor: hand; float: left;width:216px; height:31px; background: url("../images/oly_roll_ball_tw.gif") no-repeat 0 -62px;}
+#euro_menu .hot_up {cursor: hand;float: right;width:72px;height:31px; background: url("http://cdn.wbapi.com/cl/tpl/commonFile/images/member/oly_hot_game_tw.gif?=593") no-repeat right -62px;}
+#euro_menu .early_up {cursor: hand;float: right;width:72px;height:31px; background: url("../images/oly_hot_game_early_tw.gif") no-repeat right -62px;}
+
+
+#euro_menu .hot_up {cursor: hand;	float: left; width: 72px;	height: 31px; background: url("http://cdn.wbapi.com/cl/tpl/commonFile/images/member/oly_hot_game_tw.gif?=593") no-repeat right -62px;}
+#euro_menu .early_up {cursor: hand;float: right;width: 72px;	height: 31px; background: url("../images/oly_hot_game_early_tw.gif") no-repeat right -62px;}
+#euro_menu .rb_btn, #euro_menu .early_btn , #euro_menu .hot_up , #euro_menu .early_up, .oly_tr { cursor:pointer;}
+html>body #euro_menu .hot_up { 	height: 31px;}
+html>body #euro_menu .early_up { 	height: 31px;}
+
+
+.oly_tr { height:30px; line-height:30px; width:216px;  padding-left:44px; padding-top:5px;cursor:hand; text-align:left; border:1px solid #977F62; border-top:none; font:13px  Arial, Helvetica, sans-serif; background-color:#E3CFAA;}
+html>body .oly_tr { clear:both; width:170px; height:23px; padding-top:7px;}
+
+
+div#FT_FT, div#FT_FU, div#FT_RB {background:url("../images/oly_tr_ft.gif") repeat-x 0 0;}
+div#FT_FT:hover, div#FT_FU:hover , div#FT_RB:hover{ background:url("../images/oly_tr_ft.gif") repeat-x 0 -32px;}
+
+div#BK_FT, div#BK_FU, div#BK_RB {background:url("../images/oly_tr_bk.gif") repeat-x 0 0;}
+div#BK_FT:hover, div#BK_FU:hover, div#BK_RB:hover { background:url("../images/oly_tr_bk.gif") repeat-x 0 -32px;}
+
+div#TN_FT, div#TN_FU , div#TN_RB{background:url("../images/oly_tr_tn.gif") repeat-x 0 0;}
+div#TN_FT:hover, div#TN_FU:hover, div#TN_RB:hover { background:url("../images/oly_tr_tn.gif") repeat-x 0 -32px;}
+
+
+
+#oly_main { position:relative; width:216px;}
+
+
+
+
+.euro_btn { background:url("../images/2014_left_banner.jpg") no-repeat 0 0; width:216px; height:43px; margin-top:5px;}
+.left_btn { font-family:"Arial"; font-size:12px; font-weight:bold; line-height:14px; line-height:18px\9; margin-top:-1px; width:216px; height:28px; cursor:pointer;}
+.rb_left_tw_on { background:url("http://cdn.wbapi.com/cl/tpl/commonFile/images/member/rb_left_tw.jpg?=593") no-repeat 0 0; width:72px; height:28px; color:#FC0; float:left;}
+.rb_left_tw_out { background:url("http://cdn.wbapi.com/cl/tpl/commonFile/images/member/rb_left_tw.jpg?=593") no-repeat 0 -28px; width:72px; height:28px; color:#40301C; float:left;}
+.text_s { font-size:10px; line-height:11px; line-height:2px\9;}
+.hot_left_tw_on { background:url("http://cdn.wbapi.com/cl/tpl/commonFile/images/member/hot_left_tw.jpg?=593") no-repeat 0 0; width:72px; height:28px; color:#FC0; float:left;}
+.hot_left_tw_out { background:url("http://cdn.wbapi.com/cl/tpl/commonFile/images/member/hot_left_tw.jpg?=593") no-repeat 0 -28px; width:72px; height:28px; color:#40301C; float:left;}
+.early_left_tw_on { background:url("http://cdn.wbapi.com/cl/tpl/commonFile/images/member/early_left_tw.jpg?=593") no-repeat 0 0; width:72px; height:28px; color:#FC0; float:left;}
+.early_left_tw_out { background:url("http://cdn.wbapi.com/cl/tpl/commonFile/images/member/early_left_tw.jpg?=593") no-repeat 0 -28px; width:72px; height:28px; color:#40301C; float:left;}
+
+.rb_left_cn_on { background:url("../images/rb_left_cn.jpg") no-repeat 0 0; width:72px; height:28px; color:#FC0; float:left;}
+.rb_left_cn_out { background:url("../images/rb_left_cn.jpg") no-repeat 0 -28px; width:72px; height:28px; color:#40301C; float:left;}
+.hot_left_cn_on { background:url("../images/hot_left_cn.jpg") no-repeat 0 0; width:72px; height:28px; color:#FC0; float:left;}
+.hot_left_cn_out { background:url("../images/hot_left_cn.jpg") no-repeat 0 -28px; width:72px; height:28px; color:#40301C; float:left;}
+.early_left_cn_on { background:url("../images/early_left_cn.jpg") no-repeat 0 0; width:72px; height:28px; color:#FC0; float:left;}
+.early_left_cn_out { background:url("../images/early_left_cn.jpg") no-repeat 0 -28px; width:72px; height:28px; color:#40301C; float:left;}

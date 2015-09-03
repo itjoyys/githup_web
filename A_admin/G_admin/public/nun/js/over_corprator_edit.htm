@@ -1,0 +1,282 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title></title>
+<link  rel="stylesheet"  href="css/main.css"  type="text/css">
+<link  rel="stylesheet"  href="css/styleCss.css"  type="text/css">
+<link  rel="stylesheet"  href="css/style.css"  type="text/css">
+<link  rel="stylesheet"  href="css/style(1).css">
+<link  rel="stylesheet"  href="css/style(2).css">
+<script  src="js/jquery-1.7.min.js"></script>
+<script  src="js/validform.js"></script>
+<script  src="js/jquery.tablesorter.min.js"></script>
+<script  src="js/myfunction.js"></script>
+</head>
+<body> 
+<script  language="javascript"  src="js/zh-tw.js"></script> 
+<script  language="javascript"  src="js/ov_co_edit.js"></script> 
+<script  language="javascript"  src="js/chk_keycode.js"></script> 
+<script  language="javascript">
+<!--
+var dfday='2013-05-13 00:00:00';
+$(document).ready(function(e) {
+
+	$("input[name='winloss_s']").val('');
+
+	$("select[name='dfwinloss_s']").val('-');
+
+	$("select[name='cp_dfwinloss_s']").val('-');
+
+	$("select[name='zr_dfwinloss_s']").val('-');
+
+});
+
+-->
+</script>
+<div  id="con_wrap">
+  <div  class="input_002">修改大股東</div>
+  <div  class="con_menu"> <a  href="app/daili/adminsave/over_corprator/over_corprator.php?uid=68db4a2ce0a188e9d41d2a557e73">返回上一頁</a> </div>
+</div>
+<div  class="content">
+  <form  name="myFORM"  id="myFORM"  action=""  method="POST">
+    <input  type="hidden"  name="aid"  value="390074">
+    <input  type="hidden"  name="enable"  value="Y">
+    <input  type="hidden"  name="keys"  value="upd">
+    <input  type="hidden"  name="username"  value="e8dagudong">
+    <input  type="hidden"  name="winloss_s"  value="">
+    <input  type="hidden"  name="uid"  value="68db4a2ce0a188e9d41d2a557e73">
+    <table  width="780"  border="0"  cellspacing="0"  cellpadding="0"  class="m_tab_ed">
+      <tbody><tr  class="m_title_edit">
+        <td  colspan="3">基本資料設定</td>
+      </tr>
+      <tr  class="m_bc_ed">
+        <td  class="m_co_ed"  width="120"> 帳號：</td>
+        <td  width="200">e8dagudong</td>
+        <td><div  class="Validform_checktip"></div></td>
+      </tr>
+      <tr  class="m_bc_ed">
+        <td  class="m_co_ed">密碼：</td>
+        <td><input  type="PASSWORD"  name="passwd"  value="password"  size="12"  maxlength="12"  class="za_text"  datatype="s6-12"  nullmsg="請輸入密碼"  errormsg="密碼必須至少6個字元長，最多12個字元長，并只能有數字(0-9)，及英文大小寫字母"></td>
+        <td><div  class="Validform_checktip"></div></td>
+      </tr>
+      <tr  class="m_bc_ed">
+        <td  class="m_co_ed">確認密碼：</td>
+        <td><input  type="PASSWORD"  name="repasswd"  value="password"  size="12"  maxlength="12"  class="za_text"  datatype="*"  recheck="passwd"  nullmsg="請輸入密碼"  errormsg="您两次输入的账号密码不一致！"></td>
+        <td><div  class="Validform_checktip"></div></td>
+      </tr>
+      <tr  class="m_bc_ed">
+        <td  class="m_co_ed">大股東名稱：</td>
+        <td><input  type="TEXT"  name="alias"  value="宝盈国际大股"  size="10"  maxlength="10"  class="za_text"  datatype="*"  nullmsg="請輸入大股東名稱"></td>
+        <td><div  class="Validform_checktip"></div></td>
+      </tr>
+	 <tr  class="m_bc_ed">
+        <td  class="m_co_ed">币别：</td>
+        <td></td>
+        <td></td>
+      </tr>
+    </tbody></table>
+    <table  width="780"  border="0"  cellspacing="0"  cellpadding="0"  class="m_tab_ed"  style="display:">
+      <tbody><tr  class="m_title_edit">
+        <td  colspan="2">下注資料設定</td>
+      </tr>
+      <input  type="hidden"  name="user_limit_up"  value="1">
+      <input  type="hidden"  name="points_limit_up"  value="1">
+    </tbody></table>
+    <table  width="780"  border="0"  cellspacing="0"  cellpadding="0"  class="m_tab_ed">
+      <tbody><tr  class="m_title_edit">
+        <td  colspan="3">占成設定</td>
+      </tr>
+      <tr  class="m_bc_ed">
+        <td  class="m_co_ed">體育-大股東占成數：</td>
+        <td>0%</td>
+        <td><div  class="Validform_checktip"></div></td>
+      </tr>
+      <tr  class="m_bc_ed">
+        <td  class="m_co_ed">彩票-大股東占成數：</td>
+        <td>0%</td>
+        <td><div  class="Validform_checktip"></div></td>
+      </tr>
+      <tr  class="m_bc_ed">
+        <td  class="m_co_ed">視訊-大股東占成數：</td>
+        <td>0%</td>
+        <td><div  class="Validform_checktip"></div></td>
+      </tr>
+
+      <tr  class="m_bc_ed"  align="center">
+          <td  class="m_bc_td"  colspan="3"><input  type="SUBMIT"  value="確定"  class="za_button">
+          &nbsp;&nbsp;&nbsp;
+          <input  type="button"  id="FormsButton2"  name="FormsButton2"  value="取消"   class="za_button"></td>
+      </tr>
+    </tbody></table>
+  </form>
+  <div  id="df_window"  style="visibility：hidden">
+    <form  name="myFORM2"  id="myFORM2"  action="app/daili/adminsave/over_corprator/ov_co_dfwinloss.php"  method="POST">
+      <input  type="hidden"  name="aid"  value="390074">
+      <input  type="hidden"  name="enable"  value="Y">
+      <input  type="hidden"  name="keys"  value="upd">
+      <input  type="hidden"  name="username"  value="e8dagudong">
+      <input  type="hidden"  name="uid"  value="68db4a2ce0a188e9d41d2a557e73">
+      <table  width="780"  border="0"  cellspacing="0"  cellpadding="0"  class="m_tab_ed">
+      
+      <tbody><tr  class="m_title_edit">
+        <td  colspan="3">預設成數</td>
+      </tr>
+      <tr  class="m_bc_ed">
+        <td  class="m_co_ed">預設體育 大股東占成數：</td>
+        <td><select  name="dfwinloss_s"  class="za_select">
+            <option  value="-">-</option>
+            
+						<option  value="0">全成</option>
+					<option  value="5">9.5 成</option>
+					<option  value="10">9 成</option>
+					<option  value="15">8.5 成</option>
+					<option  value="20">8 成</option>
+					<option  value="25">7.5 成</option>
+					<option  value="30">7 成</option>
+					<option  value="35">6.5 成</option>
+					<option  value="40">6 成</option>
+					<option  value="45">5.5 成</option>
+					<option  value="50">5 成</option>
+					<option  value="55">4.5 成</option>
+					<option  value="60">4 成</option>
+					<option  value="65">3.5 成</option>
+					<option  value="70">3 成</option>
+					<option  value="75">2.5 成</option>
+					<option  value="80">2 成</option>
+					<option  value="85">1.5 成</option>
+					<option  value="90">1 成</option>
+					<option  value="95">0.5 成</option>
+					<option  value="100">0 成</option>
+					
+					
+          </select>
+          選 - 時取消預設成數設定  (預設的成數將在 <font  color="red">2013-05-13 00:00:00</font> 後生效!!) </td>
+        <td><div  class="Validform_checktip"></div></td>
+      </tr>
+      <tr  class="m_bc_ed">
+        <td  class="m_co_ed">預設彩票 大股東占成數：</td>
+        <td><select  name="cp_dfwinloss_s"  class="za_select">
+            <option  value="-">-</option>
+            
+						<option  value="0">全成</option>
+					<option  value="5">9.5 成</option>
+					<option  value="10">9 成</option>
+					<option  value="15">8.5 成</option>
+					<option  value="20">8 成</option>
+					<option  value="25">7.5 成</option>
+					<option  value="30">7 成</option>
+					<option  value="35">6.5 成</option>
+					<option  value="40">6 成</option>
+					<option  value="45">5.5 成</option>
+					<option  value="50">5 成</option>
+					<option  value="55">4.5 成</option>
+					<option  value="60">4 成</option>
+					<option  value="65">3.5 成</option>
+					<option  value="70">3 成</option>
+					<option  value="75">2.5 成</option>
+					<option  value="80">2 成</option>
+					<option  value="85">1.5 成</option>
+					<option  value="90">1 成</option>
+					<option  value="95">0.5 成</option>
+					<option  value="100">0 成</option>
+					
+					
+          </select>
+          選 - 時取消預設成數設定  (預設的成數將在 <font  color="red">2013-05-13 00:00:00</font> 後生效!!) </td>
+        <td><div  class="Validform_checktip"></div></td>
+      </tr>
+      <tr  class="m_bc_ed">
+        <td  class="m_co_ed">預設視訊 大股東占成數：</td>
+        <td><select  name="zr_dfwinloss_s"  class="za_select">
+            <option  value="-">-</option>
+            
+						<option  value="0">全成</option>
+					<option  value="5">9.5 成</option>
+					<option  value="10">9 成</option>
+					<option  value="15">8.5 成</option>
+					<option  value="20">8 成</option>
+					<option  value="25">7.5 成</option>
+					<option  value="30">7 成</option>
+					<option  value="35">6.5 成</option>
+					<option  value="40">6 成</option>
+					<option  value="45">5.5 成</option>
+					<option  value="50">5 成</option>
+					<option  value="55">4.5 成</option>
+					<option  value="60">4 成</option>
+					<option  value="65">3.5 成</option>
+					<option  value="70">3 成</option>
+					<option  value="75">2.5 成</option>
+					<option  value="80">2 成</option>
+					<option  value="85">1.5 成</option>
+					<option  value="90">1 成</option>
+					<option  value="95">0.5 成</option>
+					<option  value="100">0 成</option>
+					
+					
+          </select>
+          選 - 時取消預設成數設定  (預設的成數將在 <font  color="red">2013-05-13 00:00:00</font> 後生效!!) </td>
+      </tr>
+
+       <tr  class="m_bc_ed"  align="center">
+          <td  class="m_bc_td"  colspan="2"><input  type="SUBMIT"  value="確定"  class="za_button">
+            &nbsp;&nbsp;&nbsp;
+            <input  type="button"  name="FormsButton2"  value="取消"  id="FormsButton2"   class="za_button"></td>
+        </tr>
+      </tbody></table>
+    </form>
+  </div>
+</div>
+<script  language="javascript">
+
+$(function(){
+	$("#myFORM").Validform({
+			tiptype:2,
+			datatype:{
+				'credit':function(gets,obj){
+					if(gets)
+					{
+						if(gets>parseInt(obj.attr('max')) || gets<(parseInt(obj.attr('miny'))+parseInt(obj.attr('minn'))))
+						{
+							return '超过可用额度或小于下级信用总额';
+						}
+						return true;
+					}
+					return false;
+				}
+			},	
+			callback:function(form){
+				if(confirm("是否確定寫入股東帳號?")) {
+					form.get(0).submit();
+			}return false;
+			
+		}
+	});
+	$("#myFORM2").Validform({
+		tiptype:2,
+		callback:function(form){
+			dfwinloss_s=$("select[name='dfwinloss_s']").val();
+			cp_dfwinloss_s=$("select[name='cp_dfwinloss_s']").val();
+			zr_dfwinloss_s=$("select[name='zr_dfwinloss_s']").val();
+			if((dfwinloss_s=="-" && cp_dfwinloss_s=="-" && zr_dfwinloss_s=="-")){
+					alert("預設成數不可有 [ - ] 號");
+					$("select[name='dfwinloss_s']").focus();
+					return false;
+				}		
+			if(dfwinloss_s!="-" && cp_dfwinloss_s!="-" && zr_dfwinloss_s!="-"){
+				if(confirm("預設的成數將在 "+dfday+" 後生效!!確認預設嗎?")){
+					form.get(0).submit();
+				}
+					return false;
+			}
+		}
+	});
+});
+</script> 
+	<table  width="100%"  border="0"  cellspacing="0"  cellpadding="0"  style="clear:both">
+		<tbody><tr>
+			<td  align="center"  height="50">版權所有 利博國際 建議您以 IE 8.0 1024 X 768 以上高彩模式瀏覽本站  </td>
+		</tr>
+	</tbody></table>
+
+
+<script  src="js/yhinput.js"  type="text/javascript"></script></body></html>

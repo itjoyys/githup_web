@@ -1,0 +1,49 @@
+<{$header}>
+<{config_load file="public.conf" section="public" }>
+<style type="text/css">
+  .banner-wrap {
+    background: url('<{#images#}>/title_welcome.png') no-repeat center top;
+}
+.page-btn.join {
+    background-image: url('<{#images#}>/btn_joinus02.png');
+}
+</style>
+<div class="banner-wrap clearfix">
+<{$notice_html}>
+
+<div id="page-container" class="clearfix">
+<div id="page-body" class="clearfix" style="height: auto;">
+    <!--    main   -->
+        <div id="page-sidebar">
+            <div class="sidemenu-header"></div>
+            <div class="sidemenu-body">
+                  <ul class="sidemenu">
+                        <li><a href="javascript:void(0);" onclick="getPager('-','sports','m');" target="mem_index" title="体育投注">体育投注</a>
+                        </li>
+                        <li><a href="javascript:void(0);" onclick="getPager('-','livetop','m');"  target="mem_index" title="视讯直播">视讯直播</a>
+                        </li>
+                        <li><a href="javascript:void(0);" onclick="getPager('-','egame','m');" target="mem_index" title="电子游艺">电子游艺</a>
+                        </li>
+                         <li><a href="javascript:void(0);" onclick="getPager('-','lottery');" target="mem_index" title="彩票游戏">彩票游戏</a>
+                        </li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="page-right">
+           <div id="joinMember">
+             <iframe name="mbody" scrolling="no" frameborder="0" src="./index.php?a=join_shiwan" onload="this.height=mbody.document.body.scrollHeight+10" style="background: transparent; width: 670px;" allowtransparency="true"></iframe>
+           </div>
+        </div>
+</div>
+</div>
+<div class="page-bottom">
+    <a hhref="javascript:void(0);" onclick="getPager('-','iword','5');" class="page-btn download hover"></a>
+    <a href="javascript:void(0);" onclick="getPager('-','youhui');" class="page-btn promotions hover"></a>
+    <a href="javascript:void(0);" onclick="getPager('-','zhuce');"  class="page-btn join hover"></a>
+    </div>
+</div>
+<{$bottom}>
+
+
+

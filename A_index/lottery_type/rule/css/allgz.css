@@ -1,0 +1,276 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*標準化 star **********************************/
+/*margin padding 標準化*/
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,p,blockquote,th,td
+{margin:0;padding:0;}
+/*標題 font-size 的標化*/
+h1,h2,h3,h4,h5,h6
+{font-size:100%}
+.title_td{ font-weight:bold;}
+/*移除清單list-style樣式*/
+ol,ul
+{list-style:none;}
+/*font-style,font-weight*/
+address,caption,cite,code,dfn,em,strong,th,var
+{font-style:normal; font-weight:normal;}
+/*del table border*/
+table
+{border-collapse:collapse;border-spacing:0;}
+/*del fieldset and img border*/
+fieldset,img
+{border:0;}
+/*caption and th text-align:left*/
+caption,th
+{text-align:left;}
+/*del q的引號*/
+q:before,q:after
+{content:'';}
+/***********************************標準化 end***/
+
+/*主要區塊*/
+body{
+    background-color:#818590;
+    font-size:12px;
+    color:#fff;
+    width:auto;
+	margin:0px auto; 
+}
+#mainbody{        
+    background:url(../images/bg.jpg) top center repeat-y;
+    margin:0 auto;
+    width:100%;
+}
+#page_header{
+    background-color:#FFF;
+    width:1000px;
+    height:160px;
+    margin: 0px auto;
+}
+#header_title{   
+    width:1000px;
+    height:100px;
+    float:left;
+}
+#page_container{ 
+    background-color:#FFF;
+    width:1000px;	
+    margin: 0px auto;
+    height:auto;
+}
+#page-footer {
+    height:137px;
+    max-width: 100%;
+    min-width: 1000px;
+    background:url(../images/footer_bg.jpg) top center no-repeat;
+    margin:0 auto;
+}
+#footer {    
+    height:30px;
+    width:1000px;
+    margin:0 auto 0 auto; 
+    color:#333333;
+    font:Verdana, Geneva, sans-serif;
+    text-align:center;
+}
+#btn_top_space {
+    background-color:#FFF;
+    height: 20px;
+    width:1000px;
+    margin:0 auto;
+}
+
+
+
+/*遊戲 項目按鈕 STAR-----------------------------------*/
+#gamecon{
+    width:1000px;
+    height:60px;
+    background:url(../images/GamaArea_bg.jpg) top left no-repeat;
+    float:left;
+}
+TABLE {	BORDER-TOP-WIDTH: 0px; PADDING-RIGHT: 0px; PADDING-LEFT: 0px; BORDER-LEFT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px; BORDER-RIGHT-WIDTH: 0px}
+
+.blk_29 {
+    PADDING-RIGHT: 0px;
+    PADDING-LEFT: 0px;
+    PADDING-BOTTOM: 10px;
+    OVERFLOW: hidden;
+    PADDING-TOP:5px;
+    ZOOM: 1;
+    POSITION: relative
+}
+.blk_29 .LeftBotton {
+    FLOAT: left;
+    WIDTH: 14px;
+    CURSOR: pointer;
+    POSITION: absolute;
+    TOP: 0;
+    HEIGHT: 23px; background-image:url(../images/game_btn.png);
+    background-repeat: no-repeat;
+    background-position: left top;
+    margin:19px 1px 0 1px;
+    *margin:19px 1px 0 -18px;
+}
+.blk_29 .RightBotton {
+    RIGHT: 1px;
+    FLOAT: right;
+    WIDTH: 14px;
+    CURSOR: pointer;
+    POSITION: absolute;
+    TOP: 0;
+    HEIGHT: 23px;
+    background-image: url(../images/game_btn.png);
+    background-repeat: no-repeat;
+    background-position: right top;
+    margin:19px 0 0 0;
+}
+.blk_29 .Cont {
+    MARGIN: 0 auto 0 18px;
+    OVERFLOW: hidden;
+    WIDTH: 966px
+}
+.blk_29 .box {WIDTH: 966px; height:49px;}
+.box li{ display:inline; position:relative; width:138px;  }
+
+.blk_29 .box a{
+    FLOAT: left; WIDTH: 135px; height:49px; 
+    background:url(../images/nav.jpg) top left no-repeat;
+    line-height:49px;
+    text-decoration:none;
+    color:#FFF;}
+
+.blk_29 .box a:hover,.blk_29 .box a.selected
+{FLOAT: left; WIDTH: 135px; height:49px; 
+ BORDER:0;
+ background:url(../images/nav_h.jpg) top left no-repeat;
+ color:#FFF;
+}
+.blk_29 .box P {	MARGIN: 5px auto 0px; WIDTH: 97px; LINE-HEIGHT: 20px}
+#m{ background:url(../images/nav.jpg) top left no-repeat;}
+#n{ background:url(../images/nav_h.jpg) top left no-repeat;}
+
+
+/*遊戲 項目按鈕 END-----------------------------------*/
+
+
+
+
+
+/*規則說明 STAR----------------------------*/
+#game_ruleArea{
+    width:100px;
+    height:auto;
+    _float: left;
+}
+#game_title{
+    width:1010px;
+    _width:1000px;
+    height:80px;    
+}
+#title_left{
+    float:left;
+    height:80px;
+    width:385px;
+    _width: 382px;
+}
+#title{
+    float:left;
+    width:469px;
+    _widht:465px;
+    height:80px;
+}
+#title_right{
+    float:left;
+    width:146px;
+    _width:143px;
+    height:80px;
+}
+
+img.title_left 
+{
+    width: 385px;
+    height: 80px;
+}
+img.title 
+{
+    width: 469px;
+    height: 80px;
+}
+img.title_right 
+{
+    width: 146px;
+    _width: 143px;
+    height: 80px;
+}
+
+.rule_title{
+    margin:0 55px;
+    width:890px;
+    height:32px;	
+}
+
+
+.rule_from01{    
+    margin:0 55px;
+    width:890px;
+    height:9px;
+    background:url(../images/pic_from01.gif) top left no-repeat;}
+.rule_from02{
+    width:890px;
+    _width:850px;
+    height:auto;
+	margin:0 55px;
+    background:url(../images/pic_from02.gif) top left repeat-y;
+    color:#000;
+    line-height:20px;
+	padding-left:20px;
+	font-size:12px;
+}
+.rule_from03{
+    width:890px;
+    height:9px;
+    background:url(../images/pic_from03.gif) top left no-repeat;
+    margin:0 55px;
+	margin-top:-7px;
+}
+
+.game_subtitle{  
+    float:left;	
+    width:980px;
+    height:17px;
+    margin:5px 0 0 10px;
+    color:#300;
+    font-size: 12px;
+    font-weight: bold;
+    text-decoration: none;
+    line-height:17px;
+}
+a.btn_top{
+    width:47px;
+    height:16px;
+    background:url(../images/pic_top.gif) top left no-repeat;
+    float:right;
+    margin-right:55px;
+    margin-top:5px;
+}
+
+
+/*規則說明 END----------------------------*/
+h2 {
+	        border-top:3px solid #8e1914;
+            font-size: 12px;
+            color: #fff;
+            font-weight: normal;
+            background: #ff6600 url(../images/rule_icon1.gif) left no-repeat;
+            height: 25px;
+            line-height: 20px;
+            display: block;
+			
+        }
+.table_td2{ font-size:12px; line-height:30px;}
+.iconl{ width:850px;}
+.iconl span{ padding-left:30px;}
+#but-top{ width:47px; height:16px; float:right; position:relative; right:60px; top:5px; display:block;}
+.red{ color:#f00;}

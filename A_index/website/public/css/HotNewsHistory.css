@@ -1,0 +1,23 @@
+/*main*/
+body { background: #D4D4D4; margin: 8px; font-family: sans-serif, Verdana, Geneva; font-size: 12px; }
+#main-wrap { position: relative; margin: 0 auto; width: 720px; }
+
+/*content*/
+#title { position: relative; left: 23px; width: 180px; height: 58px; }
+.content { padding: 0 15px; width: 615px; }
+.content div.date { float: left; width: 145px; }
+.content div.msg { float: left; width: 470px; }
+.content-title { font-weight: bold; }
+.inner-title { line-height: 18px; }
+.inner-date { font-weight: bold; }
+.inner-time { color: #333; }
+.line { background: url(../images/history/line.jpg) left center no-repeat; padding: 5px 0; width: 645px; height: 3px; }
+.clear { margin: 0; padding: 0;	clear: both; }
+
+/*footer*/
+.page { position: absolute; width: 80px; height: 35px; line-height: 20px; text-align: center; font-weight: bold; color: #999; cursor: pointer; }
+#page_pre { background: url(../images/history/left.png) left top no-repeat; }
+#page_next { background: url(../images/history/right.png) left top no-repeat; }
+.all-pages, .current { background: url(../images/history/page.png) left top no-repeat; }
+.current { color: #424242; }
+.all-pages:hover { color: #424242; }

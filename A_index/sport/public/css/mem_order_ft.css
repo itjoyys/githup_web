@@ -1,0 +1,166 @@
+/*----------------------------------------*/
+/*2010-09-20-For NewSI2*/
+/*----------------------------------------*/
+/*  *��  \9 ��IE Hack */
+/*  >��Mac Hack */
+/*@charset "UTF-8";*/
+html, body.bodyset {	text-align: center;	margin: 0px;	padding: 0px;	background-color: #493721;}
+form {	margin: 0px;	padding: 0px;}
+*input {vertical-align:middle;}
+.ord, .ord2 {	text-align: left;	margin: 0 auto;	width: 216px;	padding: 0 0 3px;	background-color: #E3D0AA;	font: 12px  Arial, Helvetica, SimSun, sans-serif;}
+/*----------------------------------------          ���i          ----------------------------------------*/
+.msg_box {}
+/*----------------------------------------               ----------------------------------------------------------*/
+div.ord p { margin:0;}
+/*error ps�߲v�ܰ�*/
+div.ord p tt { color: #F00; font:12px/140% Arial, Helvetica, SimSun, sans-serif; display:block; padding:5px 0px; margin-bottom:4px;}
+/*���Y*//*��span*/
+/*.ord .title { margin:0 6px;	color: #FFF;	height: 22px;	background: #614F35 url(/cl/tpl/commonFile/images/member/order_main_bg.jpg?=593) repeat-x left 0px;}*/
+.ord .title { margin:0; padding-right:5px;	color: #2F2F2F;	height: 22px;	background: #F1E3C6 url(/cl/tpl/commonFile/images/member/order_h1_ft.jpg?=593) repeat-x left top;}
+.ord .title h1 {	margin: 0;	padding: 7px 48px 1px 8px; word-break:break-all;/*�j���_��*//**/ height:22px; width:100%;	font-size: 12px; font-weight:bold;}
+html>body .ord .title h1 { padding-top:0;}
+/*���Ƨ��s*//**/
+.ord .title .tiTimer {	float: right;	margin-top: -19px;	width: 46px; height:22px;	padding-right: 0px; padding-left:7px; text-align:right; *vertical-align:text-top; background:url(/cl/tpl/commonFile/images/member/order_btn.gif?=593) no-repeat 0 -122px;}
+.tiTimer { *cursor:hand; cursor:pointer;}
+#OFS .tiTimer {*margin-top: -24px; *height:24px;}/*IE Hack*/
+html>body .ord .title .tiTimer { margin-top: -24px; padding:2px 0 0;height:20px;}/*mac hack*/
+.ord .title #checkOrder { *margin-top:-1px;}/*IE Hack*/
+/*�D�n���ư�*//**/
+.ord .main { clear:right; width:210px; font-size: 12px;	margin: 3px; color:#2F2F2F;}
+/*�p��*//**/
+.ord .main .leag {	font-size: 12px; line-height:18px;	padding: 0px 8px; border: 1px solid #937B52; border-bottom:none; background: #CFC0A1 /*url(/cl/tpl/commonFile/images/member/order_main_bg.jpg?=593) repeat-x left -50px*/;}
+/*���k*/
+.ord .main .gametype { padding:5px 8px 2px; border-left: 1px solid #937B52; border-right: 1px solid #937B52; background-color:#E1D6C2;/*	background: url(/cl/tpl/commonFile/images/member/order_main_bg.jpg?=593) repeat-x 0 -100px;*/}
+.ord .main .gametype15 { height:34px;padding: 1px 8px 1px; border-left: 1px solid #937B52; border-right: 1px solid #937B52; background-color:#E1D6C2;/*	background: url(/cl/tpl/commonFile/images/member/order_main_bg.jpg?=593) repeat-x 0 -100px;*/}
+/*�S�����k*/
+.gametype font {  margin-top:6px; *margin-bottom:-2px; *padding-bottom:0;}
+.game_hr { color:#C00;}/*�b���`��*/
+/*����*/
+html>body .ord .main .teamName { margin-top:-4px;}/*mac hack*/
+.ord .main .teamName { padding:4px 8px 3px;border: 1px solid #937B52; border-top:none; background-color:#E1D6C2;/*word-break:break-all;overflow:auto;/*word-break: normal;/*�̷Ӱ϶��j�p�j���q��,���|�I�_�^�����r*//**/}
+.ord .main .teamName .tName {	 mini-height:14px;}
+.ord .main .teamName .score {color: #BA2700; padding-left:10px; font-weight:bold; height:14px;}
+.radio {color: #BA2700;} /*�y�Y*/
+/**/
+.ord .main .team { margin:3px 0; padding:3px 8px 2px ; text-align: left; border: 2px solid #937B52;	background-color: #FFF;}
+.ord .main .auto  { margin:3px 0; padding:3px 8px 2px 4px; text-align: left; border: 1px solid #937B52;	background-color: #E1D6C2; font-weight:bold;}
+.ord .main .auto input { margin-top:-3px;}
+.auto_info { *cursor:hand; cursor:pointer;}
+#OFS .team { margin-top:0;}
+em {	color: #BB2700;	font-style: normal;}/*team*/
+em.bold { font-weight:bold;}
+strong.light {	color: #BA2700;}/*@XX*/
+strong.lightOn {color: #BA2700; background-color:#EDDF67;}/*�߲v�ܰʴ���light*/
+.ord .main .error {	clear: both;margin: 0; min-height:25px;height: auto !important;height: 25px; padding:3px 8px 2px 32px ; border: solid 1px #937B52; border-bottom:none; background:#EDDF67 url(/cl/tpl/commonFile/images/member/order_icon.gif?=593) no-repeat -445px 2px;}
+/*���ư϶�*//**/
+.ord .main .betdata { padding:6px 5px 9px 8px ; line-height:110%; border: 1px solid #937B52; background-color:#E1D6C2;/*	background:#BBA887 url(/cl/tpl/commonFile/images/member/order_main_bg.jpg?=593) repeat-x 0 -180px;*/}
+.ord .main .amount {	margin-bottom: 8px;}
+.ord .main .amount .txt {height: 22px;	width: 127px;border: 1px solid #937B52; font-weight:bold;}
+/*.ord .main .mayWin {}/*�iĹ���B*/
+/*.ord .main .maxBet {	}/*���`�̰�-����*/
+/*alt���r*/
+/*.ord .main .maxBet span.notes {display: none }/*���B����*/
+/*.ord .main .maxBet a {position:relative; text-decoration:none; color:#000;}
+/*.ord .main .maxBet .info:hover span.notes  {display:block;position:absolute;top:-45px;left:-100px; width:150px; padding:5px; line-height:120%; border:1px solid #CAA565; background:#FFEDCD; }*/
+.ord .betBox {	margin-top: 0px;	text-align: center;}/*�U�`�s*/
+.ord .betBox input.no, div.betChk input.no { *cursor:hand; cursor:pointer;margin:0 1px 0 0; width:85px; height:26px; border:none; padding-top:2px; color:#FFF; font-weight:bold; background: #3D3D3D url(/cl/tpl/commonFile/images/member/order_btn.gif?=593) no-repeat 0 -80px; border-radius: 0;}
+.ord .betBox input.yes, div.betChk input.yes {*cursor:hand; cursor:pointer; margin:0; width:122px; height:26px; border:none; padding-top:2px; color:#F8C100; font-weight:bold; background: #3D3D3D url(/cl/tpl/commonFile/images/member/order_btn.gif?=593) no-repeat 0 0; border-radius: 0;}
+/*�U�`���B���Y�]�w*/
+.ord .bet_txt {/* width:74px; color:#F00;*/}
+/*�T�w�U�`*/
+.ord .betChk {	width: 216px;	padding: 2px 6px 6px;	color: #C00;	text-align: center;	background-color: #E3D0AA;}
+.ord .betChk .notice {	display: block;	margin-bottom: 5px;}
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~history show10~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+body#OHIS {margin: 0px; padding: 0px; background-color: #E3D0AA;}
+html>body#OHIS { padding-top:1px;}/*mac hack*/
+/*#OHIS .title { padding-top:6px; height:16px; background:#614F35 url(/cl/tpl/commonFile/images/member/order_h1_ft.jpg?=593) no-repeat left -50px;}*/
+#OHIS .ord .title h1 {padding: 6px 48px 2px 8px; height:20px; }
+
+#OHIS .ord .title .tiTimer { width:21px!important; *height:22px; *cursor:hand; cursor:pointer;}/*title*/
+#OHIS .show { clear:right; width:210px; margin:0px 3px -1px; padding:0; font: 12px Arial, Helvetica, SimSun, sans-serif; background-color:#E3D0AA; 	/*background:#E1D6C2 url(/cl/tpl/commonFile/images/member/order_main_bg.jpg?=593) repeat-x 0 -180px;border: 1px solid #937B52;	*/}
+html>body#OHIS .show  { margin-top:-1px;/* margin-left:6px;*/}/*mac hack*/
+#OHIS .show_info {width: 216px;height:85px;	background-color: #E3CFAA;	font: 0.75em Arial, Helvetica, SimSun, sans-serif; font-weight:bold;} /*�L�U�`���Ʈ�*//**/
+.show_top { display:block; height:22px; margin-bottom:22px; background: #614F35 url(/cl/tpl/commonFile/images/member/order_h1_ft.jpg?=593) repeat-x left top;}
+#OHIS .tname { margin-bottom:3px!important; text-align:left;padding:1px 6px 2px; border: solid 1px  #937B52; background-color:#E1D6C2;}
+/*#OHIS p { margin:0 0 -2px;/*���äU���u }*/
+#OHIS em {  color:000;}
+#OHIS .error {margin: 0 0 -1px; height:15px;	line-height:15px; padding: 1px 6px 0 21px; /*color:#0000FE;*/ font-weight:bold;background:#E1D6C2 url(/cl/tpl/commonFile/images/member/order_icon.gif?=593) no-repeat -218px 2px;}
+/*�M�I�y���A�]�w*//**/
+.dan_red { color:#d60008!important;font-weight: bold;}
+.dan_blue {color: #0101f7!important;font-weight: bold;}
+.dan_green {color: #090!important;font-weight: bold;}
+
+
+.his_result { color:#BA2700;/* font-weight:bold; */text-decoration:none;}
+.his_sp {color:#0101f7;text-decoration:none; display:block; margin-top:2px;}/*�S��*/
+.his_score { color:#BA2700; font-weight:bold;}/*����*//**/
+.his_odd { color:#BA2700; font-weight:bold;}/*@xx */
+.gold { text-align:left; display: block; padding-top:2px;}/*Paying money*/
+/**/
+/*Home Away vs*/.his_h, .his_a { color:#2F2F2F;}
+.his_vs { color: #C00;}
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~font~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/*#pc {color:#C00;}/*Mode*/
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~P3~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/*#OFTP3 .teamNameP3 { padding:4px auto 10px;border: 1px solid #937B52; border-top:none; background:#CEC0A3 url(/cl/tpl/commonFile/images/member/order_main_bg.jpg?=593) repeat-x 0 -196px;}*/
+.deletebtn {float:right; position:relative; *margin-top:-16px;*right:4px; top:0px;}
+html>body .deletebtn { top:4px;}
+.deletebtn input { right:0; clear:right;width:10px; height:9px; border:none; margin:0; color:#F00; *cursor:hand; cursor:pointer; background: url(/cl/tpl/commonFile/images/member/order_icon.gif?=593) no-repeat 0 0;}
+/*#OFTP3 .teamP3 { margin:3px 0; padding:0 10px 2px; text-align: left; }*/
+#OFTP3 .leag { *padding-right:20px;border-top: 1px solid #937B52;}
+#OFTP3 .errorP3 {	clear: both;margin: 0 0 4px; height:17px;	line-height:17px; padding-left:32px; color:#C00; background: url(/cl/tpl/commonFile/images/member/order_icon.gif?=593) no-repeat;}
+#OFTP3 .errorP3 { background-position:-220px 50%;}
+#OFTP3 .team { margin-top:0;}
+#OFTP3 .team_ch {  margin:0 0 3px;padding:3px 8px 2px ; text-align: left; border: 2px solid #937B52; background-color: #FF6;}/*�L�����k�ܰʴ���*//**/
+/*.ord .main .team { margin:3px 0; padding:3px 8px 2px ; text-align: left; border: 2px solid #937B52;	background-color: #FFF;}*/
+
+
+#OFTP3 .teamName { border-bottom:none;}
+.leag_txt { padding-right:16px;}
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~Finish~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+#OFIN .ord .title .tiTimer { width:21px!important; *height:22px; *margin-top:-20px; *cursor:hand; cursor:pointer;}/*title*/
+.fin_title { padding:6px 7px; border: 1px solid #937B52; background-color:#E8FFC7;}
+.fin_acc { padding-left:20px; height:15px;color:#589410; font-weight:bold;background: url(/cl/tpl/commonFile/images/member/order_icon.gif?=593) no-repeat -710px 0px;}
+.fin_uid {padding-left:20px; height:17px; text-decoration:underline;}
+#OFIN .error {margin: 0 ; height:15px;	line-height:15px; padding: 2px 6px 0 20px; border:none; color:#0000FE; font-weight:bold;background: url(/cl/tpl/commonFile/images/member/order_icon.gif?=593) no-repeat -220px 3px;}
+#OFIN .leag { margin-top:2px;}
+.teamNameP3 .fin_team {margin-top:0!important; border-top:1px solid #937B52;}
+/*team*/
+.fin_amount  { padding:0 7px; line-height:21px;margin-top:3px!important;margin-bottom:0; border:1px solid #937B52;background-color:#E1D6C2;}
+.fin_gold { font-weight:bold;}
+.fin_team { margin-top:3px!important; padding:3px 7px 2px;border:2px solid #937B52;background-color:#E1D6C2;}
+.fin_team strong {color: #BA2700;}/*odd*/
+.score {color: #BA2700; padding-left:10px; font-weight:bold; height:14px;}
+.close, .print  {*cursor:hand; cursor:pointer; width:102px; height:26px; border:none; padding-top:2px;  font-weight:bold; background: #3D3D3D url(/cl/tpl/commonFile/images/member/order_btn.gif?=593) no-repeat 0 -40px;}
+.close {margin:0; color:#F8C100; }
+.print { margin:0 1px 0 0;  color:#FFF;}
+/**/
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~Comfirm window~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+body#OFIN2, body#GRAY, body#BLUE, body#PINK { /*margin-top:39px;*/}
+body#GRAY div, body#BLUE div, body#PINK div {text-align:center; font: 12px  Arial, Helvetica, SimSun, sans-serif; border:5px solid; margin:6px; padding:6px;}
+body#GRAY {  background-color:#FC6;}
+body#GRAY div {	color: #000; border-color:#F90; background-color:#FFE39D;}
+/*�Ȯɰ�������*/
+body#BLUE {  background:#E3CFAA url(/cl/tpl/commonFile/images/member/order_none.jpg?=593) repeat-x 0 0;}
+body#BLUE div {	color: #000; border: none; margin-top:25px;}
+body#BLUE p { margin:5px 0 0; padding:0;}
+/*Mac Hack*/
+html>body#BLUE {width:216px; height:95px; margin-left:0;}
+html>body#BLUE div { margin-top:-8px; padding-top:25px;}
+body#PINK {  background-color:#EDAAAA;}
+body#PINK div {	color: #C00; border-color:#E78686; background-color:#EDC6C8;}
+body#BLUE .yes {*cursor:hand; cursor:pointer; margin:0; width:122px; height:26px; border:none; padding-top:2px; color:#F8C100; font-weight:bold; background: #3D3D3D url(/cl/tpl/commonFile/images/member/order_btn.gif?=593) no-repeat 0 0; }
+
+/*131114-�s�W+-�Ϥ��B���u*/
+.parlay_span{ display:block; float:left; height:22px; line-height:22px;}
+.icon_show {display:block; float:left; background:url(/cl/tpl/commonFile/images/member/show_icon01.jpg?=593) no-repeat center; width:14px; height:14px; cursor:hand; cursor:pointer; margin-left:3px; margin-top:3px;}
+.icon_close {display:block; float:left; background:url(/cl/tpl/commonFile/images/member/show_icon02.jpg?=593) no-repeat center; width:14px; height:14px; cursor:hand; cursor:pointer; margin-left:3px;margin-top:3px;}
+.order_line { clear:both; height:2px; background:url(/cl/tpl/commonFile/images/member/order_line01.jpg?=593) repeat-x center;}
+.order_line2 { height:20px;background:url(/cl/tpl/commonFile/images/member/order_line02.jpg?=593) repeat-x center}
+.order_line3 { clear:both; height:15px; background:url(/cl/tpl/commonFile/images/member/order_line01.jpg?=593) repeat-x center;}
+.tname_em{display:block;font-size:12px; padding-top:5px;}
+.gold_span{ display:block;padding-top:10px}
+
+/*���y-order��*/
+.gametype2 { height:30px;padding: 1px 8px 1px; border-left: 1px solid #937B52; border-right: 1px solid #937B52; background-color:#E1D6C2;/*	background: url(/cl/tpl/commonFile/images/member/order_main_bg.jpg?=593) repeat-x 0 -100px;*/}
+.gametype2 font { display:block; margin-top:4px;}

@@ -1,0 +1,51 @@
+* { margin:0;padding:0; }   a{ color:#09c; }
+                            body{background: #FADCDC}
+a:hover{ color:#000; text-decoration:none; }
+ul,li{ list-style-type: none; margin: 0px; padding: 0px;}
+.clear{ clear:both}
+.easyDialog_wrapper{width: 100%}
+.easyDialog_text{ padding-top: 0px; overflow-y: scroll; height: 400px; width: 100%;}
+.none{ display: none;}
+.warp{ margin: 5px; width: 100%;}
+.cp_info{ text-align: center; height: 35px; width: 70px;}
+.ball_red{ color: #ff0200}
+.xs{cursor: pointer;}
+.top ul li{ float: left; margin-right: 10px;height: 28px; line-height: 28px;}
+
+
+.top_menu_1{ width: 100px;}
+.table_cp{ background: #e0a4a2;  margin: 10px 0px 0px;-webkit-box-shadow: #e0a4a2 0px 0px 3px;
+    -moz-box-shadow: #e0a4a2 0px 0px 3px;
+    box-shadow: #e0a4a2 0px 0px 3px;}
+.table_cp tr{ background: #ffffff}
+.table_cp td,.table_cp th{ padding: 3px;}
+.table_cp th{color:#333333;background-image: -moz-linear-gradient(top, #FADCDC, #fabdda); /* Firefox */
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #FADCDC), color-stop(1, #fabdda)); /* Saf4+, Chrome */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FADCDC', endColorstr='#fabdda', GradientType='0'); /* IE*/}
+.table_alert{width: 100%;
+    text-align: center;-webkit-box-shadow: #c9c9c9 0px 0px 0px;
+    -moz-box-shadow: #c9c9c9 0px 0px 0px;
+    box-shadow: #c9c9c9 0px 0px 0px;}
+.table_alert td{ line-height: 25px;}
+#data{ border: #b8b8b8 solid 2px; padding: 5px;
+    background: #f7f7f7;
+    -webkit-box-shadow: #c9c9c9 0px 0px 3px;
+    -moz-box-shadow: #c9c9c9 0px 0px 3px;
+    box-shadow: #c9c9c9 0px 0px 3px;
+}
+#close{   -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius:3px;  background: #bababa;
+    background:-webkit-gradient(linear,center bottom,center top,from(#bababa),to(#838383));
+    background:-moz-linear-gradient(90deg, #bababa, #838383);
+    border-color:#bababa;
+    color:#fff;border: 1px; padding: 3px 5px; }
+.ColorBall_3,.ColorBall_2,.ColorBall_1{padding:5px;font-size: 7px; width: 14px;   height:14px; line-height:14px;
+    background: #ffffff url(../../public/images/b.png) no-repeat center; text-align: center; color: #2f2f2f; margin: 0 auto;
+
+}
+.ColorBall_1{ background: #ffffff url(../../public/images/r.png); }
+.ColorBall_2{ background: #ffffff url(../../public/images/g.png); }
+.change{ border-bottom: #cf514d solid 3px;}
+.za_text{border: 1px solid #5289A0;
+    padding: 1px 1px 1px 2px;}

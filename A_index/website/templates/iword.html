@@ -1,0 +1,81 @@
+<{$header}>
+<{config_load file="public.conf" section="public" }>
+<style type="text/css">
+  .banner-wrap {
+    background: url('<{#images#}>/title_welcome.png') no-repeat center top;
+}
+.page-btn.join {
+    background-image: url('<{#images#}>/btn_joinus02.png');
+}
+</style>
+<div class="banner-wrap clearfix">
+<{$notice_html}>
+
+<div id="page-container" class="clearfix">
+<div id="page-body" class="clearfix" style="height: auto;">
+    <!--    main   -->
+        <div id="page-sidebar">
+            <div class="sidemenu-header"></div>
+            <div class="sidemenu-body">
+                  <ul class="sidemenu">
+                        <li><a href="javascript:void(0);" onclick="getPager('-','sports','m');" target="mem_index" title="体育投注">体育投注</a>
+                        </li>
+                        <li><a href="javascript:void(0);" onclick="getPager('-','livetop','m');"  target="mem_index" title="视讯直播">视讯直播</a>
+                        </li>
+                        <li><a href="javascript:void(0);" onclick="getPager('-','egame','m');" target="mem_index" title="电子游艺">电子游艺</a>
+                        </li>
+                         <li><a href="javascript:void(0);" onclick="getPager('-','lottery');" target="mem_index" title="彩票游戏">彩票游戏</a>
+                        </li>
+                </ul>
+            </div>
+        </div>
+
+<div id="page-right">
+    <link href="<{#css#}>/fckeditor.css" rel="stylesheet" type="text/css">
+	<div id="direction" class="advertis-event">
+	   <{if $iword['type'] == 5}>
+		<div id="Union">
+		    <ul class="mtab-menual">
+		        <li id="#Union1" class="mtab">联盟方案</li>
+		        <li id="#Union2">联盟协议</li>
+		        <li onclick="getPager('_bank','<{$agent_url}>');">代理登入</li>
+		        <li onclick="getPager('-','daili_shenqing');">代理注册</li>
+		    </ul>
+		    <div id="Union1"><div style="margin-left:20px; margin-right:20px"><{$iword['content']}></div></div>
+		    <div id="Union2" style="display:none;"><div style="margin-left:20px; margin-right:20px"><{$iword['content_1']}></div></div>
+		 </div>
+	   <{else}>
+	    <div id="articles">
+	        <h3 class="case-article-title"><{$iword['title']}></h3>
+		    <div class="case-article-content">
+			    <div style="margin-left:20px; margin-right:20px"><{$iword['content']}>
+			    </div>
+		    </div>
+	    </div>
+	   <{/if}>
+	   <script>
+		$(function() {
+		    //一般文案用 
+		    var MtabUl = $('#Union').children('ul');
+		    MtabUl.addClass("mtab-menual");
+		        $('#Union').mtab2();
+		    $('.mtab-menual').show();
+		    
+		});
+		</script>
+	</div>
+
+
+</div>
+</div>
+</div>
+<div class="page-bottom">
+    <a href="javascript:void(0);" onclick="getPager('-','iword','5');" class="page-btn download hover"></a>
+    <a href="javascript:void(0);" onclick="getPager('-','youhui');" class="page-btn promotions hover"></a>
+    <a href="javascript:void(0);" onclick="getPager('-','zhuce');"  class="page-btn join hover"></a>
+    </div>
+</div>
+<{$bottom}>
+
+
+

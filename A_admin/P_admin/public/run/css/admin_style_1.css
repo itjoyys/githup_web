@@ -1,0 +1,117 @@
+﻿body {
+	font-family: Verdana, Geneva, sans-serif;font-size : 12px;color : #333;
+	margin : 0;padding : 0;
+	background : #f1f1f1;
+	scrollbar-face-color: #f6f6f6;scrollbar-highlight-color: #ffffff;
+	scrollbar-shadow-color: #cccccc; scrollbar-3dlight-color: #cccccc; 
+	scrollbar-arrow-color: #330000; scrollbar-track-color: #f6f6f6; 
+	scrollbar-darkshadow-color: #ffffff;
+	line-height : 20px;
+	
+}
+
+p, ol, ul, dl,dt, dd, li, div {
+	font-family: Verdana, Geneva, sans-serif;
+	font-size : 12px;
+	line-height : 180%;
+	margin : 0;
+	padding : 0;
+	overflow : hidden;
+}
+dt,dd,li {text-align : left;list-style : none;}
+h1, h2, h3, h4, h5, h6, ul, ol, li {display : block;}
+
+form, embed {display : inline;margin : 0;padding : 0;}
+img, a img {vertical-align : middle;border : none;font-size:12px;}
+a {font-family: Verdana, Geneva, sans-serif;color : #111;text-decoration : none;font-size:12px;}
+a:hover {font-family: Verdana, Geneva, sans-serif;color : #f30;text-decoration : underline;font-size:12px;}
+.font12{ font-size:12px;}
+.submit80{ padding:0; margin:0; border:0; background-image:url(../submit.gif); width:80px; height:24px; font-size:12px; color:#3C4D82;}
+.hong{ color:#F00}
+.lan{ color:#00F}
+div#pageMain {
+	margin: 0 0px;
+	width:auto;height: 100%;
+	background:#f1f1f1;
+	text-align : center;
+	overflow:auto;
+	font-size:12px;
+}
+
+div#mainBody {
+	font-size:12px;
+	overflow: auto;margin:auto;
+	width:auto;height: 100%;
+	border-width: 1px;
+	border-top: 0px solid threedhighlight;
+	border-left: 0px solid threedhighlight;
+	border-right: 0px solid threedshadow;
+	border-bottom: 0px solid threedshadow;
+	padding:5px 0px;
+}
+
+div#pageMain dl {
+	margin: 0px 5px;padding : 0px;
+	width:auto;border-right:1px solid #ccc;
+	/*border: medium none; */
+	background: #e0e0e0 url(../leftbg.gif) repeat-y left;
+	clear: both;
+}
+div#pageMain dt {font-weight : bold;letter-spacing: 1px;}
+div#pageMain dd {
+	padding: 0px; margin: 0px; border: 0px;
+	background: #eee;
+	border-top: 1px solid #fff;
+	border-left: 5px solid #e0e0e0;
+	padding-right:3px;
+}
+div#pageMain li {
+	padding: 0px; margin: 0px; border: 0px;
+	text-align: left;
+	text-indent: 10px;
+}
+.menu_title, .menu_title1, .menu_title2 {
+	padding: 0px; margin: 0px; border: 0px; padding-left: 15px;
+	border-left: 5px solid #103667; 
+	border-top: 1px solid #ffffff; 
+	border-bottom: 1px solid #c0c0c0;
+	width: auto;text-align: left;
+	line-height: 26px;
+	height: 26px;
+	background: #e0e0e0;
+	cursor:pointer!important;
+	cursor:crosshair;
+	display:block;
+}
+.menu_title {
+	background: url(../arrow001.gif) no-repeat right center;
+}
+.menu_title1{
+	background: url(../arrow001.gif) no-repeat right center;
+}
+.menu_title2{
+	background: url(../arrow002.gif) no-repeat right center;
+}
+dl#systemInfo {border-bottom:1px solid #ccc;}
+
+#pageMain li,#table1 td {text-decoration:none;font-size:12px;color:#000;height:20px;filter:dropshadow(offX=1,offY=1,color=#FFFFFF);}
+#pageMain li,#table1 td a{text-decoration:none;font-size:12px;color:#000;height:20px;filter:dropshadow(offX=1,offY=1,color=#FFFFFF);}
+#pageMain li,#table1 td a:hover{text-decoration:none;font-size:12px;color:#000;height:20px;filter:dropshadow(offX=1,offY=1,color=#FFFFFF);}
+
+/**分页样式**/
+.Pagination {margin:0 auto;}
+.Pagination a {margin-left:2px; padding:3px 7px;}
+.Pagination .dot{ border:medium none; padding:4px 8px}
+.Pagination a:link, .Pagination a:visited {border:1px solid #dedede;color:#696969;text-decoration:none;}
+.Pagination a:hover, .Pagination a:active, .Pagination a.current:link, .Pagination a.current:visited {border:1px solid #dedede;color:#fff; background-color:#900; background-image:none; border:#900 solid 1px;}
+.Pagination .selectBar{ border:#dedede solid 1px; font-size:12px; width:95px; height:21px; line-height:21px; margin-left:10px; display:inline;}
+.Pagination a.tips{_padding:4px 7px 1px;}
+
+/**按钮样式**/
+.lans{ padding:0px 5px; background-color:#036; color:#FFF; height:25px; line-height:25px; margin-right:5px;display:block; float:left;}
+.hongs{ padding:0px 5px; background-color: #900; color:#FFF; height:25px; line-height:25px; margin-right:5px;display:block; float:left;}
+.heis{ padding:0px 5px; background-color: #000; color:#FFF; height:25px; line-height:25px; margin-right:5px;display:block; float:left;}
+.blues{ padding:0px 5px; background-color: #00F; color:#FFF; height:25px; line-height:25px;display:block;cursor:hand}
+.greens{ padding:0px 5px; background-color: #060; color:#FFF; height:25px; line-height:25px;display:block;cursor:hand}
+.reds{ padding:0px 5px; background-color: #F00; color:#FFF; height:25px; line-height:25px;display:block;cursor:hand}
+.blacks{ padding:0px 5px; background-color: #000; color:#FFF; height:25px; line-height:25px;display:block;cursor:hand}

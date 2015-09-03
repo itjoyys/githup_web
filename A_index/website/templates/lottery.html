@@ -1,0 +1,208 @@
+<{$header}>
+<{config_load file="public.conf" section="public"}>
+<style type="text/css">
+  .banner-wrap {
+    background: url('<{#images#}>/title_welcome.png') no-repeat center top;
+}
+</style>
+<div class="banner-wrap clearfix">
+<{$notice_html}>
+<style>
+a{text-decoration:none;}
+.content {
+    margin: 0 auto;
+    width: 1050px;
+    height: 850px;
+}
+#bg ul li{ width:324px; height:141px; float:left; margin-left:20px; margin-top:20px; }
+#bg ul li .lhc{ background:url(<{#images#}>/lhc-1.png) no-repeat top; width:324px; height:140px; display:block; text-align:center;}
+#bg ul li .lhc:hover{  background:url(<{#images#}>/lhc-2.png) no-repeat top; width:324px; height:140px;}
+#bg ul li .block{ width:135px; height:27px; display:block; position:relative; top:112px; left:92px;}
+#bg ul li .block a{ font-size:12px; line-height:27px; color:#f8f5c8;}
+#bg ul li .block span{ color:#f9f5c8;  font-size:12px; line-height:27px; margin-left:4px; margin-right:5px;}
+#bg ul li .block a:hover{ color:#2a8fbd; text-decoration:underline;}
+
+#bg ul li .ssc{ background:url(<{#images#}>/cqssc-1.png) no-repeat top; width:324px; height:140px; display:block; text-align:center;}
+#bg ul li .ssc:hover{  background:url(<{#images#}>/cqssc-2.png) no-repeat top; width:324px; height:140px;}
+
+#bg ul li .cq{ background:url(<{#images#}>/cqsf-1.png) no-repeat top; width:324px; height:140px; display:block; text-align:center;}
+#bg ul li .cq:hover{  background:url(<{#images#}>/cqsf-2.png) no-repeat top; width:324px; height:140px;}
+
+#bg ul li .sc{ background:url(<{#images#}>/bjsc-1.png) no-repeat top; width:324px; height:140px; display:block; text-align:center;}
+#bg ul li .sc:hover{  background:url(<{#images#}>/bjsc-2.png) no-repeat top; width:324px; height:140px;}
+
+#bg ul li .dd{ background:url(<{#images#}>/3d-1.png) no-repeat top; width:324px; height:140px; display:block; text-align:center;}
+#bg ul li .dd:hover{  background:url(<{#images#}>/3d-2.png) no-repeat top; width:324px; height:140px;}
+
+#bg ul li .p3{ background:url(<{#images#}>/p3-1.png) no-repeat top; width:324px; height:140px; display:block; text-align:center;}
+#bg ul li .p3:hover{  background:url(<{#images#}>/p3-2.png) no-repeat top; width:324px; height:140px;}
+
+#bg ul li .gd{ background:url(<{#images#}>/gdsf-1.png) no-repeat top; width:324px; height:140px; display:block; text-align:center;}
+#bg ul li .gd:hover{  background:url(<{#images#}>/gdsf-2.png) no-repeat top; width:324px; height:140px;}
+
+#bg ul li .bj{ background:url(<{#images#}>/bjk8-1.png) no-repeat top; width:324px; height:140px; display:block; text-align:center;}
+#bg ul li .bj:hover{  background:url(<{#images#}>/bjk8-2.png) no-repeat top; width:324px; height:140px;}
+
+
+#bg ul li .tjssc{ background:url(<{#images#}>/tjssc-1.png) no-repeat top; width:324px; height:140px; display:block; text-align:center;}
+#bg ul li .tjssc:hover{  background:url(<{#images#}>/tjssc-2.png) no-repeat top; width:324px; height:140px;}
+
+#bg ul li .jxssc{ background:url(<{#images#}>/jxssc-1.png) no-repeat top; width:324px; height:140px; display:block; text-align:center;}
+#bg ul li .jxssc:hover{  background:url(<{#images#}>/jxssc-2.png) no-repeat top; width:324px; height:140px;}
+
+#bg ul li .xjssc{ background:url(<{#images#}>/xjssc-1.png) no-repeat top; width:324px; height:140px; display:block; text-align:center;}
+#bg ul li .xjssc:hover{  background:url(<{#images#}>/xjssc-2.png) no-repeat top; width:324px; height:140px;}
+
+#bg ul li .jsk3{ background:url(<{#images#}>/jsk3-1.png) no-repeat top; width:324px; height:140px; display:block; text-align:center;}
+#bg ul li .jsk3:hover{  background:url(<{#images#}>/jsk3-2.png) no-repeat top; width:324px; height:140px;}
+
+#bg ul li .jlk3{ background:url(<{#images#}>/jlk3-1.png) no-repeat top; width:324px; height:140px; display:block; text-align:center;}
+#bg ul li .jlk3:hover{  background:url(<{#images#}>/jlk3-2.png) no-repeat top; width:324px; height:140px;}
+	
+
+</style>
+<!--banner end-->
+<script type="text/javascript">
+$(function(){
+  $('.shade li').hover(function(){
+    $('.text',this).stop().animate({
+      height:'2228'
+    });
+  },function(){
+    $('.text',this).stop().animate({
+      height:'0'
+    });
+  });
+});
+
+    var o_state=1;
+    function open_lottery(type){
+          var iHeight = window.screen.height;
+         // var title=$(this).attr('type');
+          var iWidth = window.screen.width-8;
+          if (o_state) {
+               window.open("lottery_type/lottery.php?type="+type,"blank",'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=no,width='+iWidth+',height='+iHeight); 
+               
+          };
+    }
+</script>
+  <div id="bg">
+   <div class="content">
+    <ul>
+      <li>
+      <span class="lhc">
+      <span class="block"><a href="./lottery_type/rule/rule.php?gtype=lhc" target="_blank">规则说明</a><span>/</span><a href="javascript:;" <{if empty($uid)}>
+      onclick="alert('你尚未登录，请先登录再进入游戏！')"
+        <{else}>
+        onclick="open_lottery('6')"
+        <{/if}>>立即投注</a>
+        </span>     
+      </span>
+      </li>
+      
+      <li>
+        <span class="dd">      <span class="block"><a href="./lottery_type/rule/rule.php?gtype=bj3d" target="_blank">规则说明</a><span>/</span><a href="javascript:;" <{if empty($uid)}>
+      onclick="alert('你尚未登录，请先登录再进入游戏！')"
+        <{else}>
+        onclick="open_lottery('1')"
+        <{/if}>>立即投注</a></span>  </span>
+      </li>
+      
+      <li>
+        <span class="p3">      <span class="block"><a href="./lottery_type/rule/rule.php?gtype=pl3d" target="_blank">规则说明</a><span>/</span><a href="javascript:;" <{if empty($uid)}>
+      onclick="alert('你尚未登录，请先登录再进入游戏！')"
+        <{else}>
+        onclick="open_lottery('2')"
+        <{/if}>>立即投注</a></span>  </span>
+      </li>
+      
+            <li>
+        <span class="jsk3">      <span class="block"><a href="./lottery_type/rule/rule.php?gtype=jsq3" target="_blank">规则说明</a><span>/</span><a href="javascript:;" <{if empty($uid)}>
+      onclick="alert('你尚未登录，请先登录再进入游戏！')"
+        <{else}>
+        onclick="open_lottery('13')"
+        <{/if}>>立即投注</a></span>  </span>
+      </li>
+      <li>
+        <span class="jlk3">      <span class="block"><a href="./lottery_type/rule/rule.php?gtype=ahq3" target="_blank">规则说明</a><span>/</span><a href="javascript:;" <{if empty($uid)}>
+      onclick="alert('你尚未登录，请先登录再进入游戏！')"
+        <{else}>
+        onclick="open_lottery('14')"
+        <{/if}>>立即投注</a></span>  </span>
+      </li>
+      <li>
+        <span class="bj">      <span class="block"><a href="./lottery_type/rule/rule.php?gtype=bjkn" target="_blank">规则说明</a><span>/</span><a href="javascript:;" <{if empty($uid)}>
+      onclick="alert('你尚未登录，请先登录再进入游戏！')"
+        <{else}>
+        onclick="open_lottery('4')"
+        <{/if}>>立即投注</a></span>  </span>
+      </li>
+      
+            <li>
+         <span class="gd">      <span class="block"><a href="./lottery_type/rule/rule.php?gtype=gdsf" target="_blank">规则说明</a><span>/</span><a href="javascript:;" <{if empty($uid)}>
+      onclick="alert('你尚未登录，请先登录再进入游戏！')"
+        <{else}>
+        onclick="open_lottery('7')"
+        <{/if}>>立即投注</a></span>  </span>
+      </li>
+      <li>
+        <span class="cq">      <span class="block"><a href="./lottery_type/rule/rule.php?gtype=cqsf" target="_blank">规则说明</a><span>/</span><a href="javascript:;" <{if empty($uid)}>
+      onclick="alert('你尚未登录，请先登录再进入游戏！')"
+        <{else}>
+        onclick="open_lottery('8')"
+        <{/if}>>立即投注</a></span>  </span>
+      </li>
+      
+            
+
+      
+      <li>
+        <span class="sc">      <span class="block"><a href="./lottery_type/rule/rule.php?gtype=bjpk" target="_blank">规则说明</a><span>/</span><a href="javascript:;" <{if empty($uid)}>
+      onclick="alert('你尚未登录，请先登录再进入游戏！')"
+        <{else}>
+        onclick="open_lottery('5')"
+        <{/if}>>立即投注</a></span>  </span>
+      </li>
+
+      
+
+      
+      <li>
+      <span class="ssc">      <span class="block"><a href="./lottery_type/rule/rule.php?gtype=cqsc" target="_blank">规则说明</a><span>/</span><a href="javascript:;" <{if empty($uid)}>
+      onclick="alert('你尚未登录，请先登录再进入游戏！')"
+        <{else}>
+        onclick="open_lottery('3')"
+        <{/if}>>立即投注</a></span>  </span>
+      </li>
+      
+      <li>
+        <span class="tjssc">      <span class="block"><a href="./lottery_type/rule/rule.php?gtype=tjsc" target="_blank">规则说明</a><span>/</span><a href="javascript:;" <{if empty($uid)}>
+      onclick="alert('你尚未登录，请先登录再进入游戏！')"
+        <{else}>
+        onclick="open_lottery('10')"
+        <{/if}>>立即投注</a></span>  </span>
+      </li>
+      
+      <li>
+        <span class="jxssc">      <span class="block"><a href="./lottery_type/rule/rule.php?gtype=jxsc" target="_blank">规则说明</a><span>/</span><a href="javascript:;" <{if empty($uid)}>
+      onclick="alert('你尚未登录，请先登录再进入游戏！')"
+        <{else}>
+        onclick="open_lottery('11')"
+        <{/if}>>立即投注</a></span>  </span>
+      </li>
+      
+      <li>
+        <span class="xjssc">
+        <span class="block"><a href="./lottery_type/rule/rule.php?gtype=xjsc" target="_blank">规则说明</a><span>/</span><a href="javascript:;" <{if empty($uid)}>
+      onclick="alert('你尚未登录，请先登录再进入游戏！')"
+        <{else}>
+        onclick="open_lottery('12')"
+        <{/if}>>立即投注</a></span>       
+      </span>
+      </li>
+      
+    </ul>
+   </div>
+ </div>
+<!--footer-->
+<{$bottom}>

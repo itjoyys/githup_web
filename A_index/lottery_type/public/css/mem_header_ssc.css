@@ -1,0 +1,301 @@
+html, body {	margin: 0px;
+	padding: 0px; 
+	background: url(../images/head_bg_ssc.gif) repeat-x left -60px; 
+}
+
+#container { /*position: relative;*/}
+#header {	margin: 0px;	padding: 0px;}
+#header h1 {
+	background: url(../images/logo_ssc.gif) no-repeat left top;/*nn Window*/
+	margin: 0px;
+	display: block;
+	height: 61px;
+	padding: 0px
+}
+ul {	margin: 0;	padding: 0;}
+a { text-decoration: none;}
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~ link 1 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+#nav{
+	margin-left: 250px;/*sbb Window*/
+	padding-right:10px;
+	font-size:12px;
+	white-space: nowrap;
+	position: absolute;/*sbb Window*/
+	left: 0px;
+	top: 5px;	
+	z-index: 2;
+	display: inline;
+	overflow:hidden;
+	height: 45px;
+	width:100%;
+}
+#div_s1{}
+.a_s1,.a_s2,.a_s3{
+	background: url(../images/nav_bg_001.gif) no-repeat left center;
+	width: 56px;
+	height: 34px;
+	line-height: 34px;
+	text-align: right;
+	padding-right: 3px;
+}
+.a_s2{
+	background: url(../images/nav_bg_002.gif) no-repeat left 1px;
+	width: 53px;
+	padding-right: 10px;
+}
+.a_s3{
+	background: url(../images/nav_bg_002.gif) no-repeat left 1px;
+	width: 85px;
+	padding-right: 10px;
+	text-align: center;
+}
+
+.ul_s1{
+	background: url(../images/nav_dd_bg001.gif) repeat-x left center;
+	height: 34px;
+	line-height: 34px;
+}
+.ul_s1 li{float:left;margin:0 2px;line-height:38px}
+.ul_s1 .conl_s1,.ul_s1 .conr_s1,.s_s1{display:block;height: 34px;width:10px}
+.s_s1{background: url(../images/nav_bg_right.gif) no-repeat right center;width:3px}
+.ul_s1 .conl_s1{margin:0;background: url(../images/nav_conl_001.gif) no-repeat right center}
+.ul_s1 .conr_s1{margin:0;background: url(../images/nav_conr_001.gif) no-repeat right center}
+#div_s1 .colorSet,#type .colorSet{color:#9E1010}
+#div_s1 .colorNumSet,#type .colorNumSet{color:#222}
+#div_s1 .colorNumSet:hover,#type .colorNumSet:hover{color:#ff9900}
+
+*/#rbyshow{background:none}
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~ Early ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+div#nav li.early { position:relative;}
+div#nav .level2 a { display:block; float:left; padding:0 4px; text-decoration:none;}
+div#nav .level2 a:hover { background-color:#000;height:24px}
+div#nav ul ul li { z-index:102;list-style:none; background:none;}
+div#nav ul.level1 li.early:hover ul.level2 { display:block; height:24px;}
+/*div#nav ul.level1 li.early:hover {background:transparent url(../images/head_leve2_arr.gif) no-repeat 8px 0;}*/
+div#nav ul.level2 {  top: -25px; left:-90px; position: absolute; display:none; border:1px solid #000; background: url(../images/title_bg.gif) repeat-x 0 0;width:254px}
+/*div#nav ul.level2 .tu { padding-left:10px;}*/
+#type{ clear:left;left:0}
+html > body div#nav ul ul { white-space:nowrap;}
+html > body #back li { white-space:nowrap;}
+html > body .early:hover .level2 { display:block;}
+#type .ertitle { color:#FF3;}
+body#HFU #nav ul ul li, body#HBK #nav ul ul li, body#HTN #nav ul ul li, body#HBU #nav ul ul li, body#HTU #nav ul ul li,
+body#HVB #nav ul ul li, body#HVU #nav ul ul li, body#HFS #nav ul ul li , body#HBS #nav ul ul li, body#HBE #nav ul ul li, body#HOP #nav ul ul li, body#HOM #nav ul ul li
+{background:none;}/*sbb Window*/
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~ link 2 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+#type { 
+	position: absolute;
+	top:48px; 
+	clear:left; 
+	font-size:12px; 
+	padding-left:20px;
+	margin-left: 220px;/*sbb Window*/
+	width:100%; 
+	white-space: nowrap;
+	height:33px;
+	line-height:23px
+}
+#type li { list-style:none; display:inline; float:left; height:22px;}/*sbb Window*/
+#type a { display:block; padding-top:2px; padding-left:2px;}/*sbb Window*/
+#type a:hover { color: #9E1010;}
+
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~Game Selection~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+body#HFT li.ft a:link, body#HFT li.ft a:visited,
+body#HFU li.fu a:link, body#HFU li.fu a:visited,
+body#HBK li.bk a:link, body#HBK li.bk a:visited,
+body#HBU li.bk a:link, body#HBU li.bk a:visited, body#HBU #nav li.bu a,
+body#HTN li.tn a:link, body#HTN li.tn a:visited,
+body#HTU li.tn a:link, body#HTU li.tn a:visited, body#HTU #nav li.tu a,
+body#HVB li.vb a:link, body#HVB li.vb a:visited,
+body#HVU li.vb a:link, body#HVU li.vb a:visited, body#HVU #nav li.vu a,
+body#HFS li.fs a:link, body#HFS li.fs a:visited,
+body#HBS li.bs a:link, body#HBS li.bs a:visited,
+body#HBE li.bs a:link, body#HBE li.bs a:visited, body#HBE #nav li.be a,
+body#HOP li.op a:link, body#HOP li.op a:visited,
+body#HOM li.op a:link, body#HOM li.om a:visited
+{color:#9E1010;}
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~ Mobile phone link ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~ Data link ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+#back {position: absolute;top: 0px; left:730px}
+
+#back li {display: block;padding-left: 20px;font-size: 12pxclear: right;height: 20px;line-height:20px}
+#back li.mem {
+	position: absolute;
+	background: url(../images/libo_sign.png) no-repeat left center;
+	white-space: nowrap;
+}
+#back li.rul {position: absolute;background: url(../images/inda_all.gif) no-repeat;margin-left: 90px;}
+#back li.home {
+	position: absolute;
+	background: url(../images/libo_sign.png) no-repeat left center;
+	margin-left: 55px;
+}
+#back li.qa {position: absolute;background: url(../images/inda_all.gif) no-repeat;margin-left: 142px;}
+#back li.est {
+	position: absolute;
+	margin-left: -115px;
+	height: 20px;
+	width: 80px;
+}
+#back li.aa {
+	position: absolute;
+	margin-left: -260px;
+	background-image: url(../images/EST_bg.gif);
+	background-repeat: no-repeat;
+	height: 24px;
+	width: 130px;
+}
+#back li.bb {
+	position: absolute;
+	margin-left: -390px;
+	background-image: url(../images/EST_bg.gif);
+	background-repeat: no-repeat;
+	height: 24px;
+	width: 130px;
+}
+#back .est2 {
+	white-space: nowrap;
+	color: #FFFFFF;
+	margin-left: -75px;
+}
+#back .time {
+	margin-left: -45px;
+	margin-top: -18px;
+}
+#back span {float: right;text-decoration: none;color: #FFF;width: 0.1em;padding: 0 12px 0 0; top: 0px;position: absolute;height: 24px;}
+#back a:link, #back a:visited {color: #FFF; }
+#back a:hover {color: #FC0; }
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~ header nav ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+#head_nav {position: absolute;margin: 0;top: 28px;_top: 28px;*top: 28px;top: 27px!important;left:280px}
+#head_nav .today ,#head_nav .early ,#head_nav .rb ,#head_nav .other,#head_nav .ssc ,#head_nav .today_on ,#head_nav .early_on ,#head_nav .rb_on,#head_nav .ssc_on{display: block;text-align:center;font-size: 12px;float: left;margin-right:4px}
+#head_nav .today a,#head_nav .early  a,#head_nav .rb  a,#head_nav .other  a,#head_nav .ssc  a,#head_nav .today_on a,#head_nav .early_on  a,#head_nav .rb_on a,#head_nav .ssc_on a{font-weight:bold;background: url(../images/head_rb_btn.gif) no-repeat left -39px;display:block;float:left;color:#E7B565;padding:10px 20px}
+#head_nav .today a:hover,#head_nav .early a:hover,#head_nav .rb a:hover,#head_nav .other a:hover,#head_nav .ssc a:hover,#head_nav .today_on span a,#head_nav .early_on span a,#head_nav .rb_on span a ,#head_nav .ssc_on span a {background-position: left top;color:#F8C100;padding:10px 20px}
+#head_nav .today span,#head_nav .early span,#head_nav .rb span,#head_nav .other span,#head_nav .ssc span,#head_nav .today_on span,#head_nav .early_on  span,#head_nav .rb_on  span,#head_nav .ssc_on  span{background: url(../images/head_rb_btn.gif) no-repeat right -117px;display:block;float:left;}
+#head_nav .today span:hover,#head_nav .early  span:hover,#head_nav .rb  span:hover,#head_nav .today_on span,#head_nav .early_on  span,#head_nav .rb_on  span,#head_nav .ssc_on  span,#head_nav .other  span:hover,#head_nav .ssc  span:hover{background-position: right -78px}
+
+
+div.live_menu{position: absolute;margin-left: 0;z-index: 999;}
+/*
+#RB_MENU li{margin:0;float:left;}
+*/
+div.live_menu a,div.live_menu span{display:block;float:left;margin:0;padding:10px 0 11px;}
+div.live_menu a{padding:10px 5px 11px;background: url(../images/head_bg_ssc.gif) repeat-x left top;color:#fff}
+
+div.live_menu a:hover{margin:0;color:#fff;background: url(../images/head_bg_ssc.gif) repeat-x left -26px;_padding-bottom:9px;}
+
+.rb_bg_left,.rb_bg_right{background: url(../images/head_bg_ssc.gif) repeat-x left top;width:8px;}
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~ For Mac/Safari Fix ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+html > body #nav {line-height:28px; padding-top:0;}/*nn Window*/
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~ Hideaway link ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+#back li.qa, #extra2, #live {	display: none;}/*nn chuang*/
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Extra link R.B ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+#extra1 {position: absolute;	left: 350px;	top: 37px;width:110px; height:24px;}
+#extra1 span {
+	display: block; width:110px; height:24px; text-align: center; font-size: 12px; letter-spacing:1.5em;
+	background: url(../images/head_rb_ft.gif) no-repeat;
+	}
+#extra1 a {display: block; width:100%; height:auto; padding: 9px 18px 0 0;}
+#extra1 a:link, #extra1 a:visited {	color: #432906;}
+#extra1 a:hover {color: #900;}
+#HBK #extra1 span { background-image: url(../images/head_rb_bk.gif);}
+#HVB #extra1 span { background-image: url(../images/head_rb_vb.gif);}
+#HTN #extra1 span { background-image: url(../images/head_rb_tn.gif);}
+#HBS #extra1 span { background-image: url(../images/head_rb_bs.gif);}
+#HOP #extra1 span { background-image: url(../images/head_rb_op.gif);}
+#HFU #extra1, #HBU #extra1, #HFS #extra1, #HBE #extra1,  #HTU #extra1, #HVU #extra1, #HOM #extra1 {display:none;}
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~ Extra link Baccarat ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+#extra2 {position:absolute; left:380px;	top:34px; width:140px; height:27px; background:no-repeat 0 0;}
+#extra2 a {display:block; width:140px; height:27px;}
+/*-------header---------*/
+.info {
+	font-size:12px;
+	white-space: nowrap;
+	position: absolute;
+	left: 600px;
+	padding-top: 5px;
+	display: none;
+	top: 13px;
+	visibility: visible;
+	z-index: 3;
+}
+.info  td {
+	list-style-type: circle;
+	font-family: Arial, Helvetica, sans-serif;
+	white-space: nowrap;
+	font-size: 12px;
+	padding-top: 2px;
+	padding-right: 10px;
+	padding-bottom: 2px;
+	padding-left: 10px;
+	border: 2px groove #BBBBA6;
+	background-color: #7d7d7d;
+	moz-opacity:0.1;
+	opacity: 0.8;
+	filter:alpha(opacity=90);
+}
+#mose a {background-position: 2px;}
+#mose a:link, #mose a:visited {color: #FFFFFF;}
+#mose a:hover {color: #FFFF00;}
+#LIKE {
+	position: absolute;
+	top: 27px;
+	left: 640px;
+	z-index: 1;
+}
+#LIKE .Xbut {
+	position: absolute;
+	float: right;
+	padding-left: 20px;
+	
+
+}
+#shownews {
+	font-size:12px;
+	color:white;
+    height: 24px;
+    left: 250px;
+    position: absolute;
+    top: 41px;
+	padding:0 5px;
+    width: 372px;
+	background: url(./images/msgbg.png) no-repeat left bottom ;
+	line-height: 22px;
+}
+
+
+
+/*=========  add  ========*/
+#userInfo{width:236px;background-color:#260707 ;text-align:left;position: absolute;left:0}
+#userInfo .menu_sub_001,#userInfo ul{text-align:center;color:#fff;padding:0 13px}
+#userInfo .menu_sub_001 a{color:#fff;font-size:12px;margin:0 15px;line-height:25px;height:25px;}
+#userInfo ul{text-align:left;background:url(../images/panelUserImf.gif) repeat-x left -30px;}
+#userInfo h3{font-size:14px;color:#fff;font-weight:normal;line-height:28px;height:28px;}
+#vlock{line-height:25px;height:25px;}
+/*.timeLi{background:url(./images/infoLine.gif) no-repeat center top}*/
+.type_on:link,.type_on:visited { color: #9E1010;}
+.type_out:link,.type_out:visited { color: #687a87;}
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~ RB Menu ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+div#head_nav li.rb, div#head_nav li.rb_on { position:relative;}
+div#head_nav .level2 a { display:block; float:left; /*padding:5px 4px 5px;*/ height:15px;text-decoration:none;color:#fff}
+#head_nav li.rb_on .level2 a:link, #head_nav li.rb_on .level2 a:visited, #head_nav ul.level2 a:link, #head_nav ul.level2 a:visited  { color: #D7DDE1;}
+
+div#head_nav .level2 a:hover {color: #900; height:15px;color:#fff}
+div#head_nav ul ul li { list-style:none;margin-right: 0px; padding-top:0; background-color:#FEF7E7;}
+div#head_nav ul.level1 li.rb:hover ul.level2, div#head_nav ul.level1 li.rb_on:hover ul.level2 { display:block; height:36px;}
+div#head_nav ul.level2 {position:absolute; height:36px;line-height:36px;width: 800px; top:34px!important;	z-index:1000;	left:0px; font-family:Arial, Helvetica, sans-serif;
+	display:none;
+	visibility: visible;
+}
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~ float ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+.l_float{float:left}
+.r_float{float:left}

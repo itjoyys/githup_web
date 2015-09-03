@@ -1,0 +1,37 @@
+/* CSS Document */
+ul {
+	list-style-type: none;
+}
+ul li {
+	list-style-type: none;
+}
+.nav_z {
+	width: auto !important;   height: 20px; float:right; position: relative; z-index: 999;
+}
+#navul li {
+	width: 60px; background-color:#530c06; height:20px;  text-align: center; line-height: 20px; float: left; position: relative;
+}
+#navul li a:link {
+	color: #C3F;  letter-spacing: 2px; width:50px; font-weight: 500;
+}
+#navul li a:visited {
+	color:#e59a35; background:#b06f0b; letter-spacing: 2px; border-radius:8px; font-weight: 500;
+}
+#navul li ul {
+	 border-width: 1px 1px medium; border-color: rgb(198, 198, 198) rgb(198, 198, 198) currentColor; left: -1px; display: none; position: absolute; z-index: 999;
+}
+#navul li ul li {
+	width: 100px; height: 30px; line-height: 30px; overflow: hidden; font-size: 12px; border-color: rgb(198, 198, 198); border-width: 1px; border-style:solid; border-bottom-style:dashed; border-top-style:dashed; float:left; display: block; position: relative;
+}
+#navul li.navmoon {
+	  width: 60px; height: 20px; line-height: 20px;
+}
+#navul li.navmoon ul {
+	display: block;
+}
+#navul li.navmoon ul a {
+	width: 100px; height: 30px; color:#ffffff; line-height: 30px; display: block;
+}
+#navul li.navmoon ul a:hover {
+	color:#CF0; background-color:#CCC; position:relative;left:0px;
+}

@@ -1,0 +1,916 @@
+/* common style */
+.clear {
+    clear: both;
+    margin: 0;
+    padding: 0;
+}
+.hover{
+    background-repeat: no-repeat;
+    background-position: 0 0;
+}
+.hover:hover{background-position: 0 100%;}
+/* site style */
+body {
+    min-width: 1000px;
+    color: #666;
+    font-size: 12px;
+    background: url('../images/bg02_x.jpg') #EEE repeat-x;
+}
+.first body {
+    background: url('../images/bg01_x.jpg') #EEE repeat-x;
+}
+
+.zh-cn body {
+    font-family: STHeiti,"Microsoft YaHei", "微软雅黑", "SimSun", "宋体",arial;
+}
+.zh-tw body {
+    font-family: "Microsoft JhengHei","微軟正黑體",arial,helvetica,sans-serif;
+}
+.is-tpl body,
+.is-tpl #mainBody,
+.is-tpl #page-header {
+    background: none;
+}
+#mainBody {
+    background: url('../images/bg02.jpg') no-repeat center top;
+}
+.first #mainBody {
+    background: url('../images/bg01.jpg') no-repeat center top;
+}
+#page-container {
+    margin-top: -66px;
+    width: 100%;
+    position: relative;
+    z-index: 2;
+    background: url('../images/gameArea_main_y.png') repeat-y center top;
+}
+.game #page-container {
+    background: url('../images/casinoArea_main_y.png') repeat-y center top;
+}
+.first #page-container {
+    background: none;
+    margin: 0;
+}
+.ltlottery #page-container{margin-bottom: 20px;}
+#page-body{
+    width: 1000px;
+    margin: 0 auto;
+    min-height: 300px;
+    background: url('../images/gameArea_main.png') no-repeat center top;
+}
+.ltlottery #page-body{background: #FFF;}
+
+.game #page-body{
+    background: url('../images/casinoArea_main.png') no-repeat center top;
+}
+.page-bottom{
+    width: 897px;
+    height: 74px;
+    margin: 0 auto 10px;
+    padding: 56px 52px 40px 51px;
+    background: url('../images/gameArea_bottom.png') no-repeat center top;
+}
+.page-bottom .page-btn{
+    display: block;
+    width: 299px;
+    height: 74px;
+    float: left;
+}
+/* header */
+#page-header {
+    background: url('../images/header_bg_x.png') repeat-x;
+    position: relative;
+    z-index: 1;
+}
+.header {
+    margin: 0 auto;
+    width: 1000px;
+}
+.header-logo{float: left;width: 284px;height: 90px;margin-top: 7px;}
+.header-bottom-bg{
+    background: url('../images/loginbg.png') no-repeat center top;
+    clear: both;
+    height: 59px;
+}
+.header-bottom{
+    width: 1000px;
+    height: 59px;
+    margin: 0 auto;
+}
+.is-login .header-bottom{background: none;}
+.lang-wrap {
+    float: left;
+    margin: 10px 0 0 266px;
+}
+.lang-wrap .ele-lang-wrap{
+    background: url('../images/btn_lang.png') no-repeat 0 0;
+    width: 96px;
+    border: none;
+    height: 32px;
+    line-height: 32px;
+}
+.lang-wrap .ele-lang-title{
+    height: 32px;
+    line-height: 32px;
+    padding-left: 5px;
+}
+#ele-lang-group a.ele-lang-option{padding-left: 5px;}
+.est-wrap {
+    display: inline-block;
+}
+#est_bg.time_text {
+    color: #FFF;
+    opacity: 1;
+    filter: alpha(opacity=100);
+    background-color: transparent;
+}
+/* 登入區 */
+.login-wrap{
+    float: left;
+    margin-left: 0;
+}
+.login-unit {
+    margin: 12px 0 0 5px;
+    float: left;
+    display: block;
+    position: relative;
+    height: 30px;
+
+}
+.login-unit.login-unit-user{
+    width: 158px;
+    background: url('../images/INPUTlogin01.png') no-repeat 0 0;
+}
+.login-unit.login-unit-pwd{
+    width: 127px;
+    background: url('../images/INPUTlogin02.png') no-repeat 0 0;
+}
+.login-unit.login-unit-chk{
+    width: 124px;
+    background: url('../images/INPUTNo.png') no-repeat 0 0;
+}
+.login-unit .login-placeholder {
+    position: absolute;
+    top: 5px;
+    left: 9px;
+    line-height: 20px;
+    height: 20px;
+    cursor: text;
+}
+.login-unit-chk .login-placeholder {
+    left: 13px;
+}
+.en .login-unit-chk .login-placeholder {
+    left: 3px;
+}
+.login-input {
+    height: 20px;
+    line-height: 20px;
+    padding: 5px 9px;
+    border: none;
+    background-color: transparent;
+    outline: none;
+}
+.login-acc {
+    width: 100px;
+}
+.acc-unicode{
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    height: 20px;
+    line-height: 20px;
+    color: #2A2A2A;
+    font-size: 14px;
+    font-family: arial;
+}
+.login-submit{
+    padding-top: 3px \9;
+    line-height: 27px;
+    color: #E34F00;
+    border: none;
+    background-color: transparent;
+    background-image: url('../images/btn_login.png');
+    cursor: pointer;
+}
+.login-submit:hover{color: #F00;}
+.login-join{
+    color: #FFF;
+    line-height: 28px;
+    background-image: url('../images/btn_joinus.png');
+}
+.login-forgetpwd{
+    width: 61px;
+    height: 29px;
+    color: #2A2A2A;
+    background-image: url('../images/btn_code.png');
+    line-height: 27px;
+}
+.login-submit,
+.login-join{
+    width: 65px;
+    height: 27px;
+}
+.login-forgetpwd:hover{color: #888;}
+.login-submit,
+.login-join,
+.login-forgetpwd{
+    font-weight: bold;
+    float: left;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+    margin: 14px 0 0 6px;
+}
+#vPic {
+    position: absolute;
+    right: 10px;
+    top: 6px;
+    cursor: pointer;
+    visibility: hidden;
+}
+
+/* 登入後 */
+.mem-info {
+    margin: 3px 0 0 10px;
+    color: #383838;
+    height: 22px;
+    line-height: 22px;
+}
+.mem-info span{
+    margin-right: 10px;
+}
+.mem-info strong{
+    color: #E34F00;
+    font-weight: bold;
+}
+/* 會員選單 */
+.SU-Menual{
+    margin: 3px 0 0 10px;
+    height: 22px;
+    line-height: 22px;
+    color: #383838;
+}
+.SU-Menual li {
+    display: inline-block;
+}
+.SU-Menual a {
+    color: #383838;
+    text-decoration: none;
+    transition: all .2s;
+}
+.SU-Menual a:hover {
+    color: #13738D;
+    text-decoration: underline;
+}
+.SU-Menual a#su-logout{
+    margin-left: 10px;
+    padding: 3px 10px;
+    color: #FFF;
+    background-color: #E45000;
+    text-decoration: none;
+}
+.SU-Menual a#su-logout:hover{
+    background-color: #FF7A33;
+}
+/* 主選單 */
+.mainnav {
+    float: left;
+    width: 716px;
+    height: 103px;
+}
+.mainnav ul{padding: 35px 0 0 14px;height: 40px;}
+.mainnav li {
+    float: left;
+}
+.mainnav ul a {
+    display: block;
+    width: 86px;
+    height: 40px;
+    text-decoration: none;;
+    position: relative;
+    line-height: 20px;
+    color: #6D6D6D;
+    font-size: 14px;
+    text-shadow: 1px 1px 3px #CCC;
+    text-align: center;
+}
+.mainnav ul a.current,
+.mainnav ul a:hover {
+    color: #007191;
+}
+
+.mainnav ul a.current span.title,
+.mainnav ul a:hover span.title{
+    background-position: 100% 100%;
+}
+.mainnav li span.title{
+    position: absolute;
+    width: 86px;
+    height: 10px;
+    display: block;
+    top: 25px;
+    background-position: 0 0;
+    background-repeat: no-repeat;
+}
+.en .mainnav li span.title{
+    top: 10px;
+}
+.mainnav li.LS-first span.title{background-image: url('../images/nav_home.png');}
+.mainnav li.LS-ball span.title{background-image: url('../images/nav_sports.png');}
+.mainnav li.LS-live span.title{background-image: url('../images/nav_live.png');}
+.mainnav li.LS-game span.title{background-image: url('../images/nav_casino.png');}
+.mainnav li.LS-ltlottery span.title{background-image: url('../images/nav_lottery.png');}
+.mainnav li.LS-game3dfight span.title{background-image: url('../images/nav_texas.png');}
+.mainnav li.LS-mobile span.title{background-image: url('../images/nav_mobile.png');}
+.mainnav li.LS-memberexclusiveii span.title{background-image: url('../images/nav_promotions.png');}
+.en .mainnav li.LS-memberexclusiveii span.title{background-image: url('../images/nav_promotions.png');}
+.mainnav li.LS-service span.title{background-image: url('../images/nav_service.png');}
+/* 下拉子選單 */
+.ele-lsub-group {
+    position: absolute;
+    z-index: 999;
+    overflow: hidden;
+}
+.ele-lsub-group a,.ele-lsub-group span {
+    float: left;
+    background-image: url('../images/sub.png');
+}
+.ele-lsub-group a {
+    height: 32px;
+    line-height: 29px;
+    padding: 0 4px;
+    color: #FFF;
+    text-decoration: none;
+    text-align: center;
+    background-position: 100% -32px;
+}
+.ele-lsub-group a:hover {
+    color: #333;
+}
+.ele-lsub-group span {
+    height: 32px;
+    width: 16px;
+}
+.lsub-back-bg {
+    background-position: 100% 32px;
+}
+/* 首頁輪播 */
+.ad-flash {
+    position: relative;
+    width: 1000px;
+    margin: 11px  auto 0;
+    height: 480px;
+}
+.ad-flash .anythingSlider {
+    text-align: center;
+}
+.anythingWindow{
+    position: relative;
+    z-index: 1;
+}
+.ad-flash .anythingControls {
+    z-index: 10;
+    display: inline-block;
+    height: 32px;
+    position: relative;
+    top: -63px;
+}
+.ad-flash .anythingControls ul,
+.ad-flash .anythingControls .nav-left,
+.ad-flash .anythingControls .nav-right{
+    float: left;
+    display: block;
+    background-image: url('../images/thumbNav02_bg.png');
+}
+.ad-flash .anythingControls ul{
+    text-align: center;
+    height: 19px;
+    padding-top: 12px;
+    background-position: 0 50%;
+    background-repeat: repeat-x;
+}
+.ad-flash .anythingControls .nav-left{
+    width: 30px;
+    height: 31px;
+    background-position: 0 0;
+}
+.ad-flash .anythingControls .nav-right{
+    width: 30px;
+    height: 31px;
+    background-position: 0 100%;
+}
+.ad-flash .anythingControls li {
+    display: inline-block;
+    width: 16px;
+    height: 17px;
+    margin: 0 3px;
+}
+.ad-flash .anythingControls a {
+    overflow: hidden;
+    text-indent: 999px;
+    display: block;
+    width: 16px;
+    height: 17px;
+    text-align: center;
+    color: #FFF;
+    text-decoration: none;
+    background: url('../images/thumbNav02.png') no-repeat 0 0;
+}
+.ad-flash .anythingControls a.cur,
+.ad-flash .anythingControls a:hover {
+    background-position: 0 100%;
+}
+.ad-flash .arrow{
+    cursor: pointer;
+    position: absolute;
+    display: block;
+    top: 200px;
+    width: 25px;
+    height: 50px;
+    background-image: url('../images/thumbNav01.png');
+    background-repeat: no-repeat;
+    z-index: 2;
+}
+.ad-flash .arrow.back{
+    left: 0;
+    background-position: 0 0;
+}
+.ad-flash .arrow.forward{
+    right: 0;
+    background-position: 0 100%;
+}
+/* 最新消息 */
+.news-wrap {
+    margin: 125px auto 0;
+    width: 1000px;
+    height: 120px;
+    position: relative;
+}
+.first .news-wrap{
+    height: 116px;
+    margin: 0;
+    position: absolute;
+    bottom: 0;
+    z-index: 5;
+}
+.news-item {
+    margin: 90px 0 0 215px;
+    width: 550px;
+    color: #FFF;
+    height: 20px;
+    line-height: 20px;
+}
+
+.news-item .ele-news-wrap{
+    height: 20px;
+    padding: 0 0 0 30px;
+}
+.news-item  .ele-scroll-wrap{
+    width: 30px;
+    right: auto;
+    left: 0;
+    top: 3px;
+}
+.news-item .ele-scroll-arrow{
+    width: 15px;
+    height: 14px;
+    background-repeat: no-repeat;
+    background-image: url('../images/thumbNav_news.png');
+}
+#ele-msg-scrollUp{
+    background-position: 50% 0;
+}
+#ele-msg-scrollDown{
+    background-position: 50% 100%;
+}
+.header-join{
+    position: absolute;
+    bottom: 0;
+    right: 59px;
+    display: block;
+    width: 145px;
+    height: 36px;
+}
+.first .header-join{
+    right: 100px;
+}
+/*banner-wrap*/
+.banner-wrap {
+    height: 311px;
+    position: relative;
+    margin-top: -6px;
+}
+.first-game-wrap{
+    margin-top: 17px;
+    width: 1000px;
+    height: 225px;
+}
+.ele-firstgame-1{margin-left: 44px;}
+.ele-firstgame-2,
+.ele-firstgame-3,
+.ele-firstgame-4{margin-left: 8px;}
+.first-img{
+    width: 534px;
+    height: 41px;
+    margin: 30px auto 0;
+}
+.first-btn-wrap{
+    width: 780px;
+    margin: 13px auto 0;
+}
+.first-btn{
+    float: left;
+    width: 260px;
+    height: 121px;
+    display: block;
+}
+/* footer */
+#page-footer {
+    width: 100%;
+    border-top: 2px solid #1E4A6D;
+}
+.footer {
+    width: 1000px;
+    margin: 0 auto;
+    min-height: 172px;
+    color: #929292;
+}
+#bblogo{
+    float: left;
+    display: block;
+    width: 125px;
+    height: 51px;
+    background: url('../images/bbinlogo.png') 0 0;
+    margin: 21px 0 7px 50px;
+}
+#browser-logo{
+    float: left;
+    margin: 23px 0 0 16px;
+}
+.article-menu{
+    font-weight: bold;
+    margin: 25px 25px 0 0;
+    line-height: 20px;
+    width: 440px;
+    float: right;
+    white-space: normal;
+    text-align: right;
+}
+.article-menu a{
+    color: #929292;
+    text-decoration: none;
+    white-space: nowrap;
+}
+.article-menu a:hover{color: #13738D;}
+.footer-img-wrap{
+    width: 100%;
+    height: 35px;
+    text-align: center;
+}
+.footer-img{
+    margin: 0 2px;
+    display: inline-block;
+    height: 35px;
+    line-height: 35px;
+    text-align: left;
+}
+.footer-img.phone{
+    padding-left:46px;
+    width: 163px;
+    background: url('../images/footer_img01.png') 0 0 no-repeat;
+}
+.footer-img.mail{
+    width: 192px;
+    background: url('../images/footer_img02.png') 0 0 no-repeat;
+    padding-left: 43px;
+}
+.footer-img.netlink{
+    width: 177px;
+    background: url('../images/footer_img05.png') 0 0 no-repeat;
+    padding-left: 45px;
+}
+.footer-img01{
+    float: left;
+    margin-left: 10px;
+    width: 183px;
+    height: 76px;
+    background: url('../images/footer_img04.jpg') 0 0 no-repeat;
+}
+.footer-text{
+    margin-top: 10px;
+    line-height: 18px;
+    text-align: center;
+}
+/* game frame */
+#page-game-left {
+    margin: 20px 8px 0 64px;
+    float: left;
+    width: 228px;
+}
+#page-game-right {
+    margin-top: 9px;
+    float: left;
+    width: 642px;
+}
+/*live*/
+.ele-game-layout .ele-game-group{
+    box-shadow: -2px -2px 3px #666;
+}
+/*lottery*/
+#page-body .ele-lottery-wrap{color: #383838;}
+.ele-ltlottery-wrap .ele-ltlottery-icon-wrap{
+    height: 130px;
+}
+/* ELE Style */
+/*
+* game banner
+*/
+.ele-gamebanner-wrap{margin: 0 auto;}
+/*
+** 各站 遊戲彩金 Game Jackpot
+*/
+.ele-gamejp-wrap {
+    background: url('../images/layout/gamejp_bg.png') no-repeat center top;
+    width: 1000px;
+    height: 87px;
+}
+.ele-gamejp-title {
+    width: 63px;
+}
+.ele-gamejp-title,
+.ele-gamejp-bb-area,
+.ele-gamejp-g3d-area {
+    float: left;
+    height: 80px;
+}
+.ele-gamejp-bb-area,
+.ele-gamejp-g3d-area {
+    width: 200px;
+    padding: 0 46px 0 190px;
+}
+.ele-gamejp-explain {
+    width: 174px;
+    height: 28px;
+    line-height: 28px;
+    color: #DEBF64;
+    background-image: url('../images/layout/gamejp_btn.png');
+    transition: all 0.2s ease;
+}
+.ele-gamejp-explain:hover{color: #FFC;}
+.ele-gamejp-prize {
+    padding-top: 6px;
+    height: 35px;
+    line-height: 35px;
+    font-size: 25px;
+    color: #FF0;
+}
+/* 小彩金  */
+.ele-layout-subjp .ele-game-layout{
+    height: 234px;
+}
+.ele-layout-subjp .ele-game-ctl-wrap{
+    bottom: 34px;
+}
+.ele-layout-subjp .ele-game-sub-jp .minorJP{
+    margin-top: 10px;
+    padding: 0 10px 0 10px;
+    color: #F9FB03;
+    background: #13738D;
+    box-shadow: 0 3px 1px rgba(0,0,0,0.5);
+    border-radius: 7px;
+}
+.ele-layout-subjp .ele-game-sub-jp .minorJP:before{
+    color: #DDD;
+}
+/*
+** 各站 遊戲導覽列 Game Menu
+*/
+.game-menu {
+    margin: 7px auto 0;
+    width: 898px;
+    background: url('../images/layout/game_menu.png') no-repeat;
+}
+.game-menu-title {
+    width: 0;
+    display: none;
+}
+.game-menu-title,
+.game-menu-bg,
+.nav-normal > a {
+    height: 50px;
+}
+.game-menu ul.mega-menu li.nav-normal > a{
+    padding: 0 10px;
+    line-height: 50px;
+    text-decoration: none;
+    transition: color 0.2s ease;
+    background: url('../images/layout/game_menu_line.jpg') no-repeat 100% 0;
+}
+.nav-icon {
+    display: inline-block;
+    vertical-align: text-top;
+    width: 18px;
+    height: 18px;
+    transition: all 0.2s ease;
+}
+/*
+** 各站 遊戲搜尋
+*/
+#ele-search-wrap {
+    width: 215px;
+    height: 50px;
+}
+/* for ie8*/
+#ele-search-wrap label {
+    top: 18px;
+    left: 10px;
+}
+#ele-search-wrap .ele-search-input {
+    float: left;
+    margin-left: 5px;
+    height: 100%;
+    line-height: 50px \9;
+}
+#ele-search-wrap label,
+#ele-search-wrap .ele-search-input {
+    width: 150px;
+}
+#ele-search-wrap .ele-search-btn {
+    width: 55px;
+}
+/*
+** 各站遊戲圖 樣式
+*/
+.game .ele-game-wrap {
+    margin: 0 auto 20px;
+    width: 856px;
+}
+.ele-game-layout {
+    width: 214px;
+    background: url('../images/layout/game_bg.png') no-repeat 0 0;
+    height: 198px;
+    margin-top: 20px;
+}
+.ele-game-layout .ele-hall-icon{
+    margin: 5px 0 0 10px;
+}
+.ele-game-name h3 {
+    margin: 5px 0 6px;
+    width: 110px;
+    height: 30px;
+    color: #FFF;
+    line-height: 30px;
+    font-size: 14px;
+}
+.ele-game-layout .ele-game-status{
+    right: 7px;
+}
+.ele-game-ctl-wrap,
+.ele-game-ctl-tools,
+.ele-game-ctl-links {
+    width: 100%;
+}
+.ele-game-img{}
+.ele-game-ctl-wrap {
+    bottom: 5px;
+}
+.ele-game-ctl-tools {
+    height: 30px;
+    background: url('../images/layout/game_btn_entergame.png') no-repeat 0 0;
+}
+/*
+** 各站 遊戲連結
+*/
+.ele-game-link {
+    display: block;
+    height: 30px;
+    line-height: 34px;
+    text-align: center;
+    text-decoration: none;
+}
+.ele-game-ctl-links a {
+    color: #000;
+    background: url('../images/layout/game_btn_rule.png') no-repeat 0 0;
+}
+.ele-game-ctl-links a:hover {
+    color: #FFF;
+    background-position: 100% 100%;
+}
+.ele-game-ctl-links a.ctl-btn-enter {
+    color: #000;
+    background: url('../images/layout/game_btn_entergame.png') no-repeat 0 0;
+}
+.ele-game-ctl-links a.ctl-btn-enter:hover {
+    color: #FFF;
+    background-position: 100% 100%;
+}
+
+/* 文案區塊 */
+#page-sidebar {
+    float: left;
+    width: 185px;
+    margin: 15px 5px 0 68px;
+}
+#page-right {
+    float: right;
+    margin-right: 62px;
+    padding: 20px 10px 0;
+}
+#page-right,
+#page-right iframe {
+    width: 660px;
+}
+
+/*遊戲選單*/
+.sidemenu-body {
+    padding-top: 43px;
+    width: 185px;
+    background: url('../images/sidebar_bg.png') no-repeat 0 0;
+}
+.sidemenu {}
+.sidemenu-body li {}
+.sidemenu-body a {
+    width: 185px;
+    display: block;
+    height: 45px;
+    line-height: 40px;
+    color: #13738D;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    background: url('../images/sidebar.png') no-repeat 0 0;
+}
+.sidemenu-body a:hover{
+    color: #FFF;
+    background-position: 0 100%;
+}
+.sidemenu-header{
+
+}
+/*文案*/
+#direction {}
+
+/*文案標題*/
+.case-article-title {}
+
+#direction ul.mtab-menual {
+    list-style: none;
+    border-bottom: 3px solid #14738e;
+}
+#direction ul.mtab-menual li {
+    background-color: #FFF;
+    display: inline-block; 
+    vertical-align: bottom;
+    *display: inline;
+    *zoom: 1;
+    margin-right: 4px;
+    padding: 1px 10px;
+    cursor: pointer;
+    border-radius: 5px 5px 0 0;
+    transition: background-color .4s;
+    color: #13738D;
+}
+#direction ul.mtab-menual li:hover,
+#direction ul.mtab-menual li.mtab {
+    background-color: #14738e;
+    color: #FFF;
+}
+#direction .mtab-menual {
+    margin-top: 10px;
+}
+
+/*優惠活動*/
+#direction #PT-switcher-wrap {
+    margin: 1.5em auto;
+    width: 960px;
+}
+
+/*共用頁面*/
+.Tpl-table01 {
+    background-color: #FFF;
+    border: 1px solid #CCC;
+    color: #000;
+    font-size: 12px;
+}
+table .Tpl-title01 th {
+    background-color: #DDD;
+    height: 24px;
+    text-align: center;
+    font-weight: bold;
+}
+#Tpl-user-acc span {
+    line-height: 20px;
+    color: #0000FF;
+}
+.Tpl-table01 th, .Tpl-table01 td {
+    height: 22px;
+    border: 1px solid #CCC;
+}
+tr.Tpl-trcolor1 { background: #FFF; }
+tr.Tpl-trcolor2 { background: #EEE; }
+tr.Tpl-trmouseenter { background: #DEF; }
+#Tpl-memdata .Tpl-table01 th,
+#Tpl-memdata .Tpl-table01 td.Tpl-left { text-align: center; }
+#Tpl-memdata .Tpl-table01 td.Tpl-right { text-align: left; }
+.Tpl-blue { color: #00F; }

@@ -1,0 +1,473 @@
+*{margin:0;padding:0;}
+input {
+	PADDING-LEFT: 6px; PADDING-RIGHT: 6px
+}
+body {
+	BACKGROUND-COLOR: #ffffff;/*BACKGROUND: url(../images/content_bg.jpg) repeat-y left top;*/
+	
+}
+.bodyStyle {
+	BACKGROUND-COLOR: #ffffff; /*PADDING-TOP: 28px*/
+}
+.skinbg {
+	BACKGROUND-COLOR: #fbe9ac
+}
+#MACenter #MALogo {
+	MARGIN: 2px 0px 0px 30px; WIDTH: 484px; DISPLAY: inline; BACKGROUND: url(../images/mlogo.png) no-repeat left top; FLOAT: left; HEIGHT: 83px
+}
+#forgetPwd {
+	MARGIN: 35px auto; WIDTH: 300px; COLOR: #000000; FONT-SIZE: 12px
+}
+#forgetPwd TABLE {
+	BACKGROUND-COLOR: #155c92
+}
+#forgetPwd TABLE THEAD {
+	TEXT-ALIGN: center; COLOR: #000000
+}
+#forgetPwd TABLE TFOOT {
+	TEXT-ALIGN: center; COLOR: #000000
+}
+#forgetPwd TABLE TBODY {
+	BACKGROUND-COLOR: #ffffff
+}
+#forgetPwd TABLE TD.style1 {
+	TEXT-ALIGN: right; TEXT-INDENT: 1em; WIDTH: 50%; PADDING-RIGHT: 5px
+}
+#bottom-text {
+	TEXT-ALIGN: left
+}
+.error {
+	COLOR: #ff0000
+}
+#memAccTable {
+	TEXT-ALIGN: center; BORDER-COLLAPSE: collapse
+}
+#memAccTable TABLE {
+	TEXT-ALIGN: left; BACKGROUND-COLOR: #155c92; MARGIN: 0px auto; BORDER-COLLAPSE: collapse
+}
+#memAccTable TABLE TR TD {
+	BORDER-BOTTOM: #155c92 1px solid; BORDER-LEFT: #155c92 1px solid; HEIGHT: 30px; BORDER-TOP: #155c92 1px solid; BORDER-RIGHT: #155c92 1px solid
+}
+#memAccTable TABLE THEAD {
+	TEXT-ALIGN: center; PADDING-LEFT: 59px; HEIGHT: 37px; COLOR: #ffffff; FONT-SIZE: 12px
+}
+#memAccTable TABLE TFOOT {
+	TEXT-ALIGN: center; PADDING-LEFT: 59px; HEIGHT: 37px; COLOR: #ffffff; FONT-SIZE: 12px
+}
+#memAccTable TABLE THEAD TD {
+	TEXT-ALIGN: left; PADDING-LEFT: 59px
+}
+#memAccTable TABLE TBODY {
+	TEXT-ALIGN: left; BACKGROUND-COLOR: #ffffff; COLOR: #000000; FONT-SIZE: 12px
+}
+#memAccTable TABLE .tipText {
+	TEXT-ALIGN: right; WIDTH: 50%; PADDING-RIGHT: 5px
+}
+#memAccTable TABLE .tipDwText {
+	TEXT-ALIGN: right; WIDTH: 40%; PADDING-RIGHT: 5px
+}
+#memAccTable TABLE .bottomTip {
+	TEXT-ALIGN: center; BACKGROUND-COLOR: #c9caca; HEIGHT: 40px; FONT-SIZE: 11px
+}
+#memAccTable TABLE .modifyProfileTitle {
+	TEXT-ALIGN: center; PADDING-LEFT: 0px; FONT-SIZE: 12px; FONT-WEIGHT: normal
+}
+A.chg_passwd_flag {
+	COLOR: #ffffff; TEXT-DECORATION: none
+}
+#mainContent {
+	PADDING-BOTTOM: 15px; WIDTH: 780px; BACKGROUND: url(../images/bgodds.jpg) white no-repeat 50% top; MARGIN-LEFT: 1px; FONT-SIZE: 12px
+}
+#pageTitle {
+	MARGIN: 0px auto 7px; WIDTH: 750px; HEIGHT: 24px; PADDING-TOP: 10px
+}
+#mainContent P.subject {
+	TEXT-ALIGN: center; LINE-HEIGHT: 24px; WIDTH: 82px; BACKGROUND: url(../images/subject01.jpg) no-repeat 50% top; FLOAT: left; HEIGHT: 24px; MARGIN-RIGHT: 6px
+}
+#tableWrap {
+	BACKGROUND-COLOR: #656565; MARGIN: 0px 15px
+}
+.tableStyle01 {
+	BORDER-BOTTOM: #000 1px solid; TEXT-ALIGN: center; BORDER-LEFT: #000 1px solid; MARGIN: 0px auto; WIDTH: 750px; COLOR: #000; BORDER-TOP: #000 1px solid; BORDER-RIGHT: #000 1px solid
+}
+.tableStyle01 TH {
+	BORDER-BOTTOM: #656565 1px solid; TEXT-ALIGN: center; BORDER-LEFT: #656565 1px solid; LINE-HEIGHT: 23px; BACKGROUND-COLOR: #3d3d3d; HEIGHT: 23px; COLOR: #ffffff; BORDER-TOP: #656565 1px solid; FONT-WEIGHT: normal; BORDER-RIGHT: #656565 1px solid
+}
+.tableStyle01 TD {
+	BORDER-BOTTOM: #656565 1px solid; BORDER-LEFT: #656565 1px solid; PADDING-BOTTOM: 2px; BACKGROUND-COLOR: #ffffff; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; BORDER-TOP: #656565 1px solid; BORDER-RIGHT: #656565 1px solid; PADDING-TOP: 2px
+}
+.tableStyle01 TR .gameLimit {
+	BACKGROUND-COLOR: #fbe9ac; COLOR: #000000
+}
+.za_button {
+	FONT-SIZE: 12px
+}
+.tableStyle01 .wagers TH {
+	TEXT-ALIGN: center; BACKGROUND-COLOR: #f1efef
+}
+#pageTitle #pageTitleEx {
+	FLOAT: right; COLOR: #ff0000
+}
+#pageTitle #pageTitleEx A {
+	COLOR: #cc0000; FONT-WEIGHT: bold; TEXT-DECORATION: none
+}
+.tableStyle01 .b_rig .amountGold {
+	TEXT-ALIGN: right; BACKGROUND-COLOR: #cccccc
+}
+.tableStyle01 .b_rig .awinGold {
+	TEXT-ALIGN: right; BACKGROUND-COLOR: #990000; COLOR: #ffffff
+}
+.tableStyle01 .red_border {
+	BORDER-BOTTOM: #ff0000 2px solid; BORDER-LEFT: #ff0000 2px solid; BORDER-TOP: #ff0000 2px solid; BORDER-RIGHT: #ff0000 2px solid
+}
+.tableStyle01 .b_rig_mor {
+	TEXT-ALIGN: right; BACKGROUND-COLOR: #ededed
+}
+.tableStyle01 .b_rig_mor TD {
+	BACKGROUND-COLOR: #ededed
+}
+.tableStyle01 .b_rig {
+	TEXT-ALIGN: right; BACKGROUND-COLOR: #ffffff
+}
+.b_cen {
+	TEXT-ALIGN: center; BACKGROUND-COLOR: #ffffff; HEIGHT: 70px
+}
+.Wdate {
+	WIDTH: 90px
+}
+.BookTable TD {
+	PADDING-BOTTOM: 1px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 1px
+}
+#foot {
+	TEXT-ALIGN: left; PADDING-LEFT: 10px; COLOR: #000000; FONT-SIZE: 12px
+}
+#foot A {
+	COLOR: #cc0000; FONT-WEIGHT: bold; TEXT-DECORATION: none
+}
+#bank_body {
+	BACKGROUND: url(../images/bg02.jpg) #000c1c repeat-x left top
+}
+#bank_header {
+	MARGIN: 0px auto; WIDTH: 800px; BACKGROUND: url(../images/rule_LOGO.png) center 0 no-repeat; HEIGHT: 96px
+}
+#bank_logo {
+	
+}
+#bank_content {
+	BACKGROUND-COLOR: #ffffff; MARGIN: 0px auto; WIDTH: 800px
+}
+#bank_footer {
+	LINE-HEIGHT: 30px; BACKGROUND-COLOR: #0066cc; MARGIN: 0px auto; WIDTH: 800px; FONT-FAMILY: Verdana, Arial, Sans-serif, taipei; HEIGHT: 30px; COLOR: #ffffff; FONT-SIZE: 11px; FONT-WEIGHT: normal
+}
+#bank_footer FONT {
+	COLOR: #ffffff
+}
+#pay_system_option A {
+	COLOR: #ff0000; TEXT-DECORATION: none
+}
+#joinMember IFRAME {
+	WIDTH: 730px; HEIGHT: 1000px
+}
+#memCash_body {
+	BACKGROUND-COLOR: #000000; COLOR: #ffffff; FONT-SIZE: 12px
+}
+#memCash_body .memCash_tit {
+	PADDING-LEFT: 25px
+}
+.JM_content {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 25px; PADDING-RIGHT: 0px; PADDING-TOP: 10px
+}
+#memCash_body FIELDSET {
+	BORDER-BOTTOM: #ffffff 1px solid; BORDER-LEFT: #ffffff 1px solid; PADDING-BOTTOM: 10px; MARGIN: 10px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BORDER-TOP: #ffffff 1px solid; BORDER-RIGHT: #ffffff 1px solid; PADDING-TOP: 10px
+}
+#memCash_body LEGEND {
+	LETTER-SPACING: 3px; COLOR: #ffffff; FONT-SIZE: 12px; FONT-WEIGHT: bold
+}
+#memCash_body .star {
+	FONT-FAMILY: verdana, Helvetica, sans-serif; COLOR: #ff0000; FONT-SIZE: 12px; VERTICAL-ALIGN: -2px; FONT-WEIGHT: bold
+}
+#memCash_body A {
+	COLOR: #bf0f0f; TEXT-DECORATION: none
+}
+#memCash_body .memCash_text {
+	LINE-HEIGHT: 15px; HEIGHT: auto
+}
+#myFORM INPUT[type=text] {
+	BORDER-BOTTOM: #abadb3 1px solid; BORDER-LEFT: #abadb3 1px solid; BORDER-TOP: #abadb3 1px solid; BORDER-RIGHT: #abadb3 1px solid; -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; box-shadow: 0 0 6px #CFD1D8; -moz-box-shadow: 0 0 6px #CFD1D8; -webkit-box-shadow: 0 0 6px #CFD1D8
+}
+#myFORM INPUT[type=password] {
+	BORDER-BOTTOM: #abadb3 1px solid; BORDER-LEFT: #abadb3 1px solid; BORDER-TOP: #abadb3 1px solid; BORDER-RIGHT: #abadb3 1px solid; -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; box-shadow: 0 0 6px #CFD1D8; -moz-box-shadow: 0 0 6px #CFD1D8; -webkit-box-shadow: 0 0 6px #CFD1D8
+}
+#myFORM SELECT {
+	BORDER-BOTTOM: #abadb3 1px solid; BORDER-LEFT: #abadb3 1px solid; BORDER-TOP: #abadb3 1px solid; BORDER-RIGHT: #abadb3 1px solid; -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; box-shadow: 0 0 6px #CFD1D8; -moz-box-shadow: 0 0 6px #CFD1D8; -webkit-box-shadow: 0 0 6px #CFD1D8
+}
+BODY.TPL {
+	BACKGROUND-COLOR: #fff
+}
+.Tpl-table01 {
+	BORDER-BOTTOM: #a6c9e2 1px solid; BORDER-LEFT: #a6c9e2 1px solid; BACKGROUND-COLOR: #ffffff; COLOR: #000; FONT-SIZE: 12px; BORDER-TOP: #a6c9e2 1px solid; BORDER-RIGHT: #a6c9e2 1px solid
+}
+TABLE .Tpl-title01 TH {
+	TEXT-ALIGN: center; FILTER: progid:DXImageTransform.Microsoft.gradient( startColorstr='#244B82', endColorstr='#3172AE',GradientType=0 ); BACKGROUND-COLOR: #0e6da3; HEIGHT: 24px; COLOR: #ffffff; FONT-WEIGHT: bold
+}
+.Tpl-table01 TH {
+	BORDER-BOTTOM: #a6c9e2 1px solid; BORDER-LEFT: #a6c9e2 1px solid; HEIGHT: 22px; BORDER-TOP: #a6c9e2 1px solid; BORDER-RIGHT: #a6c9e2 1px solid
+}
+.Tpl-table01 TD {
+	BORDER-BOTTOM: #a6c9e2 1px solid; BORDER-LEFT: #a6c9e2 1px solid; HEIGHT: 22px; BORDER-TOP: #a6c9e2 1px solid; BORDER-RIGHT: #a6c9e2 1px solid
+}
+TR.Tpl-trcolor1 {
+	BACKGROUND: #ffffff
+}
+TR.Tpl-trcolor2 {
+	BACKGROUND: #eeeeee
+}
+TR.Tpl-trmouseenter {
+	BACKGROUND: #def
+}
+BODY {
+	BACKGROUND: url(../images/bg.jpg) #272a31 no-repeat center top; FONT-SIZE: 12px;
+}
+#MACenter {
+	MARGIN: 0px auto; WIDTH: 1000px; FONT-SIZE: 12px
+}
+#MAContent {
+	BACKGROUND: url(../images/content_bg_1.jpg) repeat-y left top
+}
+#MALeft {
+	WIDTH: 220px; DISPLAY: inline; FLOAT: left; MARGIN-LEFT: 1px
+}
+#MAMain {
+	WIDTH: 768px; FLOAT: left
+}
+#MACenterContent #MMainData {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 6px; PADDING-RIGHT: 6px; PADDING-TOP: 0px
+}
+#MAHeader {
+	POSITION: relative; WIDTH: 1000px; BACKGROUND: url(../images/header_bg.jpg) no-repeat left top; HEIGHT: 100px
+}
+#MATime {
+	POSITION: absolute; WIDTH: 257px; FONT-FAMILY: "Times New Roman"; BACKGROUND: url(../images/timezone_bg.jpg) no-repeat left top; HEIGHT: 36px; TOP: 0px; RIGHT: 0px
+}
+#timepic {
+	POSITION: absolute; WIDTH: 22px; BACKGROUND: url(../images/time.png) no-repeat left top; HEIGHT: 22px; TOP: 7px; LEFT: 20px
+}
+#MATime #est_bg {
+	TEXT-ALIGN: left; FILTER: progid:DXImageTransform.Microsoft.Alpha(Opacity=100); LINE-HEIGHT: 22px; PADDING-LEFT: 44px; WIDTH: 210px; HEIGHT: 22px; COLOR: #fff; FONT-SIZE: 12px; PADDING-TOP: 7px; opacity: 1; -moz-opacity: 1
+}
+#MATime .time_text {
+	BACKGROUND-COLOR: transparent
+}
+#MADeposit {
+	POSITION: absolute; LINE-HEIGHT: 28px; PADDING-LEFT: 34px; WIDTH: 86px; BACKGROUND: url(../images/btn01.jpg) no-repeat left top; HEIGHT: 28px; COLOR:#fff; TOP: 60px; CURSOR: pointer; RIGHT: 20px
+}
+#MADeposit:hover {
+	COLOR:#fff
+}
+#welcome {
+	TEXT-ALIGN: center; LINE-HEIGHT: 48px; WIDTH: 220px; BACKGROUND: url(../images/welcome.jpg) no-repeat left top; HEIGHT: 48px; COLOR: #FFF; FONT-SIZE: 14px; FONT-WEIGHT: bold
+}
+.sidebar {
+	MARGIN-BOTTOM: 35px
+}
+.sidebar DIV {
+	LINE-HEIGHT: 32px; PADDING-LEFT: 40px; WIDTH: 180px; DISPLAY: block; BACKGROUND: url(../images/sideNav.jpg) no-repeat left top; HEIGHT: 32px; COLOR: #fff; TEXT-DECORATION: none
+}
+.sidebar A {
+	LINE-HEIGHT: 32px; PADDING-LEFT: 40px; WIDTH: 180px; DISPLAY: block; BACKGROUND: url(../images/sideNav.jpg) no-repeat left top; HEIGHT: 32px; COLOR: #fff; TEXT-DECORATION: none
+}
+.sidebar #sidebar-mem {
+	LINE-HEIGHT: 38px; MARGIN-BOTTOM: 5px; BACKGROUND: url(../images/sideNav01.jpg) no-repeat left top; HEIGHT: 38px
+}
+.sidebar #sidebar-msg {
+	LINE-HEIGHT: 38px; MARGIN-BOTTOM: 5px; BACKGROUND: url(../images/sideNav02.jpg) no-repeat left top; HEIGHT: 38px
+}
+.MALeft A.mcurrent {
+	background-position:  left bottom; color: #000;
+
+}
+#MNav {
+	POSITION: relative; PADDING-LEFT: 80px; WIDTH: 689px; FONT-FAMILY: "Times New Roman"; BACKGROUND: url(../images/nav_bg.jpg) repeat-x left top; HEIGHT: 48px
+}
+#MNav .mbtn {
+	TEXT-ALIGN: center; LINE-HEIGHT: 37px; WIDTH: 100px; DISPLAY: block; FLOAT: left; HEIGHT: 37px; COLOR: #fff; FONT-WEIGHT: bold
+}
+#MNav .navSeparate {
+	MARGIN-TOP: 2px; WIDTH: 2px; BACKGROUND: url(../images/nav_img.jpg) no-repeat left top; FLOAT: left; HEIGHT: 34px
+}
+#MNav span.mbtn {
+	BACKGROUND: url(../images/nav_hover.jpg) no-repeat left bottom
+}
+#MNav a.mbtn:hover {
+	BACKGROUND: url(../images/nav_hover.jpg) no-repeat left bottom
+}
+#MNav a.mbtn {
+	COLOR: #fff; TEXT-DECORATION: none
+}
+#MACenterContent H2.MSubTitle {
+	POSITION: relative; PADDING-LEFT: 16px; HEIGHT: 18px; COLOR: #444
+}
+#MACenterContent H3.MSubInfo {
+	TEXT-ALIGN: right; PADDING-RIGHT: 8px; MARGIN-BOTTOM: 8px; COLOR: #851; FONT-WEIGHT: normal
+}
+TABLE.MMain {
+	TEXT-ALIGN: left; BORDER-SPACING: 0; WIDTH: 100%; BORDER-COLLAPSE: collapse; COLOR: #fff; FONT-SIZE: 12px
+}
+TABLE.MMain TH {
+	TEXT-ALIGN: center; BACKGROUND: #dfdfdf; HEIGHT: 1.8em; COLOR: #333; FONT-WEIGHT: normal
+}
+TABLE.MMain TD {
+	PADDING-BOTTOM: 6px; LINE-HEIGHT: 1.5em; PADDING-LEFT: 8px; PADDING-RIGHT: 8px; BACKGROUND: #fff; COLOR: #666; PADDING-TOP: 6px
+}
+TABLE.MMain {
+	BORDER-BOTTOM: #ccc 1px solid; BORDER-LEFT: #ccc 1px solid; BORDER-TOP: #ccc 1px solid; BORDER-RIGHT: #ccc 1px solid
+}
+TABLE.MMain TH {
+	BORDER-BOTTOM: #ccc 1px solid; BORDER-LEFT: #ccc 1px solid; BORDER-TOP: #ccc 1px solid; BORDER-RIGHT: #ccc 1px solid
+}
+TABLE.MMain TD {
+	BORDER-BOTTOM: #ccc 1px solid; BORDER-LEFT: #ccc 1px solid; BORDER-TOP: #ccc 1px solid; BORDER-RIGHT: #ccc 1px solid
+}
+TABLE.MNoBorder {
+	BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; BACKGROUND: none transparent scroll repeat 0% 0%; BORDER-TOP: medium none; BORDER-RIGHT: medium none
+}
+TABLE.MNoBorder TH {
+	BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; BACKGROUND: none transparent scroll repeat 0% 0%; BORDER-TOP: medium none; BORDER-RIGHT: medium none
+}
+TABLE.MNoBorder TD {
+	BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; BACKGROUND: none transparent scroll repeat 0% 0%; BORDER-TOP: medium none; BORDER-RIGHT: medium none
+}
+TABLE.MMain TH.MContent {
+	TEXT-ALIGN: left
+}
+TABLE.MMain TD.MContent {
+	TEXT-ALIGN: left
+}
+TABLE.MMain TD.MNumber {
+	TEXT-ALIGN: right
+}
+TABLE.MMain TD.MNotice {
+	COLOR: #555
+}
+TABLE.MMain TD.MBgcolor {
+	BACKGROUND: #600; COLOR: #fff
+}
+TABLE.MMain TD.MBgcolor2 {
+	BACKGROUND: #006; COLOR: #fff
+}
+TABLE.MMain TR.MColor1 {
+	
+}
+TABLE.MMain TR.MColor2 {
+	
+}
+TABLE.MMain TBODY TD.mouseenter {
+	COLOR: #000
+}
+.MNavLv2 {
+	LINE-HEIGHT: 30px; PADDING-LEFT:30px; WIDTH: 738px; MARGIN-BOTTOM: 8px; BACKGROUND: url(../images/nav2_bg.jpg) repeat left top;  COLOR: #004892
+}
+#MACenterContent .MTitleName {
+	LINE-HEIGHT: 37px; PADDING-LEFT: 30px; WIDTH: 106px; BACKGROUND: url(../images/game_main.jpg) repeat-x left top; FLOAT: left; HEIGHT: 37px; COLOR: #fc0; FONT-WEIGHT: bold
+}
+#MACenterContent .MGameType {
+	PADDING-BOTTOM: 0px; LINE-HEIGHT: 24px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; HEIGHT: 24px; COLOR: #004892; CURSOR: pointer; PADDING-TOP: 0px
+}
+#MACenterContent .MGameType:hover ,#MACenterContent .hover {
+	COLOR: #333
+}
+#MACenterContent .MCurrentType {
+	COLOR: #333
+}
+#MACenterContent .MControlNav {
+	MARGIN-BOTTOM: 8px; COLOR: #aaa
+}
+#MACenterContent .MBtnStyle {
+	BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; LINE-HEIGHT: 22px; WIDTH: 100px; BACKGROUND: url(../images/btn02.jpg) no-repeat left top; HEIGHT: 22px; COLOR: #000; BORDER-TOP: medium none; CURSOR: pointer; BORDER-RIGHT: medium none
+}
+#MACenterContent .MFormStyle {
+	
+}
+#general-msg .notRead {
+	COLOR: #333; FONT-WEIGHT: bold
+}
+#general-msg .notRead A {
+	COLOR: #333; FONT-WEIGHT: bold
+}
+#general-msg .notRead SPAN {
+	COLOR: #333; FONT-WEIGHT: bold
+}
+#general-msg .haveRead {
+	COLOR: #666
+}
+#general-msg .haveRead A {
+	COLOR: #666
+}
+#general-msg .haveRead SPAN {
+	COLOR: #666
+}
+#general-msg .msgcontent TD {
+	HEIGHT: auto
+}
+#msgfoot A.pagelink {
+	COLOR: #12c; FONT-SIZE: 16px; MARGIN-RIGHT: 8px; TEXT-DECORATION: none
+}
+#msgfoot A.pagelink:hover {
+	TEXT-DECORATION: underline
+}
+#currentpage {
+	COLOR: #333; FONT-SIZE: 16px; MARGIN-RIGHT: 8px
+}
+#general-msg .haveRead A.mouseenter {
+	COLOR: #000
+}
+#general-msg .notRead A.mouseenter {
+	COLOR: #000
+}
+TABLE.MMain TD A.pagelink {
+	COLOR: #004892; FONT-WEIGHT: bold
+}
+TABLE.MMain TD SPAN.MImportant {
+	COLOR: #922; FONT-WEIGHT: bold
+}
+TABLE.MMain TD SPAN.MCashNeg {
+	COLOR: #922; FONT-WEIGHT: bold
+}
+TABLE.MMain TD SPAN#MSwitchResult {
+	COLOR: #922; FONT-WEIGHT: bold
+}
+#MBlockImg {
+	MARGIN: 0px auto; WIDTH: 32px; BACKGROUND: url(../images/ajax-loader-white.gif) no-repeat center 50%; HEIGHT: 32px
+}
+TABLE.MMain SPAN.g-type {
+	
+}
+TABLE.MMain SPAN.g-serial {
+	
+}
+TABLE.MMain SPAN.g-result {
+	
+}
+TABLE.MMain SPAN.g-order-type {
+	COLOR: #922
+}
+TABLE.MMain SPAN.g-real-type {
+	COLOR: #922
+}
+TABLE.MMain SPAN.g-odds {
+	COLOR: #922;
+}
+#MAContentBottom {
+	WIDTH: 1000px; BACKGROUND: url(../images/footer_nav.jpg) no-repeat left top; HEIGHT: 30px
+}
+#MAFoot {
+	TEXT-ALIGN: right; WIDTH: 960px; PADDING-RIGHT: 40px; BACKGROUND: url(../images/footer_bg.jpg) no-repeat left top; HEIGHT: 50px; COLOR:#fff; PADDING-TOP: 20px
+}
+.clear {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; CLEAR: both; PADDING-TOP: 0px
+}
+A {
+	OUTLINE-STYLE: none; OUTLINE-COLOR: invert; OUTLINE-WIDTH: medium
+}
+
+

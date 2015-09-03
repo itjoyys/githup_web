@@ -1,0 +1,71 @@
+
+
+
+body#MNFS h2 .rig {	display: block;float: right;}
+body#MNFS h2 .left {float: left;display: inline;white-space: nowrap;clear: both;padding-top: 3px;}
+#MNFS .mem { padding-bottom:-3px;}
+
+#MNFS td#page_no { width:440px!important; white-space:nowrap;}
+
+#MNFS #box  { width:662px!important;}
+body.FSFT ,   body.FSBS,   body.FSBK,   body.FSVB,   body.FSTN,   body.FSOP
+{ margin:0; padding: 10px 0 0 10px; 
+
+background:#FFf;
+ scrollbar-face-color: #DCD1C5;
+ scrollbar-shadow-color: #B9A38B;
+ scrollbar-highlight-color: #E6DED6;
+ scrollbar-3dlight-color: #B9A38B;
+ scrollbar-darkshadow-color: #33281C;
+ scrollbar-track-color: #33281C;
+ scrollbar-arrow-color: #413528;
+ }
+
+
+
+
+
+
+
+
+#MNFS .b_hline {color:#493721;	background-color:#C8A670;}
+td.sub_title { border:none;background-color: #FCF9CE;}
+
+@-moz-document url-prefix() {
+  .sub_title {
+	border:none;background-color: #FCF9CE;
+  }
+}
+
+td.sub_title table { width:100%;}
+td.sub_title td { font-weight:bold; color:#493721;}
+td.sub_tab { width:50%; padding:0;border:none;background-color: #B9B9A3;}
+td.sub_tab table { width:100%;}
+#MNFS .sub_tab td{  padding:2px 10px 0px 10px; border-bottom:1px solid #B9B9A3;font-size:0.75em;}
+#MNFS #LegOpen { background:url("../images/mem_arr_fs.gif") no-repeat 0 0;}
+#MNFS #LegClose { background:url("../images/mem_arr_fs.gif") no-repeat 0px -20px;}
+#MNFS .game table { border-collapse:collapse; border:0; margin:0;}
+.fs_leg { width:640px;font-size:0.75em; padding-bottom:2px;}
+
+
+@-moz-document url-prefix() {
+  .fs_leg {
+	
+  }
+}
+
+
+html>body#MNFS .fs_leg { padding-left:5px;} 
+body#MNFS .r_bold {font-size: 12px;font-weight: bold;color: #CC0000;padding-right: 10px; text-align:right; cursor:pointer;}
+html>body#MNFS .r_bold {border-right:1px solid #B9B9A3;} 
+
+html>body#MNFS .b_hline{ border: solid 1px #B9B9A3; border-bottom:none;}
+html>body td.sub_title{ padding:4px 4px 2px; border: solid 1px #B9B9A3;}
+html>body td.sub_title td {font-size:0.75em;}
+
+body#MNFS:nth-of-type(1) .b_hline{ border: solid 1px #B9B9A3; border-bottom:none;}
+body:nth-of-type(1) td.sub_title{ padding:4px 4px 2px; border: solid 1px #B9B9A3;}
+body:nth-of-type(1) td.sub_title td {font-size:0.75em;}
+
+#MNFS td.rsu_refresh, #MNFS td.rsu_refresh_on {text-align:left;}
+

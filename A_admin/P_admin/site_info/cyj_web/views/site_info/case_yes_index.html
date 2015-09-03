@@ -1,0 +1,65 @@
+<{include file="info_header.html"}>
+<{config_load file="public.conf" section="public"}>
+<body>
+<style type="text/css">
+.pagination a{
+    border-right: #aaaadd 1px solid;
+    padding-right: 5px;
+    border-top: #aaaadd 1px solid;
+    padding-left: 5px;
+    padding-bottom: 2px;
+    margin: 2px;
+    border-left: #aaaadd 1px solid;
+    color: #000099;
+    padding-top: 2px;
+    border-bottom: #aaaadd 1px solid;
+    text-decoration: none;
+}
+</style>
+<div class="content-box role">
+    <div class="content-box-header">
+        <h3>待审文案列表管理</h3>
+        <div class="clear"></div>
+    </div>
+    <div class="content-box-content">
+        <div class="default-tab">
+            <div class="tab-content default-tab">
+                <table>
+                    <thead>
+                    <tr>
+                        <th style="width: 100px;">案件编号</th>
+                        <th>版面名称</th>
+                        <th>文案标题</th>
+                        <th>文案类别</th> 
+                        <th>通过日期</th>
+                        <th>生效日期</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+    <{foreach from=$case item=v}>
+    <tr>
+        <td><{$v['eid']}></td>
+        <td><{$v['title']}></td>
+        <td><{$v['title']}></td>
+        
+        <td><{$v['type']}></td>
+        <td><{$v['by_date']}></td>
+        <td><{$v['ava_date']}></td>
+    </tr>
+    <{/foreach}>
+            <tr><td colspan="8">
+        <div class="pagination" style="text-align:center;">
+                                <{$page_html}>
+                            </div>
+
+    </td></tr>
+                    </tbody>
+                </table>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

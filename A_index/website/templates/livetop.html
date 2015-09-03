@@ -1,0 +1,57 @@
+<{$header}>
+<{config_load file="public.conf" section="public"}>
+<style type="text/css">
+  .banner-wrap {
+    background: url('<{#images#}>/title_welcome.png') no-repeat center top;
+}
+</style>
+<div class="banner-wrap clearfix">
+<{$notice_html}>
+<link rel="stylesheet" type="text/css" href="<{#css#}>/video.css?v=1.0"/>
+<div class="CenterMain" style="margin-top:10px;margin-bottom: 30px;">
+   		<div class="ele-live-am" id="ele-livehall-wrap">
+			<div class="ele-live-ag" style="display: none;"></div>
+			<div class="ele-live-mg" style="display: none;"></div>
+			
+			<div class="ele-livehall-aglive">
+			<a class="rule" href="javascript:;" onclick="opengeme('/video/rule.html')" style=" display:block; width:158px; height:40px; position:relative; left:155px; top:115px;"></a>
+			<a id="ele-game-open" style=" display: block; width:158px; height:40px; position:relative; left:155px; top:130px;" class="game" href="javascript:;"<{if empty($uid)}>onclick="alert('您尚未登录，请先登录再进行游戏!')"<{else}>onclick="opengeme('/video/games/login.php?g_type=ag')"<{/if}>></a>
+			</div>
+			
+			<div class="ele-livehall-mglive">
+			<a class="rule" href="javascript:;" onclick="opengeme('/video/rule.html')" style="display:block; width:158px; height:40px; position:relative; left:185px; top:115px;"></a>
+			<a href="javascript:;" style=" display:block; width:158px; height:40px; position:relative; left:185px; top:130px;" 
+			class="game" <{if empty($uid)}>onclick="alert('您尚未登录，请先登录再进行游戏!')"<{else}>onclick="opengeme('/video/games/login.php?g_type=mg')"<{/if}>></a>
+			</div>
+		</div>
+
+		<div class="ele-live-oc" id="ele-livehall-wrap">
+			<div class="ele-live-og" style="display: none;"></div>
+			<div class="ele-live-ct" style="display: none;"></div>
+			<div class="ele-livehall-oglive">
+			<a class="rule" href="javascript:;" onclick="opengeme('/video/rule.html')" style=" display:block; width:158px; height:40px; position:relative; left:155px; top:125px;"></a>
+			<a id="ele-game-open"class="game" style=" display:block; width:158px; height:40px; position:relative; left:155px; top:135px;"  href="javascript:;"<{if empty($uid)}>onclick="alert('您尚未登录，请先登录再进行游戏!')"<{else}>onclick="opengeme('/video/games/login.php?g_type=og')"<{/if}>></a>
+			</div>
+			<div class="ele-livehall-ctlive">
+			<a class="rule" href="javascript:;" onclick="opengeme('/video/rule.html')" style=" display:block; width:158px; height:40px; position:relative; left:185px; top:125px;"></a>
+			 <a href="javascript:;" class="game" style=" display:block; width:158px; height:40px; position:relative; left:185px; top:135px;" <{if empty($uid)}>onclick="alert('您尚未登录，请先登录再进行游戏!')"<{else}>onclick="opengeme('/video/games/login.php?g_type=ct')"<{/if}>></a>
+			</div>	
+		</div>
+		<div class="ele-live-hall" id="ele-livehall-wrap" style="margin-top:20px;">
+			<div class="ele-live-bbin" style="display: none;"></div>
+			<div class="ele-live-lebo" style="display: none;"></div>
+			<div class="ele-livehall-bbinlive">
+			<a class="rule" href="javascript:;" onclick="opengeme('/video/rule.html')" style=" display:block; width:158px; height:40px; position:relative; left:155px; top:120px;"></a>
+			<a id="ele-game-open" class="game" style=" display:block; width:158px; height:40px; position:relative; left:155px; top:135px;" <{if empty($uid)}>onclick="alert('您尚未登录，请先登录再进行游戏!')"<{else}>onclick="opengeme('/video/games/login.php?g_type=bbin')"<{/if}>></a>
+		    </div>
+		    <div class="ele-livehall-lebolive">
+		    <a class="rule" href="javascript:;" onclick="opengeme('/video/rule.html')" style=" display:block; width:158px; height:40px; position:relative; left:185px; top:120px;"></a>		
+				 <a href="javascript:;" class="game" style=" display:block; width:158px; height:40px; position:relative; left:185px; top:135px;" <{if empty($uid)}>onclick="alert('您尚未登录，请先登录再进行游戏!')"<{else}>onclick="opengeme('/video/games/login.php?g_type=lebo')"<{/if}>></a>
+			</div>
+		</div>
+  
+</div>
+<script type="text/javascript" src="<{#js#}>/video.js"></script>
+
+<!--footer-->
+<{$bottom}>

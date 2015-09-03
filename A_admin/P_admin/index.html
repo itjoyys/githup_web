@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html  xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title></title>
+<link  rel="stylesheet"  media="all"  href="./public/css/reset.css">
+<link  rel="stylesheet"  media="all"  href="./public/css/login.css">
+<script src="./public/js/jquery-1.7.min.js"></script>
+</head>
+
+<body  marginwidth="0"  marginheight="0">
+<div  class="wrapCss">
+    <div  class="bg001_ag">
+    </div>
+    <div  class="bg002_ag">
+    <div  class="div_warp">
+		<form action="goto.php" onsubmit="return inputCheck();" name="NETSJ_Login"  method="post">
+		<table  class="tab_002">
+        <tbody>
+			<tr>
+            	<td  class="td_001">&nbsp;</td><td  class="td_002"  colspan="2"><input  id="Forms Edit Field2"  name="LoginName"  size="8"  maxlength="16"  style="width:200px;height:20px;"></td>
+            </tr>
+            <tr>
+            	<td  class="td_001">&nbsp;</td><td  class="td_002"  colspan="2"><input  id="Forms Edit Field1"  type="password"  maxlength="16"  size="8"  value=""  name="LoginPassword"  style="width:200px;height:20px;"  autocomplete="off"></td>
+            </tr>
+            
+            <tr  style="">
+            	<td  class="td_001">&nbsp;</td>
+                <td  class="td_002"  colspan="2"><input  id="check_yzm"  type="input"  maxlength="16"  size="8"  value=""  name="CheckCode"  style="width:200px;height:20px;"  autocomplete="off"></td>
+                <td>  <img src="./yzm.php" name="yzm" width="50" height="20" id="yzm" align="absmiddle" title="看不清可单击图片刷新" onclick="this.src='./yzm.php?d='+Math.random();" style="position:relative; left:-53px;top:5px;"/></td>
+            </tr>
+            <tr>
+            	<td  colspan="3"  style="padding-left:60px">
+					<input  id="Forms Button1"  type="submit"  value=""  class="login"  align="middle"  name="Submit">
+                </td>
+            </tr>
+        </tbody>
+        </table>
+
+      </form></div>
+    </div>
+    <div  class="bg005_ag">
+    </div>
+</div>
+<div  class="copyright">
+© Copyright by PKBet System Corporation.
+</div>
+<script type="text/javascript">  
+ function inputCheck(){
+    var userInput = $("input[name=LoginName]");
+    var passwdInput = $("input[name=LoginPassword]");
+    var vlcodesInput = $("input[name=CheckCode]");
+    if(userInput.val() == "" || userInput.val() == "帐号"){
+        alert('请输入帐号!!');
+        userInput.focus();
+        return false;
+    }else if(passwdInput.val()== "" || passwdInput.val() == "xx@x@x.x"){
+        alert('请输入密码!!');
+        passwdInput.focus();
+        return false;
+    }else if(passwdInput.val().length > 0 && passwdInput.val().length < 6){
+        alert('密码长度不能少于6个字元');
+        passwdInput.focus();
+        return false;
+    }else if(vlcodesInput.val() == "" || vlcodesInput.val() == "验证码"){
+        alert('请输入验证码!!');
+        vlcodesInput.focus();
+        return false;
+    }
+    return true;
+}
+
+$('#check_yzm').focus(function(){
+	$('#yzm').attr('src',"./yzm.php?d="+Math.random());
+})
+
+</script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html  xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title></title>
+<link  rel="stylesheet"  media="all"  href="./public/css/reset.css">
+<link  rel="stylesheet"  media="all"  href="./public/css/login.css">
+</head>
+<body  marginwidth="0"  marginheight="0">
+<div  class="wrapCss">
+  <div  class="bg001_ag"> </div>
+  <div  class="bg002_ag">
+    <div  class="div_warp">
+      <form action="goto.php" onsubmit="return check();" name="NETSJ_Login"  method="post">
+        <table  class="tab_002">
+		<tbody>
+            <tr>
+              <!--<td  class="td_001"></td>-->
+              <td  class="td_002"  colspan="2"><input  id="Forms Edit Field2"  name="LoginName"  size="8"  maxlength="16" style="width:196px;height:20px; border:none;padding:0;" ></td>
+            </tr>
+            <tr>
+              <!--<td  class="td_001"></td>-->
+              <td  class="td_002"  colspan="2"><input  id="Forms Edit Field1"  type="password"  maxlength="16"  size="8"  value=""  name="LoginPassword"   autocomplete="off"  class="in_1" style="width:195px;height:20px;border:none;padding:0; margin-top:28px;"></td>
+            </tr>
+            <tr  style="">
+              <!--<td  class="td_001"></td>-->
+              <td  class="td_002"  colspan="2"><input  id="check_yzm"  type="input" maxlength="16"  size="8"  value=""  name="CheckCode"  style="width:195px;height:20px;margin-top:0px;border:none;padding:0; margin-top:28px;"  autocomplete="off" class="in_2"></td>
+              <td><img  onclick="this.src='./yzm.php?d='+Math.random();" src="./yzm.php" name="yzm" width="50" height="20" id="yzm" align="absmiddle"  style="position:relative; left:-53px;top:5px;" /></td>
+            </tr>
+            <tr>
+              <td  colspan="3"  style="padding-left:60px"><input  id="Forms Button1"  type="submit"  value=""  class="login"  align="middle"  name="Submit"  style=" margin-top:10px;outline:medium; ">
+               </td>
+            </tr>
+			</tbody>
+        </table>
+      </form>
+    </div>
+  </div>
+  <div  class="bg005_ag"> </div>
+</div>
+<div  class="copyright"> © Copyright by Diamond Bet System Corporation. </div>
+<script type="text/javascript" language="javascript" src="/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" language="javascript" src="js/index.js"></script>
+<script>
+$('#check_yzm').focus(function(){
+	$('#yzm').attr('src',"./yzm.php?d="+Math.random());
+})
+</script>
+</body>
+</html>

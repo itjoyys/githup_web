@@ -1,0 +1,280 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>线上入款</title>
+		<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+		<link href="../public/css/jquery-ui.css" type="text/css" rel="stylesheet">
+		<link type="text/css" href="../public/css/standard.css" rel="stylesheet">
+		<link rel="stylesheet" href="../public/css/template.css" type="text/css">
+		<link rel="stylesheet" href="../public/css/easydialog.css" type="text/css">
+		<link rel="stylesheet" href="../public/css/bank.css" type="text/css">
+		<script type="text/javascript" src="../public/js/jquery-1.8.3.min.js"></script>
+		<style type="text/css">
+				/*--- 按钮样式 ---*/
+			.btn_001{
+				cursor: pointer;
+				margin: 0 1px 0 0;
+				width: 85px;
+				height: 26px;
+				border: none;
+				padding-top: 2px;
+				color: #FFF;
+				font-weight: bold;
+				background: #3D3D3D url(../public/images/order_btn.gif) no-repeat 0 -80px;
+			}
+		/* esball use */
+		</style>
+	</head>
+	<body id="bank_body">
+	<div id="bank_header">
+		<div id="bank_logo"></div>
+	</div>
+	<div id="bank_content">
+		<div id="pay_title">填写付款人资料</div>
+		<div id="pay_info">
+			<form id="myFORM" name="myFORM" action="pay_money.php" method="post">
+				<input type="hidden" name="order_num" value="<?=$order_num ?>">
+				<input type="hidden" name="pay_flag" value="0">
+				<ul>
+					<li class="pay_info">
+						<div class="lable">会员帐号：</div>
+						<div class="input"><?php echo $userinfo["username"]; ?></div>
+					</li>
+					<li class="pay_info">
+						<div class="lable"><span class="star">*</span>存款金额：</div>
+						<div class="input"><input name="s_amount" id="s_amount" onkeyup="clearNoNum(this);" type="text" size="25"></div>
+					</li>
+					<!--<li class="pay_info">
+						<div class="lable"><span class="star">*</span>联络电话：</div>
+						<div class="input"><input type="text" name="s_tel" id="s_tel" size="25" onkeyup="clearNoNum(this);" maxlength="12"></div>
+					</li>
+					<li class="pay_info">
+						<div class="lable">邮箱：</div>
+						<div class="input"><input type="text" id="s_eml" name="s_eml" size="25" maxlength="50"></div>
+					</li>-->
+					<li class="pay_info">
+						<div class="lable">
+							<span class="star">*</span>支付银行：
+						</div>
+						<div id="bank_list" class="input">
+							<table>
+								<tbody>
+									<tr>									
+										<td style="height: 32px">
+											<input style="float: left;" type="radio" name="bank_name" value="ICBC">
+											<label style="font-size:12px;white-space: normal; width:95px" for="ICBC">工商银行</label>
+										</td>
+										<td style="height: 32px">
+											<input style="float: left;" type="radio" name="bank_name" value="CCB">
+											<label style="font-size:12px;white-space: normal; width:95px" for="CCB">建设银行</label>
+										</td>
+										<td style="height: 32px">
+											<input style="float: left;" type="radio" name="bank_name" value="ABC">
+											<label style="font-size:12px;white-space: normal; width:95px" for="ABC">农业银行</label>
+										</td>
+										<td style="height: 32px">
+										<input style="float: left;" type="radio" name="bank_name" value="NBCB">
+										<label style="font-size:12px;white-space: normal; width:95px" for="NBCB">宁波银行</label>
+										</td>					
+									</tr>
+									<tr>									
+										<td style="height: 32px">
+											<input style="float: left;" type="radio" name="bank_name" value="CITIC">
+											<label style="font-size:12px;white-space: normal; width:95px" for="CITIC">中信银行</label>
+										</td>
+										<td style="height: 32px">
+											<input style="float: left;" type="radio" name="bank_name" value="CMB">
+											<label style="font-size:12px;white-space: normal; width:95px" for="CMB">招商银行</label>
+										</td>
+										<td style="height: 32px">
+											<input style="float: left;" type="radio" name="bank_name" value="BOCOM">
+											<label style="font-size:12px;white-space: normal; width:95px" for="BOCOM">交通银行</label>
+										</td>
+										<td style="height: 32px">
+											<input style="float: left;" type="radio" name="bank_name" value="CMBC">
+											<label style="font-size:12px;white-space: normal; width:95px" for="CMBC">民生银行</label>
+										</td>					
+									</tr>
+									<tr>									
+										<td style="height: 32px">
+											<input style="float: left;" type="radio" name="bank_name" value="CEB">
+											<label style="font-size:12px;white-space: normal; width:95px" for="CEB">光大银行</label>
+										</td>
+										<td style="height: 32px">
+										<input style="float: left;" type="radio" name="bank_name" value="NJCB">
+										<label style="font-size:12px;white-space: normal; width:95px" for="NJCB">南京银行</label>
+										</td>
+										<td style="height: 32px">
+											<input style="float: left;" type="radio" name="bank_name" value="PAB">
+											<label style="font-size:12px;white-space: normal; width:95px" for="PAB">平安银行</label>
+										</td>
+										<td style="height: 32px">
+											<input style="float: left;" type="radio" name="bank_name" value="BOC">
+											<label style="font-size:12px;white-space: normal; width:95px" for="BOC">中国银行</label>
+										</td>					
+									</tr>
+									<tr>									
+									<td style="height: 32px">
+										<input style="float: left;" type="radio" name="bank_name" value="PSBC">
+										<label style="font-size:12px;white-space: normal; width:95px" for="PSBC">中国邮政</label>
+									</td>
+									<td style="height: 32px">
+										<input style="float: left;" type="radio" name="bank_name" value="CIB">
+										<label style="font-size:12px;white-space: normal; width:95px" for="CIB">兴业银行</label>
+									</td>
+									<td style="height: 32px">
+										<input style="float: left;" type="radio" name="bank_name" value="GDB">
+										<label style="font-size:12px;white-space: normal; width:95px" for="GDB">广东发展银行</label>
+									</td>
+									<td style="height: 32px">
+										<input style="float: left;" type="radio" name="bank_name" value="HXBC">
+										<label style="font-size:12px;white-space: normal; width:95px" for="HXBC">华夏银行</label>
+									</td>					
+									</tr>
+									<tr>									
+										<td style="height: 32px">
+											<input style="float: left;" type="radio" name="bank_name" value="SPDB">
+											<label style="font-size:12px;white-space: normal; width:95px" for="SPDB">浦发银行</label>
+										</td>
+										<td style="height: 32px">
+											<input style="float: left;" type="radio" name="bank_name" value="CMBC">
+											<label style="font-size:12px;white-space: normal; width:95px" for="CMBC">中国民生信用卡</label>
+										</td>
+										<td style="height: 32px">
+										<input style="float: left;" type="radio" name="bank_name" value="CITIC">
+										<label style="font-size:12px;white-space: normal; width:95px" for="CITIC">中信银行</label>
+										</td>	
+										<td style="height: 32px">
+										<input style="float: left;" type="radio" name="bank_name" value="BOBJ">
+										<label style="font-size:12px;white-space: normal; width:95px" for="BOBJ">北京银行</label>
+										</td>										
+									</tr>
+									<tr>
+										<td style="height: 32px">
+										<input style="float: left;" type="radio" name="bank_name" value="TCCB">
+										<label style="font-size:12px;white-space: normal; width:95px" for="TCCB">天津银行</label>
+										</td>
+										<td style="height: 32px">
+										<input style="float: left;" type="radio" name="bank_name" value="BOS">
+										<label style="font-size:12px;white-space: normal; width:95px" for="BOS">上海银行</label>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</li>
+					<li class="pay_info"><div class="lable">&nbsp;</div>
+						<div class="input">
+							<input type="submit" id="Submit" class="btn_001" value="确认">&nbsp;&nbsp;&nbsp; 
+							<input type="reset" class="btn_001" value="重设">
+						</div>
+					</li>
+				</ul>
+				<div style="display:none">
+					<br>
+					<br>时间字段：<input Type="text" Name="MODate" value="2010-08-16 12:20:10">
+					<br>币      种：<input Type="text" Name="MOCurrency" value="1">
+					<br>语言选择：<input Type="text" Name="M_Language" value="1">
+					<br>消费者姓名：<input Type="text" Name="S_Name" value="<?=$userinfo["username"];?>">
+					<br>消费者住址：<input Type="text" Name="S_Address" value="2308">
+					<br>消费者邮码：<input Type="text" Name="S_PostCode" value="518000">
+					<br>消费者电话：<input Type="text" Name="S_Telephone" value="0755-88833166">
+					<br>消费者邮件：<input Type="text" Name="S_Email" value="service@dinpay.com">
+					<br>收货人姓名：<input Type="text" Name="R_Name" value="wangl">
+					<br>收货人住址：<input Type="text" Name="R_Address" value="2308">
+					<br>收货人邮码：<input Type="text" Name="R_PostCode" value="100080">
+					<br>收货人电话：<input Type="text" Name="R_Telephone" value="0755-82384511">
+					<br>收货人邮件：<input Type="text" Name="R_Email" value="service@dinpay.com">
+					<br>商品名称：<input Type="text" Name="G_Name" value="aaa">
+					<br>商品编号：<input Type="text" Name="G_Number" value="B001">
+					<br>商品数量：<input Type="text" Name="G_Count" value="1">
+					<br>商品描述：<input Type="text" Name="G_Info" value="bbb">
+					<br>商品展示地址：<input Type="text" Name="G_Url" value="http://www.a.com">
+					<br>备     注：<input Type="text" name="MOComment" value="w">
+					<br>交易状态：<input Type="text" Name="State" value="0">
+					<br>
+				</div>    
+			</form>
+		</div>
+		<br>
+		<br>
+		<div id="note">
+			<h1>备注：</h1>
+			<ol>
+				<li>标记有&nbsp;<span class="star">*</span>&nbsp;者为必填项目。</li>
+				<li>单笔最低存款金额 <?=$data_1['ol_catm_min']?> 元以上。</li>
+				<li>单笔最高存款金额 <?=$data_1['ol_catm_max']?> 元以下。</li>
+			</ol>
+		</div>
+		<br>
+	</div>
+	<div id="bank_footer" align="center">
+		<p>Copyright © <?=$copy_right['copy_right']?> Reserved</p>
+	</div>
+	</body>
+</html>
+
+
+<script type="text/javascript">
+    var AbandonSp = '';
+    $('#myFORM').submit(function(){
+		var amount = $('#s_amount').val();  
+        if (amount<<?=$data_1[ol_catm_min]?>) {
+            alert('单笔最低存款金额 <?=$data_1[ol_catm_min]?> 元以上。');
+            $('#s_amount').focus();
+            return false;
+        } else if (amount><?=$data_1[ol_catm_max]?>) {
+            alert('单笔最高存款金额 <?=$data_1[ol_catm_max]?> 元以下。');
+            $('#s_amount').focus();
+            return false;
+        }
+
+        $('#s_amount').val(amount);
+
+        /*if ($('#s_tel').val()=='') {
+            alert("请填写联络电话!!");
+            $('#s_tel').focus();
+            return false;
+        }*/
+   
+        /*if($('#s_eml').val()!=''){
+        	 var reg =/^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/;
+			 if(!reg.test($('#s_eml').val())){
+        		alert("请填写正确的邮箱!!");
+        		$('#s_eml').focus();
+        		return false;
+        	}
+        }*/
+
+        if (!$('#bank_list input[type=radio]:checked').val()) {
+            alert('请选择支付银行');
+            return false;
+        }
+
+		if (confirm("是否确定写入?")) {
+        	    $('#Submit').attr('disabled',true);
+            	return true;
+        }
+        return false;
+    });
+
+    //数字验证 过滤非法字符
+	function clearNoNum(obj){
+		//先把非数字的都替换掉，除了数字和.
+		obj.value = obj.value.replace(/[^\d.]/g,"");
+		//必须保证第一个为数字而不是.
+		obj.value = obj.value.replace(/^\./g,"");
+		//保证只有出现一个.而没有多个.
+		obj.value = obj.value.replace(/\.{2,}/g,".");
+		//保证.只出现一次，而不能出现两次以上
+		obj.value = obj.value.replace(".","$#$").replace(/\./g,"").replace("$#$",".");
+		if(obj.value != ''){
+		var re=/^\d+\.{0,1}\d{0,2}$/;
+			  if(!re.test(obj.value))   
+			  {   
+				  obj.value = obj.value.substring(0,obj.value.length-1);
+				  return false;
+			  } 
+		}
+	}
+</script>

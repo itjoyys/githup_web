@@ -1,0 +1,453 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+.table_td1 {
+	height:50px;
+	width:750px;
+}
+.table_td_cp {
+	background:#FFFFFF url(../images/rule_pic_cp.jpg) no-repeat;
+	height:113px;
+	width:750px;
+}
+.table_td_cq {
+	background:#FFFFFF url(../images/rule_pic_cq.jpg) no-repeat;
+	height:113px;
+	width:750px;
+}
+.table_td_zs {
+	background:#FFFFFF url(../images/rule_pic_zs.jpg) no-repeat;
+	height:113px;
+	width:750px;
+}
+.table_td_zr{
+	background:#FFFFFF url(../images/rule_pic_zr.jpg) no-repeat;
+	height:113px;
+	width:750px;
+}
+.table_td_fc3d {
+	background:#FFFFFF url(../images/rule_pic_fc3d.jpg) no-repeat;
+	height:113px;
+	width:750px;
+}
+.table_td_lhc {
+	background:#FFFFFF url(../images/rule_pic_lhc.jpg) no-repeat;
+	height:113px;
+	width:750px;
+}
+.table_td_shssl {
+	background:#FFFFFF url(../images/rule_pic_shssl.jpg) no-repeat;
+	height:113px;
+	width:750px;
+}
+.table_td_tcpls {
+	background:#FFFFFF url(../images/rule_pic_tcpls.jpg) no-repeat;
+	height:113px;
+	width:750px;
+}
+.table_td_keno {
+	background:#FFFFFF url(../images/rule_pic_keno.jpg) no-repeat;
+	height:113px;
+	width:750px;
+}
+.table_td_cqssl {
+	background:#FFFFFF url(../images/rule_pic_cqssl.jpg) no-repeat;
+	height:113px;
+	width:750px;
+}
+.table_td_zq {
+	background:#303030 url(../images/rule_pic_zq.jpg) no-repeat;
+	height:113px;
+	width:750px;
+}
+.table_td_lq {
+	background:#FFFFFF url(../images/rule_pic_lq.jpg) no-repeat;
+	height:113px;
+	width:750px;
+}
+.table_td_pq {
+	background:#FFFFFF url(../images/rule_pic_pq.jpg) no-repeat;
+	height:113px;
+	width:750px;
+}
+.table_td_bq {
+	background:#FFFFFF url(../images/rule_pic_bq.jpg) no-repeat;
+	height:113px;
+	width:750px;
+}
+.table_td_mz {
+	background:#FFFFFF url(../images/rule_pic_mz.jpg) no-repeat;
+	height:113px;
+	width:750px;
+}
+.table_td_jxssc {
+	background:#FFFFFF url(../images/rule_pic_jxssc.jpg) no-repeat;
+	height:113px;
+	width:750px;
+}
+.table_td_hljssc {
+	background:#FFFFFF url(../images/rule_pic_hljssc.jpg) no-repeat;
+	height:113px;
+	width:750px;
+}
+.table_td3 {
+	background:#FFFFFF url(../images/rule_pic_4.jpg) no-repeat;
+	width:750px;
+	height:27px;
+}
+.title_name {
+	font-size:24px;
+	font-weight:bold;
+	margin: 100px auto 0 auto;
+}
+.title_td {
+	font-size:14px;
+	font-weight:700;
+}
+.bold_red_14 {
+	font-size:14px;
+	color:#F00;
+	font-weight:bold;
+}
+.bold_red {
+	color:#F00;
+	font-weight:bold;
+}
+.red {
+	color:#F00;
+}
+.bold_blue {
+	color:#00F;
+	font-weight:bold;
+}
+.blue {
+	color:#00F;
+}
+.bold_green {
+	color:#0f0;
+	font-weight:bold;
+}
+.green {
+	color:#0f0;
+}
+.bold_black {
+	color:#000;
+	font-weight:bold;
+}
+.no_style
+{
+	list-style-type:none;}
+	ul li,ol li
+	{ line-height:20px;}
+	.m_cen1 {
+	TEXT-ALIGN: center;
+	BACKGROUND-COLOR: #f0eff4;
+}
+.bold_write
+{
+	font-size:14px;
+	/*font-weight:bold;*/
+	color:#FFF;
+	height:25px;
+	}
+	.s_write
+{
+	font-size:12px;
+	/*font-weight:bold;*/
+	color:#FFF;
+	}
+	.tab_bg
+	{
+		background-color:#666;
+		text-align:center;}
+.m_cen {
+	TEXT-ALIGN: center;
+	BACKGROUND-COLOR: #ffffff
+}
+.b_tab {
+	PADDING-BOTTOM: 0px;
+	BACKGROUND-COLOR: #a6a6a6;
+	MARGIN: 0px 0px 5px;
+	PADDING-LEFT: 2px;
+	PADDING-RIGHT: 2px;
+	PADDING-TOP: 3px
+}
+.title_ol li
+{
+	list-style-type:none;
+	float:left;}
+.b_tline_bs {
+	TEXT-ALIGN: center;
+	BACKGROUND-COLOR: #2c2b2b;
+	COLOR: #ffffff
+}
+.b_hline_bs {
+	TEXT-ALIGN: center;
+	BACKGROUND-COLOR: #6d6c6c
+}
+.m_lef {
+	TEXT-ALIGN: left;
+	BACKGROUND-COLOR: #ffffff
+}
+.b_tline_bk {
+	        TEXT-ALIGN: center; BACKGROUND-COLOR: #2c2b2b; COLOR: #ffffff
+        }
+		.b_hline_bk {
+	        TEXT-ALIGN: center; BACKGROUND-COLOR: #6d6c6c
+        }
+		.b_radio {
+	        COLOR: #cc0000; FONT-WEIGHT: bold
+        }
+.font_12 {
+	font-size: 12px;
+	color:#ffffff;
+	background-position: center;
+}
+.font_12_bk {
+	font-size: 12px;
+	color: #000;
+}
+.font_12_bk1 {
+	font-size: 12px;
+	color: #fff;
+}
+.eng_12 {
+	font-family: Geneva, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #000;
+}
+.blue_12_B {
+	font-family: Geneva, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+	color: #0000FF;
+}
+.yellow_12 {
+	font-size: 14px;
+	color: #FFFF00;
+	font-weight: bold;
+	text-decoration: blink;
+}
+.eng-blue {
+	font-family: Geneva, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #0000FF;
+}
+.red_eng_b {
+	font-family: Geneva, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #990000;
+	font-weight: bold;
+}
+.red-12 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #FF0000;
+}
+.line_1 {
+	border-bottom-style: solid;
+	border-bottom-color: #2c4d71;
+	border-bottom-width: 1px;
+	border-top-width: 1px;
+	border-top-style: solid;
+	border-top-color: #2c4d71;
+}
+.line2 {
+	border-top-width: 1px;
+	border-top-style: solid;
+	border-top-color: #000000;
+}
+.odd_bet_line {
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #2c4d71;
+}
+.blue_12 {
+	font-size: 12px;
+	color: #0000FF;
+}
+.ball_bk_b {
+	font-family: Geneva, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+	color: #000000;
+}
+.eng-12 {
+	FONT-SIZE: 12px;
+	COLOR: #000000;
+	FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+.rule-12 {
+	FONT-SIZE: 12px;
+	COLOR: #000000;
+}
+.style3 {
+	FONT-SIZE: 12px;
+	COLOR: #ffff00;
+}
+.style7 {
+	FONT-SIZE: 12px;
+}
+.odd-red {
+	FONT-WEIGHT: bold;
+	FONT-SIZE: 12px;
+	COLOR: #996600;
+	FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+.style35 {
+	color: #990000
+}
+.style36 {
+	color: #FFFFFF
+}
+.div1{  width:900px; margin:0 auto;}
+.b,h1{ color:#F00; font-size:14px;}
+	#info1 p{ line-height:20px;}
+	#info2 p{ line-height:20px;}
+
+
+#wrapper{ width:850px; margin:auto;}
+.sub{ margin-top:0px;}
+.content{ width:850px; height:auto; margin:0 auto;}
+.content p{ margin-top:20px;}
+.content p ul li{ margin-top:20px;}
+.content ol{ line-height:20px;}
+.bg{ margin:auto; width:1000px; background:#FFF;}
+
+
+
+
+ h2 {
+	        border-top:3px solid #8e1914;
+            font-size: 12px;
+            color: #fff;
+            font-weight: normal;
+            background: #ff6600 url(../images/rule_icon1.gif) left no-repeat;
+            height: 25px;
+            line-height: 20px;
+            display: block;
+			
+        }
+		
+        .rule_from02{
+            padding-left: 40px;
+        }
+        .rule_from02 h2{
+            margin-left: -30px;
+        }
+        .rule_from02 p, .rule_from02 li{
+            width: 94%;
+        }
+        .ruleset table{
+            border-collapse: collapse;
+            margin-left: 1px;
+            *margin-left: 0;
+        }
+        .ruleset table td{
+            padding: 4px;
+        }
+        ul {
+            margin: 7px 0;
+            padding: 0;
+        }
+
+        p {
+            margin: 0;
+            padding: 0;
+            clear: both;
+        }
+        ol{list-style:decimal;}
+        li{display:list-item;}
+        .subtitle2 {text-align:center;}
+        .style1 {color: #FF0000}
+        .style7 {color: #060;}
+        .style9 {color: #0000FF}
+        .style8 {color: #006633}
+
+
+
+
+
+#page-content{
+    width:100%;
+    margin:0px auto;
+    background:url(../images/rule_bg.jpg) top center repeat-y;
+}
+#page-header,#page-body,.content_text{
+	margin:0px auto;
+	width:1000px;
+	background-color: #FFFFFF;
+}
+#page-title{
+    width:1000px;
+    height:100px;
+    background:url(../images/title_lottery.jpg) top center no-repeat;
+            }
+.rollphotos {
+	width: 1000px;
+	height:60px;
+	background:url(../images/GamaArea_bg.jpg) top center no-repeat;
+}
+
+
+.blk_29 .Cont {
+	margin: 0px auto 0px auto;
+	width:960px;
+    height: 52px;
+	overflow: hidden;
+    position:relative;
+}
+
+#page-foot{
+	width:100%;
+    margin:0px auto;
+	height:137px;
+	line-height:137px;
+	text-align:center;
+	background:url(../images/footer_bg.jpg) top center no-repeat;
+}
+
+#ISL_Cont_1 li {
+    display:none;
+}
+#ISL_Cont_1 ul {
+    position: absolute;
+    width: 9990px;
+    top: 1px;
+    left: 0;
+    height: 50px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+#ISL_Cont_1 ul li {
+    height: 49px;
+    width: 135px;
+    float: left;
+    margin: 0px 1px;
+    padding: 0;
+    list-style: none;
+}
+a.game_icon{
+	float:left;
+	width: 110px;
+	height: 20px;
+	padding-top:8px;
+	line-height:12px;
+	color:#FF9999;
+	font-weight:bold;
+	text-align:center;
+	text-decoration:none;
+	background:url(../images/btn.jpg) top left no-repeat;
+}
+a.game_icon:hover{
+	color:#EC0000;
+	background:url(../images/rule/btn.jpg) bottom left no-repeat
+}
+
+.table_td2{ font-size:14px; line-height:30px;}
+ul li{ margin-top:5px;}
+ol li{ margin-top:5px;}
+.iconl{ width:820px;}
+.iconl span{ padding-left:30px;}

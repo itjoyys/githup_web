@@ -1,0 +1,135 @@
+<{config_load file="public.conf" section="public"}>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>系统</title>
+    <link href="<{#css#}>/WdatePicker.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="<{#css#}>/easydialog.css">
+    <link rel="stylesheet" href="<{#css#}>/bootstrap.min.css">
+    <link rel="stylesheet" href="<{#css#}>/reset.css" type="text/css" media="screen">
+    <link rel="stylesheet" href="<{#css#}>/index.css" type="text/css" media="screen">
+    <link rel="stylesheet" href="<{#css#}>/invalid.css" type="text/css" media="screen">
+    <script type="text/javascript" src="<{#js#}>/jquery-1.7.2.min.js"></script>
+    <script src="<{#js#}>/bootstrap.min.js"></script>
+    <script src="<{#js#}>/easydialog.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('.add_cost').click(function(){
+                var url = "<{$site_url}>base/add_custom";
+                $('#custom_add').css('display','block');
+            })
+
+            $('.add_project').click(function(){
+                var url = "<{$site_url}>base/add_custom";
+                var custom_name = $(this).attr('dataname');
+                var custom_id = $(this).attr('dataid');
+                $('#project_add').css('display','block');
+                $("input[name=custom_name]").val(custom_name);
+                $("input[name=custom_id]").val(custom_id);
+            })
+
+
+            //表单提交
+            $('#submit_form').click(function(){
+                var custom_name = $("input[name='custom_name']").val();
+                var custom_address = $("input[name='custom_address']").val();
+                var custom_tel = $("input[name='custom_tel']").val();
+                var link_name = $("input[name='link_name']").val();
+                var link_tel = $("input[name='link_tel']").val();
+                if (custom_name == '' || custom_address == '' || custom_tel == '' || link_name == '' || link_tel == '') {
+                    alert('数据不能为空');
+                    return false;
+                };
+                $('#form_custom').submit();
+            })
+
+
+
+            $('#cancel_form').click(function(){
+                $('#custom_add').css('display','none');
+            })
+            //编辑
+
+
+
+            //项目表单提交
+            $('#submit_form2').click(function(){
+                var project_name = $("input[name='project_name']").val();
+                var project_address = $("input[name='project_address']").val();
+                var area = $("input[name='area']").val();
+                var developer = $("input[name='developer']").val();
+
+                if (project_name == '' || project_address == '' || area == '') {
+                    alert('数据不能为空');
+                    return false;
+                };
+                $('#form_project').submit();
+            })
+
+
+            $('#cancel_form2').click(function(){
+                $('#project_add').css('display','none');
+            })
+
+        })
+    </script>
+    <style type="text/css">
+        #custom_add, #project_add{
+            width:450px;
+            height:500px;
+            position:absolute;
+            left:50%;
+            top:200px;
+            border: solid 1px #ccc;
+            background: #fff;
+            margin-left:-150px;
+            margin-top:-150px;
+        }
+        .e_input{
+            width: 100%;
+            height: 25px;
+        }
+        form select {
+            padding-top:0;
+            padding-bottom:0;
+        }
+        .tab_t{
+            background-color: #efefef;
+            font-size: 14px;
+        }
+        .e_select{
+            margin-top: 4px;
+        }
+        .text_box{
+            width: 265px;
+            height:60px;
+        }
+        .td a {
+            padding: 3px 8px;
+            font-family: Verdana, Arial, sans-serif;
+            border-radius: 10px;
+            font-size: 12px;
+            color: #fff;
+            background: #000;
+        }
+
+        #add_a{
+            background: #DF174F;
+        }
+        #but {
+            border-radius: 15px;
+            background-color: #DF174F;
+            color: #FFFFFF;
+            height: 20px;
+            text-align: center;
+            padding: 2px;
+            width: 60px;
+            padding-left: 15px;
+            padding-right: 15px;
+            margin-left: 10px;
+            line-height: 10px;
+            font-size: 12px;
+        }
+    </style>
+</head>

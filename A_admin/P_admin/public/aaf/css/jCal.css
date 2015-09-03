@@ -1,0 +1,147 @@
+
+.jCal {
+	
+	width:224px;
+	height:21px;
+	text-align:center;
+	vertical-align:top;
+}
+
+.jCalMo {
+	width:224px;		
+	float:left;
+	overflow:visible;
+	height:100%;
+	padding-right:2px;
+	padding-left:2px;
+	white-space:nowrap;
+}
+
+.jCal .month, .jCal .monthSelect, .jCal .monthName, .jCal .monthYear {
+	line-height:16px;
+	height:16px;
+	text-align:center;
+	vertical-align:bottom;
+	font-family:Tahoma;
+	font-size:8pt;
+	color:#3B2D1B;
+	cursor:pointer;
+	float:left;
+}
+
+.jCal .monthName {
+	padding-left:2px;
+	padding-right:2px; 
+	text-align:right;
+}
+
+.jCal .monthYear {
+	float:right;
+	padding-left:2px;
+	padding-right:2px;
+	text-align:left;
+}
+
+.jCal .monthSelect {
+	background:#EEE url("../images/eeGrad2.gif") bottom repeat-x;
+}
+
+.jCal .monthSelector {
+	position:absolute;
+}
+
+.jCal .monthSelectorShadow {
+	position:absolute;
+	background:#808080;
+	padding:0px;
+}
+
+.jCal .monthNameHover {
+	background:#EDEDED url("../images/double-arrow-vert.gif") center left no-repeat;
+	color:#808080;
+}
+
+.jCal .monthYearHover {
+	background:#EDEDED url("../images/double-arrow-vert.gif") center right no-repeat;
+	color:#808080;
+}
+
+.jCal .monthSelectHover {
+	background:#069;
+	color:#FFF;
+}
+
+.jCalMo .dow, .jCalMo .day, .jCalMo .pday, .jCalMo .aday, .jCalMo .overDay, .jCalMo .invday, .jCalMo .selectedDay {
+	width:30px;
+	font-family:Tahoma;
+	font-size:8pt;
+	color:#3B2D1B;
+	border-right:1px solid #CCC;
+	border-bottom:1px solid #CCC;
+	border-left:1px solid #EEE;
+	text-align:center;
+	cursor:default;
+	float:left;
+}
+
+.jCalMo .dow {
+	background:#EEE url("../images/eeGrad.gif") bottom repeat-x;
+	border-bottom:0px;
+}
+
+.jCalMo .day, .jCalMo .invday {
+	height:30px;
+	text-align:center;
+}
+
+.jCalMo .day {
+	cursor:pointer;
+	background:#FFF;
+}
+
+.jCalMo .invday {
+	color:#808080;
+	background:#eeeeee;
+	text-decoration:line-through;
+}
+
+.jCalMo .pday, .jCalMo .aday {
+	height:30px;
+	background:#e3e3e3;
+	color:#CCC;
+}
+
+.jCalMo .selectedDay {
+	color:#FFF;
+	
+	background:rgb(0, 143, 214);
+}
+
+.jCalMo .overDay {
+	color:#FFF;
+	
+	background:rgb(0, 102, 153);
+}
+
+.jCal .left {
+	background:url("../images/_left.gif") center center no-repeat;
+	width:16px;
+	height:16px;
+	vertical-align:middle;
+	cursor:pointer;
+	float:left;
+}
+
+.jCal .right {
+	background:url("../images/_right.gif") center center no-repeat;
+	width:16px;
+	height:16px;
+	vertical-align:middle;
+	cursor:pointer;
+	float:right;
+}
+
+.jCalMask, .jCalMove {
+	position:absolute;
+	overflow:hidden;
+}

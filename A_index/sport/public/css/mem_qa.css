@@ -1,0 +1,107 @@
+@charset "UTF-8";
+
+body, div,
+h1, h2, h3, h4, h5, h6, p, table, form {
+	margin: 0;
+	padding: 0;
+	}
+address, em, strong {
+	font-style: normal;
+	font-weight: inherit;
+	}
+
+h1, h2, h3, h4, h5, h6 {
+	font-size: 100%;
+	font-weight: normal;
+	}
+body, html {background-color:#FFF;  margin:0; padding:0;
+				scrollbar-face-color: #DCD1C5;
+				 scrollbar-shadow-color: #B9A38B;
+				 scrollbar-highlight-color: #E6DED6;
+				 scrollbar-3dlight-color: #B9A38B;
+				 scrollbar-darkshadow-color: #33281C;
+				 scrollbar-track-color: #33281C;
+				 scrollbar-arrow-color: #413528;
+}
+body , td {font-family: Arial, Helvetica, SimSun, sans-serif; font-size:12px;}
+a { text-decoration: none;}
+a:link, a:visited { color: #303030;}
+a:hover {color: #C60;}
+#wrapper { width:763px; padding: 0 10px; background-color:#493721;_position:relative;}
+
+.qa_head { width:783px;  height:37px; line-height:37px; font:bold 12px  Arial, Helvetica, sans-serif; color:#F8C100; background-repeat:no-repeat; }
+html>body .qa_head {height:37px; padding: 0; background: url("http://cdn.wbapi.com/cl/tpl/commonFile/images/member/help_head.png?=593") no-repeat;}
+* .qa_head {  filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/cl/tpl/commonFile/images/member/help_head.png?=593);}
+
+.qa_head em { margin-left:41px;line-height:37px;}
+.qa_foot { width:783px;  height:10px; font:bold 12px  Arial, Helvetica, sans-serif; color:#F8C100; background-repeat:no-repeat; }
+html>body .qa_foot {height:10px; padding: 0; background: url("http://cdn.wbapi.com/cl/tpl/commonFile/images/member/help_foot.png?=593") no-repeat;}
+* .qa_foot { padding: 17px 0 0 47px;  filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/cl/tpl/commonFile/images/member/help_foot.png?=593);}
+
+#qa_nav { height:29px;background-color: #D5D4C8;}
+div#qa_nav ul {z-index:990; margin:0;
+	font-size:12px; font-weight:bold; margin-left:22px;
+	}
+div#qa_nav ul li {
+	list-style: none;
+	margin:0 20px 0 0; padding:0 25px 0;
+	height:29px;
+	float:left;
+	line-height:29px;
+	position:relative;
+	}
+
+
+.close_box { *cursor:hand; cursor:pointer; float:right; position:relative;margin:11px 10px 0 0; *margin-top:-25px; padding:1px 19px 0 0; font-weight:normal; font-size:11px;background: url("http://cdn.wbapi.com/cl/tpl/commonFile/images/member/close_qa.gif?=593") no-repeat right 0;}
+span.close_box:hover { color: #C60;}
+
+
+body#MAIL li.mail , body#SPORT li.sport , body#MSG li.msg , body#ODD li.odd , body#WAP li.wap , body#PASS li.pass, body#RULE li.rule
+{ background-color:#FFF;}
+
+div#main { clear: both;vertical-align:top; background-color:#FFF;
+				
+				padding:12px 13px;
+				
+				}
+h1 { font-size:14px; font-weight:bold; margin-bottom:18px;}
+
+
+#MAIL #main {padding: 36px 0 0 184px;min-height:316px;	height: auto !important;	height:316px; background:#FFF url("http://cdn.wbapi.com/cl/tpl/commonFile/images/member/qa_phone.jpg?=593") no-repeat 14px 12px;}
+#MAIL #main p { margin-bottom:18px;}
+body#MAIL #main .info { width:340px; line-height:16px;}
+
+
+
+
+#ROUL div#main {padding:8px 13px 17px;}
+
+#ODD div#main { }
+
+#ODD #box { width:720px;margin-bottom:12px; font-size:12px;}
+
+#ODD .top { background: #4E432A url("http://cdn.wbapi.com/cl/tpl/commonFile/images/member//mem_h1_ft.gif?=593") no-repeat 100% 0; color:#FFF; text-align:left; clear:both;}
+#ODD .top h1 { margin:0 15px 0 0; padding: 4px 2px 1px 11px; font-size:12px; line-height:24px; white-space: nowrap;background:url("http://cdn.wbapi.com/cl/tpl/commonFile/images/member//mem_h1_ft.gif?=593") no-repeat 0 0; }
+
+
+#ODD .mem { border: 2px solid #BC9A3F; border-top-width: 0; border-bottom:1px solid #D7D7C1; padding:3px; background-color:#D7D7C1; clear:both;}
+
+#ODD .mem .game {	width:100%;	background-color:#B9B9A3;	clear: both;	font-size:12px; border-top:1px solid #B9B9A3;border-left:1px solid #B9B9A3;}
+
+#ODD .game th {color:#000;	background-color:#C8A670;white-space:nowrap;	font-weight: normal;padding:2px 2px 1px; border-right:1px solid #B9B9A3; border-bottom:1px solid #B9B9A3;font-family: Arial, Helvetica, SimSun, sans-serif;}
+
+#ODD .game td { padding:1px 4px; font-size:12px; border-right:1px solid #B9B9A3; border-bottom:1px solid #B9B9A3;font-family: Arial, Helvetica, SimSun, sans-serif;}
+#ODD .b_hline {  background-color: #FCF9CE;padding-top:3px;}
+#ODD .b_hline td {color:#4b3621;font-weight: bold;}
+#ODD .b_rig {background-color:#FFF; text-align:right;white-space:nowrap;}
+#ODD .way_red {	color: #F00;}
+
+#ODD #foot { width:100%; height:11px; text-align:left; background:url("http://cdn.wbapi.com/cl/tpl/commonFile/images/member/mem_foot_ft.gif?=593") no-repeat 100% 100%; vertical-align: bottom;}
+#ODD #foot b { display:block;width:30px; height:11px; line-height:11px; background:url("http://cdn.wbapi.com/cl/tpl/commonFile/images/member/mem_foot_ft.gif?=593") no-repeat 0 100%;}
+
+.to_top {	display: block;	text-align: right;	margin-bottom: 1em;}
+.to_top a {display: block;	width: 5em;white-space: nowrap;	background: url("http://cdn.wbapi.com/cl/tpl/commonFile/images/member/ind_arr.gif?=593") no-repeat left -117px;	}
+
+html > body .to_top { padding-top:0px;}
+html > body .to_top a { float: right;}
+html > body#RCHK .to_top span {margin-left:auto;margin-right:auto;}

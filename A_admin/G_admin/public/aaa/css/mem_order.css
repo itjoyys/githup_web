@@ -1,0 +1,254 @@
+/* 2006 07 26 for NN-New*/
+html, body {background:#B0D8E7 url(/images/body_ba.gif) repeat-x 0 0; margin:0 0 0 2px; padding-top: 10px;}/*nn Window*/
+form { margin:0; padding:0;}
+.ord, .ord2 { width:220px; background: #B0D8E7 url(/images/order_bg_ft.gif) repeat-y left top;font-style:normal; font-variant:normal; font-weight:normal; font-size:0.75em; font-family:Arial, Helvetica, sans-serif}
+span { display:block; background: url(/images/order_h1_ft.gif) no-repeat left bottom; padding-bottom:0px}
+h1 {
+	font-size:1em ;font-weight: normal;color:#FFF;
+	margin:0 0 5px;
+	background: url(/images/order_h1_ft.gif) no-repeat left top; margin-left:0; margin-right:0; margin-top:0; margin-bottom:5px; padding:0 6px 4px 10px;
+	height:24px;
+	line-height:24px;
+	position: relative;
+}
+p { margin:0; padding: 1px 5px;color:#3D3934;}
+.error {	color: #C00;	background-color: #FF6;}/*nn Window*/
+/*error ps*/
+p tt { color: #390; font:1em/140% Arial, Helvetica, sans-serif; display:block; border-bottom:1px solid #FFF; padding:5px 0px 5px 0px; margin-bottom:4px;}
+.team {	background-color: #FFF; text-align: center;  border-bottom: 1px solid #333; color:#3D3934;}/*sbb Window*/
+#OFIN .team {border-top: 1px solid #D78E8E;}/*nn Window*/
+.ord .foot {
+	padding:10px 6px 4px 10px;
+	margin:0;
+	height: 40px;
+	text-align: center;
+	background: url(/images/order_foot_ft.gif) no-repeat left bottom;
+	border-bottom-width: 0px;
+	border-bottom-style: solid;
+	border-bottom-color: #7FADCA;
+}/*nn Window*/
+
+div.foot {
+	width:220px;
+	padding:10px 6px 4px 10px; 
+	margin:0;
+	height: 40px;
+	text-align: center;
+	background: url(/images/order_foot_ft.gif) no-repeat left bottom;
+	border-bottom-width: 0px;
+	border-bottom-style: solid;
+	border-bottom-color: #7FADCA;
+}
+.chk { font-size:0.75em;
+	width:220px;
+	color: #F00;
+	line-height: 17px;
+	text-align: center;
+	padding-top: 8px; padding-bottom:8px;
+	background: #FFF url(/images/order_foot_ft.gif) no-repeat left bottom;/*nn Window*/
+}
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~select <.foot2>~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+.ord2 { margin-top:10px;}
+.ord2 p { padding-right:0; padding-left:2px; clear:right;}/*sbb Window*/
+
+.foot2 {width:220px; height: 5px; background-color:#7FADCA; border:solid #4682B4; border-width: 0 1px 1px;}/*nn Window*/
+.float { float:right; margin-top:-10px; margin-right:2px;}/*nn Window*/
+iframe { width:214px; border:0; clear:right;text-align:center}/*sbb Window*/
+.ord2 span, .ord2 h1 {margin-bottom:0; background-position: left top;}/*nn Window*/
+p.ps {margin: 0; padding: 4px 8px;color:#C00; border-bottom: 1px solid #C00;}
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~history show10~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+body#OHIS {	margin: 0px; padding: 0px; background: #eaeff2 none;border:1px solid #999;}/*sbb Window*/
+#OHIS .show { width:191px; margin:0 auto;overflow:hidden;border:1px solid #999;font: 0.75em Arial, Helvetica, sans-serif; background-image: none; padding: 0;}/*gal Window*/
+#OHIS p {border-bottom:1px solid #999; padding:5px 0 5px 5px;}/*gal Window*/
+#OHIS em { color:#00C;}
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~button~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+select {font: 1em Arial, Helvetica, sans-serif; height:18px ;}
+.foot input, .chk input, .ord2 input, .par{ font:12px Arial, Helvetica, sans-serif;height: 22px; margin-top: 3px;}
+input.no { margin-right:8px; color:#C00;}
+input.yes {}
+.txt { height:18px;}
+input.close{
+	height:16px;
+	width:19px;
+	background-color: #900;
+	color: #FFF;
+	font: 900 10px Arial, Helvetica, sans-serif;
+	border:none;
+	position: absolute;
+	top:0;
+	right:15px;
+}
+.reload{
+	position: absolute;
+	top:0;
+	right:40px;
+}
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~font~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+em {	color:#FF0;	font-style: normal;}
+strong {color:#FF0;}
+.team strong, .team em {color:#C00;}/*gal Window*/
+#pc {color:#FF0;}/*Mode*//*gal Window*/
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~finish Fix~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+.team span { display: inline; background-image: none !Important; padding:0;}
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~ Game Window ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#OFT{background-image:none}*/
+body#OFU { background: #BCE1B6; }
+body#OBK { background: #FFCCCC; }
+body#OBU { background: #EDEAE9; }
+body#OTN { background: #B4CAF3; }
+body#OTU { background: #EF2C9A; }
+body#OVB { background: #D3E4DC; }
+body#OVU { background: #79AAAC; }
+body#OFS { background: #E69A83; }
+body#OBS { background: #E6E283; }
+body#OBE { background: #9ACFA9; }
+body#OOP { background: #FFC195; }
+body#OOM { background: #FDD0ED; }
+
+/*top*//*border line*/
+body#OFU .ord { background-image: url(/images/order_bg_fu.gif); }
+body#OBK .ord { background-image: url(/images/order_bg_bk.gif); }
+body#OBU .ord { background-image: url(/images/order_bg_bu.gif); }
+body#OTN .ord { background-image: url(/images/order_bg_tn.gif); }
+body#OTU .ord { background-image: url(/images/order_bg_tu.gif); }
+body#OVB .ord { background-image: url(/images/order_bg_vb.gif); }
+body#OVU .ord { background-image: url(/images/order_bg_vu.gif); }
+body#OFS .ord { background-image: url(/images/order_bg_fs.gif); }
+body#OFIN .ord { background-image: url(/images/order_bg_fin.gif); }
+body#OBS .ord { background-image: url(/images/order_bg_bs.gif); }
+body#OBE .ord { background-image: url(/images/order_bg_be.gif); }
+body#OOP .ord { background-image: url(/images/order_bg_op.gif); }
+body#OOM .ord { background-image: url(/images/order_bg_om.gif); }
+
+/*bg*/
+body#OFU span, body#OFU h1 { background-image: url(/images/order_h1_fu.gif); }
+body#OBK span, body#OBK h1 { background-image: url(/images/order_h1_bk.gif); }
+body#OBU span, body#OBU h1 { background-image: url(/images/order_h1_bu.gif); }
+body#OTN span, body#OTN h1 { background-image: url(/images/order_h1_tn.gif); }
+body#OTU span, body#OTU h1 { background-image: url(/images/order_h1_tu.gif); }
+body#OVB span, body#OVB h1 { background-image: url(/images/order_h1_vb.gif); }
+body#OVU span, body#OVU h1 { background-image: url(/images/order_h1_vu.gif); }
+body#OFS span, body#OFS h1 { background-image: url(/images/order_h1_fs.gif); }
+body#OFIN span, body#OFIN h1 { background-image: url(/images/order_h1_fin.gif); }
+body#OBS span, body#OBS h1 { background-image: url(/images/order_h1_bs.gif); }
+body#OBE span, body#OBE h1 { background-image: url(/images/order_h1_be.gif); }
+body#OOP span, body#OOP h1 { background-image: url(/images/order_h1_op.gif); }
+body#OOM span, body#OOM h1 { background-image: url(/images/order_h1_om.gif); }
+
+/*foot*/
+body#OFU .foot, body#OFU .chk { background-image: url(/images/order_foot_fu.gif); }
+body#OBK .foot, body#OBK .chk { background-image: url(/images/order_foot_bk.gif); }
+body#OBU .foot, body#OBU .chk { background-image: url(/images/order_foot_bu.gif); }
+body#OTN .foot, body#OTN .chk { background-image: url(/images/order_foot_tn.gif); }
+body#OTU .foot, body#OTU .chk { background-image: url(/images/order_foot_tu.gif); }
+body#OVB .foot, body#OVB .chk { background-image: url(/images/order_foot_vb.gif); }
+body#OVU .foot, body#OVU .chk { background-image: url(/images/order_foot_vu.gif); }
+body#OFS .foot, body#OFS .chk { background-image: url(/images/order_foot_fs.gif); }
+body#OFIN .foot { background-image: url(/images/order_foot_fin.gif); }
+body#OBS .foot, body#OBS .chk { background-image: url(/images/order_foot_bs.gif); }
+body#OBE .foot, body#OBE .chk { background-image: url(/images/order_foot_be.gif); }
+body#OOP .foot, body#OOP .chk { background-image: url(/images/order_foot_op.gif); }
+body#OOM .foot, body#OOM .chk { background-image: url(/images/order_foot_om.gif); }
+
+/*foot-bgcolor*/
+body#OFU .foot { background-color: #98C38F; }
+body#OBK .foot { background-color: #ED8989; }
+body#OBU .foot { background-color: #B578B0; }
+body#OTN .foot { background-color: #7588EE; }
+body#OTU .foot { background-color: #F6117D; }
+body#OVB .foot { background-color: #B7DBCF; }
+body#OVU .foot { background-color: #679DA8; }
+body#OFS .foot { background-color: #F59D5C; }
+body#OFIN .foot { background-color: #0099FF; }
+body#OBS .foot { background-color: #DAF257; }
+body#OBE .foot { background-color: #A2E5C2; }
+body#OOP .foot { background-color: #FDDCC4; }
+body#OOM .foot { background-color: #FF9EDD; }
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~Comfirm window~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+body#GRAY div, body#BLUE div, body#PINK div {text-align:center; font-size:0.75em; border:5px solid; margin:6px; padding:6px;}
+body#GRAY {  background-color:#FC6;}
+body#GRAY div {	color: #3D3934; border-color:#F90; background-color:#FFE39D;}
+body#BLUE {  background-color:#91DAFF;}
+body#BLUE div {	color: #3D3934; border-color:#539ECC; ;background-color:#AFF2FF;}
+body#PINK {  background-color:#EDAAAA;}
+body#PINK div {	color: #C00; border-color:#E78686; background-color:#EDC6C8;}
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~ For Mac/Safari Fix ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+html > body .float { margin-top: -2px;}
+html > body { margin:0;}
+html > body .foot, html > body .foot2 { padding:10px 0 4px;}
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~ chg_passwd~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+h4 {background-color: #DFCA78;height: 30px;margin: 0px;padding-top: 5px;font-size: 12px;font-weight: lighter;}
+.chg {width:360px;font: 0.75em Arial, Helvetica, sans-serif;border: 4px ridge #FF9900;}
+.chg_bg {background-color: #FFFFCB;text-align: center;padding-top: 10px;}
+hr {color:#993300;height: 1px;}
+.showpic {padding-top: 10px;text-align: center;}
+.showpic2 {position: absolute;float: right;margin-left: 68px;}
+input.pic {color:#3D3934;
+	font-size: 14px;
+	font-weight: bold;
+	text-align: center;
+	margin-top: 0;
+	margin-right: 4px;
+	margin-left: 4px;
+	padding-bottom: 3px;
+	padding-top: 3px;
+	margin-bottom: 2px;
+}
+input.confirm{
+	color:#3D3934;
+	font-size: 14px;
+	text-align: center;
+	padding-bottom: 5px;
+	height: 25px;
+	width: 52px;
+	margin-bottom: 2px;
+}
+/*-------- Chg_passwd----------*/
+#PWD html, #PWD body {padding-top: 10%;margin-top: 50;margin-right: 0;margin-bottom: 0;margin-left: 2px;}
+#PWD .pwd_title {color: #FFFFFF;background-color: #1F3D68;text-align: center;padding: 5px;	}
+#PWD .pwd_bg ,#PWD .pwd_txt , #PWD .pwd_red{background-color: #F2f2f2;padding: 8px;font-family: Arial, Helvetica, sans-serif;font-size: 0.75em;}
+#PWD .pwd_side {background-color: #fff;border: 4px solid #1F3D68;margin-top: 50px;margin-left:auto;margin-right:auto; }
+#PWD .pwd_red {color: #FF0000;}
+#PWD .pwd_txt {color: #3D3934;}
+#PWD .point {color: #FFFFFF;background-color: #B40202;text-align: center;}
+#PWD .point , #PWD .pwd_title{font-family: Arial, Helvetica, sans-serif;font-size: 12px;}
+.red_txt {color: #FF0000;}
+.white {
+	color: #3D3934;
+	font-size: 12px;
+	line-height: 18px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+.input_btn {
+	
+
+	width: 85px;
+	height: 26px;
+	margin: 8px;
+
+}
+.input_s1, .input_s2, .input_s3 {
+	background: #fff;
+	width: 204px;
+	height: 25px;
+	border: 1px solid #AAA;
+	float: left;
+	display: inline-block;
+}
+
+.fifa {
+	background-image: url(/images/member/FIFA.gif);
+	height: 32px;
+	display: block;
+	background-repeat: no-repeat;
+	background-position: 5px;
+	width: 220px;
+}
+
+/*-------- btn----------*/
+.za_button{ height: 22px;margin:6px 0 0 3px}
+
+
+

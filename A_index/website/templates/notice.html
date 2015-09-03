@@ -1,0 +1,31 @@
+<{config_load file="public.conf" section="public"}>
+            <!-- 最新消息 -->
+        <div class="news-wrap clearfix" style="width:100%;">
+            <div class="news-item" style="width:660px;">
+                <div id="ele-msgNews" class="ele-news-wrap">
+    <ul class="ele-news-scroll" onclick="notice_data();" style="margin-top: 0px;"> 
+          <marquee  scrollamount="2" scrolldelay="10" class="recent_news_scroll" direction="left" nowarp="" onMouseOver="this.stop();" onMouseOut="this.start();">
+             <li href="javascript:;" onclick="notice_data();"><{$notice}></li>
+        </marquee>
+    </ul>
+    </div>
+<style>
+.ele-news-wrap{
+    position: relative;
+    overflow: hidden;
+    padding-right: 40px;
+    height: auto;
+}
+.ele-news-scroll li {
+    cursor: pointer;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 20px;
+    line-height: 20px;
+}
+</style>
+</div>
+</div>
+</div>
+</div>
+
