@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+
+xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <soap:Body>
+        <GetReportResultResponse xmlns="https://entservices.totalegame.net">
+            <GetReportResultResult>
+                <IsSucceed>true</IsSucceed>
+                <ErrorCode>0</ErrorCode>
+                <SourceStatus>Normal</SourceStatus>
+                <ErrorValue>SUCCESS</ErrorValue>
+                <ReportName>GameplayDetailedReport</ReportName>
+                <Paging>
+                    <RowsPerPage>200</RowsPerPage>
+                    <PageNumber>1</PageNumber>
+                    <TotalPage>1</TotalPage>
+                    <TotalRow>3</TotalRow>
+                    <RowsInCurrentPage>0</RowsInCurrentPage>
+                </Paging>
+                <CurrentPageData>
+                    <xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-
+
+msdata">
+                        <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+                            <xs:complexType>
+                                <xs:choice minOccurs="0" maxOccurs="unbounded">
+                                    <xs:element name="Table">
+                                        <xs:complexType>
+                                            <xs:sequence>
+                                                <xs:element name="AccountNo" type="xs:string" minOccurs="0" />
+                                                <xs:element name="Date" type="xs:dateTime" minOccurs="0" />
+                                                <xs:element name="Game" type="xs:string" minOccurs="0" />
+                                                <xs:element name="Currency" type="xs:string" minOccurs="0" />
+                                                <xs:element name="NumberOfGames" type="xs:int" minOccurs="0" />
+                                                <xs:element name="NumberOfBet" type="xs:int" minOccurs="0" />
+                                                <xs:element name="BetAmount" type="xs:decimal" minOccurs="0" />
+                                                <xs:element name="PayoutAmount" type="xs:decimal" minOccurs="0" />
+                                                <xs:element name="GGRAmount" type="xs:decimal" minOccurs="0" />
+                                            </xs:sequence>
+                                        </xs:complexType>
+                                    </xs:element>
+                                </xs:choice>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:schema>
+                    <diffgr:diffgram xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:diffgr="urn:schemas-microsoft-com:xml-diffgram-v1">
+                        <NewDataSet xmlns="">
+                            <Table diffgr:id="Table1" msdata:rowOrder="0">
+                                <AccountNo>usdfsdfsdfiiue</AccountNo>
+                                <Date>2015-05-17T00:00:00+08:00</Date>
+                                <Game>Flash - Slot - 7 Oceans</Game>
+                                <Currency>CNY</Currency>
+                                <NumberOfGames>5</NumberOfGames>
+                                <NumberOfBet>5</NumberOfBet>
+                                <BetAmount>22.0000</BetAmount>
+                                <PayoutAmount>24.0000</PayoutAmount>
+                                <GGRAmount>-2.0000</GGRAmount>
+                            </Table>
+                            <Table diffgr:id="Table2" msdata:rowOrder="1">
+                                <AccountNo>usdfsdfsdfiiue</AccountNo>
+                                <Date>2015-05-17T00:00:00+08:00</Date>
+                                <Game>Live Games - MP Baccarat (Diamond)</Game>
+                                <Currency>CNY</Currency>
+                                <NumberOfGames>15</NumberOfGames>
+                                <NumberOfBet>15</NumberOfBet>
+                                <BetAmount>210.0000</BetAmount>
+                                <PayoutAmount>248.5000</PayoutAmount>
+                                <GGRAmount>-38.5000</GGRAmount>
+                            </Table>
+                            <Table diffgr:id="Table3" msdata:rowOrder="2">
+                                <AccountNo>usdfsdfsdfiiue</AccountNo>
+                                <Date>2015-05-17T00:00:00+08:00</Date>
+                                <Game>Live Games - MP Baccarat (Diamond) - Playboy</Game>
+                                <Currency>CNY</Currency>
+                                <NumberOfGames>8</NumberOfGames>
+                                <NumberOfBet>8</NumberOfBet>
+                                <BetAmount>120.0000</BetAmount>
+                                <PayoutAmount>59.0000</PayoutAmount>
+                                <GGRAmount>61.0000</GGRAmount>
+                            </Table>
+                        </NewDataSet>
+                    </diffgr:diffgram>
+                </CurrentPageData>
+                <Status>Complete</Status>
+                <Id>ce2cef28-1e07-4126-85d8-149f8fe3381c</Id>
+            </GetReportResultResult>
+        </GetReportResultResponse>
+    </soap:Body>
+</soap:Envelope>
+
+
+<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+
+xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <soap:Body>
+        <GetReportResultResponse xmlns="https://entservices.totalegame.net">
+            <GetReportResultResult>
+                <IsSucceed>true</IsSucceed>
+                <ErrorCode>0</ErrorCode>
+                <SourceStatus>Normal</SourceStatus>
+                <ErrorValue>SUCCESS</ErrorValue>
+                <ReportName>GetBetInfoDetails</ReportName>
+                <Paging>
+                    <RowsPerPage>200</RowsPerPage>
+                    <PageNumber>1</PageNumber>
+                    <TotalPage>1</TotalPage>
+                    <TotalRow>9</TotalRow>
+                    <RowsInCurrentPage>0</RowsInCurrentPage>
+                </Paging>
+                <CurrentPageData>
+                    <xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-
+
+msdata">
+                        <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+                            <xs:complexType>
+                                <xs:choice minOccurs="0" maxOccurs="unbounded">
+                                    <xs:element name="Table">
+                                        <xs:complexType>
+                                            <xs:sequence>
+                                                <xs:element name="AccountNumber" type="xs:string" minOccurs="0" />
+                                                <xs:element name="Income" type="xs:decimal" minOccurs="0" />
+                                                <xs:element name="Payout" type="xs:decimal" minOccurs="0" />
+                                                <xs:element name="WinAmount" type="xs:decimal" minOccurs="0" />
+                                                <xs:element name="LoseAmount" type="xs:decimal" minOccurs="0" />
+                                                <xs:element name="Date" type="xs:string" minOccurs="0" />
+                                                <xs:element name="GameType" type="xs:string" minOccurs="0" />
+                                                <xs:element name="NetCash" type="xs:decimal" minOccurs="0" />
+                                                <xs:element name="NetWin" type="xs:decimal" minOccurs="0" />
+                                                <xs:element name="ModuleId" type="xs:int" minOccurs="0" />
+                                                <xs:element name="ClientId" type="xs:string" minOccurs="0" />
+                                            </xs:sequence>
+                                        </xs:complexType>
+                                    </xs:element>
+                                </xs:choice>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:schema>
+                    <diffgr:diffgram xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:diffgr="urn:schemas-microsoft-com:xml-diffgram-v1">
+                        <NewDataSet xmlns="">
+                            <Table diffgr:id="Table1" msdata:rowOrder="0">
+                                <AccountNumber>twwwwww10</AccountNumber>
+                                <Income>140.0000</Income>
+                                <Payout>118.5000</Payout>
+                                <WinAmount>0.0000</WinAmount>
+                                <LoseAmount>21.5000</LoseAmount>
+                                <Date>2015-05-19T00:00:00</Date>
+                                <GameType>Diamond LG Baccarat</GameType>
+                                <ModuleId>28</ModuleId>
+                                <ClientId>4</ClientId>
+                            </Table>
+                            <Table diffgr:id="Table2" msdata:rowOrder="1">
+                                <AccountNumber>twwwwww10</AccountNumber>
+                                <Income>11.2500</Income>
+                                <Payout>4.5000</Payout>
+                                <WinAmount>0.0000</WinAmount>
+                                <LoseAmount>6.7500</LoseAmount>
+                                <Date>2015-05-20T00:00:00</Date>
+                                <GameType>5 Reel Slot Games</GameType>
+                                <ModuleId>2</ModuleId>
+                                <ClientId>10002</ClientId>
+                            </Table>
+                            <Table diffgr:id="Table3" msdata:rowOrder="2">
+                                <AccountNumber>twwwwww10</AccountNumber>
+                                <Income>6.7500</Income>
+                                <Payout>0.0000</Payout>
+                                <WinAmount>0.0000</WinAmount>
+                                <LoseAmount>6.7500</LoseAmount>
+                                <Date>2015-05-20T00:00:00</Date>
+                                <GameType>5 Reel Slot Games</GameType>
+                                <ModuleId>2</ModuleId>
+                                <ClientId>10003</ClientId>
+                            </Table>
+                            <Table diffgr:id="Table4" msdata:rowOrder="3">
+                                <AccountNumber>twwwwww10</AccountNumber>
+                                <Income>3.0000</Income>
+                                <Payout>0.0000</Payout>
+                                <WinAmount>0.0000</WinAmount>
+                                <LoseAmount>3.0000</LoseAmount>
+                                <Date>2015-05-20T00:00:00</Date>
+                                <GameType>Bonus Screen Slots</GameType>
+                                <ModuleId>6</ModuleId>
+                                <ClientId>10001</ClientId>
+                            </Table>
+                            <Table diffgr:id="Table5" msdata:rowOrder="4">
+                                <AccountNumber>tzerophp</AccountNumber>
+                                <Income>34.0000</Income>
+                                <Payout>16.0000</Payout>
+                                <WinAmount>0.0000</WinAmount>
+                                <LoseAmount>18.0000</LoseAmount>
+                                <Date>2015-05-22T00:00:00</Date>
+                                <GameType>3 Reel Slot Games</GameType>
+                                <ModuleId>1</ModuleId>
+                                <ClientId>10002</ClientId>
+                            </Table>
+                            <Table diffgr:id="Table6" msdata:rowOrder="5">
+                                <AccountNumber>tzerophp</AccountNumber>
+                                <Income>8.0000</Income>
+                                <Payout>0.0000</Payout>
+                                <WinAmount>0.0000</WinAmount>
+                                <LoseAmount>8.0000</LoseAmount>
+                                <Date>2015-05-23T00:00:00</Date>
+                                <GameType>3 Reel Slot Games</GameType>
+                                <ModuleId>1</ModuleId>
+                                <ClientId>10001</ClientId>
+                            </Table>
+                            <Table diffgr:id="Table7" msdata:rowOrder="6">
+                                <AccountNumber>tzerophp</AccountNumber>
+                                <Income>30.0000</Income>
+                                <Payout>114.0000</Payout>
+                                <WinAmount>-84.0000</WinAmount>
+                                <LoseAmount>0.0000</LoseAmount>
+                                <Date>2015-05-23T00:00:00</Date>
+                                <GameType>3 Reel Slot Games</GameType>
+                                <ModuleId>1</ModuleId>
+                                <ClientId>10002</ClientId>
+                            </Table>
+                            <Table diffgr:id="Table8" msdata:rowOrder="7">
+                                <AccountNumber>usdfsdfsdfiiue</AccountNumber>
+                                <Income>22.0000</Income>
+                                <Payout>24.0000</Payout>
+                                <WinAmount>-2.0000</WinAmount>
+                                <LoseAmount>0.0000</LoseAmount>
+                                <Date>2015-05-17T00:00:00</Date>
+                                <GameType>3 Reel Slot Games</GameType>
+                                <ModuleId>1</ModuleId>
+                                <ClientId>10001</ClientId>
+                            </Table>
+                            <Table diffgr:id="Table9" msdata:rowOrder="8">
+                                <AccountNumber>usdfsdfsdfiiue</AccountNumber>
+                                <Income>330.0000</Income>
+                                <Payout>307.5000</Payout>
+                                <WinAmount>0.0000</WinAmount>
+                                <LoseAmount>22.5000</LoseAmount>
+                                <Date>2015-05-17T00:00:00</Date>
+                                <GameType>Diamond LG Baccarat</GameType>
+                                <ModuleId>28</ModuleId>
+                                <ClientId>4</ClientId>
+                            </Table>
+                        </NewDataSet>
+                    </diffgr:diffgram>
+                </CurrentPageData>
+                <Status>Complete</Status>
+                <Id>a53e88ea-ca68-4846-9633-4536a66632aa</Id>
+            </GetReportResultResult>
+        </GetReportResultResponse>
+    </soap:Body>
+</soap:Envelope>
