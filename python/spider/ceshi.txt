@@ -1,0 +1,245 @@
+﻿[['1583605', ['17', '10'], ['0', '0'], ['21', '10'], ['19', '17'], ['35', '32'], ['40', '27'], ['-1', '-1'], ['75', '59']]
+      0      MB_Inball_1st                                          MB_Inball_HR  MB_Inball_ER MB_Inball_Add  MB_Inball
+             TG_Inball_1st                                          TG_Inball_HR TG_Inball_ER   TG_Inball_Add  TG_Inball
+
+
+
+
+GET FT_header.php?uid=rswti3...pe=&langx=zh-cn&mtype=4
+	
+200 OK
+	
+w436.hg3088.com
+	
+3.5 KB
+	
+203.160.140.68:80
+	
+ 
+506ms
+GET index.php?rtype=re&uid=r...e=4&showtype=&hot_game=
+	
+200 OK
+	
+w436.hg3088.com
+	
+21.1 KB
+	
+203.160.140.68:80
+	
+ 
+1.33s
+GET getrecRB.php?gtype=FT&uid=rswti3sm13466359l6251104
+	
+200 OK
+	
+w436.hg3088.com
+	
+334 B
+	
+203.160.140.68:80
+	
+ 
+233ms
+GET mem_online.php?uid=rswti3sm13466359l6251104
+	
+200 OK
+	
+w436.hg3088.com
+	
+20 B
+	
+203.160.140.68:80
+	
+ 
+503ms
+GET reloadCredit.php?uid=rsw...359l6251104&langx=zh-cn
+	
+200 OK
+	
+w436.hg3088.com
+	
+129 B
+	
+203.160.140.68:80
+	
+ 
+251ms
+GET body_var.php?uid=rswti3s...=0&league_id=&hot_game=
+	
+200 OK
+	
+w436.hg3088.com
+	
+1.7 KB
+	
+203.160.140.68:80
+	
+ 
+225ms
+参数头信息响应HTML缓存Cookies
+
+<html>
+<head>
+	<script src="/js/ga.js"></script>
+<script>
+_=parent;
+_.flash_ior_set='Y';
+_.rtype='re';
+_.sel_lid='';
+top.today_gmt = '2015-04-20';
+top.now_gmt = '07:04:49';
+G=_.GameFT=[];
+g=function(_){G.push(_);}
+top.SortType='';
+_.retime=30;
+top.sel_gd = 'today';
+_.clean_data_sw='N';
+_.GameHead =['gid','timer','league','gnum_h','gnum_c','team_h','team_c','strong','ratio','ior_RH','ior_RC'
+,'ratio_o','ratio_u','ior_OUH','ior_OUC','no1','no2','no3','score_h','score_c','hgid','hstrong','hratio'
+,'ior_HRH','ior_HRC','hratio_o','hratio_u','ior_HOUH','ior_HOUC','redcard_h','redcard_c','lastestscore_h'
+,'lastestscore_c','ior_MH','ior_MC','ior_MN','ior_HMH','ior_HMC','ior_HMN','str_odd','str_even','ior_EOO'
+,'ior_EOE','eventid','hot','center_tv','play','datetime','retimeset','more'];
+_.game_more=1;
+_.t_page=1;
+_.gamount=10;
+g(['1919428','<font style=background-color=red>半场</font>','南韩女子K联赛','10314','10313','现代制铁 (女) ','水原 
+(女) ','H','0.5','1.110','0.730','O2 / 2.5','U2 / 2.5','0.880','0.940','','','','1','0','1919429','',''
+,'','','','','','','0','0','H','','1.18','12.00','5.20','','','','','','','','','','','Y','04-20<br>06
+:00a','MTIME^<font style=background-color=red>半场</font>','3']);
+g(['1919418','48','哈萨克斯坦超级联赛','10304','10303','沙克特 [中]','伊特什','H','0 / 0.5','1.050','0.830','O5 / 5.5'
+,'U5 / 5.5','0.910','0.950','','','','2','2','1919419','','','','','','','','','0','0','H','','2.33'
+,'3.84','2.30','','','','','','','','','','','Y','04-20<br>06:00a','2H^03','3']);
+g(['1919332','33','澳洲维多利亚国家超级一联赛','10218','10217','布琳狮子','金士顿城','H','0 / 0.5','0.860','0.980','O3 / 3
+.5','U3 / 3.5','0.760','1.060','','','','0','1','1919333','H','0','0.590','1.250','O1.5','U1.5','0.410'
+,'1.410','0','0','','C','4.40','1.75','3.10','25.00','1.17','4.44','','','','','','','','Y','04-20<br
+>06:30a','1H^33','8']);
+g(['1921646','33','澳洲维多利亚国家超级一联赛','10414','10413','布琳狮子','金士顿城','H','0.5','1.080','0.760','O3','U3','1
+.060','0.760','','','','0','1','1921647','','','','','','','','','0','0','','C','','','','','','',''
+,'','','','','','','Y','04-20<br>06:30a','1H^33','0']);
+g(['1919334','30','澳洲维多利亚国家超级一联赛','10220','10219','列治文','圣奥尔本斯','H','0 / 0.5','0.830','1.010','O3','U3'
+,'0.810','1.010','','','','1','0','1919335','H','0','0.710','1.130','O1.5','U1.5','0.660','1.160','0'
+,'0','H','','1.30','9.90','4.00','1.14','18.00','5.25','','','','','','','','Y','04-20<br>06:30a','1H
+^30','8']);
+g(['1921648','30','澳洲维多利亚国家超级一联赛','10416','10415','列治文','圣奥尔本斯','H','0','0.620','1.220','O2.5 / 3','U2
+.5 / 3','1.160','0.660','','','','1','0','1921649','','','','','','','','','0','0','H','','','','',''
+,'','','','','','','','','','Y','04-20<br>06:30a','1H^30','0']);
+g(['1920758','31','澳洲维多利亚女子超级联赛','10350','10349','桑德林咸 (女) ','高级NTC (女) ','H','1','0.920','0.920','O4
+.5','U4.5','0.910','0.910','','','','2','0','1920759','H','0 / 0.5','1.080','0.760','O2.5','U2.5','0
+.760','1.060','0','0','H','','1.01','30.00','10.00','','','','','','','','','','','Y','04-20<br>06:30a'
+,'1H^31','5']);
+g(['1918518','02','白俄罗斯超级联赛','10208','10207','戴拿模比斯特','明斯克','H','0 / 0.5','1.180','0.660','O2 / 2.5'
+,'U2 / 2.5','0.710','1.110','','','','0','0','1918519','H','0','0.890','0.950','O0.5 / 1','U0.5 / 1'
+,'1.010','0.810','0','0','','','2.55','2.55','3.00','3.05','3.55','1.80','','','','','','','','Y','04-20
+<br>07:00a','1H^02','6']);
+g(['1916122','03','南韩K挑战联赛','10180','10179','高阳HI','大邱FC','H','0 / 0.5','1.080','0.760','O2','U2','0
+.890','0.930','','','','0','0','1916123','H','0','0.630','1.210','O0.5 / 1','U0.5 / 1','0.860','0.960'
+,'0','0','','','2.30','2.95','2.90','3.00','4.00','1.85','','','','','','','','Y','04-20<br>07:00a','1H
+^03','6']);
+g(['1919354','03','捷克联赛U21','10240','10239','布迪祖怀斯 U21 ','布咸麦恩斯1905 U21 ','H','','','','','','','',''
+,'','','1','0','1919355','','','','','','','','','0','0','H','','','','','','','','','','','','','',''
+,'Y','04-20<br>07:00a','1H^03','0']);
+_.gameCount='FT|RB|10,FT|FT|125,FT|FU|362,FT|HOT_RB|0,FT|HOT_FT|0,FT|HOT_FU|0,BK|RB|2,BK|FT|26,BK|FU
+|2,BK|HOT_RB|0,BK|HOT_FT|0,BK|HOT_FU|0,BS|RB|0,BS|FT|9,BS|FU|0,BS|HOT_RB|0,BS|HOT_FT|0,BS|HOT_FU|0,TN
+|RB|1,TN|FT|18,TN|FU|0,TN|HOT_RB|0,TN|HOT_FT|0,TN|HOT_FU|0,VB|RB|0,VB|FT|0,VB|FU|0,VB|HOT_RB|0,VB|HOT_FT
+|0,VB|HOT_FU|0,BM|RB|0,BM|FT|0,BM|FU|0,BM|HOT_RB|0,BM|HOT_FT|0,BM|HOT_FU|0,TT|RB|0,TT|FT|0,TT|FU|0,TT
+|HOT_RB|0,TT|HOT_FT|0,TT|HOT_FU|0,OP|RB|2,OP|FT|25,OP|FU|2,OP|HOT_RB|0,OP|HOT_FT|0,OP|HOT_FU|0,FS|HOT_FT
+|0,FS|HOT_BK|0,FS|HOT_BS|0,FS|HOT_TN|0,FS|HOT_VB|0,FS|HOT_BM|0,FS|HOT_TT|0,FS|HOT_OP|0';
+function onLoad(){
+	_.body_var_onLoad();
+}
+</script>
+</head>
+<body onLoad="onLoad();">
+</body>
+</html>
+
+
+ $sql	=	"select id from `bet_match` where Match_ID='".$datainfo[0]."'";
+      //  echo $sql;
+        $mysqli->query($sql);
+        if($mysqli->affected_rows){ //有数据，更新
+            $sql	=	"update bet_match set Match_MasterID='$datainfo[3]',Match_HalfId='$datainfo[20]',Match_GuestID='$datainfo[4]',Match_Time='$datainfo[1]',Match_Type='2',Match_ShowType='$datainfo[7]',Match_Ho=$datainfo[9],Match_Ao=$datainfo[10],Match_RGG='$datainfo[8]',Match_BzM=$datainfo[33],Match_BzG=$datainfo[34],Match_BzH=$datainfo[35],Match_DxGG='$datainfo[11]',Match_DxDpl=$datainfo[14],Match_DxXpl=$datainfo[13],Match_Hr_ShowType='$datainfo[7]',Match_BRpk='$datainfo[22]',Match_BHo=$datainfo[23],Match_BAo=$datainfo[24],Match_Bdpl=$datainfo[28],Match_Bxpl=$datainfo[27],Match_BDxpk='$datainfo[25]',Match_Bmdy=$datainfo[36],Match_Bgdy=$datainfo[37],Match_Bhdy=$datainfo[38],Match_NowScore='$datainfo[18]:$datainfo[19]',Match_OverScore='$datainfo[18]:$datainfo[19]',Match_HRedCard='$datainfo[29]',Match_GRedCard='$datainfo[30]',Match_JS=$js,Match_LstTime=now(),iPage=1,iSn=".($i+1)." WHERE Match_ID='$datainfo[0]' AND Match_StopUpdateg=0";
+        //    echo $sql.'<hr>';
+        }else{ //没数据，插入
+$sql="insert into bet_match(Match_ID,Match_Date,Match_Time,Match_Name,Match_Master,Match_Guest,Match_Type,Match_ShowType,Match_Ho,Match_Ao,Match_RGG,Match_DxGG,Match_DxDpl,Match_DxXpl,Match_Hr_ShowType,Match_BRpk,Match_BHo,Match_BAo,Match_Bdpl,Match_Bxpl,Match_BDxpk,Match_NowScore,Match_CoverDate,Match_MatchTime,Match_HRedCard,Match_GRedCard,Match_BzM,Match_BzG,Match_BzH,Match_Bmdy,Match_Bgdy,Match_Bhdy,Match_HalfId,Match_MasterID,Match_GuestID,Match_JS,Match_LstTime,iPage,iSn) values('$datainfo[0]','".date("m-d")."','$datainfo[1]','$datainfo[2]','$datainfo[5]','$datainfo[6]','2','$datainfo[7]',$datainfo[9],$datainfo[10],'$datainfo[8]','$datainfo[11]',$datainfo[14],$datainfo[13],'$datainfo[7]','$datainfo[22]',$datainfo[23],$datainfo[24],$datainfo[28],$datainfo[27],'$datainfo[25]','$datainfo[18]:$datainfo[19]',now(),'$match_matchtime','$datainfo[29]','$datainfo[30]',$datainfo[33],$datainfo[34],$datainfo[35],$datainfo[36],$datainfo[37],$datainfo[38],'$datainfo[20]','$datainfo[3]','$datainfo[4]',$js,now(),1,".($i+1).")";
+        }
+g(['1919332','87','澳洲维多利亚国家超级一联赛','10218','10217','布琳狮子','金士顿城','C','0','1.310','0.530','O4.5','U4.5','0.360','1.460','','','','1','3','1919333','','','','','','','','','1','0','','C','','','','','','','','','','','','','','Y','04-20<br>06:30a','2H^42','4']);
+        0      1          2                        3      4       5            6       7  8    9         10    11     12     13       14   15 16 17  18  19   20      21 22 23 24 25 26 27 28  29  30 31 32  33 34 35 36 37 38 39 40 41 42 43 44 45 46       47               48   49
+
+
+
+<html>
+<head>
+	<script src="/js/ga.js"></script>
+<script>
+_=parent;
+_.flash_ior_set='Y';
+_.rtype = 're_main';
+_.sel_lid='';
+top.today_gmt = '2015-04-20';
+top.now_gmt = '07:07:39';
+G=_.GameFT=[];
+g=function(_){G.push(_);}
+top.SortType='';
+_.clean_data_sw='N';
+_.g_date = '';
+_.retime=30;
+_.GameHead = ['gid','timer','league','gnum_h','gnum_c','team_h','team_c','strong','ratio','ior_RH','ior_RC'
+,'ratio_o','ratio_u','ior_OUH','ior_OUC','no1','no2','no3','score_h','score_c','no4','no5','no6','no7'
+,'no8','no9','no10','no11','no12','ior_MH','ior_MC','str_odd','str_even','ior_EOO','ior_EOE','ratio_ouho'
+,'ratio_ouhu','ior_OUHO','ior_OUHU','ratio_ouco','ratio_oucu','ior_OUCO','ior_OUCU','eventid','hot','center_tv'
+,'play','datetime','retimeset','more','gidm','isMaster','nowSession','scoreH','scoreC','lastGoal','lastTime'
+];
+_.game_more=1;
+_.t_page=1;
+_.gamount=2;
+g(['1584270','07:07a','VTB青年联合赛','10088','10087','圣彼得堡泽尼特篮球 U21 ','克拉斯诺亚斯卡 U21 ','H','12.5','0.730','0
+.990','O158.5','U158.5','0.810','0.810','','','','0','0','','','','','','','','','','','','单','双','1
+.94','1.94','O86','U86','0.830','0.790','O72.5','U72.5','0.830','0.790','','','','Y','04-20<br>07:00a'
+,'Start^07:07a','13','241937','Y','Q1','14','14','A','242']);
+g(['1584998','07:07a','VTB青年联合赛','10102','10101','圣彼得堡泽尼特篮球 U21 ','克拉斯诺亚斯卡 U21 ','H','13.5','0.860','0
+.860','O157.5','U157.5','0.940','0.680','','','','0','0','','','','','','','','','','','','','','',''
+,'','','','','','','','','','','','Y','04-20<br>07:00a','Start^07:07a','0','241937','N','','','','',''
+]);
+_.gameCount='FT|RB|10,FT|FT|125,FT|FU|362,FT|HOT_RB|0,FT|HOT_FT|0,FT|HOT_FU|0,BK|RB|2,BK|FT|26,BK|FU
+|2,BK|HOT_RB|0,BK|HOT_FT|0,BK|HOT_FU|0,BS|RB|0,BS|FT|9,BS|FU|0,BS|HOT_RB|0,BS|HOT_FT|0,BS|HOT_FU|0,TN
+|RB|1,TN|FT|18,TN|FU|0,TN|HOT_RB|0,TN|HOT_FT|0,TN|HOT_FU|0,VB|RB|0,VB|FT|0,VB|FU|0,VB|HOT_RB|0,VB|HOT_FT
+|0,VB|HOT_FU|0,BM|RB|0,BM|FT|0,BM|FU|0,BM|HOT_RB|0,BM|HOT_FT|0,BM|HOT_FU|0,TT|RB|0,TT|FT|0,TT|FU|0,TT
+|HOT_RB|0,TT|HOT_FT|0,TT|HOT_FU|0,OP|RB|2,OP|FT|24,OP|FU|2,OP|HOT_RB|0,OP|HOT_FT|0,OP|HOT_FU|0,FS|HOT_FT
+|0,FS|HOT_BK|0,FS|HOT_BS|0,FS|HOT_TN|0,FS|HOT_VB|0,FS|HOT_BM|0,FS|HOT_TT|0,FS|HOT_OP|0';
+function onLoad(){
+	_.body_var_onLoad();
+}
+</script>
+</head>
+<body onLoad="onLoad();">
+</body>
+</html>
+
+
+
+ $CoverDate		=	date("Y-m-d").' '.cdate($datainfo[1]);
+        $HgDate			=	date("m-d").' '.$datainfo[1];
+        $sql			=	"select id from `Lq_Match` where Match_ID='$datainfo[0]'";
+        $mysqli->query($sql);
+        if($mysqli->affected_rows){ //有数据，更新
+            $sql		=	"update lq_match set Match_Time='$datainfo[1]',Match_Type=2,Match_ShowType='$datainfo[7]',Match_Ho='$datainfo[9]',Match_Ao='$datainfo[10]',Match_RGG='$datainfo[8]',Match_DxGG='$datainfo[11]',Match_DxDpl='$datainfo[14]',Match_DxXpl='$datainfo[13]',Match_MasterID='$datainfo[3]',Match_GuestID='$datainfo[4]',Match_LstTime=now() WHERE Match_ID='$datainfo[0]' AND Match_StopUpdateg=0";
+        }else{ //没数据，插入
+            $sql		=	"insert into lq_match(Match_ID,Match_Time,Match_Date,Match_Name,Match_Master,Match_Guest,Match_Type,Match_ShowType,Match_Ho,Match_Ao,Match_RGG,Match_DxGG,Match_DxDpl,Match_DxXpl,Match_CoverDate,Match_MatchTime,Match_MasterID,Match_GuestID,Match_LstTime,iPage,iSn) values ('$datainfo[0]','$datainfo[1]','".date("m-d")."','$datainfo[2]','$datainfo[5]','$datainfo[6]',2,'$datainfo[7]','$datainfo[9]','$datainfo[10]','$datainfo[8]','$datainfo[11]','$datainfo[14]','$datainfo[13]','$CoverDate','$HgDate','$datainfo[3]','$datainfo[4]',now(),1,".($i+1).")";
+        }
+
+
+
+g(['1584270','07:07a','VTB青年联合赛','10088','10087','圣彼得堡泽尼特篮球 U21 ','克拉斯诺亚斯卡 U21 ','H','12.5','0.730','0.990','O158.5','U158.5','0.810','0.810','','','','0','0','','','','','','','','','','','','单','双','1.94','1.94','O86','U86','0.830','0.790','O72.5','U72.5','0.830','0.790','','','','Y','04-20<br>07:00a','Start^07:07a','13','241937','Y','Q1','14','14','A','242']);
+       1         2         3               4     5           6                         7                8    9       10    11       12       13       14       15  16 17 18  19  20 21 22 23 24 25 26 27 28 29 30 31 32   33      34    35     36   37     38       39     40       41      42      43   44 45 46 47        48               49         50    51      52  53   54   55  56    57
+
+
+ /*
+     * api:彩票结算php借口 
+     *   http://mg.pkadmin.com/api/lotteryttle?period =xxxx&cate =xxxxx
+     *       get参数： period 彩票的期数 
+     *      cate 彩票的类型（"gdklsf", "cqssc", "pk10", "cqklsf", "fc3d", "pls", "bjkl8"）对应 广东快乐十分 重庆时时彩  北京PK拾 重庆快乐十分 福彩3D 排列三 北京快乐8
+     *  返回：seccess 成功 error1~error4失败
+     */
+
