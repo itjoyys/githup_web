@@ -1,0 +1,153 @@
+<ion-view class="m-cash" cache-view="false">
+<ion-nav-bar class="bar bar-header bar-light">
+<ion-nav-title>{{'Index_ZiJinGuanLi'|translate}}</ion-nav-title>
+<ion-nav-buttons side="left">
+<a class="button button-icon icon ion-ios-arrow-back"
+	ng-click="historyBack()"></a></ion-nav-buttons></ion-nav-bar>
+<ion-content class="has-header trans">
+<div class="cash-top">
+	<div class="row sub-header">
+		<div class="col col-33">
+			<img class="avatar" ng-src="{{CDNURL+'images/avatar.png'}}">
+		</div>
+		<div class="col col-66">
+			<h5>{{currentUser.UserName}}</h5>
+			<p ng-click="getWallet()">
+				{{'Common_LabelMyWallet'|translate}}：<span ng-show="loaded"><span
+					class="money">{{wallet}}</span>{{currentUser.CurrencyNo}}</span> <span
+					class="money" ng-show="!loaded"><ion-spinner></ion-spinner></span><a
+					class="refresh"><img
+					ng-src="{{CDNURL+'images/icon-refresh.png'}}"></a>
+			</p>
+		</div>
+	</div>
+	<div class="tabs-striped tabs-top">
+		<div class="tabs">
+			<a class="tab-item tab-item-33" href="#/deposit/0">{{'Common_LabelDeposit'|translate}}</a>
+			<a class="tab-item tab-item-33" href="#/withdraw">{{'Member_ButtonWithDrawal'|translate}}</a>
+			<a class="tab-item tab-item-33 active" href="#/trans">{{'Member_LabelTransactionRecord'|translate}}</a>
+		</div>
+	</div>
+</div>
+<cur-tabs class="tab-bable" on-change="onChange(index);"
+	tab-index="{{type}}">
+<cur-tab tabscale="col col-33"
+	title="{{'Member_LabelDepositWithdrawout'|translate}}">
+<div ng-if="!ansycLoaded" class="padding text-center">
+	<ion-spinner></ion-spinner>
+</div>
+<ol ng-if="ansycLoaded" class="list"
+	ng-repeat="data in dwData | groupBy:'ApplyShortDate' | toArray:true">
+	<li><span class="trans-date">{{data.$key}}</span></li>
+	<li ng-repeat="item in data">
+		<!--<div class="trans-info" ng-class="{'col-offset-15':item.ActionType!=1,'success': item.State==1}">-->
+		<div class="trans-info">
+			<div class="trans-arrow">
+				{{'Common_LabelOrderNo' | translate}}：{{item.ID}}<!--<span class="right">{{item.ApplyShortTime}}</span>-->
+			</div>
+			<div class="row" ng-click="showRemark(item.Remark)">
+				<div class="col col-70 text-left">
+					<span ng-if="item.ActionType==1" ng-bind="'Member_LabelDepositIn'|translate"></span> 
+					<span ng-if="item.ActionType!=1" ng-bind="'Member_LabelWithdrawTo'|translate"></span> 
+					<span>{{item.BankName}} {{item.BankAccount}}</span>
+				</div>
+				<div class="col col-30 text-right">
+					<i class="icon">&nbsp;{{item.ApplyShortTime}}</i>
+				</div>
+			</div>
+			<div class="row bolder" ng-click="showReason(item.ActionType,item.State,item.CancelRemark)">
+				<div class="col text-left">
+				<span>{{item.Amount.toFixed(2)}}</span>
+				</div>
+				<div class="col text-right">
+					<i ng-if="item.State==1" class="icon ion-ios-checkmark-outline">&nbsp;</i>
+					<i ng-if="item.State==0 || item.State==4" class="icon ion-ios-clock-outline">&nbsp;</i>
+					<i ng-if="item.State==2 || item.State==3" class="icon ion-ios-information-outline">&nbsp;</i>
+					{{getStateText(item.ActionType,item.State)}}
+				</div>
+			</div>
+		</div>
+	</li>
+</ol>
+<div ng-if="ansycLoaded&&dwData.length==0" class="text-center padding">{{'Member_LabelNoData' | translate}}</div>
+</cur-tab>
+
+<cur-tab tabscale="col col-33" title="{{'Member_LabelTrans'|translate}}">
+<div ng-if="!ansycLoaded" class="padding text-center">
+	<ion-spinner></ion-spinner>
+</div>
+<ol ng-if="ansycLoaded" class="list"
+	ng-repeat="data in transData | groupBy:'TransferShortDate' | toArray:true">
+	<li><span class="trans-date">{{data.$key}}</span></li>
+	<li ng-repeat="item in data"><div class="trans-info radius-right"
+			ng-class="{'success':item.TransferState==0}">
+			<div class="trans-arrow trans-arrow-less"></div>
+			<div class="row">
+				<div class="col col-70 text-left">
+					<span>{{'Member_LabelFrom'|translate}}</span> <span>{{item.OutWallet}}</span>
+					<span>{{'Member_LabelTransTo'|translate}}</span> <span>{{item.InWallet}}</span>
+				</div>
+				<div class="col clo-30 text-right">
+					<span>{{item.TransferShortTime}}</span>
+				</div>
+			</div>
+			<div class="row bolder">
+				<div class="col text-left">
+					<span><span>{{item.Amount.toFixed(2)}}</span></span>
+				</div>
+				<div class="col text-right">
+					<i ng-if="item.TransferState==0"
+						class="icon ion-ios-checkmark-outline">&nbsp;</i><i
+						ng-if="item.TransferState==1" class="icon ion-ios-clock-outline">&nbsp;</i><i
+						ng-if="item.TransferState==2"
+						class="icon ion-ios-information-outline">&nbsp;</i>{{item.State}}
+				</div>
+			</div>
+		</div></li>
+</ol>
+<div ng-if="ansycLoaded&&transData.length==0"
+	class="text-center padding">{{'Member_LabelNoData' | translate}}</div>
+</cur-tab>
+<cur-tab tabscale="col col-33"
+	title="{{'Member_LabelDepositWithdrawin'|translate}}">
+<div ng-if="!ansycLoaded" class="padding text-center">
+	<ion-spinner></ion-spinner>
+</div>
+<ol ng-if="ansycLoaded" class="list"
+	ng-repeat="data in dwData | groupBy:'ApplyShortDate' | toArray:true">
+	<li><span class="trans-date">{{data.$key}}</span></li>
+	<li ng-repeat="item in data">
+		<!--<div class="trans-info" ng-class="{'col-offset-15':item.ActionType!=1,'success': item.State==1}">-->
+		<div class="trans-info">
+			<div class="trans-arrow">
+				{{'Common_LabelOrderNo' | translate}}：{{item.ID}}<!--<span class="right">{{item.ApplyShortTime}}</span>-->
+			</div>
+			<div class="row" ng-click="showRemark(item.Remark)">
+				<div class="col col-70 text-left">
+					<span ng-if="item.ActionType==1" ng-bind="'Common_LabelBankTrans'|translate"></span> 
+					<span ng-if="item.ActionType==2" ng-bind="'Common_LabelOnlineDeposit'|translate"></span> 
+					<span>{{item.BankName}} {{item.BankAccount}}</span>
+				</div>
+				<div class="col col-30 text-right">
+					<i class="icon">&nbsp;{{item.ApplyShortTime}}</i>
+				</div>
+			</div>
+			<div class="row bolder" ng-click="showReason(item.ActionType,item.State,item.CancelRemark)">
+				<div class="col text-left">
+				<span>{{item.Amount.toFixed(2)}}</span>
+				</div>
+				<div class="col text-right">
+					<i ng-if="item.State==1" class="icon ion-ios-checkmark-outline">&nbsp;</i>
+					<i ng-if="item.State==3" class="icon ion-ios-clock-outline">&nbsp;</i>
+					<i ng-if="item.State==2" class="icon ion-ios-information-outline">&nbsp;</i>
+					{{getStateText1(item.ActionType,item.State)}}
+				</div>
+			</div>
+		</div>
+	</li>
+</ol>
+<div ng-if="ansycLoaded&&dwData.length==0" class="text-center padding">{{'Member_LabelNoData' | translate}}</div>
+</cur-tab>
+</cur-tabs>
+<ion-infinite-scroll ng-if="moreDataCanBeLoaded" immediate-check="false"
+	distance="1%" icon="ion-chevron-down" on-infinite="loadMoreData()"></ion-infinite-scroll></ion-content></ion-view>

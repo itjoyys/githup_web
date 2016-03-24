@@ -1,0 +1,37 @@
+ <ion-item   ><ion-view view-title="{{sportname}} {{ data.matchdate }} {{ data.oddtype }}">
+  <ion-content >
+   <ion-refresher on-refresh="sportset()"></ion-refresher>  
+ <div class=" animated flipInX ">
+ <div class="betselect matchsel">
+  
+      <div class="row">
+        <ion-radio class="sportradio col col-25" ng-repeat="item in oddtype"
+                   ng-value="item.text"
+                   ng-model="data.oddtype"
+                    
+                   name="server-side">
+          {{ item.text }}
+        </ion-radio>
+    </div>
+  </div>
+  <div class="betselect">
+  
+      <div class="row">
+        <ion-radio class="sportradio col col-33" ng-repeat="item in matchdate"
+                   ng-value="item.text" 
+                   ng-click="sportset()" 
+                   ng-model="data.matchdate">
+          {{ item.text }}
+        </ion-radio>
+      </div>
+  </div> 
+    </div> 
+    <ion-list>
+       
+      <ion-item  class="legnamelist" ng-repeat="match in matchdata" href="#/app/matchnamelist/{{sporttype}}/{{theurl}}/{{match}}/{{ data.oddtype }}">
+        <div>{{match}}</div>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>
+</ion-item>

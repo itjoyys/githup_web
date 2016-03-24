@@ -1,0 +1,175 @@
+/* CSS Document */
+
+body, p, ol, ul, li, dt, dl, dd, td, TD, h1, h2, h3, 
+img, em, a, b, blockquote
+  {
+	font-family : Verdana, Arial, Helvetica, sans-serif;
+	font-size : 12px;
+	line-height:22px;
+	font-weight: normal;
+	color : #333333;
+	letter-spacing: 1px;
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	scrollbar-face-color:#DCDCDE;
+	scrollbar-highlight-color:#FFFFFF;
+	scrollbar-3dlight-color:#C2C2C2;
+	scrollbar-darkshadow-color:#808080;
+	scrollbar-shadow-color:#E7E7E9;
+	scrollbar-arrow-color:#FFFFFF;
+}A:link    {
+	color: #0000CC;
+	text-decoration: none;
+	font-weight: normal;
+	font-family: "????", Verdana;
+}
+A:visited {
+	color: #666666;
+	text-decoration: none;
+	font-weight: normal;
+	font-family: "????", Verdana;
+}
+A:active  {
+	color: #999999;
+	text-decoration: none;
+	font-weight: normal;
+	font-family: "????", Verdana;
+}
+A:hover   {
+	color: #B55A00;
+	text-decoration: none;
+	font-weight: normal;
+	font-family: "????", Verdana;
+}
+#page_container{ background-color:#FFFFFF; width:1000px; margin:0 auto;}
+
+body {
+    margin:0px auto;
+	font-size:12px;
+	background-color:#818590;
+}
+#page-content{
+    width:100%;
+    margin:0px auto;
+    background:url(../images/video/bg.jpg) top center repeat-y;
+}
+#page-header,#page-body,.content_text{
+	margin:0px auto;
+	width:1000px;
+	background-color: #FFFFFF;
+}
+#page-title{
+	width:1000px;
+	height:100px;
+		background:url(../images/video/title_live.jpg) top center no-repeat;
+	}
+.rollphotos {
+	width: 1000px;
+	height:60px;
+	background:url(../images/video/GamaArea_bg.jpg) top center no-repeat;
+}
+.blk_29 {
+	padding:0px;
+	overflow:hidden;
+	zoom:1;
+	position:relative;
+	top:4px;
+}
+.blk_29 .LeftBotton {
+	float:left;
+	position:absolute;
+	left:1px;
+	top:19px;
+	width:14px;
+	height:23px;
+	line-height: 23px;
+	cursor:pointer;
+	text-align: center;
+	background:url(../images/video/game_btn.jpg) left top no-repeat;
+}
+.blk_29 .RightBotton {
+	float:right;
+	position:absolute;
+	right:1px;
+	top:19px;
+	width:14px;
+	height:23px;
+	line-height: 23px;
+	cursor:pointer;
+	text-align: center;
+	background:url(../images/video/game_btn.jpg) right top no-repeat;
+}
+.blk_29 .Cont {
+	margin: 0px auto 0px auto;
+	width:960px;
+    height: 52px;
+	overflow: hidden;
+    position:relative;
+}
+.blk_29 .Cont a {
+    float: left;
+    width: 109px;
+	height:30px;
+	line-height:14px;
+	padding:19px 13px 0px 13px;
+	text-align:center;
+    margin:0px 1px;
+    _margin:0px;
+    color:#FFF;
+    text-decoration:none;
+    background:url(../images/video/nav.jpg) left top no-repeat;
+}
+.blk_29 .Cont a:hover {
+	background:url(../images/video/nav_h.jpg) left top no-repeat;
+}
+#page-foot{
+	width:100%;
+    margin:0px auto;
+	height:137px;
+	line-height:137px;
+	text-align:center;
+	background:url(../images/video/footer_bg.jpg) top center no-repeat;
+}
+
+#ISL_Cont_1 li {
+    display:none;
+}
+#ISL_Cont_1 li.category-1 {
+    display:block;
+}
+#ISL_Cont_1 ul {
+    position: absolute;
+    width: 9990px;
+    top: 1px;
+    left: 0;
+    height: 50px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+#ISL_Cont_1 ul li {
+    height: 49px;
+    width: 135px;
+    float: left;
+    margin: 0px 1px;
+    padding: 0;
+    list-style: none;
+}
+a.game_icon{
+	float:left;
+	width: 110px;
+	height: 20px;
+	padding-top:8px;
+	line-height:12px;
+	color:#BBDDFF;
+	font-weight:bold;
+	text-align:center;
+	text-decoration:none;
+	background:url(../images/video/btn.jpg) top left no-repeat;
+}
+a.game_icon:hover{
+	color:#99CCFF;
+	background:url(../images/video/btn.jpg) bottom left no-repeat
+}

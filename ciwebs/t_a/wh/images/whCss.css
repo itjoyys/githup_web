@@ -1,0 +1,52 @@
+/* css common */
+a{text-decoration:none;cursor: pointer; outline: none;  /* for Firefox Google Chrome  */behavior:expression(this.onFocus=this.blur());  /* for IE */}
+.fontfix{font-size:14px;font-weight:bold}
+.clearfix:after {clear: both;display:block;content:"";visibility:hidden;height:0;}
+.clearfix{zoom:1}
+.clear {clear: both;}
+.floatL{ float: left; _display: inline;}
+.floatR{ float: right; _display: inline;}
+.mCenter{ margin: 0 auto; }
+ul{list-style: none;margin:0;padding:0}
+html,body{margin:0;padding:0}
+body{font-size: 12px;color: #fff;background:url(bg-body.gif) left top repeat; font-family: STHeiti, "Microsoft YaHei", "微软雅黑", "SimSun", "宋体" }
+.mDisBlock{display:block}
+.mDisNone{display:none}
+.bg-pos-bottom{background-position:left bottom}
+.webhome{height: 221px; margin: 0px auto;  padding-top: 15px;}
+.webhomeinfo{ -moz-border-radius: 5px;      /* Gecko browsers */
+    -webkit-border-radius: 5px;   /* Webkit browsers */
+    border-radius:5px;            /* W3C syntax */
+     margin: 0px auto; width: 350px; margin-top: 2px; padding: 10px;}
+/*最外層設定*/
+#wrap-header{background:url(bg-header.gif) left top repeat-x;height:100px;width:100%;}
+#wrap-content{width:100%;}
+#wrap-footer{width:100%;}
+
+/* css header */
+#company-logo{width:1000px;height:100px;}
+
+/* css content */
+.content-main{width:1000px;background:url(bg-content.png) center top no-repeat}
+.content-main ul li{margin:30px 17px 0;float:left;position: relative;width:215px;height:256px;}
+.content-main ul li a{width:215px;height:256px;background-position:left top;background-repeat: no-repeat;}
+.content-main ul li a:hover{background-position:left bottom}
+.sub-wh{width:215px;height:256px;background:url(sub-wh.png) left top no-repeat}
+.sub-zq{background-image:url(sub-zq.jpg);}
+.sub-cq{background-image:url(sub-cq.jpg);}
+.sub-mgc{background-image:url(sub-mgame.jpg);}
+.sub-lebo{background-image:url(sub-lebo.jpg);}
+/*.sub-ge{background-image:url(sub-ge.jpg);}*/
+.sub-mg{background-image:url(sub-mg.jpg);}
+/*.sub-hg{background-image:url(sub-hg.jpg);}*/
+.sub-ct{background-image:url(sub-ct.jpg);}
+.sub-bbin{background-image:url(sub-bbin.jpg);}
+.sub-ag{background-image:url(sub-ag.jpg);}
+.sub-og{background-image:url(sub-og.jpg);}
+.sub-newzr{background-image:url(sub-newzr.jpg);}
+.sub-pos{position: absolute;top: 0;left: 0;}
+
+.sub-wh h3{width:195px;margin:0 auto;line-height:24px;font-size:14px;margin-top:135px}
+.sub-wh p{width:185px;margin:0 auto;line-height:16px;}
+
+.copyRight{width:1000px;text-align:center;height:80px;background:url(bg-footer.png) center bottom no-repeat;line-height: 80px;color:#6B6B6B}

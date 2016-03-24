@@ -1,0 +1,92 @@
+﻿<title>有效會員列表</title>
+<{include file="web_header.html"}>
+<script>
+    //分页跳转
+  window.onload=function(){
+    document.getElementById("page").onchange=function(){
+      document.getElementById('myFORM').submit();
+    }
+  }
+<{if $sites_str}>
+  var indexid = "<{$index_id}>";
+  $(document).ready(function(){
+    $("#index_id").val(indexid);
+    $("#index_id").change(function(event) {
+        $("#myFORM").submit();
+      });
+  })
+<{/if}>
+</script>
+<style>
+  .fenye{width: 100%;text-align: center;}
+  .fenye a{color: gray;}
+</style>
+<body>
+<div id="con_wrap">
+  <div class="input_002">有效會員列表</div>
+  <div class="con_menu">
+  <a style="color:red;" href="<{$site_url}>/cash/member_analysis/effective_index">有效会员列表</a>
+  <a href="<{$site_url}>/cash/member_analysis/analysis_user">会员查询</a>
+  <a href="<{$site_url}>/cash/member_analysis/analysis_note">下注分析</a>
+  <a href="<{$site_url}>/cash/member_analysis/analysis_dis">优惠分析</a>
+  <a href="<{$site_url}>/cash/member_analysis/analysis_cash">出入款分析</a>
+    <form method="get" name="action_form" action="<{$site_url}>/cash/Member_analysis/effective_index" id="myFORM">
+      <{$sites_str}>
+      日期：
+      <input class="za_text Wdate" onClick="WdatePicker()" value="<{$start_date}>" name="start_date">
+      ~
+      <input class="za_text Wdate" onClick="WdatePicker()" value="<{$end_date}>" name="end_date">
+      代理商帳號：
+      <input class="za_text inpuut1" style="min-width:80px;width:80px" name="agent_user" value="<{$agent_user}>" type="text">
+      <input class="button_d" value="查詢" type="submit">
+ <{$page}>  <font color="red">【查询区间限制为两个月】</font>
+    </form>
+
+  </div>
+</div>
+<table style="width:860px" class="m_tab">
+  <tbody><tr class="m_title_over_co">
+    <td>排序</td>
+    <td>帳號</td>
+    <td>登入帳號</td>
+    <td>有效人數</td>
+    <td>新增人數</td>
+    <td>人工入款</td>
+    <td>公司/线上入款</td>
+    <td>人工取款</td>
+    <td>线上取款</td>
+    <td>结果</td>
+  </tr>
+
+    <{foreach from=$agent key=i item=v}>
+    <tr class="m_cen <{if $i%2 == 0}>even<{/if}>">
+    <td><{$i}></td>
+    <td style="text-align: left;">
+      <{$v['agent_user']}>(<{$v['agent_name']}>)
+      </td>
+     <td><{$v['agent_login_user']}></td>
+     <td><{if $v['user_act_num']}><a href="<{$site_url}>/report/report/report_list_u?aid=<{$v['id']}>&rtype=u&sdate=<{$start_date}>&edate=<{$end_date}>&game=sp-fc-mg-bbin-ag-og-lebo-ct"><{$v['user_act_num']}></a><{else}><{$v['user_act_num']}><{/if}></td>
+     <td><{if $v['user_act_num']}><a href="<{$site_url}>/cash/member_analysis/analysis_user?agent_id=<{$v['id']}>&start_date=<{$start_date}>&end_date=<{$end_date}>"><{$v['user_new_num']}></a><{else}><{$v['user_new_num']}><{/if}></td>
+      <td><{$v['rg_in_money']}></td>
+      <td><{$v['gs_in_money']}></td>
+      <td><{$v['rg_out_money']}></td>
+      <td><{$v['xs_out_money']}></td>
+      <td><{$v['money']}></td>
+  </tr>
+   <{/foreach}>
+
+<!--     <tr class="m_title">
+    <td class="table_bg"></td>
+    <td class="table_bg" colspan="2" align="right">小計人數</td>
+    <td class="table_bg"><?=$all_num+0 ;?></td>
+  <td class="table_bg"><?=$all_new_num+0 ;?></td>
+  </tr> -->
+<!--   <tr class="m_title">
+    <td class="table_bg"></td>
+    <td class="table_bg" colspan="2" align="right">總計人數</td>
+    <td class="table_bg"><?=$CountYX+0;?></td>
+    <td class="table_bg"><?=$NewC+0?></td>
+  </tr> -->
+</tbody></table>
+
+<{include file="web_footer.html"}>

@@ -1,0 +1,100 @@
+﻿<title>线上存款记录</title>
+<{include file="web_header.html"}>
+<body>
+<script>
+  window.onload=function(){
+    document.getElementById("page").onchange=function(){
+      document.getElementById('myFORM').submit()
+    }
+  }
+</script>
+<div id="con_wrap">
+  <div class="input_002">线上存款记录</div>
+  <div class="con_menu">
+    <form name="myFORM" id="myFORM" action="<{$site_url}>/cash/payment/payment_pay_log" method="GET">
+      <input type="hidden" value="<{$pay_id}>" name="id" >
+      <input type="hidden" value="<{$index_id}>" name="index_id" >
+      訂單號：
+      <input class="za_text" name="order_num" value="<{$order_num}>">
+      &nbsp;
+      日期：
+      <input class="za_text Wdate" onclick="WdatePicker();" value="<{$start_date}>" name="start_date" >
+      ~
+      <input class="za_text  Wdate" onclick="WdatePicker();" value="<{$end_date}>" name="end_date">
+      <input class="button_d" value="查詢" type="submit">
+&nbsp;<{$page}> &nbsp;
+    </form>
+  </div>
+</div>
+<!-- <table width="99%" class="m_tab">
+  <tbody><tr class="m_title">
+    <td class="table_bg" colspan="8">存款統計</td>
+  </tr>
+  <tr align="center">
+    <td class="table_bg1">筆數&nbsp;/&nbsp;总筆數</td><td style="text-align:left;width:15%"><?=$countN+0?> 筆 &nbsp;&nbsp;/&nbsp;&nbsp; <?=$countA+0 ?>筆</td>
+    <td class="table_bg1">存款&nbsp;/&nbsp;总存款</td><td style="text-align:left;width:15%">
+  <?=$sumN+0?>元 &nbsp;&nbsp;/&nbsp;&nbsp; <?=$sumA+0 ?>元
+  </td>
+    <td class="table_bg1">最後存款日</td><td style="text-align:left;width:15%"><?=$dateL['log_time']?></td>
+    <td class="table_bg1">停用金額</td><td style="text-align:left;width:15%">
+  <?=$stop_amount+0?>元</td>
+</tr>
+</tbody></table> -->
+<style>
+.odd .table_bg{
+    background: #FFF;
+}
+.even {
+    background: #E8ECF0;
+}
+.m_title td {
+    border-color: #f5d4cd;
+    font-weight: bold;
+    line-height: 30px;
+    letter-spacing: 2px;
+    padding: 5px 3px;
+    text-align: center;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+</style>
+<br>
+<table width="99%" class="m_tab">
+  <tbody>
+  <tr class="m_title">
+    <td class="table_bg">序號</td>
+    <td class="table_bg">訂單號</td>
+    <td class="table_bg">存款金額/元</td>
+    <td class="table_bg">存款日期</td>
+    <td class="table_bg">會員帳號</td>
+    <td class="table_bg">備註</td>
+  </tr>
+  <{foreach from=$dataRe key=i item=v}>
+   <tr class="m_cen <{if $i%2 == 0}>even<{else}>odd<{/if}>">
+    <td class="table_bg"><{$v['id']}></td>
+  <td class="table_bg"><{$v['order_num']}></td>
+  <td class="table_bg"><{$v['deposit_num']}></td>
+  <td class="table_bg"><{$v['log_time']}></td>
+  <td class="table_bg"><{$v['username']}></td>
+  <td class="table_bg"><{$v['in_info']}></td>
+   </tr>
+    <{/foreach}>
+   <tr class="m_cen">
+   <td class="table_bg" colspan="2">小计</td>
+  <td class="table_bg"><{$pagecount}></td>
+  <td class="table_bg"></td>
+  <td class="table_bg"></td>
+  <td class="table_bg"></td>
+  </tr>
+   <tr class="m_cen">
+    <td class="table_bg" colspan="2">总计</td>
+
+  <td class="table_bg"><{$allNum}></td>
+  <td class="table_bg"></td>
+  <td class="table_bg"></td>
+  <td class="table_bg"></td>
+  </tr>
+
+</tbody></table>
+
+<{include file="web_footer.html"}>

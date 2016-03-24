@@ -1,0 +1,845 @@
+<{config_load file="public.conf" section="public"}>
+<!doctype html>
+<!--[if lt IE 7 ]> <html class="no-js ie6 ie" > <![endif]-->
+<!--[if IE 7 ]>    <html class="no-js ie7 ie" > <![endif]-->
+<!--[if IE 8 ]>    <html class="no-js ie8 ie" > <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html class="no-js">
+<!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <title>重庆快乐十分</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="<{#tcss#}>/main_<{$config_css}>.css?v=2015101">
+<!--[if IE 6]>
+<script src="/assets/dist/scripts/lib/ie6/DD_belatedPNG_0.0.8a.js?v=2015101"></script>
+<script>
+    /* EXAMPLE */
+    DD_belatedPNG.fix('.icon');
+    /* string argument can be any CSS selector */
+    /* .png_bg example is unnecessary */
+    /* change it to what suits you! */
+</script>
+<![endif]-->
+<script>
+    var ry_lottery_config = {
+        assets: '/public/timages/{0}?v=2015101',
+        currency: '￥',
+        locale: 'zh_cn',
+        officalDomain: '<{$url}>/index.php'
+    };
+</script>
+
+    <script src="<{#tjs#}>/main.js?v=2015101"></script>
+
+</head>
+<body>
+
+    <div class="container">
+
+<!--#nav START-->
+<div id="nav" class="nav clearfix">
+  <{include file='lottery/title_head.html'}>
+</div>
+<!--#nav END-->
+
+
+<!--.summary START-->
+<div class="summary" id="summary">
+       <!--  <a class="live fr" target="_blank" href="http://www.1396.me/">
+            <img src="<{#timages#}>/live.gif" />
+        </a> --><i title="声音开关" class="icon1 sound-on fr"></i>
+    <div class="summary-prev fr" id="pre-result">
+    <span class="fl"><{$type_name_c}></span>
+        <span class="fl mr6"><b id="prev-issue">0</b>期结果</span>
+        <span id="prev-bs">
+
+
+<i class="icon ball"></i>
+<i class="icon ball"></i>
+<i class="icon ball"></i>
+<i class="icon ball"></i>
+<i class="icon ball"></i>
+<i class="icon ball"></i>
+<i class="icon ball"></i>
+<i class="icon ball"></i>
+<script type="text/html" id="tpl-prev-balls">
+    {{#balls}}
+    <i class="icon ball ball-{{.}}">{{.}}</i>
+    {{/balls}}
+</script>
+
+        </span>
+    </div>
+    <span class="button-secondary-group">
+        <button class="button button-current" data-mode="quick">
+
+            快捷
+        </button>
+        <button class="button button-blank" data-mode="normal">
+
+            一般
+        </button>
+    </span>
+
+<!--     <span class="notify">
+        <span id="marquee" width="370" height="24" style="display: none"></span>
+    </span> -->
+
+</div>
+<!--.summary END-->
+<div id="play" class="play">
+    <div class="play-hd clearfix">
+        <span class="fl">
+
+            玩法：
+        </span>
+        <ul class="play-category fl" id="play-tab">
+
+<li data-target="#j-sd" data-np="0" data-hits="yes"><a href="">
+
+    两面盘</a></li>
+<li data-target="#j-n1" data-np="1"><a href="">
+
+    第一球
+</a></li>
+<li data-target="#j-n2" data-np="2"><a href="">
+
+    第二球
+</a></li>
+<li data-target="#j-n3" data-np="3"><a href="">
+
+    第三球</a></li>
+<li data-target="#j-n4" data-np="4"><a href="">
+
+    第四球</a></li>
+<li data-target="#j-n5" data-np="5"><a href="">
+
+    第五球</a></li>
+<li data-target="#j-n6" data-np="6"><a href="">
+
+    第六球</a></li>
+<li data-target="#j-n7" data-np="7"><a href="">
+
+    第七球</a></li>
+<li data-target="#j-n8" data-np="8"><a href="">
+
+    第八球</a></li>
+<li data-target="#j-lh" data-np="0" data-hits="yes"><a href="">
+
+    总和</a></li>
+<li data-target="#j-lm" data-np="9" data-type="lm" data-hits="yes"><a href="">
+
+    连码
+</a></li>
+
+        </ul>
+    </div>
+
+    <div class="play-bd clearfix">
+        <div class="main-bd" id="parlay-ctn">
+            <div class="clearfix top-bar">
+                    <div class="fr">
+                        <{if $is_login}><form class="form normal-form hide tac" action="">
+                            <button class="button parlay bet-button" data-action="parlay">
+
+                                下注
+                            </button>
+                            <button class="button button-secondary bet-button" data-action="reset" type="reset">
+
+                                重置
+                            </button>
+                        </form><{/if}>
+                    </div>
+                <div class="fr removable">
+
+    <{if $is_login}><form class="form quick-form need-auth" action="">
+        <label>
+
+
+            金额：
+            <input type="text" class="input fb sync-bet" />
+        </label>
+        <button class="button parlay bet-button" data-action="parlay">
+
+            下注
+        </button>
+        <button class="button button-secondary bet-button" data-action="reset" type="reset">
+
+
+            重置
+        </button>
+    </form><{/if}>
+
+                </div>
+
+        <!--         <span>
+
+                    今天输赢
+                    <b id="win-lose">0.00</b>
+                </span> -->
+                <span>
+
+                    期数
+                    <b class="box" id="current-issue">0期</b>
+                </span>
+                <span>
+
+                    距离封盘
+                    <b class="box timer" id="close-timer">00:00</b>
+                </span>
+                <span>
+
+                    距离开奖
+                    <b class="box timer" id="award-timer">00:00</b>
+                </span>
+            </div>
+            <div class="mt10 bo-left" >
+
+
+
+
+
+
+<div  id="j-sd">
+
+
+
+
+    <table class="table nested-table" style="border-left:none;">
+        <thead>
+            <tr>
+                <th colspan="7">总和</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+            <{foreach from=$odds_html_zonghe item=v1 key=k1}>
+                <td class="p0">
+                    <table class=" j-betting">
+                    <{foreach from=$v1 item=v2 key=k2}>
+                        <tr data-id="<{$v2['id']}>" data-type="总和" data-odds="<{$v2['odds_value']}>"><td class="table-odd"><{$v2['input_name']}></td><td style="border-right:none;"><span class="odds-text"><{$v2['odds_value']}></span></td><td class="j-odds bo-left" style="border-right:none;"><input type="text" class="input fb" /></td></tr>
+                        <{/foreach}>
+
+                    </table>
+                </td>
+            <{/foreach}>
+            </tr>
+        </tbody>
+    </table>
+
+
+
+    <div class="clearfix">
+
+
+
+
+
+
+
+<{foreach from=$odds_html_2mian item=v1 key=k1}>
+<{if $v1[0]['fc_type'] != '總和,龍虎' && $v1[0]['fc_type'] != '连码'}>
+
+
+        <table class="table fl wp-25 j-betting" style="border-left:none;">
+            <thead>
+                <tr>
+                    <th colspan="3"><{$v1[0]['fc_type']}></th>
+                </tr>
+            </thead>
+            <tbody>
+                <{foreach from=$v1 item=v2 key=k2}>
+                <{if !is_numeric($v2['input_name']) && $v2['input_name'] != '东' && $v2['input_name'] != '南' && $v2['input_name'] != '西' && $v2['input_name'] != '北' && $v2['input_name'] != '中' && $v2['input_name'] != '发' && $v2['input_name'] != '白'}>
+                <tr data-id="<{$v2['id']}>" data-odds="<{$v2['odds_value']}>"><td class="table-odd"><{$v2['input_name']}></td><td><span class="odds-text"><{$v2['odds_value']}></span></td><td class="j-odds"><input type="text" class="input fb" /></td></tr>
+                <{/if}>
+                <{/foreach}>
+
+            </tbody>
+        </table>
+
+    <{/if}>
+<{/foreach}>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+</div>
+
+
+
+
+
+
+<{foreach from=$odds_html_dijiqiu item=v1 key=k1}>
+<{if $v1[0][0]['fc_type'] != '總和,龍虎'}>
+
+    <div id="j-n<{$k1+1}>" class="hide">
+
+
+<input type="hidden" value="<{$v1[0][0]['fc_type']}>" class="h-category" />
+<table class="table nested-table" style="border-left:none;border-right:none; border-bottom:none;">
+    <tr>
+
+<{foreach from=$v1 item=v2 key=k2}>
+
+
+        <td class="p0" style="border-right:none; border-bottom:none;">
+            <table class="j-betting">
+                <thead>
+                    <tr>
+                        <th>号</th>
+                        <th>赔率</th>
+                        <th class="j-odds">金额</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                <{foreach from=$v2 item=v3 key=k3}>
+                    <tr data-id="<{$v3['id']}>" data-odds=""><td class="table-odd bo-left" style="border-left-width:1px;" ><{if is_numeric($v3['input_name'])}><i class="icon ball"><{$v3['input_name']}></i><{else}><{$v3['input_name']}><{/if}></td><td><span class="odds-text"></span></td><td class="j-odds"><input type="text" class="input fb" /></td></tr>
+                <{/foreach}>
+
+
+                </tbody>
+
+            </table>
+        </td>
+
+<{/foreach}>
+
+
+    </tr>
+</table>
+
+    </div>
+
+    <{/if}>
+<{/foreach}>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="j-lh" class="hide">
+    <input type="hidden" value="总和" class="h-category" />
+    <table class="table nested-table" style="border-left:none;">
+        <thead>
+            <tr>
+                <th colspan="7">总和</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+            <{foreach from=$odds_html_zonghe item=v1 key=k1}>
+                <td class="p0">
+                    <table class=" j-betting">
+                    <{foreach from=$v1 item=v2 key=k2}>
+                        <tr data-id="<{$v2['id']}>" data-odds="<{$v2['odds_value']}>"><td class="table-odd" style="border-bottom:none;"><{$v2['input_name']}></td><td style="border-bottom:none;  border-right:none;"><span class="odds-text"><{$v2['odds_value']}></span></td><td class="j-odds bo-left" style="border-bottom:none; border-right:none;"><input type="text" class="input fb" /></td></tr>
+                        <{/foreach}>
+
+                    </table>
+                </td>
+            <{/foreach}>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+
+
+<div id="j-lm" class="hide lian-ma">
+ <!--    <input type="hidden" value="连码" class="h-category" /> -->
+    <table class="table">
+        <thead>
+            <tr>
+
+            <{foreach from=$odds_html_2mian[9] item=v1 key=k1}>
+                <th>
+                    <input name="lm" type="radio" value="<{$v1['id']}>" id="j<{$v1['id']}>" data-min="<{$v1['count_arr']}>"></th>
+            <{/foreach}>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+            <{foreach from=$odds_html_2mian[9] item=v1 key=k1}>
+                <td>
+                    <label for="j<{$v1['id']}>">
+                        <b><{$v1['input_name']}></b>
+                        <span><{$v1['odds_value']}></span>
+                    </label>
+                </td>
+            <{/foreach}>
+
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table nested-table" style="border-left:none;">
+        <tr>
+            <td class="p0">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>号</th>
+                            <th>勾选</th>
+                        </tr>
+                    </thead>
+                    <tbody class="j-highlights-tb">
+                        <tr>
+                            <td class="table-odd">
+                                <label for="b-1"><i class="icon ball">1</i></label></td>
+                            <td style="border-right:none;">
+                                <input type="checkbox" id="b-1"></td>
+                        </tr>
+                        <tr>
+                            <td class="table-odd">
+                                <label for="b-2"><i class="icon ball">2</i></label></td>
+                            <td style="border-right:none;">
+                                <input type="checkbox" id="b-2"></td>
+                        </tr>
+                        <tr>
+                            <td class="table-odd">
+                                <label for="b-3"><i class="icon ball">3</i></label></td>
+                            <td style="border-right:none;">
+                                <input type="checkbox" id="b-3"></td>
+                        </tr>
+                        <tr>
+                            <td class="table-odd">
+                                <label for="b-4"><i class="icon ball">4</i></label></td>
+                            <td style="border-right:none;">
+                                <input type="checkbox" id="b-4"></td>
+                        </tr>
+                        <tr>
+                            <td class="table-odd" style="border-bottom:none;">
+                                <label for="b-5"><i class="icon ball">5</i></label></td>
+                            <td style="border-bottom:none; border-right:none;">
+                                <input type="checkbox" id="b-5"></td>
+                        </tr>
+                    </tbody>
+
+                </table>
+            </td>
+            <td class="p0">
+                <table>
+                    <thead>
+                        <tr>
+                              <th>号</th>
+                            <th>勾选</th>
+                        </tr>
+                    </thead>
+
+                    <tbody class="j-highlights-tb">
+                        <tr>
+                            <td class="table-odd">
+                                <label for="b-6"><i class="icon ball">6</i></label></td>
+                            <td style="border-right:none;">
+                                <input type="checkbox" id="b-6"></td>
+                        </tr>
+                        <tr>
+                            <td class="table-odd">
+                                <label for="b-7"><i class="icon ball">7</i></label></td>
+                            <td style="border-right:none;">
+                                <input type="checkbox" id="b-7"></td>
+                        </tr>
+                        <tr>
+                            <td class="table-odd">
+                                <label for="b-8"><i class="icon ball">8</i></label></td>
+                            <td style="border-right:none;">
+                                <input type="checkbox" id="b-8"></td>
+                        </tr>
+                        <tr>
+                            <td class="table-odd">
+                                <label for="b-9"><i class="icon ball">9</i></label></td>
+                            <td style="border-right:none;">
+                                <input type="checkbox" id="b-9"></td>
+                        </tr>
+                        <tr>
+                            <td class="table-odd" style="border-bottom:none;">
+                                <label for="b-10"><i class="icon ball">10</i></label></td>
+                            <td style="border-bottom:none; border-right:none;">
+                                <input type="checkbox" id="b-10"></td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+            </td>
+            <td class="p0">
+                <table>
+                    <thead>
+                        <tr>
+                             <th>号</th>
+                            <th>勾选</th>
+                        </tr>
+                    </thead>
+                    <tbody class="j-highlights-tb">
+                        <tr>
+                            <td class="table-odd">
+                                <label for="b-11"><i class="icon ball">11</i></label></td>
+                            <td style="border-right:none;">
+                                <input type="checkbox" id="b-11"></td>
+                        </tr>
+                        <tr>
+                            <td class="table-odd">
+                                <label for="b-12"><i class="icon ball">12</i></label></td>
+                            <td style="border-right:none;">
+                                <input type="checkbox" id="b-12"></td>
+                        </tr>
+                        <tr>
+                            <td class="table-odd">
+                                <label for="b-13"><i class="icon ball">13</i></label></td>
+                            <td style="border-right:none;">
+                                <input type="checkbox" id="b-13"></td>
+                        </tr>
+                        <tr>
+                            <td class="table-odd">
+                                <label for="b-14"><i class="icon ball">14</i></label></td>
+                            <td style="border-right:none;">
+                                <input type="checkbox" id="b-14"></td>
+                        </tr>
+                        <tr>
+                            <td class="table-odd" style="border-bottom:none;">
+                                <label for="b-15"><i class="icon ball">15</i></label></td>
+                            <td style="border-bottom:none;border-right:none;">
+                                <input type="checkbox" id="b-15"></td>
+                        </tr>
+                    </tbody>
+
+                </table>
+            </td>
+            <td class="p0">
+                <table>
+                    <thead>
+                        <tr>
+                           <th>号</th>
+                            <th>勾选</th>
+                        </tr>
+                    </thead>
+                    <tbody class="j-highlights-tb">
+                        <tr>
+                            <td class="table-odd">
+                                <label for="b-16"><i class="icon ball">16</i></label></td>
+                            <td style="border-right:none;">
+                                <input type="checkbox" id="b-16"></td>
+                        </tr>
+                        <tr>
+                            <td class="table-odd">
+                                <label for="b-17"><i class="icon ball">17</i></label></td>
+                            <td style="border-right:none;">
+                                <input type="checkbox" id="b-17"></td>
+                        </tr>
+                        <tr>
+                            <td class="table-odd">
+                                <label for="b-18"><i class="icon ball">18</i></label></td>
+                            <td style="border-right:none;">
+                                <input type="checkbox" id="b-18"></td>
+                        </tr>
+                        <tr>
+                            <td class="table-odd">
+                                <label for="b-19"><i class="icon red-ball">19</i></label></td>
+                            <td style="border-right:none;">
+                                <input type="checkbox" id="b-19"></td>
+                        </tr>
+                        <tr>
+                            <td class="table-odd" style="border-bottom:none;">
+                                <label for="b-20"><i class="icon red-ball">20</i></label></td>
+                            <td style="border-bottom:none; border-right:none;">
+                                <input type="checkbox" id="b-20"></td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+            </td>
+        </tr>
+    </table>
+
+    <{if $is_login}><form class="form hide tac mt10 need-auth" action="" id="j-normal-form">
+        <button class="button parlay bet-button" data-action="parlay">下注</button>
+        <button class="button button-secondary bet-button" data-action="reset" type="reset">重置</button>
+    </form><{/if}>
+<div id="j-lm-tpl" class="hide">
+    <h4>{{title}}@{{lines}}</h4>
+    <ul>
+        <li>下注号码{{balls.join(",")}}</li>
+        <li>您共选择了{{balls.length}}个号码</li>
+        <li>复式共分为{{group}}组</li>
+        <li>
+            <label>金额：<input type="text" class="input fb single-bet" /></label>
+        </li>
+        <li>
+            合计金额：
+            <em class="lm-total">{{total}}</em>
+        </li>
+    </ul>
+</div>
+
+</div>
+
+
+
+            </div>
+
+
+            <!--.selected-ball START-->
+            <div class="selected-ball clearfix need-auth">
+                    <div class="fr">
+
+    <{if $is_login}><form class="form quick-form need-auth" action="">
+        <label>
+
+
+            金额：
+            <input type="text" class="input fb sync-bet" />
+        </label>
+        <button class="button parlay bet-button" data-action="parlay">
+
+            下注
+        </button>
+        <button class="button button-secondary bet-button" data-action="reset" type="reset">
+
+
+            重置
+        </button>
+    </form><{else}>
+								<div class="fr quick-form">
+								<img style="position:relative; top:2px;" alt=" " src="<{#timages#}>/je_1.png">
+								<a href="javascript:;" onclick="alert('请先登录！');"><img src="<{#timages#}>/je_2.png" ></a>
+								<img alt=" " src="<{#timages#}>/je_3.png">
+								</div><{/if}>
+
+                    </div>
+                    <b id="j-selected-count">
+
+                        已选中
+                        <span class="j-selected-count">0</span>
+
+                        注
+                    </b>
+                    <{if $is_login}><form class="form normal-form hide tac" action="" style="text-align:right;">
+                        <button class="button parlay bet-button" data-action="parlay">
+
+                            下注
+                        </button>
+                        <button class="button button-secondary bet-button" data-action="reset" type="reset">
+
+                            重置
+
+                        </button>
+                    </form><{else}>
+								<div class="fr normal-form">
+								<a href="javascript:;" onclick="alert('请先登录！');"><img src="<{#timages#}>/je_2.png" ></a>
+								<img alt=" " src="<{#timages#}>/je_3.png">
+								</div><{/if}>
+            </div>
+            <!--.selected-ball END-->
+
+
+<div class="mt10 hide" id="trends">
+
+</div>
+<script id="tpl-hit-miss" type="text/html">
+    <table class="table sm-ball-table">
+        <tr>
+            <td class="table-odd td-hd">
+
+                今天
+            </td>
+            <td><i class="icon sm-ball">1</i></td>
+            <td><i class="icon sm-ball">2</i></td>
+            <td><i class="icon sm-ball">3</i></td>
+            <td><i class="icon sm-ball">4</i></td>
+            <td><i class="icon sm-ball">5</i></td>
+            <td><i class="icon sm-ball">6</i></td>
+            <td><i class="icon sm-ball">7</i></td>
+            <td><i class="icon sm-ball">8</i></td>
+            <td><i class="icon sm-ball">9</i></td>
+            <td><i class="icon sm-ball">10</i></td>
+            <td><i class="icon sm-ball">11</i></td>
+            <td><i class="icon sm-ball">12</i></td>
+            <td><i class="icon sm-ball">13</i></td>
+            <td><i class="icon sm-ball">14</i></td>
+            <td><i class="icon sm-ball">15</i></td>
+            <td><i class="icon sm-ball">16</i></td>
+            <td><i class="icon sm-ball">17</i></td>
+            <td><i class="icon sm-ball">18</i></td>
+            <td><i class="icon sm-red-ball">19</i></td>
+            <td><i class="icon sm-red-ball">20</i></td>
+        </tr>
+
+        <tr>
+            <td class="table-odd td-hd ball-hit">
+
+                出球率
+            </td>
+            {{#hit}}
+            <td>{{.}}</td>{{/hit}}
+        </tr>
+        <tr>
+            <td class="table-odd td-hd ball-miss">
+
+                无出期数
+            </td>
+            {{#miss}}
+            <td>{{.}}</td>{{/miss}}
+        </tr>
+
+    </table>
+</script>
+
+
+            <div id="luzhu" class="play-tab tab mt10 hide bo-left" data-widget="tab" >
+            </div>
+            <script id="tpl-luzhu" type="text/html">
+                <table class="table secondary-table" style="border-left:none;">
+                    <thead>
+
+                        <tr>
+                            <td colspan="30" class="tab-hd">
+                                {{#hd}}
+                                <a href="javascript:;;" class="tab-item">{{.}}</a>
+                                {{/hd}}
+                            </td>
+                        </tr>
+
+                    </thead>
+                    <tbody>
+                        {{#bd}}
+                        <tr class="tab-bd">
+                            {{#items}}
+                            <td>
+                                {{#item}}{{.}}<br />
+                                {{/item}}
+                            </td>
+                            {{/items}}
+                        </tr>
+                        {{/bd}}
+                    </tbody>
+                </table>
+            </script>
+
+
+        </div>
+        <div class="aside">
+
+
+    <{if $is_login}><!--amount START-->
+    <div class="amount  need-auth">
+
+        <div class="available-amount box">
+            <span>
+
+                可用金额
+            </span>
+            <b id="j-balance">0.00</b>
+        </div>
+        <div class="betting-amount box">
+            <span>
+
+                即时下注
+            </span>
+
+
+            <a href="javascript:void(0)" data-href="/index.php/lottery/lottery/notCount" class="odfi" title="即时注单"><b id="j-orders">0.00</b></a>
+        </div>
+
+    </div>
+    <!--amount START--><{/if}>
+
+
+<!--aside-top START-->
+<div class="aside-top">
+    <table class="table" id="changelong">
+        <thead>
+            <tr>
+                <th colspan="2">
+
+                    两面长龙排行
+                </th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</div>
+<!--aside-top END-->
+
+
+        </div>
+    </div>
+
+</div>
+
+
+
+    </div>
+
+
+
+
+    <script>
+        require(['<{#tjs#}>/index.js'], function (Lottery) {
+
+            new Lottery({
+                lotteryId: 'cq_ten'
+            });
+
+        });
+    </script>
+
+
+    <div id="j-confirm-tpl" class="hide ">
+        <div class="confirm-parlay">
+            <h3>
+
+                共计
+                ：{{currency}}<em>{{total}}</em>/<em>{{sum}}</em>
+
+                注
+                ，
+
+                您确定要下注吗？
+
+            </h3>
+            <ul class="{{col}}">
+                {{#items}}
+                <li><span>{{category}}【{{name}}】</span>@{{odds}} X {{amount}}</li>
+                {{/items}}
+            </ul>
+        </div>
+    </div>
+
+    <iframe id="myifr" style="display: none" src=""></iframe>
+
+    <object style="height: 0; width: 0; overflow: hidden;" classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0" width="0" height="0" id="asound" align="absmiddle">
+        <param name="allowScriptAccess" value="sameDomain">
+        <param name="movie" value="<{#timages#}>/asound.swf?v=2015101">
+        <param name="quality" value="high">
+        <embed src="<{#timages#}>/asound.swf?v=2015101" quality="high" width="0" height="0" name="asound" align="absmiddle" allowscriptaccess="sameDomain" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer">
+    </object>
+</body>
+</html>

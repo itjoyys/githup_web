@@ -1,0 +1,885 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>下载区</title>
+<style type="text/css">
+<!--
+body {
+	margin:0;
+}
+-->
+</style>
+<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+<link href="css/standard.css?v=" rel="stylesheet" type="text/css" />
+<style type="text/css">
+@charset "utf-8";
+/* CSS Document */
+
+/*主要區塊--------------------*/
+body{
+    background-color:#000;
+    font-family:"新細明體";
+    font-size:12px;
+    color:#000;
+}
+#mainbody_top{
+    margin:0 auto;
+    width:100%;
+    background-image: url(images/header_BG.jpg);
+    background-repeat: repeat-x;
+    background-position: left bottom;
+}
+#mainbody{
+    margin:0 auto;
+    width:100%;
+    height: auto;
+    background-color:#FFF;
+}
+#mainbody-footer{
+    margin:0 auto;
+    width:100%;
+    height:114px;
+    background-image: url(images/footer-BG.jpg);
+    background-repeat: repeat-x;
+}
+#header{
+    position: relative;
+    width:1024px;
+    background-image:url(images/header.jpg);
+    background-position:left bottom;
+    margin:0 auto;
+}
+.lang-common-wrap {
+    position: absolute;
+    top: 3px;
+    right: 25px;
+}
+#content{
+    width:1004px;
+    background-color:#FFF;
+    margin:0 auto;
+    padding:20px 10px;
+}
+#footer{
+    width:1024px;
+    height:114px;
+    margin: 0 auto;
+    font-size: 12px;
+    line-height: 80px;
+    text-align: center;
+    background-image: url(images/footer.jpg);
+    background-repeat: no-repeat;
+    background-position: left top;
+    color: #FFF;
+    text-decoration: none;
+}
+#APPgame{
+    width:960px;
+    _width:980px;
+    height:auto;
+    float:left;
+    padding:0 15px;
+    display:none;
+}
+/*主選單--------------------*/
+#nav{
+    width:1020px;
+    height:45px;
+    padding: 0 2px;
+}
+#nav ul{
+    height:37px;
+    padding-top:8px;
+}
+#nav ul li{
+    float:left;
+    padding:0 5px 0 28px;
+    background:url(images/nav_icon.png) no-repeat left 4px;
+}
+#nav ul li a{
+    display: block;
+    font-size: 13px;
+    height:35px;
+    line-height: 35px;
+    font-weight: bold;
+    color: #FFF;
+    text-decoration: none;
+}
+#nav ul li a span{
+    display: block;
+    max-width: 90px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.zh-tw #nav ul li a span,
+.zh-cn #nav ul li a span {
+    max-width: none;
+}
+#nav ul li a:hover{
+        color: #999;
+    }
+.nav-currnet{
+        color: #999;
+    }
+/*主選單--------------------*/
+
+#left{
+    width:660px;
+    height:auto;
+    float:left;
+    border-right-width: 1px;
+    border-right-style: dotted;
+    border-right-color: #999;
+    display:none;
+}
+#nav02{
+    width:640px;
+    height:30px;
+    float:left;
+    background-image: url(images/nav02_bg.jpg);
+    background-repeat: repeat-x;
+    margin-bottom:10px;
+}
+#nav02 ul li{
+    float:left;
+    padding: 0 10px;}
+#nav02 ul li a{
+    font-size: 12px;
+    color: #333;
+    text-decoration: none;
+    line-height:30px;
+}
+#nav02 ul li a:hover{
+    color: #963;
+}
+#nav-left{
+    width:7px;
+    height:30px;
+    float:left;
+    background-image:url(images/nav02_left.jpg);
+    background-repeat:no-repeat;
+    }
+#nav-right{
+    width:7px;
+    height:30px;
+    float:right;
+    background-image:url(images/nav02_right.jpg);
+    background-repeat:no-repeat;
+}
+
+#INSTALL_NOW{
+    position:absolute;
+    background:url(images/INSTAL_%20NOW.jpg) top left no-repeat;
+    width:214px;
+    height:141px;
+    margin:42px 0 0 200px;
+    border:0;
+}
+
+.download{
+    float:left;
+    width:309px;
+    height:141px;
+    background:url(images/download.gif) top left no-repeat;
+}
+/*-------------------------------*/
+
+#text{
+    width:640px;
+    float:left;
+    line-height: 18px;
+
+}
+#text03{
+    width:960px;
+    height:auto;
+    line-height: 18px;
+    color: #000;
+    text-decoration: none;
+    font-size: 12px;
+    margin-left:20px;
+}
+#right{
+    width:330px;
+    height:auto;
+    float:left;
+    margin-top: -12px;
+    display:none;
+}
+#bbie{
+    width: auto;
+    height: auto;
+    margin-left:20px;
+    margin-top:10px;
+}
+.box{
+    width:204px;
+    height:20px;
+    float:left;
+    font-size: 12px;
+    line-height: 13px;
+    font-weight: bold;
+    color: #900;
+    text-decoration: none;
+    padding-top:1px;
+    text-align: center;
+}
+/*APPgameBG-------------------*/
+
+.APPgameBG{
+    width:960px;
+    height:auto;
+    float:left;
+    border: 2px solid #CCC;
+    margin-top:8px;
+}
+#APPiconBG{
+    width:960px;
+    height:69px;
+    float:left;
+    margin-bottom:10px;
+}
+#APPiconBG ul li{
+    float:left;
+    margin: 0 4px;
+}
+.APP-IPONE{
+    width:277px;
+    height:69px;
+    display: block;
+    background-image: url(images/icon_01.jpg);
+    background-repeat: no-repeat;
+    background-position: left top;
+}
+.APP-IPONE span.hover{
+    width:277px;
+    height:69px;
+    background-image: url(images/icon_01.jpg);
+    background-repeat: no-repeat;
+    background-position: left bottom;
+    display: block;
+}
+.APP-IPA{
+    width:277px;
+    height:69px;
+    background-image: url(images/icon_02.jpg);
+    background-repeat: no-repeat;
+    background-position: left top;
+    display: block;
+}
+.APP-IPA span.hover{
+    width:277px;
+    height:69px;
+    background-image: url(images/icon_02.jpg);
+    background-repeat: no-repeat;
+    background-position: left bottom;
+    display: block;
+}
+.gameICON{
+    width:240px;
+    height:240px;
+    float:left;
+    margin:5px;
+}
+.APPgameTEXT{
+    width:680px;
+    height:auto;
+    float:left;
+    padding:10px;
+    line-height: 18px;
+    margin-top:20px;
+}
+.blue03{
+    width:680px;
+    height:20px;
+    float: right;
+    font-size: 13px;
+    line-height: 20px;
+    color: #09C;
+    text-decoration: none;
+    font-weight: bold;
+    margin-bottom:5px;
+}
+.APPgameICON{
+    width:820px;
+    height:80px;
+    float:left;
+    background-color: #CCC;
+    padding:10px 10px 10px 130px;
+/*     padding:10px 10px 10px 65px; */
+}
+.appICON-01{
+    width:211px;
+    height:67px;
+    float:left;
+    background-image: url(images/icon_03.jpg);
+    background-repeat: no-repeat;
+    background-position: left top;
+    margin-top:8px;
+    display:block;
+    cursor: pointer;
+}
+.appICON-01 span.hover{
+    width:211px;
+    height:67px;
+    background-image: url(images/icon_03.jpg);
+    background-repeat: no-repeat;
+    background-position: left bottom;
+    display:block;
+}
+.appICON-02{
+    width:211px;
+    height:67px;
+    float:left;
+    background-image: url(images/icon_04.jpg);
+    background-repeat: no-repeat;
+    background-position: left top;
+    margin-top:8px;
+    display:block;
+    cursor: pointer;
+}
+.appICON-02 span.hover{
+    width:211px;
+    height:67px;
+    background-image: url(images/icon_04.jpg);
+    background-repeat: no-repeat;
+    background-position: left bottom;
+    display:block;
+}
+.appICON-03{
+    width:211px;
+    height:67px;
+    float:left;
+    background-image: url(images/icon_05.jpg);
+    background-repeat: no-repeat;
+    background-position: left top;
+    margin-top:8px;
+    display:block;
+    cursor: pointer;
+}
+.appICON-03 span.hover{
+    width:211px;
+    height:67px;
+    background-image: url(images/icon_05.jpg);
+    background-repeat: no-repeat;
+    background-position: left bottom;
+    display:block;
+}
+.Qma{
+    width:74px;
+    height:74px;
+    float:left;
+    padding-right:70px;
+/*     padding-right:15px; */
+
+}
+/*APPgameBG-------------------*/
+.clearfix:after {
+visibility: hidden;
+display: block;
+font-size: 0;
+content: " ";
+clear: both;
+height: 0;
+}
+.clearfix{*zoom:1;}
+
+
+/*font_style-------------------*/
+
+.tab-current{
+    color:#963;
+    font-size:12px;
+    }
+
+.blue{
+    width:640px;
+    font-size: 13px;
+    font-weight: bold;
+    color: #09C;
+    display:block;
+}
+.blue02{
+    color:#069;}
+
+#samplebigbg{
+    width:1000px;}
+</style>
+
+<script>
+      $(function(){
+    	  $("#teach").click(function(){
+	        $("#UAC,#FAQ,#GET_NAME").hide();
+	        $("#Teaching").show();
+	        $(this).find("span").addClass("tab-current");
+            $("#uac >span,#faq >span,#get_name >span").removeClass("tab-current");
+	        return false;
+	    })
+	    $("#faq").click(function(){
+	        $("#UAC,#Teaching,#GET_NAME").hide();
+	        $("#FAQ").show();
+	        $(this).find("span").addClass("tab-current");
+            $("#teach >span,#uac >span,#get_name >span").removeClass("tab-current");
+	        return false;
+	    })
+	    $("#uac").click(function(){
+	        $("#Teaching,#FAQ,#GET_NAME").hide();
+	       	$("#UAC").show();
+	       	$(this).find("span").addClass("tab-current");
+	       	$("#teach >span,#faq >span,#get_name >span").removeClass("tab-current");
+	        return false;
+	    })
+        $("#get_name").click(function(){
+            $("#Teaching,#FAQ,#UAC").hide();
+            $("#GET_NAME").show();
+            $(this).find("span").addClass("tab-current");
+            $("#teach >span,#faq >span,#uac >span").removeClass("tab-current");
+            return false;
+        })
+         $("#member").click(function(){
+            $("#Scanner,#UAC,#FAQ,#APPgame").hide();
+            $("#left,#Teaching,#right").show();
+            $("#nav span").removeClass('nav-currnet');
+            $("#member >span").addClass('nav-currnet');
+            return false;
+        })
+        $("#appgame").click(function(){
+            $("#left,#Scanner,#right").hide();
+            $("#APPgame,#liveArea").show();
+            $("#nav span").removeClass('nav-currnet');
+            $(this).find("span").addClass('nav-currnet');
+            return false;
+        })
+         $("#scanner").click(function(){
+            $("#left,#right,#APPgame").hide();
+            $("#Scanner").show();
+            $("#nav span").removeClass('nav-currnet');
+            $(this).find("span").addClass('nav-currnet');
+            return false;
+        })
+        $("#LIVEGAME").click(function(){
+        	$("#casinoArea").hide();
+        	$("#liveArea").show();
+        })
+        $("#CASINOGAME").click(function(){
+            $("#liveArea").hide();
+            $("#casinoArea").show();
+        })
+	})
+
+
+    function Mobile(){
+        window.open('/infe/rmobile','MOBLILE','top=0,left=0,width=1100,height=760,location=yes,menubar=no,resizable=yes,scrollbars=yes,status=no,toolbar=no');
+    }
+    function IE(){
+                window.open('http://windows.microsoft.com/zh-cn/internet-explorer/download-ie/','IE_download','top=0,left=0,width=1000,height=600,location=yes,menubar=no,resizable=yes,scrollbars=yes,status=no,toolbar=no');
+    	    }
+    function Flash(){
+                window.open('http://get.adobe.com/cn/flashplayer/','Flash_download','top=0,left=0,width=1000,height=600,location=yes,menubar=no,resizable=yes,scrollbars=yes,status=no,toolbar=no');
+            }
+    function unity(){
+                    window.open('game.html','unity','top=0,left=0,width=1000,height=600,location=yes,menubar=no,resizable=yes,scrollbars=yes,status=no,toolbar=no');
+            }
+    function UB() {
+                window.open('http://ub66.com/zh-cn/','ub','top=0,left=0,width=1000,height=600,location=yes,menubar=no,resizable=yes,scrollbars=yes,status=no,toolbar=no');
+            }
+    $(function() {
+        $('.APP-IPONE,.APP-IPA,.appICON-01,.appICON-02,.appICON-03,.casinonav,.ultmatenav,.p2pnav,.lotterynav').append('<span class="hover"></span>').each(function () {
+            var $span = $('> span.hover', this).css('opacity', 0);
+            $(this).hover(
+                function(){
+                $span.stop().fadeTo(500, 1);
+            }, function () {
+        $span.stop().fadeTo(500, 0);
+            });
+        });
+                $("#member").click();
+            });
+</script>
+
+</head>
+<body class="zh-cn">
+    <div id="mainbody">
+       <div id="mainbody_top">
+    <div id="header">
+        <!-- lang -->
+        <span class="lang-common-wrap">
+                                    
+
+
+<style>
+    .ele-lang-wrap{
+        position: relative;
+        top: 1px;
+        z-index: 2;
+        width: 140px;
+        height: 36px;
+        cursor: pointer;
+        font-size: 13px;
+        text-align: left;
+        border: 2px solid #252424;
+        border-radius: 5px;
+        background: #2A2C2E;
+        background: -moz-linear-gradient(top,  #3d383a 0%, #353338 13%, #2e3133 19%, #323036 27%, #2c2c2c 50%, #1c1a17 75%, #1c1c1c 91%, #231c1b 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#3d383a), color-stop(13%,#353338), color-stop(19%,#2e3133), color-stop(27%,#323036), color-stop(50%,#2c2c2c), color-stop(75%,#1c1a17), color-stop(91%,#1c1c1c), color-stop(100%,#231c1b)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,  #3d383a 0%,#353338 13%,#2e3133 19%,#323036 27%,#2c2c2c 50%,#1c1a17 75%,#1c1c1c 91%,#231c1b 100%); /* Chrome10+,Safari5.1+ */
+        background: linear-gradient(to bottom,  #3d383a 0%,#353338 13%,#2e3133 19%,#323036 27%,#2c2c2c 50%,#1c1a17 75%,#1c1c1c 91%,#231c1b 100%); /* W3C */
+        box-sizing: border-box;
+        padding: 5px 30px 0 10px;
+
+                border: 2px solid #E0E0E0;
+        background: #FFF;
+        background: -moz-linear-gradient(top,  #FFF 0%, #F2F2F2 100%); /* FF3.6-15 */
+        background: -webkit-linear-gradient(top,  #FFF 0%,#F2F2F2 100%); /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(to bottom,  #FFF 0%,#F2F2F2 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+            }
+    .ele-lang-wrap:before {
+        position: absolute;
+        top: 13px;
+        right: 10px;
+        content: '';
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 5px 5px 0 5px;
+        border-color: #EBEEEF transparent transparent transparent;
+
+                border-color: #777679 transparent transparent transparent;
+            }
+    .ele-lang-title{
+        height: 22px;
+        line-height: 22px;
+        color: #C5C6C7;
+
+                color: #555452;
+            }
+
+    /* use flag and select */
+    .ele-lang-option{
+        display: inline-block; *display: inline; *zoom: 1;
+        vertical-align: top;
+        letter-spacing: 1px;
+        background: url('images/lang_circle.png') 0px 2px no-repeat;
+        padding-left: 30px;
+    }
+    .ele-lang-zh-cn { background-position: 0 -39px; }
+    .ele-lang-en    { background-position: 0 -78px; }
+    .ele-lang-ja    { background-position: 0 -118px; }
+    .ele-lang-ko    { background-position: 0 -158px; }
+    .ele-lang-vi    { background-position: 0 -198px; }
+    .ele-lang-th    { background-position: 0 -238px; }
+</style>
+<!--<div id="ele-lang-wrap" class="ele-lang-wrap">
+    <div id="ele-lang-group" class="ele-lang-group">
+        <style>
+            .ele-lang-group{
+                display: none;
+                position: absolute;
+                z-index: 1;
+                width: 139px;
+                font-size: 12px;
+                border-right: 1px solid #252424;
+                border-left: 1px solid #252424;
+                border-bottom: 1px solid #252424;
+                border-radius: 0 0 5px 5px;
+                background: #2A2C2E;
+                background: -moz-linear-gradient(top,  #3d383a 0%, #353338 13%, #2e3133 19%, #323036 27%, #2c2c2c 50%, #1c1a17 75%, #1c1c1c 91%, #231c1b 100%); /* FF3.6+ */
+                background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#3d383a), color-stop(13%,#353338), color-stop(19%,#2e3133), color-stop(27%,#323036), color-stop(50%,#2c2c2c), color-stop(75%,#1c1a17), color-stop(91%,#1c1c1c), color-stop(100%,#231c1b)); /* Chrome,Safari4+ */
+                background: -webkit-linear-gradient(top,  #3d383a 0%,#353338 13%,#2e3133 19%,#323036 27%,#2c2c2c 50%,#1c1a17 75%,#1c1c1c 91%,#231c1b 100%); /* Chrome10+,Safari5.1+ */
+                background: linear-gradient(to bottom,  #3d383a 0%,#353338 13%,#2e3133 19%,#323036 27%,#2c2c2c 50%,#1c1a17 75%,#1c1c1c 91%,#231c1b 100%); /* W3C */
+                box-sizing: border-box;
+                padding: 8px 0 5px 10px;
+
+                                border-right: 1px solid #E0E0E0;
+                border-left: 1px solid #E0E0E0;
+                border-bottom: 1px solid #E0E0E0;
+                background: #FFF;
+                background: -moz-linear-gradient(top,  #FFF 0%, #F2F2F2 100%); /* FF3.6-15 */
+                background: -webkit-linear-gradient(top,  #FFF 0%,#F2F2F2 100%); /* Chrome10-25,Safari5.1-6 */
+                background: linear-gradient(to bottom,  #FFF 0%,#F2F2F2 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+                            }
+            .ele-lang-group a{
+                height: 22px;
+                line-height: 22px;
+                display: block;
+                text-indent: 5px;
+                text-decoration: none;
+                color: #958F8E;
+                padding: 0 0 5px 30px;
+
+                                color: #86898B;
+                            }
+            /* use flag and select */
+            .ele-lang-option{
+                padding-left: 20px;
+                vertical-align: top;
+                background: url('images/lang_circle.png') 0px 2px no-repeat;
+                display: inline-block;*display: inline; *zoom: 1;
+            }
+            .ele-lang-zh-cn { background-position: 0 -39px; }
+            .ele-lang-en    { background-position: 0 -78px; }
+            .ele-lang-ja    { background-position: 0 -118px; }
+            .ele-lang-ko    { background-position: 0 -158px; }
+            .ele-lang-vi    { background-position: 0 -198px; }
+            .ele-lang-th    { background-position: 0 -238px; }
+            .ele-lang-current,
+            .ele-lang-group a:hover{
+                color: #C5C6C7;
+
+                                color: #555452;
+                            }
+        </style>
+    </div>
+</div>-->
+<script src="js/jquery.cookie.js"></script>
+<script>
+    $(function(){
+        var ele_lang_group = $('<div>').append($('#ele-lang-group')).html(),
+                $miBody = top.mem_index?$('body',top.mem_index.document):$('body'),
+                lang_group;
+
+        $miBody.prepend(ele_lang_group);
+        lang_group = top.mem_index?$('#ele-lang-group',top.mem_index.document):$('#ele-lang-group');
+
+        var langAutoClose = function(){
+            langCloseTimer = setTimeout(function(){
+                lang_group.stop().slideUp('fast');
+            }, 1000);
+        }
+
+        $('#ele-lang-wrap')
+                .on("click",function(){
+                    var offset = $(this).offset();
+                    var center_set = $miBody.width() - $('body').width();
+                    center_set = (center_set > 0) ? center_set/2 : 0;
+                    var obj_Left=offset.left + center_set;
+                    var obj_Top=offset.top+ 34;
+
+                    if(lang_group.is(':hidden')) {
+                        lang_group.stop().slideDown('fast')
+                                .css({'left':obj_Left,'top':obj_Top})
+                                .on("mouseenter",function(){
+                                    clearTimeout(langCloseTimer);
+                                    $(this).stop(true,true).slideDown('100');
+                                });
+                    } else {
+                        lang_group.stop().slideUp('fast');
+                    }
+                })
+                .on("mouseleave",function(){
+                    langAutoClose();
+                })
+                .on("mouseenter",function(){
+                    if(typeof langCloseTimer != 'undefined'){
+                        clearTimeout(langCloseTimer);
+                    }
+                });
+        lang_group
+                .on('mouseleave',function(){langAutoClose();});
+    });
+
+    $.ajax({
+        url: '/infe/rest/webmgnt/webLanguageList',
+        type: 'GET',
+        dataType: 'json',
+        success: function(data){
+            //利用cookie抓取當前語系和值
+            var currentLang = $.cookie("lang"),
+                currentLangValue = data[currentLang],
+                langSelected = '<div class="ele-lang-title ele-lang-option ele-lang-' + currentLang + '">' + currentLangValue + '</div>';
+
+            $('#ele-lang-wrap').prepend(langSelected);
+
+            if(data != null){
+                $.each( data, function( key,value ) {
+                    //將廳主自改的語系，取出組成列表
+                    var eleLangCurrent = '';
+
+                    if (key == currentLang) {
+                        var eleLangCurrent = ' ele-lang-current';
+                    }
+
+                    var langList = '<a href="/infe/setparam/language/' + key + '"' + ' title="' + value + '"' + ' class="ele-lang-option ele-lang-' + key + eleLangCurrent +'">' + value + '</a>';
+                    $('#ele-lang-group').append(langList);
+                });
+            }
+        },
+        error: function(){
+//            debug('webLanguageList error');
+//            console.log(no success);
+        }
+    });
+</script>
+        </span>
+
+        <div id="nav">
+            <ul>
+                                <li><a href="javascript: void(0)"  id="member" title="客户端"><span>客户端</span></a></li>
+                                               <!-- <li><a href="javascript: void(0)" id="scanner" title="扫毒专区"><span>扫毒专区</span></a></li>-->
+                <li><a href="javascript: void(0)" onClick="Flash()" title="FLASH新版下载"><span>FLASH新版下载</span></a></li>
+                <li><a href="javascript: void(0)" onClick="IE()" title="IE新版下载"><span>IE新版下载</span></a></li>
+                <!--<li><a href="javascript: void(0)" onClick="Mobile()" title="BBIN Casino 二维码下载"><span>BBIN Casino 二维码下载</span></a></li>
+                <li><a href="javascript: void(0)" onClick="unity()" title="unity游戏下载">unity游戏下载</a></li>-->
+            </ul>
+        </div>
+    </div>
+    <!--header end-->
+</div>
+<!------------------------------------>
+<div id="mainbody">
+    <div id="content" class="clearfix">
+        <!-- 客户端子选项 -->
+                <div id="left">
+            <div id="text">
+             <div id="nav02">
+                <div id="nav-left"></div>
+                <ul>
+                    <li><a href="javascript: void(0)" id="teach"><span class="tab-current">．安装教学．</span></a></li>
+                    <li><a href="javascript: void(0)" id="faq"><span>．FAQ问题简答．</span></a></li>
+                    <li><a href="javascript: void(0)" id="uac"><span>．UAC说明．</span></a></li>
+                    <li><a href="javascript: void(0)" id="get_name"><span>．如何获取账号．</span></a></li>
+                </ul>
+                <div id="nav-right"></div>
+            </div>
+                <!-- Teaching -->
+                <div id="Teaching" class="textArea">
+                    <span class="blue">1.如何安装游戏大厅。</span>
+                    <p> 　A.首页中点击‘立即体验下载版’，请以下列方法择一安装。</p>
+                    <p>　　 i.点击‘ INSTALL NOW ’将会进行安装程序。</p>
+                    <p> 　　ii.点击‘立即下载’，将压缩档解压缩之后，执行安装程序，将会进行安装程序。</p>
+                    <p>&nbsp; </p>
+                    <span class="blue"> 2.游戏大厅安装失败。</span>
+                    <p>　A.请检查网路是否正常，以及档案是否正常下载，或是使用续传软体下载完整安装档，执行安装程序进行完整安装。</p>
+                    <p>　B.如果还是失败，请检查系统中，是否有资料夹或是其他软体占用。</p>
+                    <p>　　i.举例，该游戏大厅名称为 hall，或是 hall.zip（与下载下来的档案名称一致）。</p>
+                    <p> 　　 32位作业系统请删除：‘ C:\Program  Files\hall\ ’资料夹之后重新安装大厅。</p>
+                    <p> 　　 64位作业系统请删除：‘ C:\Program  Files (x86)\hall\ ’资料夹之后重新安装大厅。</p>
+                    <p>&nbsp; </p>
+                    <span class="blue"> 3.如何下载并且安装游戏。</span>
+                    <p>　A.安装完游戏大厅之后，请以下方法安装。</p>
+                    <p>　　i.在尚未下载游戏的时候，会在游戏图示上呈现‘尚未安装’，请点击游戏图示之后，游戏大厅将会自动下载并且安装游戏，待安装完毕即可进入游戏。</p>
+                    <p>&nbsp; </p>
+                    <span class="blue">4.点选游戏下载无反应，无法下载游戏档案。</span>
+                    <p>　A.请先检查网路，是否断线或是被防火墙挡住。</p>
+                    <p> 　B.可能为 Vista 或是 win7 的权限问题，请以下列方法择一解决。</p>
+                    <p> 　 　 i.将UAC关闭。</p>
+                    <p> 　 　ii.下载版捷径按滑鼠右键，点选‘以系统管理员身份执行’。</p>
+                    <p>　　iii.下载版捷径按滑鼠右键，点选‘内容’、‘相容性’、‘特殊权限等级’，将‘以系统管理员的身份执行此程式’选项打勾。</p>
+                    <p>&nbsp;</p>
+                    <span class="blue">5.如果上述无法解决您的问题，请联系客服人员。 </span>
+                </div>
+                <!-- FAQ -->
+                <div id="FAQ" class="textArea">
+                    <span class="blue">1.什么是AIR runtime。</span>
+                    <p>&nbsp; </p>
+                    <img src="images/2.001.png" width="165" height="165" />
+                    <p>&nbsp; </p>
+                    <p>　A. Adobe AIR（AIR＝Adobe Integrated Runtime），开发代号为Apollo，是一个跨作业系统运行环境，用来建造RIA，使用的Flash、Flex、HTML与AJAX，可能部署为桌面应用程式。AIR是Adobe针对网路与桌面应用的结合所开发出来的技术，可以不必经由浏览器而对网路上的云端程式做控制，也由于这是的Adobe所开发的技术，因此能很顺利的与的Adobe旗下的Photoshop、Flash、Fireworks等应用程式来进行开发。</p>
+                    <p>&nbsp; </p>
+                    <span class="blue">2.为什么需要AIR runtime。</span>
+                    <img src="images/2.001.png" width="165" height="165" />
+                    <p>　A.Runtime是一种介于编译器与直译器的执行方式，指一种把半编译的执行码在某台机器上面执行。如的Java与.Net也是分别在JAVA runtime、以及.Net  runtime底下执行。</p>
+                    <p>&nbsp; </p>
+                    <span class="blue"> 3. Vista、Windows7 底下的权限问题。</span>
+                    <p>　A.因为 Vista 以及 Windows7 对于系统资料夹的限制较为严格，如 windows、program file 资料夹，以致于在一般使用者之下，下载版从网路上下载的游戏程式无法写入到硬碟中。</p>
+                    <p>　B.为了解决这个问题，必须要以系统管理员身份执行下载版游戏，有下列几种方式：</p>
+                    <p>　　i.将 UAC 关闭，在 win7 中搜寻‘ uac ’，即可显示设定视窗。</p>
+                    <p>&nbsp; </p>
+                    <img src="images/2_002.png" width="632" height="468" />
+                    <p>&nbsp; </p>
+                    <p>　　ii. 对游戏大厅捷径点击滑鼠右键，选择‘以系统管理员身份执行’。</p>
+                    <p>&nbsp; </p>
+                    <img src="images/2_003.png" width="205" height="164" />
+                    <p>&nbsp; </p>
+                    <p>　　iii.对游戏大厅捷径点击滑鼠右键，选择‘内容’、‘相容性’下方的‘特殊权限等级’，将‘以系统管理员的身份执行此程式’勾选。</p>
+                    <p>&nbsp; </p>
+                    <img src="images/2_004.png" width="378" height="456" />
+                    <p>&nbsp; </p>
+                    <span class="blue">4. 如何安装游戏大厅。</span>
+                    <p>　A.网页自动安装。</p>
+                    <p>　　i. 在首页中点击‘立即体验下载版’，在弹跳视窗中点击‘ INSTALL NOW ’图示，将自动安装所需要的 AIR runtime 以及游戏大厅。</p>
+                    <p>&nbsp; </p>
+                    <img src="images/2.006.png" width="90" height="210" />
+                    <p>&nbsp; </p>
+                    <p>　B.下载完整的压缩档进行安装。</p>
+                    <p>　　i.在首页中点击‘立即体验下载版’，在弹跳视窗中点击‘点击下载完整安装档’，下载下来的档案为zip压缩档，解压缩之后，请执行‘ Setup ’，将自动安装所需要的AIR runtime以及游戏大厅。</p>
+                    <p>&nbsp; </p>
+                    <img src="images/2.007.jpg" width="309" height="141" />
+                    <p>&nbsp; </p>
+                    <span class="blue">5.如何下载并安装游戏。</span>
+                    <p>　A.安装游戏大厅完成之后，登入并且进入游戏选单，如游戏选单上面显示‘尚未安装’，点击游戏图示，将自动下载游戏，待下载完成，即可进入游戏。可同时间点击多个 游戏，游戏大厅将会自动排程下载。</p>
+                    <p>&nbsp; </p>
+                    <img src="images/2.008.png" width="198" height="274" />
+                    <img src="images/2.009.png" width="206" height="274" />
+                    <img src="images/2.010.png" width="198" height="259" />
+                    <a class="box">尚未下载游戏</a>
+                    <a class="box">游戏下载安装中</a>
+                    <a class="box">游戏下载已完成，可以进入游戏</a>
+                    <p>&nbsp; </p>
+                </div>
+                <!-- UAC -->
+                <div id="UAC" class="textArea">
+                    <span class="blue">1.什么情况下需要看此文件。 </span>
+                    <p> 　A.当更新画面维持很久没有变动时，有可能是因为 UAC 的关系。</p>
+                    <p>&nbsp; </p>
+                    <span class="blue"> 2.什么是UAC。</span>
+                    <p>　A.使用者帐户控制（UAC, User Account Control）是 Windows Vista 中的新安全技术，通过限制应用软体而改进的Windows作业系统的安全性。Windows 7 中保持了这个功能，但是略有改变。</p>
+                    <p>&nbsp; </p>
+                    <span class="blue"> 3. UAC 有什么作用。</span>
+                    <p>　A.当某些动作会影响系统的安全及稳定性或影响运作时，UAC 便会弹出讯息，在执行前要求管理员的帐户及密码，除了该对话框之外，荧幕其他部份都会变暗，用户不能进行其他操作。若果用户的群组是“系统管理员”，则只需在对话方块中选择“允许”或“不允许”，若果用户的群组是“标准使用者” ，则需请求管理员的授权及密码。</p>
+                    <p>　B.透过启动前先确认这些动作，UAC 可协助防止恶意软体（malware）与间谍软体未经授权就进行安装或变更电脑。正因如此，在Windows 系统中，UAC 预设为开启的。</p>
+                    <p>&nbsp; </p>
+                    <span class="blue">4.对下载版有什么影响。</span>
+                    <p>　A.下载版会在本机端放置游戏档案，这样使用者就不需要每一次玩游戏都需要从网路上下载，当如果本机中有最新版本的游戏，则只需要从本机端载入，以减少载入时间。 因为下载版会依照线上的定义档，来确保本机上的游戏是最新的状态，所以必须要将线上最新的档案下载到本机中，因为Vista或是win7 UAC 的保护，以致于无法正确写入到硬碟中。</p>
+                    <p>&nbsp;</p>
+                    <span class="blue">5.解决UAC 无正确写入的问题，以下三个方法，选择任何一个即可，建议使用方法C，下列范例图片撷取自 windows7 旗舰版。</span>
+                    <p>　A.关闭UAC。</p>
+                    <p>　按下开始，搜寻并且执行‘变更使用者帐户控制设定’。</p>
+                    <img src="images/3_001.png" width="408" height="76" />
+                    <p>&nbsp;</p>
+                    <p>　将通知时机设为‘不要通知’，并且重新开机。</p>
+                    <img src="images/3_002.jpg" width="632" height="468" />
+                    <p>&nbsp;</p>
+                    <p>　B.选择下载版捷径，点选滑鼠右键，使用‘以系统管理员身份执行’。</p>
+                    <img src="images/3_003.png" width="205" height="164" />
+                    <p>&nbsp;</p>
+                    <p>　C.选择下载版捷径，选择‘内容’、‘相容性’、‘特殊权限等级’，勾选‘以系统管理员身份执行此程式’之后再执行下载版。</p>
+                    <img src="images/3_004.png" width="378" height="456" />
+                </div>
+                <!-- getname -->
+                <div id="GET_NAME" class="textArea" style="display: none;">
+                    <span class="blue">1.1.登录以后，点击首页的会员中心跳转到会员中心我的账户页面</span>
+                    <img src="images/member1.png" width="632" />
+                    <p>&nbsp; </p>
+                    <span class="blue"> 2.点击修改密码按钮，进入修改密码页面。</span>
+                    <img src="images/member2.png" width="632" />
+                    <p>&nbsp; </p>
+                    <span class="blue"> 3. 首先需查看BBIN用户栏是否显示bbin用户。</span>
+                    <p>　A.若已显示BBIN账户，则直接输入网站登录密码，新密码进行BBIN客户端的账户密码获取。注：密码修改完成后，需使用BBIN账户作为登录BBIN客户端的用户名，新密码作为登录BBIN客户端的密码。</p>
+                    <p>&nbsp; </p>
+                    <p>　B.若未显示BBIN账户，则需在网站内进行额度转换或者进入BBIN游戏以创建BBIN账户。完成后转至步骤A</p>
+                    <p>&nbsp;</p>
+                </div>
+            </div>
+        </div>
+                <!-- left end -->
+        <!-- 右边下载区 -->
+        <div id="right">
+                        <iframe align="top" valign="center" src="http://888.pk-bbin.com/app/flash/publicbmw/DesktopInstall/Installer2.php" frameborder="0" width="340" height="500"></iframe>
+                    </div>
+        <!-- 扫毒专区 -->
+        <div id="Scanner" style="display:none;width:1000px;height:550px;padding-top:15px;margin:12px 0;" >
+            <iframe src="MOnlineScanner.html" align="top" frameborder="0" width="1000" height="550"></iframe>
+        </div>
+            </div>
+    <!--content end-->
+</div>
+<div id="mainbody-footer">
+    <div id="footer"><!--Copyright &copy; pk Reserved--></div>
+</div>
+    </div>
+</body>
+</html>

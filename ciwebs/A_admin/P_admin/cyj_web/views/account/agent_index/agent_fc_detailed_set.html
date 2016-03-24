@@ -1,0 +1,88 @@
+<{include file="web_header.html"}>
+<body>
+<div  id="con_wrap">
+  <div  class="input_002">设置<{get_agent_type($smarty.get.agent_type)}>帳號</div>
+  <div  class="con_menu"> <a  href="javascript:history.go(-1);">返回上一頁</a> </div>
+
+</div>
+<div  class="content">
+
+    <table  width="780"  border="0"  cellspacing="0"  cellpadding="0"  class="m_tab_ed">
+      <tbody>
+
+      <tr class="m_title_over_co">
+        <td  colspan="3">
+                <form  id="form2"  name="form2"  action="<{$site_url}>/account/agent_index/agent_fc_detailed_set"  method="get">
+	  	<input  name="agent_id" type="hidden" value="<{$smarty.get.agent_id}>">
+    	<input  name="agent_type" type="hidden" value="<{$smarty.get.agent_type}>">
+        <select class="za_select" name="type" id="temppid"
+					onchange="document.getElementById('form2').submit()">
+			<{foreach from=$fc_games item=v}>
+					<option value="<{$v['type']}>"<{select_check($v['type'],$type)}>><{$v['name']}></option>
+				     	<{/foreach}>
+				</select> </form></td>
+      </tr>
+
+      
+      <form  id="myFORM1"  name="myFORM1"  action="<{$site_url}>/account/agent_index/agent_fc_detailed_set_do"  method="POST">
+      <tr  class="m_bc_ed">
+        <td  class="m_co_ed">彩种</td>
+        <td>是否关闭
+        <input  name="type" type="hidden" value="<{$type}>">
+        <input  name="agent_id" type="hidden" value="<{$smarty.get.agent_id}>">
+        <{if $webconfig['is_close_caizhong']==1}>
+        <input type="radio" name="is_close_caizhong" value="1" <{check_box(1,$agent_close['caizhong']['value'])}> />是
+      	<input type="radio" name="is_close_caizhong" value="0" <{check_box(0,$agent_close['caizhong']['value'])}>/>否
+      	<{else}>
+      		没有此权限
+      	<{/if}>
+        </td>
+        <td><div  class="Validform_checktip"></div></td>
+      </tr>
+            <tr  class="m_bc_ed">
+        <td  class="m_co_ed">盘口</td>
+        <td>选择盘口
+        <{if $webconfig['is_open_pankou']==1}>
+        <input type="radio" name="is_open_pankou" value="A" <{check_box('A',$agent_close['pankou']['value'])}> />A
+      <input type="radio" name="is_open_pankou" value="B" <{check_box('B',$agent_close['pankou']['value'])}>/>B
+      <input type="radio" name="is_open_pankou" value="ALL" <{check_box('ALL',$agent_close['pankou']['value'])}> />全部
+            	<{else}>
+      		没有此权限
+      	<{/if}>
+        </td>
+        <td><div  class="Validform_checktip"></div></td>
+      </tr>
+      <{foreach from=$fc_games_type item=v}>
+      <tr  class="m_bc_ed">
+        <td class="m_co_ed"><{$v['name']}></td>
+        <td>是否关闭
+        <{if $webconfig['is_close_wanfa']==1}>
+        <input type="radio" name="<{$v['id']}>_is_close_wanfa" value="1" <{check_box(1,$v['value'])}> />是
+      <input type="radio" name="<{$v['id']}>_is_close_wanfa" value="0" <{check_box(0,$v['value'])}> />否
+                  	<{else}>
+      		没有此权限
+      	<{/if}>
+      </td>
+        <td><div  class="Validform_checktip"></div></td>
+      </tr>
+      <{/foreach}>
+      <tr  class="m_bc_ed"  align="center">
+        <td  colspan="3"  class="m_bc_td">
+        <input  type="SUBMIT"  name="saveBtn"  value="確定"  class="za_button">
+          </td>
+      </tr>
+        </form>
+    </tbody></table>
+
+</div>
+    <script type="text/javascript">
+/*  $(function(){
+	//$(".registerform").Validform();  //就这一行代码！;
+
+	$("#myFORM").Validform({
+		tiptype:2,
+		showAllError:true
+	});
+}) */
+</script>
+ <{include file="web_footer.html"}>

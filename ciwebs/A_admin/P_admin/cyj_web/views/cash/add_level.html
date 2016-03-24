@@ -1,0 +1,113 @@
+﻿<title>添加层级</title>
+<{include file="web_header.html"}>
+<body>
+<style type="text/css">
+  .m_tab td, .m_tab_2 td {
+    padding: 3px 3px;
+}
+.msg{
+  margin-left: 5px;
+  color: red;
+}
+</style>
+<script type="text/javascript">
+$(document).ready(function(){
+   $("#submit_a").click(function(){
+       var level_des = $('input[name=level_des]').val();
+       if (level_des=='') {
+          alert('数据不能为空');
+       }else{
+          $('#level_form').submit();
+       }
+   })
+
+})
+</script>
+<div  id="con_wrap">
+  <div  class="input_002">添加层级</div>
+  <div class="con_menu">
+    <input type="button" value="返回上一頁" onclick="javascript:history.go(-1);" class="button_e">
+  </div>
+</div>
+
+<div  class="content">
+<form  method="post"  action="add_level_do" id="level_form">
+<table  style="width:580px"  class="m_tab">
+  <tbody>
+  <tr  class="m_title">
+    <td  height="25"  align="center"  colspan="2">添加层级</td>
+  </tr>
+  <{if $edit['id']}>
+     <input name="index_id" value="<{$edit['index_id']}>" type="hidden">
+  <{else}>
+    <{if $sites_str}>
+     <tr>
+      <td  height="25"  align="right"  class="table_bg1"  width="150">站点选择</td>
+      <td>
+         <{$sites_str}>
+         <font class="msg">必选</font>
+      </td>
+    </tr>
+    <{/if}>
+      <tr>
+      <td  height="25"  align="right"  class="table_bg1"  width="150">支付配置</td>
+      <td>
+        <select name="RMB" id="RMB">
+          <{foreach from=$pay_set item=val}>
+             <option value="<{$val['id']}>"><{$val['type_name']}></option>
+          <{/foreach}>
+       </select>
+         <font class="msg">RMB表示人民币预设,必选</font>
+      </td>
+    </tr>
+  <{/if}>
+  <tr>
+    <td  height="25"  align="right"  class="table_bg1"  width="150">层级名称</td>
+    <td>
+      <input  name="level_name" id="code" readonly="true" type="text" value="<{$edit['level_name']}>" class="za_text"> <font class="msg">固定编号</font>
+    </td>
+  </tr>
+  <tr>
+    <td  height="25"  align="right"  class="table_bg1">描述</td>
+        <td>
+          <input  name="level_des"  id="name"  type="text"  value="<{$edit['level_des']}>"  class="za_text">
+          <font class="msg">必填,请勿使用特殊字符-</font>
+        </td>
+  </tr>
+  <tr>
+    <td height="25" align="right" class="table_bg1">會員加入時間</td>
+        <td>
+          <div style="float:left"><input class="za_text Wdate" style="width:140px;min-width:140px" name="start_date" id="time_start" value="<{$edit['start_date']}>" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})">
+          ~
+          <input class="za_text Wdate" style="width:140px;min-width:140px" name="end_date" id="time_end" value="<{$edit['end_date']}>" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})"></div>
+         </td>
+  </tr>
+  <tr>
+    <td  height="25"  align="right"  class="table_bg1">存款次數</td>
+    <td>
+      <input  class="za_text" nullmsg="請輸入存款次數！"  errormsg="存款次數必須至少1位數字，最多6個字數字"  name="deposit_num"  id="sequence"   value="<{$edit['deposit_num']}>"><font class="msg">默认0整数,0表示无限制</font>
+    </td>
+  </tr>
+  <tr class="even">
+    <td  height="25"  align="right"  class="table_bg1">存款总额</td>
+    <td>
+      <input  class="za_text"  datatype="n1-9" name="deposit_count"  id="amount"  value="<{$edit['deposit_count']}>" ><font class="msg">默认0整数,0表示无限制</font>
+    </td>
+  </tr>
+   <tr class="m_tab">
+    <td  height="25"  align="right"  class="table_bg1">备注</td>
+    <td>
+      <textarea name="remark" style="width:250px;height:60px;"><{$edit['remark']}></textarea>
+    </td>
+  </tr>
+
+  <tr  align="center">
+    <td  colspan="3"  class="table_bg1">
+    <input name="id" value="<{$edit['id']}>" type="hidden">
+    <a href="javascript:void(0);" id="submit_a" class="button_d">確定</a>
+  </tr>
+</tbody></table>
+</form>
+</div>
+
+<{include file="web_footer.html"}>

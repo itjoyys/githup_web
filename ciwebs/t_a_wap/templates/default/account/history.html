@@ -1,0 +1,51 @@
+<ion-view cache-view="false">
+    <ion-nav-bar class="bar bar-header">
+        <ion-nav-buttons side="left"><a class="button button-icon icon ion-chevron-left" href="{{backUrl}}"></a>
+        </ion-nav-buttons>
+        <ion-nav-title class="ng-binding">{{'Common.LotteryHistory'|translate}}</ion-nav-title>
+    </ion-nav-bar>
+    <ion-content scroll="false" class="history">
+        <div class="row pd item-select row-width"><select id="LotteryID" name="LotteryID" ng-model="lottery"
+                                                          on-touch="check($event)" ng-disabled="!completeLoaded"
+                                                          ng-options="item.name for item in lotteryList track by item.id"
+                                                          required="required" ng-change="getHistory(lottery)">
+            <option value="" ng-if="false"></option>
+        </select></div>
+        <div class="row pd item-select row-width right30" ng-if="isDate"><select id="GetDate" name="GetDate"
+                                                                                 ng-model="date"
+                                                                                 ng-options="item for item in model.date track by item"
+                                                                                 on-touch="check($event)"
+                                                                                 ng-disabled="!completeLoaded"
+                                                                                 required="required"
+                                                                                 ng-change="onQuery()"
+                                                                                 ng-show="lottery.id!=1 ">
+            <option value="" ng-if="false"></option>
+        </select></div>
+        <div class="row text-center title">
+            <div class="col col-33 radiu">{{'LotteryReports.LabelPeriodNumber'|translate}}</div>
+            <div class="col col-67 radiu">{{'LotteryReports.LabelOpenNumber'|translate}}</div>
+        </div>
+        <ion-content class="list" delegate-handle="list-handle">
+            <ion-refresher ng-show="ansycLoaded" on-refresh="getHistory()"></ion-refresher>
+            <div ng-show="!ansycLoaded" class="page-loading text-center padding">
+                <ion-spinner></ion-spinner>
+            </div>
+            <cur-tips tip="tip"></cur-tips>
+            <div ng-if="ansycLoaded" class="row" ng-repeat="item in lotteryHistoryList.HistoryList">
+                <div class="col col-33 tal">
+                    <div class="cont lh" ng-class="{'lh1':class_pd}">
+                        <div>{{item.LotteryNo}}</div>
+                        <div>{{(item.OpenDateTime)}}</div>
+                    </div>
+                </div>
+                <div class="col col-67 tal lh-3">
+                    <div class="cont" ng-class="{'pd1':class_pd}">
+                        <div ng-bind-html="item.OpenNumberList|yd:lotteryHistoryList.ydType:lotteryHistoryList.sdj"></div>
+                        <div ng-if="item.Sx.length>0" class="mt-20"
+                             ng-bind-html='item.Sx|yd:"6":lotteryHistoryList.sdj'></div>
+                    </div>
+                </div>
+            </div>
+        </ion-content>
+    </ion-content>
+</ion-view>

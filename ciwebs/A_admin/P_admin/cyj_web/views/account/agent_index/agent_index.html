@@ -1,0 +1,143 @@
+<title>代理管理</title>
+<{include file="web_header.html"}>
+<body>
+<script type="text/javascript">
+var indexid = "<{$index_id}>";
+$(document).ready(function(){
+	$("#index_id").val(indexid);
+})
+
+$(function(){
+    $("#index_id").change(function(event) {
+      $("#myFORM").submit();
+    });
+  })
+</script>
+<div  id="con_wrap">
+<div  class="input_002" ><{get_agent_type($smarty.get.agent_type)}>管理</div>
+<div  class="con_menu">
+<form  name="myFORM"  id="myFORM"  action="<{$site_url}>/account/agent_index/index"  method="GET">
+<{$sites_str}>
+总代理：
+ <select name="pid" id="pid" onchange="document.getElementById('myFORM').submit()">
+          <option value="">全部</option>
+          <{foreach from=$datas item=v}>
+          <option value="<{$v['id']}>" <{select_check($v['id'],$smarty.get.pid)}>><{$v['agent_user']}></option>
+          <{/foreach}>
+ </select>
+ 狀態：
+    <select  name="is_delete"  onchange="document.getElementById('myFORM').submit()" id="is_delete"   class="za_select">
+      <option  value="">全部</option>
+      <option <{select_check('0',$smarty.get.is_delete)}> value="0">启用</option>
+      <option <{select_check('2',$smarty.get.is_delete)}> value="2">停用</option>
+    </select> 在线:
+     <select name="agent_status" onchange="document.getElementById('myFORM').submit()" id="status_select" class="za_select">
+          <option  value="0">全部</option>
+          <option <{select_check('1',$smarty.get.agent_status)}> value="1">在线</option>
+     </select>
+           排序:
+     <select  id="mem_sort"  name="mem_sort" onchange="document.getElementById('myFORM').submit()"  class="za_select">
+           <option <{select_check('add_date',$smarty.get.mem_sort)}>   value="add_date">新增日期</option>
+                <option <{select_check('agent_name',$smarty.get.mem_sort)}>   value="agent_name"><{get_agent_type($smarty.get.agent_type)}>名稱</option>
+                <option <{select_check('agent_user',$smarty.get.mem_sort)}>   value="agent_user"><{get_agent_type($smarty.get.agent_type)}>帳號</option>
+
+     </select>
+              <select  id="order_select"  name="mem_order" onchange="document.getElementById('myFORM').submit()"  class="za_select">
+                <option <{select_check('desc',$smarty.get.mem_order)}>   value="desc">由大到小</option>
+                <option <{select_check('asc',$smarty.get.mem_order)}>   value="asc">由小到大</option>
+
+              </select>
+  帳號：
+  <input  type="hidden"  name="agent_type"  value="<{$smarty.get.agent_type}>" >
+  <input  type="hidden"  name="aid"  value="<{$smarty.get.aid}>" >
+  <input  type="text"  name="agent_user"  value="<{$smarty.get.agent_user}>"  class="za_text"  style="min-width:80px;width:80px;">
+
+  &nbsp;頁數：
+ <select id="page" name="page" class="za_select">
+		<{assign var=$i value=0}>
+       <{section name=total loop=$totalPage}>
+       <option value="<{$i=$i+1}><{$i}>"<{select_check($i,$smarty.get.page)}> ><{$i}></option>
+       <{/section}>
+  </select> <{$totalPage}>頁&nbsp;
+
+              <input  type="submit" value="搜索"   class="za_button">
+              <input  type="button"  name="append"  value="新增" onclick="document.location='<{$site_url}>/account/agent_index/agent_add?agent_type=<{$smarty.get.agent_type}>'"  class="za_button">
+
+
+</form>
+<script>
+    //分页跳转
+  window.onload=function(){
+    document.getElementById("page").onchange=function(){
+      document.getElementById('myFORM').submit()
+    }
+  }
+</script>
+</div>
+</div>
+<div  class="content">
+  <table cellspacing="0" cellpadding="0" class="m_tab" width="100%" >
+  <tr class="m_title_over_co">
+      <td>状态</td>
+      <td><{get_agent_type($smarty.get.agent_type)}>名稱</td>
+      <td>推广ID</td>
+      <td><{get_agent_type($smarty.get.agent_type)}>帳號</td>
+      <td>登陆帳號</td>
+      <td>會員數</td>
+      <{if $smarty.get.agent_type!='s_h'}><td>所属<{get_agent_type_pid($smarty.get.agent_type)}></td><{/if}>
+      <td>体育占成</td>
+      <td>彩票占成</td>
+      <td>视讯占成</td>
+      <td>新增日期</td>
+      <td>狀況</td>
+      <td>功能</td>
+    </tr>
+	<{if count($list)>0 }>
+	<{foreach from=$list key=i item=rows}>
+        <tr class="m_cen <{if $i%2 == 0}>even<{/if}>" >
+       <td><{$rows['Online_state']}></td>
+        <td><{$rows["agent_name"]}></td>
+        <td height="20" align="center"  ><a href="javascript:;" title="?Intr=<{$rows['intr']}>"><{$rows["intr"]}></a></td>
+		<td><a <{if $smarty.get.agent_type == 'a_t'}>href="<{$site_url}>/account/member_index?agent_id=<{$rows['id']}>"<{else}>href="<{$site_url}>/account/agent_index/index?aid=<{$rows['id']}>&agent_type=<{get_agent_type_key($rows['agent_type'])}>" <{/if}>><{$rows["agent_user"]}></a> </td>
+    	<td><{$rows["agent_login_user"]}></td>
+		<td>
+    <font  color="#FF0000"><{$rows['user_num']}></font></td>
+         <{if $smarty.get.agent_type!='s_h'}><td><{$rows['pagent_user']['agent_user']}></td><{/if}>
+	    <td><{$rows["sports_scale"]*100}>%</td>
+	    <td><{$rows["lottery_scale"]*100}>%</td>
+		<td><{$rows["video_scale"]*100}>%</td>
+<!-- 			    <td><{$rows['pagent_user']["sports_scale"]*100}>%</td>
+	    <td><{$rows['pagent_user']["lottery_scale"]*100}>%</td>
+		<td><{$rows['pagent_user']["video_scale"]*100}>%</td> -->
+		<td><{$rows["add_date"]}></td>
+		 <td>     <{if $rows['is_delete'] == 2}>
+           <span style="color:#FF00FF;">停用</span>
+         <{else}>
+          <span style="color:##1E20CA;">正常</span>
+         <{/if}></td>
+		<td>
+         <{if $rows['is_delete'] == 2}>
+           <a onclick="return confirm('确定启用')" href="<{$site_url}>/account/agent_index/editagent?action=using&id=<{$rows['id']}>">启用</a>
+         <{else}>
+          <a onclick="return confirm('确定停止')" href="<{$site_url}>/account/agent_index/editagent?action=stop&id=<{$rows['id']}>">停用</a>
+
+         <{/if}>
+      /&nbsp;<a href="<{$site_url}>/other/Log_manage/user_do_log?uname=<{$rows['agent_user']}>&type=2">日志</a>
+     /&nbsp;<a href="<{$site_url}>/account/agent_index/agent_edit?aid=<{$rows["id"]}>&agent_type=<{$rows['agent_type']}>">修改</a>/&nbsp;
+        <a href="<{$site_url}>/account/agent_index/agent_set?aid=<{$rows['id']}>&agent_type=<{$rows['agent_type']}>">設定</a>/&nbsp;
+        <a href="<{$site_url}>/account/agent_reg/agent_data?id=<{$rows['id']}>&wtype=1">资料</a>
+        /&nbsp;
+		<a href="<{$site_url}>/account/agent_reg/agent_discount?id=<{$rows['id']}>&agent_type=<{$rows['agent_type']}>">优惠</a>
+     /&nbsp;
+    <a href="<{$site_url}>/account/agent_index/agent_domain?id=<{$rows['id']}>&intr=<{$rows['intr']}>&index_id=<{$rows['index_id']}>">推广域名</a>
+        </td>
+        </tr>
+    <{/foreach}>
+<{else}>
+  <tr class="m_rig" style="display:;">
+        <td height="70" align="center" colspan="16"><font color="#3B2D1B">暫無數據。</font></td>
+      </tr>
+<{/if}>
+</table>
+</div>
+ <{include file="web_footer.html"}>

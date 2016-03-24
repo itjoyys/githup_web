@@ -1,0 +1,66 @@
+<{config_load file="public.conf" section="public"}>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>彩票投注资讯</title>
+        <link rel="stylesheet" href="<{#mem_css#}>/index_main.css" />
+        <link rel="stylesheet" href="<{#mem_css#}>/standard.css" />
+    </head>
+    <body style="BACKGROUND: url(<{#mem_images#}>/../private/content_bg.jpg) repeat-y left top;" >
+		<div id="MAMain" style="width:767px">
+			<div id="MACenter-content">
+				<div id="MACenterContent">
+					<div id="MNav"> 
+						<a  target="k_memr" class="mbtn" href="<{$site_url}>/index.php/member/account/userinfo">基本资讯</a>
+						<div class="navSeparate"></div>
+						<span class="mbtn">投注资讯</span>
+					</div>
+					<div class="MNavLv2"> <span class="MGameType MCurrentType">
+						<a target="k_memr"  href="<{$site_url}>/index.php/member/account/advisory">体育</a></span>｜ <span class="MGameType "  ><a target="k_memr"  href="<{$site_url}>/index.php/member/account/lottery_advisory" style="background:#bc5a83 none repeat scroll 0 0;color:#ffffff;padding:2px">彩票</a></span>
+					</div>
+					<div id="MMainData"style=" overflow-y:scroll; height:340px;">
+						<div  class="MPanel" style="width:850px">
+							<{foreach key=key item=fcval from=$fcType}>
+								<table class="MMain" border="1" width="850px">
+									<tbody>
+										<tr class="m_title_over_co">
+											<td height="25" align="center" style="background:#dfdfdf none repeat scroll 0 0"><{$fcTitle[$key]}></td>
+											<{foreach key=k item=v from=$fcval}>
+											<td align="center" style="background:#dfdfdf none repeat scroll 0 0"><{$v['name']}></td>
+										<{/foreach}>
+										</tr>
+										<tr>
+											<td nowrap="" align="center">退水設定</td>
+											<{foreach key=k item=v from=$fcval}>
+											<td align="center"><{$v['charges_a']}></td>
+											<{/foreach}>
+										<tr>
+										<tr>
+											<td nowrap="" align="center">單場限額:</td>
+											<{foreach key=k item=v from=$fcval}>
+											<td align="center"><{$v['single_field_max']}></td>
+											<{/foreach}>
+										<tr>
+										<tr>
+											<td nowrap="" align="center">單注限額::</td>
+											<{foreach key=k item=v from=$fcval}>
+											<td align="center"><{$v['single_note_max']}></td>
+											<{/foreach}>
+										<tr>
+										<tr>
+											<td nowrap="" align="center">最低限额::</td>
+											<{foreach key=k item=v from=$fcval}>
+											<td align="center"><{$v['min']}></td>
+											<{/foreach}>
+										<tr>
+									</tbody>
+								</table>
+								<br>
+							<{/foreach}>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+    </body>
+</html>

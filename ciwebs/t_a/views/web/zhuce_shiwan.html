@@ -1,0 +1,39 @@
+<{$header}>
+<{config_load file="public.conf" section="public" }>
+<script>
+	$(function(){
+		var nr= "<img src='<{#images#}>/new/Wel.jpg' class='abs-c-banner' id='page-banner'>";
+		$("#myImg").html(nr);
+	})
+</script>
+<style>
+	.wns-common-content-top{background: url(<{#images#}>/new/common_top_bg.png) no-repeat center top;padding-top: 66px; }
+</style>
+<div id="page-container">
+   <div class="wns-common-content-middle clearfix " style="margin:0 auto;">
+
+		   <div class="l wns-left-nav-bar">
+
+					<a onclick="getPager('-','iword','3');" href="javascript:void(0);">关于我们</a>
+					<a onclick="getPager('-','iword','7');" href="javascript:void(0);">取款帮助</a>
+					<a onclick="getPager('-','iword','6');" href="javascript:void(0);">存款帮助</a>
+					<a onclick="getPager('-','iword','5');" href="javascript:void(0);">合作伙伴</a>
+					<a onclick="getPager('-','iword','4');" href="javascript:void(0);">联络我们</a>
+					<a onclick="getPager('-','iword','8');" href="javascript:void(0);">常见问题</a>
+		   </div>
+		   <div class="r wns-right-content-nobg">
+						<div class="abount-con">
+							<iframe name="mbody" scrolling="no" frameborder="0" src="<{$site_url}>/index.php/webcenter/Register_web/join_shiwan" onload="this.height=mbody.document.body.scrollHeight+10" style="background: transparent; width: 740px;" allowtransparency="true"></iframe>
+
+						</div>
+		   </div>
+
+  </div>
+  <div class="wns-common-content-bottom">
+
+	                	      </div>
+</div>
+<{$bottom}>
+
+
+

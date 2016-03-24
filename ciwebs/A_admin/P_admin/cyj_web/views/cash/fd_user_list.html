@@ -1,0 +1,104 @@
+<title>给予返水详情</title>
+<{include file="web_header.html"}>
+<body>
+<div id="con_wrap">
+  <div class="input_002">给予返水详情</div>
+  <div class="con_menu">
+   <a href="javascript:window.history.go(-1)">返回上一頁</a>
+  </div>
+</div>
+<div class="content">
+        <{if $smarty.session.site_id eq 't'}>
+<table width="100%" class="m_tab">
+  <tbody>
+    <tr class="m_title_over_co">
+        <td >代理商</td>
+        <td >會員</td>
+        <td >層級</td>
+        <td>體育</td>
+        <td>彩票</td>
+        <{foreach from=$video_title_arr key=i item=val}>
+        <td><{$val}></td>
+        <{/foreach}>
+        <td >返點小計</td>
+    </tr>
+    <{foreach from=$list key=i item=val}>
+    <tr class="m_cen <{if $i%2 == 0}>even<{/if}>">
+    <td nowrap="nowrap"><{$val['agent_user']}></td>
+    <td nowrap="nowrap"><{$val['username']}></td>
+    <td nowrap="nowrap"><{$val['level_des']}></td>
+    <td><{$val['sp_fd']}></td>
+    <td><{$val['fc_fd']}></td>
+    <{foreach from=$video_list_arr key=i2 item=val2}>
+    <td><{$val2}></td>
+    <{/foreach}>
+    <td><{$val['total_e_fd']}></td>
+    </tr>
+    <{/foreach}>
+    <tr class="m_title">
+        <td colspan="3">總人數：<{count($list)}>人 </font></td>
+        <td><{$tot_sp_fd}></td>
+        <td><{$tot_fc_fd}></td>
+        <{foreach from=$video_sum_arr key=i item=val}>
+        <td><{$val}></td>
+        <{/foreach}>
+        <td><{$tot_all_fd}></td>
+  </tr>
+</tbody></table>
+  <{else}>  
+
+<table width="100%" class="m_tab">
+  <tbody>
+    <tr class="m_title_over_co">
+              <td >代理商</td>
+        <td >會員</td>
+        <td >層級</td>
+            <td>體育</td>
+            <td>彩票</td>
+            <td>AG視訊</td>
+            <td>MG視訊</td>
+            <td>MG电子</td>
+            <td>OG視訊</td>
+            <td>CT視訊</td>
+            <td>LEBO視訊</td>
+            <td>BBIN視訊</td>
+            <td>BBIN电子</td>
+            <td >返點小計</td>
+    </tr>
+    <{foreach from=$list key=i item=val}>
+    <tr class="m_cen <{if $i%2 == 0}>even<{/if}>">
+     <td nowrap="nowrap"><{$val['agent_user']}></td>
+            <td nowrap="nowrap"><{$val['username']}></td>
+            <td nowrap="nowrap"><{$val['level_des']}></td>
+            <td><{$val['sp_fd']}></td>
+            <td><{$val['fc_fd']}></td>
+            <td><{$val['ag_fd']}></td>
+            <td><{$val['mg_fd']}></td>
+            <td><{$val['mgdz_fd']}></td>
+            <td><{$val['og_fd']}></td>
+            <td><{$val['ct_fd']}></td>
+            <td><{$val['lebo_fd']}></td>
+            <td><{$val['bbin_fd']}></td>
+            <td><{$val['bbdz_fd']}></td>
+            <td><{$val['total_e_fd']}></td>
+    </tr>
+    <{/foreach}>
+    <tr class="m_title">
+        <td colspan="3">總人數：<{count($list)}>人 </font></td>
+        <td><{$tot_sp_fd}></td>
+        <td><{$tot_fc_fd}></td>
+        <td><{$tot_ag_fd}></td>
+        <td><{$tot_mg_fd}></td>
+        <td><{$tot_mgdz_fd}></td>
+        <td><{$tot_og_fd}></td>
+        <td><{$tot_ct_fd}></td>
+        <td><{$tot_lebo_fd}></td>
+        <td><{$tot_bbin_fd}></td>
+        <td><{$tot_bbdz_fd}></td>
+        <td><{$tot_all_fd}></td>
+  </tr>
+</tbody></table>
+    <{/if}>
+</div>
+
+<{include file="web_footer.html"}>

@@ -1,0 +1,44 @@
+<{$header}>
+<{config_load file="public.conf" section="public" }>
+<script>
+	$(function(){
+		var nr= "<img src='<{#images#}>/new/MemberExclusiveII.jpg' class='abs-c-banner' id='page-banner'>";
+		$("#myImg").html(nr);
+	})
+</script>
+
+<style>
+	.wns-common-content-top{background: url(<{#images#}>/new/common_top_bg.png) no-repeat center top;padding-top: 66px; }
+</style>
+<div id="page-container">
+<div class="wns-common-content-middle clearfix " style="margin:0 auto;">
+<div id="page-body" class="clearfix" style="height: auto;">
+<!-- 优惠活动开始 -->
+<style>
+#direction ul.mtab-menual {
+    border-bottom: 3px solid #ADADAD;  /*线条颜色*/
+}
+#direction ul.mtab-menual li {
+    background-color: #222222;     /*未选中颜色*/
+}
+#direction ul.mtab-menual li.mtab {
+    background-color: #ADADAD;     /*选中颜色*/
+}
+#MemberExclusive_area{
+     width: 960px;                  /*宽度*/
+ }
+</style>
+<{$promotion_html}>
+<!-- 优惠活动结束 -->
+</div> 
+
+</div>
+</div> 
+  <div class="wns-common-content-bottom">
+	                	      	  
+	                	      </div>
+</div>
+<{$bottom}>
+
+
+

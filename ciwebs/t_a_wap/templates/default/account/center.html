@@ -1,0 +1,87 @@
+<ion-view class="m-center" cache-view="false">
+    <ion-nav-bar class="bar bar-header bar-light">
+        <ion-nav-buttons side="left"><a class="button button-icon icon ion-ios-arrow-back" ng-href="#/index"></a>
+        </ion-nav-buttons>
+        <ion-nav-title><span ng-bind="'Member_PersonCenter'|translate"></span></ion-nav-title>
+        <ion-nav-buttons side="right">
+            <button class="button button-icon" ng-click="logout();"><span ng-bind="'Member_OutLogin'|translate"></span>
+            </button>
+        </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-content scroll="true">
+        <div ng-if="currentUser.TestState!=2" class="row top-info">
+            <div class="col col-33"><img class="avatar" ng-src="{{CDNURL+'images/avatar.png'}}"></div>
+            <div class="col col-66"><h5>{{getGreeting()}}&nbsp;&nbsp;{{currentUser.UserName}}</h5>
+                <p ng-click="getWallet()">{{'Common_LabelMyWallet'|translate}}：<span ng-show="loaded"><span class="money">{{wallet}}</span>{{currentUser.CurrencyNo}}</span> 
+                        <span class="money"
+                                                                                               ng-show="!loaded"><ion-spinner></ion-spinner></span><a
+                        class="refresh"><img ng-src="{{CDNURL+'images/icon-refresh.png'}}"></a></p>
+                <p ng-if="currentUser.TestState!=2">{{'Common_LabelRealName'|translate}}：<span>{{memberData.RealName}}</span>
+                </p>
+                <p ng-if="showLevel&&currentUser.TestState!=2" class="level">{{'Common_LabelGameGroup'|translate}}：<span
+                        ng-repeat="item in memberData.GameLevels| filter:{ GameClassID: 4 }:true">{{item.LevelNo}}</span><span
+                        ng-repeat="item in memberData.GameLevels| filter:{ GameClassID: 1 }:true">{{item.LevelNo}}</span><span
+                        ng-repeat="item in memberData.GameLevels| filter:{ GameClassID: 2 }:true">{{item.LevelNo}}</span><span
+                        ng-repeat="item in memberData.GameLevels| filter:{ GameClassID: 3 }:true">{{item.LevelNo}}</span>
+                </p></div>
+        </div>
+        <div ng-if="currentUser.TestState==2" class="row top-info top-testuser-info">
+            <div class="col col-33"><img class="avatar" ng-src="{{CDNURL+'images/avatar.png'}}"></div>
+            <div class="col col-66"><h5><span>{{currentUser.UserName}}</span></h5>
+                <p ng-click="getWallet()">{{'Common_LabelMyWallet'|translate}}：<span ng-show="loaded"><span
+                        class="money">{{wallet}}</span>{{currentUser.CurrencyNo}}</span> <span class="money"
+                                                                                               ng-show="!loaded"><ion-spinner></ion-spinner></span><a
+                        class="refresh"><img ng-src="{{CDNURL+'images/icon-refresh.png'}}"></a></p>
+            </div>
+        </div>
+        <div class="center-list">
+            <div class="row">
+                <div class="col col-33"><a ng-click="goInfo()"><img ng-src="{{CDNURL+'images/menu-profile.png'}}">
+                    <p ng-bind="'Member_LabelMemberInfo'|translate"></p></a>
+                    <div ng-if="denyInfo" class="test-convert"><p class="text-center">
+                        {{'Member_LabelTryPlayAccount'|translate}}<br>{{'Member_TipsNoAccess'|translate}}</p><a
+                            href="#/reg/{{regstep}}">{{'Common_LabelMemberRegisterTrue' | translate}}</a></div>
+                </div>
+                <div class="col col-33"><a ng-click="goMdfPwd()"><img ng-src="{{CDNURL+'images/menu-modifypwd.png'}}">
+                    <p ng-bind="'Common_ButtonChangePassword'|translate"></p></a>
+                    <div ng-if="denyMdfPwd" class="test-convert"><p class="text-center">
+                        {{'Member_LabelTryPlayAccount'|translate}}<br>{{'Member_TipsNoAccess'|translate}}</p><a
+                            href="#/reg/{{regstep}}">{{'Common_LabelMemberRegisterTrue' | translate}}</a></div>
+                </div>
+                <div class="col col-33"><a class="relative" ng-click="goMessage()"><img
+                        ng-src="{{CDNURL+'images/menu-message.png'}}"> <span ng-if="msgCount>0" class="notify">{{msgCount}}</span>
+                    <p ng-bind="'Index_InformationCenter'|translate"></p></a></div>
+            </div>
+            <div class="row">
+                <div class="col col-33"><a ng-click="goDeposit()"><img ng-src="{{CDNURL+'images/menu-funds.png'}}">
+                    <p ng-bind="'Index_ZiJinGuanLi'|translate"></p></a>
+                    <div ng-if="denyDeposit" class="test-convert"><p class="text-center">
+                        {{'Member_LabelTryPlayAccount'|translate}}<br>{{'Member_TipsNoAccess'|translate}}</p><a
+                            href="#/reg/{{regstep}}">{{'Common_LabelMemberRegisterTrue' | translate}}</a></div>
+                </div>
+                <div class="col col-33"><a ng-click="goTransfer()"><img ng-src="{{CDNURL+'images/menu-transfer.png'}}">
+                    <p ng-bind="'Member_LabelTrans'|translate"></p></a>
+                    <div ng-if="denyTransfe" class="test-convert"><p class="text-center">
+                        {{'Member_LabelTryPlayAccount'|translate}}<br>{{'Member_TipsNoAccess'|translate}}</p><a
+                            href="#/reg/{{regstep}}">{{'Common_LabelMemberRegisterTrue' | translate}}</a></div></div>
+                <div class="col col-33"><a ng-click="goBank()"><img ng-src="{{CDNURL+'images/menu-bankaccount.png'}}">
+                    <p ng-bind="'Common_LabelBankNumber'|translate"></p></a>
+                    <div ng-if="denyBank" class="test-convert"><p class="text-center">
+                        {{'Member_LabelTryPlayAccount'|translate}}<br>{{'Member_TipsNoAccess'|translate}}</p><a
+                            href="#/reg/{{regstep}}">{{'Common_LabelMemberRegisterTrue' | translate}}</a></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col col-33"><a href="#/day/2/0"><img ng-src="{{CDNURL+'images/menu-record.png'}}">
+                    <p ng-bind="'Member_LabelBetRecord'|translate"></p></a>
+                </div>
+                <div class="col col-33"><a ng-href="{{serviceLink}}" target="_blank"><img
+                        ng-src="{{CDNURL+'images/menu-service.png'}}">
+                    <p ng-bind="'Index_CustomerService'|translate"></p></a></div>
+                <div class="col col-33"><a href="javascript:void(0);" ng-click="share()"><img
+                        ng-src="{{CDNURL+'images/menu-share.png'}}">
+                    <p ng-bind="'Member_Share'|translate"></p></a></div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

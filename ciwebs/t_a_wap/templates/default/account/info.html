@@ -1,0 +1,71 @@
+<ion-view cache-view="false" class="m-info">
+	<ion-nav-bar class="bar bar-header bar-light center-top">
+		<ion-nav-buttons side="left">
+			<a class="button button-icon icon ion-ios-arrow-back" ng-href="#/center"></a>
+		</ion-nav-buttons>
+		<ion-nav-title>{{'Member_LabelMemberInfo'|translate}}</ion-nav-title>
+	</ion-nav-bar>
+	<ion-content class="has-header">
+		<div ng-if="!ansycLoaded" class="page-loading text-center padding">
+			<span ng-show="!loaded" class="my-popover">
+				<ion-spinner></ion-spinner>
+			</span>
+		</div>
+		<div ng-if="ansycLoaded">
+			<div class="content">
+				<p>
+					{{'Common_LabelCountry'|translate}}：
+					<span>{{memberData.CountryName}}</span>
+				</p>
+				<p>
+					{{'Member_LabelCurrency'|translate}}：
+					<span>{{memberData.CurrencyNo}}</span>
+				</p>
+			<!-- 	<p>
+				{{'Common_LabelMemberGroup'|translate}}：
+				<span>{{memberData.LevelName}}</span>
+			</p>
+			<p ng-if="showLevel" class="level">
+				{{'Common_LabelGameGroup'|translate}}：
+				<span ng-repeat="item in memberData.GameLevels| filter:{ GameClassID: 4 }:true">{{item.LevelNo}}</span>
+				<span ng-repeat="item in memberData.GameLevels| filter:{ GameClassID: 1 }:true">{{item.LevelNo}}</span>
+				<span ng-repeat="item in memberData.GameLevels| filter:{ GameClassID: 2 }:true">{{item.LevelNo}}</span>
+				<span ng-repeat="item in memberData.GameLevels| filter:{ GameClassID: 3 }:true">{{item.LevelNo}}</span>
+			</p> -->
+			</div>
+			<div class="list">
+				<a class="item">
+					<span ng-bind="'Member_Account'|translate"></span>
+					：
+					<span class="item-note">{{currentUser.UserName}}</span>
+				</a>
+				<a class="item">
+					<span ng-bind="'Common_LabelRealName'|translate" class="ng-binding"></span>
+					:
+					<span class="item-note">{{memberData.RealName}}</span>
+				</a>
+				<a class="item">
+					<span class="ng-binding">系统余额</span>
+					:
+					<span class="item-note">{{memberData.money}}</span>
+				</a>
+				<a ng-if="ansycLoaded" ng-repeat="item in memberData.video_model" class="item" >
+					<span >{{item.name}}余额</span>
+					:
+					<span class="item-note">{{item.money}}</span>
+				</a>
+				<a class="item">
+					<span class="ng-binding">合计总额</span>
+					:
+					<span class="item-note">{{memberData.allmoney}}RMB</span>
+				</a>
+
+
+
+        </td>
+    </tr>
+
+			</div>
+		</div>
+	</ion-content>
+</ion-view>

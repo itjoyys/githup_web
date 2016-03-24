@@ -1,0 +1,160 @@
+<{include file="web_header.html"}>
+<body> 
+<style type="text/css">
+	#rs_window{
+		width:380px;
+		left: 50%;
+		margin-left: -190px;
+		position: fixed;
+		top: 180px;
+		display: none;
+	}
+  .m_tab{
+    width: 60%;
+  }
+</style>
+<script type="text/javascript">
+
+   function show_win(title,wb,sfm,snm,min,id,type_id,aid){
+      var title = '请输入'+title+'设定';
+   	  $("#id").val(id);
+      $("#aid").val(aid);
+  		$("#water_break").val(wb);//退水
+      $("#single_field_max").val(sfm);
+  		$("#single_note_max").val(snm);
+  		$("#min").val(min);
+  		$("#r_title").html(title);
+  		$("#type_id").val(type_id);//玩法类别id
+  		$("#rs_window").css("display","block");
+   }
+
+
+           //下拉选项自动跳转
+$(document).ready(function(){
+   $("#stype").change(function(){
+       var cp_url=$("#stype").val();
+       window.location.href=cp_url;
+   });
+
+ // 单项设置弹窗关闭
+  	$("#set_close").click(function(){
+		$("#rs_window").css("display","none");
+	});
+})
+</script>
+<body>
+<div  id="con_wrap">
+<div  class="input_002">設定-<{$title}></div>
+<div  class="con_menu">
+<form  name="user_set"  id="user_set"  action="<{$site_url}>/account/member_index/user_set"  method="GET">
+<input  type="hidden"  name="aid"  value="<{$smarty.get.aid}>" />
+<input  type="hidden"  name="uid"  value="<{$smarty.get.uid}>" />
+設定類型：
+    <select onchange="document.getElementById('user_set').submit()" name="stype">
+	<{foreach from=get_set_type() item=v key=k}>
+	<option value="<{$k}>" <{select_check($k,$smarty.get.stype)}> ><{$v}> </option>
+	<{/foreach}>
+</select>
+</form>
+</div>
+</div>
+<div class="content">
+<{foreach from=$fcType item=fcval key=key}>
+
+<table width="780" border="0" cellspacing="0" cellpadding="0" class="m_tab">
+  <tbody>
+  <tr class="m_title_over_co">
+    <td height="25"><{$fcTitle[$key]}></td>
+    <{foreach from=$fcval key=k item=v}>
+      <td><{$v['name']}></td>
+    <{/foreach}>
+  </tr>
+  <tr>
+   <td nowrap="" align="center">退水設定</td>
+       <{foreach from=$fcval key=k item=v}>
+      <td><{$v['charges_a']}></td>
+    <{/foreach}>
+  <tr>
+    <tr>
+   <td nowrap="" align="center">單場限額:</td>
+    <{foreach from=$fcval key=k item=v}>
+      <td><{$v['single_field_max']}></td>
+    <{/foreach}>
+  <tr>
+    <tr>
+   <td nowrap="" align="center">單注限額</td>
+        <{foreach from=$fcval key=k item=v}>
+      <td><{$v['single_note_max']}></td>
+    <{/foreach}>
+  <tr>
+       <tr>
+   <td nowrap="" align="center">最低限额</td>
+    <{foreach from=$fcval key=k item=v}>
+      <td><{$v['min']}></td>
+    <{/foreach}>
+  <tr>
+         <tr>
+   <td nowrap="" align="center"><a href=""></a></td>
+       <{foreach from=$fcval key=k item=v}>
+     <td><a href="javascript:void(0)" onclick="show_win('<{$fcTitle[$key]}>-<{$v['t_name']}>','<{$v['water_break']}>','<{$v['single_field_max']}>','<{$v['single_note_max']}>','<{$v['min']}>','<{$v['id']}>','<{$v['type_id']}>','<{$v['uid']}>');"> 修改</a>
+    <{/foreach}>
+  <tr>
+</tbody></table>
+<{/foreach}>
+<br>
+
+<!--弹框-->
+<div id="rs_window">
+	<form  name="rs_form" action="<{$site_url}>/account/member_index/user_set_do"  method="POST" >
+		<input  type="hidden" id="type"  name="type"  value="setOne">
+		<input  type="hidden" id="id"  name="id"  value="">
+    <input type="hidden" id="uid" name="uid" value="<{$smarty.get.uid}>">
+     <input type="hidden" id="agent_id" name="agent_id" value="<{$smarty.get.aid}>">
+      <input  type="hidden" id="aid"  name="aid"  value="">
+       <input  type="hidden" id="stype"  name="stype"  value="<{$smarty.get.stype}>">
+		<input  type="hidden" id="type_id"  name="type_id"  value="">
+		<ul class="acc_ul_box"  style="width:355px">
+			<li class="acc_li_first">
+			<span  class="title_sp"  id="r_title"></span>
+				<span  class="x_sp"><a id="set_close" style="display:block;" href="javascript:void(0);"><img  src="../public/images/mem_icon.gif"  width="16"  height="14"></a></span>
+			</li>
+			<li>
+				<span  class="title_sp_sub">退水設定:</span>
+				<span  class="title_sp_sub2">
+				<select class="z_select2" id="s_charges_a"  name="charges_a">
+					<option vaule="0">0</option>
+				</select></span>
+			</li>
+			<li>
+				<span  class="title_sp_sub">單場限額:</span>
+				<span  class="title_sp_sub2"><input  type="text"  id="single_field_max"  name="single_field_max"  value=""  size="12"  maxlength="10"  class="za_text" >人民幣</span>
+			</li>
+
+			<li>
+				<span  class="title_sp_sub">單注限額:</span>
+				<span  class="title_sp_sub2"><input  type="TEXT"  id="single_note_max"  name="single_note_max"  value=""  size="12"  maxlength="10"  class="za_text">人民幣</span>
+			</li>
+			<li>
+				<span  class="title_sp_sub">最低限額:</span>
+				<span  class="title_sp_sub2"><input  type="text"  id="min"  name="min"  value=""  size="12"  maxlength="8"  class="za_text">人民幣</span>
+			</li>
+			<li  class="acc_li_btnBox">
+				<input  type="submit"  value="確定"  class="za_button">
+			</li>
+		</ul>
+	</form>
+</div>
+
+</div>
+
+    <script type="text/javascript">
+/* $(function(){
+	//$(".registerform").Validform();  //就这一行代码！;
+	
+	$("#myFORM").Validform({
+		tiptype:2,
+		showAllError:true
+	});
+}) */
+</script>
+ <{include file="web_footer.html"}>

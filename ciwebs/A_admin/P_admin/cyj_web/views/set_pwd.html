@@ -1,0 +1,61 @@
+<{include file="web_header.html"}>
+<{config_load file="public.conf" section="public"}>
+<body>
+<script language="javascript">
+function check_sub(){
+  var p1 = document.getElementById("password").value;
+  var p2 = document.getElementById("password2").value;
+  if(p1.length < 1){
+    alert('请输入密码');
+    document.getElementById("password").focus();
+    return false;
+  }
+
+  if(p1 != p2){
+    alert("两次密码输入不一致");
+    document.getElementById("password2").select();
+    return false;
+  }
+
+  return true;
+}
+ </script>
+<div  id="con_wrap">
+  <div  class="input_002">管理員管理--修改</div>
+</div>
+<div  class="content">
+  <form onSubmit="return check_sub();" action="<{$site_url}>/index/set_pwd_do" method="post" name="form1">
+  <table  width="780"  border="0"  cellspacing="0"  cellpadding="0"  class="m_tab_ed">
+    <tbody>
+    <tr  class="m_title_over_co">
+      <td  colspan="2">基本資料設定</td>
+    </tr>
+    <tr  class="even">
+      <td style="float: right;height: 30px;line-height: 30px;"> 帳號：</td>
+      <td><{$login_name}></td>
+    </tr>
+    <tr >
+      <td style="float: right;height: 30px;line-height: 30px;">密碼：</td>
+      <td>
+        <input  type="password" id="password" type="password" name="password"  value="" maxlength="12" minlength="6" class="za_text" >
+        <font color="red">【数字或英文字母,长度6到12位】</font>
+      </td>
+    </tr>
+    <tr  class="even">
+      <td style="float: right;height: 30px;line-height: 30px;">確認密碼：</td>
+      <td>
+        <input  id="password2" type="password"  name="password2"  size="12"  value="" maxlength="12" minlength="6"  class="za_text" >
+      </td>
+    </tr>
+    <tr class="m_bc_ed"  align="center">
+      <td  colspan="2"  class="m_bc_td">
+        <input  name="s" type="submit" id="s" value="確定"  class="za_button">
+      </td>
+    </tr>
+  </tbody>
+  </table>
+  </form>
+
+</div>
+<!-- 公共尾部 -->
+<?php require("./common_html/footer.php"); ?>

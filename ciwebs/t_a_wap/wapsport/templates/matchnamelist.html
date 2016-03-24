@@ -1,0 +1,144 @@
+<ion-view   view-title="{{matchname}}" ng-class="{true:'pane_r'}[sportname=='足球']">
+  <ion-content  class="animated ">
+   <ion-refresher on-refresh="sportset(matchdata)"></ion-refresher>  
+      
+       
+       <ion-item class='bet_match_list match_info' ng-repeat="item in matchdata" >
+           
+            <div class="row betname animated flipInX" ng-click="sportset(matchdata)">
+                 <ion-item class="col col-20 "><i class="ion-clock" ng-if="sporttype=='FTP' || sporttype=='BKP'"></i>
+                  <span ng-bind-html="item.Match_Date">{{item.Match_Date}}</span>
+                  <span ng-if="item.Match_NowScore"><br>[{{item.Match_NowScore}}]</span>
+                  
+                </ion-item>
+                <ion-item class="col col-60  matchname">
+                 <ion-scroll direction="x" scrollbar-x="true">
+                主:<span ng-bind-html="item.Match_Master">{{item.Match_Master}}</span>
+                <span class="redcard" ng-if="item.Match_HRedCard>0">{{item.Match_HRedCard}}</span>
+                <br>
+                客:<span ng-bind-html="item.Match_Guest">{{item.Match_Guest}}</span>
+                <span class="redcard" ng-if="item.Match_GRedCard>0">{{item.Match_GRedCard}}</span>
+                 </ion-scroll>
+                </ion-item>
+                <ion-item class="col col-20 ">
+                 <i class="ion-ios-refresh-outline" ></i>
+                </ion-item>
+            </div>
+            
+           <div class="row betrow"  ng-if="item.Match_BzM>0">
+           
+                <ion-item class="col col-25 shadow bet">
+                   <span class="m_title">[全]独赢</span>  
+                </ion-item> 
+                <ion-item class="col col-25 shadow bet" ng-class="{true: '',false: 'animated flip c1'}[item.Match_BzM==db[$index]['Match_BzM']]" ng-click="showbet('{{sporttype}}','Match_BzM','{{item.Match_ID}}','{{item.Match_BzM}}')">
+                   <span  ng-if="item.Match_BzM>0"><span class="m_title">主</span> <span class="bf">{{item.Match_BzM}}</span>  </span>
+                </ion-item> 
+                <ion-item class="col col-25 shadow bet" ng-class="{true: '',false: 'animated flip c1'}[item.Match_BzG==db[$index]['Match_BzG']]" ng-click="showbet('{{sporttype}}','Match_BzG','{{item.Match_ID}}','{{item.Match_BzG}}')"> 
+                   <span  ng-if="item.Match_BzG>0"><span class="m_title">客</span> <span class="bf" >{{item.Match_BzG}}</span>  </span>
+                </ion-item>
+                 <ion-item class="col col-25 shadow bet" ng-class="{true: '',false: 'animated flip c1'}[item.Match_BzH==db[$index]['Match_BzH']]"ng-click="showbet('{{sporttype}}','Match_BzH','{{item.Match_ID}}','{{item.Match_BzH}}')"> 
+                   <span  ng-if="item.Match_BzH>0" ><span class="m_title">和</span> <span class="bf">{{item.Match_BzH}}</span> </span>
+                </ion-item> 
+            </div>
+            <div class="row betrow" ng-if="item.Match_Ao">
+           
+                <ion-item class="col col-25 shadow bet"  >
+                   <span class="m_title">[全]让球</span>
+                </ion-item> 
+                <ion-item class="col col-25 shadow bet " >
+                  <span class="m_title" ng-if="item.Match_ShowType=='H'">主</span>
+                  <span class="m_title" ng-if="item.Match_ShowType=='C'">客</span>
+                    {{item.Match_RGG}}  
+                </ion-item> 
+                 <ion-item class="col col-25 shadow bet" ng-class="{true: '',false: 'animated flip c1'}[item.Match_Ho==db[$index]['Match_Ho']]" ng-click="showbet('{{sporttype}}','Match_Ho','{{item.Match_ID}}','{{item.Match_Ho}}')">
+                   <span   ng-if="item.Match_Ho!=0"><span class="m_title">主</span>  <span ng-class="{true: 'c2',false: ''}[item.Match_Ho<0]">{{item.Match_Ho}}  </span></span>
+                </ion-item> 
+                <ion-item class="col col-25 shadow bet" ng-class="{true: '',false: 'animated flip c1'}[item.Match_Ao==db[$index]['Match_Ao']]" ng-click="showbet('{{sporttype}}','Match_Ao','{{item.Match_ID}}','{{item.Match_Ao}}')"> 
+                   <span ng-if="item.Match_Ao!=0">
+                   <span class="m_title">客</span> 
+                   <span ng-class="{true: 'c2',false: ''}[item.Match_Ao<0]"> {{item.Match_Ao}}</span> </span>
+                </ion-item>
+            </div>
+            <div class="row betrow"  ng-if="item.Match_DxGG1">
+                <ion-item class="col col-25 shadow bet" >
+                   <span class="m_title">[全]大小</span>    
+                </ion-item> 
+                <ion-item class="col col-25 shadow bet">
+                    {{item.Match_DxGG1}}  
+                </ion-item> 
+                 <ion-item class="col col-25 shadow bet" ng-class="{true: '',false: 'animated flip c1'}[item.Match_DxDpl==db[$index]['Match_DxDpl']]" ng-click="showbet('{{sporttype}}','Match_DxDpl','{{item.Match_ID}}','{{item.Match_DxDpl}}')">
+                   <span  ng-if="item.Match_DxDpl!=0"><span class="m_title">大</span> <span ng-class="{true: 'c2',false: ''}[item.Match_DxDpl<0]">{{item.Match_DxDpl}}</span>  </span>
+                </ion-item> 
+                <ion-item class="col col-25 shadow bet" ng-class="{true: '',false: 'animated flip c1'}[item.Match_DxXpl==db[$index]['Match_DxXpl']]" ng-click="showbet('{{sporttype}}','Match_DxXpl','{{item.Match_ID}}','{{item.Match_DxXpl}}')"> 
+                  <span  ng-if="item.Match_DxXpl!=0"> <span class="m_title">小</span> <span ng-class="{true: 'c2',false: ''}[item.Match_DxXpl<0]">{{item.Match_DxXpl}}</span>  </span>
+                </ion-item>
+            </div>
+            <div class="row betrow" ng-if="item.Match_DsSpl>0">
+                <ion-item class="col col-25 shadow bet">
+                   <span class="m_title">[全]单双</span>    
+                </ion-item> 
+                <ion-item class="col col-25 shadow bet"  >
+                    
+                </ion-item> 
+                 <ion-item class="col col-25 shadow bet" ng-class="{true: '',false: 'animated flip c1'}[item.Match_DsDpl==db[$index]['Match_DsDpl']]" ng-click="showbet('{{sporttype}}','Match_DsDpl','{{item.Match_ID}}','{{item.Match_DsDpl}}')">
+                   <span  ng-if="item.Match_DsDpl>0"><span class="m_title">单</span> {{item.Match_DsDpl}}</span>
+                </ion-item> 
+                <ion-item class="col col-25 shadow bet" ng-class="{true: '',false: 'animated flip c1'}[item.Match_DsSpl==db[$index]['Match_DsSpl']]" ng-click="showbet('{{sporttype}}','Match_DsSpl','{{item.Match_ID}}','{{item.Match_DsSpl}}')"> 
+                  <span  ng-if="item.Match_DsSpl>0"> <span class="m_title">双</span> {{item.Match_DsSpl}}</span>  
+                </ion-item>
+            </div>
+
+        <!-- 半场 --> 
+            <div class="row betrow" ng-if="item.Match_Bgdy>0">
+           
+                <ion-item class="col col-25 shadow bethr" >
+                   <span class="m_title">[半]独赢</span>  
+                </ion-item> 
+                <ion-item class="col col-25 shadow bethr" ng-class="{true: '',false: 'animated flip c1'}[item.Match_Bmdy==db[$index]['Match_Bmdy']]" ng-click="showbet('{{sporttype}}','Match_Bmdy','{{item.Match_ID}}','{{item.Match_Bmdy}}')">
+                   <span  ng-if="item.Match_Bmdy>0"><span class="m_title">主</span> <span class="bf">{{item.Match_Bmdy}}</span>  </span>
+                </ion-item> 
+                <ion-item class="col col-25 shadow bethr" ng-class="{true: '',false: 'animated flip c1'}[item.Match_Bgdy==db[$index]['Match_Bgdy']]" ng-click="showbet('{{sporttype}}','Match_Bgdy','{{item.Match_ID}}','{{item.Match_Bgdy}}')"> 
+                   <span  ng-if="item.Match_Bgdy>0"><span class="m_title">客</span> <span class="bf">{{item.Match_Bgdy}}</span>  </span>
+                </ion-item>
+                 <ion-item class="col col-25 shadow bethr" ng-class="{true: '',false: 'animated flip c1'}[item.Match_Bhdy==db[$index]['Match_Bhdy']]" ng-click="showbet('{{sporttype}}','Match_Bhdy','{{item.Match_ID}}','{{item.Match_Bhdy}}')"> 
+                   <span  ng-if="item.Match_Bhdy>0"><span class="m_title">和</span> <span class="bf">{{item.Match_Bhdy}}</span> </span>
+                </ion-item> 
+            </div>
+            <div class="row betrow" ng-if="item.Match_BRpk">
+           
+                <ion-item class="col col-25 shadow bethr" >
+                   <span class="m_title">[半]让球</span>
+                </ion-item> 
+                <ion-item class="col col-25 shadow bethr" >
+                <span class="m_title" ng-if="item.Match_Hr_ShowType=='H'">主</span>
+                  <span class="m_title" ng-if="item.Match_Hr_ShowType=='C'">客</span>
+                    {{item.Match_BRpk}}  
+                </ion-item> 
+                 <ion-item class="col col-25 shadow bethr" ng-class="{true: '',false: 'animated flip c1'}[item.Match_BHo==db[$index]['Match_BHo']]" ng-click="showbet('{{sporttype}}','Match_BHo','{{item.Match_ID}}','{{item.Match_BHo}}')">
+                   <span  ng-if="item.Match_BHo!=0"><span class="m_title">主</span> <span ng-class="{true: 'c2',false: ''}[item.Match_BHo<0]">{{item.Match_BHo}}</span>  </span>
+                </ion-item> 
+                <ion-item class="col col-25 shadow bethr"  ng-class="{true: '',false: 'animated flip c1'}[item.Match_BAo==db[$index]['Match_BAo']]" ng-click="showbet('{{sporttype}}','Match_BAo','{{item.Match_ID}}','{{item.Match_BAo}}')"> 
+                   <span  ng-if="item.Match_BAo!=0"><span class="m_title">客</span> <span ng-class="{true: 'c2',false: ''}[item.Match_BAo<0]">{{item.Match_BAo}}</span>  </span>
+                </ion-item>
+            </div>
+            <div class="row betrow" ng-if="item.Match_Bdxpk1">
+                <ion-item class="col col-25 shadow bethr">
+                   <span class="m_title">[半]大小</span>    
+                </ion-item> 
+                <ion-item class="col col-25 shadow bethr">
+                    {{item.Match_Bdxpk1}}  
+                </ion-item> 
+                 <ion-item class="col col-25 shadow bethr"  ng-class="{true: '',false: 'animated flip c1'}[item.Match_Bdpl==db[$index]['Match_Bdpl']]" ng-click="showbet('{{sporttype}}','Match_Bdpl','{{item.Match_ID}}','{{item.Match_Bdpl}}')">
+                   <span  ng-if="item.Match_Bdpl!=0"><span class="m_title">大</span> <span ng-class="{true: 'c2',false: ''}[item.Match_Bdpl<0]">{{item.Match_Bdpl}}</span> </span> 
+                </ion-item> 
+                <ion-item class="col col-25 shadow bethr" ng-class="{true: '',false: 'animated flip c1'}[item.Match_Bxpl==db[$index]['Match_Bxpl']]" ng-click="showbet('{{sporttype}}','Match_Bxpl','{{item.Match_ID}}','{{item.Match_Bxpl}}')"> 
+                   <span  ng-if="item.Match_Bxpl!=0"><span class="m_title">小</span> <span ng-class="{true: 'c2',false: ''}[item.Match_Bxpl<0]">{{item.Match_Bxpl}}</span></span>  
+                </ion-item> 
+                
+            </div>
+            
+
+        </ion-item> 
+     
+  </ion-content>
+</ion-view>

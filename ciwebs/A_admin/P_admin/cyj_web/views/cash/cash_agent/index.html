@@ -1,0 +1,202 @@
+<title>退傭統計</title>
+<{include file="web_header.html"}>
+<script type="text/javascript">
+function show_div(event,ty,cp,yx,dz)
+{
+	var event = event ? event : window.event;
+	var top = left = 0;
+	//var div = $("#detail_info");
+	$("#detail_yx").text(yx);
+	$("#detail_dz").text(dz);
+	$("#detail_ty").text(ty);
+	$("#detail_cp").text(cp);
+	var div = document.getElementById('detail_info');
+	top = event.pageY;
+	left =event.pageX;
+	div.style.top = top + "px";
+	div.style.left = left + "px";
+	div.style.display = "block";
+}
+function hide_div(){
+	var div = document.getElementById('detail_info');
+	div.style.display = "none";
+}
+
+$(function(){
+    $('#myFORM').submit(function(){
+        var atype = $('#atype').val();
+        var username = $('#username').val();
+        if(atype>0 && username == ''){
+            alert('请输入股东,总代理,或者代理，的用户名！');
+            return false;
+        }else if(username !='' && atype==0){
+            alert('请选择账号类型！');
+            return false;
+        }
+    })
+})
+
+</script>
+<div id="con_wrap">
+<div class="input_002">退傭統計</div>
+<div class="con_menu">
+<form name="search_form" id="myFORM" method="GET">
+<input type="hidden" name="search" value="true">
+	<a href="index" style="color:red;">退佣统计</a>
+    <a href="<{$site_url}>/cash/cash_agent/agent_serch_list">退佣查询</a>
+    <a href="<{$site_url}>/cash/cash_agent/end_hire_list">期数管理</a>
+	<a href="<{$site_url}>/cash/cash_agent/fee_list">手續費設定</a>
+	<a href="<{$site_url}>/cash/cash_agent/endhire_list">代理退傭設定</a>&nbsp;&nbsp;
+   期數選擇：
+   <select name="qs">
+       <{$smarty.get.qs}>
+       <{foreach from=$qishu key=i item=v}>
+       <option value="<{$v['id']}>" <{select_check($v['id'],$smarty.get.qs)}>><{$v['qsname']}></option>
+       <{/foreach}>
+
+   </select>
+    帳號：
+    <select class="za_select" name="atype" id="atype">
+        <option value="">请选择</option>
+        <option value="1" <{select_check(1,$smarty.get.atype)}>>股东</option>
+        <option value="2" <{select_check(2,$smarty.get.atype)}>>总代理</option>
+        <option value="3" <{select_check(3,$smarty.get.atype)}>>代理</option>
+    </select>
+    <input type="text" name="username" id="username" class="za_text" value="<{$smarty.get.username}>" style="min-width:80px;width:80px">
+    <select name="kf_ty">
+	<option value="-1" <{select_check(-1,$smarty.get.kf_ty)}>>全部</option>
+  	<option value="0" <{select_check(0,$smarty.get.kf_ty)}>>未達門檻</option>
+  	<option value="1" <{select_check(1,$smarty.get.kf_ty)}>>已達門檻</option>
+  	</select>
+    &nbsp;&nbsp;<input type="submit" value="查詢" name="searchbtn" class="button_d">
+    <{if $smarty.get.searchbtn neq null && $smarty.get.savebtn eq null }>
+    <input type="submit" value="存檔" onclick="return confirm('是否要保存本期退傭統計結果？')" name="savebtn" class="button_d">
+    <{/if}>
+        </form>
+</div>
+</div>
+<div class="content">
+    <table width="1024" border="0" cellspacing="0" cellpadding="0" bgcolor="#E3D46E" class="m_tab">
+        <tbody>
+            <tr class="m_title_over_co" style="background-color: rgb(250, 220, 220);height:20px;line-height:20px;">
+                <td rowspan="2">代理帳號</td>
+                <td rowspan="2">名稱</td>
+                <td rowspan="2">有效會員</br>(含前期)</td>
+                <td rowspan="2">前期累積總盈利</td>
+                <td rowspan="2">當期新增總盈利</td>
+                <td colspan="4">退傭比例(%)</td>
+                <td rowspan="2">前期累積有效投注</td>
+                <td rowspan="2">當期新增有效投注</td>
+                <td colspan="4">退水比例(%)</td>
+                <td rowspan="2">前期累積總費用</td>
+                <td rowspan="2">當期新增總費用</td>
+                <td rowspan="2">可獲退傭</td>
+                <td rowspan="2">当前状态</td>
+            </tr>
+            <tr class="m_title_over_co" style="height:20px;line-height:20px;">
+                <td>視訊</td>
+                <td>電子</td>
+                <td>體育</td>
+                <td>彩票</td>
+                <td>視訊</td>
+                <td>電子</td>
+                <td>體育</td>
+                <td>彩票</td>
+            </tr>
+            <{if $agents}>
+            <{$j = 0}>
+            <{foreach from=$agents key=i item=agent}>
+            <{$j = $j+1}>
+            <tr class="m_cen <{if $j%2 neq 0}>even<{/if}>">
+                <td ><{$agent['agent_user']}></td>
+                <td nowrap><{$agent['agent_name']}></td>
+                <td ><{$agent['num']+$agent['old_usernum']}></td>
+                <td onmouseover="show_div(event,&#39;<{number_format($agent['oldkbet'], 2)}>&#39;,&#39;<{number_format($agent['oldcbet'], 2)}>&#39;,&#39;<{number_format($agent['oldvbet'], 2)}>&#39;,&#39;<{number_format($agent['oldebet'], 2)}>&#39;)" onmouseout="hide_div()">
+                             <{number_format($agent['oldbet'], 2)}>
+               </td>
+                <td onmouseover="show_div(event,&#39;<{number_format(($agent['nowkbet']+$agent['nowckbet']), 2)}>&#39;,&#39;<{number_format($agent['nowcbet'], 2)}>&#39;,&#39;<{number_format($agent['nowvbet'], 2)}>&#39;,&#39;<{number_format($agent['nowebet'], 2)}>&#39;)" onmouseout="hide_div()">
+                              <{number_format($agent['nowkbet'] + $agent['nowckbet'] + $agent['nowcbet'] + $agent['nowvbet']  + $agent['nowebet'], 2)}>
+                </td>
+                <td ><{number_format($agent['video_slay_rate'], 2)}>%</td>
+                <td ><{number_format($agent['evideo_slay_rate'], 2)}>%</td>
+                <td ><{number_format($agent['sport_slay_rate'], 2)}>%</td>
+                <td ><{number_format($agent['lottery_slay_rate'], 2)}>%</td>
+                <td onmouseover="show_div(event,&#39;<{number_format($agent['oldvalidkbet'], 2)}>&#39;,&#39;<{number_format($agent['oldvalidcbet'], 2)}>&#39;,&#39;<{number_format($agent['oldvalidvbet'], 2)}>&#39;,&#39;<{number_format($agent['oldvalidebet'], 2)}>&#39;)" onmouseout="hide_div()">
+                              <{number_format($agent['oldvalidbet'], 2)}>
+                </td>
+                <td onmouseover="show_div(event,&#39;<{number_format(($agent['nowvalidkbet']+$agent['nowvalidckbet']), 2)}>&#39;,&#39;<{number_format($agent['nowvalidcbet'], 2)}>&#39;,&#39;<{number_format($agent['nowvalidvbet'], 2)}>&#39;,&#39;<{number_format($agent['nowvalidebet'], 2)}>&#39;)" onmouseout="hide_div()">
+                              <{number_format($agent['nowvalidkbet'] + $agent['nowvalidcbet'] + $agent['nowvalidckbet'] + $agent['nowvalidvbet'] + $agent['nowvalidebet'], 2)}>
+                </td>
+                <td ><{number_format($agent['video_water_rate'], 2)}>%</td>
+                <td ><{number_format($agent['evideo_water_rate'], 2)}>%</td>
+                <td ><{number_format($agent['sport_water_rate'], 2)}>%</td>
+                <td ><{number_format($agent['lottery_water_rate'], 2)}>%</td>
+                <td ><{number_format($agent['oldcash'], 2)}></td>
+                <td >
+                <{if $agent['feemoney'] gt 0}>
+			<a href="charge_total?qs_id=<{$agent["qishu_id"]}>&agentid=<{$agent["id"]}>&agent_name=<{$agent["agent_user"]}>" target="_blank" class="a_001"><{number_format($agent['feemoney'], 2)}></a>
+		<{else}>
+			0.00
+		<{/if}>
+
+                </td>
+                <td ><{number_format($agent['retucash'], 2)}></td>
+                <td >
+                    <{if $agent['hire_id'] gt 0}>
+			已達門檻
+		<{else}>
+			未達門檻
+		<{/if}>
+
+                </td>
+            </tr>
+            <{/foreach}>
+            <{/if}>
+        </tbody>
+    </table>
+</div>
+
+
+<div style="position:absolute;width:300px;display:none;" id="detail_info">
+	<table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#E3D46E" class="m_tab">
+		<tbody><tr class="m_title_over_co">
+			<td>視訊</td>
+            <td>電子</td>
+            <td>體育</td>
+            <td>彩票</td>
+		</tr>
+		<tr>
+			<td id="detail_yx"></td>
+			<td id="detail_dz"></td>
+			<td id="detail_ty"></td>
+            <td id="detail_cp"></td>
+		</tr>
+	</tbody></table>
+</div>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" style="clear:both">
+	<tbody><tr>
+		<td align="center" height="50"> 版权所有 建議您以 1024 X 768 以上高彩模式瀏覽本站</td>
+	</tr>
+</tbody></table>
+</body>
+<style>
+.m_tab {
+    width: 99%;
+    margin: 3px;
+    background-color: #f2f2f2;
+    border-collapse: collapse;
+    box-shadow: 0px 0px 3px #f5b3b4;
+    margin-bottom: 5px;
+    margin-right: 5px;
+    clear: both;
+    border-top: 1px solid #FAD8D9;
+    border-right: 1px solid #FAD8D9;
+    border-left: 1px solid #FAD8D9;
+}
+.m_tab td, .m_tab_2 td {
+    border-right: 1px solid #FFFFFF;
+    border-bottom: 1px solid #FFFFFF;
+    padding: 6px 3px;
+}
+</style>
+</html>

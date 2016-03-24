@@ -1,0 +1,136 @@
+﻿<{include file="web_header.html"}>
+<{config_load file="public.conf" section="public"}>
+
+<body>
+<div id="con_wrap">
+  	<div class="input_002">会员餘額統計</div>
+  	<div class="con_menu">
+  	<{if $is_guanliyuan!= 0}>
+	<form action="<{$site_url}>/cash/Blance/index" method="get" id="myFORM" name="myFORM">
+    代理:
+    <select name="agent_id" id="agent_id" onchange="document.getElementById('myFORM').submit()">
+       <option value="0">全部</option>
+       <{foreach from=$agent_up item=v}>
+    <option value="<{$v['id']}>" <{select_check($v['id'],$smarty.get.agent_id)}>><{$v['agent_name']}> 【<{$v['agent_login_user']}>】</option>
+    <{/foreach}>
+    </select>
+    </form>
+<{/if}>
+	</div>
+</div>
+<div style="width:900px;">
+<form action="<{$site_url}>/cash/blance" method="POST" name="myFORM" id="myFORM">
+<table width="100%" border="0" cellpadding="4" cellspacing="1" class="m_tab">
+	<tbody>
+	<tr class="m_title_over_co">
+		<td width="200"><div align="center">游戏额度</div></td>
+		<td width="100"><div align="center">启用</div></td>
+		<td width="100"><div align="center">停用</div></td>
+		<td width="250"><div align="center">更新时间</div></td>
+		<td width="100"><div align="center"></div></td>
+	</tr>
+	<tr class="m_cen even">
+		<td><div align="center">系统额度</div></td>
+		<td><div align="right" class="EnableBalance"><{$blance_on['money']+0}></div></td>
+		<td><div align="right" class="DisableBalance"><{$blance_off['money']+0}></div></td>
+		<td><div align="center" class="UpdateTime"><{$u_date}></div></td>
+		<td>
+		<div align="center">
+		<input type="hidden" class="way" value="cash">
+		<input type="hidden" class="HallID" value="3380448">
+
+		</div>
+		</td>
+	</tr>
+	<tr class="m_cen">
+		<td><div align="center">MG额度</div></td>
+		<td><div align="right" class="EnableBalance"><{$blance_on['mg']+0}></div></td>
+		<td><div align="right" class="DisableBalance"><{$blance_off['mg']+0}></div></td>
+		<td><div align="center" class="UpdateTime"><{$u_date}></div></td>
+		<td>
+		<div align="center">
+		<input type="hidden" class="way" value="cash">
+		<input type="hidden" class="HallID" value="3380448">
+
+		</div>
+		</td>
+	</tr>
+
+	<tr class="m_cen even">
+		<td><div align="center">BBIN额度</div></td>
+		<td><div align="right" class="EnableBalance"><{$blance_on['bbin']+0}></div></td>
+		<td><div align="right" class="DisableBalance"><{$blance_off['bbin']+0}></div></td>
+		<td><div align="center" class="UpdateTime"><{$u_date}></div></td>
+		<td>
+		<div align="center">
+		<input type="hidden" class="way" value="cash">
+		<input type="hidden" class="HallID" value="3380448">
+
+		</div>
+		</td>
+	</tr>
+	<tr class="m_cen">
+		<td><div align="center">AG额度</div></td>
+		<td><div align="right" class="EnableBalance"><{$blance_on['ag']+0}></div></td>
+		<td><div align="right" class="DisableBalance"><{$blance_off['ag']+0}></div></td>
+		<td><div align="center" class="UpdateTime"><{$u_date}></div></td>
+		<td>
+		<div align="center">
+		<input type="hidden" class="way" value="cash">
+		<input type="hidden" class="HallID" value="3380448">
+
+		</div>
+		</td>
+	</tr>
+	<tr class="m_cen even">
+		<td><div align="center">OG额度</div></td>
+		<td><div align="right" class="EnableBalance"><{$blance_on['og']+0}></div></td>
+		<td><div align="right" class="DisableBalance"><{$blance_off['og']+0}></div></td>
+		<td><div align="center" class="UpdateTime"><{$u_date}></div></td>
+		<td>
+		<div align="center">
+		<input type="hidden" class="way" value="cash">
+		<input type="hidden" class="HallID" value="3380448">
+
+		</div>
+		</td>
+	</tr>
+	<tr class="m_cen">
+		<td><div align="center">CT额度</div></td>
+		<td><div align="right" class="EnableBalance"><{$blance_on['ct']+0}></div></td>
+		<td><div align="right" class="DisableBalance"><{$blance_off['ct']+0}></div></td>
+		<td><div align="center" class="UpdateTime"><{$u_date}></div></td>
+		<td>
+		<div align="center">
+		<input type="hidden" class="way" value="cash">
+		<input type="hidden" class="HallID" value="3380448">
+
+		</div>
+		</td>
+	</tr>
+	<tr class="m_cen even">
+		<td><div align="center">LEBO额度</div></td>
+		<td><div align="right" class="EnableBalance"><{$blance_on['lebo']+0}></div></td>
+		<td><div align="right" class="DisableBalance"><{$blance_off['lebo']+0}></div></td>
+		<td><div align="center" class="UpdateTime"><{$u_date}></div></td>
+		<td>
+		<div align="center">
+		<input type="hidden" class="way" value="cash">
+		<input type="hidden" class="HallID" value="3380448">
+		</div>
+		</td>
+	</tr>
+    <tr>
+		<td class="table_bg1" align="right"><div align="center">總計：</div></td>
+		<td class="table_bg1"><div align="right" class="EnableBalance"><{$sum}></div></td>
+		<td class="table_bg1"><div align="right" class="DisableBalance"><{$sums}></div></td>
+		<td class="table_bg1"></td>
+		<td class="table_bg1">
+		</td>
+	</tr>
+
+</tbody></table>
+ </form></div>
+
+
+<{include file="web_footer.html"}>

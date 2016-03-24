@@ -1,0 +1,100 @@
+<title>代理退傭設定</title>
+<{include file="web_header.html"}>
+<body>
+<script type="text/javascript">
+
+$(function(){
+	$("div.con_menu a:nth-child(5)").attr("style","color:red");
+});
+
+</script>
+<script type="text/javascript">
+
+$(function(){
+	$(".vform").Validform({
+		tiptype:2,
+		tipSweep:false
+	});
+})
+
+</script>
+<div id="con_wrap">
+<div class="input_002">代理退傭設定</div>
+<div class="con_menu">
+	<a href="index">退佣统计</a>
+    <a href="<{$site_url}>/cash/cash_agent/agent_serch_list">退佣查询</a>
+	<a href="<{$site_url}>/cash/cash_agent/end_hire_list">期數管理</a>
+	<a href="<{$site_url}>/cash/cash_agent/fee_list">手續費設定</a>
+	<a href="<{$site_url}>/cash/cash_agent/endhire_list" style="color:red">代理退傭設定</a>
+&nbsp;&nbsp;<button name="add" onclick="location.href='<{$site_url}>/cash/cash_agent/show_endhire_config'" class="button_c">新增設定</button>
+</div>
+</div>
+<div class="content">
+	<table width="1024" border="0" cellspacing="0" cellpadding="0" bgcolor="#E3D46E" class="m_tab">
+		<tbody>
+		<tr class="m_title_over_co">
+			<td rowspan="2">自身盈利金額</td>
+			<td rowspan="2">有效會員</td>
+			<td colspan="4">退傭比例</td>
+			<td rowspan="2">自身有效投注</td>
+			<td colspan="4">退水比例</td>
+			<td rowspan="2">功能</td>
+		</tr>
+		<tr class="m_title_over_co">
+			<td>體育 (%)</td>
+			<td>彩票 (%)</td>
+			<td>視訊 (%)</td>
+            <td>電子 (%)</td>
+			<td>體育 (%)</td>
+			<td>彩票 (%)</td>
+			<td>視訊 (%)</td>
+            <td>電子 (%)</td>
+		</tr>
+		<{foreach from=$hire key=i item=v}>
+		<tr class="m_cen <{if $i%2 eq 0}>even<{/if}>">
+			<td><{$v['self_profit']}></td>
+			<td><{$v['effective_user']}></td>
+			<td><{$v['sport_slay_rate']}></td>
+			<td><{$v['lottery_slay_rate']}></td>
+			<td><{$v['video_slay_rate']}></td>
+            <td><{$v['evideo_slay_rate']}></td>
+			<td><{$v['self_effective_bet']}></td>
+			<td><{$v['sport_water_rate']}></td>
+			<td><{$v['lottery_water_rate']}></td>
+			<td><{$v['video_water_rate']}></td>
+            <td><{$v['evideo_water_rate']}></td>
+			<td>
+				<button class="button_d" name="update" onclick="window.location='<{$site_url}>/cash/cash_agent/show_endhire_config?id=<{$v['id']}>'">修改</button>
+				<button class="button_d" onclick="if(confirm('是否要刪除這條記錄?')){window.location='<{$site_url}>/cash/cash_agent/endhire_delete?id=<{$v['id']}>'}else{return false;}">刪除</button>
+			</td>
+		</tr>
+		<{/foreach}>
+</tbody></table>
+</div>
+<div class="content" style="width:500px;">
+	<form action="<{$site_url}>/cash/cash_agent/endhire_edit" id="addForm" name="addForm" method="post">
+	<table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#E3D46E" class="m_tab">
+		<tbody>
+			<tr class="m_title_over_co">
+				<td>有效會員投注金額</td>
+			</tr>
+			<tr class="m_cen">
+				<td onclick="$('#editnum').show();$('#num').hide();">
+					<div id="num"><{if !empty($hire[0]['valid_money'])}><{$hire[0]['valid_money']}><{else}>0<{/if}></div>
+				<div id="editnum" style="display:none;">
+					<input type="text" name="validCust" class="za_text" value="<{if !empty($hire[0]['valid_money'])}><{$hire[0]['valid_money']}><{else}>0<{/if}>">&nbsp;&nbsp;&nbsp;
+					<input type="submit" name="subbtn" value=" 設 定 " class="button_a">
+				</div>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	</form>
+</div>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0" style="clear:both">
+	<tbody><tr>
+		<td align="center" height="50"> 版权所有 建議您以 1024 X 768 以上高彩模式瀏覽本站</td>
+	</tr>
+</tbody></table>
+</body></html>

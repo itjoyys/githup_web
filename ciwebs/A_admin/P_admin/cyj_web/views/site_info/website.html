@@ -1,0 +1,262 @@
+<{include file="info_header.html"}>
+<{config_load file="public.conf" section="public"}>
+<body>
+<script src="<{#js#}>/jquery.min.js"></script>
+<script src="<{#js#}>/jquery.minicolors.js"></script>
+<link rel="stylesheet" href="<{#css#}>/jquery.minicolors.css">
+<script type="text/javascript" src="<{#js#}>/date/laydate.js"></script>
+<script>
+var color;
+function dep_config(title,id,state,sdate,edate,code){
+    $("#code").val(code);
+    $("#id").val(id);
+    $("#state").val(state);
+    $("#sdate").val(sdate);
+    $("#edate").val(edate);
+    $("#title").val(title)
+    easyDialog.open({
+          container : 'delevel',
+          fixed : false
+    });
+}
+function logo_up(id,code,type){
+    $("#codel").val(code);
+    $("#idl").val(id);
+    $("#type").val(type);
+    easyDialog.open({
+          container : 'logo_up',
+          fixed : false
+    });
+}
+
+var indexid = "<{$index_id}>";
+$(document).ready(function(){
+  $("#index_id").val(indexid);
+  $("#index_id").change(function(event) {
+      $("#queryform").submit();
+    });
+})
+
+function view(img,w,h){
+    var html;
+    var img = 'http://127.0.0.1/'+img;
+    html = '<img src="'+img+'" width="'+w+'"><div class="mskeImgBg"></div>';
+    lw = -w/2;
+    $(".mskelayBox").css("margin-left",-w/2);
+    $(".mskelayBox").css("margin-top",-h/2);
+    $("#view_html").html(html);
+    $(".mskelayBox").show();
+}
+var topbarbgcolor;
+
+$(function(){
+  function topbarbgcolor_config(topbarbgcolor){
+   $("#topbarbgcolor").val(topbarbgcolor);
+     $("#topbarbgcolor").minicolors({
+        control: $(this).attr('data-control') || 'hue',
+        defaultValue: $(this).attr('data-defaultValue') || topbarbgcolor,
+        inline: $(this).attr('data-inline') === 'true',
+        letterCase: $(this).attr('data-letterCase') || 'lowercase',
+        opacity: $(this).attr('data-opacity'),
+        position: $(this).attr('data-position') || 'bottom left',
+        change: function(hex, opacity) {
+            if( !hex ) return;
+            if( opacity ) hex += ', ' + opacity;
+            try {
+                console.log(hex);
+            } catch(e) {}
+        },
+        theme: 'bootstrap'
+    });
+}
+topbarbgcolor_config('<{$data['topbarbgcolor']}>');
+})
+
+jQuery(function(){
+   $(".mskeClaose").click(function(){$(".mskeLayBg,.mskelayBox").hide()});
+})
+</script>
+<style type="text/css">
+.de_title{
+    background-color: #081425;
+    height: 30px;
+    line-height: 30px;
+    overflow: hidden;
+    color: #666;
+    padding: 0 10px;
+    font-size: 14px;
+    border-bottom: 1px solid #e5e5e5;
+    background: #f7f7f7;
+    border-radius: 4px 4px 0 0;
+}
+#delevel,#logo_up{
+  border-radius: 4px 4px 0 0;
+  color: #444;
+  border: 3px solid rgba(0,0,0,0);
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+#de_title{
+    font-size: 14px;
+    color: #000;
+    font: bold 9pt/100% Arial, Helvetica, sans-serif;
+    font-weight: 200;
+}
+.de_td{
+      padding: 1px 0;
+      line-height: 34px;
+}
+.de_input{
+   border-color:#ccc;
+   width: 230px;
+}
+input{
+   height: 20px;
+}
+.de_select{
+  float: left;
+  margin-left: 8px;
+}
+.laydate-icon{
+  float: left;
+  margin-left: 8px;
+}
+
+.view{
+  cursor:pointer;
+}
+
+.mskelayBox {
+  margin-top: -251px;
+  margin-left: -294px;
+  position: fixed;
+  left: 50%;
+  top: 40%;
+  border: 7px solid #E2E2E2;
+  z-index: 20;
+  background: #FFF;
+  display: none;
+  _display: none!important;
+}
+.mskeClaose {
+  position: absolute;
+  top: -17px;
+  right: -17px;
+  cursor: pointer;
+}
+.rmsg{
+   color: red;
+   font-family: bold;
+}
+.td{
+  text-align: left;
+  padding-left: 5px;
+}
+.td input[type=text]{
+    width: 250px;
+}
+.minicolors-theme-bootstrap .minicolors-swatch {
+   top: 1px;
+  left: 10px;
+  width: 22px;
+  height: 20px;
+  border-radius: 3px;
+}
+</style>
+<div class="content-box role">
+    <div class="content-box-header">
+        <h3>网站基本信息</h3>
+        <div class="clear"></div>
+    </div>
+    <div class="content-box-content">
+        <div class="default-tab">
+            <form action="website" method="get" name="queryform" id="queryform">
+                <div><{$sites_str}></div>
+            </form>
+            <div class="tab-content default-tab">
+              <form action="website_do" method="post" name="add_form" onsubmit="return checkForm_img()" >
+                <table style="width:550px;">
+                    <thead>
+                    <tr>
+                        <th colspan="2">网站基本信息</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>wap顶部颜色：</td>
+                        <td class="td"><input type="text" id="topbarbgcolor" class="form-control demo" data-control="hue" name="topbarbgcolor" style="width:80px;border-color: #ccc;" value=""><font class="rmsg"></font></td>
+                    </tr>
+					<tr>
+                        <td>wap域名：</td>
+                        <td class="td"><a href="http://<{$data['wap_url']}>" target="_blank"><{$data['wap_url']}></a><font class="rmsg"></font></td>
+                    </tr>
+                    <tr>
+                        <td>全屏动画：</td>
+                        <td class="td">
+                        <label><input type="radio" name="newyear" value="2" <{if $data["newyear"] eq 2}>checked<{/if}> />开启</label>
+                        <label><input type="radio" name="newyear" value="1" <{if $data["newyear"] eq 1}>checked<{/if}> />关闭</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width:120px;">网站名称</td>
+                        <td class="td"><input name="web_name" id="web_name" value="<{$data['web_name']}>" type="text" style="border-color: #ccc;"><font class="rmsg">(必填)</font></td>
+                    </tr>
+                    <tr>
+                        <td>keywords</td>
+                        <td class="td"><input name="keywords" id="keywords" value="<{$data['keywords']}>" type="text" style="border-color: #ccc;"><font class="rmsg">(站点关键词)</font></td>
+                    </tr>
+                    <tr>
+                      <td>description</td>
+                        <td class="td"><input name="description" id="description" value="<{$data['description']}>" type="text" style="border-color: #ccc;"><font class="rmsg">(站点说明)</font></td>
+                    </tr>
+                      <tr>
+                        <td>版权信息：</td>
+                        <td class="td"><input name="copyright" id="copyright" value="<{$data['copy_right']}>" type="text" style="border-color: #ccc;"><font class="rmsg">(必填)</font></td>
+                    </tr>
+                      <tr>
+                        <td>客服QQ：</td>
+                        <td class="td"><input name="qq" id="qq" value="<{$data['qq']}>" type="text" style="border-color: #ccc;"><font class="rmsg">(多个QQ中间用,隔开)</font></td>
+                    </tr>
+                      <tr>
+                        <td>Email：</td>
+                        <td class="td"><input name="email" id="email" value="<{$data['email']}>" type="text" style="border-color: #ccc;"><font class="rmsg">(多个邮箱中间用,隔开)</font></td>
+                    </tr>
+                      <tr>
+                        <td>客服热线：</td>
+                        <td class="td"><input name="tel" id="tel" value="<{$data['tel']}>" type="text" style="border-color: #ccc;"><font class="rmsg">(多个电话中间用,隔开)</font></td>
+                    </tr>
+                      <tr>
+                        <td>易记域名：</td>
+                        <td class="td"><input name="remember" id="remember" value="<{$data['remember']}>" type="text" style="border-color: #ccc;"><font class="rmsg"></font></td>
+                    </tr>
+                            <tr>
+                        <td>在线客服：</td>
+                        <td class="td"><input name="online_service" id="online_service" value="<{$data['online_service']}>" type="text" style="border-color: #ccc;"><font class="rmsg"></font></td>
+                    </tr>
+                      <tr><td colspan="2">
+                      <input type="hidden" value="<{$data['id']}>" name="id">
+                      <input type="hidden" value="<{$data['index_id']}>" name="index_id">
+                      <input type="submit" value="提交" class="botton_a"></td></tr>
+                    </tbody>
+                </table>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script>
+function checkForm_img (){
+   if($("input[name=web_name]").val() == ''){
+      alert('请输入网址标题');
+      return false;
+   }
+
+   if($("input[name=copyright]").val() == ''){
+      alert('请输入版权信息');
+      return false;
+   }
+}
+</script>
+</html>

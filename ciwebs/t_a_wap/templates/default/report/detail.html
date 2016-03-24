@@ -1,0 +1,41 @@
+<ion-view class="m-report" cache-view="false">
+    <ion-nav-bar class="bar bar-header bar-light">
+        <ion-nav-title>{{'Member_LabelBetRecord'|translate}}</ion-nav-title>
+        <ion-nav-buttons side="left"><a class="button button-icon icon ion-ios-arrow-back"  ng-click="historyBack()"></a>
+        </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-content class="has-header" scroll="false">
+        <div class="breadcrumb">{{'Common_LabelAll'|translate}} &gt; {{GameName}}</div>
+        <div class="table-list">
+            <div class="row table-head">
+                <div class="col col-27"><span ng-if="gid==1" ng-bind="'Member_LabelBetNo'|translate"></span> <span
+                        ng-if="gid!=1" ng-bind="'Member_LabelBetDetail'|translate"></span></div>
+                <div class="col">{{'Member_LabelTime'|translate}}</div>
+                <div class="col">{{'Member_LabelBetMoney'|translate}}</div>
+                <div class="col">{{'Member_LabelWinLost'|translate}}<span ng-if="gid==2">({{'Member_LabelBackMoney' | translate}})</span>
+                </div>
+            </div>
+            <ion-content class="table-body table-body-nav">
+                <ion-refresher ng-if="ansycLoaded" on-refresh="rptDetailRefresh()"></ion-refresher>
+                <div ng-if="!ansycLoaded" class="padding text-center">
+                    <ion-spinner></ion-spinner>
+                </div>
+                <div ng-if="ansycLoaded" class="row" ng-repeat="item in detailData"
+                     ng-click="gid==1?gotoBetList(item.BetNo):'return false'">
+                    <div ng-if="gid!=1" class="col col-27 text-left">{{item.GameNo}}<br ng-if="item.GameNo">{{item.BetDetail}}
+                    </div>
+                    <div ng-if="gid==1" class="col underline">{{item.BetNo}}</div>
+                    <div class="col" ng-bind="item.BetDateTime.substr(2)"></div>
+                    <div class="col">{{item.BetMoney}}</div>
+                    <div class="col">
+                        <div><span ng-class="{win:item.WinLoseMoney>0,lose:item.WinLoseMoney<0}">{{item.WinLoseMoney.toFixed(2)}}</span><br
+                                ng-if="gid==2&&item.BackMoney!=null"><span ng-if="gid==2&&item.BackMoney!=null">({{item.BackMoney.toFixed(2)}})</span>
+                        </div>
+                    </div>
+                </div>
+                <ion-infinite-scroll ng-if="moreDataCanBeLoaded" distance="1%" immediate-check="false"
+                                     icon="ion-chevron-down" on-infinite="loadMoreData()"></ion-infinite-scroll>
+            </ion-content>
+        </div>
+    </ion-content>
+</ion-view>

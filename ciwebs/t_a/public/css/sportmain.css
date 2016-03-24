@@ -1,0 +1,896 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-size: 9pt;
+    font-family: Microsoft YaHei, "微软雅黑", sans-serif;
+    min-width: 990px;
+    background: #ffffff;
+}
+
+
+/*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/
+
+::-webkit-scrollbar {
+    width: 4px;
+    height: 5px; 
+}
+
+
+/*定义滚动条轨道 内阴影+圆角*/
+
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 31px rgba(255, 255, 255, 1);
+    border-radius: 3px;
+    background-color: #D2D0D0;
+    cursor:pointer;
+}
+
+
+/*定义滑块 内阴影+圆角*/
+
+::-webkit-scrollbar-thumb {
+    border-radius: 3px;
+    -webkit-box-shadow: inset 0 0 6px rgba(1, 7, 7, 1);
+    background-color: #fff;
+    cursor:pointer;
+}
+
+a:link,
+a:visited {
+    text-decoration: none
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none
+}
+
+.fl_l {
+    float: left
+}
+
+.fl_r {
+    float: right
+}
+
+.none {
+    display: none
+}
+
+.clear {
+    clear: both
+}
+
+.xs {
+    cursor: pointer;
+}
+
+.loading {
+    text-align: center;
+    background: #ffffff;
+}
+
+#load_alpha {
+    background: url(../images/sports/load_alpha.png) 0 0 repeat;
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: block;
+    z-index: 20000; 
+}
+
+.sporttime {
+    color: #fff;
+    width: 230px;
+    margin-top: 25px;
+    text-align: center
+}
+
+.header {
+    background: url(../images/sports/head_bg.jpg);
+    height: 61px;
+    /*overflow: hidden;*/
+    border-bottom: #fff solid 1px
+}
+
+.header .menu ul {
+    margin: 0;
+    padding: 0
+}
+
+.header .menu ul li {
+    font-size: 14px;
+    cursor: pointer;
+    float: left;
+    width: 107px;
+    height: 35px;
+    margin-right: 2px;
+    margin-top: 26px;
+    text-align: center;
+    line-height: 35px;
+    overflow: hidden;
+    font-weight: bold;
+}
+
+.header .menu ul li a {
+    color: #f8c100
+}
+
+.menuover {
+    background: url(../images/sports/img.png) 0 -40px
+}
+
+.menuover_1 {
+    background: url(../images/sports/img.png) no-repeat;
+}
+
+.sportmenu {
+    background: #260707 url(../images/sports/head_nav_bg_ft.gif) repeat-x;
+    height: 60px;
+    color: #fff;
+    line-height: 30px
+}
+
+.sportmenu ul {
+    background: #260707
+}
+
+.sportmenu li {
+    float: left;
+    margin: 0 8px
+}
+
+.left {
+    background: #493721;
+    width: 230px;
+    color: #fff;
+    min-height: 500px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.left_main {
+    margin: 0 auto;
+    width: 216px;
+
+}
+
+.left_cat {
+    background: url(../images/sports/img.png) -128px -168px;
+    width: 186px;
+    height: 34px;
+    line-height: 34px;
+    padding: 0 15px
+}
+
+.left_t {
+    border: #977f62 solid 1px;
+    background: #E3CFAA;
+    border-top: 0;
+    padding: 0
+}
+
+.user_info {
+    margin: 5px auto;
+    line-height: 30px;
+    width: 216px;
+    text-align: center
+}
+
+#ord_menu {
+    width: 216px;
+    background-color: #fef6e4;
+}
+
+.ord_on {
+    color: #3b2d1b;
+    background: url(../images/sports/img.png) no-repeat  -129px -236px;
+}
+
+.ord_btn,
+.ord_on {
+    height: 22px;
+    float: left;
+    width: 99px;
+    font-weight: 700!important;
+    text-align: center;
+    cursor: pointer;
+    overflow: hidden;
+    padding-top: 10px
+}
+
+.ord_btn {
+    color: #e9b567;
+     background: url(../images/sports/img.png) no-repeat  -236px -236px;
+}
+
+.record_btn {
+    color: #e9b567;
+     background: url(../images/sports/img.png) no-repeat  -259px -276px;
+}
+
+.record_btn,
+.record_on {
+    padding-top: 10px;
+    cursor: hand;
+    float: right;
+    width: 117px;
+    height: 22px;
+    font-weight: 700!important;
+    text-align: center;
+    cursor: pointer
+}
+
+.record_on {
+    color: #3b2d1b;
+     background: url(../images/sports/img.png) no-repeat -128px -276px;
+ }
+
+.bet_close {
+    background: url(../images/sports/img.png) no-repeat 0 -305px;
+    height: 10px;
+    width: 15px;
+    margin-top: 5px;
+
+    cursor: pointer;
+    padding-left: 5px;
+}
+.leg_close {
+    background: url(../images/sports/img.png) no-repeat 0 -305px;
+    height: 10px;
+    width: 15px;
+    margin-top: 5px;
+    margin-left: 10px;
+    cursor: pointer;
+    padding-left: 5px;
+}
+#bet_login_out,
+#bet_order {
+    min-height: 100px;
+
+    text-align: center;
+    color: #000;
+    padding-bottom: 3px;
+    
+}
+.order_div_bet_all{
+   /*  max-height: 240px;
+   overflow-y: auto;
+   overflow-x: hidden; */
+}
+#bethistory {
+    min-height: 75px;
+    text-align: center;
+    color: #000;
+    padding-top: 50px;
+    background-color: #e3cfaa
+}
+
+#bet_div,
+#bet_login_out,
+#bet_order {
+    background-color: #F8F1E3;
+}
+
+#bet_order {
+    padding-top: 3px;
+}
+
+#order_div_ {
+    background: url(../images/sports/img.png) no-repeat -128px -211px;
+    height: 20px;
+}
+
+.gq_menu li {
+    height: 2pc;
+    border-bottom: #977f62 solid 1px;
+    line-height: 2pc;
+    color: #333;
+    padding-left: 45px;
+    cursor: pointer
+}
+
+.gq_menu_zq {
+     background: url(../images/sports/img.png) no-repeat  -129px -96px;
+}
+
+.gq_menu_lq {
+    background: url(../images/sports/img.png) no-repeat  -115px -30px;
+}
+
+#real_msg {
+    color: #000000;padding: 5px;
+}
+#legname_data{display: none; position: absolute;z-index: 30000;color: #ffffff;
+ background: #493218;
+ border: #BD9C42 solid 3px; padding: 10px;}
+#legname_data_load div{float: left;width: 230px; line-height: 25px; margin:0px 8px 0px 0px; border-bottom: #F8C100 solid 1px;}
+.legname_sel{
+    background: url(../images/sports/img.png) no-repeat 0px -200px;
+    width: 102px;
+    color: #F8C100;height: 26px; line-height: 26px; text-align: center;}
+.legname{border-bottom: #D39205 solid 2px; height: 30px;margin-bottom: 5px;}
+#right_sport_main {
+    width: 760px;
+    margin: 5px;
+    overflow: auto;
+    z-index: 1000px;
+}
+
+#box_top {
+    background: url(../images/sports/mem_h1_ft.gif) no-repeat 0 0;
+    height: 25px;
+    line-height: 25px;
+    overflow: hidden;
+    padding-left: 15px;
+    width: 730px;
+    color: #fff;
+}
+
+.box_top_r {
+    background: url(../images/sports/mem_h1_ft.gif) no-repeat right top;
+    width: 100px;
+    height: 27px;
+}
+
+#box_mid {
+    border: #BD9C42 solid 2px;
+    border-top: 0px;
+    bottom: 0px;
+    width: 741px;
+    background-color: #D7D7C1;
+}
+
+#right {
+    min-width: 500px;
+}
+
+.datatop {
+    color: #ffffff;
+    height: 30px;
+    line-height: 30px;
+    background: #86715c;
+    width: 100%;
+}
+
+.tableref {
+    width: 34px;
+    height: 26px;
+    line-height: 26px;
+    background: url(../images/sports/img.png) no-repeat -56px -115px;
+    padding-left: 30px;
+    color: #F9C100;
+    font-family: Tahoma;
+    font-weight: bold;
+}
+
+.tablerefon {
+    width: 34px;
+    height: 26px;
+    line-height: 26px;
+    background: url(../images/sports/mem_refresh_S_on.gif);
+    padding-left: 30px;
+    color: #F9C100;
+}
+
+#legselect {
+    width: 99px;
+    height: 26px;
+    line-height: 26px;
+    text-align: center;
+    color: #F9C100;
+    margin-left: 3px;
+    background: url(../images/sports/img.png) no-repeat -114px 0px;
+}
+
+#arepk,
+#legpage {
+    border: #ffffff solid 1px;
+    font-family: Microsoft YaHei, "微软雅黑", sans-serif;
+    background: #FCF9CE;
+}
+
+.game {
+    width: 100%;
+    clear: both;
+    font-size: 12px;
+    border-spacing: 1px;
+    border-color: grey;
+}
+
+.game td {
+    height: 25px;
+    line-height: 25px;
+}
+
+.game th,
+.more th {
+    color: #000;
+    background-color: #F1F1F1;
+    white-space: nowrap;
+    font-weight: normal;
+    padding: 2px 2px 1px;
+    line-height: 20px;
+}
+
+.b_hline {
+    background-color: #FCF9CE;
+    padding-top: 3px;
+}
+
+.time {
+    width: 65px;
+}
+
+.time_re {
+    width: 70px;
+}
+
+.team {}
+
+.num {
+    width: 7%;
+}
+
+.h_oe {
+    white-space: nowrap;
+}
+
+
+/*单双*/
+
+.h_ou {
+    white-space: nowrap;
+}
+
+
+/*全全场 - 大小*/
+
+.h_r {
+    white-space: nowrap;
+}
+
+
+/*全场 - 让球*/
+
+.h_1x2 {
+    padding: 0px 5px;
+}
+
+
+/*独赢*/
+
+.game td {
+    padding: 2px;
+    cursor: pointer;
+}
+
+.game td a {
+    font-weight: bold;
+    color: #C00;
+    font-family: Arial, Helvetica, SimSun, sans-serif;
+}
+
+.ratio {
+    float: right;
+}
+
+.b_cen {
+    background-color: #FFF;
+    text-align: center;
+    white-space: nowrap;
+}
+
+
+/*table style*/
+
+.b_foot {
+    font-size: 11px;
+    text-align: center;
+}
+
+.mem tr,
+.more tr {
+    font-family: "Arial";
+}
+
+.b_rig {
+    background-color: #FFF;
+    text-align: right;
+    white-space: nowrap;
+    /*解決賠率斷行*/
+}
+
+.b_lef {
+    background-color: #FFF;
+    text-align: left;
+}
+
+
+/*============賠率間距==============*/
+
+
+/**/
+
+.con {
+    padding-right: 0px;
+    float: left;
+    padding-left: 3px;
+}
+
+.ratio {
+    padding-left: 3px;
+    width: 33px;
+}
+
+
+/*R.B lst tr-color*/
+
+.b_1st {
+    background-color: #f0f1b5;
+    text-align: center;
+    width: 35px;
+}
+
+.b_1stR {
+    background-color: #f0f1b5;
+    text-align: right;
+    white-space: nowrap;
+    /*解決賠率斷行*/
+}
+
+
+/*1x2 pr td-color*/
+
+.b_pradio {
+    color: #C00;
+    background-color: #FFC;
+    font-weight: bold;
+}
+
+
+/*D*/
+
+.b_radio {
+    color: #060;
+    background-color: #e4f0f3;
+    font-weight: bold;
+}
+
+
+/*pr*/
+
+.za_dot {
+    height: 12px;
+    width: 12px;
+    margin-bottom: 2px;
+}
+
+.team_name {
+    line-height: 19px;
+    background-color: #FFF;
+    text-align: left;
+    color: #493721;
+}
+#usernameimg{
+    background: url(../images/sports/img.png) no-repeat 0px -115px;
+    height: 24px;
+    width: 30px; 
+    margin-left: 10px;
+}
+#user_money {
+    
+    line-height: 24px;
+}
+.user_money{ margin-top: 25px;}
+#user_money_ref {
+    background: url(../images/sports/img.png) no-repeat -32px -115px;
+    height: 16px;
+    width: 16px;
+    margin: 5px 0px 0px 5px;
+    cursor: pointer;
+}
+
+#transaction{ line-height: 25px;-moz-border-radius: 5px;   
+    -webkit-border-radius: 5px;   
+    border-radius:5px; background: #260707;padding: 0px 8px;}
+/*touzhu*/
+
+.order_div_bet {
+    border-top: #937B52 solid 2px;
+    margin-top: 0px;
+}
+
+.order_div {
+    border: #937B52 solid 1px;
+    margin: 0px 2px;
+    background-color: #E1D6C2;
+    text-align: left;
+}
+
+.order_div_leg_name {
+    background: #CFC0A1;
+    line-height: 18px;
+    text-align: left;
+    padding: 5px 5px;
+    font-weight: bold;
+}
+
+.order_div_info {
+    border: #937B52 solid 2px;
+    background: #ffffff;
+    margin-bottom: 2px;
+}
+
+.order_div_money {
+    border-top: #937B52 solid 1px;
+    margin-top: 3px;
+}
+
+.order_div_pk,
+.order_div_Mster_Guest,
+.order_div_info,
+.order_div_money {
+    padding: 3px 5px;
+}
+
+#bet_money {
+    border: #937B52 solid 1px;
+    width: 130px;
+}
+
+.qx_btn,
+.qr_btn {
+    background: url(../images/sports/img.png) no-repeat 0px -240px;
+    width: 87px;
+    height: 26px;
+    margin-top: 5px;
+    line-height: 26px;
+    text-align: center;
+    color: #ffffff
+}
+
+.qr_btn {
+    background: url(../images/sports/img.png) no-repeat 0px -200px;
+    width: 102px;
+    color: #F8C100;
+}
+
+.tiTimer {
+    float: right;
+    margin-top: 1px;
+    width: 45px;
+    text-align: right;
+    background: url(../images/sports/img.png) no-repeat scroll 0px -279px rgba(0, 0, 0, 0);
+}
+
+#bet_time {
+    line-height: 25px;
+}
+
+.redcard0{  float: left; height: 13px; width: 12px; margin:7px 0px 0px 3px;}
+.redcard1{  float: left; height: 13px; width: 12px; margin:7px 0px 0px 3px; background: url(../images/sports/1.gif) no-repeat;}
+.redcard2{  float: left; height: 13px; width: 12px; margin:7px 0px 0px 3px; background: url(../images/sports/2.gif) no-repeat;}
+.redcard3{  float: left; height: 13px; width: 12px; margin:7px 0px 0px 3px; background: url(../images/sports/3.gif) no-repeat;}
+.redcard4{  float: left; height: 13px; width: 12px; margin:7px 0px 0px 3px; background: url(../images/sports/4.gif) no-repeat;}
+.redcard5{  float: left; height: 13px; width: 12px; margin:7px 0px 0px 3px; background: url(../images/sports/5.gif) no-repeat;}
+.redcard6{  float: left; height: 13px; width: 12px; margin:7px 0px 0px 3px; background: url(../images/sports/6.gif) no-repeat;}
+.redcard7{  float: left; height: 13px; width: 12px; margin:7px 0px 0px 3px; background: url(../images/sports/7.gif) no-repeat;}
+.redcard8{  float: left; height: 13px; width: 12px; margin:7px 0px 0px 3px; background: url(../images/sports/8.gif) no-repeat;}
+.redcard9{  float: left; height: 13px; width: 12px; margin:7px 0px 0px 3px; background: url(../images/sports/9.gif) no-repeat;}
+
+/*touzhuend*/
+
+.mt3 {
+    margin-top: 3px
+}
+
+.mt5 {
+    margin-top: 5px
+}
+
+.mt8 {
+    margin-top: 8px
+}
+
+.bg1 {
+    background: #FFff00
+}
+
+.bg2 {
+    background: #FF6;
+}
+.bg3 {
+    background: #ffffff;
+}
+.bg4 {
+    background: #F6F4F4;
+}
+.bg5{background: #EFEFEF;}
+.c1 {
+    color: #C00;
+}
+
+.c2 {
+    color: #f8c100;
+}
+
+.b {
+    font-weight: bold;
+}
+.ml3{margin-left: 3px;}
+/*足球小图标*/
+.img_fb{
+        background: rgba(0, 0, 0, 0) url("../images/sports/img.png") no-repeat scroll 0px -465px;
+        cursor: pointer;
+        height: 16px;
+        margin: 6px 7px 0 5px;
+        width: 16px;
+        display: block;
+        float: left;
+    }
+    
+/*篮球小图标*/
+.img_bk{
+        background: rgba(0, 0, 0, 0) url("../images/sports/img.png") no-repeat scroll 0px -415px;
+        cursor: pointer;
+        height: 17px;
+        margin: 6px 7px 0 5px;
+        width: 17px;
+        display: block;
+        float: left;
+    }
+
+/*网球小图标*/
+.img_tn{
+        background: rgba(0, 0, 0, 0) url("../images/sports/img.png") no-repeat scroll 0px -543px;
+        cursor: pointer;
+        height: 17px;
+        margin: 6px 7px 0 5px;
+        width: 17px;
+        display: block;
+        float: left;
+    }
+/*排球小图标*/
+.img_vb{
+        background: rgba(0, 0, 0, 0) url("../images/sports/img.png") no-repeat scroll 0px -590px;
+        cursor: pointer;
+        height: 17px;
+        margin: 6px 7px 0 5px;
+        width: 17px;
+        display: block;
+        float: left;
+    }
+/*棒球小图标*/
+.img_bb{
+        background: rgba(0, 0, 0, 0) url("../images/sports/img.png") no-repeat scroll 0px -437px;
+        cursor: pointer;
+        height: 17px;
+        margin: 6px 7px 0 5px;
+        width: 17px;
+        display: block;
+        float: left;
+    }
+/*信息弹框样式*/
+#news_title{
+    background: #493218 none repeat scroll 0 0;
+    border-bottom: 1px solid #333333;
+    color: #ffffff;
+
+}
+.easyDialog_title {
+    background: #f7f7f7 none repeat scroll 0 0;
+    border-bottom: 1px solid #e5e5e5;
+    border-radius: 4px 4px 0 0;
+    color: #666;
+    font-size: 14px;
+    height: 30px;
+    line-height: 30px;
+    margin: 0;
+    overflow: hidden;
+    padding: 0 10px;
+}
+#morenews {
+background: #ffffff none repeat scroll 0 0;
+color: #333333;
+}
+.data {
+    clear: both;
+    height: 400px;
+    overflow-y: auto;
+    padding: 5px;
+}
+.easyDialog_wrapper {
+    border: 3px solid rgba(0, 0, 0, 0);
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    color: #444;
+    display: none;
+    font-family: "Microsoft yahei",Arial;
+    width: 100%;
+}
+/*帮助样式*/
+#topMenu{width: 980px;position:relative;margin-top: 0px;top:1px;z-index: 99999;}
+#back {	position: absolute;top: 0px; right:0;height:26px;}
+#mose a ,#back a {display: block;height: 26px;text-decoration: none;color: #FFF;line-height: 26px;}
+#back li {display: block;font-size: 12px;clear: right;height: 26px;line-height: 26px;line-height:20px;float:left;width: 70px;}
+#back li.exit a:hover {	background-position: 0 -25px;	color: #303030;}
+#back li.help {	white-space: nowrap;	}
+#back li.rul {position: absolute;no-repeat;margin-left: 90px;}
+#back li.exit a{	width: 54px;	background: url("../images/head_home.gif") no-repeat;	text-align: center;}
+#back li.qa {position: absolute; no-repeat;margin-left: 142px;}
+#back li.est {position: absolute;	margin-left: -115px;	height: 20px;	width: 80px;}
+#back li.aa {position: absolute;	margin-left: -260px;		background-repeat: no-repeat;	height: 24px;	width: 130px;}
+#back li.bb {position: absolute;	margin-left: -390px;	background-repeat: no-repeat;	height: 24px;	width: 130px;}
+#back .est2 {
+	white-space: nowrap;
+	color: #FFFFFF;
+	margin-left: -75px;
+}
+#back .time {
+	margin-left: -45px;
+	margin-top: -18px;
+}
+#back span {float: right;text-decoration: none;color: #FFF;width: 0.1em;padding: 0 12px 0 0; top: 0px;position: absolute;height: 24px;}
+div#back a:link, div#back a:visited { color:#FFF;}
+
+#back .help a {
+background: url("../images/sports/head_qa.gif") no-repeat;
+padding-left: 24px;
+}
+
+#topMenu .info {
+	font-size:12px;
+	white-space: nowrap;
+	position: absolute;
+	right: -15px;
+	top: 0;
+	visibility: visible;
+	z-index: 3;
+	text-align:left;
+	display:none;
+	
+}
+ul{list-style: none;}
+
+
+#mose a:link, #mose a:visited {color:#000}
+#mose a:hover {color:#CC6600}
+
+#mose li {width: 85px;height: 23px;line-height: 23px;position: relative;text-align:center}
+#mose li.help_on a{width:70px;background:url("../images/sports/head_qa.gif") no-repeat 0 -25px;text-align: center;}
+
+
+#mose li.msg a, #mose li.roul a, #mose li.wap a , #mose li.uImfo a ,#mose li.odd a {
+width: 112px;
+height: 23px;
+padding-left: 12px;
+text-align: left;
+}
+#mose li.msg a {
+background: url("../images/sports/head_qa_sub.gif") no-repeat;
+}
+#mose li.roul a, #mose li.uImfo a ,#mose li.roul a,#mose li.odd a{
+background: url("../images/sports/head_qa_sub.gif") no-repeat 0 -70px;
+}
+
+#mose li.odd a {
+background: url("../images/sports/head_qa_sub.gif") no-repeat 0 -140px;
+width: 112px;
+height: 24px;
+padding-left: 12px;
+text-align: left;
+}
+#mose li.msg a:hover {
+background-position: 0 -23px;
+}
+#mose li.roul a:hover, #mose li.wap a:hover, #mose li.uImfo a:hover {
+background-position: 0 -93px;
+}
+#mose li.odd a:hover {
+background-position: 0 -164px;
+}
+
+#mose .msg a , #mose .roul a , #mose .wap a
+{ width:112px; height:23px; padding-left:12px; text-align: left;}

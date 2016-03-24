@@ -1,0 +1,156 @@
+<{config_load file="public.conf" section="public"}>
+<!doctype html>
+<!--[if lt IE 7 ]> <html class="no-js ie6 ie" > <![endif]-->
+<!--[if IE 7 ]>    <html class="no-js ie7 ie" > <![endif]-->
+<!--[if IE 8 ]>    <html class="no-js ie8 ie" > <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html class="no-js">
+<!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>_HistoryLayout</title>
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="<{#tcss#}>/main_<{$config_css}>.css?v=2015101">
+<link rel="stylesheet" href="<{#tcss#}>/datepicker.css">
+<!--[if IE 6]>
+<script src="/assets/dist/scripts/lib/ie6/DD_belatedPNG_0.0.8a.js?v=2015101"></script>
+<script>
+    /* EXAMPLE */
+    DD_belatedPNG.fix('.icon');
+    /* string argument can be any CSS selector */
+    /* .png_bg example is unnecessary */
+    /* change it to what suits you! */
+</script>
+<![endif]-->
+<script>
+	var ry_lottery_config = {
+		assets : '/assets/dist/{0}?v=2015101',
+		currency : '￥',
+		locale : 'zh_cn',
+		officalDomain : '<{$url}>'
+	};
+</script>
+
+<script src="<{#tjs#}>/main.js?v=2015101"></script>
+
+</head>
+<body>
+
+
+	<div class="tab tab-dialog">
+
+		<form class="search-form mb10"
+			action="/index.php/lottery/History/index" method="POST" id="q-form">
+			<input type="text" value="<{date('Y-m-d')}>" class="input j-datepicker mr10"
+				id='date' name="date" readonly="readonly" /> <span class="select-menu"
+				id="q-id"> <span class="q-val"></span> <input type="hidden"
+				id="q-hidden-val" name="lotteryId" value="" />
+				<ul class="select-options">
+
+					<{foreach from=$fc_games item=v key=k}>
+					<li><a href="" data-id="<{$v['type']}>"><{$v['name']}></a></li>
+					<{/foreach}>
+				</ul> <span class="triangle"></span>
+			</span>
+			<button class="button" id="q">查询</button>
+			<span id="loading" class="red hide"> 正在加载中... </span>
+		</form>
+		<div id="history">
+
+
+
+
+			<table class="table table-bordered">
+				<thead>
+					<tr>
+
+						<th>期数</th>
+						<th>开奖时间</th>
+
+						<th>开奖号码</th>
+
+						<th width="30">总和</th>
+
+						<th width="30">特码单双</th>
+
+						<th width="30">特码大小</th>
+
+						<th width="30">合数单双</th>
+
+						<th width="30">总分单双</th>
+
+						<th width="30">总分大小</th>
+
+						<th>波色</th>
+					</tr>
+				</thead>
+				<tbody>
+					<{foreach from=$data item=v key=k}>
+					<tr>
+						<td class="td-hd"><{$v['qishu']}></td>
+						<td><{$v['time']}></td>
+						<td>
+							<table class="table-noborder">
+								<tbody>
+									<tr>
+										<{foreach from=$v['hm'] item=vv key=kk}>
+										<td><span class="icon ball-style b-<{func_set_style($vv)}>"><{$vv}></span>
+										</td> <{/foreach}>
+									</tr>
+
+									<tr>
+										<{foreach from=$v['hm'] item=vv key=kk}>
+										<td><{func_shenxiao($vv)}></td> <{/foreach}>
+									</tr>
+								</tbody>
+							</table>
+						</td>
+						<td><{$v['hm'][0]+$v['hm'][1]+$v['hm'][2]+$v['hm'][3]+$v['hm'][4]+$v['hm'][5]}></td>
+						<td><{func_tm_danshuang($v['hm'][6])}></td>
+						<td><{func_tm_daxiao($v['hm'][6])}></td>
+						<td><{func_heshu_danshuang($v['hm'][6])}></td>
+						<td><{func_tm_danshuang($v['hm'][0]+$v['hm'][1]+$v['hm'][2]+$v['hm'][3]+$v['hm'][4]+$v['hm'][5])}></td>
+						<td><{func_zongfen_daxiao($v['hm'][0]+$v['hm'][1]+$v['hm'][2]+$v['hm'][3]+$v['hm'][4]+$v['hm'][5])}></td>
+						<td><{func_tm_sebo($v['hm'][6])}></td>
+
+					</tr>
+					<{/foreach}>
+
+				</tbody>
+			</table>
+
+
+
+
+
+		</div>
+
+		<input type="hidden" id="hid-empty-data" value="暂无数据" />
+	</div>
+
+
+
+
+
+	<script>
+		require([ '<{#tjs#}>/hindex.js' ], function(Account) {
+			new Account();
+		})
+	</script>
+
+
+	<script>
+		require([ '<{#tjs#}>/history.js' ], function(App) {
+
+			new App({
+				lotteryId : 'liuhecai'
+			});
+
+		});
+	</script>
+
+
+</body>
+</html>

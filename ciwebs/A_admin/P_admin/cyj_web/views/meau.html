@@ -1,0 +1,128 @@
+﻿<{config_load file="public.conf" section="public"}>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>left</title>
+<link  rel="stylesheet"  media="all"  href="<{#css#}>/styleCss.css">
+<link  rel="stylesheet"  media="all"  href="<{#css#}>/reset.css">
+<script  src="<{#js#}>/jquery-1.7.min.js"  type="text/javascript"></script>
+<script  type="text/javascript">
+var newscount = "0";
+var lxvar = "1";
+var langx = "zh-tw";
+var toflag=false;
+//弹出框公告程序
+newscount = 0;	//如果想开启弹出窗，只需注释本行
+$(document).ready(function () {
+	setInterval("RefTime()",1000);
+
+		// Set the click
+		var menuobj=$("#nav_main_box ul li span a");
+		var menuSub=$(".nav_second_wrap");
+		var oldMenuIndex=0;
+		menuobj.click(function () { 
+			$(this).parents().find("a").removeClass('menu_hover');
+			$(this).parents().find("a").attr('style','');
+			$(this).addClass('menu_hover');
+			$(this).attr('style','background-position:0 0');
+			$(menuSub[oldMenuIndex]).hide();
+			var index=$(this).parent().index();
+			var obj=$(menuSub[index]);
+			var click_i = 0;
+			if(index==5 && $(menuSub[5]).find("a").length == 6){
+                            click_i = 5;
+			}
+                        toflag = true;
+			obj.show();
+			if(toflag){
+                            obj.find("a")[click_i].click();
+                            $(obj.find("a")[click_i]).css("color","#ff0000");
+                            oldMenuIndex=index;
+			}
+		});
+                var l = menuSub.length;
+                menuobj[l-1].click();
+                
+		$(".nav_second_wrap a").click(function(){
+			$(this).parent().find("a").css('color','#3B2D1B');
+			$(this).css('color','#ff0000');
+			});
+});
+
+//设置美东时间
+var mddate="<{$mtime}>";
+var dd2=new Date(mddate);
+function RefTime()
+{
+
+     dd2.setSeconds(dd2.getSeconds()+1);
+	var myYears = ( dd2.getYear() < 1900 ) ? ( 1900 + dd2.getYear() ) : dd2.getYear();
+	$("#vlock").html('美東時間'+'：'+myYears+'年'+fixNum(dd2.getMonth()+1)+'月'+fixNum(dd2.getDate())+'日 '+time(dd2));
+	if(dd2.getSeconds()%30 == 0){
+	   $.ajax({
+         url: "./user_online",
+         type: "GET",
+         dataType: "json",
+         success: function(data){
+             $("#user_num").html(data);
+         }
+     });
+	}
+}
+function time(vtime){
+    var s='';
+    var d=vtime!=null?new Date(vtime):new Date();
+    with(d){
+        s=fixNum(getHours())+':'+fixNum(getMinutes())+':'+fixNum(getSeconds())
+    }
+    return(s);
+}
+function fixNum(num){
+    return parseInt(num)<10?'0'+num:num;
+}
+</script>
+</head>
+<body>
+<div  id="wrap_box">
+	<div  id="header_wrap">
+		<div  id="logo_box">
+	    	<img  src="<{#images#}>/<{$smarty.session.site_id}>logo.png" style="margin-top:5px;" alt="logo">
+		</div>
+		<div  id="nav_sub_box">
+		    <span style="color: rgb(163, 208, 245);">在线会员:<font style="font-size:14px;" id="user_num">0</font></span> |
+	    	<span  id="vlock"></span> |
+	    	<span>登陸帳戶：<{$login_name_1}> &nbsp;|&nbsp;原始帳戶：<{$login_name}> </span> |
+		    <a  href="set_pwd"  target="admin_func"  style="">修改密碼</a> |
+	     	<a  href="login_out"  target="_top"  style="">安全退出</a>
+		</div>
+		<div  id="nav_main_box">
+			<ul>
+				<li>
+                   <{if $a}><span><a  href="#">账号管理</a></span> <{/if}>
+				   <{if $b}><span><a  href="#">即時注單</a></span><{/if}>
+				   <{if $c}><span><a  href="#">報表查詢</a></span><{/if}>
+				   <{if $d}><span><a  href="#">賽果/赔率</a></span><{/if}>
+				   <{if $e}><span><a  href="#">现金系统</a></span><{/if}>
+                   <{if $f}><span><a  href="#">其它</a></span><{/if}>
+
+				</li>
+			</ul>
+		</div>
+	</div>
+
+<{foreach from=$data item=i}>
+	<div  class="nav_second_wrap" style="display: none;">
+	   <{foreach from=$i item=v}>
+	    <a href="<{$v['url']}>" <{if $v['type'] == '_'}>target="_blank"<{else}>target="admin_func"<{/if}>  style=""><{$v['name']}></a>
+		
+	   <{/foreach}>
+	</div>
+<{/foreach}>
+  <diiv  id="con_wrap">
+
+	</div>
+</div>
+
+
+</body>
+</html>

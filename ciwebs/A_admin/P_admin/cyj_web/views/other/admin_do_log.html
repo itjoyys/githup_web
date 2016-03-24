@@ -1,0 +1,55 @@
+<title>操作記錄</title>
+<{include file="web_header.html"}>
+<body>
+<script>
+    //分页跳转
+  window.onload=function(){
+    document.getElementById("page").onchange=function(){
+      document.getElementById('myFORM').submit()
+    }
+  }
+</script>
+<div id="con_wrap">
+<div class="input_002">操作記錄</div>
+<div class="con_menu">
+<form id="myFORM" action="<{$site_url}>/other/log_manage/admin_do_log" method="get" name="FrmData">
+  <a href="<{$site_url}>/other/log_manage/member_login_log" >会员登陆</a>
+      <a href="<{$site_url}>/other/log_manage/admin_login_log" >管理登陆</a>
+      <a href="<{$site_url}>/other/log_manage/admin_do_log" style="color: rgb(255, 0, 0);">操作日志</a>
+       <a href="<{$site_url}>/other/log_manage/user_login_audit">自动稽核</a>
+       <br>日期：
+  <input type="text" id="date_start" value="<{$start_date}>" name="start_date"  onClick="WdatePicker()"  class="za_text Wdate">
+  --
+  <input type="text" id="date_end"  value="<{$end_date}>" name="end_date" onClick="WdatePicker()" class="za_text Wdate">
+  &nbsp;&nbsp;操作者：
+  <input name="username" id="username" value="<{$smarty.get.username}>" type="text" class="za_text">
+  <input type="SUBMIT" value="確定" class="za_button">
+  &nbsp;<{$page}>
+</form></div>
+</div>
+<div class="content">
+  <table width="100%" border="0" cellspacing="0" cellpadding="0" class="m_tab" >
+      <tbody>
+      <tr class="m_title_over_co">
+          <td width="40">ID</td>
+        <td width="150">日期</td>
+        <td width="40">操作者</td>
+        <td>記錄</td>
+      </tr>
+
+   <{foreach from=$sys_log key=i item=v}>
+      <tr class="m_cen <{if $i%2 == 0}>even<{/if}>" align="left" >
+          <td align="center"><{$v['log_id']}></td>
+        <td align="center"><{$v['log_time']}></td>
+        <td align="center"><{$v['login_name']}></td>
+        <td align="center" nowrap=""><{$v['log_info']}>(<font style="color:red;"><{$v['log_ip']}><font>)</td>
+      </tr>
+   <{/foreach}>
+
+  </tbody></table>
+</div>
+
+
+
+<!-- 公共尾部 -->
+<{include file="web_footer.html"}>

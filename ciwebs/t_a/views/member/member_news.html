@@ -1,0 +1,58 @@
+<{config_load file="public.conf" section="public"}>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+<link rel="stylesheet" href="<{#mem_css#}>/index_main.css" />
+</head>
+<body  style="BACKGROUND: url(<{#mem_images#}>/../private/content_bg.jpg) repeat-y left top;" >
+<div id="MAMain" style="width:767px">
+    <div id="MACenter-content">
+        <div id="MACenterContent">
+            <div id="MNav">
+                <{if $curr == 'sp'}>
+                    <span class="mbtn">体育公告</span>
+                <{else}>
+                    <a target="k_memr" class="mbtn" href="/index.php/member/news/games_news?curr=sp">体育公告</a>
+                <{/if}>
+                <div class="navSeparate"></div>
+                <{if $curr == 'tv'}>
+                    <span class="mbtn">视讯公告</span>
+                <{else}>
+                    <a target="k_memr" class="mbtn" href="/index.php/member/news/games_news?curr=tv">视讯公告</a>
+                <{/if}>
+                <div class="navSeparate"></div>
+                <{if $curr == 'fc'}>
+                    <span class="mbtn">彩票公告</span>
+                <{else}>
+                    <a target="k_memr" class="mbtn" href="/index.php/member/news/games_news?curr=fc">彩票公告</a>
+                <{/if}>
+            </div>
+            <div id="MMainData">
+                <h2 class="MSubTitle"><{$news_title}></h2>
+                <table class="MMain" border="1">
+                    <thead>
+                        <tr>
+                            <th style="width: 87px;" nowrap="">日期</th>
+                            <th nowrap="">内容</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <{if !empty($data)}>
+                        <{foreach from=$data item=v}>
+                            <tr class="MColor1" align="center">
+                                <td class=""><{$v.notice_date}></td>
+                                <td class="MContent"><{$v.notice_content}></td>
+                            </tr>
+                        <{/foreach}>
+                        <{else}>
+                            <tr><td colspan="2" align="center">暂无公告讯息</td></tr>
+                        <{/if}>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

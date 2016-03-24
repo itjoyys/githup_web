@@ -1,0 +1,122 @@
+<title>代理退傭設定</title>
+<{include file="web_header.html"}>
+<body>
+<div id="con_wrap">
+<div class="input_002">代理退傭設定</div>
+<div class="con_menu">
+	<a href="index">退佣统计</a>
+    <a href="<{$site_url}>/cash/cash_agent/agent_serch_list">退佣查询</a>
+	<a href="<{$site_url}>/cash/cash_agent/end_hire_list">期數管理</a>
+	<a href="<{$site_url}>/cash/cash_agent/fee_list">手續費設定</a>
+	<a href="<{$site_url}>/cash/cash_agent/endhire_list" style="color:red">代理退傭設定</a>
+&nbsp;&nbsp;<a href="javascript:history.go(-1)">返回到列表</a>
+</div>
+</div>
+<div class="content" style="width:500px;float:none;">
+	<form name="addForm" action="<{$site_url}>/cash/cash_agent/edit_endhire_config" method="post" class="vform">
+	<table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#E3D46E" class="m_tab" style="border:0px;">
+	<input type="hidden" name='id' value="<{$hire['id']}>">
+		<tbody><tr class="m_title_over_co">
+			<td colspan="2">新增代理退傭設定</td>
+		</tr>
+		<tr class="m_cen even">
+			<td class="table_bg1" align="right" width="120px">自身盈利金額：</td>
+			<td style="text-align:left;">
+				<div style="float:left"><input type="text" name="self_profit" value="<{$hire['self_profit']}>" datatype="s" nullmsg="請填寫盈利金額" class="za_text">&nbsp;以上</div>
+				<div class="Validform_checktip" style="float:left"></div>
+			</td>
+		</tr>
+		<tr class="m_cen">
+			<td class="table_bg1" align="right">有效會員：</td>
+			<td style="text-align:left;">
+				<div style="float:left"><input type="text" name="effective_user" value="<{$hire['effective_user']}>" datatype="s" nullmsg="請填寫有效會員数" class="za_text">&nbsp;以上</div>
+				<div class="Validform_checktip" style="float:left"></div>
+			</td>
+		</tr>
+		<tr  class="m_cen even">
+			<td class="table_bg1" align="right">體育退傭比例：</td>
+			<td style="text-align:left;">
+				<div style="float:left"><input type="text" name="sport_slay_rate" value="<{$hire['sport_slay_rate']}>" datatype="s" nullmsg="請設定退傭比例" class="za_text">&nbsp;%&nbsp;&nbsp;&nbsp;</div>
+				<div class="Validform_checktip" style="float:left"></div>
+			</td>
+		</tr>
+		<tr class="m_cen">
+			<td class="table_bg1" align="right">彩票退傭比例：</td>
+			<td style="text-align:left;">
+				<div style="float:left"><input type="text" name="lottery_slay_rate" value="<{$hire['lottery_slay_rate']}>" datatype="s" nullmsg="請設定退傭比例" class="za_text">&nbsp;%&nbsp;&nbsp;&nbsp;</div>
+				<div class="Validform_checktip" style="float:left"></div>
+			</td>
+		</tr>
+		<tr class="m_cen even">
+			<td class="table_bg1" align="right">視訊退傭比例：</td>
+			<td style="text-align:left;">
+				<div style="float:left"><input type="text" name="video_slay_rate" value="<{$hire['video_slay_rate']}>" datatype="s" nullmsg="請設定退傭比例" class="za_text">&nbsp;%&nbsp;&nbsp;&nbsp;</div>
+				<div class="Validform_checktip" style="float:left"></div>
+			</td>
+		</tr>
+        <tr class="m_cen">
+			<td class="table_bg1" align="right">電子退傭比例：</td>
+			<td style="text-align:left;">
+				<div style="float:left"><input type="text" name="evideo_slay_rate" value="<{$hire['evideo_slay_rate']}>" datatype="s" nullmsg="請設定退傭比例" class="za_text">&nbsp;%&nbsp;&nbsp;&nbsp;</div>
+				<div class="Validform_checktip" style="float:left"></div>
+			</td>
+		</tr>
+		<tr class="m_cen even">
+			<td class="table_bg1" align="right">自身有效投注：</td>
+			<td style="text-align:left;">
+				<div style="float:left"><input type="text" name="self_effective_bet" value="<{$hire['self_effective_bet']}>" datatype="s" nullmsg="請輸入投注金額" class="za_text">&nbsp;以上</div>
+				<div class="Validform_checktip" style="float:left"></div>
+			</td>
+		</tr>
+		<tr class="m_cen">
+			<td class="table_bg1" align="right">體育退水比例：</td>
+			<td style="text-align:left;">
+				<div style="float:left"><input type="text" name="sport_water_rate" value="<{$hire['sport_water_rate']}>" datatype="s" nullmsg="請設定退水比例" class="za_text">&nbsp;%&nbsp;&nbsp;&nbsp;</div>
+				<div class="Validform_checktip" style="float:left"></div>
+			</td>
+		</tr>
+		<tr class="m_cen even">
+			<td class="table_bg1" align="right">彩票退水比例：</td>
+			<td style="text-align:left;">
+				<div style="float:left"><input type="text" name="lottery_water_rate" value="<{$hire['lottery_water_rate']}>" datatype="s" nullmsg="請設定退水比例" class="za_text">&nbsp;%&nbsp;&nbsp;&nbsp;</div>
+				<div class="Validform_checktip" style="float:left"></div>
+			</td>
+		</tr>
+		<tr class="m_cen">
+			<td class="table_bg1" align="right">視訊退水比例：</td>
+			<td style="text-align:left;">
+				<div style="float:left"><input type="text" name="video_water_rate" value="<{$hire['video_water_rate']}>" datatype="s" nullmsg="請設定退水比例" class="za_text">&nbsp;%&nbsp;&nbsp;&nbsp;</div>
+				<div class="Validform_checktip" style="float:left"></div>
+			</td>
+		</tr>
+        <tr class="m_cen even">
+			<td class="table_bg1" align="right">電子退水比例：</td>
+			<td style="text-align:left;">
+				<div style="float:left"><input type="text" name="evideo_water_rate" value="<{$hire['evideo_water_rate']}>" datatype="s" nullmsg="請設定退水比例" class="za_text">&nbsp;%&nbsp;&nbsp;&nbsp;</div>
+				<div class="Validform_checktip" style="float:left"></div>
+			</td>
+		</tr>
+		<tr class="m_cen">
+			<td colspan="2" class="table_bg1" align="center">
+				<input type="submit" name="subbtn" class="button_a" value=" 確 定 ">&nbsp;&nbsp;&nbsp;&nbsp;
+				<input type="reset" name="cls" value=" 重 置 " class="button_a">
+			</td>
+		</tr>
+	</tbody></table>
+	</form>
+</div>
+<script>
+
+$(".vform").Validform({
+	tiptype:2,
+	showAllError:true
+});
+</script>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" style="clear:both">
+	<tbody><tr>
+		<td align="center" height="50"> 版权所有 建議您以 1024 X 768 以上高彩模式瀏覽本站</td>
+	</tr>
+</tbody>
+</table>
+</body>
+</html>

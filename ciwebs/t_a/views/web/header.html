@@ -1,0 +1,280 @@
+<{config_load file="public.conf" section="public"}>
+<!DOCTYPE html>
+<html class="zh-cn">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="shortcut icon" href="<{#images#}>/new/favicon.ico" type="image/vnd.microsoft.icon">
+<title>PK娱乐城演示站A</title>
+<meta http-equiv="Cache-Control" content="max-age=864000">
+<meta name="keywords" content="PK娱乐城演示站A">
+<meta name="description" content="PK娱乐城演示站A">
+<link href="<{#css#}>/common.css" type="text/css" rel="stylesheet">
+<link href="<{#css#}>/aomenxiwandc.css" type="text/css" rel="stylesheet">
+<link href="<{#css#}>/colorbox.css" type="text/css" rel="stylesheet">
+<link href="<{#css#}>/standard.css" rel="stylesheet" type="text/css">
+<!-- 引入主要JS文件 -->
+<script src="<{#js#}>/jquery-1.7.2.min.js"></script>
+<script src="<{#js#}>/jquery-ui-1.8.21.custom.min.js"></script>
+<script src="<{#js#}>/top.js"></script>
+<script src="<{#js#}>/float.js"></script>
+<script src="<{#js#}>/jquery.cookie.js"></script>
+<script type="text/javascript" src="<{#js#}>/sport/easydialog.min.js"></script>
+<link href="<{#css#}>/jquery-ui-1.9.2.custom.css" type="text/css" rel="stylesheet">
+<script src="<{#js#}>/jquery-1.11.1.min.js"></script>
+<script src="<{#js#}>/unslider.min.js"></script>
+<script src="<{#js#}>/tab.js"></script>
+</head>
+<body>
+
+<div class="body-wrap">
+<!--头部start-->
+<div class="w-golab wns-header-fixed clearfix h407">
+<div class="w-golab wns-header ">
+<div class="w1000 mc clearfix rel">
+
+<div class="wns-collect w-golab tr ">
+<span id="vlock" style="float:left;margin-left:50px;"></span>
+<script>
+var mddate = "<{$timemd}>";
+var dd2 = new Date(mddate);
+$(document).ready(function () {
+setInterval("RefTime()", 1000);
+})
+</script>
+<a href="../../index.php/index/wapview" target="_blank" data-color="yellow|red" class="js-article-color">
+手机投注
+</a>|<a href="http://pkbbb.pkbet.org" target="_blank" data-color="yellow|red" class="js-article-color">
+pk娱乐城站点B
+</a>|<a href="http://pkccc.pkbet.org" target="_blank" data-color="red|yellow" class="js-article-color">
+pk娱乐城站点C
+</a><span> | </span>
+<a onclick="getPager('-','iword','5');" href="javascript:void(0);">代理加盟</a>
+
+<span> | </span>
+
+<a href="javascript:void(0)" onclick="alert('您的浏览器不支持此功能，请手动收藏')">加入收藏</a>
+
+<span> | </span>
+
+
+
+<a href="javascript:void(0);" class="ele-lang-option ele-lang-zh-cn" target="mem_index" title="简体中文">
+<img src="<{#images#}>/new/china.png">
+</a>
+
+<a href="javascript:void(0);" class="ele-lang-option ele-lang-zh-tw" target="mem_index" title="繁体中文">
+<img src="<{#images#}>/new/aomen.png">
+</a>
+
+<a href="javascript:void(0);" class="ele-lang-option ele-lang-en" target="mem_index" title="English">
+<img src="<{#images#}>/new/usa.png">
+</a>
+
+</div>
+<!-- <div class="l wns-logo">
+<object type="application/x-shockwave-flash" id="logoId" data="<{#images#}>/new/logo.png" width="336" height="101" style="visibility: visible;"><param name="wmode" value="Transparent"></object>
+</div> -->
+<div class="l wns-logo">
+<!-- <object type="application/x-shockwave-flash" id="logoId" data="<{#images#}>/new/logo.png" width="336" height="101" style="visibility: visible;"><param name="wmode" value="Transparent"></object> -->
+<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,24,0" width="336" height="101" id="logoId">
+<param name="movie" value="<{#images#}>/new/logo.png">
+<param name="quality" value="high">
+<param name="flashVars" value="">
+<param name="wmode" value="transparent">
+<param name="menu" value="false">
+<embed flashvars="" src="<{#images#}>/new/logo.png" wmode="transparent" quality="high" menu="false" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" width="336" height="101">
+</object>
+</div>
+<div class="wns-navigation rel  r zindex1">
+<ul class="header-nav-ul">
+<li id="LS-first">
+<a <{if $csstype eq 1 }>class="home hover"<{/if}> href="/" target="_top"  title="首页" id="index">
+<span>首页</span>
+<span class="en">HOME</span>
+</a>
+</li>
+<li id="LS-LiveMain" class="LS-LiveMain">
+<a <{if $csstype eq 3 }>class="home hover"<{/if}>    href="javascript:void(0);" onclick="getPager('-','livetop','m');">
+<span>真人视讯</span>
+<span class="en">CASINO</span>
+</a>
+</li>
+<li id="LS-Game" class="LS-Game">
+<a <{if $csstype eq 7 }>class="home hover"<{/if}> href="javascript:void(0);" onclick="getPager('-','egame','m');">
+<span>MG电子</span>
+<span class="en">GAME</span>
+</a>
+</li>
+<li id="LS-sports">
+<a <{if $csstype eq 8 }>class="home hover"<{/if}> href="javascript:void(0);" onclick="getPager('-','sports','m');">
+<span>体育赛事</span>
+<span class="en">SPORT</span>
+</a>
+</li>
+
+<li id="LS-Lottery">
+<a <{if $csstype eq 2 }>class="home hover"<{/if}> href="javascript:void(0);" onclick="getPager('-','lottery');">
+<span>彩票游戏</span>
+<span class="en">LOTTERY</span>
+</a>
+</li>
+<li id="LS-pre">
+<i class="youhui-icon"></i>
+<a <{if $csstype eq 4 }>class="home hover"<{/if}> href="javascript:void(0);" onclick="getPager('-','youhui');">
+<span>优惠活动</span>
+<span class="en">PROMOTION</span>
+</a>
+</li>
+
+<li id="LS-service">
+<a href="javascript:void(0);" onclick="OnlineService('<{$con_data['online_service']}>');" class="csLink" target="_blank">
+<span>在线客服</span>
+<span class="en">SERVICE</span>
+</a>
+</li>
+</ul>
+			    <div id="L-Sub">
+
+<div class="LS-LiveMain">
+<span class="subbg-left"></span>
+<{foreach from=$xl key=i item=v}>
+<a href="javascript:;" title="<{$v['up']}>视讯" class="" <{if empty($uid)}>onclick="alert('您尚未登录，请先登录再进行游戏!')"<{else}>onclick="opengeme('/video/games/login.php?g_type=<{$v['low']}>')"<{/if}> ><img src="<{#images#}>/new/xl_<{$v['low']}>.png"></a>
+<{/foreach}>
+<span class="subbg-right"></span>
+</div>
+<div class="LS-Game" id="menugame">
+<span class="subbg-left"></span>
+<{foreach from=$xl2 key=i item=v}>
+<a href="javascript:;" title="<{$v['up']}>电子" class="" onclick="getPager('-','egame','<{$v['up']}>');">
+<img src="<{#images#}>/new/xl_dz_<{$v['low']}>.png">
+</a>
+<{/foreach}>
+<span class="subbg-right"></span>
+</div>
+</div>
+<style>
+#L-Sub{position: relative;z-index: 9999; clear: both;}
+#L-Sub div {display:none;position: absolute;height: 32px;line-height: 32px;padding: 0 8px; z-index:100;}
+#L-Sub div a { float: left;display: block;background: url(<{#images#}>/sub.gif) 32px repeat-x;padding: 0 4px;color:#FFFFE4;
+
+text-decoration: none;font-size: 12px;}
+#L-Sub div a:hover {color:#F2E1B0;}
+#L-Sub span {display: block;float: left; width: 7px;height: 32px;background: #B07622;}
+#L-Sub span.subbg-left {background: url(<{#images#}>/sub.gif) no-repeat;}
+#L-Sub span.subbg-right { background: url(<{#images#}>/sub.gif) no-repeat left bottom;}
+</style>
+
+
+<script language="javascript">
+$("li.LS-LiveMain,li.LS-Game,li.LS-sports").subTabs();
+toggleColor('.textGlitter', ['#FFFF00', '#FF0000'], 300);
+</script>
+</div>
+
+</div>
+<div class="w1000 mc rel h191 " id="myImg">
+<!-- <{if $csstype eq 3 }>
+<img src="<{#images#}>/new/LiveMain.jpg" class="abs-c-banner" id="page-banner">
+<{/if}>
+<{if $csstype eq 7 }>
+<img src="<{#images#}>/new/Game.jpg" class="abs-c-banner" id="page-banner">
+<{/if}>
+<{if $csstype eq 2 }>
+<img src="<{#images#}>/new/Lottery.jpg" class="abs-c-banner" id="page-banner">
+<{/if}>
+<{if $csstype eq 8 }>
+<img src="<{#images#}>/new/sports.jpg" class="abs-c-banner" id="page-banner">
+<{/if}>
+<{if $csstype eq 4 }>
+<img src="<{#images#}>/new/MemberExclusiveII.jpg" class="abs-c-banner" id="page-banner">
+<{/if}> -->
+</div>
+
+<div class="w-golbal wns-announce-bg" style="margin-top:8px;">
+<div class="w1000 mc rel clearfix">
+<marquee id="msgNews" class="wns-announce-marquee" scrollamount="3" scrolldelay="10" direction="left" nowarp="" onmouseover="this.stop();" onmouseout="this.start();">
+<nobr><a class="msg-col" onclick="notice_data();" href="javascript:void(0)"><{$notice}></a></nobr>
+</marquee>
+</div>
+</div>
+
+</div>
+
+</div>
+<div class="w-golab wns-common-main-bg-fixed">
+<div class="w-golab  mc wns-common-main-bg">
+<div class="mc w1000 rel wns-common-content-bg">
+
+
+<div class="wns-common-content-top rel">
+
+<div class="wns-login-panel  mc">
+<{if !empty($uid)}>
+<p class="tl memberinfo">
+账号：<span><{$smarty.session.username}></span>
+系统余额：<span id="lebo_money"><{$money}></span>&nbsp;RMB&nbsp;
+
+<a href="javascript:void(0)" onclick="openHelp('/Member/index_main.php?url=4')">会员中心</a>
+<span>| </span>
+<a href="javascript:;" onclick="openHelp('/Member/index_main.php?url=1')">线上存款</a>
+<span>| </span>
+<a href="javascript:;" onclick="openHelp('/Member/index_main.php?url=2')">线上取款</a>
+<span>| </span>
+<a href="javascript:void(0)" onclick="openHelp('/Member/index_main.php?url=3')">额度转换</a>
+<span>| </span>
+<a></a><a href="javascript:void(0)" onclick="openHelp('/Member/index_main.php?url=8')">未读讯息(<font class="jq"><{$count}></font>)</a>
+<span>| </span>
+<a href="javascript:void(0)" onclick="javascript:window.location.href='<{$site_url}>/index.php/webcenter/login/login_out'" class="jb-login-out">登出</a>
+</p>
+<{else}>
+
+
+
+
+
+<form name="LoginForm" action="" method="post" onsubmit="return inputCheck();">
+<input type="hidden" name="uid2" value="guest" />
+<input type="hidden" name="SS" value="" />
+<input type="hidden" name="SR" value="" />
+<input type="hidden" name="TS" value="" />
+<ul class="wns-login-box-ul clearfix text-justify">
+<li>
+<input type="text" name="username" id="username" autocommplete="on" class="wns-inputbg" value="账号" onfocus="if(this.value=='账号')this.value=''" onblur="if(this.value =='') this.value ='账号'" tabindex="1">
+</li>
+<li>
+<input type="password" name="password" id="password" tabindex="2" value="xx@x@x.x" onfocus="if(this.value=='xx@x@x.x')this.value=''" onblur="if(this.value =='') this.value ='xx@x@x.x'" class="wns-inputbg wns-input-pwd">
+</li>
+<li>
+
+<input type="text" tabindex="3" size="4" autocommplete="off" value="验证码" onfocus="getYzm();if(this.value=='验证码')this.value=''" onblur="if(this.value =='') this.value ='验证码'" class="wns-inputbg wns-verifycode" name="rmNum" id="rmNum">
+<img name="checkNum_img" id="vImg" class="abs wns-verifycode-img" alt="点击更换" onclick="getYzm();" src="<{#images#}>/new/yzm.gif">
+</li>
+<li>
+<input onclick="aLeftForm1Sub()" type="button" name="Submit" class="wns-submit" style="background: url(<{#images#}>/new/login_btn2.png) no-repeat left center;">
+</li>
+<li>
+<a onclick="getPager('-','zhuce');" href="javascript:void(0);" class="wns-register l">
+注册
+</a>
+</li>
+<li>
+<a href="javascript:void(0);" onclick="alert('忘记密码，请联系客服！');" class="wns-forgetpwd l">忘记密码
+</a>
+</li>
+<li style="width:170px;">
+<a href="javascript:void(0);" onclick="OnlineService('<{$con_data['online_service']}>');" class="r">
+<img src="<{#images#}>/new/online_service.png" class="rel" style="top:-6px;">
+</a>
+</li>
+<li class="justifyFix" style="height:0px;"></li>
+</ul>
+
+</form>
+<{/if}>
+
+</div>
+
+</div>
+</div>
+</div>
+</div>

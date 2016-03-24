@@ -1,0 +1,90 @@
+<{include file="web_header.html"}>
+<{config_load file="public.conf" section="public"}>
+<link rel="stylesheet" type="text/css" href="<{#css#}>/mem_body_result.css">
+<link rel="stylesheet" type="text/css" href="<{#css#}>/mem_body_ft.css">
+<script language="JavaScript" src="../../../js/calendar.js"></script>
+<div  id="con_wrap">
+   <div  class="input_002">冠军管理</div>
+   <div  class="con_menu">
+     <form  name="form1" method="GET" action="" id="myFORM">
+       <a href="<{$site_url}>/result/Sp_result/football" target="_self">足球</a>
+      <a href="<{$site_url}>/result/Sp_result/basketball" target="_self">籃球</a>
+      <a href="<{$site_url}>/result/Sp_result/tennis" target="_self">網球</a>
+      <a href="<{$site_url}>/result/Sp_result/volleyball" target="_self">排球</a>
+      <a href="<{$site_url}>/result/Sp_result/basebal" target="_self">棒球</a>
+      <a href="<{$site_url}>/result/Sp_result/champion" target="_self" style="color:red">冠军</a>
+
+           <select name="type" id="type">
+            <option value="2" <{if $_GET['type'] eq 2 }> 'selected'<{else}>''<{/if}>>金融项目</option>
+            <option value="1" <{if $_GET['type'] eq 1 }> 'selected'<{else}>''<{/if}>>冠军项目</option>
+            <option value="3" <{if $_GET['type'] eq 3 }> 'selected'<{else}>''<{/if}>>全部项目</option>
+          </select></td>
+          <td width="154">日期：
+            <input name="date" type="text" id="date" value="<{$date}>"  onClick="WdatePicker()" size="10" maxlength="10" readonly="readonly" class="Wdate" /></td>
+            <td width="246">联赛名：
+              <input name="x_title" type="text" id="x_title" size="20" value="<{$_GET["x_title"]}>">
+              <label></label></td>
+
+          <input name="find" type="submit" class="za_button" id="find" value="查找"/>
+            每页记录数：
+  <select name="page_num" id="page_num" onchange="document.getElementById('myFORM').submit()" class="za_select">
+    <option value="20" <?=select_check(20,$perNumber)?>>20条</option>
+    <option value="30" <?=select_check(30,$perNumber)?>>30条</option>
+    <option value="50" <?=select_check(50,$perNumber)?>>50条</option>
+    <option value="100" <?=select_check(100,$perNumber)?>>100条</option>
+  </select>
+  &nbsp;頁數：
+ <select id="page" name="page" class="za_select">
+  <!-- <?php
+
+    for($i=1;$i<=$totalPage;$i++){
+      if($i==$thisPage){
+        echo  '<option value="'.$i.'" selected>'.$i.'</option>';
+      }else{
+        echo  '<option value="'.$i.'">'.$i.'</option>';
+      }
+    }
+   ?> -->
+  </select> <{$totalPage }> 頁&nbsp;<br>
+      </form>
+  </div>
+  </div>
+<table width="100%" border="0" cellpadding="3" cellspacing="1" bgcolor="#CCCCCC" style="float:left">
+
+  <tr>
+    <td height="24" nowrap bgcolor="#FFFFFF">
+      <table width="100%" border="1" bgcolor="#FFFFFF" bordercolor="#96B697" cellspacing="0" cellpadding="0" style="border-collapse: collapse; color: #225d9c;" class="m_tab" width="100%" >
+      <tr class="m_title_over_co" align="center" >
+        <td width="36" ><strong>编号</strong></td>
+        <td width="359"><strong>赛事项目名称</strong></td>
+        <td width="36" ><strong>数量</strong></td>
+        <td width="156" ><strong>封盘时间</strong></td>
+        <td width="256" ><strong>比赛结果</strong></td>
+        <td width="156" ><strong>添加时间</strong></td><!--
+        <td width="106" ><strong>操作</strong></td>-->
+        </tr>
+
+<{foreach from=$result item=rows}>
+	        <tr align="center"  class="m_cen" onMouseOver="this.style.backgroundColor='#f6e9e9'" onMouseOut="this.style.backgroundColor='#ffffff'" style="background-color:#FFFFFF;">
+	          <td height="40" ><{$rows["x_id"]}></td>
+              <td><strong><{$rows["match_name"]}></strong>
+			        <span style="color:#FF6600"><{$rows["x_title"]}></span></td>
+              <td><{intval($rows["num"])}></td>
+              <td><{$rows["match_coverdate"]}></td>
+              <td>
+              <{if $rows["x_result"] eq NULL}>
+              暂无结果
+              <{else}>
+      			  <font style="color:#FF0000"><{$rows["x_result"]}></font>
+      			  <{/if}>
+			       </td>
+              <td><{$rows["add_time"]}></td>
+              <!-- <td><a href="set_result.php?id=<{$rows["x_id"]}>">设置结果</a></td> -->
+        </tr>
+<{/foreach}>
+    </table></td>
+  </tr>
+
+</table>
+</body>
+</html>

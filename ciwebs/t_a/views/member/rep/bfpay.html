@@ -1,0 +1,24 @@
+<html>
+<head>
+<title>To bfpay Page</title>
+</head>
+
+<body onLoad="document.yeepay.submit();">
+<form name='yeepay' action="<{$data['form_url']}>" method='post'>
+<input type='hidden' name='p1_md'                          value="<{$data['p1_md']}>">
+<input type='hidden' name='p2_xn'                        value="<{$data['p2_xn']}>">
+<input type='hidden' name='p3_bn'                        value="<{$data['p3_bn']}>">
+<input type='hidden' name='p4_pd'                          value="<{$data['p4_pd']}>">
+<input type='hidden' name='p5_name'                          value="<{$data['p5_name']}>">
+<input type='hidden' name='p6_amount'                          value="<{$data['p6_amount']}>">
+<input type='hidden' name='p7_cr'                         value="<{$data['p7_cr']}>">
+<input type='hidden' name='p8_ex'                        value="<{$data['p8_ex']}>">
+<input type='hidden' name='p9_url'                          value="<{$data['p9_url']}>">
+<input type='hidden' name='p10_reply'                          value="<{$data['p10_reply']}>">
+<input type='hidden' name='p11_mode'                                 value="<{$data['p11_mode']}>">
+<input type='hidden' name='p12_ver'                        value="<{$data['p12_ver']}>">
+<input type='hidden' name='sign'     value="<{$data['sign']}>">
+<input type='hidden' name='act'     value='bfpay'>
+</form>
+</body>
+</html>

@@ -1,0 +1,200 @@
+<{include file="web_header.html"}>
+<style>
+	.m_rig td{text-align: center;}
+</style>
+<script>
+	window.onload=function(){
+		document.getElementById("ttype").onchange=function(){
+		
+			window.location.href=this.value;
+		}
+		document.getElementById("page").onchange=function(){
+   
+      	document.getElementById('myFORM').submit();
+      }
+	}
+</script>
+<body>
+
+<div id="con_wrap">
+<div class="input_002"><{$user['username']}> - 体育下注記錄</div>
+<div class="con_menu">
+<form id="myFORM" action="<{$site_url}>/account/Member_Index/bet_record?atype=<{$smarty.get.atype}>&gid=<{$smarty.get.gid}>&did=<{$smarty.get.did}>" method="get" name="FrmData">
+	<input type="hidden" name="uid" value="<{$smarty.get.uid}>" />
+	&nbsp;&nbsp;下注類型
+	    <select onchange="document.getElementById('myFORM').submit()" name="stype">
+	<{foreach from=get_set_type() item=v key=k}>
+	<option value="<{$k}>" <{select_check($k,$smarty.get.stype)}> ><{$v}> </option>
+	<{/foreach}>
+</select>
+	&nbsp;&nbsp;日期：
+	<input type="text" name="start_date" value="<{$smarty.get.start_date}>" id="start_date"  size="10" maxlength="11" class="za_text Wdate" onClick="WdatePicker()">
+	--
+	<input type="text" name="end_date" value="<{$smarty.get.end_date}>" id="end_date" size="10" maxlength="10" class="za_text Wdate" onClick="WdatePicker()">
+	    每页记录数：
+  <select name="page_num" id="page_num" onchange="document.getElementById('myFORM').submit()" class="za_select">
+	<{foreach from=get_page_num() item=v key=k}>
+	<option value="<{$k}>" <{select_check($k,$smarty.get.page_num)}> ><{$v}> </option>
+	<{/foreach}>
+  </select>
+  &nbsp;頁數：
+ <select id="page" name="page" class="za_select"> 
+		<{assign var=$i value=0}>
+       <{section name=total loop=$totalPage}>
+       <option value="<{$i=$i+1}><{$i}>"<{select_check($i,$smarty.get.page)}> ><{$i}></option> 
+       <{/section}>
+  </select> <{$totalPage}> 頁&nbsp;
+	<input type="SUBMIT" value="確定" class="za_button">
+	重新整理：
+		<select name="reload" id="reload" onchange="SetTimeCashList(this.value);">
+			<option value="-1">不自動更新</option>
+	<{foreach from=get_reload() item=v key=k}>
+	<option value="<{$k}>" <{select_check($k,$smarty.get.reload)}> ><{$v}> </option>
+	<{/foreach}>
+		</select>
+		<span id="lblTime" style="color:red"></span>
+		<input type="hidden" name="gid" value="<{$smarty.get.gid}>">
+		<input type="hidden" name="did" value="<{$smarty.get.did}>">
+</form></div>
+</div>
+<div class="content">
+
+	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="m_tab" bgcolor="#3B2D1B">
+			<tbody>
+
+			<tr class="m_title">
+				<td width="5%">序号</td>
+				<td width="10%">用户名</td>
+				<td width="20%">時間</td>
+				<td width="10%">球賽種類</td>
+				<td width="30%">內容</td>
+				<td width="10%">金額</td>
+				<td width="10%">退水</td>
+				<td width="10%">結果</td>
+			</tr>
+			<{if !is_array($record)}>
+			<tr class="m_rig" style="display:;">
+				<td height="70" align="center" colspan="8"><font color="#3B2D1B">暫無數據。</font></td>
+			</tr>
+			<{/if}>
+			<{foreach from=$record item=val key=key}>  
+				<tr class="m_rig" align="left">
+					<td align="center"><{$val['bid']}></td>
+					<td align="center"><{$val['username']}></td>
+					<td align="center"><{$val['bet_time']}></td>
+					<td align="center"><font color="<{if $val["ball_sort"]=="足球滚球"}>#0066FF<{else}>#336600<{/if}>">
+                                    <b><{$val["ball_sort"]}></b>
+                                </font><br/>
+                                <font color="#0000cc"><{$val["match_id"]}></font><br>
+                                <{$val["number"]}><Br>
+                                <{$val['match_coverdate']}>
+                    </td>
+					<td align="center">
+					<{if $val['ball_sort']=='串关'}>
+						<{foreach from=$val['chuanlian'] item=rows_cg key=k}>
+						  <font color="#CC0000"><{$rows_cg['match_name']}></font><br>
+	                    <{$rows_cg['master_guest']}><br>
+	                    <font color="#FF0033"><{$rows_cg['bet_info']}></font><br>
+	                    <{if $rows_cg['MB_Inball'] !=null && $rows_cg['TG_Inball'] !=null}> 
+	                    [<{$rows_cg['MB_Inball']}>:<{$rows_cg['TG_Inball']}>]<br>
+	                    <{/if}>
+	                    <div style="height:1px; width:99%; background:#ccc; overflow:hidden;">
+	                    </div>
+						<{/foreach}>
+					<{else}>
+					
+	            <font color="#CC0000"><{$val["match_name"]}></font><br><{$val['master_guest']}>
+                                <font style="color:#FF0033">
+                                   <{if $val["point_column"]==="match_jr" || $val["point_column"]==="match_gj"}> 
+                                   <{$rows["bet_info"]}>
+                                   <{else}> 
+                                   <{str_replace("-","<br>",$val["bet_info"])}>
+                                   <{/if}>
+                                </font>
+                                <{if $val["status"]!=0 && $val["status"]!=3 &&  $val["status"]!=6 && $val["status"]!=7}>
+                                    <{if $val["MB_Inball"]!=''}>
+                                        [<{$val["MB_Inball"]}>:<{$val["TG_Inball"]}>]
+                                    <{/if}>	
+                                    <br/><{$val["login_ip"]}>
+                            	<{/if}>
+					<{/if}>
+					</td>
+					<td><{$val['bet_money']}></td>
+					<td><{$val['fs']}></td>
+					<td><{ifstatus($val['status'])}><br> <{if $val['status']==0}>0.00<{else}><{$val['win']}><{/if}></td>
+			</tr>
+			<{/foreach}>
+			<tr class="m_rig" style="background-Color:#EBF0F1;">
+				<td colspan="5" align="right">&nbsp;小計：</td>
+				<td><{$money_x}></td>
+				<td><{$water_x}></td>
+				<td><{$result_x}></td>
+			</tr>
+			<tr class="m_rig" style="background-Color:#EBF0F1;">
+				<td colspan="5" align="right">&nbsp;总計：</td>
+				<td><{$money_all}></td>
+				<td><{$water_all}></td>
+				<td><{$result_all}></td>
+			</tr>
+		
+	</tbody></table>
+</div>
+
+<script language="javascript">
+var vtimeCashList = 0;
+var timeGoCashList = null;
+function SetTimeCashList(otime)
+{
+    vtimeCashList=otime;
+    if(vtimeCashList>0)
+    {
+        window.clearTimeout(timeGoCashList);
+        document.getElementById("lblTime").innerHTML='還有'+vtimeCashList+'秒更新';  
+        if(otime!=0)
+        {
+            timeGoCashList=setInterval("timeCashList("+otime+")",1000);
+        }
+    }
+    else 
+    {
+        document.getElementById("lblTime").innerHTML="";
+        window.clearTimeout(timeGoCashList);
+    }
+}
+function timeCashList(otime)
+{
+    if(vtimeCashList<=0)
+    {
+        document.getElementById("lblTime").innerHTML=""; 
+        window.clearTimeout(timeGoCashList); 
+    }
+    else 
+    {
+        vtimeCashList=vtimeCashList-1;
+        if(vtimeCashList<=0)
+        {        	   	
+        	getdata();            
+            vtimeCashList=otime;
+        }
+        document.getElementById("lblTime").innerHTML='還有'+vtimeCashList+'秒更新';
+        
+    }
+}
+function getdata(page){
+	form_obj = document.getElementById("myFORM");
+	// form_obj.action = "bet_record.php";
+	form_obj.submit();
+}
+var reload = $("#reload").val();
+$(document).ready(function(){
+	if(reload>0){
+		SetTimeCashList(reload);
+	}
+	$("#reload").val(reload);
+	// $("#page_num").val('20');
+	// $("#page").val('0');	
+});
+</script>
+<!-- 公共尾部 -->
+
+ <{include file="web_footer.html"}>

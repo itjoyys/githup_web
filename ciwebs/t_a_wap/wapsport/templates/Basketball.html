@@ -1,0 +1,39 @@
+ <ion-item ng-controller='Basketball' ><ion-view view-title="篮球 {{ data.matchdate }} {{ data.oddtype }}">
+  <ion-content >
+   <ion-refresher on-refresh="sportset()"></ion-refresher>  
+    <ion-list>
+       
+      <ion-item >
+        <div ng-click=show()>{{title}}</div>
+      </ion-item>
+    <ion-item>
+          <button  ng-click="toggleMenu()" class="button button-calm icon-left ion-android-settings sportset" height="10">{{ data.matchdate }} / {{ data.oddtype }}  </button>
+         
+    </ion-item>
+    </ion-list>
+    <div  ng-show='menuState.show'>
+        <ion-radio ng-repeat="item in matchdate"
+                   ng-value="item.text" 
+                   ng-change="sportset()"
+                   ng-model="data.matchdate">
+          {{ item.text }}
+        </ion-radio>
+        <ion-radio ng-repeat="item in oddtype"
+                   ng-value="item.text"
+                   ng-model="data.oddtype"
+                   ng-change="sportset()"
+                   name="server-side">
+          {{ item.text }}
+        </ion-radio>
+        
+    </div>
+     <hr>
+    <ion-list>
+       
+      <ion-item ng-repeat="match in matchdata" href="#/app/matchnamelist/{{theurl}}/{{match}}/{{data.oddtype}}">
+        <div>{{match}}</div>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>
+</ion-item>

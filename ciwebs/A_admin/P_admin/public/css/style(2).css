@@ -1,0 +1,39 @@
+table.tablesorter {
+	font-size: 12px;
+	background-color: #4D4D4D;
+	width: 99%;
+	
+}
+table.tablesorter th {
+	
+	padding: 5px;
+	
+}
+table.tablesorter td {
+	
+	padding: 5px;
+}
+table.tablesorter .even {
+	background-color: #3D3D3D;
+}
+table.tablesorter .odd {
+	background-color: #6E6E6E;
+}
+table.tablesorter .header {
+	background-image: url("https://baoying188.jf-game.com/js/tablesorter/themes/green/bg.png");
+	background-repeat: no-repeat;
+	
+	
+	
+	
+	
+	height: auto;
+}
+table.tablesorter .headerSortUp {
+	background-image: url("https://baoying188.jf-game.com/js/tablesorter/themes/green/asc.png");
+	background-repeat: no-repeat;
+}
+table.tablesorter .headerSortDown {
+	background-image: url("https://baoying188.jf-game.com/js/tablesorter/themes/green/desc.png");
+	background-repeat: no-repeat;
+}

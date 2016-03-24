@@ -1,0 +1,296 @@
+<title><{$name}>即時赔率</title>
+<{include file="web_header.html"}>
+<body>
+
+<script type="text/javascript">
+var indexid = "<{$index_id}>";
+$(document).ready(function(){
+  $("#index_id").val(indexid);
+})
+
+$(function(){
+    $("#index_id").change(function(event) {
+      $("#myFORM").submit();
+    });
+  })
+</script>
+
+
+
+<script type="text/javascript">
+var type = "<{$type}>";
+var pankou = "<{$pankou}>";
+$(document).ready(function(){
+    $(".addinput").click(function(){
+       var ol_odds = $(this).text();
+       ol_odds = ol_odds.replace(/^\s+|\s+$/g,"");
+       var old_odds = $(this).attr("states");
+       var type_id = $(this).attr("htype");
+       var editId =  $(this).attr("id");
+       var input_name = $(this).attr("iname");
+       $("#oddse").val(ol_odds);
+       $("#old_odds").val(old_odds);
+       $("#type_id").val(type_id);
+       $("#fctype").val(type);
+       $("#editPankou").val(pankou);
+       $("#id").val(editId);
+       $("#input_name").val(input_name);
+        easyDialog.open({
+            container : 'currency_box'
+        });
+    })
+  $("#temppid").val(type);
+  $("#temppid").change(function(event) {
+      $("#myFORM").submit();
+  });
+  $("#mypankou").change(function(event) {
+      $("#myFORM").submit();
+  });
+})
+</script>
+<style type="text/css">
+  .addinput{
+    cursor:pointer;
+    background:#BFEFDB;
+  }
+</style>
+<div  id="con_wrap">
+<div class="input_002"><{$name}>即時赔率</div>
+<div class="con_menu">
+<form  name="myFORM"  id="myFORM"  action="<{$site_url}>/result/Odds_set2/index_fc"  method="get">
+<{$sites_str}>
+    <select class="za_select" name="type" id="temppid" onchange="document.getElementById('myFROM').submit">
+        <option value="">请选择彩票类型</option>
+        <option value="liuhecai">六合彩</option>
+        <option value="fc_3d">福彩3D</option>
+        <option <{if $type eq 6}>selected="selected"<{/if}>  value="pl_3">排列三</option>
+        <option value="cq_ssc">重慶時時彩</option>
+        <option value="tj_ssc">天津時時彩</option>
+        <option value="xj_ssc">新疆時時彩</option>
+        <option value="bj_8">北京快乐8</option>
+        <option value="bj_10">北京赛车PK拾</option>
+        <option value="gd_ten">廣東快樂十分</option>
+        <option value="cq_ten">重慶快樂十分</option>
+        <option value="js_k3">江苏快3</option>
+        <option value="jl_k3">吉林快3</option>
+      </select>
+
+    <{if $type eq 'liuhecai'}>
+      <select class="za_select" name="pankou" id="mypankou" onchange="document.getElementById('myFROM').submit">
+        <option value="">请选择盘口</option>
+        <option value="A" <{if $pankou eq A}>selected="selected"<{/if}>>A盘口</option>
+        <option value="B" <{if $pankou eq B}>selected="selected"<{/if}>>B盘口</option>
+      </select>
+    <{/if}>
+
+     <input type="button" name="btn1" onclick="if(confirm('确定将赔率初始化？？？')){document.location='<{$site_url}>/result/Odds_set2/odds_set_initializtion?type=<{$type}>&pankou=<{$pankou}>&index_id=<{$index_id}>'}" style="color:red" id="btn1" value="赔率初始化" class="button_d"><!-- &nbsp;
+
+      <a href="<{$site_url}>/result/odds_set/index_fc" target="_blank" style="color: red;    text-decoration: underline;">系统升级前赔率对照【请勿修改】</a> -->
+</form>
+</div>
+</div>
+<div id="easyDialogBox" style="margin: -54.5px 0px 0px -150px; padding: 0px; border: none; z-index: 10000; position: fixed; top: 50%; left: 50%; display: none;">
+  <div id="currency_box" style="display: block; margin: 0px;" class="con_menu">
+<form action="<{$site_url}>/result/Odds_set2/odds_set_do" method="post" name="add_form">
+    <input name="id" id="id" value="" type="hidden">
+    <input name="fctype" id="fctype" value="" type="hidden">
+    <input name="pankou" id="editPankou" value="" type="hidden">
+    <input name="old_odds" id="old_odds" value="" type="hidden">
+    <input name="type_id" id="type_id" value="" type="hidden">
+    <input name="input_name" id="input_name" value="" type="hidden">
+    <input name="index_id" id="index_id2" value="<{$index_id}>" type="hidden">
+  <table class="m_tab" style="width:300px;margin:0;">
+    <tbody><tr class="m_title">
+      <td colspan="2" height="27" class="table_bg" align="center">
+      <span id="title">修改赔率</span>
+      <span style="float:right;"><a style="color:white;" href="javascript:void(0)" title="关闭窗口" onclick="easyDialog.close();">×</a></span>
+      </td>
+    </tr>
+    <tr class="m_title">
+      <td>赔率值</td>
+      <td><input name="odds" id="oddse" value=""></td>
+    </tr>
+
+    <tr style="background-color: #fff;">
+      <td colspan="2" align="center">
+        <!-- <input name="ball_type" type="hidden" id="ball_type" value="">
+        <input name="h_type" type="hidden" id="h_type" value=""> -->
+        <input type="submit" value="提交" class="button_a">
+        <input type="reset" value="关闭" onclick="easyDialog.close();" class="button_a">
+      </td>
+    </tr>
+  </tbody></table>
+</form>
+</div>
+</div>
+<div class="content">
+<{if $type eq bj_8}>
+    <table width="100%" border="0" cellspacing="0" class="table_line" id="ball_1">
+   <tbody>
+    <tr class="m_title_over_co">
+      <td colspan="20" style="width:auto;"> <strong >选一/选二/选三/选四/选五</strong></td>
+    </tr>
+    <tr class="m_title_over_co">
+        <td height="28" align="center" nowrap="nowrap" class="table_bg1">號碼</td>
+        <td align="center" nowrap="nowrap" class="table_bg1">赔率</td>
+        <td height="28" align="center" nowrap="nowrap" class="table_bg1">號碼</td>
+        <td align="center" nowrap="nowrap" class="table_bg1">赔率</td>
+        <td height="28" align="center" nowrap="nowrap" class="table_bg1">號碼</td>
+        <td align="center" nowrap="nowrap" class="table_bg1">赔率</td>
+        <td height="28" align="center" nowrap="nowrap" class="table_bg1">號碼</td>
+        <td align="center" nowrap="nowrap" class="table_bg1">赔率</td>
+        <td height="28" align="center" nowrap="nowrap" class="table_bg1">號碼</td>
+        <td align="center" nowrap="nowrap" class="table_bg1">赔率</td>
+        <td height="28" align="center" nowrap="nowrap" class="table_bg1">號碼</td>
+        <td align="center" nowrap="nowrap" class="table_bg1">赔率</td>
+        <td height="28" align="center" nowrap="nowrap" class="table_bg1">號碼</td>
+        <td align="center" nowrap="nowrap" class="table_bg1">赔率</td>
+        <td height="28" align="center" nowrap="nowrap" class="table_bg1">號碼</td>
+        <td align="center" nowrap="nowrap" class="table_bg1">赔率</td>
+        <td height="28" align="center" nowrap="nowrap" class="table_bg1">號碼</td>
+        <td align="center" nowrap="nowrap" class="table_bg1">赔率</td>
+        <td height="28" align="center" nowrap="nowrap" class="table_bg1">號碼</td>
+        <td align="center" nowrap="nowrap" class="table_bg1">赔率</td>
+    </tr>
+    <tr class="baise" style="width:1080px">
+          <{foreach from=$data[202] item=value}>
+              <{foreach from=$value item=v key=i}>
+             <td height="32" align="center" class="zdnum"><{$v['input_name']}></td>
+              <td height="32" align="center" states="<{$v['odds_value']}>" htype="<{$v['type_id']}>" iname="<{$v['input_name']}>" class="zdnum addinput" id="<{$v['id']}>" style="color:#f00;"><{$v['odds_value']}>
+             </td>
+             <{/foreach}>
+          <{/foreach}>
+          <{foreach from=$data[203] item=value}>
+              <{foreach from=$value item=v key=i}>
+             <td height="32" align="center" class="zdnum"><{$v['input_name']}></td>
+              <td height="32" align="center" states="<{$v['odds_value']}>" htype="<{$v['type_id']}>" iname="<{$v['input_name']}>" class="zdnum addinput" id="<{$v['id']}>" style="color:#f00;"><{$v['odds_value']}>
+             </td>
+             <{/foreach}>
+          <{/foreach}>
+          <{foreach from=$data[204] item=value}>
+              <{foreach from=$value item=v key=i}>
+             <td height="32" align="center" class="zdnum"><{$v['input_name']}></td>
+              <td height="32" align="center" states="<{$v['odds_value']}>" htype="<{$v['type_id']}>" iname="<{$v['input_name']}>" class="zdnum addinput" id="<{$v['id']}>" style="color:#f00;"><{$v['odds_value']}>
+             </td>
+             <{/foreach}>
+          <{/foreach}>
+          <{foreach from=$data[205] item=value}>
+            <{foreach from=$value item=v key=i}>
+             <td height="32" align="center" class="zdnum"><{$v['input_name']}></td>
+              <td height="32" align="center" states="<{$v['odds_value']}>" htype="<{$v['type_id']}>" iname="<{$v['input_name']}>" class="zdnum addinput" id="<{$v['id']}>" style="color:#f00;"><{$v['odds_value']}>
+             </td>
+              <{/foreach}>
+          <{/foreach}>
+          <{foreach from=$data[206] item=value}>
+              <{foreach from=$value item=v key=i}>
+             <td height="32" align="center" class="zdnum"><{$v['input_name']}></td>
+              <td height="32" align="center" states="<{$v['odds_value']}>" htype="<{$v['type_id']}>" iname="<{$v['input_name']}>" class="zdnum addinput" id="<{$v['id']}>" style="color:#f00;"><{$v['odds_value']}>
+             </td>
+             <{/foreach}>
+          <{/foreach}>
+    </tr>
+    </tbody></table>
+    <table width="1080" border="0" cellspacing="0" class="table_line" id="ball_1">
+   <tbody>
+    <tr class="m_title_over_co" style="width:1080px">
+      <td colspan="10" style="width:auto;"> <strong >和值</strong></td>
+    </tr>
+    <tr class="m_title_over_co" style="width:1080px">
+        <td height="28" align="center" nowrap="nowrap" class="table_bg1">號碼</td>
+        <td align="center" nowrap="nowrap" class="table_bg1">赔率</td>
+        <td height="28" align="center" nowrap="nowrap" class="table_bg1">號碼</td>
+        <td align="center" nowrap="nowrap" class="table_bg1">赔率</td>
+        <td height="28" align="center" nowrap="nowrap" class="table_bg1">號碼</td>
+        <td align="center" nowrap="nowrap" class="table_bg1">赔率</td>
+        <td height="28" align="center" nowrap="nowrap" class="table_bg1">號碼</td>
+        <td align="center" nowrap="nowrap" class="table_bg1">赔率</td>
+        <td height="28" align="center" nowrap="nowrap" class="table_bg1">號碼</td>
+        <td align="center" nowrap="nowrap" class="table_bg1">赔率</td>
+    </tr>
+    <tr class="baise" style="width:1080px">
+          <{foreach from=$data[207] item=value}>
+              <{foreach from=$value item=v key=i}>
+             <td height="32" align="center" class="zdnum"><{$v['input_name']}></td>
+              <td height="32" align="center" states="<{$v['odds_value']}>" htype="<{$v['type_id']}>" iname="<{$v['input_name']}>" class="zdnum addinput" id="<{$v['id']}>" style="color:#f00;"><{$v['odds_value']}>
+             </td>
+             <{/foreach}>
+          <{/foreach}>
+    </tr>
+    </tbody></table>
+
+    <table width="1080" border="0" cellspacing="0" class="table_line" id="ball_1">
+   <tbody>
+    <tr class="m_title_over_co" style="width:1080px">
+      <td colspan="20" style="width:auto;"> <strong >上中下/奇偶和</strong></td>
+    </tr>
+    <tr class="m_title_over_co" style="width:1080px">
+        <td height="28" align="center" nowrap="nowrap" class="table_bg1">號碼</td>
+        <td align="center" nowrap="nowrap" class="table_bg1">赔率</td>
+        <td height="28" align="center" nowrap="nowrap" class="table_bg1">號碼</td>
+        <td align="center" nowrap="nowrap" class="table_bg1">赔率</td>
+        <td height="28" align="center" nowrap="nowrap" class="table_bg1">號碼</td>
+        <td align="center" nowrap="nowrap" class="table_bg1">赔率</td>
+        <td height="28" align="center" nowrap="nowrap" class="table_bg1">號碼</td>
+        <td align="center" nowrap="nowrap" class="table_bg1">赔率</td>
+        <td height="28" align="center" nowrap="nowrap" class="table_bg1">號碼</td>
+        <td align="center" nowrap="nowrap" class="table_bg1">赔率</td>
+        <td height="28" align="center" nowrap="nowrap" class="table_bg1">號碼</td>
+        <td align="center" nowrap="nowrap" class="table_bg1">赔率</td>
+    </tr>
+    <tr class="baise" style="width:1080px">
+          <{foreach from=$data[208] item=value}>
+              <{foreach from=$value item=v key=i}>
+             <td height="32" align="center" class="zdnum"><{$v['input_name']}></td>
+              <td height="32" align="center" states="<{$v['odds_value']}>" htype="<{$v['type_id']}>" iname="<{$v['input_name']}>" class="zdnum addinput" id="<{$v['id']}>" style="color:#f00;"><{$v['odds_value']}>
+             </td>
+             <{/foreach}>
+          <{/foreach}>
+          <{foreach from=$data[209] item=value}>
+              <{foreach from=$value item=v key=i}>
+             <td height="32" align="center" class="zdnum"><{$v['input_name']}></td>
+              <td height="32" align="center" states="<{$v['odds_value']}>" htype="<{$v['type_id']}>" iname="<{$v['input_name']}>" class="zdnum addinput" id="<{$v['id']}>" style="color:#f00;"><{$v['odds_value']}>
+             </td>
+             <{/foreach}>
+          <{/foreach}>
+    </tr>
+    </tbody></table>
+
+
+<{else}>
+    <{foreach from=$data item=value key=k1}>
+    <table width="100%" border="0" cellspacing="0" class="table_line" id="ball_1">
+   <tbody>
+    <tr class="m_title_over_co">
+      <td colspan="<{2*count($value[0])}>" style="width:auto;"> <strong ><{$balls[$k1]['fc_type']}></strong></td>
+    </tr>
+    <{if $k1 eq 221}>
+    <tr class="m_title_over_co" height="25">
+               <td height="25" align="center" nowrap="nowrap" class="table_bg1" colspan="4">1V10龙虎</td>
+               <td height="28" align="center" nowrap="nowrap" class="table_bg1" colspan="4">2V9龙虎</td>
+                <td height="28" align="center" nowrap="nowrap" class="table_bg1" colspan="4">3V8龙虎</td>
+                 <td height="28" align="center" nowrap="nowrap" class="table_bg1" colspan="4">4V7龙虎</td>
+                <td height="28" align="center" nowrap="nowrap" class="table_bg1" colspan="4">5V6龙虎</td>
+    </tr>
+    <{/if}>
+    <tr class="m_title_over_co" style="width:1080px">
+        <{foreach from=$value[0] item=val}>
+        <td height="28" align="center" nowrap="nowrap" class="table_bg1">號碼</td>
+        <td align="center" nowrap="nowrap" class="table_bg1">赔率</td>
+        <{/foreach}>
+    </tr>
+    <{foreach from=$value item=val}>
+    <tr class="baise" style="width:1080px">
+          <{foreach from=$val item=v key=i}>
+             <td height="32" align="center" class="zdnum"><{$v['input_name']}></td>
+              <td height="32" align="center" states="<{$v['odds_value']}>" htype="<{$v['type_id']}>" iname="<{$v['input_name']}>" class="zdnum addinput" id="<{$v['id']}>" style="color:#f00;"><{$v['odds_value']}>
+             </td>
+          <{/foreach}>
+    </tr>
+    <{/foreach}>
+    </tbody></table>
+   <{/foreach}>
+<{/if}>
+</div>
+
+<!-- 公共尾部 -->
+<{include file="web_footer.html"}>

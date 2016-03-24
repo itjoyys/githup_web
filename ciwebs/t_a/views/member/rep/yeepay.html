@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>充值接口-提交信息处理</title>
+</head>
+<body onload="document.form1.submit()">
+<form id="form1" name="form1" method="post" action="<{$data['form_url']}>">    
+        <input type='hidden' name='p0_Cmd'	value="<{$data['p0_Cmd']}>">
+        <input type='hidden' name='p1_MerId' value="<{$data['p1_MerId']}>" />
+		<input type='hidden' name='merchantKey' value="<{$data['merchantKey']}>"/>
+		<input type='hidden' name='p2_Order' value="<{$data['p2_Order']}>"/>
+		<input type='hidden' name='p3_Amt' value="<{$data['p3_Amt']}>"/>
+        <input type='hidden' name='p4_Cur' value="<{$data['p4_Cur']}>" />
+        <input type='hidden' name='p5_Pid' value="<{$data['p5_Pid']}>" />
+        <input type='hidden' name='p6_Pcat' value="<{$data['p6_Pcat']}>" />
+        <input type='hidden' name='p7_Pdesc' value="<{$data['p7_Pdesc']}>" />
+        <input type='hidden' name='p8_Url' value="<{$data['p8_Url']}>" />
+        <input type='hidden' name='pa_MP' value="<{$data['pa_MP']}>" />
+        <input type='hidden' name='pd_FrpId' value="<{$data['pd_FrpId']}>" />
+        <input type='hidden' name='p9_SAF' value="<{$data['p9_SAF']}>" />
+        <input type='hidden' name='pr_NeedResponse' value="<{$data['pr_NeedResponse']}>" />
+        <input type='hidden' name='hmac' value="<{$data['hmac']}>" />
+		<input type='hidden' name='act' value="yeepay" />
+</form>
+</body>
+</html>

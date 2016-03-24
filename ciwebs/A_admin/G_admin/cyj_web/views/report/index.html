@@ -1,0 +1,226 @@
+﻿<title>历史报表</title>
+﻿<{include file="web_header.html"}>
+<script language="JavaScript">
+var tmp_date;
+function chg_date(range,num1,num2){
+if(range=='t' || range=='w' || range=='r'){
+ FrmData.date_start.value ='<{$now_date}>';
+ FrmData.date_end.value =FrmData.date_start.value;}
+
+if(range!='t'){
+ if(FrmData.date_start.value!=FrmData.date_end.value){ FrmData.date_start.value ='<{$now_date}>'; FrmData.date_end.value =FrmData.date_start.value;}
+ var aStartDate = FrmData.date_start.value.split('-');
+ var newStartDate = new Date(parseInt(aStartDate[0], 10),parseInt(aStartDate[1], 10) - 1,parseInt(aStartDate[2], 10) + num1);
+
+		if (newStartDate.getMonth() < 9) {
+				 tmp_date = newStartDate.getFullYear()+ '-0' + (newStartDate.getMonth() + 1);
+		}else{
+				tmp_date = newStartDate.getFullYear()+ '-' + (newStartDate.getMonth() + 1);
+		}
+			if (newStartDate.getDate() < 9) {
+				FrmData.date_start.value = tmp_date + '-0' + (newStartDate.getDate());
+		}else{
+				FrmData.date_start.value = tmp_date+ '-' + (newStartDate.getDate());
+		}
+
+ var aEndDate = FrmData.date_end.value.split('-');
+ var end_tmp_date;
+ var newEndDate = new Date(parseInt(aEndDate[0], 10),parseInt(aEndDate[1], 10) - 1,parseInt(aEndDate[2], 10) + num2);
+
+		if (newEndDate.getMonth() < 9) {
+				 end_tmp_date = newEndDate.getFullYear()+ '-0' + (newEndDate.getMonth() + 1);
+		}else{
+				 end_tmp_date = newEndDate.getFullYear()+ '-' + (newEndDate.getMonth() + 1);
+		}
+			if (newEndDate.getDate() < 9) {
+				FrmData.date_end.value = end_tmp_date + '-0' + (newEndDate.getDate());
+		}else{
+				FrmData.date_end.value = end_tmp_date+ '-' + (newEndDate.getDate());
+		}
+}
+
+}
+function tijiao(){
+	document.getElementById('ceng').style.display = "none";
+	document.getElementById('loading').style.display = "block";
+	return true;
+}
+</script>
+<script>
+	$(function () {
+		var guanliyuan = "<{$guanliyuan}>";
+		var agent_iid = "<{$agent_iid}>";
+		var url = "<{$site_url}>/report/report/report_list_u";
+		if (guanliyuan==""){
+			$("#FrmData").attr("action",url);
+		}
+		$("#agenthtml").change(function(){
+			var agent_id = $("#agenthtml").val();
+		 	if (agent_iid!=agent_id){
+		 		$("#rtype").val("a_t");
+				$("#FrmData").attr("action",url);
+			}
+		});
+	    $("#quanxuan").click(function () {//全选
+
+	    	if($(this).attr("checked")== 'checked'){
+	        $("input[type='checkbox'][class='game']").attr("checked", true);
+	    	}else{
+	    		$("input[type='checkbox'][class='game']").attr("checked", false);
+	    	}
+
+	    });
+
+	    $("#fanxuan").click(function () {//反选
+	        $("input[type='checkbox'][class='game']").each(function () {
+	            $(this).attr("checked", !$(this).attr("checked"));
+	        });
+	    });
+	});
+
+$('document').ready(function(){
+        var atype = $("#rtype").val();
+        if ( atype == 'u_a') {
+            $.ajax({
+	          type : "get",
+	          url : "/index.php/report/report/get_agents",
+	          dataType : "html",
+	          data : {atype : atype },
+	          success : function(data) {
+	              $("#agenthtml").html(data);
+	              $("#agent_user").css('display','block');
+	          }
+	        });
+        }else{
+            $("#agenthtml").html('');
+        }
+
+})
+
+</script>
+
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000" leftmargin="0" topmargin="0">
+<div  id="con_wrap">
+	<div  class="input_002">報表查詢</div>
+	<div  class="con_menu">
+	</div>
+</div>
+<div id="loading" style="display:none">正在整理报表，整个过程大约需要5-10分钟，请耐心等待。</div>
+<div class="content" id="ceng">
+<div style="float:left;width:800px;">
+<form action="<{$site_url}>/report/report/report" method="get"  name="FrmData" id="FrmData" onSubmit="tijiao();">
+<table width="100%" border="0" cellspacing="1" cellpadding="0" class="m_tab_ed">
+	<tr class="m_bc">
+		<td colspan="4" align="left">
+		<table width="100%" border="0" cellspacing="1" cellpadding="0" class="m_tab">
+			<tr class="m_cen even">
+				<td width="100" class="m_title_re">日期区间：</td>
+				<td colspan="4">
+				<table border="0" cellpadding="0" cellspacing="0">
+						<td><input style="width:75px;" class="Wdate" name="date_start" type="text" id="date_start" value="<{$now_date}>" onClick="WdatePicker()" size="10" maxlength="10" readonly /> </td>
+						<td width="20" align="center">&nbsp;~&nbsp;</td>
+						<td><input name="date_end" class="Wdate" style="width:75px;" type="text" id="date_end" value="<{$now_date}>" onClick="WdatePicker()" size="10" maxlength="10" readonly /></td>
+						<td>&nbsp;</td>
+						<td>
+						<input name="Submit" type="Button" class="za_button" onClick="chg_date('t',0,0)" value="今日">&nbsp;&nbsp;
+						<input name="Submit" type="Button" class="za_button" onClick="chg_date('l',-1,-1)" value="昨日">&nbsp;&nbsp;
+						<input name="Submit" type="Button" class="za_button" onClick="chg_date('n',1,1)" value="明日">&nbsp;&nbsp;
+						<input name="Submit" type="Button" class="za_button" onClick="FrmData.date_start.value='<{date("Y-m-d",strtotime("last Monday"))}>';FrmData.date_end.value='<{$now_date}>'" value="本星期">&nbsp;&nbsp;
+						<input name="Submit" type="Button" class="za_button" onClick="FrmData.date_start.value='<{date("Y-m-d",strtotime("last Monday")-604800)}>';FrmData.date_end.value='<{date("Y-m-d",strtotime("last Monday")-86400)}>'" value="上星期">&nbsp;&nbsp;
+						</td>
+					</tr>
+				</table></td>
+			</tr>
+			<tr class="m_cen">
+					<td width="100" class="m_title_re">游戏選擇：</td>
+					<td colspan="4" style="text-align:left">
+					 <label>
+					 <input type="checkbox" name="game[]" class="game" checked="checked" id="zq" value="sp">
+						體育</label>
+						<label><input type="checkbox" checked="checked" name="game[]" class="game" id="cp" value="fc">
+						彩票</label>
+						<{foreach from=$video_c item=v}>
+						<label><input type="checkbox" checked="checked" name="game[]" class="game" id="<{strtolower($v)}>" value="<{strtolower($v)}>">
+						<{$v}><{if $v == 'PT' or $v == 'EG'}>电子<{else}>视讯<{/if}></label>
+						<{/foreach}>
+						</br>
+					<div style="border-top:1px dashed #ccc;">
+					<label><input type="checkbox" name="quanxuan" class=""  id="quanxuan" value="">
+						&nbsp;全选</label>&nbsp;
+						<label><input type="checkbox" name="fanxuan" class=""  id="fanxuan" value="">
+						&nbsp;反选</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+						</td>
+				</tr>
+			<{if $guanliyuan}>
+			<tr class="m_cen even">
+				<td class="m_title_re">代理报表：</td>
+				<td colspan="4" style="text-align:left;">
+				<!-- <select name="rtype" class="za_select" id="rtype">
+					<option  value="u_a">总代报表</option>
+				</select> -->
+				<input name="rtype" class="za_select" id="rtype" value="u_a" type="hidden">
+				<select id="agenthtml" name="aid"></select>
+				</td>
+			</tr>
+			<{/if}>
+			<tr class="m_cen">
+					<td width="100" class="m_title_re">注單狀態：</td>
+					<td colspan="4" style="text-align:left"><select name="is_res">
+					<option value="0">全部</option>
+					</select></td>
+			</tr>
+			<tr class="m_cen even">
+				<td class="m_title_re">玩法種類：</td>
+				<td colspan="4" style="text-align:left">
+				<select class="gamezl" id="gamezl" name="gamezl" >
+					<option value="all">全部</option>
+				</select></td>
+				</tr>
+			<tr class="m_cen">
+				<td height="30" colspan="5">
+			         <input type=SUBMIT name="submit" value="查询" class="za_button">
+				</td>
+			</tr>
+			</table>
+			</form>
+			<table width="100%" border="0" cellspacing="1" cellpadding="0" class="m_tab">
+			<tr class="m_title">
+				<td class="m_title_re">日期</td>
+				<td colspan="2" class="m_title_ce"><{$yestoday_date}></td>
+				<td colspan="2" class="m_title_ce"><{$now_date}></td>
+			</tr>
+			<tr class="m_cen">
+				<td class="m_title_re">目前状态</td>
+				<td style="color:#FF0000">有结果</td>
+				<td style="color:#FF0000">无结果</td>
+				<td>有结果</td>
+				<td>无结果</td>
+			</tr>
+			<tr class="m_cen">
+				<td class="m_title_re">彩票</td>
+				<td style="color:#FF0000"><{intval($yestoday_yes["num"])}></td>
+				<td style="color:#FF0000"><{intval($yestoday_no["num"])}></td>
+				<td><{intval($today_yes["num"])}></td>
+				<td><{intval($today_no["num"])}></td>
+			</tr>
+
+			<tr class="m_cen">
+				<td class="m_title_re">体育</td>
+				<td style="color:#FF0000"><{intval($sp_old_yes['num']+$spcinfoy_old_yes['num'])}></td>
+				<td style="color:#FF0000"><{intval($sp_old_no['num']+$spcinfoy_old_no['num'])}></td>
+				<td><{intval($sp_today_yes['num']+$spcinfoy_today_yes['num'])}></td>
+				<td><{intval($sp_today_no['num']+$spcinfoy_today_no['num'])}></td>
+			</tr>
+
+		</table></td>
+	</tr>
+	</table>
+</div>
+
+
+
+	</div>
+</body>
+</html>

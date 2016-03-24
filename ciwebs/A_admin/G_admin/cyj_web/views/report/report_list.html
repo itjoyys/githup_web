@@ -1,0 +1,238 @@
+<title>报表明细</title>
+<{include file="web_header.html"}>
+<body>
+<style type="text/css">
+table.m_tab th span{
+	margin-right:8px;
+}
+.m_rig{
+    height: 30px;
+}
+.m_title th{
+    padding: 3px 3px;
+}
+</style>
+<script type="text/javascript">
+$(document).ready(function(){
+	  $("td").each(function () {
+          if (parseFloat($(this).text())<0) {
+        	  $(this).css("color","red");
+          }
+      })
+	});
+
+$(document).ready(function(){
+	$("#m_tab1").tablesorter({
+		sortList:false,
+		headers:{	//有特别指定按digit的列是可以保证正负数值正确排序，改动时请注意列的对应
+			4:{
+				sorter:'digit'
+			},
+			5:{
+				sorter:'digit'
+			},
+			6:{
+				sorter:'digit'
+			},
+			7:{
+				sorter:'digit'
+			},
+			8:{
+				sorter:'digit'
+			},
+			9:{
+				sorter:'digit'
+			},
+			10:{
+				sorter:'digit'
+			},
+			11:{
+				sorter:'digit'
+			},
+			12:{
+				sorter:'digit'
+			},
+			13:{
+				sorter:'digit'
+			}
+		}
+	});
+	$("#m_tab2").tablesorter({
+		sortList:false,
+		headers:{	//有特别指定按digit的列数是可以保证正负数值正确排序，links是针对正则的排序，改动时请注意列的对应
+			2:{
+				sorter:'links'
+			},
+			4:{
+				sorter:'digit'
+			},
+			5:{
+				sorter:'digit'
+			},
+			6:{
+				sorter:'digit'
+			},
+			7:{
+				sorter:'digit'
+			},
+			8:{
+				sorter:'digit'
+			},
+			9:{
+				sorter:'digit'
+			},
+			10:{
+				sorter:'digit'
+			},
+			11:{
+				sorter:'digit'
+			},
+			12:{
+				sorter:'digit'
+			},
+			13:{
+				sorter:'digit'
+			}
+		}
+	});
+	$("#m_tab3").tablesorter({
+		sortList:false,
+		headers:{	//有特别指定按digit的列数是可以保证正负数值正确排序，links是针对正则的排序，改动时请注意列的对应
+			2:{
+				sorter:'links'
+			},
+			4:{
+				sorter:'digit'
+			},
+			5:{
+				sorter:'digit'
+			},
+			6:{
+				sorter:'digit'
+			},
+			7:{
+				sorter:'digit'
+			},
+			8:{
+				sorter:'digit'
+			},
+			9:{
+				sorter:'digit'
+			},
+			10:{
+				sorter:'digit'
+			},
+			11:{
+				sorter:'digit'
+			},
+			12:{
+				sorter:'digit'
+			},
+			13:{
+				sorter:'digit'
+			}
+		}
+	});
+	$("#m_tab4").tablesorter({
+		sortList:false,
+		headers:{
+			2:{
+				sorter:'links'
+			},
+			4:{
+				sorter:'links'
+			},
+			5:{
+				sorter:'digit'
+			},
+			6:{
+				sorter:'digit'
+			},
+			7:{
+				sorter:'digit'
+			},
+			8:{
+				sorter:'digit'
+			},
+			9:{
+				sorter:'digit'
+			},
+			10:{
+				sorter:'digit'
+			},
+			11:{
+				sorter:'digit'
+			},
+			12:{
+				sorter:'digit'
+			},
+			13:{
+				sorter:'digit'
+			}
+		}
+	});
+	//$("th[id^=target]").css("background-color","#527A98");
+} );
+$.tablesorter.addParser({
+    // set a unique id
+    id: 'links',
+    is: function(s)
+    {
+        // return false so this parser is not auto detected
+        return false;
+    },
+    format: function(s)
+    {
+        // format your data for normalization
+        return s.replace(new RegExp(/<.*?>/),"");
+    },
+    // set type, either numeric or text
+    type: 'numeric'
+});
+</script>
+<div id="con_wrap">
+  <div class="input_002">報表查詢</div>
+  <div class="con_menu">
+  	<a href="<{$site_url}>/report/report">返回上一頁</a>
+  </div>
+</div>
+<div class="content" id="content_report">
+
+<{foreach from=$agent_sh key=kk item=vdata}>
+<table border="0" width="850px" cellpadding="0" cellspacing="0" id="m_tab1" class="m_tab tablesorter">
+	<thead>
+	<tr class="m_title">
+		<td colspan="12" style="text-align:left;background:#FFFFFF;color:#333131">
+        <div style="float:left"><{$re_title[$kk]}> 日期：<{$date_start}>~ <{$date_end}> 投注類型：全部 投注方式：全部</div>
+        <div style="float:right">"<font color="#ff0000">紅</font>"色代表亏损，"<font color="#000">黑</font>"色代表盈利</div></td>
+	</tr>
+	<tr class="m_title">
+	   <th rowspan="2" nowrap="nowrap" style="font-size:14px;width:220px;" class="header"><span>名称</span></th>
+	  <th rowspan="2" nowrap="nowrap" style="font-size:14px;width:100px;" class="header"><span>总笔数</span></th>
+	  <th rowspan="2" nowrap="nowrap" style="font-size:14px;width:100px;" class="header"><span>总下注</span></th>
+	  <th rowspan="2" nowrap="nowrap" style="font-size:14px;width:100px;" class="header"><span>总有效下注</span></th>
+	  <th rowspan="2" nowrap="nowrap" style="font-size:14px;width:100px;" class="header"><span>总派彩</span></th>
+	  <th rowspan="2" nowrap="nowrap" style="font-size:14px;width:100px;" class="header"><span>代理损益</span></th>
+    </tr>
+	</thead>
+	<tbody>
+	<{foreach from=$vdata key=kki item=v}>
+			<tr class="m_cen" align="left" style="height:30px;">
+				<td align="center"><{$v['uname']}></td>
+				<td><{if $kki && $is_ud}><a href="<{$v['rurl']}>" style="text-decoration: underline;color:#000;"><{$v['num']}></a><{else}><{$v['num']}><{/if}></td>
+				<td><{$v['all_bet']}></td>
+				<td><{$v['bet']}></td>
+				<td><{$v['win']}></td>
+				<td><{-$v['income']}></td>
+			</tr>
+	<{/foreach}>
+	</tbody>
+</table>
+<{/foreach}>
+<!-- 公共尾部 -->
+<style>
+.m_cen td{
+border:1px solid #fadcdc;
+}
+</style>
+<{include file="web_footer.html"}>

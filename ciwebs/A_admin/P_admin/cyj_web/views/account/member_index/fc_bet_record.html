@@ -1,0 +1,201 @@
+<{include file="web_header.html"}>
+<style>
+.m_rig td {
+	text-align: center;
+}
+</style>
+<script>
+	window.onload = function() {
+		document.getElementById("ttype").onchange = function() {
+
+			window.location.href = this.value;
+		}
+		document.getElementById("page").onchange = function() {
+
+			document.getElementById('myFORM').submit();
+		}
+	}
+</script>
+<body>
+
+	<div id="con_wrap">
+		<div class="input_002"><{$user['username']}> - 彩票下注記錄</div>
+		<div class="con_menu">
+			<form id="myFORM"
+				action="<{$site_url}>/account/Member_Index/bet_record?atype=<{$smarty.get.atype}>&gid=<{$smarty.get.gid}>&did=<{$smarty.get.did}>"
+				method="get" name="FrmData">
+				<input type="hidden" name="uid" value="<{$smarty.get.uid}>" />
+				&nbsp;&nbsp;下注類型 <select
+					onchange="document.getElementById('myFORM').submit()" name="stype">
+					<{foreach from=get_set_type() item=v key=k}>
+					<option value="<{$k}>"<{select_check($k,$smarty.get.stype)}>
+						><{$v}></option> <{/foreach}>
+				</select> 彩票類型： <select id="cp_type" name="gtype"
+					class="za_select ChangeInput">
+					<option value='0'>所有彩种</option>
+					<?
+                foreach($CpIdName as $k =>$r){
+                    echo "<option value='$k'>$r</option>";
+                }
+                ?>
+				</select> 结算狀態： <select id="status" name="status"
+					class="za_select  ChangeInput">
+					<option value="-1">全部</option>
+					<option value="0">未結算</option>
+					<option value="1">已結算</option>
+					<option value="2">已取消</option>
+				</select> <span id="spanstatustype"> 输赢： <select id="statustype"
+					name="statustype" class="za_select  ChangeInput">
+						<option value="-1">全部</option>
+						<option value="1">赢</option>
+						<option value="2">输</option>
+				</select></span> &nbsp;&nbsp;日期： <input type="text" name="start_date"
+					value="<{$smarty.get.start_date}>" id="start_date" size="10"
+					maxlength="11" class="za_text Wdate" onClick="WdatePicker()">
+				-- <input type="text" name="end_date"
+					value="<{$smarty.get.end_date}>" id="end_date" size="10"
+					maxlength="10" class="za_text Wdate" onClick="WdatePicker()">
+				注单号： <input name="order" type="text" id="order" class="za_text"
+					style="width: 80px; min-width: 80px" size="15"> 大於此金額：<input
+					type="TEXT" name="money" id="money" value="" size="10"
+					maxlength="10" class="za_text" style="width: 50px; min-width: 50px">
+
+
+				每页记录数： <select name="page_num" id="page_num"
+					onchange="document.getElementById('myFORM').submit()"
+					class="za_select"> <{foreach from=get_page_num() item=v
+					key=k}>
+					<option value="<{$k}>"<{select_check($k,$smarty.get.page_num)}>
+						><{$v}></option> <{/foreach}>
+				</select> &nbsp;頁數： <select id="page" name="page" class="za_select">
+					<{assign var=$i value=0}> <{section name=total loop=$totalPage}>
+					<option value="<{$i=$i+1}><{$i}>"<{select_check($i,$smarty.get.page)}>
+						><{$i}></option> <{/section}>
+				</select> <{$totalPage}> 頁&nbsp; <input type="SUBMIT" value="確定"
+					class="za_button"> 重新整理： <select name="reload" id="reload"
+					onchange="SetTimeCashList(this.value);">
+					<option value="-1">不自動更新</option> <{foreach from=get_reload()
+					item=v key=k}>
+					<option value="<{$k}>"<{select_check($k,$smarty.get.reload)}>
+						><{$v}></option> <{/foreach}>
+				</select> <span id="lblTime" style="color: red"></span> <input type="hidden"
+					name="gid" value="<{$smarty.get.gid}>"> <input
+					type="hidden" name="did" value="<{$smarty.get.did}>">
+			</form>
+		</div>
+	</div>
+	<div class="content">
+
+		<table width="100%" border="0" cellspacing="0" cellpadding="0"
+			class="m_tab" bgcolor="#3B2D1B">
+			<tbody>
+
+				<tr class="m_title">
+					<td width="30">序號</td>
+					<td width="70">下單時間</td>
+					<td width="">所屬上線</td>
+					<td width="70">注單號</td>
+					<td width="70">下注帐号</td>
+					<td width="130">類型</td>
+					<td width="330">內容</td>
+					<td width="90">下注金額</td>
+					<td width="60">可赢金额</td>
+					<td width="90">結果</td>
+				</tr>
+				<{if !is_array($list)}>
+				<tr class="m_rig" style="display:;">
+					<td height="70" align="center" colspan="8"><font
+						color="#3B2D1B">暫無數據。</font></td>
+				</tr>
+				<{/if}> 
+				<{foreach from=$list item=val key=key}>
+				<tr class="m_cen">
+					<td width="30"><{$val['id']}></td>
+					<td width="70"><{$val['addtime']}></td>
+					<td width="">
+					<{foreach from=$val['pagent'] item=v key=k}>
+						<span style="float: left; text-align: right; width: 50%"><{get_agent_type($k)}>:</span>
+						 <span style="float: left; text-align: left; width: 50%"><{$v}></span>
+					<{/foreach}>
+					</td>
+					<td width="70"><{$val['did']}></td>
+					<td width="70"><{$user['username']}> <br> <{$val['balance']}>
+					</td>
+					<td width="130"><{$val['type']}></td>
+					<td width="330">期数：<{$val['qishu']}> <br> <{$val['mingxi_1']}> <b><font color="#ff0000"><{$val['mingxi_2']}></font></b> @ <b><font color="#ff0000"><{$val['odds']}></font></b></td>
+					<td width="90"><{$val['money']}></td>
+					<td width="60"><{$val['money']*($val['odds']-1)}></td>
+					<td width="90"><span style="color: #00CC00;"><{$val['status']}></span> <br>
+						<{$val['win']}></td>
+				</tr>
+				<{/foreach}>
+				<tr class="m_rig" style="background-Color: #EBF0F1;">
+					<td colspan="6" align="right">&nbsp;小計：</td>
+					<td><{$x['count']}>笔</td>
+					<td><{$x['money']}></td>
+					<td></td>
+					<td><{$x['result']}></td>
+				</tr>
+				<tr class="m_rig" style="background-Color: #EBF0F1;">
+					<td colspan="6" align="right">&nbsp;总計：</td>
+					<td><{$all['count']}>笔</td>
+					<td><{$all['money']}></td>
+					<td></td>
+					<td><{$all['result']}></td>
+				</tr>
+
+			</tbody>
+		</table>
+	</div>
+
+	<script language="javascript">
+		var vtimeCashList = 0;
+		var timeGoCashList = null;
+		function SetTimeCashList(otime) {
+			vtimeCashList = otime;
+			if (vtimeCashList > 0) {
+				window.clearTimeout(timeGoCashList);
+				document.getElementById("lblTime").innerHTML = '還有'
+						+ vtimeCashList + '秒更新';
+				if (otime != 0) {
+					timeGoCashList = setInterval("timeCashList(" + otime + ")",
+							1000);
+				}
+			} else {
+				document.getElementById("lblTime").innerHTML = "";
+				window.clearTimeout(timeGoCashList);
+			}
+		}
+		function timeCashList(otime) {
+			if (vtimeCashList <= 0) {
+				document.getElementById("lblTime").innerHTML = "";
+				window.clearTimeout(timeGoCashList);
+			} else {
+				vtimeCashList = vtimeCashList - 1;
+				if (vtimeCashList <= 0) {
+					getdata();
+					vtimeCashList = otime;
+				}
+				document.getElementById("lblTime").innerHTML = '還有'
+						+ vtimeCashList + '秒更新';
+
+			}
+		}
+		function getdata(page) {
+			form_obj = document.getElementById("myFORM");
+			// form_obj.action = "bet_record.php";
+			form_obj.submit();
+		}
+		var reload = $("#reload").val();
+		$(document).ready(function() {
+			if (reload > 0) {
+				SetTimeCashList(reload);
+			}
+			$("#reload").val(reload);
+			// $("#page_num").val('20');
+			// $("#page").val('0');	
+		});
+	</script>
+	<!-- 公共尾部 -->
+
+	<{include file="web_footer.html"}>

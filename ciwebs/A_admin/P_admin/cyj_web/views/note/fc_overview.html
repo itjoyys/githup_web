@@ -1,0 +1,131 @@
+<{include file="web_header.html"}>
+
+<body>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#index_id").change(function (event) {
+                $("#queryform").submit();
+            });
+        })
+    </script>
+    <style>
+        .m_bc_ed td{padding-left: 0px;}
+
+table em {
+
+    border-radius: 12px;
+    color: #6298cc;
+    font-family: Arial;
+    font-size: 10px;
+    font-style: normal;
+    height: 12px;
+    line-height: 12px;
+    text-align: center;
+    width: 12px;
+    background: #c3c3c3 none repeat scroll 0 0;
+    border: 1px solid #ffbb8b;
+    color: #000;
+}
+table em.red {
+    background: #F14E36;
+ color: #fff;}
+    </style>
+    <div id="con_wrap">
+
+        <div class="input_002">彩票注單概况</div>
+        <div class="con_menu" style="width:1200px;">
+            <form id="myFORM" action="<{$site_url}>/note/Bet_record/fc_bet_record"
+                  method="get" name="FrmData">
+                <{$note_types}>類型：<select id="cp_type" name="cp_type"
+                                          class="za_select ChangeInput"
+                                          onchange="document.getElementById('myFORM').submit()">
+                    <option value='0'>所有彩种</option>
+                    <{foreach from=$cplist item=v  key=k}>
+                    <option value="<{$v['name']}>"<{select_check($v['name'],$smarty.get.cp_type)}>>
+                            <{$v['name']}>
+                </option>
+                <{/foreach}>
+            </select>
+            日期：<input type="text" name="start_date" value="<{$start_date}>" id="start_date"
+                      class="za_text Wdate"
+                      onClick="WdatePicker({dateFmt: 'yyyy-MM-dd'})"> --
+            <input type="text" name="end_date" value="<{$end_date}>" id="end_date" class="za_text Wdate"
+                   onClick="WdatePicker({dateFmt: 'yyyy-MM-dd'})">
+             <input type="SUBMIT" value="確定" class="za_button">
+
+        </form>
+    </div>
+</div>
+    <div style="float:left;width:60%">
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0"
+	class="m_tab" style="float:left">
+	<tbody>
+		<tr class="m_title_over_co">
+			<td width="200">彩票类型</td>
+			<td width="50">人数</td>
+			<td width="100">注单数</td>
+			<td width="170">总下注</td>
+			<td width="170">有效下注</td>
+			<td width="130">派彩</td>
+			<td width="330">结果</td>
+		</tr>
+		<{foreach from=$all item=val key=key}>
+		<tr class="m_cen <{if $key%2 == 0}>even<{/if}>">
+			<td><{$val['type']}></td>
+			<td><{$val['yhs']}></td>
+			<td><{$val['zds']}></td>
+			<td width="170"><{$val['js_zxz']}></td>
+			<td width="170"><{$val['yx_zxz']}></td>
+			<td width="130"><{$val['pc']}></td>
+			<td width="330">
+				<{$val['jg']}>
+			</td>
+		</tr>
+		<{/foreach}> <{if empty($all)}>
+		<tr class="m_rig" style="display:;">
+			<td height="70" align="center" colspan="10"><font
+				color="#3B2D1B">暫無數據。</font></td>
+		</tr>
+		<{else}>
+		<tr class="m_rig" style="background-Color: #EBF0F1;">
+			<td colspan="9"><b><font color="#ff0000">&nbsp;总計：<{$sum['zds']}>笔
+			&nbsp;<{$sum['yx_zxz']}>元</font></b></td>
+		</tr>
+		<{/if}>
+	</tbody>
+</table>
+    </div>
+    <div style="float:left;width:38%;margin-left: 10px">
+<table width="100%" border="0" cellspacing="0" cellpadding="0"
+       class="m_tab"  >
+	<tbody>
+            <tr><td colspan="4" class="m_title_over_co" style="text-align: center;">热门下注</td></tr>
+		<tr class="m_title_over_co">
+            <td width="50">排行</td>
+			<td width="200">彩票类型</td>
+			<td width="50">游戏类型</td>
+			<td width="170">总下注</td>
+
+		</tr>
+		<{foreach from=$hot item=val key=key}>
+		<tr class="m_cen <{if $key%2 == 0}>even<{/if}>">
+                        <td><em class="<{if $key<3}>red<{/if}>"><{if $key<9}>&nbsp;<{/if}><{$key+1}><{if $key<9}>&nbsp;<{/if}></em></td>
+			<td><{$val['type']}></td>
+			<td><{$val['mingxi_1']}></td>
+			<td width="170"><{$val['allmoney']}></td>
+
+		</tr>
+		<{/foreach}>
+                <{if empty($hot)}>
+		<tr class="m_rig" style="display:;">
+			<td height="70" align="center" colspan="10"><font
+				color="#3B2D1B">暫無數據。</font></td>
+		</tr>
+
+		<{/if}>
+	</tbody>
+</table>
+        </div>
+<!-- 公共尾部 -->
+<{include file="web_footer.html"}>

@@ -1,0 +1,12 @@
+<ion-content class="bet-view" scroll="false">
+<div>
+	<sub-navs item-class="col-<{if count($config)== 1}>100<{elseif count($config)==2 }>50<{else}>31<{/if}>">
+<!-- 	<{foreach from=$config item=v key=k}> -->
+		<sub-nav title="特A"
+		url="/lottery/liuhecai?gameid=<{$smarty.get.gameid}>&LotteryId=<{$smarty.get.LotteryId}>&gamename2=特码&pk=A"></sub-nav>
+
+      <sub-nav title="特B"
+    url="/lottery/liuhecai?gameid=<{$smarty.get.gameid}>&LotteryId=<{$smarty.get.LotteryId}>&gamename2=特码&pk=B"></sub-nav>
+	<!-- <{/foreach}> -->
+</div>
+</ion-content>

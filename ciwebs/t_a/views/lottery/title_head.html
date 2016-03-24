@@ -1,0 +1,55 @@
+<div class="nav-icons fr">
+
+           <!--  <a class="odfi need-auth" href="javascript:void(0)" data-href="" title="个人资料" data-height="500"><i class="icon icon-account"></i></a> -->
+        <a class="odfi" href="javascript:void(0)" data-href="/index.php/lottery/History/index?lotteryId=<{$smarty.get.type}>" title="历史开奖"><i class="icon icon-history"></i></a>
+        <{if !empty($uid)}>
+        <a class="odfi need-auth" href="javascript:void(0)" data-href="/index.php/lottery/lottery/notCount" title="注单"><i class="icon icon-list"></i></a>
+        <{/if}>
+        <a class="odfi" href="javascript:void(0)" data-href="/index.php/lottery/lottery/Rule?lotteryId=<{$smarty.get.type}>" title="规则"><i class="icon icon-rule"></i></a>
+
+    </div>
+<ul class="nav-items clearfix">
+<{foreach from=$head item=v key=k}>
+    <li id="nav4"><a href="./index?type=<{$v['type']}>" class="nav-item <{if $type == $v['type']}>current<{/if}>"><{$v['name']}> </a></li>
+<{/foreach}>
+
+    </ul>
+
+
+<script src="<{#tjs#}>/jquery-1.7.2.min.js"></script>
+<style> .black_overlay{display: none; position: absolute; top: 0%;  width: 1000px; height: 100%; background-color:#000; z-index:1001; -moz-opacity: 0.6; opacity:.60; filter: alpha(opacity=80); margin: 34px auto 0 auto;}
+.white_content {display: none; position: absolute; top:30%; left:30%; width: 520px; height: 410px; /*background-image:url(123.png);*/ z-index:1002; overflow: auto; }
+#MyDiv { color:#FFF;}
+#div1{ line-height: 60px; margin: auto; text-align: center; font-size: 45px; } </style>
+
+<script type="text/javascript">
+
+  function ShowDiv(show_div,bg_div){
+
+  document.getElementById(show_div).style.display='block';
+  document.getElementById(bg_div).style.display='block' ;
+  var bgdiv = document.getElementById(bg_div);
+  bgdiv.style.width = document.body.scrollWidth;
+  // document.getElementById(bg_div).style.height =  hh_height;
+  $("#"+bg_div).height($(document).height());
+  };
+
+
+
+//弹出隐藏层
+
+</script>
+
+
+
+<!--弹出层时背景层DIV-->
+<div id="fade" class="black_overlay">
+</div>
+<div id="MyDiv" class="white_content">
+  <div style="text-align: right; color:#FFF; cursor: default; height: 40px;">
+    <span style="font-size: 16px;position:relative; right:15px; top:15px; cursor:pointer; " >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+  </div>
+  <p id="div1">
+  此彩种维护中！
+  </p>
+</div>

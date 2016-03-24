@@ -1,0 +1,165 @@
+<{config_load file="public.conf" section="public"}>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+<script language="javascript" type="text/javascript" src="<{#mem_js#}>/jquery-1.8.3.min.js"></script>
+<link rel="stylesheet" href="<{#mem_css#}>/index_main.css" />
+<link rel="stylesheet" href="<{#mem_css#}>/standard.css" />
+<style type="text/css">
+#fdbtn,#fdbtndo {
+    border-radius: 15px;
+    background-color: #DF174F;
+    color: #FFFFFF;
+    height: 20px;
+    text-align: center;
+    padding: 2px;
+    width: 100px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-left: 10px;
+    line-height: 10px;
+    font-size: 12px;
+}
+#loading {
+    background:  url("<{#mem_images#}>/loading11.gif") no-repeat scroll center 30px;
+    margin: 0 auto;
+    margin-top: 150px;
+    left: 50%;
+    margin-left: -200px;
+    margin-right: auto;
+    position: absolute;
+    padding-top:10px;
+    width: 400px;
+    height:50px;
+   /* background-color: #ccc;
+    filter: Alpha(Opacity=80);
+    background-color: rgba(0, 0, 0, 0.8);*/
+    text-align: center;
+}
+</style>
+</head>
+<body style="BACKGROUND: url(<{#mem_images#}>/../private/content_bg.jpg) repeat-y left top;" >
+<div id="loading" style="display:none;">
+    <span style="color:#7c3838;margin-top:20px;" id="gold0" >
+        <b id="btext">返水数据加载中，请耐心等待!</b>
+    </span>
+</div>
+<div id="MAMain" style="width:767px;">
+	<div id="MACenter-content" >
+		<div id="MACenterContent">
+			<div id="MNav">
+			    <a target="k_memr"  class="mbtn"
+				href="<{$site_url}>/index.php/member/account/userinfo">基本资讯</a>
+				<!-- <div class="navSeparate"></div> -->
+				<a target="k_memr"  class="mbtn"
+				href="<{$site_url}>/index.php/member/account/advisory">投注资讯</a>
+                <span class="mbtn" class="mbtn">自助返水</span>
+			</div>
+			<div style="overflow-y:scroll; height:370px">
+				<div id="MMainData" style="margin-top: 8px;">
+					<!-- <h2 class="MSubTitle">自助返水</h2> -->
+					<table class="MMain" id="self_table" border="1" style="margin-bottom: 8px;">
+						<tbody>
+						    <tr><th colspan="20" style="background-color: #C5D9F1;">有效打码</th></tr>
+							<tr>
+							   <{foreach key=cid item=con from=$vconfig}>
+							      <th><{$title[$con]}></th>
+							   <{/foreach}>
+						    </tr>
+						      <tr class="utd">
+						          <{foreach key=cid item=con from=$vconfig}>
+							       <td>0</td>
+							      <{/foreach}>
+						    </tr>
+						    <tr><th colspan="20" style="background-color: #C5D9F1;">返水额度</th></tr>
+						    <tr>
+								 <{foreach key=cid item=con from=$vconfig}>
+							      <th><{$title[$con]}></th>
+							   <{/foreach}>
+						    </tr>
+						      <tr>
+								 <{foreach key=cid item=con from=$vconfig}>
+							      <td>0</td>
+							   <{/foreach}>
+						    </tr>
+						    <tr><th colspan="20" style="background-color: #C5D9F1;">今日累计返水额度【不含当次】</th></tr>
+						    <tr>
+								 <{foreach key=cid item=con from=$vconfig}>
+							      <th><{$title[$con]}></th>
+							   <{/foreach}>
+						    </tr>
+						    <tr>
+								 <{foreach key=cid item=con from=$vconfig}>
+							      <td><{$odata[$con]}></td>
+							   <{/foreach}>
+						    </tr>
+
+							<tr>
+								<td style="" class="" colspan="20" align="center"><input type='button' value="自助返水" id="fdbtn"><br><font color="red">【只返当天<b style="color:#033B7D;">(美东时间)</b>有效打码】</font>
+								<!-- &nbsp;&nbsp;&nbsp;<a target="k_memr" href='<{$site_url}>/index.php/member/account/user_self_fd_list'>+自助返水记录+</a></td> -->
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+
+$('#fdbtn').click(function () {
+    $.ajax({
+        type: "GET",
+        data:{},
+        dataType: "json",
+        url: '/index.php/member/account/user_self_fd_data' + "?t=" + Math.random(),
+        beforeSend: function () {
+        	$('#fdbtn').remove();
+            $("#loading").css("display","block");
+            $("#self_table").html('');
+        },
+        success: function (data) {
+        	$("#loading").css("display","none");
+            if (data.state == 0) {
+                alert(data.msg);
+                window.location.href="/index.php/member/account/user_self_fd";
+            }else{
+	            $("#self_table").html(data.data);
+	            alert(data.msg);
+            }
+        }
+    })
+});
+
+
+function self_fd_data(){
+    $(this).remove();
+    $.ajax({
+        type: "POST",
+        data:{},
+        dataType: "json",
+        url: '/index.php/member/account/user_self_fd_data_do' + "?t=" + Math.random(),
+        beforeSend: function () {
+        	$("#btext").html('返水数据写入中,请耐心等待!');
+            $("#loading").css("display","block");
+            $("#self_table").html('');
+        },
+        success: function (data) {
+        	$("#loading").css("display","none");
+            alert(data.msg);
+            window.location.href="/index.php/member/account/user_self_fd";
+        }
+    })
+}
+
+
+
+
+
+
+</script>
+</body>
+</html>

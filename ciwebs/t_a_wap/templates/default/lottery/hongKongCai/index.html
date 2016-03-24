@@ -1,0 +1,49 @@
+<div class="cur-lottery">
+	<div class="perio">
+		<div class="pre-perio">
+			<div class="col item">
+				<span class="span-fl">{{baseInfo.PrePeriodNumber}}{{'LotteryReports.LabelPeriod'|translate}}</span>
+				<div ng-click="loop(baseInfo.ShowResult)"
+					ng-if="baseInfo.ShowResult!=null" class="div-fr div-mt">
+					<span ng-bind-html='baseInfo.ShowResult|yd:"4":"6"'></span> <span
+						class="transparent ion-arrow-swap"></span>
+				</div>
+			</div>
+		</div>
+		<div class="cur-perio">
+			<div class="col item">
+				<span>{{baseInfo.CurrentPeriod}}{{'LotteryReports.LabelPeriod'|translate}}
+					{{'Common.LabelClosePan'|translate}}:</span> <span class="time">{{baseInfo.CloseTime}}</span>
+			</div>
+		</div>
+	</div>
+	<div class="lottery-bet">
+		<cur-menus width="74" top="64">
+		<cur-menu title="{{'HongKongCai.LabelTeMa'|translate}}"
+			url="templates/default/lottery/hongKongCai/tema/tema.html"></cur-menu>
+		<cur-menu title="{{'HongKongCai.LabelZhengMa'|translate}}"
+			url="templates/default/lottery/hongKongCai/zhengma/zhengma.html"></cur-menu>
+		<cur-menu title="{{'HongKongCai.LabelZhengMa1-6'|translate}}"
+			url="templates/default/lottery/hongKongCai/zheng1_6.html"></cur-menu>
+		<cur-menu title="{{'HongKongCai.LabelZhengTe'|translate}}"
+			url="templates/default/lottery/hongKongCai/zhengte/zhengte.html"></cur-menu>
+		<cur-menu title="{{'HongKongCai.LabelLianMa'|translate}}"
+			url="templates/default/lottery/hongKongCai/lianma/lianma.html"></cur-menu>
+		<cur-menu title="{{'HongKongCai.LabelBanBo'|translate}}"
+			url="templates/default/lottery/hongKongCai/banbo/banbo.html"></cur-menu>
+		<cur-menu title="{{'HongKongCai.LabelWeiShu'|translate}}"
+			url="templates/default/lottery/hongKongCai/weishu.html"></cur-menu>
+		<cur-menu title="{{'HongKongCai.LabelBuZhong'|translate}}"
+			url="templates/default/lottery/hongKongCai/buzhong/buzhong.html"></cur-menu>
+		<cur-menu title="{{'HongKongCai.LabelYiXiao'|translate}}"
+			url="templates/default/lottery/hongKongCai/yixiao.html"></cur-menu>
+		<cur-menu title="{{'HongKongCai.LabelTeXiao'|translate}}"
+			url="templates/default/lottery/hongKongCai/texiao.html"></cur-menu>
+		<cur-menu title="{{'HongKongCai.LabelLiuXiao'|translate}}"
+			url="templates/default/lottery/hongKongCai/liuxiao/liuxiao.html"></cur-menu>
+		<cur-menu title="{{'HongKongCai.LabelLianXiao'|translate}}"
+			url="templates/default/lottery/hongKongCai/lianxiao/lianxiao.html"></cur-menu>
+		<cur-menu title="{{'HongKongCai.Label1_6LongHu'|translate}}"
+			url="templates/default/lottery/hongKongCai/longhu.html"></cur-menu></cur-menus>
+	</div>
+</div>

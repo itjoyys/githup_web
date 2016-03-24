@@ -1,0 +1,52 @@
+<{config_load file="public.conf" section="public"}>
+	<div id="MNav"> 
+		<span class="mbtn">投注记录</span>
+		<div class="navSeparate"></div>
+		<a target="k_memr" class="mbtn" href="<{$site_url}>/index.php/member/record/correspondence">往来记录</a> 
+	</div>
+	<div class="MNavLv2">
+		<span class="MGameType" id="sport_today" ><a target="k_memr" <{set_stype("/index.php/member/record/tc_record")}>  href="<{$site_url}>/index.php/member/record/tc_record">体育</a></span>｜ 
+		<span class="MGameType " id="lottery_today" ><a target="k_memr"<{set_stype("/index.php/member/record/lottery_today")}>  href="<{$site_url}>/index.php/member/record/lottery_today">彩票</a></span>｜
+		<{foreach key=cid item=con from=$video_config}>
+			<{if $con eq 'MG'}>
+				<span class="MGameType" id="mg_today" ><a  target="k_memr"<{set_stype("/index.php/member/record/sx_today?Company=mg&VideoType=all")}> href="<{$site_url}>/index.php/member/record/sx_today?Company=mg&VideoType=all"><{$con}>视讯</a></span>｜
+				<span class="MGameType" id="mgc_today" ><a  target="k_memr"<{set_stype("/index.php/member/record/sx_today?Company=mgc&VideoType=all")}> href="<{$site_url}>/index.php/member/record/sx_today?Company=mgc&gametype=all"><{$con}>电子</a></span>
+				<{if $cid neq count($video_config)-1}>
+					｜
+				<{/if}>
+			<{elseif $con eq 'PT'}>
+				<span class="MGameType" id="<{$con}>_today" ><a  target="k_memr"<{set_stype("/index.php/member/record/sx_today?Company=<{$con}>&VideoType=all")}> href="<{$site_url}>/index.php/member/record/sx_today?Company=<{$con}>&VideoType=all"><{$con}>电子</a></span>
+				<{if $cid neq count($video_config)-1}>
+					｜
+				<{/if}>
+			<{else}>
+				<span class="MGameType" id="<{$con}>_today" ><a  target="k_memr"<{set_stype("/index.php/member/record/sx_today?Company=<{$con}>&VideoType=all")}> href="<{$site_url}>/index.php/member/record/sx_today?Company=<{$con}>&VideoType=all"><{$con}>视讯</a></span>
+				<{if $cid neq count($video_config)-1}>
+					｜
+				<{/if}>
+			<{/if}>
+		<{/foreach}>
+		<!--<span class="MGameType " id="mg_today" ><a  target="k_memr"<{set_stype("/index.php/member/record/sx_today?Company=mg&VideoType=all")}> href="<{$site_url}>/index.php/member/record/sx_today?Company=mg&VideoType=all">MG视讯</a></span>
+		｜	   
+		<span class="MGameType " id="mgc_today" ><a  target="k_memr"<{set_stype("/index.php/member/record/sx_today?Company=mg&gametype=all")}> href="<{$site_url}>/index.php/member/record/sx_today?Company=mgc&gametype=all">MG电子</a></span>｜ 
+		<span class="MGameType " id="lebo_today" ><a  target="k_memr"<{set_stype("/index.php/member/record/sx_today?Company=lebo&VideoType=all")}> href="<{$site_url}>/index.php/member/record/sx_today?Company=lebo&VideoType=all">LEBO视讯</a></span>｜ 
+		<span class="MGameType " id="ct_today" ><a  target="k_memr"<{set_stype("/index.php/member/record/sx_today?Company=ct&VideoType=all")}> href="<{$site_url}>/index.php/member/record/sx_today?Company=ct&VideoType=all">CT视讯</a></span>｜ 
+		<span class="MGameType " id="bbin_today" ><a target="k_memr"<{set_stype("/index.php/member/record/sx_today?Company=bbin&VideoType=all")}>  href="<{$site_url}>/index.php/member/record/sx_today?Company=bbin&VideoType=all">BBIN视讯</a></span>｜ 
+		<span class="MGameType " id="og_today" ><a target="k_memr"<{set_stype("/index.php/member/record/sx_today?Company=og&VideoType=all")}> href="<{$site_url}>/index.php/member/record/sx_today?Company=og&VideoType=all">OG视讯</a></span>-->
+	</div>
+<script  type="text/javascript" src="<{#mem_js#}>/date/WdatePicker.js"></script>
+<script  type="text/javascript" src="<{#mem_js#}>/jquery-1.8.3.min.js"></script>
+<script>
+$(function(){
+	var url=parent.document.getElementById("k_memr").contentWindow.location.href
+	url_=url.substring(url.lastIndexOf('/')+1)
+	url_2  =url_.substring(0,url_.lastIndexOf('.')+4)
+	$('.MNavLv2 span a').each(function(){
+		if(url_==$(this).attr('href') || url_2 == $(this).attr('href')){
+			$(this).attr("style",'color:#ffffff;background:#bc5a83;padding:2px');
+		}
+	});
+	
+	$('#<{$Company}>_today a').attr("style",'color:#ffffff;background:#bc5a83;padding:2px');
+})
+</script>

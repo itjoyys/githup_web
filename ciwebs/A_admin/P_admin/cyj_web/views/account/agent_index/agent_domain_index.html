@@ -1,0 +1,137 @@
+<title>代理推广域名</title>
+<{include file="web_header.html"}>
+<body>
+<style>
+.revise_a {
+    padding: 3px 8px;
+    font-family: Verdana, Arial, sans-serif;
+    border-radius: 10px;
+    font-size: 12px;
+    background: #000;
+    color: #fff;
+  }
+</style>
+<script>
+var indexid = "<{$index_id}>";
+var agent_id = "<{$agent_id}>";
+$(document).ready(function(){
+    $("#index_id").val(indexid);
+    $("#agent_id").val(agent_id);
+})
+$(function(){
+    $("#index_id").change(function(event) {
+      $("#myFORM").submit();
+    });
+  })
+    //分页跳转
+  window.onload=function(){
+    document.getElementById("page").onchange=function(){
+      document.getElementById('myFORM').submit()
+    }
+  }
+
+function agent_domain(id,aid,index_id,intr){
+      $("#did").val(id);
+      $("#aid").val(aid);
+      $("#iid").val(index_id);
+      $("#intr").val(intr);
+      if (id) {
+          $.ajax({
+            type: "GET",
+            url: "<{$site_url}>/account/agent_index/agent_domain_add",
+            dataType:'json',
+            data: {id:id},
+            success: function(data){
+                $("#did").val(data.id);
+                $("#aid").val(data.aid);
+                $("#iid").val(data.index_id);
+                $("#domain").val(data.domain);
+            }
+          });
+      };
+
+  easyDialog.open({
+      container : 'currency_box2'
+  });
+}
+</script>
+<!--体育返水赔率分隔设定-->
+<div id="easyDialogBox" style="margin: -54.5px 0px 0px -150px; padding: 0px; z-index: 10000; position: fixed; top: 45%; left: 50%; display: none;border-radius: 5px;">
+  <div id="currency_box2" style="display: block; margin: 0px;border-radius: 5px;" class="con_menu">
+<form action="<{$site_url}>/account/agent_index/agent_domain_add_do" method="post" name="add_form" onsubmit="return check_spdis()">
+  <table class="m_tab" style="width:300px;margin:0;border-radius: 5px;">
+    <tbody><tr class="m_title">
+      <td colspan="2" height="27" class="table_bg" align="center">
+      <span id="title">添加代理推广域名</span>
+      <span style="float:right;"><a style="color:white;" href="javascript:void(0)" title="关闭窗口" onclick="easyDialog.close();">×</a></span>
+      </td>
+    </tr>
+      <tr class="m_title">
+      <td>域名:</td>
+      <td><input name="domain" id="domain" value="" style="width:200px;"></td>
+    </tr>
+    <tr style="background: #fff;">
+      <td colspan="2" align="center">
+        <input name="id" id="did" value="" type="hidden">
+        <input name="index_id" id="iid" value="" type="hidden">
+        <input name="intr" id="intr" value="" type="hidden">
+        <input name="agent_id" id="aid" value="" type="hidden">
+        <input type="submit" value="提交" class="button_a">
+        <input type="reset" value="关闭" onclick="easyDialog.close();" class="button_a">
+      </td>
+    </tr>
+  </tbody></table>
+</form>
+</div>
+</div>
+
+<div id="con_wrap">
+<div class="input_002">代理推广域名</div>
+<div class="con_menu">
+<form id="myFORM" action="<{$site_url}>/account/agent_index/agent_domain" method="get" name="FrmData">
+  <a href="<{$site_url}>/account/agent_index/agent_domain" style="color: rgb(255, 0, 0);">代理推广域名</a>
+   <a href="javascript:void(0)" onclick="agent_domain('<{$id}>','<{$agent_id}>','<{$index_id}>','<{$intr}>')">添加</a>
+  <br> <!-- 代理商： <select name="agent_id" id="agent_id">
+          <option value="">全部</option>
+          <{foreach from=$agents item=v}>
+          <option value="<{$v['id']}>"><{$v['agent_user']}>【<{$v['agent_name']}>】</option>
+          <{/foreach}>
+      </select> &nbsp; -->域名：
+  <input name="domain" id="domain" value="<{$smarty.get.domain}>" type="text" class="za_text">
+  <input type="SUBMIT" value="確定" class="za_button">
+  &nbsp;<{$page}>
+</form></div>
+</div>
+<div class="content">
+  <table width="100%" border="0" cellspacing="0" cellpadding="0" class="m_tab" >
+      <tbody>
+      <tr class="m_title_over_co">
+        <td width="100">推广ID</td>
+        <td width="120">代理商</td>
+        <td>会员总数</td>
+        <td>域名</td>
+        <td width="150">添加日期</td>
+        <td width="150">操作</td>
+      </tr>
+
+   <{foreach from=$data key=i item=v}>
+      <tr class="m_cen <{if $i%2 == 0}>even<{/if}>" align="left" >
+        <td align="center"><{$v['intr']}></td>
+        <td align="center"><{$agents[$v['aid']]['agent_user']}>【<{$agents[$v['aid']]['agent_name']}>】</td>
+        <td align="center"><{$v['ucount']}></td>
+        <td align="center"><{$v['domain']}></td>
+        <td align="center"><{$v['add_date']}></td>
+        <td align="center">
+         <a class="revise_a" style="color:#fff;" href="javascript:void(0)" onclick="agent_domain('<{$v['id']}>','<{$v['aid']}>','<{$v['index_id']}>','<{$v['intr']}>')">编辑</a>
+         <a class="revise_a" style="color:#fff;" href="<{$site_url}>/account/agent_index/agent_domain_state?id=<{$v['id']}>&state=<{$v['state']}>&aid=<{$v['aid']}>" onclick="return confirm('确认删除')">删除</a>
+       </td>
+      </tr>
+   <{/foreach}>
+
+  </tbody></table>
+</div>
+
+
+
+<!-- 公共尾部 -->
+<{include file="web_footer.html"}>

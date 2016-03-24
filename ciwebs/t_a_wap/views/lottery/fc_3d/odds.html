@@ -1,0 +1,21 @@
+<ion-content class="bet-view">
+<div data-title="<{$smarty.get.gamename}>">
+	<div class="row text-center">
+		<div class="col title-no"><{$smarty.get.gamename}></div>
+	</div>
+	<hr style="border: 1px solid rgba(255, 255, 255, 0.2); margin-top:0.1rem;">
+	<div class="row" style="margin-top:-0.3rem">
+	<{foreach from=$list item=v key=k}>
+		<div class="col col-50 bet" data-id="<{$v['id']}>">
+			<span <{if is_numeric($v['input_name'])}> class="bet-content round-1" <{else}> class="bet-content"<{/if}> ><{$v['input_name']}></span> <span class="bet-item"></span>
+		</div>
+		<{if ($k+1)%2==0}>  
+	</div>
+	<div class="row" >
+	<{/if}>
+	<{/foreach}>
+	</div>
+	
+	
+</div>
+</ion-content>

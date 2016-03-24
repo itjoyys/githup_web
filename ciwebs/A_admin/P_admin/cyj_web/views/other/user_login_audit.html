@@ -1,0 +1,60 @@
+<title>会员自动稽核</title>
+<{include file="web_header.html"}>
+<body>
+<script type="text/javascript">
+    //分页跳转
+  window.onload=function(){
+    document.getElementById("page").onchange=function(){
+      document.getElementById('queryform').submit()
+    }
+  }
+
+var indexid = "<{$index_id}>";
+$(document).ready(function(){
+  $("#index_id").val(indexid);
+  $("#index_id").change(function(event) {
+      $("#queryform").submit();
+    });
+})
+</script>
+<div id="con_wrap">
+  <div class="input_002">会员自动稽核</div>
+  <div class="con_menu">
+    <form method="get" action="<{$site_url}>/other/log_manage/user_login_audit_do" name="action_form" id="queryform">
+      <a href="<{$site_url}>/other/log_manage/member_login_log">会员登陆</a>
+      <a href="<{$site_url}>/other/log_manage/admin_login_log">管理登陆</a>
+      <a href="<{$site_url}>/other/log_manage/admin_do_log">操作日志</a>
+      <a href="<{$site_url}>/other/log_manage/user_login_audit" style="color: rgb(255, 0, 0);">自动稽核</a>
+      <br>
+      <select name="type" id="is_success" class="za_select">
+        <option value="2" <{select_check(2,$smarty.get.type)}>>账号</option>
+        <option value="1" <{select_check(1,$smarty.get.type)}>>IP</option>
+  </select>
+      <input class="za_text" id="udata" name="udata" value="<{$smarty.get.udata}>">
+      <input class="button_d" value="查詢" type="submit">
+    </form>
+  </div>
+</div>
+<table class="m_tab" width="100%">
+  <tbody><tr class="m_title_over_co">
+    <td>www</td>
+    <td>帐号</td>
+    <td>讯息</td>
+    <td>登入时间</td>
+    <td>IP</td>
+  </tr>
+<{foreach from=$user_login key=i item=row}>
+  <tr class="m_cen <{if $i%2 == 0}>even<{/if}>">
+    <td><{$row['www']}></td>
+    <td><{$row['username']}></td>
+    <td><{$row['www']}></td>
+    <td><{$row['login_time']}></td>
+
+    <td><{$row['ip']}></td>
+    </tr>
+<{/foreach}>
+    </tbody></table>
+
+
+<!-- 公共尾部 -->
+<{include file="web_footer.html"}>

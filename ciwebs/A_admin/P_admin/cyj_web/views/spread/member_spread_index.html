@@ -1,0 +1,111 @@
+<title>会员管理</title>
+<{include file="web_header.html"}>
+<body>
+<script type="text/javascript">
+var indexid = "<{$smarty.get.index_id}>";
+$(document).ready(function(){
+  $("#index_id").val(indexid);
+})
+
+$(function(){
+    $("#index_id").change(function(event) {
+      $("#myFORM").submit();
+    });
+  })
+</script>
+<div  id="con_wrap">
+<div  class="input_002" >會員推广管理</div>
+<div  class="con_menu" style="width:980px;">
+<form  name="myFORM"  id="myFORM"  action="<{$site_url}>/spread/member_spread/index"  method="GET">
+<{$sites_str}>
+
+  &nbsp;注册日期：
+              <input class="za_text Wdate" onClick="WdatePicker()" value="<{$smarty.get.start_date}>" size="10" name="start_date"> - <input  type="text"  name="end_date" id="end_date" readonly  value="<{$smarty.get.end_date}>" class="za_text Wdate" onClick="WdatePicker()">
+              <select  name="search_type" id="utype"  class="za_select">
+              <option  value="0" <{select_check(0,$smarty.get.search_type)}>>帳號</option>
+              <option  value="4" <{select_check(4,$smarty.get.search_type)}>>注册IP</option>
+              <option  value="5" <{select_check(5,$smarty.get.search_type)}>>登陆IP</option>
+              <option  value="1" <{select_check(1,$smarty.get.search_type)}>>姓名</option>
+              <option  value="2" <{select_check(2,$smarty.get.search_type)}>>手机</option>
+              <option  value="3" <{select_check(3,$smarty.get.search_type)}>>银行卡</option>
+            </select>
+              <input  type="text"  name="search_name"  value="<{$smarty.get.search_name}>"  class="za_text"  >
+              <input  type="submit" value="搜索"   class="za_button">
+                  每页显示:<select name="page_num" onchange="document.getElementById('myFORM').submit()">
+                   <option value="100" <{select_check(100,$smarty.get.page_num)}>>100</option>
+                   <option value="200" <{select_check(200,$smarty.get.page_num)}>>200</option>
+                   <option value="500" <{select_check(500,$smarty.get.page_num)}>>500</option>
+                   </select>
+        頁數：
+ <select id="page" name="page" class="za_select">
+    <{assign var=$i value=0}>
+       <{section name=total loop=$totalPage}>
+       <option value="<{$i=$i+1}><{$i}>"<{select_check($i,$smarty.get.page)}> ><{$i}></option>
+       <{/section}>
+  </select> <{$totalPage}>頁&nbsp;
+</form>
+<script>
+    //分页跳转
+  window.onload=function(){
+    document.getElementById("page").onchange=function(){
+      document.getElementById('myFORM').submit()
+    }
+  }
+</script>
+</div>
+</div>
+<div  class="content" style="overflow">
+  <table  style="table-layout: fixed;width:100%" border="0"  cellspacing="0"  cellpadding="0"  class="m_tab">
+    <tbody><tr  class="m_title_over_co">
+      <td style="width:55px;">状态</td>
+      <td style="width:85px;">姓名</td>
+      <td style="width:95px;">帳號</td>
+      <td style="width:60px;">系統額度</td>
+
+
+      <td style="width:180px;">所屬代理商</td>
+      <td style="width:130px;">新增日期</td>
+      <td style="width:55px;">狀況</td>
+      <{if $top_uid eq NULL}>
+      <td style="width: 90px;">推荐会员数</td>
+      <{else}>
+      <td style="width: 90px;">推广会员ID</td>
+      <{/if}>
+    </tr>
+  <{if count($list)>0 }>
+  <{foreach from=$list key=i item=rows}>
+    <tr class="m_cen <{if $i%2 == 0}>even<{/if}>" >
+      <td><a  style="color:red"  title="登陸時間:<{$rows['login_time']}> 登陸IP:<{$rows['login_ip']}>"><{$rows['Online_state']}></a></td>
+      <td><{$rows["pay_name"]}></td>
+      <td><{$rows["username"]}></td>
+      <td  align="center"><{$rows["money"]}> </td>
+
+      <td align="center"><a style="width:180px;display:block;overflow:hidden;word-break:keep-all;white-space:nowrap;text-overflow:ellipsis;"
+      href="javascript:void(0);"><{$agent_up[$rows['agent_id']]["agent_user"]}>(<{$agent_up[$rows['agent_id']]["agent_name"]}>)</a></td>
+      <td><{$rows["reg_date"]}></td>
+      <td>
+         <{if $rows['is_delete'] == 2}>
+           <span style="color:#FF00FF;">停用</span>
+         <{else}>
+          <span style="color:##1E20CA;">正常</span>
+         <{/if}>
+      </td>
+      <td  align="center">
+      <{if $top_uid eq NULL}>
+         <a style="width:55px;display:block;overflow:hidden;word-break:keep-all;white-space:nowrap;text-overflow:ellipsis;"
+      href="<{$site_url}>/spread/member_spread/index?top_uid=<{$rows['uid']}>"><{$rows['spread_num']}>
+      </a>
+      <{else}>
+      <span style="color:#FF00FF;"><{$rows['top_uid']}></span>
+      <{/if}>
+      </td>
+    </tr>
+    <{/foreach}>
+<{else}>
+  <tr class="m_rig" style="display:;">
+        <td height="70" align="center" colspan="16"><font color="#3B2D1B">暫無數據。</font></td>
+      </tr>
+<{/if}>
+  </tbody></table>
+</div>
+ <{include file="web_footer.html"}>

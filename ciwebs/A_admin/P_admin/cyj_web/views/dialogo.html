@@ -1,0 +1,12 @@
+<{config_load file="public.conf" section="public"}>
+
+<!--最新公告-->
+<html>
+<body style="background-color:#F2F1D7;">
+    <div id="js-notice-pop" style="display:block;width:100%;height:auto;">
+        <p style="text-align: center;font-weight:bold;color:red;padding-top:10px;font-family:微软雅黑,宋体;">
+              <b><{$notices['notice_title']}></b></p>
+        <p style="padding: 10px;color:red;font-family:微软雅黑,宋体;font-size: 14px;"> <{$notices['notice_content']}></p>
+    </div>
+</body>
+</html>

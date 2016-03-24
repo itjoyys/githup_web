@@ -1,0 +1,536 @@
+<{config_load file="public.conf" section="public"}>
+<!doctype html>
+<!--[if lt IE 7 ]> <html class="no-js ie6 ie" > <![endif]-->
+<!--[if IE 7 ]>    <html class="no-js ie7 ie" > <![endif]-->
+<!--[if IE 8 ]>    <html class="no-js ie8 ie" > <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html class="no-js">
+<!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<title>六合彩</title>
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="<{#tcss#}>/main_<{$config_css}>.css?v=2015101">
+<!--[if IE 6]>
+<script src="/assets/dist/scripts/lib/ie6/DD_belatedPNG_0.0.8a.js?v=2015101"></script>
+<script>
+    /* EXAMPLE */
+    DD_belatedPNG.fix('.icon');
+    /* string argument can be any CSS selector */
+    /* .png_bg example is unnecessary */
+    /* change it to what suits you! */
+</script>
+<![endif]-->
+<script type="text/javascript">
+        window.onload = function () {
+				var height = 750;
+                var doc = parent.document;
+				var ifr = window.parent.document.getElementById("iframepage");
+                ifr.style.height = height+'px';
+
+        };
+    </script>
+<script>
+	var ry_lottery_config = {
+		assets : '/public/timages/{0}?v=2015101',
+		currency : '￥',
+		locale : 'zh_cn',
+		officalDomain : '<{$url}>/index.php'
+	};
+</script>
+
+<script src="<{#tjs#}>/main.js?v=2015101"></script>
+
+</head>
+<body>
+
+	<div class="container">
+
+		<!--#nav START-->
+		<div id="nav" class="nav clearfix"><{include
+			file='lottery/title_head.html'}></div>
+		<!--#nav END-->
+
+
+
+		<!--.summary START-->
+		<div class="summary" id="summary">
+		&nbsp;&nbsp;
+<span> 期数 <b class="box ib timer"><{$now_qishu}>期</b></span>
+		<!-- 	<a class="live fr" target="_blank"
+				href="http://www.6hbd.me/marksix/shipin"> <img
+				src="<{#timages#}>/live.gif" />
+			</a> --><i title="声音开关" class="icon1 sound-on fr"></i>
+			<div class="summary-prev fr" id="pre-result">
+			<span class="fl"><{$type_name_c}></span>
+				<span class="fl mr6"><b id="prev-issue">0</b>期结果</span> <span
+					class="summary-prev-hkc" id="prev-bs"></span>
+			</div>
+		<!-- 	<span class="notify"> <span id="marquee" width="370"
+				height="24" style="display: none"></span>
+			</span> -->
+		</div>
+		<!--.summary END-->
+		<!--.play START-->
+		<div id="play" class="play hkc" style="height:754px;">
+			<div class="play-hd clearfix">
+				<span class="fl"> 玩法 ： </span>
+				<ul class="play-category fl" id="play-tab">
+					<{foreach from=$list item=v key=k}>
+					<li><a id="nav-<{$v['gameid']}>" <{if $smarty.get.gameid==$v['gameid']}>class="current"<{/if}>
+						href="/index.php/lottery/lottery/index?type=liuhecai&gameid=<{$v['gameid']}>">
+							<{$v['name']}></a></li> <{/foreach}>
+				</ul>
+			</div>
+
+			<div class="play-bd clearfix">
+				<div class="main-bd">
+					<div class="clearfix summary">
+						<div class="fr nav-button" id="sub-tabs">
+							<{foreach from=$config item=v key=k}>
+		<a id="" class="button<{if $gamename2==$v['name']}> current<{/if}>"  title="<{$v['name']}>"
+		href="/index.php/lottery/lottery/index?gameid=<{$smarty.get.gameid}>&type=liuhecai&gamename2=<{$v['name']}>"><{$v['name']}></a>
+	<{/foreach}>
+						</div>
+
+						<span> 距离封盘 <b class="box ib timer close-timer"
+							id="close-timer" data-timer="190153">&nbsp;</b>
+						</span>
+					</div>
+					<div id="parlay-ctn" class="mt10 bo-left" >
+
+
+					<div class="clearfix" id="j-number-ctn">
+							<table class="table fl wp-20" style="border-left:none;" >
+								<thead>
+									<tr>
+										<th>号码</th>
+										<th>赔率</th>
+										<th>金额</th>
+									</tr>
+								</thead>
+								<tbody>
+
+														<{foreach from=$odds_arr['suzi'] item=v key=k}>
+									<tr class="el el<{$v['input_name']}>" data-id="<{$v['id']}>" data-odds="<{$v['odds_value']}>">
+										<td class="table-odd"><i class="icon b-<{func_set_style($v['input_name'])}>"><{$v['input_name']}></i></td>
+										<td class="odds-text"><span data-id="221"><{$v['odds_value']}></span></td>
+										<td><input type="text" class="input" data-id="<{$v['id']}>"
+											data-odds="<{$v['odds_value']}>" /></td>
+									</tr>
+									<{if ($k+1)%10 ==0 && $k!=79}>
+								</tbody>
+							</table>
+							<table class="table fl wp-20" style="border-left:none;">
+								<thead>
+									<tr>
+										<th>号码</th>
+										<th>赔率</th>
+										<th>金额</th>
+									</tr>
+								</thead>
+								<tbody>
+							<{/if}>
+							<{/foreach}>
+
+								</tbody>
+
+							</table>
+						</div>
+		<!-- 				<div class="clearfix">
+
+							<table class="table" >
+								<thead>
+									<tr>
+										<th>类型</th>
+										<th>赔率</th>
+										<th>金额</th>
+										<th>类型</th>
+										<th>赔率</th>
+										<th>金额</th>
+										<th>类型</th>
+										<th>赔率</th>
+										<th>金额</th>
+										<th>类型</th>
+										<th>赔率</th>
+										<th>金额</th>
+
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<{foreach from=$odds_arr['hanzi'] item=v key=k}>
+
+										<td class="table-odd"><{$v['input_name']}></td>
+										<td class="odds-text"><span data-id="<{$v['id']}>"><{$v['odds_value']}></span></td>
+										<td><input type="text" class="input" data-id="<{$v['id']}>"
+											data-odds="<{$v['odds_value']}>" /></td>
+
+										<{if ($k+2)%5 ==0 }>
+										</tr>
+										<tr>
+										<{/if}>
+									<{/foreach}>
+									</tr>
+
+								</tbody>
+							</table>
+
+						</div> -->
+
+
+
+							<{if $is_login}><form class="form normal-form mt10 tac need-auth" action="" id="parlay-form" style="text-align:right;">
+        <button class="button parlay bet-button" data-action="parlay">
+
+            下注</button>
+        <button class="button button-secondary bet-button" data-action="reset" type="reset">
+
+            重置</button>
+    </form><{else}>
+								<div class="fr">
+								<a href="javascript:;" onclick="alert('请先登录！');"><img src="<{#timages#}>/je_2.png" ></a>
+								<img alt=" " src="<{#timages#}>/je_3.png">
+								</div><{/if}>
+					</div>
+
+				</div>
+				<div class="aside">
+					<div class="amount  need-auth">
+						<{if $is_login}>
+						<div class="available-amount box">
+							<span>可用金额</span>
+							<b id="j-balance">￥0.00</b>
+						</div>
+						<div class="betting-amount box">
+							<span>即时下注</span>
+							<a href="javascript:void(0)" data-href="/index.php/lottery/lottery/notCount" class="odfi" title="即时注单"><b id="j-orders">￥0.00</b></a>
+						</div>
+						<{/if}>
+					</div>
+					<div class="hkc-quick-bet need-auth" id="hkc-quick-ctn">
+						<{if $is_login}>
+						<form class="form quick-form b0_bor" action="">
+
+							<label>
+								<span class="vam">
+									金额</span>
+								<input type="text" class="input" id="hkc-quick-amount">
+							</label>
+							<div class="mt10 ">
+								<button class="button button-secondary bet-button mr10 mt10_2" data-action="reset" type="reset">
+
+									重置</button>
+								<button class="button parlay bet-button " data-action="parlay">
+
+									下注</button>
+							</div>
+						</form>
+						<table class="table table-noborder">
+								<tbody><tr>
+										<td class="">
+											<label>
+												<input type="radio" name="s" class="j-hkc-qb" value="红大">
+												<span class="red">红大</span>
+											</label>
+										</td>
+										<td class="">
+											<label>
+												<input type="radio" name="s" class="j-hkc-qb" value="红单">
+												<span class="red">红单</span>
+											</label>
+										</td>
+								</tr>
+								<tr>
+										<td class="">
+											<label>
+												<input type="radio" name="s" class="j-hkc-qb" value="红合单">
+												<span class="red">红合单</span>
+											</label>
+										</td>
+										<td class="">
+											<label>
+												<input type="radio" name="s" class="j-hkc-qb" value="红合双">
+												<span class="red">红合双</span>
+											</label>
+										</td>
+								</tr>
+								<tr>
+										<td class="">
+											<label>
+												<input type="radio" name="s" class="j-hkc-qb" value="红双">
+												<span class="red">红双</span>
+											</label>
+										</td>
+										<td class="">
+											<label>
+												<input type="radio" name="s" class="j-hkc-qb" value="红小">
+												<span class="red">红小</span>
+											</label>
+										</td>
+								</tr>
+								<tr>
+										<td class="">
+											<label>
+												<input type="radio" name="s" class="j-hkc-qb" value="绿大">
+												<span class="green">绿大</span>
+											</label>
+										</td>
+										<td class="">
+											<label>
+												<input type="radio" name="s" class="j-hkc-qb" value="绿单">
+												<span class="green">绿单</span>
+											</label>
+										</td>
+								</tr>
+								<tr>
+										<td class="">
+											<label>
+												<input type="radio" name="s" class="j-hkc-qb" value="绿合单">
+												<span class="green">绿合单</span>
+											</label>
+										</td>
+										<td class="">
+											<label>
+												<input type="radio" name="s" class="j-hkc-qb" value="绿合双">
+												<span class="green">绿合双</span>
+											</label>
+										</td>
+								</tr>
+								<tr>
+										<td class="">
+											<label>
+												<input type="radio" name="s" class="j-hkc-qb" value="绿双">
+												<span class="green">绿双</span>
+											</label>
+										</td>
+										<td class="">
+											<label>
+												<input type="radio" name="s" class="j-hkc-qb" value="绿小">
+												<span class="green">绿小</span>
+											</label>
+										</td>
+								</tr>
+								<tr>
+										<td class="">
+											<label>
+												<input type="radio" name="s" class="j-hkc-qb" value="蓝大">
+												<span class="blue">蓝大</span>
+											</label>
+										</td>
+										<td class="">
+											<label>
+												<input type="radio" name="s" class="j-hkc-qb" value="蓝单">
+												<span class="blue">蓝单</span>
+											</label>
+										</td>
+								</tr>
+								<tr>
+										<td class="">
+											<label>
+												<input type="radio" name="s" class="j-hkc-qb" value="蓝合单">
+												<span class="blue">蓝合单</span>
+											</label>
+										</td>
+										<td class="">
+											<label>
+												<input type="radio" name="s" class="j-hkc-qb" value="蓝合双">
+												<span class="blue">蓝合双</span>
+											</label>
+										</td>
+								</tr>
+								<tr>
+										<td class="">
+											<label>
+												<input type="radio" name="s" class="j-hkc-qb" value="蓝双">
+												<span class="blue">蓝双</span>
+											</label>
+										</td>
+										<td class="">
+											<label>
+												<input type="radio" name="s" class="j-hkc-qb" value="蓝小">
+												<span class="blue">蓝小</span>
+											</label>
+										</td>
+								</tr>
+
+						</tbody></table>
+						<table class="table" id="tb-dxds">
+							<tbody><tr>
+								<td>
+									<span class="red j-hkc-sx" data-key="dan">
+										单
+									</span>
+								</td>
+								<td>
+									<span class="red j-hkc-sx" data-key="shuang">
+										双
+									</span>
+								</td>
+								<td>
+									<span class="red j-hkc-sx" data-key="da">
+										大
+									</span>
+								</td>
+								<td>
+									<span class="red j-hkc-sx" data-key="xiao">
+										小
+									</span>
+								</td>
+
+							</tr>
+						</tbody></table>
+						<table class="table" id="tb-sx">
+
+								<tbody><tr>
+										<td>
+											<span data-key="鼠" class="j-hkc-sx" data-sx="true">鼠</span>
+										</td>
+										<td>
+											<span data-key="牛" class="j-hkc-sx" data-sx="true">牛</span>
+										</td>
+										<td>
+											<span data-key="虎" class="j-hkc-sx" data-sx="true">虎</span>
+										</td>
+										<td>
+											<span data-key="兔" class="j-hkc-sx" data-sx="true">兔</span>
+										</td>
+								</tr>
+								<tr>
+										<td>
+											<span data-key="龙" class="j-hkc-sx" data-sx="true">龙</span>
+										</td>
+										<td>
+											<span data-key="蛇" class="j-hkc-sx" data-sx="true">蛇</span>
+										</td>
+										<td>
+											<span data-key="马" class="j-hkc-sx" data-sx="true">马</span>
+										</td>
+										<td>
+											<span data-key="羊" class="j-hkc-sx" data-sx="true">羊</span>
+										</td>
+								</tr>
+								<tr>
+										<td>
+											<span data-key="猴" class="j-hkc-sx" data-sx="true">猴</span>
+										</td>
+										<td>
+											<span data-key="鸡" class="j-hkc-sx" data-sx="true">鸡</span>
+										</td>
+										<td>
+											<span data-key="狗" class="j-hkc-sx" data-sx="true">狗</span>
+										</td>
+										<td>
+											<span data-key="猪" class="j-hkc-sx" data-sx="true">猪</span>
+										</td>
+								</tr>
+
+						</tbody></table>
+						<{/if}>
+				</div>
+
+
+
+
+
+				</div>
+			</div>
+
+		</div>
+		<script type="text/html" id="tpl-prev-balls">
+    {{#balls}}
+    <i class="icon ball-style b-{{color}}">{{number}}</i>{{sx}}
+    {{/balls}}
+</script>
+
+		<input type="hidden" value="224" id="h-nav-top" /> <input type="hidden"
+			value="0" id="h-nav-sub" />
+		<!--.play START-->
+
+	</div>
+
+
+
+
+	<script>
+		require([ '<{#tjs#}>/tema.js' ], function(App) {
+			new App({
+				IsTeMa : 0,
+				quick : {
+
+					//2016年生肖 过年了放开我
+              sx : {
+           "猴" : [ 1, 13, 25, 37, 49 ],
+           "羊" : [ 2, 14, 26, 38 ],
+           "马" : [ 3, 15, 27, 39 ],
+           "蛇" : [ 4, 16, 28, 40 ],
+           "龙" : [ 5, 17, 29, 41 ],
+           "兔" : [ 6, 18, 30, 42 ],
+           "虎" : [ 7, 19, 31, 43 ],
+           "牛" : [ 8, 20, 32, 44 ],
+           "鼠" : [ 9, 21, 33, 45 ],
+           "猪" : [ 10, 22, 34, 46 ],
+           "狗" : [ 11, 23, 35, 47 ],
+           "鸡" : [ 12, 24, 36, 48 ]
+          },
+
+					banbo : {
+						"红单" : [ 1, 7, 13, 19, 23, 29, 35, 45 ],
+						"蓝双" : [ 4, 10, 14, 20, 26, 36, 42, 48 ],
+						"红双" : [ 2, 8, 12, 18, 24, 30, 34, 40, 46 ],
+						"蓝大" : [ 25, 26, 31, 36, 37, 41, 42, 47, 48 ],
+						"红大" : [ 29, 30, 34, 35, 40, 45, 46 ],
+						"蓝小" : [ 3, 4, 9, 10, 14, 15, 20 ],
+						"红小" : [ 1, 2, 7, 8, 12, 13, 18, 19, 23, 24 ],
+						"红合单" : [ 1, 7, 12, 18, 23, 29, 30, 34, 45 ],
+						"绿单" : [ 5, 11, 17, 21, 27, 33, 39, 43, 49 ],
+						"红合双" : [ 2, 8, 13, 19, 24, 35, 40, 46 ],
+						"绿双" : [ 6, 16, 22, 28, 32, 38, 44 ],
+						"绿合单" : [ 5, 16, 21, 27, 32, 38, 43, 49 ],
+						"绿大" : [ 27, 28, 32, 33, 38, 39, 43, 44, 49 ],
+						"绿合双" : [ 6, 11, 17, 22, 28, 33, 39, 44 ],
+						"绿小" : [ 5, 6, 11, 16, 17, 21, 22 ],
+						"蓝合单" : [ 3, 9, 10, 14, 25, 36, 41, 47 ],
+						"蓝单" : [ 3, 9, 15, 25, 31, 37, 41, 47 ],
+						"蓝合双" : [ 4, 15, 20, 26, 31, 37, 42, 48 ]
+					}
+				}
+			});
+		})
+	</script>
+
+
+	<div id="j-confirm-tpl" class="hide ">
+		<div class="confirm-parlay">
+			<h3>
+
+				共计 ：{{currency}}<em>{{total}}</em>/<em>{{sum}}</em> 注 ， 您确定要下注吗？
+
+			</h3>
+			<ul class="{{col}}">
+				{{#items}}
+				<li><span>{{category}}【{{name}}】</span>@{{odds}} X {{amount}}</li>
+				{{/items}}
+			</ul>
+		</div>
+	</div>
+
+	<iframe id="myifr" style="display: none" src=""></iframe>
+
+	<object style="height: 0; width: 0; overflow: hidden;"
+		classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000"
+		codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0"
+		width="0" height="0" id="asound" align="absmiddle">
+		<param name="allowScriptAccess" value="sameDomain">
+		<param name="movie" value="<{#timages#}>/asound.swf?v=2015101">
+		<param name="quality" value="high">
+		<embed src="<{#timages#}>/asound.swf?v=2015101" quality="high"
+			width="0" height="0" name="asound" align="absmiddle"
+			allowscriptaccess="sameDomain" type="application/x-shockwave-flash"
+			pluginspage="http://www.macromedia.com/go/getflashplayer">
+	</object>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<title>会员自助返水查询</title>
+<{include file="web_header.html"}>
+<body>
+<script>
+var indexid = "<{$index_id}>";
+$(document).ready(function(){
+  $("#index_id").val(indexid);
+  $("#index_id").change(function(event) {
+      $("#myform").submit();
+  });
+})
+</script>
+<div id="con_wrap">
+  <div class="input_002">自助返水查询</div>
+  <div class="con_menu">
+     <a href="<{$site_url}>/cash/discount/index">優惠統計</a>
+      <a href="<{$site_url}>/cash/discount/discount_log">優惠查詢</a>
+      <a href="<{$site_url}>/cash/discount/rakeback_log" style="color: red;">自助返水查询</a>
+      <a href="<{$site_url}>/cash/discount/discount_fd">返點優惠設定</a>
+  <form name="myform" action="<{$site_url}>/cash/discount/rakeback_log" id="myform" method="get">
+  <{$sites_str}>
+       返水日期：<input name="date_start" class="za_text Wdate" style="width: 100px; min-width: 100px;" onclick="WdatePicker()" type="text" size="10" maxlength="11" value="<{$start_date}>">
+            --
+         <input name="date_end" class="za_text Wdate" style="width: 100px; min-width: 100px;" onclick="WdatePicker()" type="text" size="10" maxlength="11" value="<{$end_date}>">
+        会员账号：<input type="text" class="za_text" name="username" style="min-width:120px;" size="5" value="<{$smarty.get.username}>" />
+        訂单号：<input type="text" class="za_text" name="order" style="min-width:120px;" size="5" value="<{$smarty.get.order}>" />
+        <input type="submit" name="searchBtn" id="searchBtn" value="查詢" class="button_d">
+   </form>
+  </div>
+</div>
+<div class="content">
+<form method="post" name="myFORM">
+<input type="hidden" id="userid" name="userid" value="">
+<input type="hidden" name="username" value="">
+<table width="99%" class="m_tab">
+	<tbody><tr class="m_title">
+		<td colspan="11" height="25" align="center">会员自助返水查询</td>
+	</tr>
+
+	<tr class="m_title">
+		<td>訂单號</td>
+		<td>会员账号</td>
+		<td>总有效投注</td>
+		<td>总自助返水</td>
+		<td>返水时间</td>
+		<!-- <td>創建者</td>
+		<td>综合打码倍数</td> -->
+		<td>查詢明細</td>
+	</tr>
+<{foreach from=$data key=i item=v}>
+	<tr class="m_cen <{if $i%2 == 0}>even<{/if}>">
+		<td align="center"><{$v['order']}></td>
+		<td align="center"><{$v['username']}></td>
+		<td align="center"><{$v['all_bet']}></td>
+		<td align="center"><{$v['total_e_fd']}></td>
+		<td align="center"><{$v['do_time']}></td>
+		<!-- <td align="center"><{$v['admin_user']}></td>
+		<td align="center"><{$v['bet']}></td> -->
+		<td align="center"><a href="<{$site_url}>/cash/discount/user_self_fd_list?id=<{$v['uid']}>&date_start=<{$start_date}>&date_end=<{$end_date}>">明細</a></td>
+	</tr>
+<{/foreach}>
+
+
+	</tbody></table>
+</form>
+</div>
+
+<{include file="web_footer.html"}>

@@ -1,0 +1,108 @@
+<title>历史红包</title>
+<{include file="web_header.html"}>
+<body>
+<script type="text/javascript">
+var indexid = "<{$smarty.get.index_id}>";
+$(document).ready(function(){
+	$("#index_id").val(indexid);
+})
+
+$(function(){
+    $("#index_id").change(function(event) {
+      $("#myFORM").submit();
+    });
+  })
+</script>
+<div  id="con_wrap">
+<div  class="input_002" >已派红包</div>
+<div  class="con_menu" style="width:980px;">
+<form  name="myFORM"  id="myFORM"  action="<{$site_url}>/other/red_bag/search_bag_index"  method="GET">
+<{$sites_str}>
+  <!-- &nbsp;红包标题<input name="title" style="width:80px" > -->
+  &nbsp;红包标题
+    <select name="title">
+      <option value="0">全部</option>>
+      <{foreach from=$titles item=vv}>
+        <option value="<{$vv['title']}>" <{if $title==$vv['title'] }>selected <{/if}>>
+          <{$vv['title']}>
+        </option>
+      <{/foreach}>
+    </select>
+  &nbsp;红包来源
+      <select name="ptype">
+      <option value="">全部</option>>
+        <option value="0" <{select_check('0',$ptype)}>>
+        电脑
+        </option >
+        <option value="1" <{select_check('1',$ptype)}>>
+        WAP
+        </option>
+    </select>
+
+   &nbsp;最低金额<input  style="width:50px" name="money" value="<{$money}>">
+&nbsp;用户名<input style="width:50px" name="username" value="<{$username}>">
+  &nbsp;活动日期：
+              <input class="za_text Wdate" onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" value="<{$smarty.get.starttime}>" size="10" name="starttime"> - <input  type="text"  name="endtime" id="endtime" readonly  value="<{$smarty.get.endtime}>" class="za_text Wdate" onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})">
+
+
+              <input  type="submit" value="搜索"   class="za_button">
+                  每页显示:<select name="page_num" onchange="document.getElementById('myFORM').submit()">
+                   <option value="100" <{select_check(100,$smarty.get.page_num)}>>100</option>
+                   <option value="200" <{select_check(200,$smarty.get.page_num)}>>200</option>
+                   <option value="500" <{select_check(500,$smarty.get.page_num)}>>500</option>
+				   <option value="1000" <{select_check(1000,$smarty.get.page_num)}>>1000</option>
+                   </select>
+        頁數：
+ <select id="page" name="page" class="za_select">
+    <{assign var=$i value=0}>
+       <{section name=total loop=$totalPage}>
+       <option value="<{$i=$i+1}><{$i}>"<{select_check($i,$smarty.get.page)}> ><{$i}></option>
+       <{/section}>
+  </select> <{$totalPage}>頁&nbsp;&nbsp;&nbsp;
+  <a href="<{$site_url}>/other/red_bag/index"><input value="返回上一级" type="button"></a>
+</form>
+<script>
+    //分页跳转
+  window.onload=function(){
+    document.getElementById("page").onchange=function(){
+      document.getElementById('myFORM').submit()
+    }
+  }
+</script>
+</div>
+</div>
+<div  class="content" style="overflow">
+  <table  style="table-layout: fixed;width:100%" border="0"  cellspacing="0"  cellpadding="0"  class="m_tab">
+    <tbody><tr  class="m_title_over_co">
+      <td style="width:10%;">红包名</td>
+      <td style="width:10%;">会员名</td>
+      <td style="width:10%;">红包金额</td>
+      <td style="width:20%;">抢到时间</td>
+      <td style="width:20%;">活动起始时间</td>
+      <td style="width:20%;">活动结束时间</td>
+      <td style="width:10%;">设备</td>
+    </tr>
+	<{if count($list)>0 }>
+	   <{foreach from=$list key=i item=rows}>
+    <tr class="m_cen <{if $i%2 == 0}>even<{/if}>" >
+      <td><{$rows["title"]}></td>
+      <td><{$rows["username"]}></td>
+      <td  ><{$rows["money"]}> </td>
+      <td  ><{$rows["createtime"]}> </td>
+      <td  ><{$rows["starttime"]}> </td>
+      <td  ><{$rows["endtime"]}> </td>
+        <{if $rows["type"] == 0}>
+        <td  >电脑 </td><{/if}>
+        <{if $rows["type"] == 1}>
+        <td  >WAP</td><{/if}>
+
+    </tr>
+      <{/foreach}>
+<{else}>
+  <tr class="m_rig" style="display:;">
+        <td height="70" align="center" colspan="14"><font color="#3B2D1B">暫無數據。</font></td>
+      </tr>
+<{/if}>
+  </tbody></table>
+</div>
+ <{include file="web_footer.html"}>

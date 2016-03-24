@@ -1,0 +1,614 @@
+<{config_load file="public.conf" section="public"}>
+<!doctype html>
+<!--[if lt IE 7 ]> <html class="no-js ie6 ie" > <![endif]-->
+<!--[if IE 7 ]>    <html class="no-js ie7 ie" > <![endif]-->
+<!--[if IE 8 ]>    <html class="no-js ie8 ie" > <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html class="no-js">
+<!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <title>PK幸运28</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="<{#tcss#}>/main_<{$config_css}>.css">
+<!--[if IE 6]>
+<script src="http://lot.maya86.com/assets/dist/scripts/lib/ie6/DD_belatedPNG_0.0.8a.js?v=2015101"></script>
+<script>
+    /* EXAMPLE */
+    DD_belatedPNG.fix('.icon');
+    /* string argument can be any CSS selector */
+    /* .png_bg example is unnecessary */
+    /* change it to what suits you! */
+</script>
+<![endif]-->
+<script>
+    var ry_lottery_config = {
+        assets: '/public/timages/{0}?v=2015101',
+        currency: '￥',
+        locale: 'zh_cn',
+        officalDomain: '<{$url}>/index.php'
+    };
+</script>
+
+    <script src="<{#tjs#}>/main.js?v=2015101"></script>
+<style>
+.j-betting td{border-bottom:none;}
+</style>
+<script>
+    $(function(){
+        var arr = new Array();
+        arr[0] = [1,3,5,7,9,11,13,15,17,19,21,23,25,27];//单
+        arr[1] = [0,2,4,6,8,10,12,14,16,18,20,22,24,26];//双
+        arr[2] = [14,15,16,17,18,19,20,21,22,23,24,25,26,27];//大
+        arr[3] = [0,1,2,3,4,5,6,7,8,9,10,11,12,13];//小
+        arr[4] = [10,11,12,13,14,15,16,17];//中
+        arr[5] = [0,1,2,3,4,5,6,7,8,9,18,19,20,21,22,23,24,25,26,27];//边
+        arr[6] = [15,17,19,21,23,25,27];//大单
+        arr[7] = [1,3,5,7,9,11,13];//小单
+        arr[8] = [14,16,18,20,22,24,26];//大双
+        arr[9] = [0,2,4,6,8,10,12];//小双
+        arr[10] = [18,19,20,21,22,23,24,25,26,27];//大边
+        arr[11] = [0,1,2,3,4,5,6,7,8,9];//小边
+        arr[12] = [1,3,5,7,9,19,21,23,25,27];//单边
+        arr[13] = [0,2,4,6,8,18,20,22,24,26];//双边
+        arr[14] = [5,6,7,8,9,15,16,17,18,19,25,26,27];//大尾
+        arr[15] = [0,1,2,3,4,10,11,12,13,14,20,21,22,23,24];//小尾
+        arr[16] = [0,10,20];//0尾
+        arr[17] = [1,11,21];//1尾
+        arr[18] = [2,12,22];//2尾
+        arr[19] = [3,13,23];//3尾
+        arr[20] = [4,14,24];//4尾
+        arr[21] = [5,15,25];//5尾
+        arr[22] = [6,16,26];//6尾
+        arr[23] = [7,17,27];//7尾
+        arr[24] = [8,18];//8尾
+        arr[25] = [9,19];//9尾
+        arr[26] = [0,3,6,9,12,15,18,21,24,27];//3余0
+        arr[27] = [1,4,7,10,13,16,19,22,25];//3余1
+        arr[28] = [2,5,8,11,14,17,20,23,26];//3余2
+        arr[29] = [0,4,8,12,16,20,24];//4余0
+        arr[30] = [1,5,9,13,17,21,25];//4余1
+        arr[31] = [2,6,10,14,18,22,26];//4余2
+        arr[32] = [3,7,11,15,19,23,27];//4余3
+        arr[33] = [0,5,10,15,20,25];//5余0
+        arr[34] = [1,6,11,16,21,26];//5余1
+        arr[35] = [2,7,12,17,22,27];//5余2
+        arr[36] = [3,8,13,18,23];//5余3
+        arr[37] = [4,9,14,19,24];//5余4
+
+
+
+
+
+
+
+
+        $("td[data-key]").click(function(event) {
+            $("td[data-key]").each(function(index, el) {
+                $(this).removeClass('table-current');
+            });
+            $(this).addClass('table-current');
+            var id = $(this).attr('data-key');
+            var ids;
+            $("tr[data-id]").each(function(index, el) {
+                $(this).removeClass('table-current');
+                $(this).children('td').removeClass('table-current');
+                ids = arr[id];
+            });
+            for (var i = 0; i < ids.length; i++) {
+                $("tr[data-id]").eq(ids[i]).addClass('table-current');
+                $("tr[data-id]").eq(ids[i]).children('td').addClass('table-current');
+            };
+            $(".j-selected-count").text(ids.length);
+
+        });
+    })
+</script>
+</head>
+<body>
+
+    <div class="container">
+
+<!--#nav START-->
+<div id="nav" class="nav clearfix">
+
+    <{include file='lottery/title_head.html'}>
+
+</div>
+<!--#nav END-->
+
+
+<!--.summary START-->
+<div class="summary" id="summary">
+    <!--     <a class="live fr" target="_blank" href="http://www.1396.me/">
+            <img src="<{#timages#}>/live.gif" />
+        </a> -->
+        <i title="声音开关" class="icon1 sound-on fr"></i>
+    <div class="summary-prev fr" id="pre-result">
+    <span class="fl"><{$type_name_c}></span>
+        <span class="fl mr6"><b id="prev-issue">0</b>期结果</span>
+        <span id="prev-bs">
+
+        </span>
+    </div>
+    <span class="button-secondary-group">
+        <button class="button button-current" data-mode="quick">
+
+            快捷
+        </button>
+        <button class="button button-blank" data-mode="normal">
+
+            一般
+        </button>
+    </span>
+
+  <!--   <span class="notify">
+        <span id="marquee" width="370" height="24" style="display: none"></span>
+    </span> -->
+
+</div>
+<!--.summary END-->
+<div id="play" class="play">
+    <div class="play-hd clearfix">
+        <span class="fl">
+
+            玩法：
+        </span>
+        <ul class="play-category fl" id="play-tab">
+
+<li data-target="#j-all" data-np="1">
+    <a href="">
+
+        整合
+    </a>
+</li>
+<!-- <li data-target="#j-sd" data-np="0" data-hits="yes"><a href="">
+
+    两面盘
+</a></li> -->
+
+
+        </ul>
+    </div>
+
+    <div class="play-bd clearfix">
+        <div class="main-bd" id="parlay-ctn">
+            <div class="clearfix top-bar">
+                    <div class="fr">
+                        <{if $is_login}><form class="form normal-form hide tac" action="">
+                            <button class="button parlay bet-button" data-action="parlay">
+
+                                下注
+                            </button>
+                            <button class="button button-secondary bet-button" data-action="reset" type="reset">
+
+                                重置
+                            </button>
+                        </form><{/if}>
+                    </div>
+                <div class="fr removable">
+
+    <{if $is_login}><form class="form quick-form need-auth" action="">
+        <label>
+
+
+            金额：
+            <input type="text" class="input fb sync-bet" />
+        </label>
+        <button class="button parlay bet-button" data-action="parlay">
+
+            下注
+        </button>
+        <button class="button button-secondary bet-button" data-action="reset" type="reset">
+
+
+            重置
+        </button>
+    </form><{/if}>
+
+                </div>
+
+         <!--        <span>
+
+                    今天输赢
+                    <b id="win-lose">0.00</b>
+                </span> -->
+                <span>
+
+                    期数
+                    <b class="box" id="current-issue">0期</b>
+                </span>
+                <span>
+
+                    距离封盘
+                    <b class="box timer" id="close-timer">00:00</b>
+                </span>
+                <span>
+
+                    距离开奖
+                    <b class="box timer" id="award-timer">00:00</b>
+                </span>
+            </div>
+            <div class="mt10">
+
+
+
+
+
+
+
+
+
+
+
+<!-- 整合 -->
+
+
+<div id="j-all">
+
+
+
+<table class="table nested-table sm-table">
+        <tbody><tr>
+<{foreach from=$odds_xy_28 item=v key=k}>
+        <td class="p0" style="width:163.2pt">
+            <table class=" j-betting">
+                <thead>
+                <tr>
+                    <th colspan="3">幸运28</th>
+                </tr>
+                </thead>
+                <tbody>
+                <{foreach from=$v item=v2 key=k1}>
+                   <tr data-id="<{$v2['id']}>" data-odds=""><td class="table-odd"><{if is_numeric($v2['input_name'])}><i class="icon ball"><{$v2['input_name']}></i><{else}><{$v2['input_name']}><{/if}></td><td><span class="odds-text"></span></td><td class="j-odds"><input type="text" class="input fb" /></td></tr>
+                <{/foreach}>
+                </tbody>
+            </table>
+        </td>
+
+<{/foreach}>
+
+    </tr>
+    </tbody></table>
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/html" id="tpl-prev-balls">
+    {{#balls}}
+    <i class="icon ball ball-{{.}}">{{.}}</i>
+    {{/balls}}
+</script>
+
+            </div>
+
+
+            <!--.selected-ball START-->
+            <div class="selected-ball clearfix need-auth">
+                    <div class="fr">
+
+    <{if $is_login}><form class="form quick-form need-auth" action="">
+        <label>
+
+
+            金额：
+            <input type="text" class="input fb sync-bet" />
+        </label>
+        <button class="button parlay bet-button" data-action="parlay">
+
+            下注
+        </button>
+        <button class="button button-secondary bet-button" data-action="reset" type="reset">
+
+
+            重置
+        </button>
+    </form><{else}>
+								<div class="fr">
+								<img style="position:relative; top:2px;" alt=" " src="<{#timages#}>/je_1.png">
+								<a href="javascript:;" onclick="alert('请先登录！');"><img src="<{#timages#}>/je_2.png" ></a>
+								<img alt=" " src="<{#timages#}>/je_3.png">
+								</div><{/if}>
+
+                    </div>
+                    <b id="j-selected-count">
+
+                        已选中
+                        <span class="j-selected-count">0</span>
+
+                        注
+                    </b>
+                    <{if $is_login}><form class="form normal-form hide tac" action="" style="text-align:right;">
+                        <button class="button parlay bet-button" data-action="parlay">
+
+                            下注
+                        </button>
+                        <button class="button button-secondary bet-button" data-action="reset" type="reset">
+
+                            重置
+
+                        </button>
+                    </form><{/if}>
+            </div>
+            <!--.selected-ball END-->
+
+
+<!-- <div id="trends" class="play-tab tab mt10 hide" data-widget="tab">
+
+</div> -->
+
+<!--
+<script id="tpl-trends" type="text/html">
+    <table class="table nested-table secondary-table">
+        <thead>
+            <tr>
+                <td colspan="10" class="tab-hd">
+                    {{#hd}}
+                    <a href="javascript:;" class="tab-item active">{{.}}</a>
+                    {{/hd}}
+                </td>
+            </tr>
+        </thead>
+        <tbody>
+            {{#bd}}
+            <tr class="tab-bd">
+                <td colspan="10" class="p0">
+
+                    <table>
+                        <tr>
+                            {{#number}}
+
+                            <td>{{.}}</td>
+
+                            {{/number}}
+                        </tr>
+                        <tr>
+                            {{#item}}
+
+                            <td>{{.}}</td>
+
+                            {{/item}}
+                        </tr>
+                    </table>
+
+                </td>
+            </tr>
+            {{/bd}}
+        </tbody>
+    </table>
+</script>
+            <div id="luzhu" class="play-tab tab mt10 hide" data-widget="tab">
+            </div>
+            <script id="tpl-luzhu" type="text/html">
+                <table class="table secondary-table">
+                    <thead>
+                        <tr>
+                            <td colspan="30" class="tab-hd">
+                                {{#hd}}
+                                <a href="javascript:;;" class="tab-item">{{.}}</a>
+                                {{/hd}}
+                            </td>
+                        </tr>
+
+                    </thead>
+                    <tbody>
+                        {{#bd}}
+                        <tr class="tab-bd">
+                            {{#items}}
+                            <td>
+                                {{#item}}{{.}}<br />
+                                {{/item}}
+                            </td>
+                            {{/items}}
+                        </tr>
+                        {{/bd}}
+                    </tbody>
+                </table>
+            </script>
+
+-->
+        </div>
+        <div class="aside">
+
+
+    <{if $is_login}><!--amount START-->
+    <div class="amount  need-auth">
+
+        <div class="available-amount box">
+            <span>
+
+                可用金额
+            </span>
+            <b id="j-balance">0.00</b>
+        </div>
+        <div class="betting-amount box">
+            <span>
+
+                即时下注
+            </span>
+
+
+            <a href="javascript:void(0)" data-href="/index.php/lottery/lottery/notCount" class="odfi" title="即时注单"><b id="j-orders">0.00</b></a>
+        </div>
+
+    </div>
+    <!--amount START--><{/if}>
+
+<div class="hkc-quick-bet need-auth" id="hkc-quick-ctn">
+            <table class="table" id="tb-dxds">
+                <tbody>
+                <tr>
+                    <td data-key ='0'><span> 单 </span></td>
+                    <td data-key ='1'><span> 双 </span></td>
+                    <td data-key ='2'><span> 大 </span></td>
+                    <td data-key ='3'><span> 小 </span></td>
+
+                </tr>
+                <tr>
+                    <td data-key ='4'><span> 中 </span></td>
+                    <td data-key ='5'><span> 边 </span></td>
+                    <td data-key ='6'><span> 大单 </span></td>
+                    <td data-key ='7'><span> 小单 </span></td>
+
+                </tr>
+                <tr>
+                    <td data-key ='8'><span> 大双 </span></td>
+                    <td data-key ='9'><span> 小双 </span></td>
+                    <td data-key ='10'><span> 大边 </span></td>
+                    <td data-key ='11'><span> 小边 </span></td>
+
+                </tr>
+                 <tr>
+                    <td data-key ='12'><span> 单边 </span></td>
+                    <td data-key ='13'><span> 双边 </span></td>
+                    <td data-key ='14'><span> 大尾 </span></td>
+                    <td data-key ='15'><span> 小尾 </span></td>
+
+                </tr>
+                 <tr>
+                    <td data-key ='16'><span> 0尾 </span></td>
+                    <td data-key ='17'><span> 1尾 </span></td>
+                    <td data-key ='18'><span> 2尾 </span></td>
+                    <td data-key ='19'><span> 3尾 </span></td>
+
+                </tr>
+                <tr>
+                    <td data-key ='20'><span> 4尾 </span></td>
+                    <td data-key ='21'><span> 5尾 </span></td>
+                    <td data-key ='22'><span> 6尾 </span></td>
+                    <td data-key ='23'><span> 7尾 </span></td>
+
+                </tr>
+                <tr>
+                    <td data-key ='24'><span> 8尾 </span></td>
+                    <td data-key ='25'><span> 9尾 </span></td>
+                    <td></td>
+                    <td></td>
+
+                </tr>
+                <tr>
+                    <td data-key ='26'><span> 3余0 </span></td>
+                    <td data-key ='27'><span> 3余1 </span></td>
+                    <td data-key ='28'><span> 3余2 </span></td>
+                    <td data-key ='29'><span> 4余0 </span></td>
+
+
+                </tr>
+                <tr>
+                    <td data-key ='30'><span> 4余1 </span></td>
+                    <td data-key ='31'><span> 4余2 </span></td>
+                    <td data-key ='32'><span> 4余3 </span></td>
+                    <td data-key ='33'><span> 5余0 </span></td>
+
+
+                </tr>
+                <tr>
+                    <td data-key ='34'><span> 5余1 </span></td>
+                    <td data-key ='35'><span> 5余2 </span></td>
+                    <td data-key ='36'><span> 5余3 </span></td>
+                    <td data-key ='37'><span> 5余4 </span></td>
+
+
+                </tr>
+                </tbody>
+            </table>
+
+
+
+
+
+
+
+           </table>
+</div>
+<!--aside-top START-->
+<!-- <div class="aside-top">
+    <table class="table" id="changelong">
+        <thead>
+            <tr>
+                <th colspan="2">
+
+                    两面长龙排行
+                </th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</div> -->
+<!--aside-top END-->
+
+
+        </div>
+    </div>
+
+</div>
+
+
+
+    </div>
+
+
+
+
+    <script>
+        require(['<{#tjs#}>/ssc.js'], function (Lottery) {
+
+            new Lottery({
+                lotteryId: 'xy_28'
+            });
+
+        });
+    </script>
+
+
+    <div id="j-confirm-tpl" class="hide ">
+        <div class="confirm-parlay">
+            <h3>
+
+                共计
+                ：{{currency}}<em>{{total}}</em>/<em>{{sum}}</em>
+
+                注
+                ，
+
+                您确定要下注吗？
+
+            </h3>
+            <ul class="{{col}}">
+                {{#items}}
+                <li><span>{{category}}【{{name}}】</span>@{{odds}} X {{amount}}</li>
+                {{/items}}
+            </ul>
+        </div>
+    </div>
+
+    <iframe id="myifr" style="display: none" src=""></iframe>
+
+    <object style="height: 0; width: 0; overflow: hidden;" classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0" width="0" height="0" id="asound" align="absmiddle">
+        <param name="allowScriptAccess" value="sameDomain">
+        <param name="movie" value="<{#timages#}>/asound.swf?v=2015101">
+        <param name="quality" value="high">
+        <embed src="<{#timages#}>/asound.swf?v=2015101" quality="high" width="0" height="0" name="asound" align="absmiddle" allowscriptaccess="sameDomain" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer">
+    </object>
+</body>
+</html>

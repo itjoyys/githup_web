@@ -1,0 +1,88 @@
+<{include file="web_header.html"}>
+
+<script type="text/javascript">
+var enable = "<{$enable}>";
+var page = "<{$page}>";
+$(document).ready(function(){
+  $("#cp_cate").val(enable);
+  $("#cp_cate").change(function(event) {
+      $("#page").val(1);
+      $("#qishu").val("");
+      $("#date_kaijiang").val("");
+      $("#myFORM").submit();
+    });
+})
+</script>
+<script>
+
+  //分页跳转
+  window.onload=function(){
+    document.getElementById("page").onchange=function(){
+      document.getElementById('myFORM').submit()
+    }
+  }
+</script>
+</head>
+<body>
+        <div  id="con_wrap">
+   <div  class="input_002">重庆快乐十分开奖管理</div>
+   <div  class="con_menu" style="width:680px;">
+     <{include file="result/menu.html"}>
+
+  </div>
+
+
+  </div>
+<div id="pageMain">
+  <table width="1350px" height="100%" border="0" cellspacing="0" cellpadding="5">
+    <tr>
+      <td valign="top">
+    <table width="100%" border="0" cellpadding="5" cellspacing="1" class="m_tab" style="margin-top:5px;" bgcolor="#798EB9">
+            <tr class="m_title_over_co">
+              <td align="center"><strong>彩票类别</strong></td>
+              <td align="center"><strong>彩票期号</strong></td>
+              <td align="center"><strong>开奖时间</strong></td>
+              <td align="center"><strong>第一球</strong></td>
+              <td align="center"><strong>第二球</strong></td>
+              <td align="center"><strong>第三球</strong></td>
+              <td align="center"><strong>第四球</strong></td>
+        <td height="25" align="center"><strong>第五球</strong></td>
+        <td align="center"><strong>第六球</strong></td>
+        <td align="center"><strong>第七球</strong></td>
+        <td align="center"><strong>第八球</strong></td>
+        <td align="center"><strong>总和</strong></td>
+        <td align="center"><strong>龙虎</strong></td>
+          </tr>
+
+	<{if !empty($data) }>
+	      <{foreach from=$data key=key item=rows}>
+      <tr align="center" class="m_cen <{if $key%2 == 0}>even<{/if}>">
+        <td height="25" align="center" valign="middle">重庆快乐十分</td>
+        <td align="center" valign="middle"><{$rows['qishu']}></td>
+        <td align="center" valign="middle"><{$rows['datetime']}></td>
+         <td align="center" valign="middle" style="margin:0;padding:0px;"><div class="ball_r" style="width:65px;"><{$rows['ball_1']}></div></td>
+        <td align="center" valign="middle" style="margin:0;padding:0px;"><div class="ball_r" style="width:65px;"><{$rows['ball_2']}></div></td>
+         <td align="center" valign="middle" style="margin:0;padding:0px;"><div class="ball_r" style="width:65px;"><{$rows['ball_3']}></div></td>
+         <td align="center" valign="middle" style="margin:0;padding:0px;"><div class="ball_r" style="width:65px;"><{$rows['ball_4']}></div></td>
+         <td align="center" valign="middle" style="margin:0;padding:0px;"><div class="ball_r" style="width:65px;"><{$rows['ball_5']}></div></td>
+         <td align="center" valign="middle" style="margin:0;padding:0px;"><div class="ball_r" style="width:65px;"><{$rows['ball_6']}></div></td>
+        <td align="center" valign="middle" style="margin:0;padding:0px;"><div class="ball_r" style="width:65px;"><{$rows['ball_7']}></div></td>
+         <td align="center" valign="middle" style="margin:0;padding:0px;"><div class="ball_r" style="width:65px;"><{$rows['ball_8']}></div></td>
+        <td><{$rows['info']['sum']}> / <{$rows['info']['sumis_big']}> /  <{$rows['info']['sumis_even']}> / <{$rows['info']['subws']}></td>
+        <td><{$rows['info']['sumis_tiger']}></td>
+
+        </tr>
+<{/foreach}>
+<{else}>
+	<tr style="background-color:#FFFFFF;">
+        <td colspan="15" align="center" valign="middle">暂无数据</td>
+    </tr>
+<{/if}>
+    </table></td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>
+<!-- 公共尾部 -->
+<{include file="web_footer.html"}>

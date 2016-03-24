@@ -1,0 +1,61 @@
+<title>代理旗下會員注册优惠設定</title>
+<{include file="web_header.html"}>
+<style type="text/css">
+	.m_tab{
+		width: 780px;
+	}
+</style>
+<body>
+<div id="con_wrap">
+	<div class="input_002">旗下会员注册优惠</div>
+</div>
+<div class="content">
+<form method="post" name="myFORM" id="vform" action="<{$site_url}>/account/agent_reg/agent_discount_set">
+<input type="hidden" name="result_id" value="<{$result['id']}>">
+<input type="hidden"  name="index_id" value="<{$data['index_id']}>">
+<input type="hidden"  name="pid" value="<{$data['pid']}>">
+<input type="hidden"  name="uname" value="<{$data['agent_user']}>">
+<input type="hidden"  name="agent_id" value="<{$agent_id}>">
+<input type="hidden" name="agent_type" value="<{$agent_type}>">
+<table width="780" class="m_tab">
+	<tbody><tr class="m_title_over_co">
+		<td colspan="2" align="center" height="27">申請會員優惠設定</td>
+	</tr>
+	<tr class="m_cen">
+		<td width="30%" height="25" align="center" class="table_bg1">申請會員贈送優惠</td>
+		<td align="left">
+			<div style="float:left"><input type="text" name="discount_money" class="za_text" style="width:80px" onkeydown="return Yh_Text.CheckNumber()" nullmsg="请输入金额" datatype="s" value="<{$result['discount_money']}>"> </div><div class="Validform_checktip"></div><br><div style="margin-top:-7px"><font color="red">* 為0時加入會員不贈送優惠</font></div>
+		</td>
+	</tr>
+    <tr class="m_cen even">
+		<td width="30%" height="25" align="center" class="table_bg1">優惠打碼</td>
+		<td align="left">
+			<div style="float:left"><input type="text" name="discount_bet" class="za_text" style="width:50px!important" onkeydown="return Yh_Text.CheckNumber()" nullmsg="请输入數字" datatype="s" value="<{$result['discount_bet']}>">&nbsp;倍</div><div style="float:left" class="Validform_checktip"></div><div>
+		</div></td>
+	</tr>
+	<tr class="m_cen">
+		<td width="30%" height="25" align="center" class="table_bg1">限制IP</td>
+		<td align="left">
+				<input value="1" <{if $result['is_ip'] == 1}> checked<{/if}> type="radio" name="is_ip">啟用&nbsp;&nbsp;
+				<input value="0" <{if $result['is_ip'] == 0}> checked<{/if}> type="radio" name="is_ip">停用&nbsp;&nbsp;
+		</div></td>
+	</tr>
+	<{if $agent_type !="a_t"}>
+	<tr class="m_cen even">
+		<td width="30%" height="25" align="center" class="table_bg1">是否清除下级设定</td>
+		<td align="left">
+				<input value="1"  type="radio" name="is_del">是&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<input value="0"  type="radio" name="is_del">否&nbsp;&nbsp;
+		</div></td>
+	</tr>
+	<{/if}>
+	<tr class="m_cen ">
+		<td colspan="2" align="center" class="table_bg1">
+			<input type="submit" name="submit" value="確定" class="za_button">&nbsp;&nbsp;
+		</td>
+	</tr>
+
+</tbody></table>
+</form>
+</div>
+<{include file="web_footer.html"}>

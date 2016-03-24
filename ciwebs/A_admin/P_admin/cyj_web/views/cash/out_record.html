@@ -1,0 +1,863 @@
+﻿<title>出款管理</title>
+<{include file="web_header.html"}>
+<{config_load file="public.conf" section="public"}>
+ <style>
+.payBox td{color: #333;}
+.payBox_1 td{color: #333;}
+.m_title_a{text-align: center;}
+
+.button_do {
+   border-top: 1px solid #96d1f8;
+   background: #65a9d7;
+   color: #fff;
+   background: -webkit-gradient(linear, left top, left bottom, from(#3e779d), to(#65a9d7));
+   background: -webkit-linear-gradient(top, #3e779d, #65a9d7);
+   background: -moz-linear-gradient(top, #3e779d, #65a9d7);
+   background: -ms-linear-gradient(top, #3e779d, #65a9d7);
+   background: -o-linear-gradient(top, #3e779d, #65a9d7);
+   padding: 2px 8px;
+   -webkit-border-radius: 25px;
+   -moz-border-radius: 25px;
+   border-radius: 25px;
+   -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   box-shadow: rgba(0,0,0,1) 0 1px 0;
+   text-shadow: rgba(0,0,0,.4) 0 1px 0;
+   color: white;
+   font-size: 12px;
+   font-family: Helvetica, Arial, Sans-Serif;
+   text-decoration: none;
+   vertical-align: middle;
+   }
+.button_do:hover {
+   border-top-color: #28597a;
+   background: #28597a;
+   color: #ccc;
+   }
+.button_do:active {
+   border-top-color: #1b435e;
+   background: #1b435e;
+   }
+
+ </style>
+<body>
+<script type="text/javascript">
+/*function SetCookie(sName, sValue){
+   date = new Date();
+   date.setDate(date.getDate()+365);
+   document.cookie = sName+'='+escape(sValue)+'; expires='+date.toGMTString();
+}
+function getCookie(name){
+    var result = null;
+
+    var myCookie = ""+document.cookie+";";
+
+    var searchName = ""+name+"=";
+    var startOfCookie = myCookie.indexOf(searchName);
+    var endOfCookie;
+
+    if (startOfCookie != -1){
+        startOfCookie += searchName.length;
+        endOfCookie = myCookie.indexOf(";",startOfCookie);
+        result = (myCookie.substring(startOfCookie,endOfCookie));
+    }
+
+    return result;
+}
+var inurl=new Array();
+for(var i=0;i<3;i++){
+inurl[i]=new Array();
+	for(var j=0;j<2;j++){
+	inurl[i][j]='';
+	}
+}
+  inurl[0][0]="<{#sound#}>/gsrk.swf"
+  inurl[0][1]='<{#sound#}>/gsrk2.swf';
+  inurl[1][0]='<{#sound#}>/xsrk.swf';
+  inurl[1][1]='<{#sound#}>/xsrk2.swf';
+  inurl[2][0]='<{#sound#}>/chukuan.swf';
+  inurl[2][1]='<{#sound#}>/chukuan2.swf';
+var ring=parseInt(getCookie('ring'));
+ if (ring!=0 && ring!=1){
+ 	SetCookie('ring',0);
+ 	inurl[2][ring]=inurl[2][0];
+ }
+
+var issound = '<{$new_out_state}>';
+var s_date = '<{$s_date}>';
+var e_date = '<{$e_date}>';
+var index_id = '<{$index_id}>';
+var out_status = '<{$out_status}>';
+
+$(document).ready(function(){
+	if(issound==1){
+     	$('body').append('<embed src="'+inurl[2][ring]+'" autostart="true" width=0 height=0 loop="false">');
+	}
+	$("#index_id").val(index_id);
+	$("#index_id").change(function(event) {
+      $("#queryform").submit();
+    });
+});*/
+var issound = '<{$new_out_state}>';
+var s_date = '<{$s_date}>';
+var e_date = '<{$e_date}>';
+var index_id = '<{$index_id}>';
+var out_status = '<{$out_status}>';
+var listen='<{$listen}>';
+$(document).ready(function(){
+	if(issound==1){
+            if(listen==2){
+                    $('body').append('<embed src="<{#sound#}>/chukuan2.swf" autostart="true" width=0 height=0 loop="false">');
+            }else{
+                   $('body').append('<embed src="<{#sound#}>/chukuan.swf" autostart="true" width=0 height=0 loop="false">');
+            }
+
+	}
+	$("#index_id").val(index_id);
+	$("#index_id").change(function(event) {
+      $("#queryform").submit();
+    });
+});
+function getlisten(){
+    var listen = document.getElementsByName("listen");
+    for(var i=0;i<listen.length;i++)
+    {
+       if(listen[i].checked)
+             var value1 = listen[i].value;
+    }
+    if(value1==2){
+        return 2;
+    }else{
+        return 1;
+    }
+}
+//确定 拒绝 取消
+function do_sure(id,type,am){
+	var listen=getlisten();
+	var url = '<{$site_url}>';
+	var url_s = '&start_date='+s_date+'&end_date='+e_date+'&index_id='+index_id+'&out_status='+out_status+'&listen='+listen;
+	if (type == 1) {
+	    url = url + '/cash/out_record/out_do?type=1&id='+id+'&am='+am+url_s;
+	}else if(type == 2){
+		url = url + '/cash/out_record/out_do?type=2&id='+id+'&am='+am+url_s;
+	}else if(type == 3){
+        remarks=prompt('请添加取消备注！');
+		url = url + '/cash/out_record/out_cancel?id='+id+'&am='+am+url_s+'&remarks='+remarks;
+	}else if(type == 4){
+		url = url + '/cash/out_record/out_ready?id='+id+'&am='+am+url_s;
+	}
+	if(confirm("是否确定执行操作？")){
+        reloadtime = $('#retime').val()
+        if(reloadtime > 0){
+           location.href = url+'&reload='+reloadtime;
+        }else{
+           location.href = url;
+        }
+	}else{
+		return false;
+	}
+}
+
+
+//添加取消备注
+function addRemarks(id,type,am){
+	var listen=getlisten();
+	var url = '<{$site_url}>';
+	var url_s = '&start_date='+s_date+'&end_date='+e_date+'&index_id='+index_id+'&out_status='+out_status+'&listen='+listen;
+	var url1 = url + '/cash/out_record/out_cancel?id='+id+'&am='+am+url_s;
+	reloadtime = $('#retime').val();
+	if(reloadtime > 0){
+	   var url2 = url1+'&reload='+reloadtime;
+	}else{
+	   var url2 = url1;
+	}
+	$('#myRemarks').attr('action',url2);
+	var nr=$("#xq").html();
+	art.dialog({
+	  title: '取消备注(不超过100字！)',
+	  content:nr,
+      padding:'0',
+	  resize: false,
+	  lock: true,
+	  opacity: 0,
+	});
+}
+
+//显示取消备注
+function showRemarks(remarks){
+	if(remarks){
+	   $('#myShow').html(remarks);
+	}else{
+	   $('#myShow').html("无备注内容！");
+	}
+	/*var nr=$("#showRemarks").html();
+	art.dialog({
+	  title: '取消备注内容',
+	  content:nr,
+      padding:'0',
+	  resize: false,
+	  lock: true,
+	  opacity: 0,
+	});*/
+	$(".payBox_2").css('display', 'block');
+}
+
+
+
+
+
+
+function show_config(id,complex,yh){
+	//var content = $('#add_form').html();
+	$("#level_id").val(id);
+	$("#complex").val(complex);
+	$("#yh").val(yh);
+	if(yh==0) $("#yh_panel").hide();
+	easyDialog.open({
+		  container : 'currency_box'
+		});
+}
+
+//修改手续费
+function show_config1(id,charge){
+	//var content = $('#add_form').html();
+	$("#id").val(id);
+	$("#charge").val(charge);
+	easyDialog.open({
+		  container : 'currency_box1'
+		});
+}
+
+function setRefresh()
+{
+	$('#queryform').submit();
+}
+
+function myFunc(){
+    //code
+    //执行某段代码后可选择移除disabled属性，让button可以再次被点击
+    $("#subBtn").removeAttr("disabled");
+}
+$("#subBtn").click(function(){
+    //让button无法再次点击
+    $(this).attr("disabled","disabled");
+    //执行其它代码，比如提交事件等
+    myFunc();
+});
+//分页跳转
+	window.onload=function(){
+		document.getElementById("page").onchange=function(){
+			document.getElementById('queryform').submit()
+		}
+		document.getElementById("area").onchange=function(){
+			document.getElementById('queryform').submit()
+		}
+	}
+</script>
+<script>
+$(function(){
+	//用户名弹窗
+	$(".uname").click(function(){
+		$(".payBox").css('display', 'block');
+		var uid = $(this).attr("did");
+		var username_id = $(this).text();
+		$.ajax({
+			type: "GET",
+			url: "<{$site_url}>/cash/Out_record/user_cash_ajax",
+			dataType:'json',
+			data: {uid:uid},
+			success: function(msg){
+				$("#a_1").text(username_id);
+				$("#a_2_1").text(msg.in_all_money);
+				$("#a_2_2").text(msg.count_in+'笔');
+				$("#a_3_1").text(msg.out_all_money);
+				$("#a_3_2").text(msg.count_out+'笔');
+				$("#a_4_1").text(msg.owen_money);
+				$("#a_5_1").text(msg.data1.cash_num);
+				$("#a_5_2").text(msg.data1.cash_type);
+				$("#a_6_1").text(msg.data2.cash_num);
+				$("#a_6_2").text(msg.data2.cash_type);
+				$("#a_7_1").text(msg.data3.cash_num);
+				$("#a_7_2").text(msg.data3.cash_type);
+			}
+		});
+	});
+
+	$(".button_a_b").click(function() {
+		$(".payBox").css('display', 'none');
+		$(".payBox_1").css('display', 'none');
+		$(".payBox_2").css('display', 'none');
+	});
+
+	//出款金额弹窗
+	$(".outward_money_show").click(function() {
+		$(".payBox_1").css('display', 'block');
+		var uid = $(this).attr("did");
+		var username_id_1=$(this).siblings(".username_tan").find('a').text();
+
+		$.ajax({
+			type: "get",
+			url: "<{$site_url}>/cash/out_record/user_data_ajax",
+			dataType: "json",
+			data: {uid:uid},
+			success: function(msg){
+                $(".b_1_1").val(msg.username);
+				$(".b_2_1").val(msg.pay_name);
+				$(".b_3_1").val(msg.pay_card);
+				$(".b_4_1").val(msg.pay_num);
+				$(".b_5_1").val(msg.city[0]);
+				$(".b_6_1").val(msg.city[1]);
+				$(".b_7_1").val(msg.mobile);
+				$(".b_8_1").val(msg.about);
+			}
+		});
+
+	});
+
+})
+</script>
+<script type="text/javascript">
+    function jsCopy(id){
+        var e = document.getElementById(id);
+        e.select(); //选择对象
+        //var end = e.innerHTML.length;
+        //e.setSelectionRange(0,end);
+        document.execCommand("Copy"); //执行浏览器复制命令
+
+       //alert("已复制好，可贴粘。");
+    }
+</script>
+
+<div id="con_wrap">
+<div class="input_002">出款管理</div>
+<div class="con_menu" style="width:90%;height:70px;">
+<form name="queryform" action="<{$site_url}>/cash/Out_record/index" method="get" id="queryform">
+	<input type="hidden" name="jk" value="<{$jk}>">
+	<{$sites_str}>
+		时区:
+	<select name="timearea" id="area">
+  	<option value="0" <{select_check(0,$timearea)}>>美东</option>
+  	<option value="12" <{select_check(12,$timearea)}>>北京</option>
+  	</select>
+  	层级:
+	<select name="level_id" id="level_id" onchange="document.getElementById('queryform').submit()" style="max-width: 100px;width:100px;">
+	  <option value="">全部</option>
+	  <{foreach from=$leveldata key=i item=v}>
+  	  <option value="<{$v['id']}>" <{select_check($v['id'],$level_id)}>><{$v['level_des']}>【<{$v['level_name']}>】</option>
+  	  <{/foreach}>
+  	</select>
+  		状态:
+	<select name="out_status" id="area" onchange="document.getElementById('queryform').submit()">
+	<option value="">全部</option>
+  	<option value="4" <{select_check(4,$out_status)}>>處理中</option>
+  	<option value="1" <{select_check(1,$out_status)}>>已確認</option>
+  	<option value="3" <{select_check(3,$out_status)}>>已取消</option>
+  	<option value="2" <{select_check(2,$out_status)}>>已拒绝</option>
+  	</select>
+	日期:
+     <input class="za_text Wdate" onClick="WdatePicker()" value="<{$s_date}>"  style="width:80px;min-width:80px;" name="start_date">
+      ~
+	 <input class="za_text Wdate" onClick="WdatePicker()" value="<{$e_date}>"  style="width:80px;min-width:80px;" name="end_date">
+金額：
+	<input type="text" name="small" class="za_text" style="min-width:50px;width:50px" value="<{$smarty.get.small}>" size="5">~
+	<input type="text" name="big" class="za_text" style="min-width:50px;width:50px" value="<{$smarty.get.big}>" size="5">
+	帳號:
+	<input type="text" name="account" class="za_text" value="<{$smarty.get.account}>" style="min-width:80px!important;width:80px!important">
+	出款来源：
+	<select name="ptype" id="ptype" onchange="document.getElementById('queryform').submit()">
+	   <option value="-1" <{select_check(-1,$ptype)}>>全部</option>
+	   <option value="0" <{select_check(0,$ptype)}>>PC端</option>
+	   <option value="1" <{select_check(1,$ptype)}>>WAP端</option>
+<!-- 	   <option value="2" <{select_check(2,$ptype)}>>APP端</option> -->
+	</select><br>
+	 每页显示:<select name="page_num" onchange="document.getElementById('queryform').submit()">
+                   <option value="100" <{select_check(100,$smarty.get.page_num)}>>100</option>
+                   <option value="200" <{select_check(200,$smarty.get.page_num)}>>200</option>
+                   <option value="500" <{select_check(500,$smarty.get.page_num)}>>500</option>
+                   </select>
+                   <input type="submit" name="searchBtn" id="searchBtn" value="查詢" class="button_d">
+      重新整理:
+ 	<select name="reload" id="retime" onchange="setTimeout(setRefresh(), this.value*1000)">
+		<option value="-1" <{select_check(-1,$reload)}>>不更新</option>
+        <option value="30" <{select_check(30,$reload)}>>30秒</option>
+		<option value="60" <{select_check(60,$reload)}>>60秒</option>
+		<option value="120" <{select_check(120,$reload)}>>120秒</option>
+        <option value="180" <{select_check(180,$reload)}>>180秒</option>
+	</select>
+	<a href="<{$site_url}>/cash/Out_record/out_record_download" class="button_d" style="width:60px;height:16px;line-height: 16px;">导出Excel</a>
+
+	<input type="radio" name="listen" value="1" <{if $listen!=2}>checked="checked"<{/if}> />铃声1
+	<input type="radio" name="listen" value="2" <{if $listen==2}>checked="checked"<{/if}> />铃声2
+	<{$page}>&nbsp;
+	 <input type="button" name="btn1" onclick="window.open('<{$new_url}>')" style="color:red" id="btn1" value="監控" class="button_d"> <font color="red">避免多客服给同一会员出款，出款前可以先点预备出款，看操作者来区别（<strong>可以不点</strong>）</font>
+
+</form>
+</div>
+</div>
+<div class="content">
+	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="m_tab">
+		<tbody><tr class="m_title_over_co">
+			<td>站别</td>
+			<td>層級</td>
+			<td>代理商</td>
+			<td>會員帳號</td>
+            <td>首次</td>
+			<td>提出額度</td>
+			<td>手續費</td>
+			<td>優惠金額</td>
+			<td>行政費</td>
+			<td>出款金額</td>
+            <td>账户余额</td>
+			<td>優惠扣除</td>
+			<td>出款日期</td>
+			<td>稽核</td>
+			<td>状态</td>
+			<td>操作者</td>
+		</tr>
+        <{foreach from=$data key=i item=v}>
+		<tr class="m_cen <{if $i%2 == 0}>even<{/if}>">
+			<td><{$v['do_url']}></td>
+			<td  class="test_id" style="display:none;"><{$v['uid']}></td>
+			<td><{$v['level_des']}></td>
+			<td><{$v['agent_user']}></td>
+			<td><a href="javascript:void(0);" class="uname" style="text-decoration: underline;" did="<{$v['uid']}>"><{$v['username']}></a></td>
+			<td><{if $v['outward_style'] ==1 }>是<{/if}></td>
+            <td><{$v['outward_num']}></td>
+			<td><a href="javascript:void(0);" <{if $v['out_status']==0}> onclick="show_config1('<{$v['id']}>','<{$v['charge']}>')"<{/if}> style="text-decoration: underline;"> <{$v['charge']}></a></td>
+			<td><{$v['favourable_num']}></td>
+			<td><a href="javascript:void(0);" style="text-decoration: underline;"
+			<{if $v['out_status']==0}> onclick="show_config2('<{$v['id']}>','<{$v['expenese_num']}>','<{$v['favourable_num']}>')" <{/if}>><{$v['expenese_num']}></a> </td>
+			<td><a href="javascript:void(0);" style="text-decoration: underline;" class="outward_money_show" did="<{$v['uid']}>"><{$v['outward_money']}></a></td>
+			<td><{$v['balance']}></td>
+            <td><{if $v['favourable_out']==1}>
+                '是'<{else}>
+                '否'<{/if}></td>
+            <td><{$v['out_time']}></td>
+			<td><{if $v['out_status'] == 0}><a href="<{$site_url}>/cash/audit/index?username=<{$v['username']}>&end_date=<{$v['out_time']}>" style="text-decoration: underline;">稽核</a><{else}>--<{/if}></td>
+			<td>
+			<{if $v['out_status']==1}>
+			<font style="color:#1BDA06;">已出款</font>
+			<{elseif $v['out_status']==2}>
+			<font style="color:#B406D2;">已拒绝</font>
+			<{elseif $v['out_status']==3}>
+            <!-- <font style="color:red;">取消<{if $v['remark']}>(<{$v['remark']}>)<{/if}></font> -->
+			<a href='javascript:void(0);' onclick="showRemarks('<{$v['remark']}>');" style="color:#fff;" class="button_do" >已取消（备注）</a>
+            <{else}>
+            <{if $v['out_status'] == 4}><font style="color:red;">正在出款&nbsp;&nbsp;</font><{else}><a href='javascript:void(0);' style="color:#fff;" class="button_do" onclick="do_sure('<{$v['id']}>','4','<{$v['outward_money']}>')" >预备出款</a><{/if}>
+            <a href='javascript:void(0);' onclick="do_sure('<{$v['id']}>','1','<{$v['outward_money']}>')" style="color:#fff;" class="button_do" >确定</a>
+			<a href='javascript:void(0);' onclick="addRemarks('<{$v['id']}>',3,'<{$v['outward_money']}>')" style="color:#fff;" class="button_do" >取消</a>
+			<a href='javascript:void(0);' onclick="do_sure('<{$v['id']}>','2','<{$v['outward_money']}>')" style="color:#fff;" class="button_do" >拒绝</a>
+            <{/if}>
+			</td>
+			<td><{$v['admin_user']}></td>
+		</tr>
+        <{/foreach}>
+        	<tr align="center">
+			<td colspan="17">小计:
+			笔数：<font class="fontsty1"><{$num}></font>&nbsp;
+			手续费：<font class="fontsty1"><{$charge}></font>&nbsp;
+			優惠金額：<font class="fontsty2"><{$favourable_num}></font>&nbsp;
+			行政费：<font class="fontsty3"><{$expenese_num}></font>&nbsp;
+			总出款金額：<font class="fontsty4"><{$outward_money}></font>
+			</td>
+		</tr>
+		<tr align="center" style="background: #E8ECF0;">
+			<td colspan="17">总计:
+			笔数：<font class="fontsty1"><{$count}></font>&nbsp;
+			手续费：<font class="fontsty1"><{$all_out['charge']+0}></font>&nbsp;
+			優惠金額：<font class="fontsty2"><{$all_out['favourable_num']+0}></font>&nbsp;
+			行政费：<font class="fontsty3"><{$all_out['expenese_num']+0}></font>&nbsp;
+			总出款金額：<font class="fontsty4"><{$all_out['outward_money']+0}></font>
+			</td>
+		</tr>
+
+	</tbody></table>
+</div>
+ <!-- 出款金额弹窗 -->
+<div class="payBox_1" style="margin: -216px 0px 0px -150px; padding: 0px; border: none; z-index: 10000; position: fixed; top:50%; left: 50%; display: none;background:#fff;"><div id="currency_box" style="display: block; margin: 0px;" class="con_menu">
+
+  <input name="level_id_1" id="level_id_1" value="" type="hidden">
+  <table class="m_tab" style="width:280px;margin:0;">
+    <tbody><tr class="m_title">
+      <td colspan="3" height="27" class="table_bg" align="center">
+      <span id="title">會員帳戶資料</span>
+      <span style="float:right;"><a style="color:white;" href="javascript:void(0)" title="关闭窗口" class="button_a_b">×</a></span>
+      </td>
+    </tr>
+    <tr class="m_title_a">
+      <td>會員账号</td>
+      <td width="80">
+        <input class="b_1_1" id="copy_b_1" readonly="readonly" style="border:0px;background: none;">
+      </td>
+      <td style="color: red; cursor: pointer;width: 30px;" onclick="jsCopy('copy_b_1');">复制</td>
+    </tr>
+    <tr class="m_title_a even">
+      <td>會員姓名</td>
+      <td width="80">
+        <input class="b_2_1" id="copy_b_2" readonly="readonly" style="border:0px;background: none;">
+      </td>
+      <td style="color: red; cursor: pointer;width: 30px;" onclick="jsCopy('copy_b_2');">复制</td>
+    </tr>
+      <tr>
+
+      <td height="0" style="text-align:center;">銀行名稱</td>
+      <td id="RMB_1" style="text-align:center;">
+        <input class="b_3_1" id="copy_b_3" readonly="readonly" style="border:0px;background: none;">
+      </td>
+      <td style="color: red; cursor: pointer;width: 30px;" onclick="jsCopy('copy_b_3');">复制</td>
+
+    </tr>
+  		<tr class="m_title_a even">
+  			<td width="70">銀行帳號</td>
+  			<td>
+          <input class="b_4_1" id="copy_b_4" readonly="readonly" style="border:0px;background: none;">
+        </td>
+        <td style="color: red; cursor: pointer;width:30px;" onclick="jsCopy('copy_b_4');">复制</td>
+
+  		</tr>
+  		<tr class="m_title_a">
+  			<td width="70">省份</td>
+  			<td>
+          <input class="b_5_1" id="copy_b_5" readonly="readonly" style="border:0px;background: none;">
+        </td>
+        <td style="color: red; cursor: pointer;width: 30px;" onclick="jsCopy('copy_b_5');">复制</td>
+  		</tr>
+
+  		<tr class="m_title_a even">
+  			<td>城市</td>
+  			<td>
+          <input class="b_6_1" id="copy_b_6" readonly="readonly" style="border:0px;background: none;">
+        </td>
+        <td style="color: red; cursor: pointer;width: 30px;" onclick="jsCopy('copy_b_6');">复制</td>
+
+  		</tr>
+  		<tr class="m_title_a">
+  			<td>聯繫電話</td>
+  			<td>
+          <input class="b_7_1" id="copy_b_7" readonly="readonly" style="border:0px;background: none;">
+        </td>
+        <td style="color: red; cursor: pointer;width: 30px;" onclick="jsCopy('copy_b_7');">复制</td>
+
+  		</tr>
+  		<tr class="m_title_a even">
+  			<td>備注</td>
+  			<td>
+          <input class="b_8_1" id="copy_b_8" readonly="readonly" style="border:0px;background: none;">
+        </td>
+        <td style="color: red; cursor: pointer;width: 30px;" onclick="jsCopy('copy_b_8');">复制</td>
+  		</tr>
+
+        <tr>
+      <td colspan="3" align="center">
+        <input type="button" value="关闭" class="button_a close_x button_a_b">
+      </td>
+    </tr>
+  </tbody></table>
+
+</div></div>
+
+
+<!-- 显示取消备注 -->
+<div class="payBox_2" style="margin: -216px 0px 0px -150px; padding: 0px; border: none; z-index: 10000; position: fixed; top:80%; left: 50%; display: none;background:#fff;"><div style="display: block; margin: 0px;" class="con_menu">
+  <table class="m_tab" style="width:280px;margin:0;">
+    <tbody><tr class="m_title">
+      <td colspan="3" height="27" class="table_bg" align="center">
+      <span id="title">取消备注内容</span>
+      <span style="float:right;"><a style="color:black;" href="javascript:void(0)" title="关闭窗口" class="button_a_b">×</a></span>
+      </td>
+    </tr>
+    <tr class="m_title_a">
+      <td style="text-align:center;width:100px;">
+        <!-- <input class="b_1_1" id="copy_b_1" readonly="readonly" style="border:0px;background: none;"> -->
+		<font style="color:red;" id="myShow"></font>
+      </td>
+
+    </tr>
+  </tbody>
+  </table>
+</div>
+</div>
+
+
+
+
+
+
+ <!-- 用户名弹窗 -->
+<div class="payBox" style="margin: -226px 0px 0px -150px; padding: 0px; border: none; z-index: 10000; position: fixed; top: 50%; left: 50%; display: none;background:#fff"><div id="currency_box" style="display: block; margin: 0px;" class="con_menu">
+  <table class="m_tab" style="width:250px;margin:0;">
+    <tbody><tr class="m_title">
+      <td colspan="3" height="27" class="table_bg" align="center">
+      <span id="a_1"></span>
+      <span style="float:right;"><a style="color:white;" href="javascript:void(0)" title="关闭窗口" class="button_a_b">×</a></span>
+      </td>
+    </tr>
+    <tr class="m_title_a even">
+      <td>入款总额</td>
+      <td width="90" id="a_2_1"></td>
+      <td width="90" id="a_2_2"></td>
+    </tr>
+
+      <tr>
+
+      <td height="0" style="text-align:center;">出款总额</td>
+      <td  id="a_3_1" style="text-align:center;"></td>
+      <td style="text-align:center;" id="a_3_2"></td>
+    </tr>
+  		<tr class="m_title_a even">
+  			<td width="70">盈利情况</td>
+  			<td colspan="2" id="a_4_1"></td>
+
+  		</tr>
+  		<tr class="m_title">
+  			<td colspan="3">最近3笔入款金额</td>
+  		</tr>
+
+  		<tr class="m_title_a even">
+  			<td>入款一</td>
+  			<td id="a_5_1"></td>
+  			<td id="a_5_2"></td>
+  		</tr>
+  		<tr class="m_title_a">
+  			<td>入款二</td>
+  			<td id="a_6_1"></td>
+  			<td id="a_6_2"></td>
+  		</tr>
+  		<tr class="m_title_a even">
+  			<td>入款三</td>
+  			<td id="a_7_1"></td>
+  			<td id="a_7_2"></td>
+  		</tr>
+
+        <tr>
+      <td colspan="3" align="center">
+        <input type="button" value="关闭" class="button_a close_x button_a_b">
+      </td>
+    </tr>
+  </tbody></table>
+
+</div></div>
+
+
+
+
+<script type="text/javascript">
+//var retime = "" + -1;
+var retime = $('#retime').val();
+$(document).ready(function()
+{
+	var time = (retime == 0 || retime == -1) ? -1 : "" + retime;
+	if(time != -1)
+	{
+		setTimeout("setRefresh()", time * 1000);
+	}
+})
+
+
+//修改行政费
+function show_config2(id,lx,is_fav){
+	$("#expenese_id").val(id);
+	$("#expenese_num").val(lx);
+
+	if (is_fav > 0) {
+	   $("#favnum").show();
+       $("#favnum").val(is_fav);
+	}else{
+       $("#favnum").hide();
+	}
+	easyDialog.open({
+		  container : 'currency_box2'
+	});
+}
+</script>
+
+<!--修改手续费-->
+<div id="easyDialogBox" style="margin: -54.5px 0px 0px -150px; padding: 0px; border: none; z-index: 10000; position: fixed; top: 50%; left: 50%; display: none;">
+<div id="currency_box1" style="display: block; margin: 0px;" class="con_menu">
+<form action="<{$site_url}>/cash/Out_record/charge" method="post" name="add_form">
+	<input name="id" id="id" value="" type="hidden">
+	<table class="m_tab" style="width:300px;margin:0;">
+		<tbody><tr class="m_title">
+			<td colspan="2" height="27" class="table_bg" align="center">
+			<span id="title">修改手续费</span>
+			<span style="float:right;"><a style="color:white;" href="javascript:void(0)" title="关闭窗口" onclick="easyDialog.close();">×</a></span>
+			</td>
+		</tr>
+		<tr class="m_title">
+			<td>手续费</td>
+			<td><input name="charge" id="charge" value=""></td>
+		</tr>
+		<tr>
+			<td colspan="2" align="center">
+				<input type="submit" value="提交" class="button_a">
+				<input type="reset" value="关闭" onclick="easyDialog.close();" class="button_a">
+			</td>
+		</tr>
+	</tbody>
+</table>
+</form>
+</div>
+</div>
+
+<!--修改行政费-->
+<div id="easyDialogBox" style="margin: -54.5px 0px 0px -150px; padding: 0px; border: none; z-index: 10000; position: fixed; top: 50%; left: 50%; display: none;">
+	<div id="currency_box2" style="display: block; margin: 0px;" class="con_menu">
+<form action="<{$site_url}>/cash/out_record/expenese_num" method="post" name="add_form">
+	<input name="id" id="expenese_id" value="" type="hidden">
+	<table class="m_tab" style="width:300px;margin:0;">
+		<tbody><tr class="m_title">
+			<td colspan="2" height="27" class="table_bg" align="center">
+			<span id="title">修改行政费</span>
+			<span style="float:right;"><a style="color:white;" href="javascript:void(0)" title="关闭窗口" onclick="easyDialog.close();">×</a></span>
+			</td>
+		</tr>
+		<tr class="m_title">
+			<td>行政费</td>
+			<td><input name="expenese_num" id="expenese_num" value=""></td>
+		</tr>
+		<tr class="m_title" id="favnum">
+			<td>优惠金额</td>
+			<td style="padding-left: 25px;">
+				<select style="float: left;" id="isfav" name="is_fav">
+					<option value="1">是</option>
+					<option value="0">否</option>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2" align="center">
+				<input type="submit" value="提交" class="button_a">
+				<input type="reset" value="关闭" onclick="easyDialog.close();" class="button_a">
+			</td>
+		</tr>
+	</tbody></table>
+</form>
+</div>
+</div>
+<!--修改行政费-->
+
+<div id="sound"></div>
+
+<!--取消备注-->
+<style>
+.mytr td{
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background: #f7b64b none repeat scroll 0 0;
+    border-color: #e78f08 #e78f08 #eaa12a;
+    border-image: none;
+    border-style: solid;
+    border-width: 1px;
+    color: #fff;
+    font-size: 14px;
+
+    overflow: hidden;
+
+}
+.mytr a {
+    background: #fff none repeat scroll 0 0;
+    border-radius: 2px;
+    color: #c77405;
+    display: block;
+    float: right;
+    font-family: arial;
+    font-size: 14px;
+    font-weight: normal;
+    height: 16px;
+    line-height: 16px;
+    margin-top: 0px;
+    overflow: hidden;
+    text-align: center;
+    text-decoration: none;
+    width: 16px;
+    cursor:pointer;
+}
+.aui_header{
+  font-size: 14px;
+  line-height: 27px;
+  height: 27px;
+  color:grey;
+  background: #FADCDC;
+}
+.aui_title{
+  float: left;
+  text-align: center;
+  width: 95%;
+}
+.aui_main{
+  background: #fff;
+}
+.aui_titleBar a{
+  display: block;
+  float: right;
+  color: grey;
+  font-size: 21px;
+  margin-top: 0px;
+  margin-right: 2px;
+}
+table{
+  border-color: grey;
+}
+.aui_nw, .aui_n, .aui_ne, .aui_w, .aui_e, .aui_sw, .aui_s, .aui_se {
+    background: rgba(0, 0, 0, .4);
+}
+.aui_nw, .aui_ne, .aui_sw, .aui_se {
+    width: 8px;
+    height: 8px;
+}
+.aui_nw, .aui_n, .aui_ne, .aui_w, .aui_c, .aui_e, .aui_sw, .aui_s, .aui_se, .aui_header, .aui_tdIcon, .aui_main, .aui_footer {
+    padding: 0;
+}
+table.aui_border, table.aui_dialog {
+    border: 0;
+    margin: 0;
+    border-collapse: collapse;
+    width: auto;
+}
+.aui_outer {
+    text-align: left;
+
+}
+.aui_content{
+  text-align: center;
+  background: #FADCDC;
+}
+.aui_outer, .aui_inner {
+    border: 1px solid rgba(0, 0, 0, .7);
+}
+.pad-td td{
+  padding-left: 20px;
+  padding-right: 20px;
+}
+</style>
+<div style="display:none;margin-left: auto;margin-right: auto;width:700px;max-height:400px;overflow-y:scroll;overflow-x:visible;" id="xq">
+   <form action="" method="post" id="myRemarks">
+   <table width="300px" border="1" cellspacing="0" cellpadding="0" class="m_tab" bgcolor="#3B2D1B" >
+        <tbody>
+            <tr class="aui_content" id="justid">
+                <td><textarea name="remarks" cols="40" rows="5" id="myRemarks"></textarea></td>
+            </tr>
+			<tr class="aui_content">
+				<td><input type="submit" value="提交"></td>
+
+			</tr>
+
+        </tbody>
+    </table>
+	</form>
+</div>
+
+
+<!-- <div style="display:none;margin-left: auto;margin-right: auto;width:700px;max-height:400px;overflow-y:scroll;overflow-x:visible;" id="showRemarks">
+   <table width="300px" border="1" cellspacing="0" cellpadding="0" class="m_tab" bgcolor="#3B2D1B" >
+        <tbody>
+            <tr class="aui_content" id="changes">
+                <td><textarea name="remarks" cols="40" rows="5" style="color:red;" id="myShow"></textarea></td>
+            </tr>
+        </tbody>
+    </table>
+</div> -->
+
+<{include file="web_footer.html"}>

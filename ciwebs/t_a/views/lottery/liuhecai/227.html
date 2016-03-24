@@ -1,0 +1,1021 @@
+<{config_load file="public.conf" section="public"}>
+<!doctype html>
+<!--[if lt IE 7 ]> <html class="no-js ie6 ie" > <![endif]-->
+<!--[if IE 7 ]>    <html class="no-js ie7 ie" > <![endif]-->
+<!--[if IE 8 ]>    <html class="no-js ie8 ie" > <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html class="no-js">
+<!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<title>六合彩</title>
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="<{#tcss#}>/main_<{$config_css}>.css?v=2015101">
+<!--[if IE 6]>
+<script src="/assets/dist/scripts/lib/ie6/DD_belatedPNG_0.0.8a.js?v=2015101"></script>
+<script>
+    /* EXAMPLE */
+    DD_belatedPNG.fix('.icon');
+    /* string argument can be any CSS selector */
+    /* .png_bg example is unnecessary */
+    /* change it to what suits you! */
+</script>
+<![endif]-->
+<script type="text/javascript">
+        window.onload = function () {
+				var height = 750;
+                var doc = parent.document;
+				var ifr = window.parent.document.getElementById("iframepage");
+                ifr.style.height = height+'px';
+
+        };
+    </script>
+<script>
+	var ry_lottery_config = {
+		assets : '/public/timages/{0}?v=2015101',
+		currency : '￥',
+		locale : 'zh_cn',
+		officalDomain : 'http://localhost:11109/'
+	};
+</script>
+
+<script src="<{#tjs#}>/main.js"></script>
+<script src="<{#tjs#}>/jquery-1.7.2.min.js"></script>
+</head>
+<body>
+
+	<div class="container">
+
+		<!--#nav START-->
+		<div id="nav" class="nav clearfix"><{include
+			file='lottery/title_head.html'}></div>
+		<!--#nav END-->
+
+
+		<!--.summary START-->
+		<div class="summary" id="summary">
+        &nbsp;&nbsp;
+<span> 期数 <b class="box ib timer"><{$now_qishu}>期</b></span>
+		<!-- 	<a class="live fr" target="_blank"
+				href="http://www.6hbd.me/marksix/shipin"> <img
+				src="<{#timages#}>/live.gif" />
+			</a> --><i title="声音开关" class="icon1 sound-on fr"></i>
+			<div class="summary-prev fr" id="pre-result">
+            <span class="fl"><{$type_name_c}></span>
+				<span class="fl mr6"><b id="prev-issue">0</b>期结果</span> <span
+					class="summary-prev-hkc" id="prev-bs"></span>
+			</div>
+			<!-- <span class="notify"> <span id="marquee" width="370"
+				height="24" style="display: none"></span>
+			</span> -->
+		</div>
+		<!--.summary END-->
+		<!--.play START-->
+		<div id="play" class="play hkc" style="height:754px;">
+			<div class="play-hd clearfix">
+				<span class="fl"> 玩法 ： </span>
+				<ul class="play-category fl" id="play-tab">
+					<{foreach from=$list item=v key=k}>
+					<li><a id="nav-<{$v['gameid']}>"<{if
+							$smarty.get.gameid==$v['gameid']}>class="current"<{/if}>
+							href="/index.php/lottery/lottery/index?type=liuhecai&gameid=<{$v['gameid']}>">
+							<{$v['name']}></a></li> <{/foreach}>
+				</ul>
+			</div>
+
+			<div class="play-bd clearfix">
+				<div class="main-bd">
+					<div class="clearfix summary">
+			<!-- 		<div class="fr nav-button" id="sub-tabs">
+            <a id="sub-nav-20" href="/index.php/lottery/lottery/index?gameid=<{$smarty.get.gameid}>&type=liuhecai&gamename2=三全中&panType=20" class="button">三全中</a>
+            <a id="sub-nav-21" href="/index.php/lottery/lottery/index?gameid=<{$smarty.get.gameid}>&type=liuhecai&gamename2=三中二&panType=21" class="button">三中二</a>
+            <a id="sub-nav-19" href="/index.php/lottery/lottery/index?gameid=<{$smarty.get.gameid}>&type=liuhecai&gamename2=二全中&panType=19" class="button current">二全中</a>
+            <a id="sub-nav-17" href="/index.php/lottery/lottery/index?gameid=<{$smarty.get.gameid}>&type=liuhecai&gamename2=二中特&panType=17" class="button">二中特</a>
+            <a id="sub-nav-18" href="/index.php/lottery/lottery/index?gameid=<{$smarty.get.gameid}>&type=liuhecai&gamename2=特串&panType=18" class="button">特串</a>
+          </div> -->
+
+						<div class="fr nav-button" id="sub-tabs">
+							<{foreach from=$config item=v key=k}> <a id="sub-nav-21"
+								class="button<{if $gamename2==$v['name']}> current<{/if}>"
+								title="<{$v['name']}>"
+								href="/index.php/lottery/lottery/index?gameid=<{$smarty.get.gameid}>&type=liuhecai&gamename2=<{$v['name']}>"><{$v['name']}></a>
+							<{/foreach}>
+						</div>
+
+						<span> 距离封盘 <b class="box ib timer close-timer"
+							id="close-timer" data-timer="184301">&nbsp;</b>
+						</span>
+					</div>
+					<div id="parlay-ctn" class="mt10">
+
+						<div class="clearfix hkc-lm" >
+							<table class="table fl wp-20" >
+								<thead>
+									<tr>
+										<th>号码</th>
+										<th>赔率</th>
+										<th>勾选</th>
+									</tr>
+								</thead>
+								<tbody>
+								<{foreach from=$odds_arr item=v key=k}>
+									<tr>
+										<td class="table-odd"><label  style="padding:10px 10px" for="lm-<{$v['input_name']}>"><i class="icon b-<{func_set_style($v['input_name'])}>"><{$v['input_name']}></i></label></td>
+										<td class="odds-text"><label style="display:block; width:100%; height:100%; " for="lm-<{$v['input_name']}>"> <span
+												data-id="<{$v['type_id']}>" data-oid="<{$v['id']}>" data-key="<{$v['type2']}>"><{$v['odds_value']}> </span>
+										</label></td>
+										<td class="lm-ck"><input type="checkbox" id="lm-<{$v['input_name']}>"
+											data-number="<{$v['input_name']}>" data-id="<{$v['type_id']}>" data-odds="<{$v['odds_value']}>"
+											data-sub-odds="" data-oid="<{$v['id']}>" data-key="<{$v['type2']}>" />
+										</td>
+									</tr>
+							<{if $k%10 ==0 && $k!=79}>
+								</tbody>
+							</table>
+							<table class="table fl wp-20"  style="border-left:none">
+								<thead>
+									<tr>
+										<th>号码</th>
+										<th>赔率</th>
+										<th>金额</th>
+									</tr>
+								</thead>
+								<tbody>
+							<{/if}>
+							<{/foreach}>
+
+								</tbody>
+
+							</table>
+						</div>
+
+
+							<{if $is_login}><form class="form normal-form mt10 tac" action="" id="parlay-form">
+
+        <label>
+
+            金额：
+            <input type="text" class="input fb">
+        </label>
+        <button class="button parlay bet-button" data-action="parlay">
+
+            下注
+        </button>
+        <button class="button button-secondary bet-button " data-action="reset" type="reset">
+
+            重置
+        </button>
+
+    </form><{else}>
+								<div class="fr">
+								<img style="position:relative; top:2px;" alt=" " src="<{#timages#}>/je_1.png">
+								<a href="javascript:;" onclick="alert('请先登录！');"><img src="<{#timages#}>/je_2.png" ></a>
+								<img alt=" " src="<{#timages#}>/je_3.png">
+								</div><{/if}>
+
+
+						<table class="table mt10" id="j-cpd-tb">
+							<tr style="border-top:1px solid #a69b91">
+							<td>
+            <label for="hkc-bet1" class="hkc-bet-type">
+                <input type="radio" id="hkc-bet1" name="betType" value="1" data-type="1" data-process="default">
+
+                正常
+            </label>
+            <label for="hkc-bet2" class="hkc-bet-type">
+                <input type="radio" id="hkc-bet2" name="betType" value="2" data-type="2" data-process="dt">
+
+                胆拖
+            </label>
+
+            <{if $gamename2=='二全中'|| $gamename2=='二中特' ||$gamename2=='特串'}>
+                <label for="hkc-bet3" class="hkc-bet-type">
+                    <input type="radio" id="hkc-bet3" name="betType" value="3" data-type="3" data-process="sx">
+
+                    生肖对碰
+                </label>
+                <label for="hkc-bet4" class="hkc-bet-type">
+                    <input type="radio" id="hkc-bet4" name="betType" value="4" data-type="4" data-process="ws">
+
+                    尾数对碰
+                </label>
+                <label for="hkc-bet5" class="hkc-bet-type">
+                    <input type="radio" id="hkc-bet5" name="betType" value="5" data-type="5" data-process="sw">
+
+                    生尾对碰
+                </label>
+                <label for="hkc-bet6" class="hkc-bet-type">
+                    <input type="radio" id="hkc-bet6" name="betType" value="6" data-type="6" data-process="ry">
+
+                    任意对碰
+                </label>
+
+                <{/if}>
+        </td>
+							</tr>
+						</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+						<table class="table nested-table " id="j-bet-tb">
+    <tbody><tr class="hide" style="display: none;">
+
+        <td class="j-reset-html" style="border-top:none;"></td>
+    </tr>
+
+    <tr class="hide" style="display: none;">
+
+        <td style="border-top:none;">
+            <div class="fl j-reset-html"></div>
+            <label>
+
+                胆1
+                <input type="text" value="" class="input" disabled="">
+            </label>
+            <label>
+
+                胆2
+                <input type="text" value="" class="input" disabled="">
+            </label>
+        </td>
+    </tr>
+    <style>
+       .hide .p0 .p0_2 td{border-top:none;}
+       .hide .p0 .p0_3 td{border-bottom:none;}
+    </style>
+        <tr class="hide" style="display: none;">
+
+            <td class="p0" style="border-top:none;">
+                <table>
+                        <tbody><tr class="p0_2">
+                                <td >
+                                    <label>
+                                        <input type="radio" value="鼠" name="sx0" class="vam" hh='shengxiao_1_1'>
+                                        鼠
+                                    </label>
+                                </td>
+                                <td>
+                                    <label>
+                                        <input type="radio" value="牛" name="sx0" class="vam" hh='shengxiao_1_2'>
+                                        牛
+                                    </label>
+                                </td>
+                                <td>
+                                    <label>
+                                        <input type="radio" value="虎" name="sx0" class="vam" hh='shengxiao_1_3'>
+                                        虎
+                                    </label>
+                                </td>
+                                <td>
+                                    <label>
+                                        <input type="radio" value="兔" name="sx0" class="vam" hh='shengxiao_1_4'>
+                                        兔
+                                    </label>
+                                </td>
+                                <td>
+                                    <label>
+                                        <input type="radio" value="龙" name="sx0" class="vam" hh='shengxiao_1_5'>
+                                        龙
+                                    </label>
+                                </td>
+                                <td>
+                                    <label>
+                                        <input type="radio" value="蛇" name="sx0" class="vam" hh='shengxiao_1_6'>
+                                        蛇
+                                    </label>
+                                </td>
+                                <td>
+                                    <label>
+                                        <input type="radio" value="马" name="sx0" class="vam" hh='shengxiao_1_7'>
+                                        马
+                                    </label>
+                                </td>
+                                <td>
+                                    <label>
+                                        <input type="radio" value="羊" name="sx0" class="vam" hh='shengxiao_1_8'>
+                                        羊
+                                    </label>
+                                </td>
+                                <td>
+                                    <label>
+                                        <input type="radio" value="猴" name="sx0" class="vam" hh='shengxiao_1_9'>
+                                        猴
+                                    </label>
+                                </td>
+                                <td>
+                                    <label>
+                                        <input type="radio" value="鸡" name="sx0" class="vam" hh='shengxiao_1_10'>
+                                        鸡
+                                    </label>
+                                </td>
+                                <td>
+                                    <label>
+                                        <input type="radio" value="狗" name="sx0" class="vam" hh='shengxiao_1_11'>
+                                        狗
+                                    </label>
+                                </td>
+                                <td  style=" border-right:none;">
+                                    <label>
+                                        <input type="radio" value="猪" name="sx0" class="vam" hh='shengxiao_1_12'>
+                                        猪
+                                    </label>
+                                </td>
+                        </tr>
+                        <tr class="p0_3">
+                                <td>
+                                    <label>
+                                        <input type="radio" value="鼠" name="sx1" class="vam" hh='shengxiao_2_1'>
+                                        鼠
+                                    </label>
+                                </td>
+                                <td>
+                                    <label>
+                                        <input type="radio" value="牛" name="sx1" class="vam" hh='shengxiao_2_2'>
+                                        牛
+                                    </label>
+                                </td>
+                                <td>
+                                    <label>
+                                        <input type="radio" value="虎" name="sx1" class="vam" hh='shengxiao_2_3'>
+                                        虎
+                                    </label>
+                                </td>
+                                <td>
+                                    <label>
+                                        <input type="radio" value="兔" name="sx1" class="vam" hh='shengxiao_2_4'>
+                                        兔
+                                    </label>
+                                </td>
+                                <td>
+                                    <label>
+                                        <input type="radio" value="龙" name="sx1" class="vam" hh='shengxiao_2_5'>
+                                        龙
+                                    </label>
+                                </td>
+                                <td>
+                                    <label>
+                                        <input type="radio" value="蛇" name="sx1" class="vam" hh='shengxiao_2_6'>
+                                        蛇
+                                    </label>
+                                </td>
+                                <td>
+                                    <label>
+                                        <input type="radio" value="马" name="sx1" class="vam" hh='shengxiao_2_7'>
+                                        马
+                                    </label>
+                                </td>
+                                <td>
+                                    <label>
+                                        <input type="radio" value="羊" name="sx1" class="vam" hh='shengxiao_2_8'>
+                                        羊
+                                    </label>
+                                </td>
+                                <td>
+                                    <label>
+                                        <input type="radio" value="猴" name="sx1" class="vam" hh='shengxiao_2_9'>
+                                        猴
+                                    </label>
+                                </td>
+                                <td>
+                                    <label>
+                                        <input type="radio" value="鸡" name="sx1" class="vam" hh='shengxiao_2_10'>
+                                        鸡
+                                    </label>
+                                </td>
+                                <td>
+                                    <label>
+                                        <input type="radio" value="狗" name="sx1" class="vam" hh='shengxiao_2_11'>
+                                        狗
+                                    </label>
+                                </td>
+                                <td  style=" border-right:none;">
+                                    <label>
+                                        <input type="radio" value="猪" name="sx1" class="vam" hh='shengxiao_2_12'>
+                                        猪
+                                    </label>
+                                </td>
+                        </tr>
+                </tbody></table>
+
+            </td>
+        </tr>
+        <tr class="hide" style="display:none">
+
+            <td class="p0" style="border-top:none;">
+                <table>
+                        <tbody><tr class="p0_2">
+                                <td>
+                                    <label>
+                                        <input type="radio" value="0" name="ws0" class="vam" hh='shengxiao_3_1'>
+                                        0
+
+                                        尾
+                                    </label>
+                                </td>
+                                <td>
+                                    <label>
+                                        <input type="radio" value="1" name="ws0" class="vam" hh='shengxiao_3_2'>
+                                        1
+
+                                        尾
+                                    </label>
+                                </td>
+                                <td>
+                                    <label>
+                                        <input type="radio" value="2" name="ws0" class="vam" hh='shengxiao_3_3'>
+                                        2
+
+                                        尾
+                                    </label>
+                                </td>
+                                <td>
+                                    <label>
+                                        <input type="radio" value="3" name="ws0" class="vam" hh='shengxiao_3_4'>
+                                        3
+
+                                        尾
+                                    </label>
+                                </td>
+                                <td>
+                                    <label>
+                                        <input type="radio" value="4" name="ws0" class="vam" hh='shengxiao_3_5'>
+                                        4
+
+                                        尾
+                                    </label>
+                                </td>
+                                <td>
+                                    <label>
+                                        <input type="radio" value="5" name="ws0" class="vam" hh='shengxiao_3_6'>
+                                        5
+
+                                        尾
+                                    </label>
+                                </td>
+                                <td>
+                                    <label>
+                                        <input type="radio" value="6" name="ws0" class="vam" hh='shengxiao_3_7'>
+                                        6
+
+                                        尾
+                                    </label>
+                                </td>
+                                <td>
+                                    <label>
+                                        <input type="radio" value="7" name="ws0" class="vam" hh='shengxiao_3_8'>
+                                        7
+
+                                        尾
+                                    </label>
+                                </td>
+                                <td>
+                                    <label>
+                                        <input type="radio" value="8" name="ws0" class="vam" hh='shengxiao_3_9'>
+                                        8
+
+                                        尾
+                                    </label>
+                                </td>
+                                <td  style=" border-right:none;">
+                                    <label>
+                                        <input type="radio" value="9" name="ws0" class="vam" hh='shengxiao_3_10'>
+                                        9
+
+                                        尾
+                                    </label>
+                                </td>
+                        </tr>
+                        <tr class="p0_3">
+                                <td>
+                                    <label>
+                                        <input type="radio" value="0" name="ws1" class="vam" hh='shengxiao_4_1'>
+                                        0
+
+                                        尾
+                                    </label>
+                                </td>
+                                <td>
+                                    <label>
+                                        <input type="radio" value="1" name="ws1" class="vam" hh='shengxiao_4_2'>
+                                        1
+
+                                        尾
+                                    </label>
+                                </td>
+                                <td>
+                                    <label>
+                                        <input type="radio" value="2" name="ws1" class="vam" hh='shengxiao_4_3'>
+                                        2
+
+                                        尾
+                                    </label>
+                                </td>
+                                <td>
+                                    <label>
+                                        <input type="radio" value="3" name="ws1" class="vam" hh='shengxiao_4_4'>
+                                        3
+
+                                        尾
+                                    </label>
+                                </td>
+                                <td>
+                                    <label>
+                                        <input type="radio" value="4" name="ws1" class="vam" hh='shengxiao_4_5'>
+                                        4
+
+                                        尾
+                                    </label>
+                                </td>
+                                <td>
+                                    <label>
+                                        <input type="radio" value="5" name="ws1" class="vam" hh='shengxiao_4_6'>
+                                        5
+
+                                        尾
+                                    </label>
+                                </td>
+                                <td>
+                                    <label>
+                                        <input type="radio" value="6" name="ws1" class="vam" hh='shengxiao_4_7'>
+                                        6
+
+                                        尾
+                                    </label>
+                                </td>
+                                <td>
+                                    <label>
+                                        <input type="radio" value="7" name="ws1" class="vam" hh='shengxiao_4_8'>
+                                        7
+
+                                        尾
+                                    </label>
+                                </td>
+                                <td>
+                                    <label>
+                                        <input type="radio" value="8" name="ws1" class="vam" hh='shengxiao_4_9'>
+                                        8
+
+                                        尾
+                                    </label>
+                                </td>
+                                <td  style=" border-right:none;">
+                                    <label>
+                                        <input type="radio" value="9" name="ws1" class="vam" hh='shengxiao_4_10'>
+                                        9
+
+                                        尾
+                                    </label>
+                                </td>
+                        </tr>
+                </tbody></table>
+
+            </td>
+        </tr>
+        <tr class="hide" style="display: none;">
+
+            <td class="p0" style="border-top:none;">
+                <table>
+
+                    <tbody><tr class="p0_2">
+                            <td>
+                                <label>
+                                    <input type="radio" value="鼠" name="sw" class="vam">
+                                    鼠
+                                </label>
+                            </td>
+                            <td>
+                                <label>
+                                    <input type="radio" value="牛" name="sw" class="vam">
+                                    牛
+                                </label>
+                            </td>
+                            <td>
+                                <label>
+                                    <input type="radio" value="虎" name="sw" class="vam">
+                                    虎
+                                </label>
+                            </td>
+                            <td>
+                                <label>
+                                    <input type="radio" value="兔" name="sw" class="vam">
+                                    兔
+                                </label>
+                            </td>
+                            <td>
+                                <label>
+                                    <input type="radio" value="龙" name="sw" class="vam">
+                                    龙
+                                </label>
+                            </td>
+                            <td>
+                                <label>
+                                    <input type="radio" value="蛇" name="sw" class="vam">
+                                    蛇
+                                </label>
+                            </td>
+                            <td>
+                                <label>
+                                    <input type="radio" value="马" name="sw" class="vam">
+                                    马
+                                </label>
+                            </td>
+                            <td>
+                                <label>
+                                    <input type="radio" value="羊" name="sw" class="vam">
+                                    羊
+                                </label>
+                            </td>
+                            <td>
+                                <label>
+                                    <input type="radio" value="猴" name="sw" class="vam">
+                                    猴
+                                </label>
+                            </td>
+                            <td>
+                                <label>
+                                    <input type="radio" value="鸡" name="sw" class="vam">
+                                    鸡
+                                </label>
+                            </td>
+                            <td>
+                                <label>
+                                    <input type="radio" value="狗" name="sw" class="vam">
+                                    狗
+                                </label>
+                            </td>
+                            <td  style="border-right:none;">
+                                <label>
+                                    <input type="radio" value="猪" name="sw" class="vam">
+                                    猪
+                                </label>
+                            </td>
+                    </tr>
+                    <tr class="p0_3">
+                        <td>&nbsp;</td>
+
+                            <td>
+                                <label>
+                                    <input type="radio" value="0" name="ws" class="vam">
+                                    0
+
+                                    尾
+                                </label>
+                            </td>
+                            <td>
+                                <label>
+                                    <input type="radio" value="1" name="ws" class="vam">
+                                    1
+
+                                    尾
+                                </label>
+                            </td>
+                            <td>
+                                <label>
+                                    <input type="radio" value="2" name="ws" class="vam">
+                                    2
+
+                                    尾
+                                </label>
+                            </td>
+                            <td>
+                                <label>
+                                    <input type="radio" value="3" name="ws" class="vam">
+                                    3
+
+                                    尾
+                                </label>
+                            </td>
+                            <td>
+                                <label>
+                                    <input type="radio" value="4" name="ws" class="vam">
+                                    4
+
+                                    尾
+                                </label>
+                            </td>
+                            <td>
+                                <label>
+                                    <input type="radio" value="5" name="ws" class="vam">
+                                    5
+
+                                    尾
+                                </label>
+                            </td>
+                            <td>
+                                <label>
+                                    <input type="radio" value="6" name="ws" class="vam">
+                                    6
+
+                                    尾
+                                </label>
+                            </td>
+                            <td>
+                                <label>
+                                    <input type="radio" value="7" name="ws" class="vam">
+                                    7
+
+                                    尾
+                                </label>
+                            </td>
+                            <td>
+                                <label>
+                                    <input type="radio" value="8" name="ws" class="vam">
+                                    8
+
+                                    尾
+                                </label>
+                            </td>
+                            <td>
+                                <label>
+                                    <input type="radio" value="9" name="ws" class="vam">
+                                    9
+
+                                    尾
+                                </label>
+                            </td>
+                        <td   style="border-right:none;">&nbsp;</td>
+                    </tr>
+
+                </tbody></table>
+
+            </td>
+        </tr>
+        <tr class="hide" style="display: none;">
+
+            <td class="p0" style="border-top:none;">
+                <table>
+
+                    <tbody><tr class="p0_2 p0_3">
+                            <td>
+                                <input type="text" value="" name="ws" class="input j-left-num" data-max="49">
+                            </td>
+                            <td>
+                                <input type="text" value="" name="ws" class="input j-left-num" data-max="49">
+                            </td>
+                            <td>
+                                <input type="text" value="" name="ws" class="input j-left-num" data-max="49">
+                            </td>
+                            <td>
+                                <input type="text" value="" name="ws" class="input j-left-num" data-max="49">
+                            </td>
+                            <td>
+                                <input type="text" value="" name="ws" class="input j-left-num" data-max="49">
+                            </td>
+                        <td>
+
+                            碰
+                        </td>
+                            <td>
+                                <input type="text" value="" name="ws" class="input j-right-num" data-max="49">
+                            </td>
+                            <td>
+                                <input type="text" value="" name="ws" class="input j-right-num" data-max="49">
+                            </td>
+                            <td>
+                                <input type="text" value="" name="ws" class="input j-right-num" data-max="49">
+                            </td>
+                            <td>
+                                <input type="text" value="" name="ws" class="input j-right-num" data-max="49">
+                            </td>
+                            <td style="border-right:none">
+                                <input type="text" value="" name="ws" class="input j-right-num" data-max="49">
+                            </td>
+                    </tr>
+
+
+                </tbody></table>
+
+            </td>
+        </tr>
+</tbody></table>
+
+
+<script>
+    $(function(){
+        //生肖碰点击取消其他的radio选中
+            $("input[type='radio'][hh^='shengxiao_']").click(function() {
+                //判断是否重复选择
+                var name = $(this).attr('hh');
+                var num = name.split('_')[1];
+                if(num == 1){
+                        if($("input[type='radio'][hh='shengxiao_2_"+name.split('_')[2]+"']").attr('checked') == 'checked'){
+                            alert("对不起！请重新选择两个不一样的！");
+                            $(this).removeAttr("checked");
+                            return false;
+                        }
+                }else if(num == 2){
+                    if($("input[type='radio'][hh='shengxiao_1_"+name.split('_')[2]+"']").attr('checked') == 'checked'){
+                            alert("对不起！请重新选择两个不一样的！");
+                            $(this).removeAttr("checked");
+                            return false;
+                        }
+                }else if(num == 3){
+                    if($("input[type='radio'][hh='shengxiao_4_"+name.split('_')[2]+"']").attr('checked') == 'checked'){
+                            alert("对不起！请重新选择两个不一样的！");
+                            $(this).removeAttr("checked");
+                            return false;
+                        }
+                }else if(num == 4){
+                    if($("input[type='radio'][hh='shengxiao_3_"+name.split('_')[2]+"']").attr('checked') == 'checked'){
+                            alert("对不起！请重新选择两个不一样的！");
+                            $(this).removeAttr("checked");
+                            return false;
+                        }
+                }
+
+            });
+    })
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+						<script id="tpl-cpd" type="text/html">
+
+    <div class="clearfix">
+        <em class="fl mr10 ml10">
+            选项
+            :{{total}} [{{items}}]
+        </em>
+        <em class="fl ">
+
+            组成
+            :{{group}}
+
+            组
+        </em>
+
+
+
+    </div>
+</script> -->
+						<script id="tpl-confirm-group" type="text/html">
+
+    <div class="confirm-parlay">
+        {{#dan}}
+        <h3>
+            {{d}}
+
+            拖
+            {{t}}
+        </h3>
+        {{/dan}}
+        {{#name}}
+        <h3>
+            {{.}}
+        </h3>
+        {{/name}}
+        {{#desc}}
+        <h3>{{left}}碰{{right}}</h3>
+        {{/desc}}
+        <h4>
+
+            组合共
+            ：<em>{{group}}</em>
+
+            组
+        </h4>
+        <h5>
+
+            单注金额：<em>{{single}}</em>
+        </h5>
+        <h5>
+
+            总下注金额：<em>{{total}}</em>
+        </h5>
+    </div>
+
+</script>
+
+
+					</div>
+
+				</div>
+				<div class="aside">
+					<!--amount START-->
+					<div class="amount  need-auth">
+						<{if $is_login}>
+						<div class="available-amount box">
+							<span>可用金额</span>
+							<b id="j-balance">￥0.00</b>
+						</div>
+						<div class="betting-amount box">
+							<span>即时下注</span>
+							<a href="javascript:void(0)" data-href="/index.php/lottery/lottery/notCount" class="odfi" title="即时注单"><b id="j-orders">￥0.00</b></a>
+						</div>
+						<{/if}>
+					</div>
+					<!--amount END-->
+				</div>
+			</div>
+
+		</div>
+		<script type="text/html" id="tpl-prev-balls">
+    {{#balls}}
+    <i class="icon ball-style b-{{color}}">{{number}}</i>{{sx}}
+    {{/balls}}
+</script>
+
+		<input type="hidden" value="227" id="h-nav-top" /> <input
+			type="hidden" value="20" id="h-nav-sub" />
+		<!--.play START-->
+
+	</div>
+
+
+
+
+	<script>
+		require([ '<{#tjs#}>/lianma.js' ], function(App) {
+			new App({
+				panType : '19',
+                  
+                    //2016年生肖 过年了放开我
+              sx : {
+           "猴" : [ 1, 13, 25, 37, 49 ],
+           "羊" : [ 2, 14, 26, 38 ],
+           "马" : [ 3, 15, 27, 39 ],
+           "蛇" : [ 4, 16, 28, 40 ],
+           "龙" : [ 5, 17, 29, 41 ],
+           "兔" : [ 6, 18, 30, 42 ],
+           "虎" : [ 7, 19, 31, 43 ],
+           "牛" : [ 8, 20, 32, 44 ],
+           "鼠" : [ 9, 21, 33, 45 ],
+           "猪" : [ 10, 22, 34, 46 ],
+           "狗" : [ 11, 23, 35, 47 ],
+           "鸡" : [ 12, 24, 36, 48 ]
+          },
+          
+				ws : [ [ 10, 20, 30, 40 ], [ 1, 11, 21, 31, 41 ],
+						[ 2, 12, 22, 32, 42 ], [ 3, 13, 23, 33, 43 ],
+						[ 4, 14, 24, 34, 44 ], [ 5, 15, 25, 35, 45 ],
+						[ 6, 16, 26, 36, 46 ], [ 7, 17, 27, 37, 47 ],
+						[ 8, 18, 28, 38, 48 ], [ 9, 19, 29, 39, 49 ] ],
+				lang : {
+					tipsDuiPengSX : '请选择对碰的生肖', // 请选择对碰的生肖
+					tipsDuiPengSxSame : '对碰的生肖不能相同', //对碰的生肖不能相同
+					tipsDuiPengWeiShu : '请选择对碰的尾数', //请选择对碰的尾数
+					tipsDuiPengWeiShuSame : '对碰的尾数不能相同', //对碰的尾数不能相同
+					tipsDuiPengSxWeiShu : '请选择对碰的生肖尾数', //请选择对碰的生肖尾数
+					tipsDuiPengSxWeiShuSame : '对碰的生肖尾数不能相同',//对碰的生肖尾数不能相同
+					tipsDuiPengAnyNum : '请选择对碰的任意号码', //请选择对碰的任意号码
+					tipsDuiPengAnyNumSame : '对碰的号码不能相同' // 对碰的号码不能相同
+				}
+			});
+		})
+	</script>
+
+
+	<div id="j-confirm-tpl" class="hide ">
+		<div class="confirm-parlay">
+			<h3>
+
+				共计 ：{{currency}}<em>{{total}}</em>/<em>{{sum}}</em> 注 ， 您确定要下注吗？
+
+			</h3>
+			<ul class="{{col}}">
+				{{#items}}
+				<li><span>{{category}}【{{name}}】</span>@{{odds}} X {{amount}}</li>
+				{{/items}}
+			</ul>
+		</div>
+	</div>
+
+	<iframe id="myifr" style="display: none" src=""></iframe>
+
+	<object style="height: 0; width: 0; overflow: hidden;"
+		classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000"
+		codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0"
+		width="0" height="0" id="asound" align="absmiddle">
+		<param name="allowScriptAccess" value="sameDomain">
+		<param name="movie" value="<{#timages#}>/asound.swf?v=2015101">
+		<param name="quality" value="high">
+		<embed src="<{#timages#}>/asound.swf?v=2015101" quality="high"
+			width="0" height="0" name="asound" align="absmiddle"
+			allowscriptaccess="sameDomain" type="application/x-shockwave-flash"
+			pluginspage="http://www.macromedia.com/go/getflashplayer">
+	</object>
+</body>
+</html>

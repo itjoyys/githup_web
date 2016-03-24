@@ -1,0 +1,293 @@
+<{include file="info_header.html"}>
+<{config_load file="public.conf" section="public"}>
+<body>
+<script>
+var cstate = "<{$cstate}>";
+
+function logo_up(id,type,url,title,wap_pc_type){
+    $("#idl").val(id);
+    $("#title").val(title);
+    $("#type").val(type);
+    $("#url").val(url);
+    $("#wap_pc_type").val(wap_pc_type);
+    easyDialog.open({
+          container : 'logo_up',
+          fixed : false
+    });
+}
+
+var indexid = "<{$index_id}>";
+$(document).ready(function(){
+  $("#index_id").val(indexid);
+  $("#index_id").change(function(event) {
+      $("#queryform").submit();
+    });
+})
+
+function view(img,w,h){
+    var html;
+    html = '<img src="'+img+'" width="250"><div class="mskeImgBg"></div>';
+    lw = -w/2;
+    $(".mskelayBox").css("margin-left",-125);
+    $(".mskelayBox").css("margin-top",-h/2);
+    $("#view_html").html(html);
+    $(".mskelayBox").show();
+}
+jQuery(function(){
+   $(".mskeClaose").click(function(){$(".mskeLayBg,.mskelayBox").hide()});
+   $(".open_s").on('click',function(){
+      var id = $(this).attr('data-id');
+      var type = $(this).attr('data-type');
+      var state = $(this).attr('data-state');
+      if (cstate == 1) {
+         return false;
+      };
+      if (state == 1) {
+         if (confirm('是否停用！！！')) {
+              window.location.href="flash_title_do?id="+id+"&type="+type+"&state=0";
+         };
+      }else{
+        if (confirm('是否启用！！！')) {
+              window.location.href="flash_title_do?id="+id+"&type="+type+"&state=1";
+         };
+      }
+
+    })
+})
+
+$(document).ready(function(){
+  if (cstate == 1) {
+      $(".font_up").removeAttr("onclick");
+  };
+})
+</script>
+<style type="text/css">
+.de_title{
+    background-color: #081425;
+    height: 30px;
+    line-height: 30px;
+    overflow: hidden;
+    color: #666;
+    padding: 0 10px;
+    font-size: 14px;
+    border-bottom: 1px solid #e5e5e5;
+    background: #f7f7f7;
+    border-radius: 4px 4px 0 0;
+}
+#delevel,#logo_up{
+  border-radius: 4px 4px 0 0;
+  color: #444;
+  border: 3px solid rgba(0,0,0,0);
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+#de_title{
+    font-size: 14px;
+    color: #000;
+    font: bold 9pt/100% Arial, Helvetica, sans-serif;
+    font-weight: 200;
+}
+.de_td{
+      padding: 1px 0;
+      line-height: 34px;
+}
+.de_input{
+   border-color:#ccc;
+   width: 230px;
+}
+input{
+   height: 20px;
+}
+.de_select{
+  float: left;
+  margin-left: 8px;
+}
+.laydate-icon{
+  float: left;
+  margin-left: 8px;
+}
+
+.view{
+  cursor:pointer;
+}
+
+.mskelayBox {
+  margin-top: -251px;
+  margin-left: -294px;
+  position: fixed;
+  left: 50%;
+  top: 40%;
+  border: 7px solid #E2E2E2;
+  z-index: 20;
+  background: #FFF;
+  display: none;
+  _display: none!important;
+}
+.mskeClaose {
+  position: absolute;
+  top: -17px;
+  right: -17px;
+  cursor: pointer;
+}
+.flash_a{
+  background: #000;padding: 3px 8px;
+  font-family: Verdana, Arial, sans-serif;
+  border-radius: 10px;
+  font-size: 12px;
+  color: #fff
+}
+.font_up{
+   cursor: pointer;
+}
+</style>
+<div class="content-box role">
+    <div class="content-box-header">
+        <h3>首页幻灯片管理</h3>
+        <div class="clear"></div>
+    </div>
+
+    <div class="mskelayBox" style="display: none;">
+      <div id="view_html">
+      </div>
+      <img class="mskeClaose" src="<{#images#}>/mke_close.png" width="27" height="27">
+    </div>
+
+    <div class="content-box-content">
+        <div class="default-tab">
+             <form action="flash_index" method="get" name="queryform" id="queryform">
+                <div><{$sites_str}></div>
+            </form>
+            <div class="tab-content default-tab">
+                <table>
+                    <thead>
+                    <tr>
+                        <th>图片一</th>
+                        <th>图片二</th>
+                        <th>图片三</th>
+                        <th>图片四</th>
+                        <th>图片五</th>
+			<th>类型</th>
+                        <th>案件状态</th>
+                    </tr>
+
+                    </thead>
+                    <tbody>
+                    <{if $flash_state}>
+                    <{foreach from=$flash item=v}>
+                    <tr>
+        <td> <font href="#" class="font_up" onclick="logo_up('<{$v['id']}>','A','<{$v['url_A']}>','<{$v['title_A']}>','<{$v['type']}>')">【上传】</font>: <{if $v['img_A']}>
+                <font style="color:red;" class="view" onclick="view('<{$v['img_A']}>','<{$v['width']}>','<{$v['height']}>')">【预览】
+                        </font>
+                        <{/if}><{$v['state_zA']}>
+                        </td>
+       <td>   <font href="#" class="font_up" onclick="logo_up('<{$v['id']}>','B','<{$v['url_B']}>','<{$v['title_B']}>','<{$v['type']}>')">【上传】</font>:<{if $v['img_B']}>
+                <font style="color:red;" class="view" onclick="view('<{$v['img_B']}>','<{$v['width']}>','<{$v['height']}>')">[预览]
+                        </font>
+                        <{/if}><{$v['state_zB']}></td>
+                          <td> <font href="#" class="font_up" onclick="logo_up('<{$v['id']}>','C','<{$v['url_C']}>','<{$v['title_C']}>','<{$v['type']}>')">【上传】</font>: <{if $v['img_C']}>
+                <font style="color:red;" class="view" onclick="view('<{$v['img_C']}>','<{$v['width']}>','<{$v['height']}>')">【预览】
+                        </font>
+                        <{/if}><{$v['state_zC']}></td>
+                        <td> <font href="#" class="font_up" onclick="logo_up('<{$v['id']}>','D','<{$v['url_D']}>','<{$v['title_D']}>','<{$v['type']}>')">【上传】</font>: <{if $v['img_D']}>
+                <font style="color:red;" class="view" onclick="view('<{$v['img_D']}>','<{$v['width']}>','<{$v['height']}>')">【预览】
+                        </font>
+                        <{/if}><{$v['state_zD']}></td>
+                        <td> <font href="#" class="font_up" onclick="logo_up('<{$v['id']}>','E','<{$v['url_E']}>','<{$v['title_E']}>','<{$v['type']}>')">【上传】</font>: <{if $v['img_E']}>
+                <font style="color:red;" class="view" onclick="view('<{$v['img_E']}>','<{$v['width']}>','<{$v['height']}>')">【预览】
+                        </font>
+                        <{/if}><{$v['state_zE']}></td>
+						<{if $v['type'] ==13}><td>PC端轮播</td><{/if}>
+                        <{if $v['type'] ==31}><td>WAP端轮播</td><{/if}>
+                        
+                        <td>
+                          <{if $v['case_state']==0 }>
+                            <a class="revise_a flash_a" onclick="if(confirm('确定存储案件!!!')){document.location='flash_case?type=<{$v['type']}>&id=<{$v['id']}>&index_id=<{$index_id}>'}" href="javascript:void(0)">储存案件</a>
+                            <{else}>
+                            <font color="red">已建立案件</font>
+                            <{/if}>  
+                        </td>
+                    </tr>
+                    <{/foreach}>
+                    <thead>
+                     <tr>
+                    <th colspan="8"> <font class="readme">按照网站上依次上传,不够留空即可</font></th>
+                    </tr>
+                    <{/if}>
+                    </thead>
+
+                    </tbody>
+                </table>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+  <!-- 图片上传-->
+<div id="logo_up" style="display:none;background-color:white;" class="con_menu">
+  <form action="up_flash_do?index_id=<{$index_id}>" method="post" enctype="multipart/form-data" name="add_form" onsubmit="return checkForm_img()" >
+    <input name="id" id="idl" value="" type="hidden">
+    <input name="type" id="type" value="" type="hidden">
+    <input name="wap_pc_type" id="wap_pc_type" value="" type="hidden">
+    <table class="m_tab" style="width:300px;margin:0;">
+        <tbody><tr class="de_title">
+            <td colspan="2" height="27" class="table_bg" align="left">
+            <span id="de_title">上传图片</span>
+            <span style="float:right;"><a style="color:white;" href="javascript:void(0)" title="关闭窗口" onclick="easyDialog.close();">×</a></span>
+            </td>
+        </tr>
+          <tr class="m_title">
+            <td>标题</td>
+            <td class="de_td"><input name="title" id="title" class="de_input" value="" type="text"></td>
+        </tr>
+        <tr class="m_title">
+            <td>选择文件</td>
+            <td class="de_td">
+                <div class="uploader blue">
+                <input type="text" class="filename" readonly="readonly" name="filename">
+                <input type="button" name="file" class="button" value="Browse...">
+                <input type="file" size="30" name="flash">
+                </div>
+            </td>
+        </tr>
+          <tr class="m_title">
+            <td>链接地址</td>
+            <td class="de_td"><input name="url" id="url" class="de_input" value="" type="text"></td>
+        </tr>
+
+        <tr>
+            <td colspan="2" align="center">
+                <input type="submit" value="提交" class="botton_a">
+                <input type="reset" value="关闭" onclick="easyDialog.close();" class="botton_a">
+            </td>
+        </tr>
+    </tbody></table>
+</form>
+    </div>
+</body>
+<script>
+$(function(){
+    $("input[type=file]").change(function(){$(this).parents(".uploader").find(".filename").val($(this).val());});
+    $("input[type=file]").each(function(){
+    if($(this).val()==""){$(this).parents(".uploader").find(".filename").val("");}
+    });
+});
+
+
+function check_title(){
+   if($("#title").val() == ''){
+      alert('请输入标题');
+      return false;
+   }
+   if($("#sort").val() == ''){
+      $("#sort").val('0')
+   }else{
+      if(isNaN($("#sort").val())){
+         $("#sort").val('0');
+         return false;
+   }
+ }
+}
+</script>
+</html>

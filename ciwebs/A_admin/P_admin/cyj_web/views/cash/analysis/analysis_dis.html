@@ -1,0 +1,98 @@
+<title>优惠分析</title>
+<{include file="web_header.html"}>
+<script>
+  window.onload=function(){
+    document.getElementById("page").onchange=function(){
+      document.getElementById('myFORM').submit();
+    }
+  }
+</script>
+<body>
+	<div id="con_wrap">
+		<div class="input_002">
+			优惠分析
+		</div>
+		<div class="con_menu">
+	<a  href="<{$site_url}>/cash/member_analysis/analysis_note">有效会员列表</a>
+	<a  href="<{$site_url}>/cash/member_analysis/analysis_user">会员查询</a>
+    <a href="<{$site_url}>/cash/member_analysis/analysis_note">下注分析</a>
+    <a style="color:red;" href="<{$site_url}>/cash/member_analysis/analysis_dis">优惠分析</a>
+    <a href="<{$site_url}>/cash/member_analysis/analysis_cash">出入款分析</a>
+			<form id="myFORM" action="<{$site_url}>/cash/member_analysis/analysis_dis" method="get" name="FrmData">
+             <select name="atype">
+             <option value="0" <{select_check('0',$smarty.get.atype)}>>会员账号</option>
+          <!--    <option value="1" <{select_check('1',$smarty.get.atype)}>>代理账号</option> -->
+             </select>
+             <input name="username" type="text" value="<{$smarty.get.username}>"> 日期：<input
+					type="text" name="start_date"
+					value="<{$start_date}>" id="start_date" class="za_text Wdate"
+					onClick="WdatePicker({dateFmt:'yyyy-MM-dd'})"> --
+				<input type="text" name="end_date"
+					value="<{$end_date}>" id="end_date"
+					class="za_text Wdate"
+					onClick="WdatePicker({dateFmt:'yyyy-MM-dd'})"> &nbsp;
+
+			<input type="SUBMIT" value="確定" class="za_button">
+			<{$page}>
+             <font color="red">【只分析返水优惠】【查询区间限制为两个月】</font>
+			</form>
+		</div>
+	</div>
+	<div class="content">
+
+		<table width="100%" border="0" cellspacing="0" cellpadding="0"
+			class="m_tab">
+			<tbody>
+
+				<tr class="m_title_over_co">
+					<td  align="center">会员账号</td>
+					<!-- <td  align="center">代理商</td> -->
+					<td  align="center">总金额</td>
+					<td  align="center">体育</td>
+					<td  align="center">彩票</td>
+					<td  align="center">AG视讯</td>
+					<td  align="center">MG视讯</td>
+					<td  align="center">MG电子</td>
+					<td  align="center">OG视讯</td>
+					<td  align="center">CT视讯</td>
+					<td  align="center">LEBO视讯</td>
+					<td  align="center">BB视讯</td>
+					<td  align="center">BB电子</td>
+					<{if $siteid == 't'}><td  align="center">PT电子</td><{/if}>
+					<td  align="center">优惠次数</td>
+				</tr>
+
+				<{foreach from=$data item=val key=key}>
+				<tr class="m_cen <{if $key%2 == 0}>even<{/if}>">
+					<td  align="center"><{$val['username']}></td>
+				<!-- 	<td  align="center"><{$val['agent_user']}></td> -->
+					<td  align="center"><{$val['all_fd']}></td>
+					<td  align="center"><{$val['sp_fd']}></td>
+					<td  align="center"><{$val['fc_fd']}></td>
+					<td  align="center"><{$val['ag_fd']}></td>
+					<td  align="center"><{$val['mg_fd']}></td>
+					<td  align="center"><{$val['mgdz_fd']}></td>
+					<td  align="center"><{$val['og_fd']}></td>
+					<td  align="center"><{$val['ct_fd']}></td>
+					<td  align="center"><{$val['lebo_fd']}></td>
+					<td  align="center"><{$val['bbin_fd']}></td>
+					<td  align="center"><{$val['bbdz_fd']}></td>
+					<{if $siteid == 't'}><td  align="center"><{$val['pt_fd']}></td><{/if}>
+					<td  align="center"><{$val['num']}></td>
+				</tr>
+				<{/foreach}>
+					<tr class="m_rig" style="background-Color: #EBF0F1;">
+					<td colspan="10" align="center">
+					<b><font color="#ff0000">&nbsp;小計：返水：<{$all['xiaoji']['all_fd']+0}>
+					&nbsp;&nbsp;体育：<{$all['xiaoji']['sp_fd']+0}>元&nbsp;&nbsp; 彩票<{$all['xiaoji']['fc_fd']+0}>元&nbsp;&nbsp;视讯：<{$all['xiaoji']['shixun_fd']+0}> 元;&nbsp;</font></b></td>
+				</tr>
+					<tr class="m_rig" style="background-Color: #EBF0F1;">
+					<td colspan="10" align="center">
+					<b><font color="#ff0000">&nbsp;总計：返水：<{$all['zongji'][0]['all_fd']+0}>
+					&nbsp;&nbsp;体育：<{$all['zongji'][0]['sp_fd']+0}>元&nbsp;&nbsp; 彩票<{$all['zongji'][0]['fc_fd']+0}>元&nbsp;&nbsp;视讯：<{$all['zongji'][0]['shixun_fd']+0}> 元;&nbsp;</font></b></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+<{include file="web_footer.html"}>

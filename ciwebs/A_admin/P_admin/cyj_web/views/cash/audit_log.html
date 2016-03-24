@@ -1,0 +1,45 @@
+﻿<title>稽核日志查询</title>
+<{include file="web_header.html"}>
+<body>
+<script>
+    //分页跳转
+  window.onload=function(){
+    document.getElementById("page").onchange=function(){
+      document.getElementById('myform').submit()
+    }
+  }
+</script>
+<div id="con_wrap">
+  <div class="input_002">稽核日志查询</div>
+  <div class="con_menu">
+     <form method="get" action="<{$site_url}>/cash/audit/audit_log" name="action_form" id="myform">
+      日期：
+      <input value="<{$start_date}>" size="10" name="start_date" onclick="WdatePicker()" class="za_text Wdate" style="min-width:90px!important;width:90px!important">
+      ~
+      <input value="<{$end_date}>" size="10" name="end_date" onclick="WdatePicker()" class="za_text Wdate" style="min-width:90px!important;width:90px!important">
+      帳號：
+      <input class="za_text" size="10" name="username" value="<{$username}>">
+      &nbsp;
+      <input class="button_d" value="查詢" type="submit">
+      &nbsp;<{$page}>
+    </form>
+  </div>
+</div>
+<table width="100%" class="m_tab">
+  <tbody><tr class="m_title_over_co">
+    <td style="width:80px">会员</td>
+    <td>内容</td>
+    <td style="width:120px">更改日期</td>
+  </tr>
+  	<{foreach from=$audit_data key=i item=row}>
+    <tr class="m_cen <{if $i%2 == 0}>even<{/if}>">
+    <td><{$row['username']}></td>
+    <td style="text-align:left;line-height:20px">
+          	<{$row['content']}>
+    </td>
+    <td><{$row['update_date']}></td>
+  </tr>
+  	<{/foreach}>
+  </tbody></table>
+
+<{include file="web_footer.html"}>

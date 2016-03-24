@@ -1,0 +1,60 @@
+<title>体育（限額/退水）</title>
+<{include file="common_html/header.html"}>
+<body>
+<style type="text/css">
+.ltab{
+  background-color: #fff;
+}
+</style>
+<div id="con_wrap">
+<div class="input_002">限額/退水</div>
+<div class="con_menu">
+<form method="get" action="<{$site_url}>/other/system/limit_index" name="action_form" id="queryform">
+類型：
+<select onchange="document.getElementById('queryform').submit()" name="type">
+  <option value="sp" <{select_check('sp',$smarty.get.type)}>>體育</option>
+  <option value="fc" <{select_check('fc',$smarty.get.type)}>>彩票</option>
+</select>
+</form>
+</div>
+
+<div class="content">
+<{foreach from=$data key=i item=spval}>
+<table width="900" border="0" cellspacing="0" cellpadding="0" class="m_tab">
+  <tbody>
+  <tr class="m_title_over_co">
+    <td height="25"><{$spTitle[$i]}></td>
+      <{foreach from=$spval item=v}>
+      <td><{$v['t_name']}></td>
+      <{/foreach}>
+  </tr>
+  <tr class="ltab">
+   <td nowrap="" align="center">退水設定</td>
+        <{foreach from=$spval item=v}>
+      <td><{$v['water_break']}></td>
+    <{/foreach}>
+  </tr>
+    <tr class="ltab">
+   <td nowrap="" align="center">單場限額:</td>
+        <{foreach from=$spval item=v}>
+      <td><{$v['single_field_max']}></td>
+    <{/foreach}>
+  </tr>
+    <tr class="ltab">
+   <td nowrap="" align="center">單注限額::</td>
+        <{foreach from=$spval item=v}>
+      <td><{$v['single_note_max']}></td>
+    <{/foreach}>
+  </tr>
+       <tr class="ltab">
+   <td nowrap="" align="center">最低限额::</td>
+        <{foreach from=$spval item=v}>
+      <td><{$v['min']}></td>
+    <{/foreach}>
+  </tr>
+</tbody></table>
+<{/foreach}>
+<br>
+</div>
+
+<{include file="web_footer.html"}>

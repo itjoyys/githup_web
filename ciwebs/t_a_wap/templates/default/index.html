@@ -1,0 +1,92 @@
+<ion-view class="m-index" cache-view="false" hide-back-button="true">
+    <ion-nav-bar class="bar bar-header bar-energized">
+        <ion-nav-buttons side="left"><a class="logo" href="#/index"><img ng-src="{{logo}}"></a></ion-nav-buttons>
+        <ion-nav-buttons side="right"><a ng-if="navCount%2!=0" ng-class="'button button-clear'"></a> <a ng-if="!islogin"  ng-class="'button button-clear'"  href="#/login">{{'Common_ButtonLogin'
+            | translate}}</a> <a ng-if="!islogin" ng-class="'button button-clear'" href="#/reg/{{regstep}}">{{'Common_ButtonRegister'|translate}}</a>
+            <a ng-if="!islogin&&tryOpen" ng-class="'button button-clear'" href ="#/shiwanreg/">{{'Member_LabelTryPlay'
+                | translate}}</a> <a ng-if="!islogin&&langs.length>1" ng-class="'button button-clear langue'"
+                                     ng-click="popover.show($event)"><img
+                    ng-src="{{CDNURL+'images/'+currentLanguage+'.png'}}"></a> <a
+                    ng-if="islogin&&currentUser.TestState==2" class="button button-clear" href="#/reg/{{regstep}}">{{'Common_LabelMemberRegisterTrue'
+                | translate}}</a> <a ng-if="islogin" class="button button-clear" href="#/center">{{username||''}}<span
+                    ng-if="msgCount>0" class="notify"></span></a>
+                    <a ng-if="islogin" class="button button-clear text-underline" href="#/center">会员中心</a>
+                    <a ng-if="islogin" class="button button-clear text-underline" ng-click="logout()">{{'Common_LabelLogout' | translate }}</a>
+                    </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-content class="has-header" delegate-handle="mainScroll">
+        <ion-scroll delegate-handle="imgScroll" direction="x" has-bouncing="false" scrollbar-x="false"
+                    on-drag-down="playImgDrag($event)" on-drag-up="playImgDrag($event)">
+            <div ng-if="imgs==null || imgs.length==0" class="slider-empty">&nbsp;</div>
+            <ion-slide-box ng-if="imgs.length>=3" auto-play="true" slide-interval="3000" show-pager="true"
+                           does-continue="true">
+                <ion-slide ng-repeat="img in imgs" ng-init="updateSlider()"><img ng-src="{{img.src}}"></ion-slide>
+            </ion-slide-box>
+            <ion-slide-box ng-if="imgs.length>0 && imgs.length<3" show-pager="true" does-continue="false"
+                           delegate-handle="slideLess">
+                <ion-slide ng-repeat="img in imgs" ng-init="updateSlider()"><img ng-src="{{img.src}}"></ion-slide>
+            </ion-slide-box>
+        </ion-scroll>
+        <div class="row notice">
+            <div class="col col-10 notice-icon"></div>
+            <div class="col col-90 notice-content">
+                <marquee scrollamount="3"><span
+                        ng-repeat="notice in notices">{{notice.content}}&nbsp;&nbsp;&nbsp;&nbsp;</span></marquee>
+            </div>
+        </div>
+        <div class="gamelist">
+            <div class="row">
+                <div ng-repeat="subItem in stateGameList| filter:{ GameClassID: 1 }:true" class="col col-33">
+                    <div class="gamebox">
+                        <a ng-click="{{subItem.State==1?'inGame(\'1\',\'0\')':''}}" class="{{subItem.State==0?'please-wait':''}}"><img ng-src="{{CDNURL+'images/g-hkc.png'}}"><p>{{'Common_LabelSixLottery' | translate}}</p></a>
+                        <span ng-repeat="subItem in stateGameList| filter:{ GameClassID: 1 }:true" ng-if="subItem.State==0" class="tapes">维护中...</span>
+                    </div>
+                </div><div ng-repeat="subItem in stateGameList| filter:{ GameClassID: 2 }:true" class="col col-33">
+                <div class="gamebox">
+                    <a href="{{subItem.State==0?'javascript:void(0);':'/wapsport/'}}" class="{{subItem.State==0?'please-wait':''}}"><img ng-src="{{CDNURL+'images/g-sport.png'}}"><p>{{'Common_LabelSportGame' | translate}}</p></a>
+                    <span ng-repeat="subItem in stateGameList| filter:{ GameClassID: 2 }:true" ng-if="subItem.State==0" class="tapes">维护中...</span>
+                </div>
+                </div><div ng-repeat="subItem in stateGameList| filter:{ GameClassID: 3 }:true" class="col col-33">
+                    <div class="gamebox">
+                        <a href="{{subItem.State==0?'javascript:void(0);':'/voide/ag'}}" target="_blank" class="{{subItem.State==0?'please-wait':''}}"><img ng-src="{{CDNURL+'images/g-ag.png'}}"><p>{{'Common_LabelAsiaGame' | translate}}</p></a>
+                        <span ng-repeat="subItem in stateGameList| filter:{ GameClassID: 3 }:true" ng-if="subItem.State==0" class="tapes">维护中...</span>
+                    </div>
+                </div><div ng-repeat="subItem in stateGameList| filter:{ GameClassID: 4 }:true" class="col col-33">
+                    <div class="gamebox">
+                    <a href="{{subItem.State==0?'javascript:void(0);':'#/appgame/lebo'}}" class="{{subItem.State==0?'please-wait':''}}"><img ng-src="{{CDNURL+'images/g-lebo.png'}}"><p>{{'Common_LabelLebolGame' | translate}}</p></a>
+                        <span ng-repeat="subItem in stateGameList| filter:{ GameClassID: 4 }:true" ng-if="subItem.State==0" class="tapes">维护中...</span>
+                    </div>
+                </div><div ng-repeat="subItem in stateGameList| filter:{ GameClassID: 5 }:true" class="col col-33">
+                    <div class="gamebox"><a href="javascript:void(0);" class="please-wait"><img
+                            ng-src="{{CDNURL+'images/g-bbin.png'}}">
+                        <p ng-bind="'Common_LabelBbinGame'|translate"></p></a><span class="tapes">即将上线</span>
+                    </div>
+                </div><!--div ng-repeat="item in openGameList| filter:{ GameClassID: 5 }:true" class="col col-33">
+                    <div class="gamebox">
+                    <a href="#/appgame/bbin") ><img ng-src="{{CDNURL+'images/g-bbin.png'}}"><p>{{'Common_LabelBbinGame' | translate}}</p></a>
+                        <span ng-repeat="subItem in stateGameList| filter:{ GameClassID: 5 }:true" ng-if="subItem.State==0" class="tapes">{{'Common_LabelMaintain' | translate}}</span>
+                    </div>
+                </div--><div ng-repeat="subItem in stateGameList| filter:{ GameClassID: 8 }:true" class="col col-33">
+                <div class="gamebox">
+                    <a href="{{subItem.State==0?'javascETNript:void(0);':'#/egame'}}" class="{{subItem.State==0?'please-wait':''}}"><img ng-src="{{CDNURL+'images/g-egame.png'}}"><p>{{'Common_LabelVideoGame' | translate}}</p></a>
+                    <span ng-repeat="subItem in stateGameList| filter:{ GameClassID: 8 }:true" ng-if="subItem.State==0" class="tapes">维护中...</span>
+                </div>
+            </div>
+            </div>
+        </div>
+        <div class="copyright"><a class="computer" target="_blank" ng-href="{{computerLink}}">{{'Common_LabelComputerVersion'
+            | translate}}</a><p>COPYRIGHT © {{siteName}} RESERVED</p></div>
+    </ion-content>
+    <ion-footer-bar>
+        <div class="tabs"><a href="#/deposit/0" class="tab-item"><img ng-src="{{CDNURL+'images/icon-coin.png'}}"> <span
+                ng-bind="'Index_ZiJinGuanLi'|translate"></span></a> <a href="#/transfer" class="tab-item"><img
+                ng-src="{{CDNURL+'images/icon-transfer.png'}}"> <span
+                ng-bind="'Member_LabelTrans'|translate"></span></a> <a href="#/day/0/0" class="tab-item"><img
+                ng-src="{{CDNURL+'images/icon-record.png'}}"> <span ng-bind="'Member_LabelBetRecord'|translate"></span></a>
+            <a ng-click="goMessage()" class="tab-item"><img ng-src="{{CDNURL+'images/icon-message.png'}}"> <span
+                    ng-bind="'Index_InformationCenter'|translate"></span></a>
+            <a ng-href="{{serviceLink}}" target="_blank" class="tab-item">
+                <img ng-src="{{CDNURL+'images/icon-service.png'}}"> <span
+                    ng-bind="'Index_CustomerService'|translate"></span></a></div>
+    </ion-footer-bar>
+</ion-view>

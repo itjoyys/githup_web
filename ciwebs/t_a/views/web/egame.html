@@ -1,0 +1,22 @@
+<{$header}>
+<{config_load file="public.conf" section="public"}>
+<script>
+	$(function(){
+		var nr= "<img src='<{#images#}>/new/Game.jpg' class='abs-c-banner' id='page-banner'>";
+		$("#myImg").html(nr);
+	})
+</script>
+<!--banner end-->
+<div id="page-container">
+  <style>
+    a{text-decoration: none;}
+</style>
+<!--banner-->
+<div class="PageBnner2"></div>
+<div class="CenterMain" style=" margin-top:10px;margin-bottom: 30px;" id="G-con">
+<{$egame_html}>
+</div>
+
+</div>
+<!--footer-->
+<{$bottom}>

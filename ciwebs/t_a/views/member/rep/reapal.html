@@ -1,0 +1,26 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>reapal</title>
+</head>
+<body onLoad="document.reapal.submit();">
+
+<form name='reapal' action="<{$data['form_url']}>" method='get'>
+        <input type='hidden' name='service' value="<{$data['service']}>" />
+        <input type='hidden' name='payment_type' value="<{$data['payment_type']}>"/>
+        <input type='hidden' name='merchant_ID' value="<{$data['merchant_ID']}>"/>
+        <input type='hidden' name='seller_email' value="<{$data['seller_email']}>"/>
+        <input type='hidden' name='return_url' value="<{$data['return_url']}>" />
+        <input type='hidden' name='notify_url' value="<{$data['notify_url']}>" />
+        <input type='hidden' name='charset' value="<{$data['charset']}>" />
+        <input type='hidden' name='order_no' value="<{$data['order_no']}>" />
+        <input type='hidden' name='title' value="<{$data['title']}>" />
+        <input type='hidden' name='body' value="<{$data['body']}>" />
+        <input type='hidden' name='total_fee' value="<{$data['total_fee']}>" />
+        <input type='hidden' name='paymethod' value="<{$data['paymethod']}>" />
+        <input type='hidden' name='defaultbank' value="<{$data['defaultbank']}>" />
+        <input type='hidden' name='sign' value="<{$data['sign']}>" />
+         <input type='hidden' name='sign_type' value="<{$data['sign_type']}>" />
+</form>
+</body>
+</html>

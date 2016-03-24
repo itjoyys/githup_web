@@ -1,0 +1,17 @@
+<ion-content  class="tp40">
+<div data-title="<{$gamename}>" data-title2="<{$smarty.get.gamename2}>"
+	class="text-left">
+	<{foreach from=$list item=v key=k}>
+	<div class="row">
+		<div class="col bet ban-bo" data-id="<{$v['id']}>">
+			<div class="bet-content" style="padding: 0.5rem 0;"><{$v['input_name']}></div>
+			<div class="bet-item" style="padding: 0.8rem 0; line-height: 0.8rem;"></div>
+			<div class="bet-qiu" style="padding-top: 0.7rem;">
+				<div ng-bind-html="'<{func_get_shenxiao($v['type_id'],2016,$v['input_name'])}>'|yd:'3'"></div>
+			</div>
+		</div>
+	</div>
+
+	<{/foreach}>
+</div>
+</ion-content>

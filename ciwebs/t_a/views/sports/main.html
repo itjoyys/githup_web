@@ -1,0 +1,282 @@
+<{config_load file="public.conf" section="public"}>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="zh-CN">
+<head>
+    <title>Sports</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="text/javascript" src="<{#js#}>/jquery.min.js"></script>
+    <link rel="stylesheet" href="<{#css#}>/sportmain.css">
+    <link rel="stylesheet" href="<{#css#}>/easydialog.css">
+    <script type="text/javascript" src="<{#js#}>/sport/common.js"></script>
+    <script type="text/javascript" src="<{#js#}>/sport/easydialog.min.js"></script>
+    <script type="text/javascript" src="<{#js#}>/jquery.mCustomScrollbar.concat.min.js"></script>
+    <link rel="stylesheet" href="<{#css#}>/jquery.mCustomScrollbar.css">
+</head>
+<style>
+
+</style>
+<body>
+<div class="main">
+    <div class="header">
+        <div class="sporttime fl_l">
+            <div class="name"> 
+            <strong><span id="userName">请先登录！</span></strong><br>
+            <span id="vlock"><{$vlock}></span>
+            <script><{$vlockjs}> </script>
+            </div>
+        </div>
+        <div class="menu fl_l">
+            <ul>
+                <li class="menuover_1" onclick="javascript:sport_menu('grounder');"><a ><span>滚球</span></a></li>
+                <li class="menuover" onclick="javascript:sport_menu('today');"><a><span>今日赛事</span></a></li>
+                <li class="menuover_1" onclick="javascript:sport_menu('morning')"><a><span>早餐赛事</span></a></li>
+                <li class="menuover_1" id="sps" onclick="window.open('./main/result','');return false;"><a><span>比赛结果</span></a></li>
+            </ul>
+        </div>
+        <div id="topMenu">
+            <ul id="back">
+                <li class="help" onmouseover="OnMouseOverEvent();"><a href="javascript:void(0)" style="cursor:hand">帮助</a><span></span></li>
+            </ul>
+            <div class="info" id="informaction" onmouseover="OnMouseOverEvent()">
+                <ul id="mose" onmouseout="OnMouseOutEvent();">
+                    <li class="help_on"><a href="javascript:void(0)">帮助</a></li>
+                     
+                    <li class="roul"><a href="javascript:void(0)" onclick="winOpen('/views/sports/help/1.html',805,674,null,null,'规则说明')">&nbsp; 规则说明</a></li>
+                    <li class="odd"><a href="javascript:void(0)" onclick="winOpen('/views/sports/help/way.html',620,602,null,null,'盘口使用方法')">&nbsp; 盘口使用方法</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="clear"></div>
+    <div class="left fl_l  mCustomScrollbar light"  data-mcs-theme="minimal-dark"> 
+      
+        <div class="user_money left_main">
+                <div id="usernameimg"  class="fl_l"></div>
+                <div id="user_money" class="fl_l">0.00</div>
+                <div id="user_money_ref" class="fl_l" onclick="$('#user_money').html('金额刷新中');getuserinfo()"></div>
+                <div id="transaction" onclick="getbet()" class="fl_r xs">交易状况</div>
+                <input type="hidden" id="dsorcg" name="dsorcg" value="1">
+                <input type="hidden" id="token" name="token" value="<{$token}>">
+                <input type="hidden" id="uid" name="uid" value="<{$uid}>">
+        </div>
+        <div class="clear"></div>
+        <div class="left_main mt5 ">
+            <div id="ord_menu">
+                <div class="ord_on" id="order_button" onclick="if(checkUid())showOrder();">交易单</div>
+                <div class="record_btn" id="record_button" ></div>
+               <!--  <div class="record_btn" id="record_button" onclick="if(checkUid())showRec();"></div> -->
+            </div>
+
+            <div class="clear"></div>
+            <div id="order_div_"></div>
+                        <div id="bet_login_out" >
+                           <div style="padding-top:50px;min-height:100px;">点击赔率便可将<br>选项加到交易单裡</div>
+                         
+                        </div>
+                    
+                    <div class="clear"></div>
+                    <div id="bethistory" class="none">暂时无记录</div>
+                     
+                <div class="clear"></div> 
+        </div>
+        <div class="left_main mt5">
+            <div class="left_cat">滚球</div>
+            <div class="left_t">
+                <div class="gq_menu">
+                    <ul>
+                        <li class="gq_menu_zq" onclick="refresh(5,1,1)">足球滚球(<span id="ftp_num">0</span>)</li>
+                        <li class="gq_menu_lq" onclick="refresh(6,1,1)">篮球滚球(<span id="bkp_num">0</span>)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="left_main mt5">
+            <div class="left_cat"><span class="fl_r xs none" onclick="getnews()">更多</span>公告</div>
+            <div class="left_t">
+                <marquee height="80" scrollamount="1" direction="up" onmouseover="this.stop();" onmouseout="this.start();">
+                <div id="real_msg"></div>
+                </marquee>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div id="right" class="right  fl_l">
+        <div class="sportmenu sport_grounder none">
+            <ul>
+                <li class="xs c2"  data='sport_grounder_ft' onclick="refresh(5,1,1)"><span class="img_fb"></span>足球(<span id="ftpnum">0</span>)</li>
+                <li class="xs">|</li>
+                <li class="xs"  data='sport_grounder_bk' onclick="refresh(6,1,1)"><span class="img_bk"></span>篮球/美式足球(<span id="bkpnum">0</span>)</li> 
+            </ul>
+            <ul class="clear"></ul>
+            <ul  id="sport_grounder_ft" class="sportmenu_ sportmenu_first">
+                 <li class="xs c2"  onclick="refresh(5,1,1)">足球：独赢/让球/大小/单双</li>
+            </ul>
+            <ul  id="sport_grounder_bk" class="sportmenu_ none">
+                 <li class="xs c2"  onclick="refresh(6,1,1)">篮球：独赢/让球/大小/单双</li>
+            </ul>
+        </div>
+        <div class="sportmenu sport_today ">
+            <ul>
+                <li class="xs c2" data='sport_today_ft' onclick="refresh(0,1,1)"><span class="img_fb"></span>足球(<span id="ftnum">0</span>)</li>
+                <li class="xs">|</li>
+                <li class="xs"  data='sport_today_bk' onclick="refresh(1,1,1)"><span class="img_bk"></span>篮球/美式足球(<span id="bknum">0</span>)</li>
+                <li class="xs">|</li>
+                <li class="xs"  data='sport_today_tn' onclick="refresh(8,1,1)"><span class="img_tn"></span>网球(<span id="tnnum">0</span>)</li>
+                <li class="xs">|</li>
+                <li class="xs"  data='sport_today_vb' onclick="refresh(7,1,1)"><span class="img_vb"></span>排球(<span id="vbnum">0</span>)</li>
+                <li class="xs">|</li>
+                <li class="xs"  data='sport_today_bb' onclick="refresh(9,1,1)"><span class="img_bb"></span>棒球(<span id="bbnum">0</span>)</li>
+            </ul>
+            <ul class="clear"></ul>
+            <ul id="sport_today_ft" class="sportmenu_ sportmenu_first">
+                <li class="xs c2"  onclick="refresh(0,1,1)">足球：独赢/让球/大小/单双</li>
+                <li class="xs">|</li>
+                <li class="xs" onclick="refresh(3,1,1)">波胆</li>
+                <li class="xs">|</li>
+                <li class="xs" onclick="refresh(2,1,1)">总入球</li>
+                <li class="xs">|</li>
+                <li class="xs"  onclick="refresh(11,1,1)">综合过关</li> 
+            </ul>
+            <ul id="sport_today_bk" class="sportmenu_ none">
+                <li class="xs c2" onclick="refresh(1,1,1)">篮球：独赢/让球/大小/单双</li>
+                <li class="xs">|</li>
+                <li class="xs" onclick="refresh(4,1,1);">综合过关</li> 
+            </ul>
+            <ul id="sport_today_vb" class="sportmenu_ none">
+                <li class="xs c2" onclick="refresh(7,1,1)">排球：独赢/让球/大小/单双</li>
+            </ul>
+            <ul id="sport_today_tn" class="sportmenu_ none">
+                <li class="xs c2" onclick="refresh(8,1,1)">网球：独赢/让球/大小/单双</li>
+            </ul>
+            <ul id="sport_today_bb" class="sportmenu_ none">
+                <li class="xs c2" onclick="refresh(9,1,1)">棒球：独赢/让球/大小/单双</li>
+            </ul>
+        </div>
+        <div class="sportmenu sport_morning none">
+            <ul>
+                <li class="xs c2" onclick="refresh(311,1,1)" data="sport_morning_ft"><span class="img_fb"></span>足球(<span id="ftmnum">0</span>)</li>
+                <li class="xs">|</li>
+                <li class="xs" onclick="refresh(321,1,1)" data="sport_morning_bk"><span class="img_bk"></span>篮球/美式足球(<span id="bkmnum">0</span>)</li>
+                <li class="xs">|</li>
+                <li class="xs" data='sport_morning_tn' onclick="refresh(341,1,1)"><span class="img_tn"></span>网球(<span id="tnmnum">0</span>)</li>
+                <li class="xs">|</li>
+                <li class="xs"  data='sport_morning_vb' onclick="refresh(331,1,1)"><span class="img_vb"></span>排球(<span id="vbmnum">0</span>)</li>
+                <li class="xs">|</li>
+                <li class="xs" ><span class="img_bb"></span>棒球(<span id="bbmnum">0</span>)</li>
+            </ul>
+            <ul class="clear"></ul>
+            <ul id="sport_morning_ft" class="sportmenu_  sportmenu_first">
+                <li class="xs c2"  onclick="refresh(311,1,1)">足球：独赢/让球/大小/单双</li>
+                <li class="xs">|</li>
+                <li class="xs" onclick="refresh(312,1,1)">波胆</li>
+                <li class="xs">|</li>
+                <li class="xs" onclick="refresh(313,1,1)">总入球</li>
+                <li class="xs">|</li>
+                <li class="xs"  onclick="refresh(314,1,1)">综合过关</li> 
+            </ul>
+            <ul id="sport_morning_bk" class="sportmenu_ none">
+                <li class="xs c2" onclick="refresh(321,1,1)">篮球：独赢/让球/大小/单双</li>
+                <li class="xs">|</li>
+                <li class="xs" onclick="refresh(322,1,1);">综合过关</li> 
+            </ul>
+            <ul id="sport_morning_vb" class="sportmenu_ none">
+                <li class="xs c2" onclick="refresh(331,1,1)">排球：独赢/让球/大小/单双</li>
+            </ul>
+            <ul id="sport_morning_tn" class="sportmenu_ none">
+                <li class="xs c2" onclick="refresh(341,1,1)">网球：独赢/让球/大小/单双</li>
+            </ul>
+            
+            
+        </div>
+        
+        <div class="sportmenu sport_amidithion none">
+            <ul>
+                <li class="xs c2" onclick="refresh(411,0)" data="amidithion_ft"><span class="img_fb"></span>足球(<span id="ftmnum">0</span>)</li>
+                <li class="xs">|</li>
+                <li class="xs" onclick="refresh(421,0)" data="amidithion_bk"><span class="img_bk"></span>篮球/美式足球(<span id="bkmnum">0</span>)</li>
+                <li class="xs">|</li>
+                <li class="xs" data='amidithion_tn' onclick="refresh(441,0)"><span class="img_tn"></span>网球(<span id="tnmnum">0</span>)</li>
+                <li class="xs">|</li>
+                <li class="xs"  data='amidithion_vb' onclick="refresh(431,0)"><span class="img_vb"></span>排球(<span id="vbmnum">0</span>)</li>
+                <li class="xs">|</li>
+                <li class="xs" onclick="refresh(451,0)"><span class="img_bb"></span>棒球(<span id="bbmnum">0</span>)</li>
+            </ul>
+            
+            
+            
+        </div>
+
+        <!-- right-main -->
+        <div id="right_sport_main" class="right_sport_main mCustomScrollbar light "  data-mcs-theme="minimal-dark">
+
+            <div  id="box_top" ><span class="box_top_r fl_r"></span> <span id="tablename"></span> </div>
+            <div  id="box_mid">
+                <table class="datatop">
+                    <tr>
+                    <td>
+                        <select id="legpage" onchange="refresh(matchurl)">
+                        <option>1</option> 
+                        </select> 
+                    </td>
+                    <td width="190">
+                        <div id="tableref"  class="tableref xs fl_l" onclick="refresh(matchurl,$('#legpage').val())">刷新</div>
+                        <div id="legselect" onclick="showLegList()" class="fl_l xs">选择联赛</div>
+                    </td>
+                    <td width="80">
+                        <select id="arepk" onchange="pkchoose()">
+                        <option value="H">香港盘</option>
+                        <option value="M">马来盘</option>
+                        <option value="I">印尼盘</option>
+                        <option value="E">欧美盘</option>
+                        </select>
+                    </td>
+                    </tr>
+                </table>
+                <div id="data"> 
+                </div>
+            </div>
+        </div>
+        <div id="load_alpha"></div> 
+        <div id="legname_data">
+            <div class="legname">
+            <div class="leg_close fl_r" onclick="showLegList();"></div>
+                <div class=" fl_r xs ml3 legname_sel"  onclick="showLegList();refresh(matchurl)">提交</div>
+                <div class=" fl_r xs ml3 legname_sel" id="reverse">反选</div>
+                <div class=" fl_r xs ml3 legname_sel" id="unSelect">全不选</div>
+                <div class=" fl_r xs ml3 legname_sel" id="selectAll">全选</div>
+            </div>
+            <div class="clear"></div>
+            <div id="legname_data_load"></div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+<div id="showbet">
+    <div id="easyDialogTitle"><span class="fl_r xs" onclick="easyDialog.close();">X</span>注单状况</div>
+    <div id="betmenu">
+    <div class="fl_l"><select onchange="getbetdata(1)" id="bettype"> 
+    <option value="1">单式注单</option>
+    <option value="2">过关注单</option> 
+    </select></div>
+    <div class="fl_l"><select onchange="getbetdata(1)" id="status"> 
+    <option value="0">未结算</option>
+    <option value="2">输</option>
+    <option value="1">赢</option>
+    <option value="8">和</option>
+    <option value="3">无效</option>
+    <option value="4">赢一半</option>
+    <option value="5">输一半</option>
+    <option value="6">进球无效</option>
+    <option value="7">红卡取消</option>
+    </select></div> 
+    <div class="fl_l"><select onchange="getbetdata()" id="betpage">
+    <option value="1">1</option>
+    </select></div> 
+    </div>
+    <div id="showbetdata"></div>
+    <div class="clear"></div>
+</div>
+
+</body> 
+</html>

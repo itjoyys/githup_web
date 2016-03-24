@@ -1,0 +1,79 @@
+<title>域名管理</title>
+<{include file="web_header.html"}>
+<style>
+.revise_a {
+    padding: 3px 8px;
+    font-family: Verdana, Arial, sans-serif;
+    border-radius: 10px;
+    font-size: 12px;
+    background: #000;
+    color: #fff;
+  }
+</style>
+<body>
+<script>
+var indexid = "<{$index_id}>";
+$(document).ready(function(){
+    $("#index_id").val(indexid);
+})
+$(function(){
+    $("#index_id").change(function(event) {
+      $("#myFORM").submit();
+    });
+  })
+    //分页跳转
+  window.onload=function(){
+    document.getElementById("page").onchange=function(){
+      document.getElementById('myFORM').submit()
+    }
+  }
+</script>
+<div id="con_wrap">
+<div class="input_002">支付域名</div>
+<div class="con_menu">
+<form id="myFORM" action="<{$site_url}>/other/server_domain/pay_domain" method="get" name="FrmData">
+  <a href="<{$site_url}>/other/server_domain/site_domain" >站点域名</a>
+  <a href="<{$site_url}>/other/server_domain/pay_domain" style="color: rgb(255, 0, 0);" >支付域名</a>
+       <br><{$sites_str}>域名：
+  <input name="domain" id="domain" value="<{$smarty.get.domain}>" type="text" class="za_text">
+  <input type="SUBMIT" value="確定" class="za_button">
+</form>
+</div>
+</div>
+<div class="content">
+  <table width="100%" border="0" cellspacing="0" cellpadding="0" class="m_tab" >
+      <tbody>
+      <tr class="m_title_over_co">
+        <td width="40">ID</td>
+        <td width="80">是否绑定</td>
+        <td>域名</td>
+        <td>CNAME</td>
+        <td width="150">添加日期</td>
+         <td width="150">操作</td>
+      </tr>
+
+   <{foreach from=$sdata key=i item=v}>
+      <tr class="m_cen <{if $i%2 == 0}>even<{/if}>" align="left" >
+         <td align="center"><{$v['id']}></td>
+               <td align="center">
+        <{if $v['state']}>
+            <font style="color:#31790B;">【已绑】</font>
+        <{else}>
+            <font style="color:red;">【未绑】</font>
+        <{/if}>
+        </td>
+         <td align="center"><{$v['domain']}></td>
+         <td align="center"><{$v['cname']}></td>
+         <td align="center"><{$v['add_date']}></td>
+             <td align="center">
+        <{if $v['state'] == '0'}>
+        <a  class="revise_a" style="color:#fff;background:#EC7B28;" href="javascript:vold(0)" onclick="sitesdomain('<{$v['id']}>','<{$v['domain']}>','<{$v['index_id']}>')">编辑</a>
+         <a  class="revise_a" style="color:#fff;" href="javascript:void(0)" onclick="if(confirm('确定要删除这条域名吗?')){window.location.href='<{$site_url}>/other/Server_domain/site_domain_del?id=<{$v['id']}>&type=2'}">删除</a><{else}>--<{/if}>
+       </td>
+      </tr>
+   <{/foreach}>
+
+  </tbody></table>
+</div>
+<!-- 公共尾部 -->
+<{include file="web_footer.html"}>

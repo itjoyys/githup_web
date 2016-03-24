@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>网关支付</title>
+</head>
+<body onload="document.form1.submit()" >
+    <form action="<{$data['form_url']}>" method="post" id="form1" name="form1">
+        <input type="hidden" name="input_charset" value="<{$data['input_charset']}>"/>
+        <input type="hidden" name="notify_url" value="<{$data['notify_url']}>"/>
+        <input type="hidden" name="return_url" value="<{$data['return_url']}>"/>
+        <input type="hidden" name="pay_type" value="<{$data['pay_type']}>"/>
+        <input type="hidden" name="bank_code" value="<{$data['bank_code']}>"/>
+        <input type="hidden" name="merchant_code" value="<{$data['merchant_code']}>"/>
+        <input type="hidden" name="order_no" value="<{$data['order_no']}>"/>
+        <input type="hidden" name="order_amount" value="<{$data['order_amount']}>"/>
+        <input type="hidden" name="order_time" value="<{$data['order_time']}>"/>
+        <input type="hidden" name="product_name" value="<{$data['product_name']}>"/>
+        <input type="hidden" name="product_num" value="<{$data['product_num']}>"/>
+        <input type="hidden" name="req_referer" value="<{$data['req_referer']}>"/>
+        <input type="hidden" name="customer_ip" value="<{$data['customer_ip']}>"/>
+        <input type="hidden" name="customer_phone" value="<{$data['customer_phone']}>"/>
+        <input type="hidden" name="receive_address" value="<{$data['receive_address']}>"/>
+        <input type="hidden" name="return_params" value="<{$data['return_params']}>"/>
+        <input type="hidden" name="sign" value="<{$data['sign']}>"/>
+    </form>
+</body>
+</html>

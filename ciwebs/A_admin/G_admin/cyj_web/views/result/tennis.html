@@ -1,0 +1,97 @@
+<{include file="web_header.html"}>
+<{config_load file="public.conf" section="public"}>
+  <link rel="stylesheet" type="text/css" href="<{#css#}>/mem_body_result.css">
+   <link rel="stylesheet" type="text/css" href="<{#css#}>/mem_body_ft.css">
+  <div id="con_wrap">
+    <div class="input_002">网球赛程</div>
+    <div class="con_menu">
+      <form name="game_result" action="" method="get" id="game_result">
+	      <a href="<{$site_url}>/result/sp_result/football" target="_self">足球</a>
+	      <a href="<{$site_url}>/result/sp_result/basketball" target="_self">籃球</a>
+	      <a href="<{$site_url}>/result/sp_result/tennis" style="color:red;" target="_self">網球</a>
+	      <a href="<{$site_url}>/result/Sp_result/volleyball" target="_self">排球</a>
+      <a href="<{$site_url}>/result/Sp_result/basebal" target="_self">棒球</a>
+      <a href="<{$site_url}>/result/Sp_result/champion" target="_self">冠军</a>
+	 选择日期 :
+	  <input style="width:75px;height:18px;" name="date" type="text" id="date_kaijiang" value="<{$date}>"  onClick="WdatePicker()" size="10" maxlength="10" readonly class="Wdate" />
+	  <input type="submit" class="za_button" value="搜索" style="line-height:10px;">
+
+
+
+      <span id="pg_txt"></span></form>
+    </div>
+  </div>
+  <div class="content" id="MRSU">
+    <table border="0" cellpadding="0" cellspacing="0" id="box">
+      <tbody>
+        <tr>
+          <td>
+            <table border="0" cellspacing="0" cellpadding="0" class="game">
+              <tbody>
+                <tr>
+                  <th class="time">时间</th>
+                  <th class="rsu">赛果</th>
+                </tr>
+              </tbody>
+            </table>
+            <table border="0" cellspacing="0" cellpadding="0" class="game">
+              <tbody>
+<{foreach from=$data item=rows key=i}>
+                <tr>
+                  <td colspan="6" class="b_hline">
+                  <span id="leg_<{$i}>" onclick="$('.leg_<{$i}>').toggle()" class="showleg">
+                    <span id="LegOpen"></span>
+                  </span>
+                  <span class="leg_bar"><{$rows["Match_ID"]}><{$rows["Match_Name"]}></span></td>
+                </tr>
+                <tbody class="leg_<{$i}>">
+                <tr class="b_cen" id="TR_108_1817926" style="display:">
+                  <td rowspan="3" class="time"><{$rows["Match_Time"]}>
+                  </td>
+                  <td class="team">比賽隊伍</td>
+                  <td colspan="2" class="team_out_ft">
+                    <table border="0" cellpadding="0" cellspacing="0" class="team_main">
+                      <tbody>
+                        <tr class="b_cen">
+                          <td width="12"></td>
+                          <td class="team_c_ft"><{$rows["Match_Master"]}></td>
+                          <td class="vs">vs.</td>
+                          <td class="team_h_ft"><{$rows["Match_Guest"]}></td>
+                          <td width="12"></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                  <td class="more_td"></td>
+                </tr>
+                <tr id="TR_1_108_1817926" style="display:" class="hr">
+                  <td class="hr_title">半場</td>
+                  <td class="hr_main_ft">
+                    <span style="overflow:hidden;"> <{$rows["MB_Inball_HR"]}>
+     </span>
+                  </td>
+                  <td class="hr_main_ft">
+                    <span style="overflow:hidden;"> <{$rows["TG_Inball_HR"]}></span>
+                  </td>
+                  <td rowspan="2" class="more_td"></td>
+                </tr>
+                <tr id="TR_2_108_1817926" style="display:" class="full">
+                  <td class="full_title">全場</td>
+                  <td class="full_main_ft">
+                    <{$rows["MB_Inball"]}>
+                  </td>
+                  <td class="full_main_ft">
+                    <{$rows["TG_Inball"]}> </span>
+                  </td>
+                </tr>
+                </tbody>
+<{/foreach}>
+              </tbody>
+            </table>
+
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+<{include file="web_footer.html"}>

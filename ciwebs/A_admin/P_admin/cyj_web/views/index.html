@@ -1,0 +1,68 @@
+<{config_load file="public.conf" section="public"}>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Frameset//CN" "http://www.w3. org/TR/html4/frameset.dtd">
+<html  xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>welcome</title>
+<link  rel="stylesheet"  href="<{#css#}>/default.css">
+<script  type="text/javascript"  src="<{#js#}>/jquery-1.7.2.min.js"></script>
+<script  type="text/javascript"  src="<{#js#}>/artDialog.js"></script>
+<script  type="text/javascript"  src="<{#js#}>/iframeTools.js"></script>
+<script  type="text/javascript"  src="<{#js#}>/jquery.cookie.js"></script>
+<style>
+html, body, *html {
+	width:100%;
+	height:100%;
+	margin:0px;
+	padding:0px;
+}
+body{
+	overflow:hidden;
+}
+#Content {
+	position:absolute;
+	bottom:0;
+	left:0;
+	right:0;
+	z-index:3;
+	width:100%;
+	overflow:hidden;
+	height:100%;
+}
+</style>
+<script  type="text/javascript">
+function openGg(url,title)
+{
+	art.dialog.open(url, {
+		title: "PK系统公告",
+		width:520,
+		height:270,
+		window:'top',
+		esc:true
+	});
+}
+</script>
+</head>
+<body>
+ <div  id="Content">
+	<iframe  name="index"  src="<{$site_url}>/index/main"  frameborder="0"  marginheight="0"  marginwidth="0"  style="width:100%;height:100%;">
+	</iframe>
+</div>
+
+<script>
+var open = "<{$notices['notice_title']}>";
+var site_id = "<{$site_id}>";
+if(open){
+	try{
+	    (function(){
+	        if ($.cookie('PKBET_AD')) return;
+	        $.cookie('PKBET_AD', 'Y', {path:'/', expires: ''});
+	       		openGg("<{$site_url}>/index/dialogo");
+	            })();
+	}catch(e){}
+}
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<{$header}>
+<{config_load file="public.conf" section="public" }>
+<script>
+	$(function(){
+		var nr= "<img src='<{#images#}>/new/Wel.jpg' class='abs-c-banner' id='page-banner'>";
+		$("#myImg").html(nr);
+	})
+</script>
+<style>
+	.wns-common-content-top{background: url(<{#images#}>/new/common_top_bg.png) no-repeat center top;padding-top: 66px; }
+</style>
+<div id="page-container">
+   <div class="wns-common-content-middle clearfix " style="margin:0 auto;">
+	                	      	   
+		   <div class="l wns-left-nav-bar">
+				   
+					<a onclick="getPager('-','iword','3');" href="javascript:void(0);">关于我们</a>
+					<a onclick="getPager('-','iword','7');" href="javascript:void(0);">取款帮助</a>
+					<a onclick="getPager('-','iword','6');" href="javascript:void(0);">存款帮助</a>
+					<a onclick="getPager('-','iword','5');" href="javascript:void(0);">合作伙伴</a>
+					<a onclick="getPager('-','iword','4');" href="javascript:void(0);">联络我们</a>
+					<a onclick="getPager('-','iword','8');" href="javascript:void(0);">常见问题</a>
+		   </div>
+		   <div class="r wns-right-content-nobg">
+						<div class="abount-con">
+								<h1><{$iword['title']}></h1>
+
+								<{if $iword['type'] == 5}>
+						<div class="ab-con">
+							<style>*{}
+							#menu1 {width:659px; margin-bottom:20px; height:1%; overflow:hidden;}
+							#menu1 dd {float:left; padding:5px 5px; text-align:center; background:#CCC; cursor:pointer; border:#ccc solid 0px; color:#333; margin-right:8px}
+							#menu1 dd.mtab { background:#999; color:#FFF;}
+							#main1 li {display:none}
+							#main1 input{width:140px; border:1px solid #030; background:#FFF; color:#000; padding:3px 5px}
+							</style>
+							<div id="wrap">
+								<div id="mainbody">
+									
+								   <div class="cl"></div>
+								  
+									<div class="text_body">
+										<div class="p_top"></div>
+										<div class="p_main">
+										<script>
+											function click1(){
+												$('#Union1').addClass('mtab');
+												$('#Union2').removeClass('mtab');
+												$('#li1').css('display','block');
+												$('#li2').css('display','none');
+											}
+											function click2(){
+												$('#Union2').addClass('mtab');
+												$('#Union1').removeClass('mtab');
+												$('#li2').css('display','block');
+												$('#li1').css('display','none');
+											}
+										</script>
+										<style>
+											#menu1 li{float:left;cursor:pointer;margin-left:10px;width:60px;height:30px;line-height:30px;text-align:center;background-color:#A40000}
+											#menu1 li:hover{background-color:#F21200}
+										</style>
+										<ul class="mtab-menual" id="menu1">
+											<li id="Union1" class="mtab" onclick="click1()">联盟方案</li>
+											<li id="Union2" onclick="click2()">联盟协议</li>
+											<{if $iword['is_agent']}>
+												<li onclick="getPager('_bank','<{$agent_url}>');">代理登入</li>
+												<li onclick="getPager('-','daili_shenqing','JoinAgent');">代理注册</li>
+											<{/if}>
+										</ul>
+										<ul id="main1">
+											<li id="li1" style="display:block"><{$iword['content']}> </li>
+											<li id="li2" style="display:none"> <{$iword['content_1']}> </li>       
+										</ul>
+											
+										</div>
+										<div class="p_bottom"></div>
+									</div>   
+									
+								</div>
+							</div>			             	
+						</div>
+					<{else}>
+						
+							<{$iword['content']}>
+						
+						<{/if}>
+						</div>
+		   </div>
+	 
+  </div> 
+  <div class="wns-common-content-bottom">
+	                	      	  
+	                	      </div>
+</div>
+<{$bottom}>
+
+
+

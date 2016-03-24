@@ -1,0 +1,972 @@
+/* common style */
+.clear {
+    clear: both;
+    margin: 0;
+    padding: 0;
+}
+/* site style */
+body {
+    min-width: 1000px;
+    font-size: 12px;
+    color: #000;
+}
+.zh-cn body {
+    font-family: STHeiti,"Microsoft YaHei", "微软雅黑", "SimSun", "宋体",arial;
+}
+.zh-tw body {
+    font-family: "Microsoft JhengHei","微軟正黑體",arial,helvetica,sans-serif;
+}
+
+.header,
+#page-body,
+.news-wrap,
+.footer {
+    margin: 0 auto;
+    width: 980px;
+}
+#page-body {
+    padding: 30px 0;
+    min-height: 200px;
+}
+.game #page-body{padding: 0;}
+.first #page-body {
+    padding: 0 0 8px 0;
+    width: 100%;
+    background: url("../images/container_bg_x.jpg") 0 100% repeat-x;
+}
+.is-tpl #mainBody {
+    width: auto;
+}
+/* header */
+#page-header {
+    background: #212222 url("../images/header_bg_x.jpg") repeat-x;
+}
+.header {
+    padding-top: 7px;
+}
+.header-logo {
+    float: left;
+    width: 254px;
+    height: 69px;
+}
+.header-right {
+    float: right;
+    margin-bottom: 8px;
+    height: 76px;
+}
+.ele-lang-wrap a {
+    display: inline-block;
+    color: #999A9B;
+}
+.ele-lang-wrap a:hover {
+    color: #DED465;
+}
+.ele-lang-option {
+    margin: 0 -2px;
+    padding: 0 6px;
+}
+.est-wrap {
+    float: left;
+    margin-right: 16px;
+}
+.est-wrap .time_text {
+    width: auto;
+    line-height: inherit;
+    color: #C3C3C3;
+    background-color: transparent;
+}
+/* header */
+.header-banner {
+    height: 270px;
+    background: url("../images/title_bg_live.jpg");
+    background-position: 50% 0;
+    background-repeat: no-repeat;
+}
+.live .header-banner { background-image: url("../images/title_bg_live.jpg")}
+.ltlottery .header-banner { background-image: url("../images/title_bg_ltlottery.jpg");}
+.madvertis .header-banner { background-image: url("../images/title_bg_promotion.jpg");}
+.at1 .header-banner { background-image: url("../images/title_bg_madvertis.jpg");}
+.joinmember .header-banner { background-image: url("../images/title_bg_madvertis.jpg");}
+.banner-middle {
+    margin: 0 auto;
+    position: relative;
+    max-width: 1440px;
+    height: 270px;
+}
+.game .header-banner{
+    background: none;
+    height: 230px;
+}
+.banner-title {
+    position: absolute;
+    bottom: 0;
+    left: 11px;
+    width: 189px;
+    height: 130px;
+}
+.game .banner-title{display: none;}
+.banner-content {
+    margin: 0 auto;
+    width: 1000px;
+    height: 270px;
+    position: relative;
+}
+.game .banner-middle,
+.game .banner-content{height: 230px;}
+.banner-shortcut {
+    position: absolute;
+    top: 26px;
+    right: 34px;
+    width: 172px;
+}
+.first .banner-shortcut {
+    top: -389px;
+    right: -4px;
+    z-index: 1;
+}
+.game .banner-shortcut{
+    top: 25px;
+    right: 10px;
+}
+.banner-shortcut a, .banner-shortcut span {
+    margin: 1px;
+    padding-top: 68px;
+    float: left;
+    width: 84px;
+    line-height: 22px;
+    color: #CCC;
+    text-align: center;
+    text-decoration: none;
+    background-color: #111;
+    background-repeat: no-repeat;
+}
+.banner-shortcut a:hover {
+    color: #FFF;
+}
+.shortcut-qq {
+    background-size: 72px 62px;
+    -ms-background-size: 72px 62px;
+    -webkit-background-size: 72px 62px;
+    background: url("../images/float_qq.jpg") 6px 0 no-repeat;
+}
+.shortcut-code {
+    background: url("../images/float_qrcode.jpg") 6px 3px no-repeat;
+
+    cursor: context-menu;
+}
+.shortcut-join,
+.shortcut-welcome {
+    background: url("../images/float_join.jpg") 6px 0 no-repeat;
+}
+.shortcut-join:hover,
+.shortcut-welcome {
+    background-position: 6px -70px;
+}
+.shortcut-online {
+    background: url("../images/float_service.jpg") 7px 0 no-repeat;
+}
+/* 登入區 */
+#LoginForm {
+    float: left;
+    width: 275px;
+}
+.header-right a {
+    text-decoration: none;
+}
+.login-wrap {
+    float: right;
+    width: 385px;
+}
+.header-top {
+    color: #BCBCBC;
+    text-align: right;
+}
+.top-custom-link {
+    display: inline-block;
+    margin: 0 2px;
+    padding: 0 6px;
+    line-height: 20px;
+    text-align: center;
+}
+.top-custom-link:hover {
+    color: #FFF !important;
+    background-color: #397BD2;
+    border-radius: 2px;
+}
+.get-pwd-link {
+    margin-left: 5px;
+    color: #FFF;
+    line-height: 29px;
+}
+.get-pwd-link:hover {
+    color: #DED465;
+}
+.join-link {
+    margin-top: 3px;
+    float: right;
+    width: 103px;
+    height: 48px;
+    color: #F00;
+}
+.join-link:hover {
+    background-position: 0 100%;
+}
+.login-unit {
+    float: left;
+    margin: 3px;
+    position: relative;
+    width: 130px;
+    height: 20px;
+    color: #AEAFAF;
+    background: url("../images/loginbg01.jpg");
+}
+.login-unit .login-placeholder {
+    position: absolute;
+    left: 2px;
+    top: 4px;
+    line-height: 15px;
+    cursor: text;
+}
+.login-input {
+    margin: 2px;
+    width: 126px;
+    color: #827D7D;
+    border: none;
+    background-color: transparent;
+    outline: none;
+}
+.login-acc {
+    width: 77px;
+}
+.acc-unicode{
+    color: #555;
+    font-size: 14px;
+    font-family: arial;
+}
+.login-submit {
+    float: left;
+    margin: 3px 0 0 3px;
+    width: 50px;
+    height: 20px;
+    border: none;
+    color: #FFF;
+    background: url("../images/btn_login.jpg") 0 0 no-repeat;
+    cursor: pointer;
+}
+.login-submit:hover {
+    color: #039;
+    background-position: 0 100%;
+}
+.login-unit-chk{
+    position: relative;
+}
+#vImg {
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+}
+#page-container {
+    background-color: #F6F6F6;
+}
+.first #page-container {
+    background-color: #212222;
+}
+.header-top,
+.mem-info,
+.SU-Menual {
+    line-height: 25px;
+}
+/* 登入後 */
+.mem-info {
+    float: right;
+    text-align: right;
+    color: #BCBCBC;
+}
+.mem-info strong {
+    color: #F0C656;
+}
+.mem-info span {
+    margin-left: 10px;
+}
+/* 會員選單 */
+.SU-Menual ul {
+    color: #BCBCBC;
+    text-align: right;
+}
+.SU-Menual ul li {
+    display: inline-block;
+}
+.SU-Menual ul li a {
+    margin-left: 8px;
+    color: #BCBCBC;
+    text-decoration: none;
+    transition: color .2s;
+}
+.SU-Menual ul li a:hover {
+    color: #FFF;
+}
+#MsgNotReadCount {
+    color: #F0C666;
+}
+/* 主選單 */
+.fixed .mainnav-wrap {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-width: 1000px;
+    z-index: 100;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.7);
+}
+.fixed .mainnav {
+    margin: 0 auto;
+    width: 980px;
+}
+.mainnav-placeholder,
+.mainnav-wrap,
+.mainnav {
+    height: 45px;
+}
+.mainnav-placeholder,
+.mainnav-wrap {
+    background-color: #F4F4F4;
+}
+.mainnav li {
+    float: left;
+}
+.nav-line {
+    float: left;
+    width: 1px;
+    height: 45px;
+    background: url("../images/lineNav.jpg") 0 50% no-repeat;
+}
+.mainnav ul a {
+    display: block;
+    width: 107.6px;
+    height: 45px;
+    line-height: 45px;
+    color: #666;
+    text-decoration: none;
+    text-align: center;
+}
+.mainnav ul a.current,
+.mainnav ul a:hover {
+    color: #FFF;
+    background-color: #0063A8;
+}
+.LS-memberexclusiveii a {
+    background: url("../images/tb1.png") 80px 28px no-repeat;
+}
+/* 下拉子選單 */
+.ele-lsub-group{
+    position: absolute;
+    z-index: 999;
+    overflow: hidden;
+}
+.ele-lsub-group a,.ele-lsub-group span{
+    float: left;
+    background-image:url("../images/sub.png");
+}
+.ele-lsub-group a{
+    height: 32px;
+    line-height: 32px;
+    padding: 0 5px;
+    color: #FFFFFF;
+    text-decoration: none;
+    text-align: center;
+    background-position: 100% -32px;
+}
+.ele-lsub-group a:hover{
+    color: #FF0;
+}
+.ele-lsub-group span{
+    width: 20px;
+    height: 32px;
+}
+.lsub-front-bg{
+    background-position: 100% 0;
+}
+.lsub-back-bg{
+    background-position: 100% 0;
+}
+
+/* introfirst */
+.ad-flash {
+    margin: 0 auto;
+    position: relative;
+    width: 100%;
+    height: 469px;
+    overflow: hidden;
+}
+.ele-slider-wrap {
+    position: absolute;
+    left: 50%;
+    margin-left: -720px;
+}
+.ad-flash .ele-slideshow-nav {
+    padding-bottom: 15px;
+}
+.ad-flash .ele-slideshow-nav a {
+    margin: 0 7px;
+    width: 36px;
+    height: 8px;
+    background: url("../images/thumbNav.png") center top no-repeat;
+}
+.ad-flash .ele-slideshow-nav a.active, .ad-flash .ele-slideshow-nav a:hover {
+    background-position: center bottom;
+}
+.first-gamelink-wrap {
+    margin: 0 auto;
+    width: 980px;
+}
+.first-gamelink-wrap a {
+    display: inline-block;
+    margin-right: 8px;
+    color: #666;
+    text-decoration: none;
+}
+.gamelink-live:hover a,
+.gamelink-bb:hover a,
+.gamelink-game:hover a,
+.gamelink-lottery:hover a { color: #FFF;}
+.first-gamelink-wrap a:hover {
+    color: #F7DB7D;
+    text-shadow: 1px 1px #040000;
+}
+.gamelink-live,
+.gamelink-bb,
+.gamelink-game,
+.gamelink-lottery {
+    margin: 0 1px;
+    float: left;
+    width: 199px;
+    height: 76px;
+    padding: 80px 30px 0 14px;
+}
+.gamelink-live:hover,
+.gamelink-bb:hover,
+.gamelink-game:hover,
+.gamelink-lottery:hover {
+    background-position: 0 100%;
+    text-align: center;
+}
+/* 最新消息 */
+.news-wrap {
+    margin: 0 auto;
+    width: 980px;
+    position: relative;
+}
+.news-title {
+    float: left;
+    margin-left: 8px;
+    padding-left: 20px;
+    width: 67px;
+    line-height: 39px;
+    color: #D54A2A;
+    background: url("../images/newsbg.jpg") 0 13px no-repeat;
+}
+.news-item {
+    float: right;
+    margin-right: 35px;
+    width: 850px;
+    height: 39px;
+    color: #666;
+    overflow: hidden;
+}
+#ele-msg-scrollDown { display: none;}
+#ele-msg-scrollUp {
+    float: left;
+    width: 14px;
+    height: 39px;
+    background: url("../images/arrow.jpg") 0 12px no-repeat;
+    cursor: pointer;
+}
+.ele-news-wrap .ele-news-scroll li {
+    width: 810px;
+    height: 39px;
+    line-height: 39px;
+}
+
+/* footer */
+#page-footer {
+    padding-bottom: 5px;
+    background: #2C477E url("../images/footer_bg_x.jpg") repeat-x;
+}
+.footer {
+    min-height: 190px;
+    color: #6A789C;
+    text-align: center;
+}
+.footer-icons {
+    margin-top: 10px;
+}
+.footer-icon-brand,
+.footer-icon-direct,
+.footer-icon-bank {
+    margin-top: 7px;
+    float: left;
+    height: 45px;
+    background-position: 0 0;
+}
+.footer-icon-brand {
+    width: 212px;
+    height: 45px;
+    background: url("../images/footer_img02.jpg");
+}
+.footer-icon-direct {
+    width: 212px;
+    height: 45px;
+    background: url("../images/footer_img03.jpg");
+}
+.footer-icon-bank {
+    width: 215px;
+    height: 45px;
+    background: url("../images/footer_img04.jpg");
+}
+.footer-icon-brand:hover,
+.footer-icon-direct:hover,
+.footer-icon-bank:hover {
+    background-position: 0 100%;
+}
+#bblogo {
+    float: left;
+    margin: 0 30px 0 8px;
+    width: 122px;
+    height: 48px;
+    background: url("../images/bbinlogo.png") 0 0;
+}
+#bblogo:hover {
+    background-position: 0 100%;
+}
+#browser-logo {
+    float: left;
+    margin: 0px 15px 0 0;
+}
+#browser-logo img {
+    display: block;
+}
+.footer-info {
+    margin-top: 15px;
+    padding-top: 3px;
+    border-top: 1px solid #425C88;
+}
+.footer-info,
+.copyright {
+    line-height: 20px;
+}
+
+/* game */
+.game-list.hided { display: none; }
+.game-item {
+    float: left;
+    position: relative;
+    margin: 0 0 15px 8px;
+    width: 366px;
+    height: 130px;
+    background: url("../images/gamebg.jpg") 0 0 no-repeat;
+}
+.game-img {
+    float: right;
+    margin-top: 2px;
+}
+.game-img,
+.game-img img {
+    width: 190px;
+    height: 123px;
+}
+.game-info {
+    float: left;
+    margin: 26px 0 0 25px;
+    width: 110px;
+    text-align: center;
+}
+.game-name {
+    margin-bottom: 5px;
+    text-decoration: none;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.game-link a {
+    margin-bottom: 5px;
+    display: inline-block;
+    width: 65px;
+    height: 23px;
+    line-height: 24px;
+    color: #FFF;
+    text-decoration: none;
+    background: url("../images/game_rule.jpg") 0 0;
+}
+.game-link a:hover{
+    background-position: 0 100%;
+}
+.GameIcon {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: block;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+.GameIcon-First {
+    width: 72px;
+    height: 29px;
+}
+.GameIcon-New {
+    background-image: url("../imagess/New.gif");
+    width: 36px;
+    height: 37px;
+}
+.game-img .iGameIcon {
+    bottom: 5px;
+    right: 2px;
+}
+.iGameIcon-3D {
+    position: absolute;
+    bottom: 5px;
+    right: 1px;
+    z-index: 5;
+    background: url("../imagess/3dgame_icon.png") 0 0 no-repeat;
+    width: 32px;
+    height: 32px;
+}
+/* game frame */
+#page-game-left {
+    float: left;
+    margin-left: 0px;
+    width: 228px;
+}
+#page-game-right {
+    float: right;
+    width: 750px;
+}
+
+/* ELE Style */
+.ele-gamebanner-wrap{
+    float: left;
+    margin-top: 17px;
+}
+/*
+** 各站 遊戲彩金 Game Jackpot
+*/
+.ele-gamejp-wrap {
+    width: 1000px;
+    height: 78px;
+}
+.ele-gamejp-title {
+    width: 220px;
+}
+.ele-gamejp-title,
+.ele-gamejp-bb-area,
+.ele-gamejp-g3d-area {
+    float: left;
+    height: 78px;
+}
+.ele-gamejp-bb-area,
+.ele-gamejp-g3d-area {
+    width: 190px;
+    padding: 0 20px 0 160px;
+}
+.ele-gamejp-explain {
+    width: 175px;
+    height: 27px;
+    line-height: 27px;
+    transition: all 0.2s ease;
+    background: url("../images/gamejp_btn.png") 0 0 no-repeat;
+    color: #AAA;
+}
+.ele-gamejp-explain:hover{
+    color: #FFF;
+    background-position: 0 100%;
+}
+.ele-gamejp-prize {
+    padding-top: 6px;
+    height: 35px;
+    line-height: 35px;
+    font-size: 25px;
+    color: #D04543;
+}
+/*
+** 各站 遊戲導覽列 Game Menu
+*/
+.game-menu {
+    margin: 0 auto;
+    width: 1000px;
+    background: url("../images/game_menu.png") no-repeat;
+}
+.game-menu-title {
+    width: 0;
+}
+.game-menu-title,
+.game-menu-bg,
+.nav-normal > a {
+    height: 50px;
+}
+.nav-normal {
+    background: url("../images/game_menu_line.jpg") no-repeat 100% 50%;
+}
+.nav-normal > a {
+    padding: 0 20px;
+    line-height: 50px;
+    text-decoration: none;
+}
+.nav-icon {
+    display: inline-block;
+    vertical-align: text-top;
+    width: 18px;
+    height: 18px;
+    transition: all 0.2s ease;
+}
+/*
+** 各站 遊戲搜尋
+*/
+#ele-search-wrap {
+    width: 225px;
+    height: 50px;
+}
+/* for ie8*/
+#ele-search-wrap label {
+    top: 18px;
+    left: 10px;
+}
+#ele-search-wrap .ele-search-input {
+    float: left;
+    margin-left: 5px;
+    height: 100%;
+    line-height: 50px \9;
+}
+#ele-search-wrap label,
+#ele-search-wrap .ele-search-input {
+    width: 155px;
+}
+#ele-search-wrap .ele-search-btn {
+    width: 60px;
+}
+/*
+** 各站遊戲圖 樣式
+*/
+.game .ele-game-wrap {
+    margin: 20px auto;
+    width: 1000px;
+}
+.ele-game-layout {
+    margin: 8px 4px;
+    width: 242px;
+    height: 244px;
+    background: url("../images/game_bg.png") no-repeat 0 0;
+}
+.live .ele-game-layout{margin: 8px 3px;}
+.ele-game-name h3 {
+    width: 140px;
+    height: 30px;
+    color: #222;
+    line-height: 30px;
+}
+.ele-game-ctl-wrap,
+.ele-game-ctl-tools,
+.ele-game-ctl-links {
+    width: 100%;
+}
+.ele-game-img{bottom: 5px;}
+.ele-game-ctl-wrap {bottom: 7px;}
+.ele-game-ctl-tools {
+    height: 30px;
+    background: url("../images/game_bg.png") no-repeat 0 -207px;
+}
+/* 小彩金  */
+.ele-layout-subjp .ele-game-layout{
+    height: 280px;
+}
+.ele-layout-subjp .ele-game-ctl-wrap{
+    bottom: 43px;
+}
+.ele-layout-subjp .ele-game-sub-jp .minorJP{
+    margin-top: 30px;
+    padding: 0 10px 0 10px;
+    color: #FFF;
+    background: #0063A8;
+    box-shadow: 0 3px 1px rgba(0,0,0,0.5);
+}
+.ele-layout-subjp .ele-game-sub-jp .minorJP:before{
+    color: #DDD;
+}
+/*
+** 各站 遊戲連結
+*/
+.ele-game-link {
+    display: block;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    text-decoration: none;
+}
+.ele-game-ctl-links a{
+    color: #624817;
+    background: #D1A143;
+    background: rgba(209,161,67,0.9);
+}
+.ele-game-ctl-links a:hover{
+    color: #FFFFFF;
+    background: #D14543;
+    background: rgba(209,69,67,0.9);
+}
+.ele-game-ctl-links a.ctl-btn-enter{
+    color: #624817;
+    background: #E7B651;
+    background: rgba(231,182,81,0.9);
+}
+.ele-game-ctl-links a.ctl-btn-enter:hover{
+    color: #FFFFFF;
+    background: #E75451;
+    background: rgba(231,84,81,0.9);
+}
+
+/* 文案區塊 */
+#page-sidebar {
+    float: left;
+    width: 200px;
+}
+#page-right,
+#page-right iframe {
+    margin: 0 auto;
+    width: 1030px;
+}
+#page-right {
+    background: url("../images/page_y.jpg") 50% 0 repeat-y;
+}
+.page-right-bottombg {
+    height: 97px;
+}
+#joinMember {
+    padding-top: 20px;
+}
+/*文案*/
+.article-menu {
+    height: 38px;
+    line-height: 38px;
+    color: #D5D5D5;
+}
+.article-menu a {
+    color: #D5D5D5;
+    text-decoration: none;
+}
+.article-menu a:hover {
+    color: #2A457D;
+}
+#articles {
+    padding: 15px 0;
+    margin: 0 auto;
+    width: 830px;
+}
+#direction #articles h3 {
+    margin: 0;
+    padding: .83em 0;
+}
+#direction #articles p {
+    margin: 0;
+}
+#Union {
+    margin: 0 auto;
+    padding: 15px 0;
+    width: 890px;
+}
+#page-right form {
+    margin: 0 auto !important;
+    width: 930px;
+}
+    /*校正合作夥伴載入時有個點*/
+    #direction ul li { list-style: none; }
+    #direction ul:first-child { display: none; }
+#direction ul.mtab-menual {
+    list-style: none;
+    border-bottom: 3px solid #2A457C;
+}
+#direction ul.mtab-menual li {
+    background-color: #428FC7;
+    display: inline-block;
+    vertical-align: bottom;
+    *display: inline;
+    *zoom: 1;
+    margin-right: 4px;
+    padding: 1px 10px;
+    cursor: pointer;
+    border-bottom: 0;
+    border-radius: 5px 5px 0 0;
+    transition: background-color .4s;
+}
+#direction ul.mtab-menual li:hover,
+#direction ul.mtab-menual li.mtab {
+    background-color: #2A457C;
+    color: #FFF;
+}
+#direction .mtab-menual {
+    margin-top: 10px;
+}
+/*優惠活動*/
+#direction #PT-switcher-wrap {
+    margin: 1.5em auto;
+    width: 960px;
+}
+.eventtext p {
+    padding-left: 3%;
+    width: 94%;
+}
+/*共用頁面*/
+.Tpl-table01 {
+    background-color: #FFF;
+    border: 1px solid #CCC;
+    color: #000;
+    font-size: 12px;
+}
+table .Tpl-title01 th {
+    background-color: #DDD;
+    height: 24px;
+    text-align: center;
+    font-weight: bold;
+}
+#Tpl-user-acc span {
+    line-height: 20px;
+    color: #0000FF;
+}
+.Tpl-table01 th, .Tpl-table01 td {
+    height: 22px;
+    border: 1px solid #CCC;
+}
+tr.Tpl-trcolor1 { background: #FFF; }
+tr.Tpl-trcolor2 { background: #EEE; }
+tr.Tpl-trmouseenter { background: #DEF; }
+#Tpl-memdata .Tpl-table01 th,
+#Tpl-memdata .Tpl-table01 td.Tpl-left { text-align: center; }
+#Tpl-memdata .Tpl-table01 td.Tpl-right { text-align: left; }
+.Tpl-blue { color: #00F; }
+/* game-group 元件 */
+.js-has-group .game-group {
+    background-color: #94C5ED;
+}
+.js-has-group .arrow-left {
+    bottom: 12px;
+    border-color: transparent #94C5ED transparent transparent;
+}
+/* 聯絡我們 */
+#SubmitForm,
+#ClearForm {
+    margin-top: 10px;
+    width: 60px;
+    height: 30px;
+    color: #FFF;
+    background-color: #D14544;
+    border: none;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+}
+#ClearForm {
+    background-color: #D2A144;
+}
+#SubmitForm:hover { background-color: #B92726;}
+#ClearForm:hover { background-color: #C6963B;}
+.join-ad-banner {
+    width: 708px;
+    height: 31px;
+    background: url("../images/join-ad-banner.png");
+}

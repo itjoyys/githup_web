@@ -1,0 +1,216 @@
+<title>视讯注单</title>
+<{include file="web_header.html"}>
+<style>
+.m_rig td {
+	text-align: center;
+}
+
+.Company {
+	cursor: pointer;
+}
+
+.Company, .CompanyOn {
+	padding: 3px 5px;
+	margin: 0px 5px 0px 0px;
+}
+
+.CompanyOn {
+	background: #bc5a83;
+	color: #ffffff
+}
+</style>
+<script>
+window.onload = function() {
+	document.getElementById("page").onchange = function() {
+		document.getElementById('myFORM').submit();
+	}
+	<{if $note_types}>
+	document.getElementById("note_type").onchange=function(){
+       var gurl = $("#note_type").val();
+       window.location.href = "<{$site_url}>/note/bet_record/"+gurl;
+    }
+    $("#note_type").get(0).selectedIndex=2;
+    <{/if}>
+}
+function setRefresh(){
+	$('#myFORM').submit();
+}
+</script>
+<body>
+
+	<div id="con_wrap">
+		<div class="input_002">
+			<{strtoupper($Company)}>下注記錄
+		</div>
+		<div class="con_menu">
+			<form id="myFORM"
+				action="<{$site_url}>/note/Bet_record/video_bet_record"
+				method="get" name="FrmData">
+				<{$note_types}>
+						<{foreach from=$videos item=val key=key}>
+		    <a class="Company <{if $Company == $val}>CompanyOn<{/if}>" <{if $Company == $val}>style="color:#fff"<{/if}> href="<{$site_url}>/note/Bet_record/video_bet_record?type=<{$val}>&itype=<{$itype}>&username=<{$smarty.get.username}>" ><{strtoupper($val)}></a>
+		<{/foreach}>
+<!-- 				<a class="Company CompanyOn" href="<{$site_url}>/note/Bet_record/video_bet_record?type=lebo&itype=<{$itype}>&username=<{$smarty.get.username}>" style="color:#fff;">LEBO</a>
+ 				<a class="Company" href="<{$site_url}>/note/Bet_record/video_bet_record?type=bbin&itype=<{$itype}>&username=<{$smarty.get.username}>">BBIN</a>
+ 				<a class="Company" href="<{$site_url}>/note/Bet_record/video_bet_record?type=mg&itype=<{$itype}>&username=<{$smarty.get.username}>">MG</a>
+ 				<a class="Company" href="<{$site_url}>/note/Bet_record/video_bet_record?type=ct&itype=<{$itype}>&username=<{$smarty.get.username}>">CT</a>
+ 				<a class="Company" href="<{$site_url}>/note/Bet_record/video_bet_record?type=ag&itype=<{$itype}>&username=<{$smarty.get.username}>">AG</a>
+ 				<a class="Company" href="<{$site_url}>/note/Bet_record/video_bet_record?type=og&itype=<{$itype}>&username=<{$smarty.get.username}>">OG</a> -->
+				<input type="hidden" name="Company" id="Company"
+					value="<{$Company}>"> &nbsp;&nbsp;
+                <br /> 账號：<input style="width:80px;" name="username" type="text" value="<{$smarty.get.username}>"> 单号：<input style="width:80px;" name="order" type="text" value="<{$smarty.get.order}>"> 日期：<input
+					type="text" name="start_date"
+					value="<{$start_date}>" id="start_date" class="za_text Wdate"
+					onClick="WdatePicker({dateFmt:'yyyy-MM-dd'})"> --
+				<input type="text" name="end_date"
+					value="<{$end_date}>" id="end_date"
+					class="za_text Wdate"
+					onClick="WdatePicker({dateFmt:'yyyy-MM-dd'})"> &nbsp; <input type="SUBMIT" value="確定"
+					class="za_button">
+                                排序类型:<select name="sort_type" onchange="document.getElementById('myFORM').submit()">
+                                        <option value="0" <{select_check(0,$sort_type)}>>注单时间</option>
+                                        <option value="1" <{select_check(1,$sort_type)}>>总投注</option>
+                                        <option value="2" <{select_check(2,$sort_type)}>>有效投注</option>
+                                        <option value="3" <{select_check(3,$sort_type)}>>注单号</option>
+                                        <option value="4" <{select_check(4,$sort_type)}>>系统帳號</option>
+                                        <option value="5" <{select_check(5,$sort_type)}>>视讯帳號</option>
+                                        </select><select name="sort_order" onchange="document.getElementById('myFORM').submit()">
+                                    <option value="0" <{select_check(0,$sort_order)}>>降序</option>
+                                    <option value="1" <{select_check(1,$sort_order)}>>升序</option>
+                                    </select>
+				<span id="lblTime" style="color: red"></span>
+                <input type="hidden" name="gid" value="<{$smarty.get.gid}>">
+                <input type="hidden" name="did" value="<{$smarty.get.did}>">
+                <input type="hidden" name="type" value="<{$type}>">
+                <input type="hidden" name="itype" value="<{$itype}>">
+                 每页显示:<select name="page_num" onchange="document.getElementById('myFORM').submit()">
+                   <option value="50" <{select_check(50,$page_num)}>>50</option>
+                   <option value="100" <{select_check(100,$page_num)}>>100</option>
+                   <option value="200" <{select_check(200,$page_num)}>>200</option>
+                   <option value="500" <{select_check(500,$page_num)}>>500</option>
+                   </select>
+                <{$page}>
+									刷新：
+	<select name="reload" id="retime" class="za_select" onchange="setTimeout(setRefresh(), this.value*1000)">
+		<option value="-1">不更新</option>
+        <option value="30" <{select_check(30,$smarty.get.reload)}>>30秒</option>
+		<option value="60" <{select_check(60,$smarty.get.reload)}>>60秒</option>
+		<option value="120" <{select_check(120,$smarty.get.reload)}>>120秒</option>
+        <option value="180" <{select_check(180,$smarty.get.reload)}>>180秒</option>
+	</select>
+			</form>
+		</div>
+	</div>
+	<div class="content">
+
+		<table width="100%" border="0" cellspacing="0" cellpadding="0"
+			class="m_tab">
+			<tbody>
+
+				<tr class="m_title_over_co">
+					<td width="115" align="center">注单時間</td>
+					<td width="70" align="center">注单號</td>
+					<td width="50" align="center">桌號</td>
+					<td width="70" align="center">游戏ID</td>
+					<td width="70" align="center">系统帳號</td>
+					<td width="70" align="center">视讯帳號</td>
+					<td width="300" align="center">下注</td>
+					<td width="70" align="center">游戏结果</td>
+
+					<td width="90" align="center">总投注</td>
+					<td width="90" align="center">有效投注</td>
+					<td width="50" align="center">退水</td>
+					<td width="90" align="center">結果</td>
+				</tr>
+
+				<{foreach from=$data item=val key=key}>
+				<tr class="m_cen <{if $key%2 == 0}>even<{/if}>">
+					<td align="center"><{$val['betstart_time']}></td>
+					<td align="center"><{$val['game_id']}></td>
+					<td align="center"><{$val['table_id']}></td>
+					<td width="70" align="center" style="color:#04711C;"><{$val['game_zh']}></td>
+					<td width="70" align="center"><{$val['pkusername']}></td>
+					<td width="70" align="center"><{$val['member']}></td>
+					<td align="center" style="color:#04711C;"><{$val['bet_detail']}></td>
+					<td width="70" align="center"><{$val['game_result']}></td>
+
+					<td width="90" align="center"><{$val['betamount']}></td>
+					<td width="90" align="center"><{$val['valid_betamount']}></td>
+					<td align="center">0</td>
+					<td width="90" align="center"><{$val['payout']}></td>
+				</tr>
+				<{/foreach}> <{if empty($data)}>
+				<tr class="m_rig" style="display:;">
+					<td height="70" align="center" colspan="14"><font
+						color="#3B2D1B">暫無數據。</font></td>
+				</tr>
+				<{else}>
+				<tr class="m_cen" style="background-Color: #fcdcdc; display:;">
+					<td colspan="7" style="text-align: right">小計：</td>
+					<td><span id="Nums" class="CountMoney"><{count($data)}></span>
+						笔</td>
+					<td><span id="BetMoneyAll" class="CountMoney"><{$sum_list[0]}></span></td>
+					<td><span id="ValidBetMoneyAll" class="CountMoney"><{$sum_list[1]}></span></td>
+					<td><span id="BackMoneyAll" class="CountMoney"><{number_format($data['data']['BackMoneyAll'],2)}></span></td>
+					<td><span id="ResultMoneyAll" class="CountMoney"><{$sum_list[2]}></span></td>
+				</tr>
+				<tr class="m_cen" style="background-Color: #fcdcdc; display:;">
+					<td colspan="7" style="text-align: right">总計：</td>
+					<td><span id="NumsAll" class="CountMoney"><{$countN}></span>
+						笔</td>
+					<td><span id="BetMoneyAll_" class="CountMoney"><{$sum_list[3]}></span></td>
+					<td><span id="ValidBetMoneyAll_" class="CountMoney"><{$sum_list[4]}></span></td>
+					<td><span id="BackMoneyAll_" class="CountMoney"><{number_format($data['data']['BackMoneyAll_'],2)}></span></td>
+					<td><span id="ResultMoneyAll_" class="CountMoney"><{$sum_list[5]}></span></td>
+				</tr>
+				<{/if}>
+
+
+			</tbody>
+		</table>
+	</div>
+<script type="text/javascript">
+var retime = $('#retime').val();
+$(document).ready(function()
+{
+    var time = (retime == 0 || retime == -1) ? -1 : "" + retime;
+    if(time != -1)
+    {
+            setTimeout("setRefresh()", time * 1000);
+    }
+        
+    //通过js获取总计
+    function getuserinfo() {
+        var start_date  = "<{$start_date}>";
+        var end_date    = "<{$end_date}>";
+        var type        = "<{$type}>";
+        var username    = "<{$username}>";
+        var order       = "<{$order}>";
+        var leixing     = "<{$leixing}>";
+        $.get('/index.php/note/Bet_record/ajax_sum_list', {
+            start_date: start_date,
+            end_date: end_date,
+            type:type,
+            username:username,
+            order:order,
+            leixing:leixing
+        }, function(d) {
+            if(d){
+                 $('#BetMoneyAll_').html(d['sum1']);
+                $('#ValidBetMoneyAll_').html(d['sum2']);
+                $('#ResultMoneyAll_').html(d['sum3']);
+            }else{
+                 $('#BetMoneyAll_').html(0);
+                $('#ValidBetMoneyAll_').html(0);
+                $('#ResultMoneyAll_').html(0);
+            }
+
+
+        }, 'json')
+    }
+    getuserinfo();
+})
+
+
+</script>
+	<{include file="web_footer.html"}>

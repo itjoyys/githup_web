@@ -1,0 +1,126 @@
+<{config_load file="public.conf" section="public"}>
+<!doctype html>
+<!--[if lt IE 7 ]> <html class="no-js ie6 ie" > <![endif]-->
+<!--[if IE 7 ]>    <html class="no-js ie7 ie" > <![endif]-->
+<!--[if IE 8 ]>    <html class="no-js ie8 ie" > <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html class="no-js">
+<!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>_HistoryLayout</title>
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="<{#tcss#}>/main_<{$config_css}>.css?v=2015101">
+<link rel="stylesheet" href="<{#tcss#}>/datepicker.css">
+<!--[if IE 6]>
+<script src="/assets/dist/scripts/lib/ie6/DD_belatedPNG_0.0.8a.js?v=2015101"></script>
+<script>
+    /* EXAMPLE */
+    DD_belatedPNG.fix('.icon');
+    /* string argument can be any CSS selector */
+    /* .png_bg example is unnecessary */
+    /* change it to what suits you! */
+</script>
+<![endif]-->
+
+
+<script src="<{#tjs#}>/main.js?v=2015101"></script>
+
+</head>
+<body>
+
+
+	<div class="tab tab-dialog">
+
+		<form class="search-form mb10"
+			action="/index.php/lottery/History/index" method="POST" id="q-form">
+			<input type="text" value="<{date('Y-m-d')}>" class="input j-datepicker mr10"
+				name="date" id="date" readonly="readonly" /> <span class="select-menu"
+				id="q-id"> <span class="q-val"></span> <input type="hidden"
+				id="q-hidden-val" name="lotteryId" value="" />
+				<ul class="select-options">
+
+					<{foreach from=$fc_games item=v key=k}>
+					<li><a href="" data-id="<{$v['type']}>"><{$v['name']}></a></li>
+					<{/foreach}>
+				</ul> <span class="triangle"></span>
+			</span>
+			<button class="button" id="q">查询</button>
+			<span id="loading" class="red hide"> 正在加载中... </span>
+		</form>
+		<div id="history">
+
+
+
+
+			<table class="table table-bordered">
+				<thead>
+					<tr>
+
+						<th>期数</th>
+						<th>开奖时间</th>
+						<th>开奖号码</th>
+						<th colspan="3">总和</th>
+						<th colspan="5">1-4龙虎</th>
+					</tr>
+				</thead>
+				<tbody>
+					<{foreach from=$data item=v key=k}>
+											<tr>
+						<td class="td-hd"><{$v['qishu']}></td>
+						<td><{$v['time']}></td>
+						<td>
+				 <{foreach from=$v['hm'] item=vv key=kk}>
+                   <span class="icon ball"><{$vv}></span>
+                     <{/foreach}>
+						</td>
+						<td><{G10_Auto($v['hm'] , 1)}></td>
+						<td><{if G10_Auto($v['hm'] , 2)=="大"}><font color=red><{G10_Auto($v['hm'] , 2)}></font><{else}><{G10_Auto($v['hm'] , 2)}><{/if}></td>
+						<td><{if G10_Auto($v['hm'] , 3)=="双"}><font color=red><{G10_Auto($v['hm'] , 3)}></font><{else}><{G10_Auto($v['hm'] , 3)}><{/if}></td>
+						<td><{if G10_Auto($v['hm'] , 4)=="尾大"}><font color=red><{G10_Auto($v['hm'] , 4)}></font><{else}><{G10_Auto($v['hm'] , 4)}><{/if}></td>
+						<td><{G10_Auto($v['hm'],5)}></td>
+						<td><{G10_Auto($v['hm'],6)}></td>
+						<td><{G10_Auto($v['hm'],7)}></td>
+						<td><{G10_Auto($v['hm'],8)}></td>
+
+					</tr>
+					<{/foreach}>
+
+				</tbody>
+			</table>
+
+
+
+
+
+		</div>
+
+		<input type="hidden" id="hid-empty-data" value="暂无数据" />
+	</div>
+
+
+
+
+
+	<script>
+		require([ '<{#tjs#}>/hindex.js' ], function(Account) {
+			new Account();
+		})
+	</script>
+
+
+	<script>
+		require([ '<{#tjs#}>/history.js' ], function(App) {
+
+			new App({
+				lotteryId : 'cq_ten'
+			});
+
+		});
+	</script>
+
+
+</body>
+</html>

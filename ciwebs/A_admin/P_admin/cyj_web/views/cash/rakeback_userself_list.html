@@ -1,0 +1,78 @@
+﻿<title>会员自助返水查询</title>
+<{include file="web_header.html"}>
+<{config_load file="public.conf" section="public"}>
+
+<body>
+<style type="text/css">
+  .color_cx{
+    color:red;
+  }
+</style>
+<div id="con_wrap">
+  <div class="input_002">優惠統計</div>
+  <div class="con_menu">
+   <a href="<{$site_url}>/cash/discount/index">優惠統計</a>
+  <a href="<{$site_url}>/cash/discount/discount_log">優惠查詢</a>
+  <a href="<{$site_url}>/cash/discount/rakeback_log" style="color:red;">自助返水查询</a>
+  <a href="<{$site_url}>/cash/discount/discount_fd">返點優惠設定</a>
+   <a href="javascript:window.history.go(-1)">返回上一頁</a>
+  </div>
+</div>
+<div class="content">
+<table width="130%" class="m_tab">
+  <tbody><tr class="m_title">
+    <td colspan="28" height="27" align="center">日期：<{$title['back_time_start']}> ~ <{$title['back_time_end']}>  </td>
+  </tr>
+
+    <tr class="m_title">
+        <td rowspan="2">會員</td>
+        <td rowspan="2">返水时间</td>
+        <td rowspan="2">有效總<br>投注</td>
+        <td colspan="<{$inum}>">有效投注</td>
+        <td colspan="<{$inum}>">返點</td>
+        <td rowspan="2">返水小計</td>
+  </tr>
+    <tr class="m_title">
+            <{foreach from=$vtype item=v}>
+            <td><{$title_type[$v]}></td>
+            <{/foreach}>
+            <{foreach from=$vtype item=v}>
+            <td><{$title_type[$v]}></td>
+            <{/foreach}>
+    </tr>
+    <{foreach from=$data key=i item=val}>
+    <tr class="m_cen <{if $i%2 == 0}>even<{/if}>">
+        <td nowrap="nowrap"><{$val['username']}></td>
+        <td><{$val['do_time']}></td>
+        <td nowrap="nowrap"><{$val['all_bet']}></td>
+
+        <{foreach from=$bettypes item=vv}>
+        <td><{$val[$vv]}></td>
+        <{/foreach}>
+
+        <{foreach from=$fdtypes item=vv}>
+        <td><{$val[$vv]}></td>
+         <{/foreach}>
+
+        <td><{$val['total_e_fd']}></td>
+    </tr>
+    <{/foreach}>
+    <tr class="m_title">
+        <td align="center" colspan="2">總計：  總次數：<{($title['fd_num']+0)}>次</td>
+
+        <td><{$title['totalbet']}></td>
+
+        <{foreach from=$totalb item=vt}>
+        <td><{$vt}></td>
+        <{/foreach}>
+
+        <{foreach from=$totalf item=vf}>
+        <td><{$vf}></td>
+        <{/foreach}>
+
+        <td><{$title['totalfd']}></td>
+  </tr>
+</tbody></table>
+</div>
+
+<{include file="web_footer.html"}>

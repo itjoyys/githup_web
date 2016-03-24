@@ -1,0 +1,80 @@
+<title>支付参数設定</title>
+<{include file="web_header.html"}>
+<{config_load file="public.conf" section="public"}>
+
+<body>
+<script type="text/javascript">
+var indexid = "<{$index_id}>";
+$(document).ready(function(){
+  $("#index_id").val(indexid);
+  $("#index_id").change(function(event) {
+      $("#myFORM").submit();
+    });
+})
+</script>
+<div  id="con_wrap">
+  <div  class="input_002">支付平臺設定</div>
+  <div  class="con_menu">
+  <a href="<{$site_url}>/cash/payment/index">支付参数設定</a>
+  <a href="<{$site_url}>/cash/payment/payment_bank_list">入款銀行設定</a>
+  <a href="<{$site_url}>/cash/payment/payment_online_list" style="color: red;">线上支付設定</a>
+    <a href="<{$site_url}>/cash/payment/payment_pay_add" >新增线上支付</a>
+       <form name="myFORM" id="myFORM" action="<{$site_url}>/cash/payment/payment_online_list" method="GET">
+       <{$sites_str}>
+      状态：
+       <select  name="is_delete" onchange="document.getElementById('myFORM').submit()" id="status" class="za_select">
+           <option value="0" <{select_check(0,$is_delete)}>>启用</option>
+           <option value="2" <{select_check(2,$is_delete)}>>停用</option>
+      </select>
+      第三方平台：
+      <select name="pay_type" onchange="document.getElementById('myFORM').submit()"  id="bank_type" class="za_select">
+       <option value="0" >全部</option>
+          <{foreach from=$payment_type key=i item=v}>
+          <option value="<{$i}>" <{select_check($pay_type,$i)}>><{$v['online_bank_name']}></option>
+          <{/foreach}>
+          </select>
+
+
+      </form>
+  </div>
+</div>
+
+<table width="100%" class="m_tab" border="0" cellspacing="0" cellpadding="0">
+  <tr class="m_title_over_co"   align="center">
+    <td width="3%" height="20">平台</td>
+    <td width="10%" height="20">商户id</td>
+    <td width="5%" height="20">当日支付限额</td>
+    <td width="5%" height="20">层级</td>
+    <td width="5%" height="20">状态</td>
+    <td width="10%" height="20">操作</td>
+    </tr>
+      <{foreach from=$data key=i item=v}>
+      <tr class="m_cen <{if $i%2 == 0}>even<{/if}>">
+        <td width="3%" align="center"><{$v['pay_type_zh']}></td>
+        <td width="10%" align="center"><{$v['pay_id']}></td>
+        <td width="5%" align="center"><{$v['money_limits']}></td>
+        <td width="5%" align="center"><{$v['level_des']}></td>
+      <td width="5%" align="center">
+      <{if $v['is_delete'] == 2}>
+      <span style="color:#FF00FF;">停用</span>
+      <{else}>
+      <span style="color:##1E20CA;">正常</span>
+      <{/if}>
+      </td>
+
+    <td width="15%" align="center">
+         <a href="<{$site_url}>/cash/payment/payment_pay_add?index_id=<{$v['index_id']}>&id=<{$v['id']}>" >修改</a>&nbsp;&nbsp;/&nbsp;&nbsp;
+         <a href="<{$site_url}>/cash/payment/payment_pay_log?index_id=<{$v['index_id']}>&id=<{$v['id']}>" >存款记录</a>&nbsp;&nbsp;/&nbsp;&nbsp;
+         <{if $v['is_delete'] == '2'}>
+         <a href="#" onclick="if(confirm('是否要启用？'))document.location='<{$site_url}>/cash/payment/payment_pay_do?type=0&id=<{$v['id']}>';">启用</a>
+         <{else}>
+         <a href="#" onclick="if(confirm('是否要停用？'))document.location='<{$site_url}>/cash/payment/payment_pay_do?type=2&id=<{$v['id']}>';">停用</a>
+         <{/if}>&nbsp;&nbsp;/&nbsp;&nbsp;
+         <a href="#" onclick="if(confirm('是否要删除？'))document.location='<{$site_url}>/cash/payment/payment_pay_do?type=9&id=<{$v['id']}>';">删除</a>
+    </td>
+    </tr>
+     <{/foreach}>
+
+</table>
+
+<{include file="web_footer.html"}>

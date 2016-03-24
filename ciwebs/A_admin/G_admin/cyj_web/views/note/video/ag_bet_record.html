@@ -1,0 +1,156 @@
+<{include file="web_header.html"}>
+<style>
+.m_rig td {
+	text-align: center;
+}
+
+.Company {
+	cursor: pointer;
+}
+
+.Company, .CompanyOn {
+	padding: 3px 5px;
+	margin: 0px 5px 0px 0px;
+}
+
+.CompanyOn {
+	background: #bc5a83;
+	color: #ffffff
+}
+</style>
+<script>
+	window.onload = function() {
+		document.getElementById("page").onchange = function() {
+
+			document.getElementById('myFORM').submit();
+		}
+	}
+	var indexid = "<{$smarty.get.index_id}>";
+	$(document).ready(function(){
+		$("#index_id").val(indexid);
+	})
+
+	$(function(){
+	    $("#index_id").change(function(event) {
+	      $("#myFORM").submit();
+	    });
+	  })
+</script>
+<script>
+  window.onload=function(){
+    document.getElementById("page").onchange=function(){
+      document.getElementById('myFORM').submit()
+    }
+    document.getElementById("note_type").onchange=function(){
+       var gurl = $("#note_type").val();
+       window.location.href = "<{$site_url}>/note/bet_record/"+gurl;
+    }
+    $("#note_type").get(0).selectedIndex=2;
+  }
+</script>
+<body>
+
+	<div id="con_wrap">
+		<div class="input_002">
+			下注記錄
+		</div>
+		<div class="con_menu">
+			<form id="myFORM"
+				action="<{$site_url}>/note/Bet_record/video_bet_record"
+				method="get" name="FrmData">
+				<{$note_types}>
+ 				<a class="Company" href="<{$site_url}>/note/Bet_record/video_bet_record?type=lebo" >LEBO</a>
+ 				<a class="Company " href="<{$site_url}>/note/Bet_record/video_bet_record?type=bbin" >BBIN</a>
+ 				<a class="Company" href="<{$site_url}>/note/Bet_record/video_bet_record?type=mg">MG</a>
+ 				<a class="Company" href="<{$site_url}>/note/Bet_record/video_bet_record?type=ct">CT</a>
+ 				<a class="Company CompanyOn" href="<{$site_url}>/note/Bet_record/video_bet_record?type=ag" style="color:#fff;">AG</a>
+ 				<a class="Company" href="<{$site_url}>/note/Bet_record/video_bet_record?type=og">OG</a>
+				<input type="hidden" name="Company" id="Company"
+					value="<{$Company}>"> &nbsp;&nbsp;
+
+
+                                        <br /> 账號：<input name="username" type="text" value="<{$smarty.get.username}>"> 日期：<input
+					type="text" name="start_date"
+					value="<{$start_date}>" id="start_date" class="za_text Wdate"
+					onClick="WdatePicker({dateFmt:'yyyy-MM-dd'})"> --
+				<input type="text" name="end_date"
+					value="<{$end_date}>" id="end_date"
+					class="za_text Wdate"
+					onClick="WdatePicker({dateFmt:'yyyy-MM-dd'})"> &nbsp;&nbsp; <input type="SUBMIT" value="確定"
+					class="za_button">
+					 <span id="lblTime" style="color: red"></span>
+                                         <input type="hidden" name="gid" value="<{$smarty.get.gid}>">
+                                         <input type="hidden" name="did" value="<{$smarty.get.did}>">
+                                         <input type="hidden" name="type" value="<{$type}>">
+                                         <{$page}>
+			</form>
+		</div>
+	</div>
+	<div class="content">
+
+		<table width="100%" border="0" cellspacing="0" cellpadding="0"
+			class="m_tab">
+			<tbody>
+
+				<tr class="m_title_over_co">
+					<td width="120" align="center">注单時間</td>
+					<td width="70" align="center">注单號</td>
+					<td width="70" align="center">桌號</td>
+					<td width="70" align="center">游戏ID</td>
+					<td width="70" align="center">系统帳號</td>
+					<td width="70" align="center">视讯帳號</td>
+					<td width="70" align="center">IP</td>
+					<td width="70" align="center">余额</td>
+					<td width="90" align="center">总投注</td>
+					<td width="90" align="center">有效投注</td>
+					<td width="90" align="center">退水</td>
+					<td width="90" align="center">結果</td>
+				</tr>
+
+				<{foreach from=$data item=val key=key}>
+				<tr class="m_cen <{if $key%2 == 0}>even<{/if}>">
+					<td width="120" align="center"><{$val['bet_time']}></td>
+					<td width="70" align="center"><{$val['bill_no']}></td>
+					<td width="70" align="center"><{$val['table_code']}></td>
+					<td width="70" align="center" style="color:#04711C;"><{$val['game_zh']}></td>
+					<td width="70" align="center"><{$val['pkusername']}></td>
+					<td width="70" align="center"><{$val['player_name']}></td>
+					<td width="70" align="center"><{$val['login_ip']}></td>
+					<td width="70" align="center"><{$val['before_credit']}></td>
+					<td width="90" align="center"><{$val['bet_amount']}></td>
+					<td width="90" align="center"><{$val['valid_betamount']}></td>
+					<td width="90" align="center">0</td>
+					<td width="90" align="center"><{$val['netamount']}></td>
+				</tr>
+				<{/foreach}> <{if empty($data)}>
+				<tr class="m_rig" style="display:;">
+					<td height="70" align="center" colspan="14"><font
+						color="#3B2D1B">暫無數據。</font></td>
+				</tr>
+				<{else}>
+				<tr class="m_cen" style="background-Color: #fcdcdc; display:;">
+					<td colspan="7" style="text-align: right">小計：</td>
+					<td><span id="Nums" class="CountMoney"><{count($data)}></span>
+						笔</td>
+					<td><span id="BetMoneyAll" class="CountMoney"><{$sum_list[0]}></span></td>
+					<td><span id="ValidBetMoneyAll" class="CountMoney"><{$sum_list[1]}></span></td>
+					<td><span id="BackMoneyAll" class="CountMoney"><{number_format($data['data']['BackMoneyAll'],2)}></span></td>
+					<td><span id="ResultMoneyAll" class="CountMoney"><{$sum_list[2]}></span></td>
+				</tr>
+				<tr class="m_cen" style="background-Color: #fcdcdc; display:;">
+					<td colspan="7" style="text-align: right">总計：</td>
+					<td><span id="NumsAll" class="CountMoney"><{$countN}></span>
+						笔</td>
+					<td><span id="BetMoneyAll_" class="CountMoney"><{$sum_list[3]}></span></td>
+					<td><span id="ValidBetMoneyAll_" class="CountMoney"><{$sum_list[4]}></span></td>
+					<td><span id="BackMoneyAll_" class="CountMoney"><{number_format($data['data']['BackMoneyAll_'],2)}></span></td>
+					<td><span id="ResultMoneyAll_" class="CountMoney"><{$sum_list[5]}></span></td>
+				</tr>
+				<{/if}>
+
+
+			</tbody>
+		</table>
+	</div>
+
+	<{include file="web_footer.html"}>

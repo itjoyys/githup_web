@@ -1,0 +1,140 @@
+<{config_load file="public.conf" section="public"}>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+<script>
+	//分页跳转
+	window.onload = function() {
+		document.getElementById("page").onchange = function() {
+			document.getElementById('myFORM').submit()
+		}
+	}
+</script>
+<style>
+a {
+	text-decoration: none;
+}
+</style>
+<link rel="stylesheet" href="<{#mem_css#}>/index_main.css" />
+<link rel="stylesheet" href="<{#mem_css#}>/standard.css" />
+<script type="text/javascript" src="<{#mem_js#}>/date/WdatePicker.js"></script>
+ <link rel="stylesheet" href="<{#mem_js#}>/date/skin/WdatePicker.css" />
+</head>
+<body
+	style="BACKGROUND: url(<{#mem_images#}>/../private/content_bg.jpg) repeat-y left top;">
+	<div id="MAMain" style="width: 767px">
+		<div id="MACenter-content">
+			<div id="MACenterContent">
+				<{include file='member/common.html'}>
+				<style>
+							#sport_today a{color:#ffffff;background:#bc5a83;padding:2px}
+        </style>
+				<div id="MMainData" style="overflow-y: scroll; height: 330px">
+					<div class="MControlNav">
+						<form id="myFORM" action="" method="GET">
+							注单号：<input class="za_text" name="order" value="<{$order}>"
+								onKeyUp="value=value.replace(/[^\w]/ig,'')"> 投注时间：從 <input
+								class="za_text Wdate" readonly="readonly" name="start_date"
+								value="<{$s_date}>" onclick="WdatePicker()"> 至 <input
+								class="za_text Wdate" readonly="readonly" name="end_date"
+								value="<{$e_date}>" onclick="WdatePicker()"> <input
+								type="submit" value=" 查 询 " />
+
+							<select name="gtype" id="gtype" onchange="document.getElementById('myFORM').submit()" class="MFormStyle" >
+							<!-- <option value="0" >体育类型</option> -->
+							<option value="1"<{select_check('1',$gtype)}> >体育单式</option>
+							<option value="2"<{select_check('2',$gtype)}> >体育串关</option>
+						</select>
+
+
+								<select id="page" name="page"
+								class="za_select"> <{assign var=$i value=0}> <{section
+								name=total loop=$totalPage}>
+								<option value="<{$i=$i+1}><{$i}>"<{if $i ==
+									$dqpage}>selected<{/if}> ><{$i}></option> <{/section }>
+							</select> <{$totalPage}> 頁&nbsp;
+						</form>
+					</div>
+					<!-- 体育今日交易 -->
+					<div class="MPanel" style="display: block;">
+						<table class="MMain" border="1">
+							<tbody>
+								<tr>
+									<th>下注时间/注单号</th>
+									<th>投注类型</th>
+									<th>选项</th>
+									<th>投注额</th>
+									<th>可赢金额</th>
+									<th>派彩</th>
+								</tr>
+								<{if !empty($data)}>
+								<{foreach from=$data item=v}>
+								<tr align=center>
+									<td>
+									    <{$v.bet_time}><br>
+										<{$v.number}>
+									</td>
+									<td><a href="javascript:;">
+									<font color="<{return_color($v.ball_sort)}>"><b>
+													<{$v.ball_sort}>
+											</b></font></a></td>
+									<td>
+									<{if $gtype == 2}>
+										<div style=" width:99%; background:#fff; overflow:hidden;">
+										<{foreach from=$v.chuanlian item=n}>
+											<font color="#CC0000"><{$n.match_name}></font><br>
+											<{$n.master_guest}><br>
+											<font color="#FF0033"><{$n.bet_info}></font><br>
+											<{if !empty($n.MB_Inball) && !empty($n.TG_Inball) }>
+												<{$n.MB_Inball}> : <{$n.TG_Inball}><br>
+											<{/if}>
+											<div style="height:1px; width:99%; background:#ccc; overflow:hidden;"></div>
+										<{/foreach}>
+										</div>
+									<{else}>
+									<font color="#CC0000"><{$v.match_name}></font><br><{$v.master_guest}>
+									<font style="color:#FF0033">
+										<{if $v.point_column === "match_jr" || $v.point_column === "match_gj"}>
+											<{$v.bet_info}>
+										<{else}>
+											<br><{str_replace('-','<br>',$v.bet_info)}>
+										<{/if}>
+									<{/if}>
+									</font>
+									<{if $v.status != 0 && $v.status !=3 && $v.status !=6 && $v.status !=7 }>
+										<{if !empty($v.MB_Inball)}>
+											[<{$v.MB_Inball}> : <{$v.TG_Inball}>]
+										<{/if}>
+										<br/><{$v.login_ip}>
+									<{/if}>
+									</td>
+									<td>
+										<{$v.bet_money}>
+									</td>
+									<td>
+										<{round($v.bet_win,2)}>
+									</td>
+									<td><{return_status($v.status)}><br>
+										<{if $v.status == 0}>
+										0.00
+										<{else}>
+										<{$v.win}>
+										<{/if}>
+									</td>
+								</tr>
+								<{/foreach}> <{else}>
+								<tr>
+									<td height="70" class="b_cen" style="background-color: #F0F4F6"
+										colspan="7">暂无交易记录。</td>
+								</tr>
+								<{/if}>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

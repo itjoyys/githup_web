@@ -1,0 +1,176 @@
+﻿<title>優惠統計</title>
+<{include file="web_header.html"}>
+<{config_load file="public.conf" section="public"}>
+
+<body>
+<script>
+function ckall(){
+    for (var i=0;i<document.myFORM.elements.length;i++){
+      var e = document.myFORM.elements[i];
+    if (e.name != 'checkall' )
+      e.checked = document.myFORM.checkall.checked;
+  }
+}
+$(document).ready(function(){
+  $("#ckzero").click( function () {
+      $(".m_cen").each(function () {
+          if (parseFloat($(this).find('td:last').text())<=0) {
+            if($('#ckzero').attr("checked")==undefined){
+              $(this).find(':checkbox').attr("checked",false);
+            }else{
+              $(this).find(':checkbox').attr("checked",true);
+            }
+            //$(this).css("color","red");
+          }
+      })
+  });
+
+  $("#cknozero").click( function () {
+      $(".m_cen").each(function () {
+          if (parseFloat($(this).find('td:last').text())>0) {
+            if($('#cknozero').attr("checked")==undefined){
+              $(this).find(':checkbox').attr("checked",false);
+            }else{
+              $(this).find(':checkbox').attr("checked",true);
+            }
+            //$(this).css("color","red");
+          }
+      })
+  });
+});
+function check(){
+    var len = document.myFORM.elements.length;
+  var num = false;
+    for(var i=0;i<len;i++){
+    var e = document.myFORM.elements[i];
+        if(e.checked && e.name=='uid[]'){
+      num = true;
+      break;
+    }
+    }
+  if(num){
+    if($("#remark").val()=="")
+    {
+      alert("請輸入事件名稱！");return false;
+    }
+  }else{
+        alert("您未选中任何复选框");
+        return false;
+    }
+  $("#dis_submit").attr("disabled","disabled");
+}
+
+</script>
+  <div id="con_wrap">
+    <div class="input_002">優惠統計</div>
+    <div class="con_menu">
+      <a href="<{$site_url}>/cash/discount/index" style="color: red;">優惠統計</a>
+      <a href="<{$site_url}>/cash/discount/discount_log">優惠查詢</a>
+      <a href="<{$site_url}>/cash/discount/discount_fd">返點優惠設定</a>
+      <a href="javascript:window.history.go(-1)">返回上一頁</a>
+    </div>
+  </div>
+    <div id="progress"></div>
+  <div class="content">
+    <form method="post" name="myFORM" action="<{$site_url}>/cash/discount/dis_save" onsubmit="return check();">
+    <input type="hidden" name="save" value="true">
+        <input type="hidden" name="level_str" value="<{$level_str}>">
+        <input type="hidden" name="date_start" value="<{$date_start}>">
+        <input type="hidden" name="agent_id" value="<{$agent_id}>">
+        <input type="hidden" name="date_end" value="<{$date_end}>">
+        <input type="hidden" name="index_id" value="<{$index_id}>">
+        <input type="hidden" name="dis_type" value="<{$dis_type}>">
+      <table width="99%" class="m_tab">
+        <tbody>
+          <tr class="m_title">
+            <td colspan="30" height="27" align="center">日期：<{$date_start}> ~ <{$date_end}>  </td>
+          </tr>
+          <tr>
+            <td colspan="30" align="center" class="table_bg1">事件名稱：&nbsp;&nbsp;<input
+              type="text" value="<{$dis_name}>" name="remark"
+              id="remark" class="za_text" size="30">&nbsp;&nbsp;&nbsp;
+              綜合打碼量：&nbsp;&nbsp;<input type="text" name="zhbet"
+              id="normality" value="0" class="za_text"
+              style="min-width: 50px; width: 50px">倍&nbsp;&nbsp;&nbsp; <input
+              type="submit" name="submit" id="dis_submit" class="za_button" value="存入"><font color="red">【请勿重复点击】</font></td>
+          </tr>
+          <tr>
+            <td colspan="26">所有:<input
+              type="checkbox" name="cknozero" title="大于0" id="cknozero"></td>
+          </tr>
+          <tr class="m_title">
+            <td rowspan="2">選擇</td>
+            <td rowspan="2">代理商</td>
+            <td rowspan="2">會員</td>
+            <td rowspan="2">層級</td>
+            <td rowspan="2">總有效
+            </td>
+            <td colspan="<{$inum}>">有效投注</td>
+            <td colspan="<{$inum}>">返點</td>
+            <td rowspan="2">自助返水</td>
+            <td rowspan="2">返點小計</td>
+          </tr>
+          <tr class="m_title">
+            <{foreach from=$vtype item=v}>
+            <td><{$title_type[$v]}></td>
+            <{/foreach}>
+            <{foreach from=$vtype item=v}>
+            <td><{$title_type[$v]}></td>
+            <{/foreach}>
+          </tr>
+   <{foreach from=$userIds key=i item=val}>
+    <tr class="m_cen <{if $i%2 == 0}>even<{/if}>">
+    <td align="center">
+        <{if $is_dis_true}>
+        <font style="color:rgb(34, 181, 18)">已返水</font>
+        <{else}>
+        <input name="uid[]" type="checkbox" value="<{$val['uid']}>">
+        <{/if}>
+
+        </td>
+            <td nowrap="nowrap"><{$val['agent_user']}></td>
+            <td nowrap="nowrap"><{$val['username']}></td>
+            <td nowrap="nowrap"><{$val['level_des']}></td>
+            <td nowrap="nowrap"><{$val['betall']}></td>
+
+            <{foreach from=$bettypes item=vv}>
+            <td><{$val[$vv]}></td>
+            <{/foreach}>
+
+            <{foreach from=$fdtypes item=vv}>
+            <td><{$val[$vv]}></td>
+            <{/foreach}>
+            <td><{$val['self_fd']}></td>
+            <td><{$val['total_e_fd']}></td>
+          </tr>
+    <{/foreach}>
+    <tr class="m_title">
+            <input type="hidden" name="iNum" value="<{$iNum}>">
+            <input type="hidden" name="totalBet" value="<{$totalBet}>">
+            <input type="hidden" name="total_fd" value="<{$total_fd}>">
+            <{foreach from=$userIds key=vid item=val}>
+            <input type="hidden" name="<{$vid}>" value="<{$val}>">
+            <{/foreach}>
+            <td align="center">總計：</td>
+            <td colspan="3">總人數：<{$iNum}>人</td>
+            <td><{$totalBet}></td>
+
+            <{foreach from=$totalb item=vt}>
+            <td><{$vt}></td>
+            <{/foreach}>
+
+            <{foreach from=$totalf item=vf}>
+            <td><{$vf}></td>
+            <{/foreach}>
+
+            <td></td>
+
+            <td><{$total_fd}></td>
+          </tr>
+        </tbody>
+      </table>
+    </form>
+  </div>
+
+
+<{include file="web_footer.html"}>

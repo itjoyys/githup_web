@@ -1,0 +1,270 @@
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2016-01-23 15:53:16
+         compiled from "D:\WWW\web_20156\index_ci\t_wap\views\lebo.html" */ ?>
+<?php /*%%SmartyHeaderCode:1108156a3316ce47481-79359262%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+$_valid = $_smarty_tpl->decodeProperties(array (
+  'file_dependency' => 
+  array (
+    '78c8e3bea73f05d0fa083c6dbe5fd62ebbaf85b2' => 
+    array (
+      0 => 'D:\\WWW\\web_20156\\index_ci\\t_wap\\views\\lebo.html',
+      1 => 1453520880,
+      2 => 'file',
+    ),
+  ),
+  'nocache_hash' => '1108156a3316ce47481-79359262',
+  'function' => 
+  array (
+  ),
+  'has_nocache_code' => false,
+  'version' => 'Smarty-3.1.21-dev',
+  'unifunc' => 'content_56a3316ce8ab81_19833296',
+),false); /*/%%SmartyHeaderCode%%*/?>
+<?php if ($_valid && !is_callable('content_56a3316ce8ab81_19833296')) {function content_56a3316ce8ab81_19833296($_smarty_tpl) {?><html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>LeBo Game</title>
+		<link rel="shortcut icon" href="/public/default/images/favicon.ico">
+		<style type="text/css">
+			#banner_top {
+				width: 98%;
+				height: 100px;
+				background-image: url("/public/default/images/bg_duplicate.png");
+				text-align: center;
+				padding-top: 25px;
+			}
+			
+			.wechat {
+				width: 100%
+			}
+			
+			#horizontal {
+				margin-left: auto;
+				margin-right: auto;
+				width: 100%;
+				height: 170%;
+				display: none;
+				background-image: url(/public/default/images/horizontal_ios.jpg);
+				background-size: 100%;
+				background-repeat: no-repeat;
+			}
+			
+			#horizontal a img {
+				margin-top: 34%;
+				margin-left: 72%;
+				width: 20%
+			}
+			
+			#vertical {
+				width: 100%;
+				height: 120%;
+				text-align: center;
+				padding-top: 3%;
+				background-image: url(/public/default/images/vertical_1.jpg);
+				background-size: 100%;
+				background-repeat: no-repeat;
+			}
+			
+			#vertical .ver_sp {
+				color: #02245b;
+				font-family: 黑体;
+				display: inherit;
+				padding-top: 10%;
+				padding-bottom: 45%;
+				padding-left: 38%;
+				text-align: left;
+			}
+			
+			* {
+				margin: 0px;
+				padding: 0px;
+			}
+			
+			.anzhuang {
+				margin-top: 20%;
+			}
+			
+			.anzhuang span {
+				font-size: 16px;
+				display: block;
+			}
+			
+			.anzhuang .sp_img {
+				width: 100%;
+				top: 0px;
+				left: 0px;
+			}
+			
+			.anzhuang .sp_img img {
+				background-position: center;
+				background-size: 100%;
+				width: 90%;
+				margin: auto;
+				margin-left: 5%;
+			}
+			
+			.az,
+			.bz_1,
+			.bz_2,
+			.bz_3 {
+				color: #52BAD5;
+				margin: 5% 5% 2% 5%;
+			}
+			
+			.anzhuang .bz_1_1,
+			.bz_2_2,
+			.bz_3_3 {
+				margin: 5% 5% 2% 5%;
+				color: #000000;
+			}
+			
+			.riqi {
+				color: #ab9984;
+				display: inherit;
+			}
+			
+			.te_sp {
+				color: #ab9984;
+				display: block;
+				background-image: url(/public/default/images/vertical_2.jpg);
+				background-position: center;
+				background-repeat: no-repeat;
+				background-size: 100% 100%;
+				line-height:25px ;
+				text-align: left;
+				padding: 20px 5px 60px 5px;
+			}
+		</style>
+
+		<?php echo '<script'; ?>
+ type="text/javascript">
+			window.onload = function() {
+				if (isWechat()) {
+					document.getElementById("browser").style.display = 'none';
+					document.getElementById("wechat").style.display = '';
+				} else {
+					document.getElementById("browser").style.display = '';
+					if (browser.versions.mobile) {
+						document.getElementById("horizontal").style.width = '100%';
+						document.getElementById("vertical").style.display = '';
+						document.getElementById("horizontal").style.display = 'none';
+					} else {
+						document.getElementById("horizontal").style.width = '70%';
+						document.getElementById("vertical").style.display = 'none';
+						document.getElementById("horizontal").style.display = '';
+					}
+				}
+			}
+
+			function isWechat() {
+				var ua = window.navigator.userAgent.toLowerCase();
+				if (ua.match(/MicroMessenger/i) == 'micromessenger') {
+					return true;
+				} else {
+					return false;
+				}
+			}
+			var browser = {
+					versions: function() {
+						var u = navigator.userAgent,
+							app = navigator.appVersion;
+						return { //移动终端浏览器版本信息 
+							trident: u.indexOf('Trident') > -1, //IE内核 
+							presto: u.indexOf('Presto') > -1, //opera内核 
+							webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核 
+							gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核 
+							mobile: !!u.match(/AppleWebKit.*Mobile.*/), // || !!u.match(/AppleWebKit/), //是否为移动终端 
+							ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端 
+							android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器 
+							iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者QQHD浏览器 
+							iPad: u.indexOf('iPad') > -1, //是否iPad 
+							webApp: u.indexOf('Safari') == -1
+								//是否web应该程序，没有头部与底部 
+						};
+					}(),
+					language: (navigator.browserLanguage || navigator.language).toLowerCase()
+				}
+				// 	document.writeln(navigator.userAgent); 
+				// 	document.writeln("语言版本: "+browser.language); 
+				// 	document.writeln(" 是否为移动终端: "+browser.versions.mobile); 
+				// 	document.writeln(" ios终端: "+browser.versions.ios); 
+				// 	document.writeln(" android终端: "+browser.versions.android); 
+				// 	document.writeln(" 是否为iPhone: "+browser.versions.iPhone); 
+				// 	document.writeln(" 是否iPad: "+browser.versions.iPad); 
+				// 	document.writeln(navigator.userAgent);
+			function orientationChange() {
+				switch (window.orientation) {
+					case 0:
+						document.getElementById("vertical").style.display = '';
+						document.getElementById("horizontal").style.display = 'none';
+						break;
+					case 180:
+						document.getElementById("vertical").style.display = '';
+						document.getElementById("horizontal").style.display = 'none';
+						break;
+					case -90:
+						document.getElementById("vertical").style.display = 'none';
+						document.getElementById("horizontal").style.display = '';
+						break;
+					case 90:
+						document.getElementById("vertical").style.display = 'none';
+						document.getElementById("horizontal").style.display = '';
+						break;
+				}
+			}
+			window.addEventListener("onorientationchange" in window ? "orientationchange" : "resize", orientationChange, false);
+		<?php echo '</script'; ?>
+>
+
+	</head>
+
+	<body>
+		<div id="wechat" style="display: none; ">
+			<img alt="" src="/public/default/images/wechat_help_sc.png" style="width: 100%">
+		</div>
+		<div id="browser">
+			<div id="horizontal">
+				<a href="itms-services://?action=download-manifest&url=https://www.leboapp.com/lebogaming_ios.plist">
+					<img alt="" src="/public/default/images/install_btn.png" style=""></a>
+				<br>
+				<br>
+				<br>
+			</div>
+			<div id="vertical">
+
+				<span class="ver_sp">
+			  <br>
+			   ·&nbsp;支援 Android系统<br>
+			   ·&nbsp;支援 iPhone系统<br>
+		       </span>
+				<div class="anzhuang" style="text-align: left;">
+					<span class="az">注册指南</span>
+					<span class="bz_1">步骤一：</span>
+					<span class="bz_1_1">1.登陆电脑版LEBO游戏大厅,点击左上角的“进入新厅”按钮</span>
+					<span class="sp_img"><img src="/public/default/images/lebo_1.png" ></span>
+					<span class="bz_2">步骤二：</span>
+					<span class="bz_2_2">进入新厅后,点击左上角的“立即体验”进入“开户手机客户端”</span>
+					<span class="sp_img"><img src="/public/default/images/lebo_2.png" ></span>
+					<span class="bz_3">步骤三：</span>
+					<span class="bz_3_3">设置手机客户端密码</span>
+					<span class="sp_img"><img src="/public/default/images/lebo_3.png"></span>
+					<span class="bz_3">步骤四</span>
+					<span class="bz_3_3">点击下面按钮,下载手机客户端</span>
+
+				</div>
+
+				<a href="itms-services://?action=download-manifest&url=https://www.leboapp.com/lebogaming_ios.plist">
+
+					<img alt="" src="/public/default/images/install_btn.png" style="margin-top: 10%;width: 60%;">
+				</a>
+				<br>
+				<span class="riqi">更新日期：&nbsp;2015年11月12日</span>
+				<span class="te_sp">
+			    注册登入LEBO手机客户端便可以享受更高层次的博娱游戏。不管何时，不管何地，只要一机在手，便可随地玩游。此为LEBO唯一官方认证，版权所有。
+		        </span>
+			</div>
+		</div>
+
+	</body>
+
+</html><?php }} ?>

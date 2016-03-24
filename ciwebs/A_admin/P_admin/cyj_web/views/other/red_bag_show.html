@@ -1,0 +1,118 @@
+<title>已派红包</title>
+<{include file="web_header.html"}>
+<link  rel="stylesheet"  href="/public/css/easydialog.css"  type="text/css">
+<body>
+<script type="text/javascript">
+var indexid = "<{$smarty.get.index_id}>";
+$(document).ready(function(){
+	$("#index_id").val(indexid);
+})
+
+$(function(){
+    $("#index_id").change(function(event) {
+      $("#queryform").submit();
+    });
+  })
+</script>
+<div  id="con_wrap">
+
+<div  class="input_002" >红包管理</div>
+
+<div class="con_menu" style="width:500px;">
+  <a href="<{$site_url}>/other/red_bag/bag_set_show?index_id=<{$index_id}>" style="color: red;">添加红包</a>
+  <a href="<{$site_url}>/other/red_bag/search_bag_index">历史查询</a>
+  <form action="" method="get" name="queryform" id="queryform" style="float: left">
+    <{$sites_str}>
+  </form>
+  </div>
+</div>
+<div  class="content" style="overflow">
+  <table  style="table-layout: fixed;width:100%" border="0"  cellspacing="0"  cellpadding="0"  class="m_tab">
+    <tbody>
+    <tr  class="m_title_over_co" >
+      <td style="width:105px;">状态</td>
+      <td style="width:95px;">活动标题</td>
+      <td style="width:75px;">红包总额</td>
+      <td style="width:75px;">最小金额</td>
+      <td style="width:70px;">打码倍数</td>
+      <td style="width:50px;">限制IP</td>
+      <td style="width:180px;">分层限制</td>
+      <td style="width:120px;">活动开始时间</td>
+      <td style="width:120px;">活动结束时间</td>
+      <td style="width:120px;">活动创建时间</td>
+      <td style="width: 175px;">功能</td>
+    </tr>
+    <{if $bag_info}>
+     <{foreach from=$bag_info key=i item=val}>
+
+   <tr class="m_cen <{if $i%2 == 0}>even<{/if}>" >
+      <td><{$val['status']}></td>
+      <td><{$val['title']}></td>
+      <td><{$val['totle_money']}></td>
+      <td><{$val['min_inpoint']}></td>
+      <td><{$val['amount_inpoint']}></td>
+      <td><{if $val['is_ip'] ==1}>是<{else}>否<{/if}></td>
+      <td><{$val['groupid']}></td>
+      <td><{$val['starttime']}></td>
+      <td><{$val['endtime']}></td>
+      <td><{$val['create_time']}></td>
+
+      <td  align="center">
+        <{if $val['make_sure'] == 0}>
+       <a  href="<{$site_url}>/other/red_bag/bag_set_show?index_id=<{$val['index_id']}>&id=<{$val['id']}>&pic=<{$val['pic']}>">修改</a>&nbsp;/&nbsp;
+        <{/if}>
+      <{if $val['make_sure'] == 1}>
+        <a  href="<{$site_url}>/other/red_bag/search_look?id=<{$val['id']}>&index_id=<{$val['index_id']}>&make_sure=<{$val['make_sure']}>&is_ing=<{$val['is_ing']}>">查看</a>&nbsp;/
+           <span style="color:green">已生成</span>&nbsp;/&nbsp;
+   <{else}>
+   <a href="<{$site_url}>/other/red_bag/creat_red_bag?id=<{$val['id']}>&index_id=<{$val['index_id']}>" >未生成</a>&nbsp;/&nbsp;
+        <{/if}>
+
+      <{if $val['status'] == "活动正在进行中" || $val['status'] == "未开始"}>
+<a href="<{$site_url}>/other/red_bag/del_red_bag?id=<{$val['id']}>&index_id=<{$val['index_id']}>" onClick="return confirm('确定终止吗？终止后将不可恢复！')">终止</a>
+       <{/if}>
+      </td>
+    </tr>
+  <{/foreach}>
+  <{else}>
+  <tr class="m_rig" style="display:;">
+        <td height="70" align="center" colspan="10"><font color="#3B2D1B">暫無數據。</font></td>
+      </tr>
+  <{/if}>
+  </tbody></table>
+</div>
+<div id="result"></div>
+<script>
+function show_msg(id,index_id){
+        $.ajax({
+        type: "POST",
+        data:{id:id,index_id:index_id},
+        dataType: "json",
+        url: '/index.php/other/red_bag/creat_red_bag/' + "?t=" + Math.random(),
+//        beforeSend: function () {
+
+//        },
+        success: function (data) {
+           if (data.msg==1) {
+            str='<table>';
+            $.each(data.res,function(k,v){
+              str+='<tr><td>第'+v.i+'个红包</td><td>当前红包有'+v.money+'元</td><td>红包余额'+v.total+'元</td></tr>'
+            })
+            hh(str+'</table>');
+            }
+        }
+    })
+
+}
+function hh(msg){
+  easyDialog.open({
+  container : {
+    header : '红包分配详情',
+    content : msg
+  },
+  overlay : false
+});
+
+}
+</script>
+ <{include file="web_footer.html"}>

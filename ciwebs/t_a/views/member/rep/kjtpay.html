@@ -1,0 +1,24 @@
+<html>
+<head>
+<title>kjtpay</title>
+</head> 
+<body onLoad="document.kjtpay.submit();">
+<form name='kjtpay' action="<{$data['form_url']}>" method='post'>
+        <input type="hidden" name="service" value="<{$data['service']}>">
+        <input type="hidden" name="version" value="<{$data['version']}>">
+        <input type="hidden" name="partner_id" value="<{$data['partner_id']}>">
+        <input type="hidden" name="_input_charset" value="<{$data['_input_charset']}>">
+        <input type="hidden" name="sign" value="<{$data['sign']}>">
+        <input type="hidden" name="sign_type" value="<{$data['sign_type']}>">
+        <input type="hidden" name="return_url" value="<{$data['return_url']}>">
+        <input type="hidden" name="request_no" value="<{$data['request_no']}>">
+        <input type="hidden" name="trade_list"  value="<{$data['trade_list']}>">
+        <input type="hidden" name="buyer_id" value="<{$data['buyer_id']}>">
+        <input type="hidden" name="buyer_id_type" value="<{$data['buyer_id_type']}>">
+        <input type="hidden" name="pay_method" value="<{$data['pay_method']}>">
+        <input type="hidden" name="go_cashier" value="<{$data['go_cashier']}>">
+		<input type="hidden" name="req_url" value="<{$data['req_url']}>">
+	
+</form>
+</body>
+</html>

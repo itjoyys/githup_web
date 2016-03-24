@@ -1,0 +1,325 @@
+<{include file="info_header.html"}>
+<{config_load file="public.conf" section="public"}>
+<body>
+<script>
+var color;
+function dep_config(title,id,state,sort,ctype,pid,index_id){
+    $("#id").val(id);
+    $("#state").val(state);
+    $("#title").val(title);
+    $("#sort").val(sort);
+    $("#ctype").val(ctype);
+    $("#pid").val(pid);
+    $("#index_ida").val(index_id);
+    var nr = '';
+    var nr2 = '';
+    nr += '<option value="2">优惠内容</option>'
+        nr +='<option value="1">优惠分类</option>'
+    nr2 += '<option value="2">优惠内容</option>'
+    if(pid > 0){
+        $('#ctype').html(nr2);
+    }else{
+        $('#ctype').html(nr);
+    }
+    easyDialog.open({
+          container : 'delevel',
+          fixed : false
+    });
+}
+function logo_up(id,type,index_id){
+    $("#idl").val(id);
+    $("#type").val(type);
+    $("#index_idb").val(index_id);
+    easyDialog.open({
+          container : 'logo_up',
+          fixed : false
+    });
+}
+
+var indexid = "<{$index_id}>";
+$(document).ready(function(){
+  $("#index_id").val(indexid);
+  $("#index_id").change(function(event) {
+      $("#queryform").submit();
+    });
+})
+
+function view(img,w,h){
+    var html;
+    var img = 'http://127.0.0.1/'+img;
+    html = '<img src="'+img+'" width="'+w+'" height="'+h+'"><div class="mskeImgBg"></div>';
+    lw = -w/2;
+    $(".mskelayBox").css("margin-left",-w/2);
+    $(".mskelayBox").css("margin-top",-h/2);
+    $("#view_html").html(html);
+    $(".mskelayBox").show();
+}
+jQuery(function(){
+   $(".mskeClaose").click(function(){$(".mskeLayBg,.mskelayBox").hide()}); 
+})
+</script>
+<style type="text/css">
+.de_title{
+    background-color: #081425;
+    height: 30px;
+    line-height: 30px;
+    overflow: hidden;
+    color: #666;
+    padding: 0 10px;
+    font-size: 14px;
+    border-bottom: 1px solid #e5e5e5;
+    background: #f7f7f7;
+    border-radius: 4px 4px 0 0;
+}
+#delevel,#logo_up{
+  border-radius: 4px 4px 0 0;
+  color: #444;
+  border: 3px solid rgba(0,0,0,0);
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+#de_title{
+    font-size: 14px;
+    color: #000;
+    font: bold 9pt/100% Arial, Helvetica, sans-serif;
+    font-weight: 200;
+}
+.de_td{
+      padding: 1px 0;
+      line-height: 34px;
+}
+.de_input{
+   border-color:#ccc;
+   width: 230px;
+}
+input{
+   height: 20px;
+}
+.de_select{
+  float: left;
+  margin-left: 8px;
+}
+.laydate-icon{
+  float: left;
+  margin-left: 8px;
+}
+
+.view{
+  cursor:pointer;
+}
+
+.mskelayBox {
+  margin-top: -251px;
+  margin-left: -294px;
+  position: fixed;
+  left: 50%;
+  top: 40%;
+  border: 7px solid #E2E2E2;
+  z-index: 20;
+  background: #FFF;
+  display: none;
+  _display: none!important;
+}
+.mskeClaose {
+  position: absolute;
+  top: -17px;
+  right: -17px;
+  cursor: pointer;
+}
+.flash_a{
+  background: #000;padding: 3px 8px;
+  font-family: Verdana, Arial, sans-serif;
+  border-radius: 10px;
+  font-size: 12px;
+  color: #fff
+}
+</style>
+<div class="content-box role">
+    <div class="content-box-header">
+        <h3>活动文案管理  <a class="revise_a botton_a" onclick="dep_config('','','','','',<{$pid}>,'<{$index_id}>')" href="javascript:void(0)">添加优惠活动</a>&nbsp;<font style="color:red;font-size:13px;">(默认选中优惠内容)</font></h3>
+        <div class="clear"></div>
+    </div>
+    <form action="" method="get" name="queryform" id="queryform">
+        <div><{$sites_str}></div>
+    </form>
+
+    <div class="mskelayBox" style="display: none;">
+      <div id="view_html">
+      </div>
+      <img class="mskeClaose" src="<{#purl#}><{#images#}>/mke_close.png" width="27" height="27">
+    </div>
+
+    <div class="content-box-content">
+        <div class="default-tab">
+            <div class="tab-content default-tab">
+                <table>
+                    <thead>
+                    <tr>
+                        <th style="width: 50px;">编号</th>
+                        <th>名称</th>
+                        <th style="width:115px;">排序</th>
+                        <th style="width:90px;">状态</th>
+                        <th style="width:180px;">操作</th>
+                    </tr>
+
+                    </thead>
+                    <tbody>
+                    <{foreach from=$activity item=v}>
+                    <tr>
+                        <td><{$v['id']}></td>
+                        <td><a href="#" <{if $v['case_state']==0 }>onclick="dep_config('<{$v['title']}>','<{$v['id']}>','<{$v['state']}>','<{$v['sort']}>','<{$v['ctype']}>','<{$v['pid']}>','<{$index_id}>')" <{/if}>><{$v['title']}></a>
+                        <{if $v['img']&&$v['type'] == 2}>
+                <font style="color:red;" class="view" onclick="view('<{$v['img']}>','<{$v['width']}>','<{$v['height']}>')">[预览]
+                        </font>
+                        <{/if}>
+                        </td>
+                        <td><{$v['sort']}></td>
+                        <td><{$v['state_z']}></td>
+                        <td class="td">
+                        <{if $v['case_state']==0 }>
+                        <{if $v['ctype']==2 }>
+                        <a style="background: #e86829;" class="revise_a" href="#" onclick="logo_up('<{$v['id']}>','<{$v['type']}>','<{$index_id}>')">上传</a> 
+                        
+                        <a style="background: #e86829;" class="revise_a" href="activity_edit?id=<{$v['id']}>&index_id=<{$v['index_id']}>">编辑内容</a><{else}>
+                          <a style="background: #e86829;" class="revise_a" href="activity_index?pid=<{$v['id']}>&index_id=<{$v['index_id']}>">优惠内容</a>
+                         <{/if}>
+                          <a class="revise_a flash_a" onclick="if(confirm('确定删除!!!')){document.location='activity_del?id=<{$v['id']}>'}" href="javascript:void(0)">删除</a>
+                            <{else}>
+                            <font color="red">已建立案件</font>
+                            <{/if}>
+                           
+                        </td>
+                    </tr>
+                    <{/foreach}>
+                    <thead>
+                     <tr>
+              <th colspan="5"> <{if $cstate==0 }>
+            <a class="revise_a flash_a" onclick="if(confirm('确定存储案件!!!')){document.location='activity_case?index_id=<{$index_id}>'}" href="javascript:void(0)">储存案件</a>
+                            <{else}>
+                            <font color="red">已建立案件</font>
+                            <{/if}></th>
+                            </tr>
+                    </thead>
+
+                    </tbody>
+                </table>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+  <!-- 图片上传-->
+<div id="logo_up" style="display:none;background-color:white;" class="con_menu">
+  <form action="up_activity_do" method="post" enctype="multipart/form-data" name="add_form" onsubmit="return checkForm_img()" >
+    <input name="id" id="idl" value="" type="hidden">
+    <input name="type" id="type" value="" type="hidden">
+    <input name="index_id" id="index_idb" value="" type="hidden">
+    <table class="m_tab" style="width:300px;margin:0;">
+        <tbody><tr class="de_title">
+            <td colspan="2" height="27" class="table_bg" align="left">
+            <span id="de_title">上传图片</span>
+            <span style="float:right;"><a style="color:white;" href="javascript:void(0)" title="关闭窗口" onclick="easyDialog.close();">×</a></span>
+            </td>
+        </tr>
+        <tr class="m_title">
+            <td>选择文件</td>
+            <td class="de_td">
+                <div class="uploader blue">
+                <input type="text" class="filename" readonly="readonly" name="filename">
+                <input type="button" name="file" class="button" value="Browse...">
+                <input type="file" size="30" name="img">
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center">
+                <input type="submit" value="提交" class="botton_a">
+                <input type="reset" value="关闭" onclick="easyDialog.close();" class="botton_a">
+            </td>
+        </tr>
+    </tbody></table>
+</form>
+    </div>
+
+  <!-- 移动弹窗 -->
+<div id="delevel" style="display:none;background-color:white;" class="con_menu">
+  <form action="activity_title_do" method="post" name="add_form" onsubmit="return check_title()">
+    <input name="id" id="id" value="" type="hidden">
+    <input name="pid" id="pid" value="" type="hidden">
+    <input name="index_id" id="index_ida" value="" type="hidden">
+    <table class="m_tab" style="width:300px;margin:0;">
+        <tbody><tr class="de_title">
+            <td colspan="2" height="27" class="table_bg" align="left">
+            <span id="de_title">是否确定修改!!!</span>
+            <span style="float:right;"><a style="color:white;" href="javascript:void(0)" title="关闭窗口" onclick="easyDialog.close();">×</a></span>
+            </td>
+        </tr>
+        <tr class="m_title">
+            <td>标题</td>
+            <td class="de_td"><input name="title" id="title" class="de_input" value=""></td>
+        </tr>
+         <tr class="m_title">
+            <td>排序</td>
+            <td class="de_td"><input name="sort" id="sort" class="de_input" value="" type="num"></td>
+        </tr>
+         <tr class="m_title">
+            <td>是否启用</td>
+            <td class="de_td">
+              <select class="de_select" name="state" id="state">
+                <option value="1">是</option>
+                <option value="2">否</option>
+              </select>
+            </td>
+        </tr>
+            <tr class="m_title">
+            <td>类型</td>
+            <td class="de_td">
+              <select class="de_select" name="ctype" id="ctype">
+              </select>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center">
+                <input type="submit" value="提交" class="botton_a">
+                <input type="reset" value="关闭" onclick="easyDialog.close();" class="botton_a">
+            </td>
+        </tr>
+    </tbody></table>
+</form>
+    </div>
+</body>
+<script>
+$(function(){
+    $("input[type=file]").change(function(){$(this).parents(".uploader").find(".filename").val($(this).val());});
+    $("input[type=file]").each(function(){
+    if($(this).val()==""){$(this).parents(".uploader").find(".filename").val("");}
+    });
+});
+
+
+function checkForm_img (){
+   if($("input[class=filename]").val() == ''){
+      alert('请先选择图片');
+      return false;
+   }
+}
+
+
+function check_title(){
+   if($("#title").val() == ''){
+      alert('请输入标题');
+      return false;
+   }
+   if($("#sort").val() == ''){
+      $("#sort").val('0')
+   }else{
+        if(isNaN($("#sort").val())){
+         $("#sort").val('0');
+         return false;
+	    }
+   }
+}
+</script>
+</html>

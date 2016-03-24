@@ -1,0 +1,33 @@
+          
+          <!--  彩票开奖结果公共检索 -->
+			    <form  name="myFORM"  id="myFORM"  action="<{$site_url}>/result/fc_result/index"  method="get">
+          类型:<select  id="cp_cate"  name="enable" onchange="document.getElementById('myFROM').sumit"  class="za_select">
+                   <option  value="7">六合彩</option>
+                   <option  value="5">福彩3D</option>
+                   <option  value="6">排列三</option>
+                   <option  value="2">重庆时时彩</option>
+                   <option  value="10">天津时时彩</option>
+                   <!-- <option  value="11">江西时时彩</option> -->
+                   <option  value="12">新疆时时彩</option>
+                   <option  value="3">北京赛车PK拾</option>
+                   <option  value="8">北京快乐8</option>
+                   <option  value="1">广东快乐十分</option>
+                   <option  value="4">重庆快乐十分</option>
+    			         <option  value="13">江苏快3</option>
+                   <option  value="14">吉林快3</option>
+               </select>
+          期数：
+          <input  type="text"  name="qishu"   class="za_text" id="qishu" style="min-width:80px;width:80px;"  size="15"  maxlength="15" value="<{$smarty.get.qishu}>">
+
+
+      选择日期：
+		   <input style="width:75px;height:18px;" name="date" type="text" id="date_kaijiang"   onClick="WdatePicker()" size="10" maxlength="10" readonly class="Wdate" value="<{$date}>" />
+
+      <input  type="submit"  name="buname"  value="搜索"   class="za_button">
+			頁數：
+			  <select id="page" name="page" class="za_select">
+          <{assign var=$i value=0}> <{section name=total loop=$totalPage}>
+          <option value="<{$i=$i+1}><{$i}>" <{select_check($i,$smarty.get.page)}>
+            ><{$i}></option> <{/section}>
+        </select> <{$totalPage}> 頁&nbsp;
+      </form>

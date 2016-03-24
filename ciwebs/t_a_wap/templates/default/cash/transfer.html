@@ -1,0 +1,59 @@
+<ion-view class="m-cash" cache-view="false">
+    <ion-nav-bar class="bar bar-header bar-light">
+        <ion-nav-title>{{'Member_LabelTrans'|translate}}</ion-nav-title>
+        <ion-nav-buttons side="left"><a class="button button-icon icon ion-ios-arrow-back" ng-click="historyBack()"></a>
+        </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-content id="transferContent" class="has-header" delegate-handle="transferScroll">
+        <div ng-if="currentUser.State==2" cur-lock=""></div>
+        <form class="transfer" ng-if="currentUser.State==0">
+            <div class="sub-title">{{'Member_LabelChangeWallet'|translate}}<a class="refresh right"
+                                                                              ng-click="refresh()"><img
+                    ng-src="{{CDNURL+'images/icon-refresh.png'}}"></a></div>
+            <div class="row">
+                <div class="col col-33" ng-repeat="wallet in walletList"
+                     ng-class="{choose:transerModel.walletType==wallet.GameClassID, unchoose:wallet.State==0||transerModel.rollInWallet == wallet.GameClassID||wallet.LoadingState == 2||wallet.IsOnline == 1||wallet.walletBalance==0}"
+                     ng-click="chooseWalletFun(wallet.GameClassID)" ng-if="wallet.OpenState==1"><p>
+                    {{wallet.GameClassName}}</p><span ng-if="wallet.LoadingState == 0 && transerModel.classLoading==0">{{ wallet.walletBalance}}</span><span
+                        ng-if="wallet.LoadingState == 2 || transerModel.classLoading==2">{{'Member_LabelLoadFail'|translate}}</span><span
+                        ng-if="(wallet.LoadingState == 1 || transerModel.classLoading==1) && wallet.LoadingState != 2 && transerModel.classLoading!=2"><ion-spinner></ion-spinner></span>
+                </div><div class="col col-33" ng-if="walletList.length % 3==1"><p>&nbsp;</p><span>&nbsp;</span></div><div class="col col-33" ng-if="walletList.length % 3==1"><p>&nbsp;</p><span>&nbsp;</span></div><div class="col col-33" ng-if="walletList.length % 3==2"><p>&nbsp;</p><span>&nbsp;</span></div>
+            </div>
+            <div class="sub-title">{{'Member_LabelTransInto'|translate}}</div>
+            <div class="row">
+                <div class="col col-33" ng-repeat="wallet in walletList"
+                     ng-class="{choose:transerModel.rollInWallet==wallet.GameClassID, unchoose:wallet.State==0||wallet.OpenState2==1||transerModel.walletType==wallet.GameClassID||wallet.LoadingState==2 ||wallet.IsOnline == 1}"
+                     ng-click="rollInFun(wallet.GameClassID)" ng-if="wallet.OpenState==1"><p>
+                    {{wallet.GameClassName}}</p><span
+                        ng-if="(wallet.LoadingState == 0 && transerModel.classLoading==0)">{{wallet.walletBalance}}</span><span
+                        ng-if="(wallet.LoadingState == 2 || transerModel.classLoading==2)">{{'Member_LabelLoadFail'|translate}}</span><span
+                        ng-if="(wallet.LoadingState == 1 || transerModel.classLoading==1) && wallet.LoadingState != 2 && transerModel.classLoading!=2"><ion-spinner></ion-spinner></span>
+                </div><div class="col col-33" ng-if="walletList.length % 3==1"><p>&nbsp;</p><span>&nbsp;</span></div><div class="col col-33" ng-if="walletList.length % 3==1"><p>&nbsp;</p><span>&nbsp;</span></div><div class="col col-33" ng-if="walletList.length % 3==2"><p>&nbsp;</p><span>&nbsp;</span></div>
+            </div>
+            <div class="transfer-submit"><h5>{{'Member_LabelChangeTranPoint'|translate}}</h5>
+                <div class="row">
+                    <div class="col">
+                        <div class="item item-input"><input type="tel" id="actumalTextBox"
+                                                            placeholder="{{'Common_LabelInputMoney'|translate}}"
+                                                            ng-model="transerModel.actualMoney"
+                                                            ng-disabled="transerModel.walletType==99"
+                                                            ng-keyup="parseIntMoney($event)"
+                                                            ng-click="setScroll($event)" reset-field="clearSelect()">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col col-33" ng-repeat="m in amountList"
+                         ng-class="{choose:transerModel.moneyIndex == $index,unchoose:m>transerModel.haveMoney }"
+                         ng-click="chooseMoneyFun($index)" ng-disabled="m>transerModel.haveMoney"><span>{{m}}</span>
+                    </div>
+                </div>
+                <div class="transfer-button">
+                    <button id="btnTransfer" ng-class="'button button-block button-positive'" type="button"
+                            ng-click="transferSubmit()">{{'Common_ButtonSubmit'|translate}}
+                    </button>
+                </div>
+                <p ng-if="showBlank" style="height:300px">&nbsp;</p></div>
+        </form>
+    </ion-content>
+</ion-view>

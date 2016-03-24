@@ -1,0 +1,81 @@
+﻿<{include file="web_header.html"}>
+<{config_load file="public.conf" section="public"}>
+<body>
+<style type="text/css">
+  .Validform_checktip {color:#FA0B42;margin-left: 5px;}
+  .m_co_ed{ width: 60px;}
+  .m_title_edit td{height: 25px;font-weight: bold;}
+</style>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("#login_name").blur(function(){
+            var uname = $(this).val();
+            if (uname == '') {
+                $("#error_a").html('请输入账号！');
+                $("#error_a").css('color','#FA0B42');
+                return false;
+            };
+            $.ajax({
+               url: "is_ajax_check",
+               type: "GET",
+               data:{uname:uname},
+               dataType: "json",
+               success: function(data){
+                   if (data == 1) {
+                       $("#error_a").html('此帳號已有人使用');
+                   }else if(data == 2){
+                       $("#error_a").html('您可以使用此帳號');
+                       $("#error_a").css('color','#198607');
+                   }
+               }
+           });
+        })
+
+        function show_1(){
+             $("#error_a").html('您可以使用此帳號');
+             $("#error_a").css('color','#198607');
+        }
+    })
+</script>
+<div  id="con_wrap">
+  <div  class="input_002">管理子帳號</div>
+  <div  class="con_menu">
+  <a  href="javascript:history.go(-1);">返回上一頁</a> </div>
+</div>
+<div  class="content">
+  <form action="account_add_do"  method="POST">
+    <table  width="650"  border="0"  cellspacing="0"  cellpadding="0"  class="m_tab_ed">
+      <tbody><tr  class="m_title_over_co">
+        <td  colspan="3">基本資料設定</td>
+      </tr>
+      <tr  class="m_bc_ed">
+        <td  class="m_co_ed" style="width:90px;">帳號：</td>
+        <td><{if $uid}><{$username}><{else}> <input  name="login_name_1" id="login_name" style="width:110px;" type="text" value=""
+        maxlength="12" class="za_text">  <font class="Validform_checktip" id="error_a">*账号长度最少5个字符最多12个字符,只能数字和字母组合</font>  <{/if}>
+
+      </td>
+      </tr>
+      <tr  class="m_bc_ed">
+        <td  class="m_co_ed">密碼：</td>
+        <td><input  type="PASSWORD"  datatype="s6-12"  id="passwd"  name="login_pwd"  nullmsg="請輸入密碼"  errormsg="密碼必須至少6個字元長，最多12個字元長，并只能有數字(0-9)，及英文大小寫字母"  <{if $uid}>value="******"<{/if}>  size="12"  maxlength="12"  class="za_text"> <font class="Validform_checktip">*账号长度最少5个字符最多12个字符,只能数字和字母组合</font></td>
+      </tr>
+      <tr  class="m_bc_ed">
+        <td  class="m_co_ed">確認密碼：</td>
+        <td><input  type="PASSWORD"  name="repasswd"  datatype="*"  recheck="passwd"  nullmsg="請輸入密碼"  errormsg="您两次输入的账号密码不一致！" <{if $uid}>value="******"<{/if}> size="12"  maxlength="12"  class="za_text"></td>
+      </tr>
+      <tr  class="m_bc_ed">
+        <td  class="m_co_ed">名稱：</td>
+        <td><input  type="text" value="<{$zh_name}>" name="about" id="about" datatype="*"style="width:110px;" class="za_text"></td>
+      </tr>
+        <tr  class="m_bc_ed"  align="center">
+        <td  colspan="3"  class="m_bc_td">
+        <input name="uid" value="<{$uid}>"  type="hidden">
+        <input  type="submit"  name="saveBtn"  value="確定"  class="za_button">
+       </td>
+      </tr>
+
+    </tbody></table>
+
+  </form>
+</div>
+<{include file="web_footer.html"}>

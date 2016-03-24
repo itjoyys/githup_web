@@ -1,0 +1,46 @@
+<title>行政费用</title>
+<{include file="web_header.html"}>
+<body>
+<div id="con_wrap">
+  <div class="input_002"><{$qishu['qsname']}>-行政費用</div>
+  <div class="con_menu">
+  	<a href="javascript:history.go(-1);">返回上一頁</a>
+	</div>
+</div>
+
+<table style="width:500px"  class="m_tab">
+		<tr class="m_title">
+		  <td colspan="5" class="table_bg">會員：<{$username}>&nbsp;&nbsp;期數：<{$qishu['qsname']}>&nbsp;&nbsp;日期：<{$qishu['start_date']}> ~ <{$qishu['end_date']}></td>
+  </tr>
+		<tr class="m_title">
+			<td class="table_bg">日期</td>
+			<td class="table_bg">出款金額</td>
+			<td class="table_bg">入款金額</td>
+			<td class="table_bg">手續費%</td>
+			<td class="table_bg">手續費</td>
+		</tr>
+	<{foreach from=$xzfee key=key item=value}>
+
+		<tr class="m_rig">
+	    	<td align="center"><{$value['cash_date']}></td>
+			<td><{number_format($value['outc'], 2)}></td>
+			<td><{number_format($value['inc'], 2)}></td>
+			<td><{$value['fee']}>%</td>
+	        <td><{number_format($value['fee_a'], 2)}></td>
+    	</tr>
+<{/foreach}>
+		<tr class="table_total">
+	    	<td>總計：</td>
+			<td><{number_format($outcash, 2)}></td>
+			<td><{number_format($incash, 2)}></td>
+			<td></td>
+	        <td><{number_format($allcash, 2)}></td>
+    	</tr>
+</table>
+</body>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" style="clear:both">
+	<tbody><tr>
+		<td align="center" height="50"> 版权所有 建議您以 1024 X 768 以上高彩模式瀏覽本站</td>
+	</tr>
+</tbody></table>
+</body></html>

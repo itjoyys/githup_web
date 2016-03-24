@@ -1,0 +1,74 @@
+BODY {
+	FONT-SIZE: 12px; BACKGROUND: #373737; COLOR: #333; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+A {
+	COLOR: #fff
+}
+.general .middle {
+	BACKGROUND: url(../Images/middleBg.png) #fff repeat-x; OVERFLOW: hidden
+}
+.general .middle .wrapper .con {
+	CLEAR: both; MIN-HEIGHT: 300px; FLOAT: left; PADDING-BOTTOM: 30px; MARGIN: 30px; WIDTH: 880px
+}
+.general .middle .wrapper .con A {
+	COLOR: #669900; BORDER-BOTTOM: #4f4f4f 1px dotted
+}
+.general .middle .wrapper .con A:hover {
+	COLOR: #333; BORDER-BOTTOM: #4f4f4f 1px dotted
+}
+.general .middle .wrapper P {
+	LINE-HEIGHT: 18px
+}
+.general .header {
+	BACKGROUND: url(../Images/headerBg.png) repeat-x; HEIGHT: 101px
+}
+.general .wrapper {
+	PADDING-RIGHT: 20px; PADDING-LEFT: 20px; FLOAT: none; PADDING-BOTTOM: 0px; MARGIN: auto; WIDTH: 940px; PADDING-TOP: 0px
+}
+.pageTitle {
+	CLEAR: both; MARGIN-TOP: 24px; FONT-SIZE: 24px; FLOAT: left; COLOR: #fff
+}
+.contentTitle {
+	CLEAR: both; FONT-SIZE: 20px; FLOAT: left; WIDTH: 100%; COLOR: #436206
+}
+
+.feature_tour .tab {
+	CLEAR: both; BACKGROUND: url(../Images/featuresTabBg.png) no-repeat; FLOAT: left; VISIBILITY: hidden; MARGIN: 35px 0px 0px 9px; WIDTH: 921px
+}
+.feature_tour .tab A {
+	DISPLAY: block; FONT-SIZE: 14px; FLOAT: left; WIDTH: 20%; COLOR: #999; TEXT-INDENT: 20px; LINE-HEIGHT: 47px; HEIGHT: 47px; text-shadow: 0px 1px 0px #fff
+}
+.feature_tour .tab A.current {
+	COLOR: #fff; text-shadow: 0px 1px 0px #788e21
+}
+.feature_tour .mask {
+	CLEAR: both; FLOAT: left; MARGIN: 20px 0px 0px; OVERFLOW: hidden; WIDTH: 100%; POSITION: relative; HEIGHT: auto;
+}
+.feature_tour .mask .maskCon {
+	WIDTH: 5000px
+}
+.feature_tour .mask .maskCon .innerCon {
+	FLOAT: left; WIDTH: 980px; LINE-HEIGHT: 18px
+}
+
+.feature_tour .nav {
+	CLEAR: both; FLOAT: left; VISIBILITY: hidden; MARGIN: 20px 0px 40px; WIDTH: 100%
+}
+.feature_tour .nav P {
+	MARGIN: auto; WIDTH: 90px
+}
+.feature_tour .nav P A {
+	DISPLAY: block; FLOAT: left; WIDTH: 45px; HEIGHT: 36px
+}
+.feature_tour .nav P A.prev {
+	BACKGROUND: url(../Images/feature_tours_navigation.png) no-repeat left 0px
+}
+.feature_tour .nav P A.prev:hover {
+	BACKGROUND-POSITION: 0px -36px
+}
+.feature_tour .nav P A.next {
+	BACKGROUND: url(../Images/feature_tours_navigation.png) no-repeat right 0px
+}
+.feature_tour .nav P A.next:hover {
+	BACKGROUND-POSITION: right -72px
+}

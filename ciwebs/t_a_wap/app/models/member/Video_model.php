@@ -1,0 +1,13 @@
+<?php if (!defined('BASEPATH')) {
+	exit('No direct script access allowed');
+}
+
+class Video_model extends MY_Model {
+
+	function __construct() {
+		parent::__construct();
+		$this->init_db();
+	}
+	
+	
+}

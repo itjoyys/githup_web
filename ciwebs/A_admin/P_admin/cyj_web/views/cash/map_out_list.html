@@ -1,0 +1,35 @@
+<title>会员出款扣钱详情</title>
+<{include file="web_header.html"}>
+<body>
+    <div id="con_wrap">
+        <div class="input_002">会员出款扣钱详情</div>
+        <div class="con_menu">
+            <a href="javascript:window.history.go(-1)">返回上一頁</a>
+        </div>
+    </div>
+    <div class="content">
+        <table width="50%" class="m_tab">
+            <tbody>
+                <tr class="m_title_over_co">
+                    <td >代理商</td>
+                    <td >會員</td>
+                    <td>手续费</td>
+                    <td>优惠金额</td>
+                    <td>行政费</td>
+                    <td>合计</td>
+                </tr>
+                <{foreach from=$list key=i item=val}>
+                <tr class="m_cen <{if $i%2 == 0}>even<{/if}>">
+                    <td nowrap="nowrap"><{$val['agent_user']}></td>
+                    <td nowrap="nowrap"><{$val['username']}></td>
+                    <td nowrap="nowrap"><{$val['charge']}></td>
+                    <td><{$val['favourable_num']}></td>
+                    <td><{$val['expenese_num']}></td>
+                    <td><{$val['money4']}></td>
+                </tr>
+                <{/foreach}>
+                <tr class="m_cen even"><{$str}></tr>
+            </tbody></table>
+    </div>
+
+    <{include file="web_footer.html"}>

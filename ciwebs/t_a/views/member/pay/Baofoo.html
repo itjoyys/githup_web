@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>充值接口-提交信息处理</title>
+</head>
+<body onload="document.form1.submit()">
+<form id="form1" name="form1" method="post" action="<{$data['req_url']}>">
+        <input type='hidden' name='MemberID' value="<{$data['MemberID']}>" />
+		<input type='hidden' name='TerminalID' value="<{$data['TerminalID']}>"/>
+		<input type='hidden' name='InterfaceVersion' value="<{$data['InterfaceVersion']}>"/>
+		<input type='hidden' name='KeyType' value="<{$data['KeyType']}>"/>
+        <input type='hidden' name='PayID' value="<{$data['PayID']}>" />
+        <input type='hidden' name='TradeDate' value="<{$data['TradeDate']}>" />
+        <input type='hidden' name='TransID' value="<{$data['TransID']}>" />
+        <input type='hidden' name='OrderMoney' value="<{$data['OrderMoney']}>" />
+        <input type='hidden' name='ProductName' value="<{$data['ProductName']}>" />
+        <input type='hidden' name='Amount' value="<{$data['Amount']}>" />
+        <input type='hidden' name='Username' value="<{$data['Username']}>" />
+        <input type='hidden' name='AdditionalInfo' value="<{$data['AdditionalInfo']}>" />
+        <input type='hidden' name='PageUrl' value="<{$data['PageUrl']}>" />
+        <input type='hidden' name='ReturnUrl' value="<{$data['ReturnUrl']}>" />
+        <input type='hidden' name='Signature' value="<{$data['Signature']}>" />
+        <input type='hidden' name='NoticeType' value="<{$data['NoticeType']}>" />
+		<input type='hidden' name='act' value="baofoo" />
+        <input type='hidden' name='form_url' value="<{$data['form_url']}>" />
+</form>
+</body>
+</html>

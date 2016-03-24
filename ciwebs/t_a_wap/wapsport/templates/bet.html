@@ -1,0 +1,70 @@
+<ion-modal-view class="betmodel" >
+  <ion-header-bar>
+    <h1 class="title">投注 {{ data.matchdate }} {{ data.oddtype }}</h1>
+    <div class="buttons">
+      <button class="button button-clear" ng-click="closeshowbet()">取消</button>
+    </div>
+  </ion-header-bar>
+  <ion-content>
+  <ion-refresher on-refresh="refreshshowbet(betData.bet_money)"></ion-refresher>
+    <form ng-submit="dopostbet()">
+      <div class="list">
+      <div class="pbetd shadow">
+          <label class="item item-input">
+             
+            <span>下拉刷新赔率</span>
+          </label>
+      </div>
+      <div class="pbetd  shadow">
+          <label class="item item-input">
+             
+            <span>{{betData.Match_Name}}</span>
+          </label>
+          <ion-scroll   direction="x" scrollbar-x="false">
+          <label class="item item-input">
+            <span>{{betData.Match_Master}}VS{{betData.Match_Guest}}</span>
+          </label>
+         </ion-scroll>
+         
+      </div>
+      <div class="pbetd  shadow">
+        <label class="item item-input">
+           
+            <span>{{betData.BetInfo}}</span>
+          </label>
+          <label class="item item-input">
+           
+            <span>{{betData.OddType}}</span>
+          </label>
+      </div>
+      <div class="pbetd betmoneyinput shadow">
+        <label class="item item-input">
+          <span>下注金额：</span>
+          <input type="number" ng-keyup="parseIntMoney($event)" placeholder="填写下注金额"  min="{{betData.minmoney}}" max="{{betData.maxmoney}}" ng-model="betData.bet_money">
+          
+        </label>
+      </div>
+      <div class="pbetd">
+        <label class="item item-input">
+          <span class="input-label">当前余额：<span>{{usermoney  | number:2}}</span></span>
+        </label>
+        <label class="item item-input">
+          <span class="input-label">可赢金额：<span ng-if="betData.bet_money>=betData.minmoney">{{betData.bet_money*betData.plwin  | number:2}}</span></span>
+          </label>
+          <label class="item item-input" ng-if="betData.minmoney>0">
+          <span class="input-label">最低投注：{{betData.minmoney| number:2}}</span>
+          <span class="input-label">最高投注：{{betData.maxmoney| number:2}}</span>
+           
+        </label>
+      </div>
+        <label class="item buttionitem">
+          <button class="button button-block button-positive" type="submit">确认下注</button>
+
+        </label>
+        <label class="item buttionitem">
+          <button class="button button-block " ng-click="closeshowbet()" type="reset">取消下注</button>
+        </label>
+      </div>
+    </form>
+  </ion-content>
+</ion-modal-view>

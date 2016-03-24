@@ -1,0 +1,113 @@
+<title>期数管理</title>
+<{include file="web_header.html"}>
+<body>
+<script type="text/javascript">
+$(function(){
+	$("div.con_menu a:nth-child(3)").attr("style","color:red");
+});
+
+</script>
+
+<div id="con_wrap">
+<div class="input_002">期数管理</div>
+<div class="con_menu">
+	<a href="index">退佣统计</a>
+    <a href="<{$site_url}>/cash/cash_agent/agent_serch_list">退佣查询</a>
+	<a href="<{$site_url}>/cash/cash_agent/end_hire_list" style="color:red">期數管理</a>
+	<a href="<{$site_url}>/cash/cash_agent/fee_list">手續費設定</a>
+	<a href="<{$site_url}>/cash/cash_agent/endhire_list" >代理退傭設定</a>
+
+</div>
+</div>
+<div class="content" style="width:500px;float:none;">
+	<form name="addForm" action="<{$site_url}>/cash/cash_agent/add_qishu_list" method="post" id="myform" class="vform">
+	<table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#E3D46E" class="m_tab" style="border:0px;">
+		<tbody><tr class="m_title_over_co">
+			<td colspan="2">新增期數</td>
+		</tr>
+		<tr  class="m_cen even">
+		<input type='hidden' name='id' value="<{$qishu['id']}>">
+			<td class="table_bg1" align="right">期數名稱：</td>
+			<td>
+				<div style="float:left"><input type="text" class="za_text" id="qsname" name="qsname" value="<{$qishu['qsname']}>"></div>
+				<div class="Validform_checktip" style="float:left" id="qsnames"></div><font color="red">【查询区间限制为两个月】</font>
+			</td>
+		</tr>
+		<tr class="m_cen">
+			<td class="table_bg1" align="right">是否显示：</td>
+			<td>
+				<div style="float:left">
+					<input type="radio" name="is_xianshi" value="0" <{if $qishu['is_xianshi'] == 0}>checked="checked"<{/if}> >是
+					<input type="radio" name="is_xianshi" value="1" <{if $qishu['is_xianshi'] == 1}>checked="checked"<{/if}> >否
+				</div>
+				<div class="Validform_checktip" style="float:left" id="qsnames"></div>
+			</td>
+		</tr>
+		<tr  class="m_cen even">
+			<td class="table_bg1" align="right">当前状态：</td>
+			<td>
+				<div style="float:left">
+					<input type="radio" name="state" value="0" <{if $qishu['state'] == 0}>checked="checked"<{/if}>>正常
+					<input type="radio" name="state" value="1" <{if $qishu['state'] == 1}>checked="checked"<{/if}> >停止
+				</div>
+				<div class="Validform_checktip" style="float:left" id="qsnames"></div>
+			</td>
+		</tr>
+		<tr class="m_cen">
+			<td class="table_bg1" align="right">開始日期：</td>
+			<td>
+				<div style="float:left"><input type="text" name="start_date" id="start_date" value="<{$qishu['start_date']}>" class="za_text Wdate"  onClick="WdatePicker()"  readonly="readonly"></div>
+				<div class="Validform_checktip" style="float:left" id="start_dates"></div>
+			</td>
+		</tr>
+		<tr  class="m_cen even">
+			<td class="table_bg1" align="right">結束日期：</td>
+			<td style="text-align:left;border-right-style:none;">
+				<div style="float:left"><input type="text" name="end_date" value="<{$qishu['end_date']}>" id="end_date" class="za_text Wdate"  onClick="WdatePicker()" readonly="readonly"></div>
+				<div class="Validform_checktip" style="float:left"  id="end_dates"></div>
+			</td>
+		</tr>
+		<tr class="m_cen">
+			<td colspan="2" align="center">
+				<input type="button" name="subbtn" class="button_a" onclick="check();" value=" 確 定 ">&nbsp;&nbsp;&nbsp;&nbsp;
+				<input type="reset" name="cls" value="重 置 " class="button_a">
+			</td>
+		</tr>
+	</tbody></table>
+	</form>
+</div>
+<script type="text/javascript">
+	function check(){
+		var qsname=$("#qsname").val();
+		if(qsname==''){
+			$("#qsnames").html("期数名称不能为空！");
+			return false;
+		}else{
+			$("#qsnames").html("");
+		}
+		//alert(qsname);
+		var start_date=$("#start_date").val();
+		if(start_date==''){
+			$("#start_dates").html("期数名称不能为空！");
+			return false;
+		}else{
+			$("#start_dates").html("");
+		}
+
+		var end_date=$("#end_date").val();
+		if(end_date==''){
+			$("#end_dates").html("期数名称不能为空！");
+			return false;
+		}else{
+			$("#end_dates").html("");
+		}
+
+		document.getElementById("myform").submit();
+	}
+</script>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" style="clear:both">
+	<tbody><tr>
+		<td align="center" height="50"> 版权所有 建議您以 1024 X 768 以上高彩模式瀏覽本站</td>
+	</tr>
+</tbody></table>
+</body></html>

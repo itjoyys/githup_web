@@ -1,0 +1,73 @@
+﻿<title>会员餘額統計</title>
+<{include file="web_header.html"}>
+<{config_load file="public.conf" section="public"}>
+
+<body>
+<script type="text/javascript">
+var indexid = "<{$index_id}>";
+var agent_id = "<{$agent_id}>";
+$(document).ready(function(){
+	$("#index_id").val(indexid);
+	$("#agent_id").val(agent_id);
+	$("#index_id,#agent_id").change(function(event) {
+      $("#myFORM").submit();
+    });
+})
+</script>
+<div id="con_wrap">
+  	<div class="input_002">会员餘額統計</div>
+  	<div class="con_menu">
+  	<form action="<{$site_url}>/cash/Blance/index" method="get" id="myFORM" name="myFORM">
+    <{$sites_str}>
+    代理:
+    <select name="agent_id" id="agent_id">
+       <option value="0">全部</option>
+       <{foreach from=$agent item=val}>
+    	<option value="<{$val['id']}>"><{$val['agent_name']}></option>
+       <{/foreach}>
+    </select>
+    </form>
+	</div>
+</div>
+<div style="width:900px;">
+<form action="" method="POST" name="form">
+<table width="100%" border="0" cellpadding="4" cellspacing="1" class="m_tab">
+	<tbody>
+	<tr class="m_title_over_co">
+		<td width="200"><div align="center">游戏额度</div></td>
+		<td width="100"><div align="center">启用</div></td>
+		<td width="100"><div align="center">停用</div></td>
+		<td width="250"><div align="center">更新时间</div></td>
+		<td width="100"><div align="center"></div></td>
+	</tr>
+	
+	<{foreach from=$video_money item=value key=i}>
+			<tr class="m_cen <{if $i%2 eq 0}>even<{/if}>">
+				<td><div align="center"><{$value['title']}></div></td>
+				<td><div align="right" class="EnableBalance"><a href="<{$site_url}>/cash/Blance/blance_agent?index_id=<{$index_id}><{if $value['vtype'] neq 'money'}>&type=<{$value['vtype']}><{/if}>&agent_id=<{$agent_id}>"><{$value['on']+0}></a></div></td>
+				<td><div align="right" class="DisableBalance"><a href="<{$site_url}>/cash/Blance/blance_agent?index_id=<{$index_id}>&agent_id=<{$agent_id}>"><{$value['off']+0}></a></div></td>
+				<td><div align="center" class="UpdateTime"><{$u_date}></div></td>
+				<td>
+				<div align="center">
+				<input type="hidden" class="way" value="cash">
+				<input type="hidden" class="HallID" value="3380448">
+				<input type="submit" class="form_button updateBtn button_d" value="立即更新">
+				</div>
+				</td>
+			</tr>
+	<{/foreach}>
+
+    <tr>
+		<td class="table_bg1" align="right"><div align="center">總計：</div></td>
+		<td class="table_bg1"><div align="right" class="EnableBalance"><{$sum+0}></div></td>
+		<td class="table_bg1"><div align="right" class="DisableBalance"><{$sums+0}></div></td>
+		<td class="table_bg1"></td>
+		<td class="table_bg1">
+		</td>
+	</tr>
+
+</tbody></table>
+ </form></div>
+
+
+<{include file="web_footer.html"}>

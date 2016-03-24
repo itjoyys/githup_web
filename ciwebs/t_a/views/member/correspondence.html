@@ -1,0 +1,125 @@
+<{config_load file="public.conf" section="public"}>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Document</title>
+
+        <script language="javascript" type="text/javascript" src="../public/js/jquery-1.7.min.js"></script>
+        <script  type="text/javascript" src="<{#mem_js#}>/date/WdatePicker.js"></script>
+        <link rel="stylesheet" href="<{#mem_css#}>/index_main.css" />
+        <link rel="stylesheet" href="<{#mem_css#}>/standard.css" />
+    </head>
+    <body  style="BACKGROUND: url(<{#mem_images#}>/../private/content_bg.jpg) repeat-y left top;" >
+		<div id="MAMain" style="width:767px">
+			<div id="MACenter-content">
+				<div id="MACenterContent">
+					<div id="MNav">
+						<a class="mbtn"  target="k_memr" href="tc_record">投注记录</a>
+						<div class="navSeparate"></div>
+						<span class="mbtn">往来记录</span>
+					</div>
+					<div id="MMainData" style="overflow-y:scroll; height:370px">
+						<form id="myFORM" method="get" name="myFORM">
+							<div class="MControlNav">
+								<span>交易别类</span>:
+								<select name="deptype" id="sort_way" onchange="document.getElementById('myFORM').submit()">
+									<option value="" >全部方式</option>
+									<option value="1" <{select_check(1,$deptype)}>>額度轉換</option>
+									<option value="2" <{select_check(2,$deptype)}>>体育下注</option>
+									<option value="15" <{select_check(15,$deptype)}>>体育派彩</option>
+									<option value="3" <{select_check(3,$deptype)}>>彩票下注</option>
+									<option value="14" <{select_check(14,$deptype)}>>彩票派彩</option>
+									<option value="10" <{select_check(10,$deptype)}>>线上入款</option>
+									<option value="11" <{select_check(11,$deptype)}>>公司入款</option>
+									<option value="19" <{select_check(19,$deptype)}>>线上取款</option>
+									<option value="9" <{select_check(9,$deptype)}>>优惠退水</option>
+									<option value="1-12-6" <{select_check('1-12-6',$deptype)}>>优惠活动</option>
+									<option value="1-12-3" <{select_check('1-12-3',$deptype)}>>人工存入</option>
+									<option value="2-12-4" <{select_check('2-12-4',$deptype)}>>人工取出</option>
+									<option value="23" <{select_check('23',$deptype)}>>系统取消出款</option>
+									<option value="7" <{select_check('7',$deptype)}>>系统拒绝出款</option>
+									<option value="12" <{select_check('12',$deptype)}>>人工存款與取款</option>
+									<option value="in" <{select_check('in',$deptype)}>>入款明细</option>
+									<option value="out" <{select_check('out',$deptype)}>>出款明细</option>
+								</select>
+								时间:<input type="text" id="start_date" name="start_date" value="<{$s_date}>" maxlength="20" size="10" class=" Wdate" readonly style="width: 98px;margin:10px 0" onclick="WdatePicker()">
+								-
+								<input type="text" id="end_date" name="end_date" value="<{$e_date}>" maxlength="20" size="10" class=" Wdate" readonly style="width: 98px;" onclick="WdatePicker()">
+
+								<select id="page" name="page" class="za_select">
+								&nbsp;&nbsp;页数：
+									<{assign var=$i value=0}> <{section
+								name=total loop=$totalPage}>
+								<option value="<{$i=$i+1}><{$i}>"<{if $i ==
+									$page}>selected<{/if}> ><{$i}></option> <{/section }>
+								</select> <{$totalPage}> 頁&nbsp;
+								<input type="submit" name="subbtn" class="button_a" onclick="reload_live_today()" value=" 查 询 ">
+							</div>
+						</form>
+						<div class="MPanel" style="display: block;">
+							<table class="MMain" border="1">
+								<tbody>
+									<tr class="m_title">
+										<th width="120" class="his_time">日期</th>
+										<th width="70">类型</th>
+										<th width="70">交易类别</th>
+										<th width="70">交易额度</th>
+										<th width="80">现有额度</th>
+										<th width="180">备注</th>
+									</tr>
+									
+										
+										
+								<{if !empty($data)}> 
+								<{foreach from=$data item=val}>
+									<tr>
+										<td style="text-align:center;"><{$val['cash_date']}></td>
+										<td style="text-align:center;"><{cash_type_r($val['cash_type'])}></td>
+										<td style="text-align:center;"><{cash_do_type_r($val['cash_do_type'])}></td>
+										<td style="text-align:center;"><{number_format($val['cash_num']+$val['discount_num'],2)}></td>
+										<td style="text-align:center;"><{$val['cash_balance']}></td>
+										<td style="text-align:center;"><{str_cut($val['remark'])}></td>
+									</tr>
+								<{/foreach}>
+								<{else}>
+								  <tr align="center">
+									<td colspan="6">目錄沒有記錄</td>
+								  </tr>
+								<{/if}>
+									<tr align="center">
+										<td colspan="3" class="">小计: 笔数：<{$num}>,交易额度:<{$counts}></td>
+										<td colspan="3" class="">总计: 笔数：<{$count}>,交易额度:<{$all_count}></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+    </body>
+</html>
+
+	<style type="text/css">
+	.calendar { background: url(../public/images/calendar.gif?=<{$STATICS_FILE_VERSION}>) right no-repeat; padding: 2px; cursor: pointer; border: 1px solid #CCCCCC; }
+	</style>
+	<script language="javascript">
+		//下拉框选中
+		$(document).ready(function(){
+			$("#sort_way").val('<{$deptype}>');
+			if('<{$_GET['start_date']}>'){
+				$("#start_date").val('<{$_GET['start_date']}>');
+			}
+			if('<{$_GET['end_date']}>'){
+				$("#end_date").val('<{$_GET['end_date']}>');
+			}
+		})
+	</script>
+	<script>
+		//分页跳转
+		window.onload=function(){
+			document.getElementById("page").onchange=function(){
+				document.getElementById('myFORM').submit()
+			}
+		}
+	</script>

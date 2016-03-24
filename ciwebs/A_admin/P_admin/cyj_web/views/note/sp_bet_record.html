@@ -1,0 +1,178 @@
+<title>体育注单</title>
+<{include file="web_header.html"}>
+<script>
+	window.onload=function(){
+	  document.getElementById("page").onchange=function(){
+      	document.getElementById('myFORM').submit();
+      }
+      <{if $note_types}>
+      document.getElementById("note_type").onchange=function(){
+          var gurl = $("#note_type").val();
+          window.location.href = "<{$site_url}>/note/bet_record/"+gurl;
+      }
+      $("#note_type").get(0).selectedIndex=0;
+      <{/if}>
+	}
+function setRefresh(){
+  $('#myFORM').submit();
+}
+</script>
+<style>
+  .za_text{
+    margin-top: 6px;
+  }
+</style>
+<body>
+
+<div id="con_wrap">
+<div class="input_002">体育注單 </div>
+<div class="con_menu" style="width:1214px">
+<form id="myFORM" action="<{$site_url}>/note/Bet_record/sp_bet_record" method="get" name="FrmData">
+<{$note_types}>类型:<select  id="sp_lx"  name="sp_lx" onchange="document.getElementById('myFORM').submit()"  class="za_select">
+                      <option>体育单式</option>
+                      <option  value="cg" <{select_check('cg',$smarty.get.sp_lx)}>>体育串关</option>
+                    </select>
+                    盘口：
+                    <select id="oddpk" name="oddpk" onchange="document.getElementById('myFORM').submit()">
+                        <option value="" >全部</option>
+                        <option value="H" <{select_check('H',$smarty.get.oddpk)}>>香港盘</option>
+                        <option value="M" <{select_check('M',$smarty.get.oddpk)}>>马来盘</option>
+                        <option value="I" <{select_check('I',$smarty.get.oddpk)}>>印尼盘</option>
+                        <option value="E" <{select_check('E',$smarty.get.oddpk)}>>欧美盘</option>
+                    </select>
+                    状态:
+                    <select  id="ltype"  name="ltype" onchange="document.getElementById('myFORM').submit()"  class="za_select">
+                      <option  value="-1" <{select_check('-1',$smarty.get.ltype)}>>全部</option>
+                        <option  value="0" <{select_check('0',$smarty.get.ltype)}>>未結算</option>
+                        <option  value="1" <{select_check('1',$smarty.get.ltype)}> >已結算</option>
+                        <option  value="2" <{select_check('2',$smarty.get.ltype)}> >未审核</option>
+                    </select> &nbsp;
+
+                 会员帐号：<input  type="TEXT"  name="username"  id="username"  value="<{$smarty.get.username}>"  class="za_text"  style="width:75px;min-width:75px">
+                    注单号：<input  type="TEXT"  name="number"  id="number" style="width:90px;min-width: 90px;"  value="<{$smarty.get.number}>" class="za_text"  >
+	日期：<input type="text" name="start_date" value="<{$start_date}>" id="start_date" class="za_text Wdate" onClick="WdatePicker({dateFmt:'yyyy-MM-dd'})">
+	--
+	<input type="text" name="end_date" value="<{$end_date}>" id="end_date" class="za_text Wdate" onClick="WdatePicker({dateFmt:'yyyy-MM-dd'})">
+        <input type="SUBMIT" value="確定" class="za_button">
+            排序类型:<select name="sort_type" onchange="document.getElementById('myFORM').submit()">
+                    <option value="0" <{select_check(0,$sort_type)}>>下注时间</option>
+                    <option value="1" <{select_check(1,$sort_type)}>>结算时间</option>
+                    <option value="2" <{select_check(2,$sort_type)}>>下注金额</option>
+                    <option value="3" <{select_check(3,$sort_type)}>>注单号</option>
+                    <option value="4" <{select_check(4,$sort_type)}>>账号</option>
+                    </select><select name="sort_order" onchange="document.getElementById('myFORM').submit()">
+                    <option value="0" <{select_check(0,$sort_order)}>>降序</option>
+                    <option value="1" <{select_check(1,$sort_order)}>>升序</option>
+                    </select>
+    每页显示:<select name="perNumber" onchange="document.getElementById('myFORM').submit()">
+                   <option value="50" <{select_check(50,$perNumber)}>>50</option>
+                   <option value="100" <{select_check(100,$perNumber)}>>100</option>
+                   <option value="200" <{select_check(200,$perNumber)}>>200</option>
+                   <option value="500" <{select_check(500,$perNumber)}>>500</option>
+                   </select>
+  <{$page}>
+		<input type="hidden" name="gid" value="<{$smarty.get.gid}>">
+		<input type="hidden" name="did" value="<{$smarty.get.did}>">
+    <input type="hidden" name="itype" value="<{$itype}>">
+              刷新：
+  <select name="reload" id="retime" class="za_select" onchange="setTimeout(setRefresh(), this.value*1000)">
+    <option value="-1">不更新</option>
+        <option value="30" <{select_check(30,$smarty.get.reload)}>>30秒</option>
+    <option value="60" <{select_check(60,$smarty.get.reload)}>>60秒</option>
+    <option value="120" <{select_check(120,$smarty.get.reload)}>>120秒</option>
+        <option value="180" <{select_check(180,$smarty.get.reload)}>>180秒</option>
+  </select>
+		</form>
+    </div>
+</div>
+</div>
+<div class="content">
+	<table width="99%" border="0" cellspacing="0" cellpadding="0" class="m_tab" >
+			<tbody>
+			<tr class="m_title_over_co">
+                    <td>注单号</td>
+                    <td>下注/结算時間</td>
+                    <td>所屬上級</td>
+                    <td>帳號</td>
+                    <td>赛事</td>
+
+                    <td>主客队</td>
+                    <td>內容</td>
+                    <td>下注金額</td>
+                    <td>可贏金額</td>
+                    <td>結果</td>
+			</tr>
+			<{if !is_array($data)}>
+			<tr class="m_rig" style="display:;">
+				<td height="70" align="center" colspan="10"><font color="#3B2D1B">暫無數據。</font></td>
+			</tr>
+			<{/if}>
+			<{foreach from=$data item=val key=key}>
+				<tr  class="m_cen <{if $key%2 == 0}>even<{/if}>">
+					<td align="center"><{$val['number']}></td>
+					<td align="center"><{$val['bet_time']}><br><{$val['update_time']}></td>
+					<td align="center"><{$val['agent_zh']}></td>
+					<td align="center"><{$val['username']}></td>
+					<td align="center"><font color="#336600"><{$val['ball_sort']}></font><br><{$val['match_name']}></td>
+					<td align="center"><{$val['master_guest']}>
+                    </td>
+					<td align="center">
+               <{if $val['k_type']==0}>香港盘
+               <{elseif $val['k_type']==1}>欧美盘
+               <{elseif $val['k_type']==2}>马来盘
+               <{elseif $val['k_type']==3}>印尼盘
+               <{/if}><br>
+                                <font style="color:#FF0033">
+                                  <{$val["bet_info"]}>
+                                </font>
+                                <{if $val["status"]!=0 && $val["status"]!=3 &&  $val["status"]!=6 && $val["status"]!=7}>
+                                    <{if $val["MB_Inball"]!=''}>
+                                        [<{$val["MB_Inball"]}>:<{$val["TG_Inball"]}>]
+                                    <{/if}>
+                                    <br/><{$val["login_ip"]}>
+                            	<{/if}>
+
+					</td>
+					<td><{$val['bet_money']}></td>
+					<td><{round($val['bet_win'],2)}></td>
+					<td><{if $smarty.get.ltype=='2'}>未审核<br>
+          <span id="<{$key}>" style="cursor:pointer" onclick="setbet(<{$val["bid"]}>,<{$val["uid"]}>,<{$key}>)">设为无效</span>
+          <{else}>
+          <{ifstatus($val['status'])}>
+          <{/if}></td>
+			</tr>
+			<{/foreach}>
+			<tr class="m_rig" style="background-Color: #EBF0F1;">
+					<td colspan="10" align="center">
+					<b><font color="#ff0000">&nbsp;小計：<{$count_x}>笔
+					&nbsp;&nbsp;<{$money_x}>元</font></b></td>
+				</tr>
+				<tr class="m_rig" style="background-Color: #EBF0F1;">
+					<td colspan="10" align="center"><b><font color="#ff0000">&nbsp;总計：<{$count_all['num']}>笔
+					&nbsp;<{$count_all['money']+0}>元</font></b></td>
+				</tr>
+
+	</tbody></table>
+</div>
+
+<script language="javascript">
+function setbet(bid,uid,k){
+  $('#'+k).hide()
+  if(confirm('确认设为无效注单')){
+    $.post('qxbet',{uid:uid,bid:bid},function(d){$('#'+k).val('')},'json')
+  }
+
+}
+var retime = $('#retime').val();
+$(document).ready(function()
+{
+  var time = (retime == 0 || retime == -1) ? -1 : "" + retime;
+  if(time != -1)
+  {
+    setTimeout("setRefresh()", time * 1000);
+  }
+})
+</script>
+<!-- 公共尾部 -->
+
+ <{include file="web_footer.html"}>

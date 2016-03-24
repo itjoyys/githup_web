@@ -1,0 +1,119 @@
+<{config_load file="public.conf" section="public"}>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<link rel="stylesheet" href="<{#mem_css#}>/index_main.css" />
+	</head>
+	<body  style="BACKGROUND: url(<{#mem_images#}>/../private/content_bg.jpg) repeat-y left top;" >
+	    <div id="MAMain" style="width:767px">
+			<div id="MACenter-content">
+				<div id="MACenterContent">
+					<div id="MNav">
+						<span class="mbtn">报表统计</span>
+						<div class="navSeparate"></div>
+					</div>
+					<div class="MNavLv2">
+						<span class="MGameType hover" data="">今日</span>｜
+						<span class="MGameType " data="yesterday">昨日</span>｜
+						<span class="MGameType " data="theweek">本周</span>｜
+						<span class="MGameType " data="lastweek">上周</span>
+					</div>
+					<div id="MMainData" style="overflow-y: scroll; height: 330px">
+						<!-- 体育今日交易 -->
+						<div class="MPanel" style="display: block;">
+							<table class="MMain" border="1" id="ajax_count">
+								<tbody>
+									<tr>
+										<th>项目</th>
+										<th>注单量</th>
+										<th>下注总额</th>
+										<th>有效下注总额</th>
+										<th>赢利总额</th>
+									</tr>
+									<tr>
+										<td>彩票</td>
+										<td style='text-align:center;'>0</td>
+										<td style='text-align:center;'>0.00</td>
+										<td style='text-align:center;'>0.00</td>
+										<td style='text-align:center;'>0.00</td>
+									</tr>
+									<tr>
+										<td>体育</td>
+										<td style='text-align:center;'>0</td>
+										<td style='text-align:center;'>0.00</td>
+										<td style='text-align:center;'>0.00</td>
+										<td style='text-align:center;'>0.00</td>
+									</tr>
+									<{foreach key=cid item=con from=$video_config}>
+									<tr>
+										<td><{$con.name}></td>
+										<td style='text-align:center;'>0</td>
+										<td style='text-align:center;'>0.00</td>
+										<td style='text-align:center;'>0.00</td>
+										<td style='text-align:center;'>0.00</td>
+									</tr>
+									<{/foreach}>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+	    </div>
+	</body>
+	<script language="javascript" type="text/javascript" src="<{#mem_js#}>/jquery-1.8.3.min.js"></script>
+	<script language="javascript" type="text/javascript" src="<{#mem_js#}>/jquery.blockUI.min.js"></script>
+	<script>
+	function ajax_count(action){
+		$.ajax({
+			type: "POST",
+			url: "<{$site_url}>/index.php/member/record/bb_count_do",
+			data: "action="+action,
+			dataType:"json",
+			beforeSend: function(){
+                    $('body').prepend('<div id="xxoo"><img src="<{#mem_images#}>/ajax-loader-white.gif" id="xxoo1"/></div>');
+                    $('#xxoo').css({
+                        padding:        0,
+                        margin:         0,
+                        width:          '100%',
+                        height:         '100%',
+                        top:            '0',
+                        left:           '0',
+                        textAlign:      'center',
+                        color:          '#000',
+                        border:         'none',
+                        "position":     "absolute",
+                        "z-index":      1000,
+                        "opacity":      0.5,
+                        "background-color": "#000000"
+                    });
+                    $('#xxoo1').css({
+                        'margin-top':   '23%'
+                    });
+                },
+			success: function(msg){
+			$('#xxoo').remove();
+			var nr = '';
+				var nr = '<tbody><tr><th>项目</th><th>注单量</th><th>下注总额</th><th>有效下注总额</th><th>赢利总额</th></tr>';
+				for(var i=0; i<msg.length; i++){
+					nr += "<tr><td>"+ msg[i].name+"</td><td style='text-align:center;'>"+msg[i].times+"</td>";
+					nr += "<td style='text-align:center;'>"+parseFloat(msg[i].count).toFixed(2)+"</td>";
+					nr += "<td style='text-align:center;'>"+parseFloat(msg[i].valid_money).toFixed(2)+"</td>";
+					nr += "<td style='text-align:center;'>"+parseFloat(msg[i].valid_win).toFixed(2)+"</td>";
+					nr += "</tr>";
+				}
+				nr += "</tbody>";
+				$('#ajax_count').html(nr);
+			}
+		});
+	}
+	ajax_count();
+	$("span[class*=MGameType]").click(function(){
+		var data = $(this).attr('data');
+		$("span[class*=MGameType]").removeClass('hover');
+		$(this).addClass('hover');
+		ajax_count(data);
+	})
+	</script>
+</html>

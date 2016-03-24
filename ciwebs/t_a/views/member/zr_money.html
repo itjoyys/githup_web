@@ -1,0 +1,354 @@
+<{config_load file="public.conf" section="public"}>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>额度转换</title>
+        <link rel="stylesheet" href="<{#mem_css#}>/index_main.css" />
+        <link rel="stylesheet" href="<{#mem_css#}>/standard.css" />
+        <script language="javascript" type="text/javascript" src="<{#mem_js#}>/jquery-1.8.3.min.js"></script>
+        <script language="javascript" type="text/javascript" src="<{#mem_js#}>/jquery.blockUI.min.js"></script>
+    </head>
+    <body  style="BACKGROUND: url(<{#mem_images#}>/../private/content_bg.jpg) repeat-y left top;" >
+        <div id="MAMain" style="width:767px">
+            <div id="MACenter-content">
+                <div id="MACenterContent">
+                    <div id="MNav">
+                        <span class="mbtn"><a  class="mbtn" target="k_memr"   href="<{$site_url}>/index.php/member/cash/zr_money" >额度转换</a></span>
+                        <div class="navSeparate"></div>
+                        <a  target="k_memr" href="<{$site_url}>/index.php/member/cash/setmoney" class="mbtn">线上存款</a>
+                        <div class="navSeparate"></div>
+                        <a   target="k_memr" href="<{$site_url}>/index.php/member/cash/getmoney" class="mbtn">线上取款</a>
+                    </div>
+                    <div id="MMainData" style="margin-top: 8px;">
+                        <h2 class="MSubTitle"><{$userinfo["username"]}>目前额度</h2>
+                        <div id="form1" method="post" name="form1" action="">
+                            <input type="hidden" id="edcashtoken" name="edcashtoken" value="<{$edcashtoken}>" />
+                            <input type="hidden" name="method" value="post" />
+                                <table class="MMain" border="1" style="margin-bottom: 8px;">
+                                <thead>
+                                    <tr>
+                                        <th nowrap="">币别</th>
+                                        <th nowrap="">系统余额</th>
+            <{foreach from=$video_config key=key item=val}>
+                <th nowrap=""><{strtoupper($val)}>余额</th>
+            <{/foreach}>
+                                        <th>合计</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td style="text-align: center;" class="">人民幣(RMB)</td>
+                                        <td style="text-align: center;" id="local_money" class="MNumber"><{$userinfo["money"]}></td>
+<{foreach from=$video_config key=key item=val}>
+    <td id="<{$val}>_money" class="">
+    <{assign var="name" value="$val"}>
+    <{assign var="money" value='_money'}>
+    <{$userinfo[$name|cat:$money]}></td>
+<{/foreach}>
+     <td id="allmoney" class=""><{$allmoney}>&nbsp;RMB</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <h2 class="MSubTitle">额度转换</h2>
+                            <table class="MMain MNoBorder" style="width: auto;">
+                                <tbody>
+                                    <tr>
+                                        <td align="right" class="">转出：</td>
+                                        <td class="">
+                                            <select name="trtype1" id="trtype1">
+                                                <option value="sport">系统余额</option>
+                      <{foreach from=$video_config key=key item=val}>
+                           <option value="<{$val}>"><{strtoupper($val)}>游戏厅</option>
+                      <{/foreach}>
+
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td align="right" class="">转入：</td>
+                                        <td class="">
+                                            <select name="trtype2" id="trtype2">
+                                        <option value="sport">系统余额</option>
+                       <{foreach from=$video_config key=key item=val}>
+                           <option value="<{$val}>"><{strtoupper($val)}>游戏厅</option>
+                       <{/foreach}>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td align="right" class="">金额：</td>
+                                        <td class="">
+                                            <INPUT id="p3_Amt"
+                                            onkeyup="clearNoNum(this);" size="15" type="text" name="p3_Amt">&nbsp;&nbsp;<span style="color:#FF0000">转换金额不能小于<{$MinInMoney}>元</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td nowrap="" class=""></td>
+                                        <td class="">
+                                            <INPUT id="SubTran" class="MBtnStyle"  value="确认转账" <{if $_SESSION['shiwan'] == 1}>type="button" onclick="alert('试玩账号不能进行额度转换，请使用正式账号！');"<{else}> type="button" <{/if}> name="SubTran">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div><br>
+                        
+                        <{foreach key=cid item=con from=$video_config}>
+                            <{assign var="name" value="$con"}>
+                            <{assign var="money" value='_money'}>
+                            <input type="hidden" id="<{$con}>" value="<{$userinfo[$name|cat:$money]}>" />
+                        <{/foreach}>
+                        <input type="hidden" id="sport" value="<{$userinfo['money']}>" />
+
+                        <{foreach key=cid item=con from=$video_config}>
+                            <{assign var="name" value="$con"}>
+                            <{assign var="money" value='_money'}>
+                            <input type="hidden" id="<{$con}>_info" value="<{$userinfo[$name|cat:$money]}>" />
+                        <{/foreach}>
+
+
+                        <p style="margin-left:10px;">
+                            <span style="color:#ff0000;"><strong>户内转账说明</strong></span>
+                        </p><br>
+                        <p style="line-height:18px;margin-left:10px;">
+                            <span style="color:#ff0000;"><strong>1、户内最低转帐金额<{$MinInMoney}>人民币，最高转帐金额不限。</strong></span>
+                        </p>
+                        <p style="line-height:18px;margin-left:10px;">
+                            <span style="color:#ff0000;"><strong>2、户内转帐不收任何手续费。</strong></span>
+                        </p>
+                        <p style="line-height:18px;margin-left:10px;">
+                            <span style="color:#ff0000;"><strong>3、如果有任何疑问请咨询24小时在线客服。</strong></span>
+                        </p>
+                        <p style="line-height:18px;margin-left:10px;">
+                            <span style="color:#ff0000;"><strong>提示：系统额度可以下注体育娱乐、彩票游戏。真人娱乐场需转入额度。</strong></span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+
+    <script language="JAVAScript">
+        //数字验证 过滤非法字符
+        function clearNoNum(obj) {
+            obj.value=obj.value.replace(/[^\d+]/g,'');
+        }
+
+        //去掉空格
+        function check_null(string) {
+            var i = string.length;
+            var j = 0;
+            var k = 0;
+            var flag = true;
+            while (k < i) {
+                if (string.charAt(k) != " ")
+                j = j + 1;
+                k = k + 1;
+            }
+            if (j == 0) {
+                flag = false;
+            }
+            return flag;
+        }
+    </script>
+
+    <script type="text/javascript">
+$(document).ready(function () {
+  var local_money=$(".MMain #local_money").html();
+  <{foreach key=cid item=con from=$video_config}>
+      <{assign var="name" value="$con"}>
+      <{assign var="money" value='_money'}>
+      var <{$name|cat:$money}>=$(".MMain #<{$name|cat:$money}>").html();
+  <{/foreach}>
+//动态加载
+//动态加载
+$.ajax({
+     type: 'GET',
+     url: '<{$site_url}>/index.php/member/video/getallbalance?action=save',
+     dataType: "json",
+     beforeSend: function(){
+            var nr="<img src='<{#mem_images#}>/load_pk.gif'/>";
+            $(".MMain #local_money").html(nr);
+            <{foreach key=cid item=con from=$video_config}>
+              <{assign var="name" value="$con"}>
+              <{assign var="money" value='_money'}>
+              $(".MMain #<{$name|cat:$money}>").html(nr);
+            <{/foreach}>
+            $(".MMain #allmoney").html(nr);
+
+      },
+    success: function (rdata) {
+      //alert(rdata);return false;
+      if(rdata.error){
+        alert(rdata.error);
+        window.location.href = 'zr_money';
+      }else if(rdata.data.Code == '10017'){
+          $(".MMain #local_money").html(parseFloat(local_money).toFixed(2));
+          
+          <{foreach key=cid item=con from=$video_config}>
+              <{assign var="name" value="$con"}>
+              <{assign var="money" value='_money'}>
+              if(rdata.data.<{$con}>status){
+                  $(".MMain #<{$name|cat:$money}>").html(parseFloat(rdata.data.<{$con}>balance).toFixed(2));
+                  $("#<{$con}>").val(parseFloat(rdata.data.<{$con}>balance).toFixed(2));
+                }else{
+                  $(".MMain #<{$name|cat:$money}>").html(parseFloat(<{$name|cat:$money}>).toFixed(2));
+                  $("#<{$con}>").val(parseFloat(<{$name|cat:$money}>).toFixed(2));
+                }
+                if(rdata.data.<{$con}>info == 9999){
+                  $(".MMain #<{$name|cat:$money}>").html('维护');
+                }
+                $('#<{$con}>_info').val(parseFloat(rdata.data.<{$con}>info));
+          <{/foreach}>
+          countallmoney();
+      }
+    }
+});
+
+function countallmoney(){
+    allm = parseFloat($("#sport").val());
+    <{foreach key=cid item=con from=$video_config}>
+      <{assign var="name" value="$con"}>
+      <{assign var="money" value='#'}>
+      allm +=  parseFloat($("<{$money|cat:$name}>").val());
+    <{/foreach}>
+    $(".MMain #allmoney").html(parseFloat(allm).toFixed(2)+" RMB")
+}
+});
+
+var states = 0;
+$("#SubTran").click(function(){
+  if(states == 0){
+    states = states + 1;
+    $(this).attr('disabled',true);
+    edzh();
+  }
+  
+})
+$("#form1").keypress(function(e) {
+    // 回车键事件
+  if(e.which == 13) {
+    if(states == 0){
+      states = states + 1;
+      $('#SubTran').attr('disabled',true);
+      edzh();
+    }
+  }
+});
+function edzh(){
+
+            var trtype1 = $('#trtype1').val();
+            var trtype2 = $('#trtype2').val();
+            //var p3_Amt  = parseInt($('#p3_Amt').val());
+            var p3_Amt  = $('#p3_Amt').val();
+            var edcashtoken = $('#edcashtoken').val();
+            <{foreach key=cid item=con from=$video_config}>
+              <{assign var="name" value="$con"}>
+              <{assign var="money" value='#'}>
+              var <{$con}> = parseInt($('<{$money|cat:$name}>').val());
+            <{/foreach}>
+            var sport   = parseInt($('#sport').val());
+
+            
+
+           <{foreach key=cid item=con from=$video_config}>
+              <{assign var="name" value="$con"}>
+              <{assign var="money" value='#'}>
+              var <{$con}>_info = parseInt($('<{$money|cat:$name}>_info').val());
+            <{/foreach}>
+          
+            
+
+            if(trtype1==trtype2){
+                alert("转入转出平台不能相同，请重新选择！");
+                return false;
+            }
+            if(trtype1!='sport'&&trtype2!='sport'){
+                alert("额度转换,只能在系统余额和视讯余额之间转换\n 视讯余额之间不能直接转换!");
+                return false;
+            }
+            if(p3_Amt==''){
+                alert("请输入转换金额！");
+                $('#p3_Amt').focus();
+                return false;
+            }
+            if (p3_Amt != "") {
+                if (p3_Amt < parseInt(<{$MinInMoney}>))
+                {
+                    alert("转换金额不能小于<<{$MinInMoney}>元！")
+                    $('#p3_Amt').focus();
+                    return false;
+                }
+            }
+
+            <{foreach key=cid item=con from=$video_config}>
+              if((trtype1 == '<{$con}>' || trtype2 == '<{$con}>') && <{$con}>_info == 9999){
+                alert("<{$con}>游戏正在进行例行维护！\n请您选择其他游戏！祝您游戏开心！")
+                $('#p3_Amt').focus();
+                return false;
+              }
+            <{/foreach}>
+
+            if(trtype1!='sport'){
+              switch(trtype1)
+              {
+                <{foreach key=cid item=con from=$video_config}>
+                  case '<{$con}>':
+                  if(p3_Amt><{$con}>){
+                    alert("转换金额不能大于<{$con}>余额>"+<{$con}>+"元！")
+                    $('#p3_Amt').focus();
+                    return false;
+                  }
+                  break;
+                <{/foreach}> 
+                
+              }
+            }
+            if(trtype2!='sport'){
+              if(p3_Amt>sport){
+                alert("转换金额不能大于系统额度余额>"+sport+"元！")
+                $('#p3_Amt').focus();
+                return false;
+              }
+            }
+
+            $.ajax({
+                type: "POST",
+                url: "<{$site_url}>/index.php/member/cash/edzh?action=save",
+                beforeSend: function(){
+                    $('body').prepend('<div id="xxoo"><img src="<{#mem_images#}>/ajax-loader-white.gif" id="xxoo1"/></div>');
+                    $('#xxoo').css({
+                        padding:        0,
+                        margin:         0,
+                        width:          '100%',
+                        height:         '100%',
+                        top:            '0',
+                        left:           '0',
+                        textAlign:      'center',
+                        color:          '#000',
+                        border:         'none',
+                        "position":     "absolute",
+                        "z-index":      1000,
+                        "opacity":      0.5,
+                        "background-color": "#000000"
+                    });
+                    $('#xxoo1').css({
+                        'margin-top':   '23%'
+                    });
+                },
+                data: "trtype1="+trtype1+"&trtype2="+trtype2+"&p3_Amt="+p3_Amt+'&edcashtoken='+edcashtoken,
+                dataType: 'json',
+                success: function(msg){
+                  //alert(msg);return false;
+                 $('#xxoo').remove();
+                  if(msg.status==18){
+                    alert('转换成功!');
+                    window.location.href="zr_money";
+                  }else{
+                    alert(msg.info);
+                    window.location.href="zr_money";
+                  }
+                }
+            });
+}
+</script>

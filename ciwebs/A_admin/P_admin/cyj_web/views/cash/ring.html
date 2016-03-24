@@ -1,0 +1,85 @@
+
+<{config_load file="public.conf" section="public"}>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>铃声方案选择</title>
+<script  src="<{#js#}>/jquery-1.7.min.js"></script>
+<style>
+	body{margin: 0px auto;padding: 0px; font-size: 12px;}
+	.main{margin: 0px auto;padding: 10px;text-align: center;}
+	table{line-height: 25px;}
+	table td{border: #eeeeee solid 1px;width: 120px;}
+	table td span{cursor: pointer;}
+</style>
+</head>
+<body>
+<script type="text/javascript"> 
+var inurl=new Array();
+for(var i=0;i<3;i++){
+inurl[i]=new Array(); 
+	for(var j=0;j<2;j++){
+	inurl[i][j]='';
+	}
+}
+  inurl[0][0]="<{#sound#}>/gsrk.swf"
+  inurl[0][1]='<{#sound#}>/gsrk2.swf';
+  inurl[1][0]='<{#sound#}>/xsrk.swf';
+  inurl[1][1]='<{#sound#}>/xsrk2.swf';
+  inurl[2][0]='<{#sound#}>/chukuan.swf';
+  inurl[2][1]='<{#sound#}>/chukuan2.swf';
+function SetCookie(sName, sValue){
+   date = new Date();
+   date.setDate(date.getDate()+365);
+   document.cookie = sName+'='+escape(sValue)+'; expires='+date.toGMTString();
+}
+function getCookie(name){
+    var result = null;
+   
+    var myCookie = ""+document.cookie+";"; 
+	 
+    var searchName = ""+name+"=";
+    var startOfCookie = myCookie.indexOf(searchName);
+    var endOfCookie;
+    
+    if (startOfCookie != -1){
+        startOfCookie += searchName.length;
+        endOfCookie = myCookie.indexOf(";",startOfCookie);
+        result = (myCookie.substring(startOfCookie,endOfCookie));
+    }
+    
+    return result;
+ }
+ function setlisten(a){
+ 	 
+    SetCookie('ring',a);
+ }
+ function listen(a,b){
+ 	url=inurl[a][b];
+ 	 
+ 	$('#music').html('<embed src="'+url+'" autostart="true" width=0 height=0 loop="false">');
+ }
+</script>
+<div class="main">
+<table>
+	<tr>
+	<td>声音方案一</td>
+	<td>公司入款 <span onclick="listen(0,0)">[试听]</span></td>
+	<td>线上入款 <span onclick="listen(1,0)">[试听]</span></td>
+	<td>出款<span onclick="listen(2,0)">[试听]</span></td>
+	<td><span onclick="setlisten(0)">[使用]</span></td>
+	</tr>
+	<tr>
+	<td>声音方案二</td>
+	<td>公司入款 <span onclick="listen(0,1)">[试听]</span></td>
+	<td>线上入款 <span onclick="listen(1,1)">[试听]</span></td>
+	<td>出款<span onclick="listen(2,1)">[试听]</span></td>
+	<td><span onclick="setlisten(1)">[使用]</span></td>
+	
+	</tr>
+</table>
+</div>
+<div style="display:" id="music"></div>
+</body>
+</html>

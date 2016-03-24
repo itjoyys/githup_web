@@ -1,0 +1,63 @@
+<title>会员详情列表查询</title>
+<{include file="web_header.html"}>
+<{config_load file="public.conf" section="public"}>
+<script>
+  window.onload=function(){
+     //分页跳转
+    document.getElementById("page").onchange=function(){
+       document.getElementById('myFORM').submit()
+      }
+  }
+
+</script>
+<body>
+<div id="con_wrap">
+    <div class="input_002">会员详情列表</div>
+    <div class="con_menu" style="width:680px;">
+     <form method="get" name="action_form" action="" id="myFORM">
+     <a href="javascript:history.go(-1);">返回上一页</a>
+    <input type="hidden" name="index_id" value="<{$index_id}>">
+    <input type="hidden" name="level_id" value="<{$level_id}>"><br>
+    账号:<input type="text" name="username" value="<{$username}>">
+    <input type="submit" value="查询"  class="button_a">
+  &nbsp;<{$page}>&nbsp;
+    </form>
+  </div>
+  </div>
+
+<div class="content">
+<table width="100%" class="m_tab">
+    <tbody><tr class="m_title_over_co">
+      <td >姓名</td>
+      <td >會員帳號</td>
+      <td >加入時間</td>
+      <td >最后登录/IP</td>
+      <td >登陆次数</td>
+      <td >存款次數</td>
+      <td >存款總額</td>
+      <td >最大存款</td>
+      <td >提款次數</td>
+      <td >提款總額</td>
+      <td >最大提款</td>
+      <td >盈利</td>
+  </tr>
+    <{foreach from=$data key=i item=v}>
+      <tr class="m_cen <{if $i%2 == 0}>even<{/if}>">
+      <td><{$v['pay_name']}></td>
+      <td><{$v['username']}></td>
+      <td><{$v['reg_date']}></td>
+      <td><{$v['login_time']}>&nbsp;/&nbsp;<font color="red"><{$v['login_ip']}></font></td>
+      <td><{$v['lognum']}></td>
+      <td><{$v['bank_in_num']}></td>
+      <td><{$v['bank_in_money']}></td>
+      <td><{$v['bank_in_max']}></td>
+      <td><{$v['bank_out_num']}></td>
+      <td><{$v['bank_out_money']}></td>
+      <td><{$v['bank_out_max']}></td>
+      <td><{$v['bank_out_money']-$v['bank_in_money']}></td>
+      </tr>
+      <{/foreach}>
+</tbody></table>
+</div>
+
+<{include file="web_footer.html"}>

@@ -1,0 +1,96 @@
+<title>上级公告</title>
+<{include file="web_header.html"}>
+<body>
+<style type="text/css">
+.ntext{
+    text-align: left;
+    padding: 2px;
+   background:#fff;
+}
+.ntext td{
+    border-right: 1px solid rgb(250, 216, 217);
+    border-bottom: 1px solid rgb(250, 216, 217);
+}
+</style>
+<div id="con_wrap">
+<div class="input_002">公告信息</div>
+</div>
+<div class="content">
+<table border="0" cellspacing="0" cellpadding="0" width="25%" style="float:left;clear:none;padding:2px;">
+  <tbody>
+  <tr class="m_title_over_co">
+    <td colspan="2" >體育公告</td>
+  </tr>
+<{foreach from=$sp  item=val}>
+      <tr class="ntext">
+    <td align="center" width="110px;">
+      <{$val['notice_date']}>
+    </td>
+    <td class="ntext">
+      <{$val['notice_content']}>
+    </td>
+  </tr>
+  <{/foreach}>
+
+</tbody></table>
+<table border="0" cellspacing="0" cellpadding="0" width="25%" style="float:left;clear:none;padding:2px;">
+
+  <tbody><tr class="m_title_over_co">
+    <td colspan="2">彩票公告</td>
+
+  </tr>
+   <{foreach from=$fc  item=val}>
+      <tr class="ntext">
+    <td align="center" width="110px;">
+      <{$val['notice_date']}>
+    </td>
+    <td>
+      <{$val['notice_content']}>
+    </td>
+
+  </tr>
+  <{/foreach}>
+
+</tbody></table>
+<table border="0" cellspacing="0" cellpadding="0" width="25%" style="float:left;clear:none;padding:2px;">
+
+  <tbody><tr class="m_title_over_co">
+    <td colspan="2">視訊公告</td>
+
+  </tr>
+  <{foreach from=$vd  item=val}>
+      <tr class="ntext">
+    <td align="center" width="110px;">
+      <{$val['notice_date']}>
+    </td>
+    <td>
+      <{$val['notice_content']}>
+    </td>
+
+  </tr>
+ <{/foreach}>
+
+
+</tbody></table>
+<table border="0" cellspacing="0" cellpadding="0" width="25%" style="float:left;clear:none;padding:2px;">
+
+  <tbody><tr class="m_title_over_co">
+    <td colspan="2">维护公告</td>
+
+  </tr>
+   <{foreach from=$wh  item=val}>
+      <tr class="ntext">
+    <td align="center" width="110px;">
+      <{$val['notice_date']}>
+    </td>
+    <td>
+      <{$val['notice_content']}>
+    </td>
+  </tr>
+  <{/foreach}>
+</tbody></table>
+
+</div>
+
+<!-- 公共尾部 -->
+<{include file="web_footer.html"}>

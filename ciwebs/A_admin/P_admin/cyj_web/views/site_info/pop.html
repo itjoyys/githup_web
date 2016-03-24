@@ -1,0 +1,389 @@
+<{include file="info_header.html"}>
+<{config_load file="public.conf" section="public"}>
+<body>
+<script src="<{#js#}>/jquery.min.js"></script>
+<script src="<{#js#}>/jquery.minicolors.js"></script>
+<link rel="stylesheet" href="<{#css#}>/jquery.minicolors.css">
+<script>
+
+var indexid = "<{$index_id}>";
+$(document).ready(function(){
+  $("#index_id").val(indexid);
+  $("#index_id").change(function(event) {
+      $("#queryform").submit();
+    });
+})
+
+var tcolor;
+function dep_config(title,id,is_delete,ad_type){
+    $("#id").val(id);
+    $("#is_delete").val(is_delete);
+    $("#title").val(title);
+    $("#ad_type").val(ad_type);
+    easyDialog.open({
+          container : 'delevel',
+          fixed : false
+    });
+}
+
+var pcolor;
+var ttcolor;
+function pop_config(id,tcolor,pcolor,ttcolor,index_id){
+    $("#pop_id").val(id);
+    $("#title_bcolor").val(tcolor);
+    $("#iid").val(index_id);
+    $("#pop_bcolor").val(pcolor);
+    $("#title_color").val(ttcolor);
+    easyDialog.open({
+          container : 'pop_config',
+          fixed : false
+    });
+   $("#title_bcolor").minicolors({
+        control: $(this).attr('data-control') || 'hue',
+        defaultValue: $(this).attr('data-defaultValue') || tcolor,
+        inline: $(this).attr('data-inline') === 'true',
+        letterCase: $(this).attr('data-letterCase') || 'lowercase',
+        opacity: $(this).attr('data-opacity'),
+        position: $(this).attr('data-position') || 'bottom left',
+        change: function(hex, opacity) {
+            if( !hex ) return;
+            if( opacity ) hex += ', ' + opacity;
+            try {
+                console.log(hex);
+            } catch(e) {}
+        },
+        theme: 'bootstrap'
+    });
+
+      $("#pop_bcolor").minicolors({
+        control: $(this).attr('data-control') || 'hue',
+        defaultValue: $(this).attr('data-defaultValue') || pcolor,
+        inline: $(this).attr('data-inline') === 'true',
+        letterCase: $(this).attr('data-letterCase') || 'lowercase',
+        opacity: $(this).attr('data-opacity'),
+        position: $(this).attr('data-position') || 'bottom left',
+        change: function(hex, opacity) {
+            if( !hex ) return;
+            if( opacity ) hex += ', ' + opacity;
+            try {
+                console.log(hex);
+            } catch(e) {}
+        },
+        theme: 'bootstrap'
+    });
+
+    $("#title_color").minicolors({
+        control: $(this).attr('data-control') || 'hue',
+        defaultValue: $(this).attr('data-defaultValue') || ttcolor,
+        inline: $(this).attr('data-inline') === 'true',
+        letterCase: $(this).attr('data-letterCase') || 'lowercase',
+        opacity: $(this).attr('data-opacity'),
+        position: $(this).attr('data-position') || 'bottom left',
+        change: function(hex, opacity) {
+            if( !hex ) return;
+            if( opacity ) hex += ', ' + opacity;
+            try {
+                console.log(hex);
+            } catch(e) {}
+        },
+        theme: 'bootstrap'
+    });
+}
+
+function logo_up(id,type){
+    $("#idl").val(id);
+    $("#type").val(type);
+    easyDialog.open({
+          container : 'logo_up',
+          fixed : false
+    });
+}
+
+jQuery(function(){
+   $(".mskeClaose").click(function(){$(".mskeLayBg,.mskelayBox").hide()});
+})
+</script>
+<style type="text/css">
+.de_title{
+    background-color: #081425;
+    height: 30px;
+    line-height: 30px;
+    overflow: hidden;
+    color: #666;
+    padding: 0 10px;
+    font-size: 14px;
+    border-bottom: 1px solid #e5e5e5;
+    background: #f7f7f7;
+    border-radius: 4px 4px 0 0;
+}
+#delevel,#logo_up{
+  border-radius: 4px 4px 0 0;
+  color: #444;
+  border: 3px solid rgba(0,0,0,0);
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+#de_title{
+    font-size: 14px;
+    color: #000;
+    font: bold 9pt/100% Arial, Helvetica, sans-serif;
+    font-weight: 200;
+}
+.de_td{
+      padding: 1px 0;
+      line-height: 34px;
+}
+.de_input{
+   border-color:#ccc;
+   width: 230px;
+}
+input{
+   height: 20px;
+}
+.de_select{
+  float: left;
+  margin-left: 8px;
+}
+.laydate-icon{
+  float: left;
+  margin-left: 8px;
+}
+
+.view{
+  cursor:pointer;
+}
+
+.mskelayBox {
+  margin-top: -251px;
+  margin-left: -294px;
+  position: fixed;
+  left: 50%;
+  top: 40%;
+  border: 7px solid #E2E2E2;
+  z-index: 20;
+  background: #FFF;
+  display: none;
+  _display: none!important;
+}
+.mskeClaose {
+  position: absolute;
+  top: -17px;
+  right: -17px;
+  cursor: pointer;
+}
+.flash_a{
+  background: #000;padding: 3px 8px;
+  font-family: Verdana, Arial, sans-serif;
+  border-radius: 10px;
+  font-size: 12px;
+  color: #fff
+}
+#delevel{
+ border-radius: 4px 4px 0 0;
+  color: #444;
+  border: 3px solid rgba(0,0,0,0);
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+#de_title{
+    font-size: 14px;
+    color: #000;
+    font-weight: 100;
+}
+
+.minicolors-theme-bootstrap .minicolors-swatch {
+   top: 1px;
+  left: 10px;
+  width: 22px;
+  height: 22px;
+  border-radius: 3px;
+}
+.de_td{
+      padding: 1px 0;
+      line-height: 34px;
+}
+.de_input{
+   border-color: #ccc;
+   width: 230px;
+}
+input{
+   height: 20px;
+}
+.de_select{
+  float: left;
+  margin-left: 8px;
+}
+#pop_bcolor,#title_bcolor,#title_color{
+  float: left;
+  margin-left: 8px;
+}
+</style>
+<style type="text/css">
+.pagination a{
+    border-right: #aaaadd 1px solid;
+    padding-right: 5px;
+    border-top: #aaaadd 1px solid;
+    padding-left: 5px;
+    padding-bottom: 2px;
+    margin: 2px;
+    border-left: #aaaadd 1px solid;
+    color: #000099;
+    padding-top: 2px;
+    border-bottom: #aaaadd 1px solid;
+    text-decoration: none;
+}
+</style>
+<div class="content-box role">
+    <div class="content-box-header">
+        <h3>站内广告管理  <a class="revise_a botton_a" href="pop_edit?index_id=<{$index_id}>">添加站内广告</a>&nbsp;<a class="botton_a" style="background-color: #D41111;" href="#" onclick="pop_config('<{$id}>','<{$title_bcolor}>','<{$pop_bcolor}>','<{$title_color}>','<{$index_id}>')">弹窗广告配置</a></h3>
+        <div class="clear"></div>
+    </div>
+
+    <div class="mskelayBox" style="display: none;">
+      <div id="view_html">
+      </div>
+      <img class="mskeClaose" src="<{#purl#}><{#images#}>/mke_close.png" width="27" height="27">
+    </div>
+
+    <div class="content-box-content">
+        <div class="default-tab">
+            <form action="pop" method="get" name="queryform" id="queryform">
+                <div><{$sites_str}></div>
+            </form>
+            <div class="tab-content default-tab">
+                <table>
+                    <thead>
+                    <tr>
+                        <th style="width:145px;">日期</th>
+                        <th>标题</th>
+                        <th style="width:115px;">类型</th>
+
+                        <th style="width:90px;">状态</th>
+                        <th style="width:180px;">操作</th>
+                    </tr>
+
+                    </thead>
+                    <tbody>
+                    <{foreach from=$data item=v}>
+                    <tr>
+                        <td><{$v['add_date']}></td>
+                        <td><a href="#" onclick="dep_config('<{$v['title']}>','<{$v['id']}>','<{$v['is_delete']}>','<{$v['ad_type']}>')"><{$v['title']}></a>
+                        </td>
+                        <td><{$v['ad_type_z']}></td>
+                        <td><{$v['state_z']}></td>
+                        <td class="td">
+                        <a style="background: #e86829;" class="revise_a" href="pop_edit?id=<{$v['id']}>">编辑内容</a>
+
+                          <a class="revise_a flash_a" onclick="if(confirm('确定删除!!!')){document.location='pop_del?id=<{$v['id']}>'}" href="javascript:void(0)">删除</a>
+
+
+                        </td>
+                    </tr>
+                    <{/foreach}>
+                    <thead>
+                     <tr>
+              <th colspan="5">
+                        <div class="pagination" style="text-align:center;">
+                                <{$page_html}>
+                            </div>
+               </th>
+                            </tr>
+                    </thead>
+
+                    </tbody>
+                </table>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+  <!-- 移动弹窗 -->
+<div id="delevel" style="display:none;background-color:white;" class="con_menu">
+  <form action="pop_title_do" method="post" name="add_form" onsubmit="return check_title()">
+    <input name="id" id="id" value="" type="hidden">
+    <table class="m_tab" style="width:300px;margin:0;">
+        <tbody><tr class="de_title">
+            <td colspan="2" height="27" class="table_bg" align="left">
+            <span id="de_title">是否确定修改!!!</span>
+            <span style="float:right;"><a style="color:white;" href="javascript:void(0)" title="关闭窗口" onclick="easyDialog.close();">×</a></span>
+            </td>
+        </tr>
+        <tr class="m_title">
+            <td>标题</td>
+            <td class="de_td"><input name="title" id="title" class="de_input" value=""></td>
+        </tr>
+         <tr class="m_title">
+            <td>是否启用</td>
+            <td class="de_td">
+              <select class="de_select" name="is_delete" id="is_delete">
+                <option value="1">是</option>
+                <option value="2">否</option>
+              </select>
+            </td>
+        </tr>
+            <tr class="m_title">
+            <td>位置</td>
+            <td class="de_td">
+              <select class="de_select" name="ad_type" id="ad_type">
+                 <option value="1">中间弹窗</option>
+                 <option value="3">左下角弹窗</option>
+              </select>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center">
+                <input type="submit" value="提交" class="botton_a">
+                <input type="reset" value="关闭" onclick="easyDialog.close();" class="botton_a">
+            </td>
+        </tr>
+    </tbody></table>
+</form>
+</div>
+
+  <!-- 弹窗配置 -->
+<div id="pop_config" style="display:none;background-color:white;" class="con_menu">
+  <form action="pop_config_do" method="post" name="add_form">
+     <input type="hidden" id="pop_id" name="pop_id" value="">
+     <input type="hidden" id="iid" name="index_id" value="">
+    <table class="m_tab" style="width:300px;margin:0;">
+        <tbody><tr class="de_title">
+            <td colspan="2" height="27" class="table_bg" align="left">
+            <span id="de_title">是否确定修改!!!</span>
+            <span style="float:right;"><a style="color:white;" href="javascript:void(0)" title="关闭窗口" onclick="easyDialog.close();">×</a></span>
+            </td>
+        </tr>
+         <tr class="m_title">
+            <td>标题栏颜色</td>
+            <td><input type="text" id="title_bcolor" class="form-control demo" data-control="hue" name="title_bcolor" style="width:80px;border-color: #ccc;" value=""></td>
+        </tr>
+        <tr class="m_title">
+            <td>标题颜色</td>
+            <td><input type="text" id="title_color" class="form-control demo" data-control="hue" name="title_color" style="width:80px;border-color: #ccc;" value=""></td>
+        </tr>
+           <tr class="m_title">
+            <td>背景颜色</td>
+            <td><input type="text" id="pop_bcolor" class="form-control demo" data-control="hue" name="pop_bcolor" style="width:80px;border-color: #ccc;" value=""></td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center">
+                <input type="submit" value="提交" class="botton_a">
+                <input type="reset" value="关闭" onclick="easyDialog.close();" class="botton_a">
+            </td>
+        </tr>
+    </tbody></table>
+</form>
+    </div>
+</body>
+<script>
+function check_title(){
+   if($("#title").val() == ''){
+      alert('请输入标题');
+      return false;
+   }
+}
+</script>
+</html>

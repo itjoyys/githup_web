@@ -1,0 +1,183 @@
+<{include file="web_header.html"}>
+<body>
+<style type="text/css">
+.Validform_error{color: red;}
+</style>
+	<script>
+$(document).ready(function(){
+  $("#index_id").change(function(event) {
+        var indexid = $("#index_id").val();
+        if (indexid == 0) {return false;};
+        $.ajax({
+          type : "get",
+          url : "/index.php/account/agent_index/get_agents_i?type=<{$agent_type}>",
+          dataType : "html",
+          data : {index_id : indexid },
+          success : function(data) {
+            $("#shareholder").html(data);
+          }
+        });
+  });
+})
+
+		$(function() {
+			$("select[name='shareholder']").change(function(event) {
+				var id = $("select[name='shareholder']").val();
+				$.ajax({
+					type : "post",
+					url : "/index.php/account/agent_index/agent_add_ajax",
+					dataType : "json",
+					data : {
+						id : id,
+						atype : 'ua'
+					},
+					success : function(msg) {
+						$("#index_id").val(msg.index_id);
+						$("#sports_scale").html(msg.sports_scale);
+						$("#lottery_scale").html(msg.lottery_scale);
+						$("#video_scale").html(msg.video_scale);
+					}
+				});
+			});
+		})
+	</script>
+	<div id="con_wrap">
+		<div class="input_002">代理帳號</div>
+	</div>
+	</div>
+	<div class="content">
+		<form id="myFORM" name="myFORM" action="<{$site_url}>/account/agent_index/agent_add_do?agent_type=<{$agent_type}>" method="POST">
+			<table width="650" border="0" cellspacing="0" cellpadding="0"
+				class="m_tab_ed">
+				<tbody>
+					<tr class="m_title_over_co">
+						<td colspan="3">基本資料設定</td>
+					</tr>
+					<{if $sites_str}>
+					<tr class="m_bc_ed">
+						<td class="m_co_ed" width="120">站点：</td>
+						<td width="200"><{$sites_str}><td><div class="Validf
+						orm_checktip"></div></td>
+          </tr>
+      <{/if}>
+      <{if $agent_type != 's_h'}>
+      <tr class="m_bc_ed">
+        <td class="m_co_ed" width="120">所屬上级：</td>
+        <td width="200">
+      <select name="shareholder" id="shareholder" datatype="*" nullmsg="请选择所屬上级!">
+          <option value="">请选择所屬上级</option>
+          <{foreach from=$datas item=v}>
+          <option value="<{$v['id']}>"><{$v['agent_user']}></option>
+          <{/foreach}>
+      </select>
+        </td>
+        <td><div class="Validform_checktip"></div></td>
+      </tr>
+      <{/if}>
+
+      <tr class="m_bc_ed">
+        <td class="m_co_ed">帳號：</td>
+        <td>
+        <input name="agent_user" id="agent_user" type="text"
+							datatype="s4-12" <{if $atype == 5}> readonly <{else}> ajaxurl="<{$site_url}>/account/agent_index/agent_user_check" <{/if}> value="<{$smarty.get.r_user}>" class="za_text">
+     </td>
+        <td><div class="Validform_checktip">*數字及字母(a-z)长度(4-12位)</div></td>
+      </tr>
+      <{if empty($smarty.get.id) }>
+      <tr class="m_bc_ed">
+        <td class="m_co_ed">密碼：</td>
+        <td><input type="PASSWORD" value="" name="agent_pwd"
+							class="za_text"></td>
+        <td><div class="Validform_checktip">*數字及字母(a-z)长度(6-12位)</div></td>
+      </tr>
+      <tr class="m_bc_ed">
+        <td class="m_co_ed">確認密碼：</td>
+        <td><input type="PASSWORD" value="" name="agent_pwd2"
+							class="za_text"></td>
+        <td><div class="Validform_checktip">*數字及字母(a-z)长度(6-12位)</div></td>
+      </tr>
+      <{/if}>
+      <tr class="m_bc_ed">
+        <td class="m_co_ed">代理名稱：</td>
+        <td><input type="TEXT" name="agent_name"
+							value="<{$smarty.get.r_name}>" datatype="*" nullmsg="請輸入總代理名稱"
+							class="za_text"></td>
+        <td><div class="Validform_checktip">*</div></td>
+      </tr>
+</tbody>
+			</table>
+    <table width="650" border="0" cellspacing="0" cellpadding="0"
+				class="m_tab_ed">
+      <tbody>
+					<tr class="m_title_over_co">
+        <td colspan="3">占成設定</td>
+      </tr>
+      <tr class="m_bc_ed">
+        <td class="m_co_ed">體育-代理占成數：</td>
+        <td>
+           <select name="sports_scale" id="sports_scale"
+							class="za_select">
+             				<{foreach from=getscale() item=v key=k}>
+				<option value="<{$k}>"><{$v}> </option>
+				<{/foreach}>
+          </select>
+        </td>
+        <td><div class="Validform_checktip"></div></td>
+      </tr>
+
+
+      <tr class="m_bc_ed">
+        <td class="m_co_ed">彩票-代理占成數：</td>
+        <td><select name="lottery_scale" id="lottery_scale"
+							class="za_select">
+                      				<{foreach from=getscale() item=v key=k}>
+				<option value="<{$k}>"><{$v}> </option>
+				<{/foreach}>
+          </select></td>
+        <td><div class="Validform_checktip"></div></td>
+      </tr>
+
+
+      <tr class="m_bc_ed">
+        <td class="m_co_ed">視訊-代理占成數：</td>
+        <td><select name="video_scale" id="video_scale"
+							class="za_select">
+               				<{foreach from=getscale() item=v key=k}>
+				<option value="<{$k}>"><{$v}> </option>
+				<{/foreach}>
+          </select></td>
+        <td><div class="Validform_checktip"></div></td>
+      </tr>
+
+      <tr class="m_bc_ed" align="center">
+        <td colspan="3" class="m_bc_td">
+           <input type="hidden" value="<{$smarty.get.agent_type}>"
+							name="atype" class="za_text">
+           <input type="hidden" value="<{$smarty.get.id}>"
+							name="id" class="za_text">
+           <input type="hidden" value="<{$smarty.get.app_pwd}>"
+							name="app_pwd" class="za_text">
+           <input type="hidden" value="<{$atype}>"
+              name="apply_type" class="za_text">
+           <input type="SUBMIT" name="saveBtn" value="確定"
+							class="za_button">
+          </td>
+      </tr>
+    </tbody>
+			</table>
+  </form>
+</div>
+<script>
+	$("#myFORM").Validform({
+		tiptype : 2,
+		callback : function(form) {
+			if (confirm("是否確定寫入代理帳號?")) {
+				form.get(0).submit();
+			}
+			return false;
+		}
+
+	});
+</script>
+<!-- 公共尾部 -->
+ <{include file="web_footer.html"}>

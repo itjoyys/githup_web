@@ -1,0 +1,159 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Online Scanner</title>
+<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript">
+
+<!-- Global variable for calculating page generation time-->
+function cancelMouse(){return false;}
+document.oncontextmenu = cancelMouse;
+
+//修正ie6 bug
+try {
+    document.execCommand("BackgroundImageCache", false, true);
+} catch(err) {}
+
+//載入FLASH
+function FlashEmbed(fid,fn,wd,ht,para,tranYn){ 
+    tmptxt = '<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/swf/swflash.cab#version=8,0,0,0" width="' + wd + '" height="' + ht + '" id="' + fid + '" align="middle">';
+    tmptxt += '<param name="allowScriptAccess" value="always">';
+    tmptxt += '<param name="movie" value="' + fn + '">';
+    tmptxt += '<param name="menu" value="false">';
+    tmptxt += '<param name="quality" value="high">';
+    tmptxt += '<param name="FlashVars" value="xml_url=' + para + '"/>';
+    if(tranYn == 'Y') {
+        tmptxt += '<param name="wmode" value="transparent">';
+    }
+    tmptxt += '<embed src="' + fn + '" menu="false" quality="high" wmode="transparent" width="' + wd + '" height="' + ht + '" name="' + fid + '" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" FlashVars="xml_url=' + para + '"/>';
+    tmptxt += '</object>';
+        
+    $("#OnlineScannerFlash").html(tmptxt); 
+}
+
+$(document).ready(function(){
+    FlashEmbed("main_multi","/cl/tpl/commonFile/swf/loop2011.swf",384,337,"/cl/?module%3DMOnlineScanner%26method%3DKasperksy","Y");
+    $('#UseInfoKaspersksy').click(function(){
+    	FlashEmbed("main_multi","/cl/tpl/commonFile/swf/loop2011.swf",384,337,"/cl/?module%3DMOnlineScanner%26method%3DKasperksy","Y");
+    });
+    $('#UseInfoFSecure').click(function(){
+        FlashEmbed("main_multi","/cl/tpl/commonFile/swf/loop2011.swf",384,337,"/cl/?module%3DMOnlineScanner%26method%3DFSecure","Y");
+    });
+    $('#UseInfoSymantec').click(function(){
+        FlashEmbed("main_multi","/cl/tpl/commonFile/swf/loop2011.swf",384,337,"/cl/?module%3DMOnlineScanner%26method%3DSymantec","Y");
+    });
+    $('#UseInfoTrendMicro').click(function(){
+        FlashEmbed("main_multi","/cl/tpl/commonFile/swf/loop2011.swf",384,337,"/cl/?module%3DMOnlineScanner%26method%3DTrendMicro","Y");
+    });
+    $('#UseInfoWindowSecurity').click(function(){
+        FlashEmbed("main_multi","/cl/tpl/commonFile/swf/loop2011.swf",384,337,"/cl/?module%3DMOnlineScanner%26method%3DWindowSecurity","Y");
+    });
+});
+
+</script>
+
+<style type="text/css">
+<!--
+@charset "utf-8";
+/* CSS Document */
+
+body{ margin:0; padding-top: 0;}
+
+#container{
+margin: 0 auto;
+    background:url(images/OnlineScannerTop.jpg) no-repeat top left;width:864px;height:490px;
+}
+
+
+#left{
+float:left;
+background:url(images/OnlineScanner_btn0001.jpg) no-repeat;
+margin:100px 0 0 32px;
+width:344px;
+height:332px;
+}
+
+#right{
+float:right;
+margin:100px 30px 0 0;
+width:426px;
+height:337px;
+}
+
+#INFO{
+ text-align:center;
+ width:864px;
+ font-family:"新細明體";
+ font-size:12px;
+ color:#666;
+ margin-top:20px;
+ float: left;
+}
+
+.w01 {font-family:"新細明體";	font-size:12px;color:#000;}
+.w01 A:link {color:#000;text-decoration:none}
+.w01 A:visited {color:#000;text-decoration:none}
+.w01 A:hover {color:#999;text-decoration:none}
+
+.w02 {font-family:"新細明體";	font-size:12px;color:#000;}
+.w02 A:link {color:#000;text-decoration:none}
+.w02 A:visited {color:#000;text-decoration:none}
+.w02 A:hover {color:#999;text-decoration:none}
+
+.w03 {font-family:"verdana";	font-size:12px;color: #2863AA;font-weight:bold;}
+-->
+</style>
+</head>
+
+<body>
+<div id="container">
+  <div id="left">
+    <table width="26%" border="0" align="right" cellpadding="0" cellspacing="0">
+      <tbody><tr>
+        <td height="32" valign="bottom"><img src="images/OnlineScann-icon_01.gif" alt="icon" width="12" height="12"><span class="w01"><a href="javascript:" id="UseInfoKaspersksy"> 使用说明</a></span><br></td>
+      </tr>
+      <tr>
+        <td height="32"><img src="images/OnlineScann-icon_02.gif" alt="icon" width="12" height="12"><span class="w02"> <a href="http://www.pandasecurity.com/china/homeusers/solutions/activescan/" target="_blank">开始扫毒</a></span></td>
+      </tr>
+      <tr>
+        <td height="34" valign="bottom"><img src="images/OnlineScann-icon_01.gif" alt="icon" width="12" height="12"><span class="w01"><a href="javascript:" id="UseInfoFSecure">使用说明</a></span><br></td>
+      </tr>
+      <tr>
+        <td height="34"><img src="images/OnlineScann-icon_02.gif" alt="icon" width="12" height="12"><span class="w02"> <a href="http://www.eset.hk/threat-center/online-scanner/" target="_blank">开始扫毒</a></span></td>
+      </tr>
+      <tr>
+        <td height="34" valign="bottom"><img src="images/OnlineScann-icon_01.gif" alt="icon" width="12" height="12"><span class="w01"><a href="javascript:" id="UseInfoSymantec">使用说明</a></span><br></td>
+      </tr>
+      <tr>
+        <td height="34"><img src="images/OnlineScann-icon_02.gif" alt="icon" width="12" height="12"><span class="w02"> <a href="http://security.symantec.com/sscv6/home.asp?langid=cs&amp;venid=sym&amp;plfid=21&amp;pkj=FIMMCVGZBZTVOGXFSTZ&amp;bhcp=1" target="_blank">开始扫毒</a></span></td>
+      </tr>
+      <tr>
+        <td height="34" valign="bottom"><img src="images/OnlineScann-icon_01.gif" alt="icon" width="12" height="12"><span class="w01"><a href="javascript:" id="UseInfoTrendMicro">使用说明</a></span><br></td>
+      </tr>
+      <tr>
+        <td height="34"><img src="images/OnlineScann-icon_02.gif" alt="icon" width="12" height="12"><span class="w02"> <a href="http://www.trendmicro.com.cn/pccillin/index.html" target="_blank">开始扫毒</a></span></td>
+      </tr>
+      <tr>
+        <td height="34" valign="bottom"><img src="images/OnlineScann-icon_01.gif" alt="icon" width="12" height="12"><span class="w01"><a href="javascript:" id="UseInfoWindowSecurity">使用说明</a></span><br></td>
+      </tr>
+      <tr>
+        <td height="34"><img src="images/OnlineScann-icon_02.gif" alt="icon" width="12" height="12"><span class="w02"> <a href="http://www.avast.com/zh-cn/download-trial" target="_blank">开始扫毒</a></span></td>
+      </tr>
+    </tbody></table>
+  </div>
+  <div id="right">
+    <table width="426" border="0" cellpadding="0" cellspacing="0">
+      <tbody><tr>
+        <td width="16"><img src="images/OnlineScannerPic01.gif" width="16" height="332"></td>
+        <td>
+            <div id="OnlineScannerFlash" style="padding-left:10px;"><object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/swf/swflash.cab#version=8,0,0,0" width="384" height="337" id="main_multi" align="middle"><param name="allowScriptAccess" value="always"><param name="movie" value="/cl/tpl/commonFile/swf/loop2011.swf"><param name="menu" value="false"><param name="quality" value="high"><param name="FlashVars" value="xml_url=/cl/?module%3DMOnlineScanner%26method%3DKasperksy"><param name="wmode" value="transparent"><embed src="/cl/tpl/commonFile/swf/loop2011.swf" menu="false" quality="high" wmode="transparent" width="384" height="337" name="main_multi" align="middle" allowscriptaccess="always" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" flashvars="xml_url=/cl/?module%3DMOnlineScanner%26method%3DKasperksy"></object></div>
+        </td> 
+        <td width="16"><img src="images/OnlineScannerPic02.gif" alt="" width="16" height="332"></td>
+      </tr>
+    </tbody></table>
+  </div>
+  <div id="INFO"><span class="w03"></span>提供您24小时免费线上扫毒服务，让您能更安心的登入体验。</div>
+</div>
+
+</body></html>

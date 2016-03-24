@@ -1,0 +1,38 @@
+<ion-view class="m-register" cache-view="false">
+	<ion-nav-bar class="bar bar-header bar-light">
+		<ion-nav-buttons side="left">
+			<a class="button button-icon icon ion-ios-arrow-back" ng-href="#/index"></a>
+		</ion-nav-buttons>
+		<ion-nav-title>{{'Member_WelcomeShiwan'|translate}}</ion-nav-title>
+	</ion-nav-bar>
+	<ion-content class="has-header">
+	<form name="regS1From" id="regS1From" novalidate="novalidate" ng-submit="regS1From.$valid?getTestMember(memberData):'return false'">
+		<div class="list list-inset">
+			<div class="padding">
+				<!--<input type="text" name="MemberName" ng-model="memberData.MemberName" required="" reset-field="">-->
+				<p>{{'Member_Account'|translate}}：<span>{{memberData.MemberName}}</span></p>
+			</div>
+			<div class="item item-input">
+				<input type="password" name="Pwd" ng-model="memberData.Pwd" placeholder="{{'Common_LabelPassword'|translate}}" ng-minlength="6" ng-maxlength="11" ng-pattern="/[a-zA-Z0-9]{6,12}$/" required="" reset-field="" ng-keyup="checkPwdLevel(memberData.Pwd)">
+			</div>
+			<p class="item-warn" ng-if="!memberData.Pwd||memberData.Pwd!=memberData.MemberName" ng-class="((regS1From.$submitted || regS1From.Pwd.$touched)&&(regS1From.Pwd.$error.pattern||regS1From.Pwd.$error.required||regS1From.Pwd.$error.minlength||regS1From.Pwd.$error.maxlength)) ? 'text-assertive':'text-light'">
+			*{{'Common_PleaseInputPassword'|translate}}</p>
+			<p class="item-warn text-assertive" ng-if="memberData.Pwd.length>0&&memberData.Pwd==memberData.MemberName">
+			*{{'Common_ValidPasswordSame'|translate}}</p>
+			<div class="item-strength">
+				<span ng-class="pwdLevel>0?'s-weak':'s-default'">{{'Common_LabelWeak'|translate}}</span>
+				<span ng-class="pwdLevel>1?'s-middle':'s-default'">{{'Common_LabelMedium'|translate}}</span>
+				<span ng-class="pwdLevel>2?'s-strong':'s-default'">{{'Common_LabelStrong'|translate}}</span>
+			</div>
+			<div class="item item-input">
+				<input type="password" class="uc-set-scroll" name="RptPwd" placeholder="{{'Common_LabelComfirmPassword'|translate}}" ng-model="memberData.RptPwd" ng-pattern="memberData.Pwd" required="" reset-field="">
+			</div>
+			<p class="item-warn text-assertive" ng-show="(regS1From.$submitted || regS1From.RptPwd.$touched)&&(regS1From.RptPwd.$error.required)">* {{'Common_TipsPwdNotNull'|translate}}</p>
+			<p class="item-warn text-assertive" ng-show="(regS1From.$submitted || regS1From.RptPwd.$touched)&&(regS1From.RptPwd.$error.pattern)">* {{'Common_VaildDifferentPassword'|translate}}</p>
+		</div>
+		<div class="padding">
+			<button id="btnLogin" ng-class="'button button-block button-positive'" type="submit" ng-disabled="!memberData.Pwd||!memberData.MemberName||!memberData.RptPwd">{{'Common_LabelRightNowShiwan'|translate}}</button>
+		</div>
+		</form>
+	 </ion-content>
+ </ion-view>

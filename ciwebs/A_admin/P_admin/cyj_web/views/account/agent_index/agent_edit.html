@@ -1,0 +1,93 @@
+<{include file="web_header.html"}>
+<body>
+<div  id="con_wrap">
+  <div  class="input_002">修改<{get_agent_type($smarty.get.agent_type)}>帳號</div>
+  <div  class="con_menu"> <a  href="javascript:history.go(-1);">返回上一頁</a> </div>
+
+</div>
+<div  class="content">
+  <form  id="myFORM"  name="myFORM"  action="<{$site_url}>/account/agent_index/agent_edit_do"  method="POST">
+	  <input  name="id" type="hidden" value="<{$agent['id']}>">
+    <input  name="agent_type" type="hidden" value="<{$smarty.get.agent_type}>">
+    <table  width="780"  border="0"  cellspacing="0"  cellpadding="0"  class="m_tab_ed">
+      <tbody><tr class="m_title_over_co">
+        <td  colspan="3">基本資料設定</td>
+      </tr>
+      <tr  class="m_bc_ed">
+        <td  class="m_co_ed"><{get_agent_type($smarty.get.agent_type)}>帳號：</td>
+        <td><{$agent['agent_user']}></td>
+        <td><div  class="Validform_checktip"></div></td>
+      </tr>
+      <tr  class="m_bc_ed">
+        <td  class="m_co_ed">密碼：</td>
+        <td><input  type="PASSWORD"  value="******" name="agent_pwd" class="za_text"></td>
+        <td><div  class="Validform_checktip"></div></td>
+      </tr>
+      <tr  class="m_bc_ed">
+        <td  class="m_co_ed">確認密碼：</td>
+        <td><input  type="PASSWORD" value="******" name="agent_pwd2"  class="za_text"></td>
+        <td><div  class="Validform_checktip"></div></td>
+      </tr>
+      <tr  class="m_bc_ed">
+        <td  class="m_co_ed"><{get_agent_type($smarty.get.agent_type)}>名稱：</td>
+        <td><input  type="TEXT"  name="agent_name" value="<{$agent['agent_name']}>"  datatype="*"  nullmsg="請輸入股東名稱"  value=""  size="10"  maxlength="10"  class="za_text"></td>
+        <td><div  class="Validform_checktip"></div></td>
+      </tr>
+    </tbody></table>
+    <table  width="780"  border="0"  cellspacing="0"  cellpadding="0"  class="m_tab_ed"  style="display:none">
+      <tbody><tr  class="m_title_edit">
+        <td  colspan="3">下注資料設定</td>
+      </tr>
+    </tbody></table>
+    <table  width="780"  border="0"  cellspacing="0"  cellpadding="0"  class="m_tab_ed">
+      <tbody><tr class="m_title_over_co">
+        <td  colspan="3">占成設定</td>
+      </tr>
+           <tr  class="m_bc_ed">
+        <td  class="m_co_ed">體育-<{get_agent_type($smarty.get.agent_type)}>占成數：</td>
+          <td>
+          <select  name="sports_scale" id="sports_scale"  class="za_select" >
+          <{foreach from=getscale() item=v key=k}>
+				<option value="<{$k}>" <{select_check($k,$agent['sports_scale'])}> ><{$v}> </option>
+				<{/foreach}></select></td>
+        <td><div  class="Validform_checktip"></div></td>
+      </tr>
+      <tr  class="m_bc_ed">
+        <td  class="m_co_ed">彩票-<{get_agent_type($smarty.get.agent_type)}>占成數：</td>
+        <td>
+        <select  name="lottery_scale"  id="lottery_scale"  class="za_select" >
+        <{foreach from=getscale() item=v key=k}>
+				<option value="<{$k}>" <{select_check($k,$agent['lottery_scale'])}> ><{$v}> </option>
+				<{/foreach}>
+
+				</select></td>
+        <td><div  class="Validform_checktip"></div></td>
+      </tr>
+      <tr  class="m_bc_ed">
+        <td  class="m_co_ed">視訊-<{get_agent_type($smarty.get.agent_type)}>占成數：</td>
+        <td>
+        <select  name="video_scale"  id="video_scale"  class="za_select" >
+        <{foreach from=getscale() item=v key=k}>
+				<option value="<{$k}>" <{select_check($k,$agent['video_scale'])}> ><{$v}> </option>
+				<{/foreach}></select></td>
+        <td><div  class="Validform_checktip"></div></td>
+      </tr>
+      <tr  class="m_bc_ed"  align="center">
+        <td  colspan="3"  class="m_bc_td">
+        <input  type="SUBMIT"  name="saveBtn"  value="確定"  class="za_button">
+          </td>
+      </tr>
+    </tbody></table>
+  </form>
+</div>
+    <script type="text/javascript">
+ $(function(){
+	//$(".registerform").Validform();  //就这一行代码！;
+
+	$("#myFORM").Validform({
+		tiptype:2,
+		showAllError:true
+	});
+})
+</script>
+ <{include file="web_footer.html"}>

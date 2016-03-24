@@ -1,0 +1,82 @@
+<title>會員查詢</title>
+<{include file="web_header.html"}>
+<body>
+ <script>
+    //分页跳转
+  window.onload=function(){
+    document.getElementById("page").onchange=function(){
+      document.getElementById('myFORM').submit()
+    }
+    document.getElementById("fs").onchange=function(){
+      document.getElementById('myFORM').submit()
+    }
+  }
+</script>
+<style type="text/css">
+  .m_tab tr, .m_tab_2 tr {
+    line-height: 14px;
+}
+
+</style>
+<div id="con_wrap">
+  <div class="input_002">會員查詢</div>
+  <div class="con_menu" style="width:1100px;">
+  <a href="<{$site_url}>/cash/member_analysis/effective_index">有效会员列表</a>
+  <a href="<{$site_url}>/cash/member_analysis/analysis_user" style="color:red;">会员查询</a>
+  <a href="<{$site_url}>/cash/member_analysis/analysis_note">下注分析</a>
+  <a href="<{$site_url}>/cash/member_analysis/analysis_dis">优惠分析</a>
+  <a href="<{$site_url}>/cash/member_analysis/analysis_cash" >出入款分析</a>
+    <form method="get" name="action_form" action="<{$site_url/cash/member_analysis/analysis_user}>" id="myFORM">
+        代理商：
+      <select name="agent_id" id="agent_id">
+        <option value="">全部</option>
+        <{foreach from=$agent_data key=key item=val}>
+        <option  value="<{$val['id']}>"<{select_check($val['id'],$smarty.get.agent_id)}>><{$val['agent_name']}>【<{$val['agent_user']}>】</option>
+       <{/foreach}>
+      </select>
+      日期：
+     <input class="za_text Wdate" onClick="WdatePicker()" value="<{$start_date}>" size="10" name="start_date">
+      ~
+    <input class="za_text Wdate" onClick="WdatePicker()" value="<{$end_date}>" size="10" name="end_date">
+	會員帳號：
+    <input class="za_text inpuut1" style="min-width:80px;width:80px" name="username" value="<{$smarty.get.username}>">
+      <input class="button_d" value="查詢" type="submit">
+  &nbsp; <{$page}>&nbsp;<font color="red">【查询区间限制为两个月】</font>
+
+    </form>
+
+  </div>
+</div>
+<div  class="content" style="overflow">
+  <table  style="table-layout: fixed;width:100%" border="0"  cellspacing="0"  cellpadding="0"  class="m_tab">
+  <tbody>
+  <tr class="m_title_over_co">
+    <td  width="130px" >注册日期</td>
+    <td  width="130px" >代理</td>
+    <td  width="130px" >帳號</td>
+    <td  width="90px" >真實姓名</td>
+    <td  width="90px" >余額</td>
+    <td   width="180px;">國家</td>
+    <td   width="150px;">電話號碼</td>
+    <td   width="150px;">電子郵箱</td>
+    <td   width="150px;">QQ</td>
+  </tr>
+
+  <{foreach from=$userYxAll item=v key=k}>
+    <tr class="m_cen <{if $k%2 == 0}>even<{/if}>">
+    <td><{$v['reg_date']}></td>
+    <td><{$v['agent_user']}></td>
+    <td><{$v['username']}></td>
+    <td><{$v['pay_name']}></td>
+    <td><{$v['money']}></td>
+    <td><{$v['reg_address']}></td>
+    <td><{$v['mobile']}></td>
+    <td><{$v['email']}></td>
+    <td><{$v['qq']}></td>
+  </tr>
+   <{/foreach}>
+</tbody>
+</table>
+</div>
+<!-- 公共尾部 -->
+<{include file="web_footer.html"}>

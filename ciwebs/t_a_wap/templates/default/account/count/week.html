@@ -1,0 +1,49 @@
+<ion-view cache-view="false" hide-nav-bar="false" class="count">
+    <ion-nav-bar class="bar bar-header">
+        <ion-nav-buttons side="left"><a class="button button-icon icon ion-chevron-left" href="{{backUrl}}"></a>
+        </ion-nav-buttons>
+        <ion-nav-title>{{'Common.BettingRecord'|translate}}</ion-nav-title>
+    </ion-nav-bar>
+    <ion-content scroll="false" class="week">
+        <div class="row text-center title-no">
+            <div class="col col-33 tle">{{'LotteryReports.Time'|translate}}</div>
+            <div class="col col-33 tle">{{'LotteryReports.LabelBetNums'|translate}}</div>
+            <div class="col col-33 tle">{{'LotteryReports.LabelWinORLose'|translate}}</div>
+        </div>
+        <ion-content class="list">
+            <ion-refresher ng-show="ansycLoaded" on-refresh="getCount()"></ion-refresher>
+            <div ng-show="!ansycLoaded" class="page-loading text-center padding">
+                <ion-spinner></ion-spinner>
+            </div>
+            <cur-tips tip="tip"></cur-tips>
+            <div ng-if="ansycLoaded" class="row" ng-click="goDayRpt(item)" ng-repeat="item in weekData">
+                <div class="col col-33 text-left tal">
+                    <div class="cont">
+                        <div class="item-data">{{item.Date}}</div>
+                        <div class="item-data">{{item.WhatDay}}</div>
+                    </div>
+                </div>
+                <div class="col col-33 text-center tal">
+                    <div class="cont">
+                        <div class="item-data double {{item.Count>0?'text-underline':''}}">{{item.Count}}</div>
+                    </div>
+                </div>
+                <div class="col col-33 text-center tal">
+                    <div class="cont {{item.WinLoseMoney>0?'t-green':''}} {{item.WinLoseMoney<0?'t-red':''}}">
+                        <div class="item-data double">{{item.WinLoseMoney}}</div>
+                    </div>
+                </div>
+            </div>
+        </ion-content>
+        <ion-footer-bar>
+            <div class="row">
+                <div class="col col-50 text-valign-center pdl-15">{{'Common.LabelTotalNumber' |
+                    translate}}：{{sum.SumCount}}
+                </div>
+                <div class="col col-50 text-valign-center">{{'Common.LabelTotalLoseOrWin' | translate}}：<a
+                        class="{{sum.SumWinLoseMoney>0?'t-green':''}} {{sum.SumWinLoseMoney<0?'t-red':''}}">{{sum.SumWinLoseMoney}}</a>
+                </div>
+            </div>
+        </ion-footer-bar>
+    </ion-content>
+</ion-view>

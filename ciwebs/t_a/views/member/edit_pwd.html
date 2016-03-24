@@ -1,0 +1,424 @@
+<{config_load file="public.conf" section="public"}>
+<html lang="en">
+    <head>
+    	<meta charset="UTF-8">
+    	<title>Document</title>
+		<link rel="stylesheet" href="<{#mem_css#}>/bank.css" type="text/css">
+		<style type="text/css">
+			H3{text-indent: 2em;}
+			body{font-size:12px}
+			.m_bc_ed{text-align:right;height:30px;line-height:30px}
+			.tab_bank{font-size:12px}
+			.star{margin-left:10px}
+			.btn_001{cursor: pointer;margin: 0 1px 0 0;width: 85px;height: 26px;border: none;padding-top: 2px;color: #FFF;font-weight: bold;background: #3D3D3D url(<{#mem_images#}>/order_btn.gif) no-repeat 0 -80px;}
+			select,input{height:20px;line-height:20px;}
+		</style>
+		<link rel="stylesheet" href="<{#mem_css#}>/index_main.css" />
+		<link rel="stylesheet" href="<{#mem_css#}>/standard.css" />
+		<script src="<{#mem_js#}>/jquery-1.8.3.min.js"></script>
+    </head>
+	<body style="BACKGROUND: url(<{#mem_images#}>/../private/content_bg.jpg) repeat-y left top;" >
+		<div id="MAMain" style="width:767px">
+			<div id="MACenter-content">
+				<div id="MACenterContent">
+					<div id="MNav">
+						<span class="mbtn">基本资讯</span>
+						<div class="navSeparate"></div>
+						<a target="k_memr" class="mbtn" href="<{$site_url}>/index.php/member/account/advisory">投注资讯</a>
+					</div>
+					<div style="overflow:scroll; height:370px;background-color: #ffffff;">
+					<div id="bank_content" style="width:600px;margin-top:20px;">
+						<form  target="k_memr" id="selecttype" method="get" name=form1 action="password">
+							<font style="font-weight: bold;color: red">请选择要修改的密码：</font>
+							<select onchange="selecttype.submit();" name="pwdtype">
+								<option value="login" <{if $pwdtype == "login" }>selected<{/if}>>登录密码</option>
+								<option value="out" <{if $pwdtype == "out" }>selected<{/if}>>取款密码</option>
+
+								<{foreach from=$edvideo item=v }>
+								<option value="<{$v}>" <{if $pwdtype == "<{$v}>" }>selected<{/if}>><{$v}>密码</option>
+								<{/foreach}>
+								
+							</select>
+						</form>
+					</div>
+					<div id="bank_content" style="width:600px;margin-top:20px;<{if $pwdtype != 'login'}>display: none;<{/if}>">
+						<div class="main_nr">
+							<FORM  target="k_memr" onSubmit="return check_submit1();" method=post name=form1 action="userpwd">
+								<h3 id="pay_title " class="star">修改登录密码:</h3>
+								<table width="90%" border="0" cellspacing="0" cellpadding="10" class="tab_bank">
+									<tbody>
+									<TR>
+										<TD width=100 align=right class="m_bc_ed">原登录密码：</TD>
+										<TD class=hong width=150 align=left><INPUT id="oldpass" class=input_150 maxLength=12 type=password name=oldpass></TD>
+										<TD id="oldpass_txt" class=hong align=left>&nbsp;</TD>
+									</TR>
+									<TR>
+										<TD align=right class="m_bc_ed">新登录密码：</TD>
+										<TD class=hong align=left><INPUT id="newpass" class=input_150 maxLength=12 type=password name=newpass></TD>
+										<TD id="newpass_txt" class=hong align=left>* <SPAN class=lan>请输入6-12位新密码</SPAN></TD>
+									</TR>
+									<TR>
+										<TD align=right class="m_bc_ed">确认新登录密码：</TD>
+										<TD class=hong align=left><INPUT id="newpass2" class=input_150 maxLength=12 type=password name=newpass2></TD>
+										<TD id="newpass2_txt" class=hong align=left>* <SPAN class=lan>重复输入一次新密码</SPAN></TD>
+									</TR>
+									<tr align="left">
+										<td></td>
+										<td colspan="2">
+										<input id="submit" value="确认修改" type="submit" name="submit" class="btn_001">
+										&nbsp;&nbsp;&nbsp;
+										<input type="reset" value="重置" class="btn_001">
+										&nbsp;&nbsp;&nbsp; </td>
+									</tr>
+									</tbody>
+								</table>
+							</form>
+						</div>
+					</div>
+
+					<div id="bank_content" style="width:600px;margin-top:20px;<{if $pwdtype != 'out'}>display: none;<{/if}>">
+						<div class="main_nr">
+							<!-- onSubmit="return check_submit_money();" -->
+							<FORM  target="k_memr"  method=post name=form1 action="moneypwd" onSubmit="return check_submit2();">
+								<h3 id="pay_title " class="star">修改取款密码:</h3>
+								<table width="90%" border="0" cellspacing="0" cellpadding="10" class="tab_bank">
+									<tbody>
+										<TR>
+											<TD width=100 align=right class="m_bc_ed">原取款密码：</TD>
+											<TD class=hong width=150 align=left><INPUT id="oldmoneypass" class=input_150 maxLength=4 type=password name=oldmoneypass></TD>
+											<TD id="oldmoneypass_txt" class=hong align=left>&nbsp;</TD>
+										</TR>
+										<TR>
+										<TR>
+											<TD align=right class="m_bc_ed">新取款密码：</TD>
+											<TD class=hong align=left><INPUT id="newmoneypass" class=input_150 maxLength=4 type=password name=newmoneypass></TD>
+											<TD id="newmoneypass_txt" class=hong align=left>* <SPAN class=lan>请输入4位数字新密码</SPAN></TD>
+										</TR>
+										<TR>
+											<TD align=right class="m_bc_ed">确认取款密码：</TD>
+											<TD class=hong align=left><INPUT id="newmoneypass2" class=input_150 maxLength=4 type=password name=newmoneypass2></TD>
+											<TD id="newmoneypass2_txt" class=hong align=left>* <SPAN class=lan>重复输入一次新密码</SPAN></TD>
+										</TR>
+
+										<tr align="left">
+											<td></td>
+											<td colspan="2">
+											<input id="submit" value=确认修改 type=submit name=submit class="btn_001">
+											&nbsp;&nbsp;&nbsp;
+											<input type="reset" value="重置" class="btn_001">
+											&nbsp;&nbsp;&nbsp; </td>
+										</tr>
+									</tbody>
+								</table>
+							</form>
+						</div>
+					</div>
+					
+					<div id="bank_content" style="width:600px;margin-top:20px;margin-bottom:20px; <{if $pwdtype != 'mg'}>display: none;<{/if}>">
+						<div class="main_nr">
+							<!-- onSubmit="return check_submit_money();" -->
+							<FORM  target="k_memr"  method=post name=form1 action="mgpwd" onSubmit="return check_submit4();">
+								<h3 id="pay_title " class="star">修改mg密码:</h3>
+								<table width="90%" border="0" cellspacing="0" cellpadding="10" class="tab_bank">
+									<tbody>
+										<tr>
+											<TD width=100 align=right class="m_bc_ed">mg用户：</TD>
+											<TD id="oldmoneypass_txt" class=hong align=left><{$video_user['g_username']}></TD>
+											<TD id="oldmoneypass_txt" class=hong align=left>&nbsp;</TD>
+										</tr>
+										<TR>
+											<TD width=100 align=right class="m_bc_ed">网站密码：</TD>
+											<TD class=hong width=150 align=left><INPUT id="omgpass" class=input_150 maxLength=12 type=password name=omgpass></TD>
+											<TD id="oldmoneypass_txt" class=hong align=left>&nbsp;</TD>
+										</TR>
+										<TR>
+										<TR>
+											<TD align=right class="m_bc_ed">新登录密码：</TD>
+											<TD class=hong align=left><INPUT id="newmgpass" class=input_150 maxLength=12 type=password name=newmgpass></TD>
+											<TD id="newmoneypass_txt" class=hong align=left>* <SPAN class=lan>请输入6-12位数字新密码</SPAN></TD>
+										</TR>
+										<TR>
+											<TD align=right class="m_bc_ed">确认登录密码：</TD>
+											<TD class=hong align=left><INPUT id="newmgpass2" class=input_150 maxLength=12 type=password name=newmgpass2></TD>
+											<TD id="newmoneypass2_txt" class=hong align=left>* <SPAN class=lan>重复输入一次新密码</SPAN></TD>
+										</TR>
+
+										<tr align="left">
+											<td></td>
+											<td colspan="2">
+											<input id="submit" value=确认修改 type=submit name=submit class="btn_001">
+											&nbsp;&nbsp;&nbsp;
+											<input type="reset" value="重置" class="btn_001">
+											&nbsp;&nbsp;&nbsp; </td>
+										</tr>
+									</tbody>
+								</table>
+							</form>
+						</div>
+					</div>
+
+					<div id="bank_content" style="width:600px;margin-top:20px;margin-bottom:20px; <{if $pwdtype != 'pt'}>display: none;<{/if}>">
+						<div class="main_nr">
+							<!-- onSubmit="return check_submit_money();" -->
+							<FORM  target="k_memr"  method=post name=form1 action="ptpwd" onSubmit="return check_submit5();">
+								<h3 id="pay_title " class="star">修改pt密码:</h3>
+								<table width="90%" border="0" cellspacing="0" cellpadding="10" class="tab_bank">
+									<tbody>
+										<tr>
+											<TD width=100 align=right class="m_bc_ed">pt用户：</TD>
+											<TD id="oldmoneypass_txt" class=hong align=left><{$video_user['g_username']}></TD>
+											<TD id="oldmoneypass_txt" class=hong align=left>&nbsp;</TD>
+										</tr>
+										<TR>
+											<TD width=100 align=right class="m_bc_ed">网站密码：</TD>
+											<TD class=hong width=150 align=left><INPUT id="optpass" class=input_150 maxLength=12 type=password name=optpass></TD>
+											<TD id="oldmoneypass_txt" class=hong align=left>&nbsp;</TD>
+										</TR>
+										<TR>
+										<TR>
+											<TD align=right class="m_bc_ed">新登录密码：</TD>
+											<TD class=hong align=left><INPUT id="newptpass" class=input_150 maxLength=12 type=password name=newptpass></TD>
+											<TD id="newmoneypass_txt" class=hong align=left>* <SPAN class=lan>请输入6-12位数字新密码</SPAN></TD>
+										</TR>
+										<TR>
+											<TD align=right class="m_bc_ed">确认登录密码：</TD>
+											<TD class=hong align=left><INPUT id="newptpass2" class=input_150 maxLength=12 type=password name=newptpass2></TD>
+											<TD id="newmoneypass2_txt" class=hong align=left>* <SPAN class=lan>重复输入一次新密码</SPAN></TD>
+										</TR>
+
+										<tr align="left">
+											<td></td>
+											<td colspan="2">
+											<input id="submit" value=确认修改 type=submit name=submit class="btn_001">
+											&nbsp;&nbsp;&nbsp;
+											<input type="reset" value="重置" class="btn_001">
+											&nbsp;&nbsp;&nbsp; </td>
+										</tr>
+									</tbody>
+								</table>
+							</form>
+						</div>
+					</div>
+					<div id="bank_content" style="width:600px;margin-top:20px;margin-bottom:20px; <{if $pwdtype != 'bbin'}>display: none;<{/if}>">
+						<div class="main_nr">
+							<!-- onSubmit="return check_submit_money();" -->
+							<FORM  target="k_memr"  method=post name=form1 action="bbinpwd" onSubmit="return check_submit6();">
+								<h3 id="pay_title " class="star">修改bbin密码:</h3>
+								<table width="90%" border="0" cellspacing="0" cellpadding="10" class="tab_bank">
+									<tbody>
+										<tr>
+											<TD width=100 align=right class="m_bc_ed">bbin用户：</TD>
+											<TD id="oldmoneypass_txt" class=hong align=left><{$smarty.const.SITEID}>8<{$smarty.session.username}></TD>
+											<TD id="oldmoneypass_txt" class=hong align=left>&nbsp;</TD>
+										</tr>
+										<TR>
+											<TD width=100 align=right class="m_bc_ed">网站密码：</TD>
+											<TD class=hong width=150 align=left><INPUT id="obbinpass" class=input_150 maxLength=12 type=password name=obbinpass></TD>
+											<TD id="oldmoneypass_txt" class=hong align=left>&nbsp;</TD>
+										</TR>
+										<TR>
+										<TR>
+											<TD align=right class="m_bc_ed">新登录密码：</TD>
+											<TD class=hong align=left><INPUT id="newbbinpass" class=input_150 maxLength=12 type=password name=newbbinpass></TD>
+											<TD id="newmoneypass_txt" class=hong align=left>* <SPAN class=lan>请输入6-12位数字新密码</SPAN></TD>
+										</TR>
+										<TR>
+											<TD align=right class="m_bc_ed">确认登录密码：</TD>
+											<TD class=hong align=left><INPUT id="newbbinpass2" class=input_150 maxLength=12 type=password name=newbbinpass2></TD>
+											<TD id="newmoneypass2_txt" class=hong align=left>* <SPAN class=lan>重复输入一次新密码</SPAN></TD>
+										</TR>
+
+										<tr align="left">
+											<td></td>
+											<td colspan="2">
+											<input id="submit" value=确认修改 type=submit name=submit class="btn_001">
+											&nbsp;&nbsp;&nbsp;
+											<input type="reset" value="重置" class="btn_001">
+											&nbsp;&nbsp;&nbsp; </td>
+										</tr>
+									</tbody>
+								</table>
+							</form>
+						</div>
+					</div>
+					</div>
+					<?php
+					$display = 'none';
+					if($_COOKIE['is_daili']) $display = '';
+					?>		  
+					<!--<div id="bank_content" style="width:600px;margin-top:20px;display:<?=$display?>;">
+						<div class="main_nr" style="display:<?=$display?>;">
+							<FORM  target="k_memr" onSubmit="return check_submit3();" method=post name=form1 action="?action=dlpass">
+								<h3 id="pay_title " class="star" style="display:<?=$display?>;">修改代理密码:</h3>
+								<table width="90%" border="0" cellspacing="0" cellpadding="10" class="tab_bank">
+									<tbody>
+										<TR style="display:<?=$display?>;">
+										<TD align=right  width=100 class="m_bc_ed">原代理密码：</TD>
+											<TD class=hong align=left width=150><INPUT id="olddlpass" class=input_150 maxLength=10 type=password name=oldmoneypass></TD>
+											<TD id="olddlpass_txt" class=hong align=left>&nbsp;</TD>
+										</TR>
+										<TR style="display:<?=$display?>;">
+											<TD align=right class="m_bc_ed">新代理密码：</TD>
+											<TD class=hong align=left><INPUT id="newdlpass" class=input_150 maxLength=10 type=password name=newmoneypass></TD>
+											<TD id=newdlpass_txt class=hong align=left>* <SPAN class=lan>请输入6-15位新密码</SPAN></TD>
+										</TR>
+										<TR style="display:<?=$display?>;">
+											<TD align=right class="m_bc_ed">确认代理密码：</TD>
+											<TD class=hong align=left><INPUT id="newdlpass2" class=input_150 maxLength=10 type=password name=newmoneypass2></TD>
+											<TD id="newdlpass2_txt" class=hong align=left>* <SPAN class=lan>重复输入一次新密码</SPAN></TD>
+										</TR>
+										<tr align="left" style="display:<?=$display?>;">
+											<td></td>
+											<td colspan="2">
+											<input id="submit" value="确认修改" type=submit name=submit class="btn_001">
+											&nbsp;&nbsp;&nbsp;
+											<input type="reset" value="重置" class="btn_001">
+											&nbsp;&nbsp;&nbsp; </td>
+										</tr>
+									</tbody>
+								</table>
+							</form>
+						</div>
+					</div>-->
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
+	<script>
+		$(function(){
+			//验证非法字符(@)
+			var oldval;
+			$("input").keydown(function(event) {
+				oldval = $(this).val();
+			});
+			$("input").keyup(function(event) {
+				newval  = $(this).val();   
+				var reg = /([`~!@#$%^&*()_+<>?:"{},\/;'[\]])/ig; 
+				var reg1 = /([·~！#@￥%……&*（）——+《》？：“{}，。\、；’‘【\】])/ig;
+				$(this).val(newval.replace(reg, "")); 
+				$(this).val(newval.replace(reg, ""));   
+			});
+		})
+
+		function check_submit1(){
+			var oldpass=$("#oldpass").val();
+			var newpass=$("#newpass").val();
+			var newpass2=$("#newpass2").val(); 
+			if(oldpass && newpass && newpass2){
+				if(oldpass.length<6 || oldpass.length>15){
+					alert("原登录密码格式不正确！");return false;
+				}
+				if(newpass.length<6 || newpass.length>15){
+					alert("新登录密码格式不正确！");return false;
+				}
+				if(newpass2.length<6 || newpass2.length>15){
+					alert("确认新登录密码格式不正确！");return false;
+				}else if(newpass!=newpass2){
+					alert("确认登录密码不正确！");return false;
+				}
+			}else{
+				alert("请填写完整表单！");return false;
+			}		
+		}
+		function check_submit2(){
+			var oldmoneypass=$("#oldmoneypass").val();
+			var newmoneypass=$("#newmoneypass").val();
+			var newmoneypass2=$("#newmoneypass2").val(); 
+			if(oldmoneypass && newmoneypass && newmoneypass2){
+				if(oldmoneypass.length!=4||!(/^[0-9]*$/g.test(oldmoneypass))){
+					alert("原取款密码格式不正确2！");return false;
+				}
+				if(newmoneypass.length!=4||!(/^[0-9]*$/g.test(newmoneypass))){
+					alert("新取款密码格式不正确3！");return false;
+				}
+				if(newmoneypass2.length!=4||!(/^[0-9]*$/g.test(newmoneypass2))){
+					alert("确认新取款密码格式不正确！");return false;
+				}else if(newmoneypass!=newmoneypass2){
+					alert("确认取款密码不正确！");return false;
+				}
+			}else{
+				alert("请填写完整表单！");return false;
+			}	
+		}
+		function check_submit3(){
+			var olddlpass=$("#olddlpass").val();
+			var newdlpass=$("#newdlpass").val();
+			var newdlpass2=$("#newdlpass2").val(); 
+			if(omgpass && newdlpass && newdlpass2){
+				if(olddlpass.length<6 || olddlpass.length>15){
+					alert("原代理密码格式不正确！");return false;
+				}
+				if(newdlpass.length<6 || newdlpass.length>15){
+					alert("新代理密码格式不正确！");return false;
+				}
+				if(newdlpass2.length<6 || newdlpass.length>15){
+					alert("确认新代理密码格式不正确！");return false;
+				}else if(newdlpass!=newdlpass2){
+					alert("确认代理密码不正确！");return false;
+				}
+			}else{
+				alert("请填写完整表单！");return false;
+			}	
+		}
+		function check_submit4(){
+			var omgpass=$("#omgpass").val();
+			var newmgpass=$("#newmgpass").val();
+			var newmgpass2=$("#newmgpass2").val(); 
+			if(omgpass && newmgpass && newmgpass2){
+				if(omgpass.length<6 || omgpass.length>12){
+					alert("旧密码格式不正确！");return false;
+				}
+				if(newmgpass.length<6 || newmgpass.length>12){
+					alert("新密码格式不正确！");return false;
+				}
+				if(newmgpass2.length<6 || newmgpass2.length>12){
+					alert("确认密码格式不正确！");return false;
+				}else if(newmgpass!=newmgpass2){
+					alert("确认密码不正确！");return false;
+				}
+			}else{
+				alert("请填写完整表单！");return false;
+			}	
+		}
+		function check_submit5(){
+			var optpass=$("#optpass").val();
+			var newptpass=$("#newptpass").val();
+			var newptpass2=$("#newptpass2").val(); 
+			if(optpass && newptpass && newptpass2){
+				if(optpass.length<6 || optpass.length>12){
+					alert("旧密码格式不正确！");return false;
+				}
+				if(newptpass.length<6 || newptpass.length>12){
+					alert("新密码格式不正确！");return false;
+				}
+				if(newptpass2.length<6 || newptpass2.length>12){
+					alert("确认密码格式不正确！");return false;
+				}else if(newptpass!=newptpass2){
+					alert("确认密码不正确！");return false;
+				}
+			}else{
+				alert("请填写完整表单！");return false;
+			}	
+		}
+		function check_submit6(){
+			var obbinpass=$("#obbinpass").val();
+			var newbbinpass=$("#newbbinpass").val();
+			var newbbinpass2=$("#newbbinpass2").val(); 
+			if(obbinpass && newbbinpass && newbbinpass2){
+				if(obbinpass.length<6 || obbinpass.length>12){
+					alert("旧密码格式不正确！");return false;
+				}
+				if(newbbinpass.length<6 || newbbinpass.length>12){
+					alert("新密码格式不正确！");return false;
+				}
+				if(newbbinpass2.length<6 || newbbinpass2.length>12){
+					alert("确认密码格式不正确！");return false;
+				}else if(newbbinpass!=newbbinpass2){
+					alert("确认密码不正确！");return false;
+				}
+			}else{
+				alert("请填写完整表单！");return false;
+			}	
+		}
+	</script>

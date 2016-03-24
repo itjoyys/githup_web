@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html ng-app="PKMain">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+<meta name="format-detection" content="telephone=no">
+<link id="appTouchIcon" href="#" sizes="114x114" rel="apple-touch-icon-precomposed">
+<title id="appTitle"></title>
+<link rel="stylesheet" href="public/official/styles/common/common.css?v=23db2edf1">
+<script type="text/javascript">
+    try{
+      if(self != top && top.location.host == self.location.host){
+        top.location.href = self.location.href;
+      }
+    } catch (e) {
+
+    }
+</script>
+</head>
+<body>
+<input type="hidden" id="CDNURL" name="CDNURL" value="public/official/" />
+<input type="hidden" id="APIURL" name="APIURL" value="<{$OLD_URL}>/api"/>
+<ion-nav-view>
+</ion-nav-view>
+<script src="/public/default/js/vendor.js?v=1.2"></script>
+<script src="public/official/scripts/lang.js?v=eeeee"></script>
+<script src="public/official/scripts/scripts.js?v=1.11"></script>
+</body>
+</html>

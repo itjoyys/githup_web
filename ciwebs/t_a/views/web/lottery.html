@@ -1,0 +1,16 @@
+<{include file="web/header.html"}>
+<{config_load file="public.conf" section="public"}>
+<script>
+	$(function(){
+		var nr= "<img src='<{#images#}>/new/Lottery.jpg' class='abs-c-banner' id='page-banner'>";
+		$("#myImg").html(nr);
+	})
+</script>
+<div id="page-container">
+  <div id="page-body" style=" width: 1100px;margin:0 auto; ">
+<!--banner end-->
+        <iframe src="<{$url}>/index.php/lottery/lottery/index?type=liuhecai" style="width: 1100px; height: 754px;" frameborder="no" border="0" position="relative" marginwidth="0" marginheight="0" allowtransparency="yes" scrolling="no" id="iframepage" name="iframepage"></iframe>
+    </div>
+</div>
+<!--footer-->
+<{$bottom}>

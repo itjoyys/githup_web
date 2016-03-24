@@ -1,0 +1,193 @@
+﻿<title>在線支付設定</title>
+<{include file="web_header.html"}>
+<body>
+<div id="con_wrap">
+  <div class="input_002">在線支付設定</div>
+  <div class="con_menu">
+  	  <input type="button" value="返回" onclick="javascript:history.go(-1);" class="button_d">
+  </div>
+</div>
+<br>
+<div style="width:1060px;">
+<form action="<{$site_url}>/cash/payment/payment_add_do" method="post">
+	<input type="hidden" name="id" value="<{$cash_config['id']}>">
+	<input type="hidden" name="type" value="<{$type}>">
+	<table width="99%" class="m_tab">
+		<tbody>
+		<tr class="m_title_over_co">
+			<td colspan="12" align="middle">出款手續費</td>
+		</tr>
+		<tr>
+		<td class="table_bg1" align="center">
+			达到有效投注额是否扣手续费
+				<input value="1" <{radio_check($cash_config['is_fee_free'],1)}> type="radio" name="is_fee_free">是
+				<input value="0" <{radio_check($cash_config['is_fee_free'],0)}> type="radio" name="is_fee_free">否
+				</td>
+<!-- 			<td class="table_bg1" align="center">重复出款时数</td>
+			<td><input value="<{$cash_config['repeat_hour_num']}>" maxlength="5" class="za_text" onkeydown="return Yh_Text.CheckNumber();" size="5" name="repeat_hour_num"></td> -->
+			<td class="table_bg1" align="center">免收手续费次数</td>
+			<td><input value="<{$cash_config['fee_free_num']}>" maxlength="5" class="za_text" onkeydown="return Yh_Text.CheckNumber();" size="5" name="fee_free_num"></td>
+			<td class="table_bg1" align="center">出款手续费金额</td>
+			<td><input value="<{$cash_config['out_fee']}>" maxlength="5" class="za_text" onkeydown="return Yh_Text.CheckNumber();" size="5" name="out_fee"></td>
+		</tr>
+		<tr><td align="center"><span style="color: red">是:(免手续费）   否:(扣手续费)</span></td></tr>
+	</tbody></table>
+	<table width="99%" class="m_tab">
+
+		<tbody><tr class="m_title_over_co">
+			<td align="middle">出入款設定</td>
+			<td align="middle">線上存款</td>
+			<td align="middle">公司入款</td>
+		</tr>
+		<tr class="m_cen even">
+			<td class="table_bg1" align="center">存款優惠</td>
+			<td>
+				<input value="2" <{radio_check($cash_config['ol_deposit'],2)}> type="radio" name="ol_deposit">首次&nbsp;&nbsp;
+				<input value="1" <{radio_check($cash_config['ol_deposit'],1)}>  type="radio" name="ol_deposit">每次&nbsp;&nbsp;
+				<input value="1" <{check_box($cash_config['ol_is_give_up'],1)}> type="checkbox" name="ol_is_give_up">可放棄優惠
+			</td>
+			<td><input value="2" <{radio_check($cash_config['line_deposit'],2)}> type="radio" name="line_deposit">首次&nbsp;&nbsp;
+				<input value="1" <{radio_check($cash_config['line_deposit'],1)}> type="radio" name="line_deposit">每次&nbsp;&nbsp;
+				<input value="1" <{check_box($cash_config['line_is_give_up'],1)}> type="checkbox" name="line_is_give_up">可放棄優惠
+			</td>
+		</tr>
+		<tr class="m_cen">
+			<td class="table_bg1" align="center">優惠標准(元)</td>
+			<td><input onkeydown="return Yh_Text.CheckNumber();" class="za_text" value="<{$cash_config['ol_discount_num']}>" maxlength="10" size="8" name="ol_discount_num"></td>
+			<td><input onkeydown="return Yh_Text.CheckNumber();" class="za_text" value="<{$cash_config['line_discount_num']}>" maxlength="10" size="8" name="line_discount_num"></td>
+		</tr>
+		<tr class="m_cen even">
+			<td class="table_bg1" align="center">優惠百分比(%)</td>
+			<td><input onkeydown="return Yh_Text.CheckNumber();" class="za_text" value="<{$cash_config['ol_discount_per']}>" maxlength="4" size="4" name="ol_discount_per">%</td>
+			<td><input onkeydown="return Yh_Text.CheckNumber();" class="za_text" value="<{$cash_config['line_discount_per']}>" maxlength="4" size="4" name="line_discount_per">%</td>
+		</tr>
+
+		<tr class="m_cen">
+			<td class="table_bg1" align="center">单次最高存款金額</td>
+			<td><input value="<{$cash_config['ol_catm_max']}>" maxlength="10" onkeydown="return Yh_Text.CheckNumber();" class="za_text" size="8" name="ol_catm_max"></td>
+			<td><input value="<{$cash_config['line_catm_max']}>" maxlength="10" onkeydown="return Yh_Text.CheckNumber();" class="za_text" size="8" name="line_catm_max"></td>
+		</tr>
+		<tr class="m_cen even">
+			<td class="table_bg1" align="center">单次最低存款金額</td>
+			<td><input value="<{$cash_config['ol_catm_min']}>" maxlength="10" onkeydown="return Yh_Text.CheckNumber();" class="za_text" size="8" name="ol_catm_min"></td>
+			<td><input value="<{$cash_config['line_catm_min']}>" maxlength="10" onkeydown="return Yh_Text.CheckNumber();" class="za_text" size="8" name="line_catm_min"></td>
+		</tr>
+		<tr class="m_cen">
+			<td class="table_bg1" align="center">優惠上限金額</td>
+			<td><input value="<{$cash_config['ol_discount_max']}>" maxlength="10" onkeydown="return Yh_Text.CheckNumber();" class="za_text" size="8" name="ol_discount_max"></td>
+			<td><input value="<{$cash_config['line_discount_max']}>" maxlength="10" onkeydown="return Yh_Text.CheckNumber();" class="za_text" size="8" name="line_discount_max"></td>
+		</tr>
+		<tr class="m_cen even">
+			<td class="table_bg1" align="center">其他優惠標準(元)</td>
+			<td><input value="<{$cash_config['ol_other_discount_num']}>" maxlength="10" onkeydown="return Yh_Text.CheckNumber();" class="za_text" size="8" name="ol_other_discount_num"></td>
+			<td><input value="<{$cash_config['line_other_discount_num']}>" maxlength="10" onkeydown="return Yh_Text.CheckNumber();" class="za_text" size="8" name="line_other_discount_num"></td>
+		</tr>
+		<tr class="m_cen">
+			<td class="table_bg1" align="center">其他優惠百分比</td>
+			<td><input value="<{$cash_config['ol_other_discount_per']}>" maxlength="4" onkeydown="return Yh_Text.CheckNumber();" class="za_text" size="4" name="ol_other_discount_per">%</td>
+			<td><input value="<{$cash_config['line_other_discount_per']}>" maxlength="4" onkeydown="return Yh_Text.CheckNumber();" class="za_text" size="4" name="line_other_discount_per">%</td>
+		</tr>
+		<tr class="m_cen even">
+			<td class="table_bg1" align="center">其他優惠上限</td>
+			<td><input value="<{$cash_config['ol_other_discount_max']}>" maxlength="10" onkeydown="return Yh_Text.CheckNumber();" class="za_text" size="8" name="ol_other_discount_max"></td>
+			<td><input value="<{$cash_config['line_other_discount_max']}>" maxlength="10" onkeydown="return Yh_Text.CheckNumber();" class="za_text" size="8" name="line_other_discount_max"></td>
+		</tr>
+        <tr class="m_cen">
+			<td class="table_bg1" align="center">其他優惠24小時內最高上限</td>
+			<td><input value="<{$cash_config['ol_o_discount_max_24']}>" maxlength="10" onkeydown="return Yh_Text.CheckNumber();" class="za_text" id="AbsorbMax24_co" size="8" name="ol_o_discount_max_24"><font color="red">0為不設上限</font></td>
+			<td><input value="<{$cash_config['line_o_discount_max_24']}>" maxlength="10" onkeydown="return Yh_Text.CheckNumber();" class="za_text" id="AbsorbMax24_co" size="8" name="line_o_discount_max_24"><font color="red">0為不設上限</font></td>
+		</tr>
+		<tr class="m_cen even">
+			<td class="table_bg1" align="center">单次出款上限</td>
+			<td colspan="2"><input value="<{$cash_config['ol_atm_max']}>" maxlength="10" onkeydown="return Yh_Text.CheckNumber();" class="za_text" size="8" name="ol_atm_max"></td>
+		</tr>
+		<tr class="m_cen">
+			<td class="table_bg1" align="center">单次出款下限</td>
+			<td colspan="2"><input class="za_text" onkeydown="return Yh_Text.CheckNumber();" value="<{$cash_config['ol_atm_min']}>" maxlength="10" size="8" name="ol_atm_min"></td>
+		</tr>
+		<tr class="m_cen even">
+			<td class="table_bg1" align="center">游戏額度稽核</td>
+			<td>
+				<label><input value="1"  <{check_box($cash_config['ol_is_game_audit'],1)}> type="checkbox" name="ol_is_game_audit">開啟</label>
+				<input onkeydown="return Yh_Text.CheckNumber();" class="za_text" value="<{$cash_config['ol_game_audit']}>" maxlength="10" size="6" name="ol_game_audit" type="text">倍
+			</td>
+			<td>
+				<label><input  value="1"  <{check_box($cash_config['line_is_game_audit'],1)}> type="checkbox" name="line_is_game_audit">開啟</label>
+				<input onkeydown="return Yh_Text.CheckNumber();" class="za_text" value="<{$cash_config['line_game_audit']}>" maxlength="10" size="6" name="line_game_audit" type="text">倍
+			</td>
+		</tr>
+		<tr class="m_cen">
+			<td class="table_bg1" align="center">体育額度稽核</td>
+			<td>
+				<label><input value="1" <{check_box($cash_config['ol_is_sport_audit'],1)}> type="checkbox" name="ol_is_sport_audit">開啟</label>
+				<input onkeydown="return Yh_Text.CheckNumber();" class="za_text" value="<{$cash_config['ol_sport_audit']}>" maxlength="10" size="6" name="ol_sport_audit">倍
+			</td>
+			<td>
+				<label><input  <{check_box($cash_config['line_is_sport_audit'],1)}> value="1"  type="checkbox" name="line_is_sport_audit">開啟</label>
+				<input onkeydown="return Yh_Text.CheckNumber();" class="za_text" value="<{$cash_config['line_sport_audit']}>" maxlength="10" size="6" name="line_sport_audit">倍
+			</td>
+		</tr>
+		<tr class="m_cen even">
+			<td class="table_bg1" align="center">彩票額度稽核</td>
+			<td>
+				<label><input  <{check_box($cash_config['ol_is_fc_audit'],1)}> value="1" type="checkbox" name="ol_is_fc_audit">開啟</label>
+				<input onkeydown="return Yh_Text.CheckNumber();" class="za_text" value="<{$cash_config['ol_fc_audit']}>" maxlength="10" size="8" name="ol_fc_audit">倍
+			</td>
+			<td>
+				<label><input value="1" <{check_box($cash_config['line_is_fc_audit'],1)}>  type="checkbox" name="line_is_fc_audit">開啟</label>
+				<input onkeydown="return Yh_Text.CheckNumber();" class="za_text" value="<{$cash_config['line_fc_audit']}>" maxlength="10" size="6" name="line_fc_audit">倍
+			</td>
+		</tr>
+		<tr class="m_cen">
+			<td class="table_bg1" align="center">綜合額度稽核</td>
+			<td>
+				<label><input  <{check_box($cash_config['ol_is_zh_audit'],1)}> value="1" type="checkbox" name="ol_is_zh_audit">開啟</label>
+				<input class="za_text" onkeydown="return Yh_Text.CheckNumber();" value="<{$cash_config['ol_zh_audit']}>" maxlength="10" size="8" name="ol_zh_audit">倍
+			</td>
+			<td>
+				<label><input value="1"  <{check_box($cash_config['line_is_zh_audit'],1)}> type="checkbox" name="line_is_zh_audit">開啟</label>
+				<input class="za_text" onkeydown="return Yh_Text.CheckNumber();" value="<{$cash_config['line_zh_audit']}>" maxlength="10" size="8" name="line_zh_audit">倍
+			</td>
+		</tr>
+		<tr class="m_cen even">
+			<td class="table_bg1" align="center">常態性稽核</td>
+			<td>
+				<label><input  <{check_box($cash_config['ol_is_ct_audit'],1)}> id="NORMALITY_OPEN" value="1" type="checkbox" name="ol_is_ct_audit">開啟</label>
+				<input id="Audit_NORMALITY" value="<{$cash_config['ol_ct_audit']}>" maxlength="10" size="2" class="za_text" name="ol_ct_audit">%
+			</td>
+			<td>
+				<label><input id="NORMALITY_OPEN_Co" <{check_box($cash_config['line_is_ct_audit'],1)}>  value="1"  type="checkbox" name="line_is_ct_audit">開啟</label>
+				<input id="Audit_NORMALITY_Co" value="<{$cash_config['line_ct_audit']}>" maxlength="10" class="za_text" size="2" name="line_ct_audit">%
+			</td>
+		</tr>
+		<tr class="m_cen">
+			<td class="table_bg1" align="center">常態性稽核放寬額度</td>
+			<td><input value="<{$cash_config['ol_ct_fk_audit']}>" maxlength="10" class="za_text" size="8" name="ol_ct_fk_audit">元</td>
+			<td><input value="<{$cash_config['line_ct_fk_audit']}>" maxlength="10" class="za_text" size="8" name="line_ct_fk_audit">元</td>
+		</tr>
+		<tr class="m_cen even">
+			<td class="table_bg1" align="center">常態性稽核行政費率</td>
+			<td><input id="CHARGE_RATE" value="<{$cash_config['ol_ct_xz_audit']}>" class="za_text" maxlength="10" size="2" name="ol_ct_xz_audit" type="text">%</td>
+			<td><input id="CHARGE_RATE_Co" value="<{$cash_config['line_ct_xz_audit']}>" class="za_text" maxlength="10" size="2" name="line_ct_xz_audit" type="text">%</td>
+		</tr>
+		<tr class="m_cen">
+			<td colspan="3" height="30px" align="center">
+			<input class="button_d" value="確定" type="submit"> &nbsp;&nbsp;
+<!--             <input class="button_d" value="重置" type="reset"> -->
+            </td>
+		</tr>
+		<tr><td colspan="3">優惠標准：會員單筆存款金額達到優惠標准，始可享有存款優惠。 <br>
+優惠百分比：會員達到優惠標准後，依所設定的百分比給與存款優惠。  <br>
+最高存款金額：會員存款不可超過所設定的金額，公司存入時僅爲柔性勸導，並無實質限制。  <br>
+最低存款金額：會員存款不可低于所設定的金額，公司存入時僅爲柔性勸導，並無實質限制。  <br>
+優惠上限金額：1.若會員存款金額超過所設定的金額，則以所設定的金額給予優惠。  <br>
+2.若設定 0 則爲不限制。  <br>
+   例：假設 優惠上限金額 設定爲 10000,優惠百分比爲 15%,當會員的優惠金額超過10000元時,  <br>
+        存款優惠金額為10000 <br>
+		</td></tr>
+	</tbody></table>
+</form>
+</div>
+
+
+<{include file="web_footer.html"}>

@@ -1,0 +1,178 @@
+﻿<title>层级管理</title>
+<{include file="web_header.html"}>
+<{config_load file="public.conf" section="public"}>
+
+<body>
+<script language="JavaScript" src="<{#js#}>/easydialog.min.js"></script>
+<link rel="stylesheet" href="<{#css#}>/easydialog.css" type="text/css">
+<script>
+var indexid = "<{$index_id}>";
+$(document).ready(function(){
+  $("#index_id").val(indexid);
+  $("#index_id option[index='0']").remove();
+  $("#index_id").change(function(event) {
+      $("#query_form").submit();
+    });
+
+    //回归操作
+  $(".huigui").click(function() {
+    if(confirm('確認要将该层用户全部移动到‘未分层’嗎?')){
+      var level_id = $(this).attr('levelid');
+      window.location.href="<{$site_url}>/cash/account_level/regress?index_id="+indexid+"&id="+level_id;
+    }
+  });
+})
+    //分页跳转
+  window.onload=function(){
+    document.getElementById("page").onchange=function(){
+      document.getElementById('query_form').submit()
+    }
+  }
+
+function delevel(id,index_id){
+  $.get("<{$site_url}>/cash/account_level/get_all_level?index_id="+index_id+"&id="+id, function(json){
+    $('#context').html(json);
+      easyDialog.open({
+          container : 'delevel'
+        });
+    });
+}
+function show_config(level,RMB,HKD,USD,MYR,SGD,THB,GBP,JPY,EUR,IDR){
+    //var content = $('#add_form').html();
+    $("#level_id").val(level);
+    $("#RMB").val(RMB);
+    $("#HKD").val(HKD);
+    $("#USD").val(USD);
+    $("#MYR").val(MYR);
+    $("#SGD").val(SGD);
+    $("#THB").val(THB);
+    $("#GBP").val(GBP);
+    $("#JPY").val(JPY);
+    $("#EUR").val(EUR);
+    $("#IDR").val(IDR);
+    easyDialog.open({
+        container : 'currency_box'
+      });
+}
+
+
+$('document').ready(function(){
+    $(".close_rmb").click(function(){
+        $("#countBox").css('display','none');
+    });
+
+
+    $(".pay_set").click(function(){
+        $("#payBox").css('display','block');
+        var level_id = $(this).attr('levelid');
+        var rmb_set = $(this).attr('pset');
+        var level_name = $(this).attr('level-name');
+        $("#level_id").val(level_id);
+        $("#level_name").val(level_name);
+        $("#RMB").val(rmb_set);
+    })
+
+    $(".close_x").click(function(){
+      $("#payBox").css('display','none');
+      $("#payBox_1").css('display','none');
+    })
+})
+</script>
+<div id="con_wrap">
+<div  class="input_002">层级管理</div>
+<div  class="con_menu">
+<form  name="query_form" action="" method="get" id="query_form">
+<input  type="button"  value="层级会员"   class="button_b" onclick="document.location='<{$site_url}>/cash/account_level/mem_level_index?index_id=<{$index_id}>'">
+<{$sites_str}>
+<input  type="button"  name="append"  value="新增" onclick="document.location='<{$site_url}>/cash/account_level/add_level'"  class="za_button">
+&nbsp;<{$page}>
+</form>
+</div>
+</div>
+<div style="width: 1100px;">
+<table  class="m_tab" width="100%">
+    <tbody>
+    <tr  class="m_title">
+      <td  rowspan="2"  class="table_bg">名稱</td>
+      <td  rowspan="2"  class="table_bg" style="width:120px;">描述</td>
+      <td  colspan="3"  class="table_bg">加入條件</td>
+      <td  rowspan="2"  class="table_bg">會員人數</td>
+      <td  rowspan="2"  class="table_bg">自助返水</td>
+      <td width="220" rowspan="2"  class="table_bg">备注</td>
+      <td  rowspan="2"  class="table_bg">操作</td>
+  </tr>
+    <tr  class="m_title">
+      <td  class="table_bg" style="width:150px;">會員加入時間</td>
+      <td  class="table_bg">存款次数</td>
+      <td  class="table_bg">存款总额</td>
+    </tr>
+     <{foreach from=$level_data key=i item=val}>
+         <tr class="m_cen <{if $i%2 == 0}>even<{/if}>">
+           <td><{$val['level_name']}></td>
+           <td><{$val['level_des']}></td>
+           <td style="text-align: center;"><{$val['start_date']}><br><{$val['end_date']}></td>
+           <td><{$val['deposit_num']}></td>
+           <td><{$val['deposit_count']}></td>
+           <td><a class="a001" style="color:red;text-decoration:underline;" href="<{$site_url}>/cash/account_level/mem_level_index?id=<{$val['id']}>&index_id=<{$val['index_id']}>"><{$val['cnum']+0}></a></td>
+          <td><{if $val['is_self_fd']}><font onclick="if(confirm('确定停用自助返水!!!')){document.location='<{$site_url}>/cash/account_level/is_self_fd?id=<{$val['id']}>&is_self_fd=<{$val['is_self_fd']}>'}" style="color:#31790B;cursor:pointer;">【开启】</font><{else}>
+          <font onclick="if(confirm('确定启用自助返水!!!')){document.location='<{$site_url}>/cash/account_level/is_self_fd?id=<{$val['id']}>&is_self_fd=<{$val['is_self_fd']}>'}" style="color: red;cursor:pointer;">【关闭】</font>
+          <{/if}></td>
+
+           <td><{$val['remark']}></td>
+           <td align="center">
+           <{if $val['is_default'] == 0}>
+            <a href="<{$site_url}>/cash/account_level/add_level?id=<{$val['id']}>" >修改</a>&nbsp;/&nbsp;
+            <a href="javascript:void(0)" onclick="delevel(<{$val['id']}>,'<{$val['index_id']}>')">分層</a>&nbsp;/&nbsp;
+            <a class="huigui" levelid="<{$val['id']}>" href="javascript:void(0);" >回归</a>&nbsp;/&nbsp;
+           <{/if}>
+           <a class="pay_set" levelid="<{$val['id']}>" pset="<{$val['RMB_pay_set']}>" level-name="<{$val['level_name']}>" href="javascript:void(0);" >支付设置</a>
+           </td>
+          </tr>
+      <{/foreach}>
+    </tbody></table>
+</div>
+  <!-- 移动弹窗 -->
+<div id="delevel" style="display:none;background-color:#fff;" class="con_menu">
+    <div id="context">
+
+    </div>
+</div>
+
+<!-- 设定弹窗 -->
+<div id="payBox" style="margin: -216px 0px 0px -150px; padding: 0px; border: none; z-index: 10000; position: fixed; top: 50%; left: 50%; display: none;"><div id="currency_box" style="display: block; margin: 0px;background-color:#fff;" class="con_menu">
+<form action="<{$site_url}>/cash/account_level/level_pay_set" method="post" name="add_form">
+  <input name="id" id="level_id" value="" type="hidden">
+  <input name="name" id="level_name" value="" type="hidden">
+  <table class="m_tab" style="width:300px;margin:0;">
+    <tbody><tr class="m_title">
+      <td colspan="2" height="27" class="table_bg" align="center">
+      <span id="title">支付平台设定</span>
+      <span style="float:right;"><a style="color:000;" href="javascript:void(0)" title="关闭窗口" class="close_x">X</a></span>
+      </td>
+    </tr>
+    <tr class="m_title">
+      <td>币别</td>
+      <td>设定</td>
+    </tr>
+        <tr>
+      <td>人民幣(RMB)</td>
+      <td>
+      <select name="RMB" id="RMB">
+      <{foreach from=$pay_set item=val}>
+         <option value="<{$val['id']}>"><{$val['type_name']}></option>
+      <{/foreach}>
+       </select></td>
+    </tr>
+        <tr>
+      <td colspan="2" align="center">
+        <input type="submit" value="提交" class="button_a">
+        <input type="reset" value="关闭" class="button_a close_x">
+      </td>
+    </tr>
+  </tbody></table>
+</form>
+</div>
+</div>
+
+
+<{include file="web_footer.html"}>

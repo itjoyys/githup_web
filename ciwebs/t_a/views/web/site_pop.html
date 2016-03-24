@@ -1,0 +1,33 @@
+<{config_load file="public.conf" section="public"}>
+
+<!--最新公告-->
+<div id="js-notice-pop" style="display:none;">
+    <{$pop['content']}>
+</div>
+
+<script>
+window.onload = function(){
+    try{
+    (function(){
+        if ($.cookie('PKBET_ORG')) return;
+        $.cookie('PKBET_ORG', 'Y', {path:'/', expires: ''});
+        $('#js-notice-pop').dialog({
+            'closeOnEscape': true,
+            'bgiframe': true,
+            'width' : 'auto',
+            'height' : 'auto',
+            'title': "<{$pop['title']}>",
+            'resizable': true,
+            'modal': true,
+            'autoOpen': false,
+            'buttons' : {
+                "关闭" : function() { $(this).dialog("close"); }
+            }
+        });
+                $('#js-notice-pop').dialog('open');
+            })();
+    }catch(e){}
+}
+</script>
+
+

@@ -1,0 +1,36 @@
+<{include file="info_header.html"}>
+<{config_load file="public.conf" section="public"}>
+<script type="text/javascript" charset="utf-8" src="<{#uedit_url#}>/ueditor.config.js"></script>
+<script type="text/javascript" charset="utf-8" src="<{#uedit_url#}>/ueditor.all.min.js"> </script>
+<body>
+<div class="content-box role">
+    <div class="content-box-header">
+        <h3>入款文案编辑</h3>
+        <div class="clear"></div>
+    </div>
+    <div class="content-box-content">
+        <div class="default-tab" align="center" style="max-width: 850px;">
+         <form action="deposit_content_do?id=<{$deposit['id']}>" method="post" name="add_form">
+            <div class="tab-content default-tab">
+                <table>
+                    <thead>
+                    <tr>
+                        <th style="width: 50px;"><{$deposit['title']}></th>
+                    </tr>
+                    </thead>
+                </table>
+                <script id="editor" type="text/plain" style="width:100%;height:300px;"><{$deposit['content']}></script>
+
+            </div>
+             <input type="submit" value="提交" class="botton_a" style="margin-top:5px;height: 26px;background:#e86829;">
+          </form>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    UE.getEditor('editor',{
+        toolbars:[['source','bold','italic','underline','fontborder','forecolor','backcolor','fontsize','fontfamily','justifyleft','justifycenter','justifyright','indent','removeformat','customstyle','paragraph','rowspacingbottom','rowspacingtop','lineheight','spechars','insertunorderedlist','insertorderedlist']]
+    });
+</script>
+</body>
+</html>

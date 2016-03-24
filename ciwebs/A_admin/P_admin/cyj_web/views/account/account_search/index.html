@@ -1,0 +1,63 @@
+<title>會員體系管理</title>
+<{include file="web_header.html"}>
+<body>
+<div  id="con_wrap">
+<div  class="input_002">會員體系管理</div>
+<div  class="con_menu">
+  <form  name="myFORM"  id="myFORM" action="<{$site_url}>/account/account_search"  method="get">
+層級查詢：&nbsp;
+<select  name="search_type" id="search_type">
+  <{foreach from=get_account_level() item=v key=k}>
+  <option value="<{$k}>" <{select_check($k,$smarty.get.search_type)}> ><{$v}> </option>
+  <{/foreach}>
+</select>
+
+帳號:
+<input  type="text"  name="account"  class="za_text"  value="<{$smarty.get.account}>">
+<input  type="checkbox" name="like" value="<{$like}>" id="like" <{if $like==1}> checked="checked" <{/if}> style="vertical-align:middle;">模糊查询
+<input  type="submit"  name="subbtn"  class="za_button"  value="查 詢"><span style="color:red">(不勾选则默认为精确查询)</span>
+
+</form>
+
+</div>
+</div>
+<div  class="content">
+
+  <table  width="1024"  border="0"  cellspacing="0"  cellpadding="0"  bgcolor="E3D46E"  class="m_tab">
+  <tbody><tr  class="m_title_over_co">
+    <td>序號</td>
+    <td>股东</td>
+    <td>总代理</td>
+    <td>代理商</td>
+    <td>会员</td>
+    </tr>
+    <{if !empty($user)}>
+    <{foreach from=$user item=v key=k}>
+	<tr class="m_cen even">
+	    <td><{$k+1}></td>
+    <td><{$v['s_h']}></td>
+    <td><{$v['u_a']}></td>
+    <td><{$v['a_t']}></td>
+    <td><{$v['username']}></td>
+	</tr>
+	<{/foreach}>
+	<{else}>
+	  <tr class="m_rig" style="display:;">
+        <td height="70" align="center" colspan="16"><font color="#3B2D1B">暫無數據。</font></td>
+      </tr>
+	<{/if}>
+    </tbody>
+  </table>
+</div>
+<script type="text/javascript">
+  $("#like").click(function() {
+    var like = $("#like").is(':checked');
+    if (like==true){
+        $("#like").val(1);
+    }else{
+       $("#like").val(0);
+    }
+
+  })
+</script>
+ <{include file="web_footer.html"}>

@@ -1,0 +1,58 @@
+<title>期数管理</title>
+<{include file="web_header.html"}>
+<body>
+
+<script type="text/javascript">
+
+$(function(){
+	$("div.con_menu a:nth-child(3)").attr("style","color:red");
+});
+
+</script>
+<div id="con_wrap">
+<div class="input_002">期数管理</div>
+<div class="con_menu">
+	<a href="index">退佣统计</a>
+    <a href="<{$site_url}>/cash/cash_agent/agent_serch_list">退佣查询</a>
+	<a href="<{$site_url}>/cash/cash_agent/end_hire_list" style="color:red">期數管理</a>
+	<a href="<{$site_url}>/cash/cash_agent/fee_list" >手續費設定</a>
+	<a href="<{$site_url}>/cash/cash_agent/endhire_list" >代理退傭設定</a>
+&nbsp;&nbsp;<button name="add" onclick="location.href='<{$site_url}>/cash/cash_agent/show_qishu_list'" class="button_c">新增期數</button>
+</div>
+</div>
+<div class="content">
+	<table width="1024" border="0" cellspacing="0" cellpadding="0" bgcolor="#E3D46E" class="m_tab">
+		<tbody><tr class="m_title_over_co">
+			<td>序號</td>
+			<td>期數名字</td>
+			<td>起始日期</td>
+			<td>結束日期</td>
+			<td>當前狀態</td>
+			<td>是否显示</td>
+			<td>功能</td>
+		</tr>
+		<{foreach from=$qishu key=i item=v}>
+		<tr class="m_cen <{if $i%2 eq 0}>even<{/if}>">
+			<td><{$v['id']}></td>
+			<td><{$v['qsname']}></td>
+			<td><{$v['start_date']}></td>
+			<td><{$v['end_date']}></td>
+			<td>
+			<{if $v['state']==0}>正常<{else}>停止<{/if}>
+			</td>
+			<td><{if $v['is_xianshi']==0}>显示<{else}>隐藏<{/if}></td>
+			<td>
+				<a href="<{$site_url}>/cash/cash_agent/show_qishu_list?id=<{$v['id']}>"> <button class="button_d" name="update">修改</button></a>
+				<button class="button_d" name="delbtn" onclick="if(confirm('確定要刪除這條記錄嗎?')){document.location.href='<{$site_url}>/cash/cash_agent/del_qishu_list?id=<{$v['id']}>';}else{return false;}">刪除</button>
+			</td>
+		</tr>
+	<{/foreach}>
+	</tbody></table>
+</div>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" style="clear:both">
+	<tbody><tr>
+		<td align="center" height="50"> 版权所有 建議您以 1024 X 768 以上高彩模式瀏覽本站</td>
+	</tr>
+</tbody></table>
+</body>
+</html>

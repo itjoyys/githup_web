@@ -1,0 +1,26 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<{config_load file="public.conf" section="public"}>
+<title>welcome</title>
+<script src="<{#js#}>/jquery-1.8.3.min.js"> </script>
+<script src="<{#js#}>/jquery.cookie.js"> </script>
+<script src="<{#js#}>/swfobject.js"> </script>
+<script src="<{#js#}>/float.js"> </script>
+<script src="<{#js#}>/upup.js"> </script>
+<script>
+
+var langx; 
+var _UNDER = {};
+var liveconf = "7,1,5,6,8,9";
+
+function checkJS() {// flash 載入後，呼叫此用以確認JS 初始化完成
+	return jsReady;
+}
+function pageInit() {// 載入html頁面後，設定jsReady = true，讓flash 可以確認JS 狀態
+	jsReady = true;
+}
+</script>
+</head>
+<body onload="pageInit();">
+</body>

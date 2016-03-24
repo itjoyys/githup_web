@@ -1,0 +1,110 @@
+<{config_load file="public.conf" section="public"}>
+<!DOCTYPE html>
+<!--[if lt IE 7 ]> <html class="no-js ie6 ie" > <![endif]-->
+<!--[if IE 7 ]>    <html class="no-js ie7 ie" > <![endif]-->
+<!--[if IE 8 ]>    <html class="no-js ie8 ie" > <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html class="no-js">
+	<!--<![endif]-->
+
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<title>注单</title>
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<link rel="stylesheet" href="<{#tcss#}>/main_<{$config_css}>.css">
+		<!--[if IE 6]>
+<script src="/assets/dist/scripts/lib/ie6/DD_belatedPNG_0.0.8a.js?v=2015101"></script>
+<script>
+    /* EXAMPLE */
+    DD_belatedPNG.fix('.icon');
+    /* string argument can be any CSS selector */
+    /* .png_bg example is unnecessary */
+    /* change it to what suits you! */
+</script>
+<![endif]-->
+
+		<script src="<{#tjs#}>/main.js"></script>
+	</head>
+
+	<body>
+
+		<h3>
+    <a href="/index.php/lottery/lottery/notCount">
+
+        <{$data[0]['type']}>
+    </a>&nbsp;&gt;&nbsp;<span>
+
+        <span>下注明细</span>
+    </span>
+</h3>
+		<div class="tab tab-dialog">
+			<table class="table table-bordered">
+				<thead>
+					<tr>
+
+						<th>注单编号</th>
+
+						<th>期数</th>
+
+						<th class="wp-30">下注明细</th>
+
+						<th>下注金额</th>
+
+						<th>
+
+							可赢金额
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+				<{foreach from=$data item=v key=k}>
+					<tr>
+						<td>
+							<b><{$v['did']}></b>
+							<br><{$v['addtime']}>
+						</td>
+						<td><{$v['qishu']}></td>
+						<td>
+							<{$v['mingxi_1']}>
+							<em class="red"><{$v['mingxi_2']}><em>@</em><{$v['odds']}></em>
+							<p><{$v['mingxi_3']}></p>
+						</td>
+						<td>
+							<b>
+                            <{$v['money']}>
+                        </b>
+						</td>
+						<td>
+							<b class="green">
+                            <{$v['win']}>
+                        </b>
+						</td>
+					</tr>
+					<{/foreach}>
+				</tbody>
+				<tfoot>
+					<tr>
+						<td></td>
+
+						<td>总计：</td>
+						<td><{$mun['count']}></td>
+						<td><{number_format($mun['money'],2)}></td>
+						<td><b class="green"><{number_format($mun['win'],2)}></b></td>
+					</tr>
+				</tfoot>
+			</table>
+
+		</div>
+
+		<script>
+			require(['<{#tjs#}>/index.js'], function(Account) {
+				new Account();
+			})
+		</script>
+
+	</body>
+
+</html>

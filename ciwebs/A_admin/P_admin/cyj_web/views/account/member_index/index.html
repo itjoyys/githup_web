@@ -1,0 +1,157 @@
+<title>会员管理</title>
+<{include file="web_header.html"}>
+<body>
+<script type="text/javascript">
+var indexid = "<{$smarty.get.index_id}>";
+$(document).ready(function(){
+	$("#index_id").val(indexid);
+})
+
+$(function(){
+    $("#index_id").change(function(event) {
+      $("#myFORM").submit();
+    });
+  })
+</script>
+<div  id="con_wrap">
+<div  class="input_002" >會員管理(今日注册:<{$todayReg_count}> <{$sum_title}>)</div>
+<div  class="con_menu" style="width:980px;">
+<form  name="myFORM"  id="myFORM"  action="<{$site_url}>/account/member_index/index"  method="GET">
+<{$sites_str}>
+代理账号：
+	<select  name="agent_id" onchange="document.getElementById('myFORM').submit()" id="mem_agent_select"   class="za_select">
+        <option  value="">全部</option>
+		<{foreach from=$agent_up item=v}>
+		<option value="<{$v['id']}>" <{select_check($v['id'],$smarty.get.agent_id)}>><{$v['agent_name']}> 【<{$v['agent_login_user']}>】</option>
+		<{/foreach}>
+    </select>
+    状态:
+    <select  name="mem_enable"  onchange="document.getElementById('myFORM').submit()" id="mem_type_select"   class="za_select">
+      <option  value="">全部</option>
+      <option <{select_check('2',$smarty.get.mem_enable)}> value="2">停用</option>
+    </select>
+    在线:
+     <select name="mem_status" onchange="document.getElementById('myFORM').submit()" id="status_select" class="za_select">
+          <option  value="0">全部</option>
+          <option <{select_check('1',$smarty.get.mem_status)}> value="1">在线</option>
+     </select>
+              来源:
+     <select name="ptype" onchange="document.getElementById('myFORM').submit()" id="status_select" class="za_select">
+          <option value="-1" >全部</option>
+          <option <{select_check('0',$smarty.get.ptype)}> value="0">PC网站</option>
+           <option <{select_check('1',$smarty.get.ptype)}> value="1">WAP网站</option>
+     </select>
+           排序:
+     <select  id="sort_select"  name="mem_sort" onchange="document.getElementById('myFORM').submit()"  class="za_select">
+	      	<{foreach from=get_mem_sort() item=v key=k}>
+	<option value="<{$k}>" <{select_check($k,$smarty.get.mem_sort)}> ><{$v}> </option>
+	<{/foreach}>
+     </select>
+              <select  id="order_select"  name="mem_order" onchange="document.getElementById('myFORM').submit()"  class="za_select">
+                <option <{select_check('desc',$smarty.get.mem_order)}>   value="desc">由大到小</option>
+                <option <{select_check('asc',$smarty.get.mem_order)}>   value="asc">由小到大</option>
+
+              </select>
+
+  &nbsp;注册日期：
+              <input class="za_text Wdate" onClick="WdatePicker()" value="<{$smarty.get.start_date}>" size="10" name="start_date"> - <input  type="text"  name="end_date" id="end_date" readonly  value="<{$smarty.get.end_date}>" class="za_text Wdate" onClick="WdatePicker()">
+              <select  name="search_type" id="utype"  class="za_select">
+              <option  value="0" <{select_check(0,$smarty.get.search_type)}>>帳號</option>
+              <option  value="4" <{select_check(4,$smarty.get.search_type)}>>注册IP</option>
+              <option  value="5" <{select_check(5,$smarty.get.search_type)}>>登陆IP</option>
+              <option  value="1" <{select_check(1,$smarty.get.search_type)}>>姓名</option>
+              <option  value="2" <{select_check(2,$smarty.get.search_type)}>>手机</option>
+              <option  value="3" <{select_check(3,$smarty.get.search_type)}>>银行卡</option>
+            </select>
+              <input  type="text"  name="search_name"  value="<{$smarty.get.search_name}>"  class="za_text"  >
+              <input  type="submit" value="搜索"   class="za_button">
+                  每页显示:<select name="page_num" onchange="document.getElementById('myFORM').submit()">
+                   <option value="100" <{select_check(100,$smarty.get.page_num)}>>100</option>
+                   <option value="200" <{select_check(200,$smarty.get.page_num)}>>200</option>
+                   <option value="500" <{select_check(500,$smarty.get.page_num)}>>500</option>
+                   </select>
+        頁數：
+ <select id="page" name="page" class="za_select">
+    <{assign var=$i value=0}>
+       <{section name=total loop=$totalPage}>
+       <option value="<{$i=$i+1}><{$i}>"<{select_check($i,$smarty.get.page)}> ><{$i}></option>
+       <{/section}>
+  </select> <{$totalPage}>頁&nbsp;
+</form>
+<script>
+    //分页跳转
+  window.onload=function(){
+    document.getElementById("page").onchange=function(){
+      document.getElementById('myFORM').submit()
+    }
+  }
+</script>
+</div>
+</div>
+<div  class="content" style="overflow">
+  <table  style="table-layout: fixed;width:100%" border="0"  cellspacing="0"  cellpadding="0"  class="m_tab">
+    <tbody><tr  class="m_title_over_co">
+      <td style="width:55px;">状态</td>
+      <td style="width:85px;">姓名</td>
+      <td style="width:95px;">帳號</td>
+      <td style="width:60px;">系統額度</td>
+
+      <{foreach from=$video_config key=i item=val}>
+        <td style="width:60px;"><{$val['title']}></td>
+      <{/foreach}>
+
+      <td style="width:180px;">所屬代理商</td>
+      <td style="width:130px;">新增日期</td>
+      <td style="width:55px;">狀況</td>
+      <td style="width: 300px;">功能</td>
+    </tr>
+	<{if count($list)>0 }>
+	<{foreach from=$list key=i item=rows}>
+    <tr class="m_cen <{if $i%2 == 0}>even<{/if}>" >
+      <td><a  style="color:red"  title="登陸時間:<{$rows['login_time']}> 登陸IP:<{$rows['login_ip']}>"><{$rows['Online_state']}></a></td>
+      <td><{$rows["pay_name"]}></td>
+      <td><{$rows["username"]}></td>
+      <td  style="text-align:left"  nowrap=""><{$rows["money"]}> </td>
+
+      <{foreach from=$video_config key=i item=val}>
+         <td  style="text-align:left"  nowrap=""><{$rows[$val['vtype']]+0}></td>
+      <{/foreach}>
+
+      <td ><a style="width:180px;display:block;overflow:hidden;word-break:keep-all;white-space:nowrap;text-overflow:ellipsis;"
+      href="<{$site_url}>/account/member_index/index?index_id=<{$rows['index_id']}>&agent_id=<{$rows['agent_id']}>"><{$agent_up[$rows['agent_id']]["agent_user"]}>(<{$agent_up[$rows['agent_id']]["agent_name"]}>)</a></td>
+      <td><{$rows["reg_date"]}></td>
+      <td>
+         <{if $rows['is_delete'] == 2}>
+           <span style="color:#FF00FF;">停用</span>
+         <{else}>
+          <span style="color:##1E20CA;">正常</span>
+         <{/if}>
+      </td>
+      <td  align="center">
+         <{if $rows['is_delete'] == 2}>
+           <a onclick="return confirm('确定恢复该会员使用')" href="<{$site_url}>/account/member_index/edituser?act=using&uid=<{$rows['uid']}>">启用</a>&nbsp;/&nbsp;
+         <{else}>
+          <a onclick="return confirm('确定停止该会员使用')" href="<{$site_url}>/account/member_index/edituser?act=stop&uid=<{$rows['uid']}>">停用</a>&nbsp;/&nbsp;
+         <{/if}>
+        <a onclick="return confirm('确定将该用户踢下线？')" href="<{$site_url}>/account/member_index/login_out?uid=<{$rows['uid']}>&username=<{$rows['username']}>">踢线</a>&nbsp;/&nbsp;
+        <a  href="<{$site_url}>/account/member_index/member_edit?uid=<{$rows['uid']}>">修改</a>&nbsp;/&nbsp;
+        <a  href="<{$site_url}>/account/member_index/user_set?aid=<{$rows['agent_id']}>&uid=<{$rows['uid']}>">設定</a>&nbsp;/<a href="<{$site_url}>/other/Log_manage/user_do_log?uname=<{$rows['username']}>&type=1">日志</a>&nbsp;/
+        <{if $is_b}>
+        <a  href="<{$site_url}>/note/bet_record/sp_bet_record?username=<{$rows['username']}>&itype=1">下注</a>&nbsp;/
+        <{/if}>
+        <a href="<{$site_url}>/account/member_index/member_data?uid=<{$rows['uid']}>">资料</a>&nbsp;/
+        <{if $is_e12}>
+        <a  href="<{$site_url}>/cash/cash_system/index?username=<{$rows['username']}>&uid=<{$rows['uid']}>">現金</a>&nbsp;/<{/if}>
+        <a  onclick="return confirm('确定更新用户')" href="<{$site_url}>/account/member_index/edituser?act=renew&uid=<{$rows['uid']}>&username=<{$rows['username']}>">更新</a>
+
+      </td>
+    </tr>
+    <{/foreach}>
+<{else}>
+  <tr class="m_rig" style="display:;">
+        <td height="70" align="center" colspan="15"><font color="#3B2D1B">暫無數據。</font></td>
+      </tr>
+<{/if}>
+  </tbody></table>
+</div>
+ <{include file="web_footer.html"}>

@@ -1,0 +1,158 @@
+﻿<title>優惠統計</title>
+<{include file="web_header.html"}>
+<{config_load file="public.conf" section="public"}>
+
+<body>
+<style type="text/css">
+  .color_cx{
+    color:red;
+  }
+</style>
+<script>
+
+function ckall(){
+    for (var i=0;i<document.myFORM.elements.length;i++){
+      var e = document.myFORM.elements[i];
+    if (e.name != 'checkall' )
+      e.checked = document.myFORM.checkall.checked;
+  }
+}
+$(document).ready(function(){
+  $("#ckzero").click( function () {
+      $(".m_cen").each(function () {
+          if (parseFloat($(this).find('td:last').text())<=0) {
+            if($('#ckzero').attr("checked")==undefined){
+              $(this).find(':checkbox').attr("checked",false);
+            }else{
+              $(this).find(':checkbox').attr("checked",true);
+            }
+            //$(this).css("color","red");
+          }
+      })
+  });
+
+  $("#cknozero").click( function () {
+      $(".m_cen").each(function () {
+          if (parseFloat($(this).find('td:last').text())>0) {
+            if($('#cknozero').attr("checked")==undefined){
+              $(this).find(':checkbox').attr("checked",false);
+            }else{
+              $(this).find(':checkbox').attr("checked",true);
+            }
+            //$(this).css("color","red");
+          }
+      })
+  });
+});
+function check(){
+    var len = document.myFORM.elements.length;
+  var num = false;
+    for(var i=0;i<len;i++){
+    var e = document.myFORM.elements[i];
+        if(e.checked && e.name=='id[]'){
+      num = true;
+      break;
+    }
+    }
+  if(num){
+  }else{
+        alert("您未选中任何复选框");
+        return false;
+    }
+}
+
+</script>
+<div id="con_wrap">
+  <div class="input_002">優惠統計</div>
+  <div class="con_menu">
+   <a href="<{$site_url}>/cash/discount/index">優惠統計</a>
+  <a href="<{$site_url}>/cash/discount/discount_log" style="color:red;">優惠查詢</a>
+  <a href="<{$site_url}>/cash/discount/rakeback_log">自助返水查询</a>
+  <a href="<{$site_url}>/cash/discount/discount_fd">返點優惠設定</a>
+   <a href="javascript:window.history.go(-1)">返回上一頁</a>
+  </div>
+</div>
+<div class="content">
+<form method="post" name="myFORM" action="<{$site_url}>/cash/discount/discount_cx" id="myFORM" onsubmit="return check();">
+<input type="hidden" name="title" value="<{$title['back_time_start']}> ~ <{$title['back_time_end']}>">
+<input type="hidden" name="sid" value="<{$id}>">
+<input type="hidden" name="zh" value="<{$title['bet']}>">
+<table width="99%" class="m_tab">
+  <tbody><tr class="m_title">
+    <td colspan="29" height="27" align="center">日期：<{$title['back_time_start']}> ~ <{$title['back_time_end']}>  </td>
+  </tr>
+
+    <tr class="m_title">
+        <td rowspan="2"><input type="checkbox" name="checkall"
+              id="checkall" title="所有" onclick="return ckall();"></td>
+        <td rowspan="2">代理商</td>
+        <td rowspan="2">會員</td>
+        <td rowspan="2">層級</td>
+        <td rowspan="2">有效總<br>投注</td>
+        <td colspan="<{$inum}>">有效投注</td>
+        <td colspan="<{$inum}>">返點</td>
+        <td rowspan="2">自助返水</td>
+        <td rowspan="2">返點小計</td>
+        <td rowspan="2">返水状态</td>
+  </tr>
+    <tr class="m_title">
+            <{foreach from=$vtype item=v}>
+            <td><{$title_type[$v]}></td>
+            <{/foreach}>
+            <{foreach from=$vtype item=v}>
+            <td><{$title_type[$v]}></td>
+            <{/foreach}>
+    </tr>
+    <{foreach from=$datas key=i item=val}>
+    <tr class="m_cen <{if $i%2 == 0}>even<{/if}>">
+      <td align="center">
+      <{if $val['state'] == 2}>
+      <{$val['cx_zh']}>
+      <{else}>
+       <input name="id[]" type="checkbox" value="<{$val['uJson']}>">
+      <{/if}>
+     </td>
+     <td nowrap="nowrap"><{$val['agent_user']}></td>
+            <td nowrap="nowrap"><{$val['username']}></td>
+            <td nowrap="nowrap"><{$val['level_des']}></td>
+            <td nowrap="nowrap"><{$val['betall']}></td>
+
+            <{foreach from=$bettypes item=vv}>
+            <td><{$val[$vv]}></td>
+            <{/foreach}>
+
+            <{foreach from=$fdtypes item=vv}>
+            <td><{$val[$vv]}></td>
+             <{/foreach}>
+
+            <td><{$val['self_fd']}></td>
+            <td><{$val['total_e_fd']}></td>
+            <td><{$val['state_zh']}></td>
+    </tr>
+    <{/foreach}>
+    <tr class="m_title">
+          <td align="center">總計：</td>
+          <input type="hidden" name="money" value="<{$title['total_fd']}>">
+        <td colspan="3">總人數：<{($title['people_num']+0)}>人 <font class="color_cx">(冲销<{$title['no_people_num']}>)人</font></td>
+        <td><{$title['totalbet']}></td>
+
+             <{foreach from=$totalb item=vt}>
+            <td><{$vt}></td>
+            <{/foreach}>
+
+            <{foreach from=$totalf item=vf}>
+            <td><{$vf}></td>
+            <{/foreach}>
+
+        <td></td>
+        <td><{$title['total_fd']}></td>
+        <td></td>
+  </tr>
+   <tr>
+    <td colspan="29" align="center" class="table_bg1"><input type="submit" name="submit" class="za_button" value="沖銷"></td>
+  </tr>
+</tbody></table>
+</form>
+</div>
+
+<{include file="web_footer.html"}>

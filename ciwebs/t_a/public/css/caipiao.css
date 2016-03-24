@@ -1,0 +1,51 @@
+@charset "utf-8";
+/**{padding:0; margin:0;}*/
+html, body{padding: 0;margin: 0;}
+body{font-size:12px;word-wrap:break-word;word-break:break-all;font-family: "Microsoft YaHei", "宋体", Helvetica, Arial, sans-serif;}
+#NewBetFramediv img,#NewBetFramediv p,#NewBetFramediv h1,#bg h2,#bg h3,#bg h4,#bg h5,#bg em,#bg i,#NewBetFramediv ul, #NewBetFramediv li,#bg dd,#bg dt,#bg dl,#bg table,#bg tbody,#bg thead,#bg tr,#bg td,#bg th{vertical-align:baseline;list-style: none;border: 0;padding: 0;margin: 0;font-style: normal;}
+img {vertical-align: middle;}
+a{text-decoration: none;}
+input, select, textarea{list-style: none;padding: 0;margin: 0;background: transparent;border: 0;outline: none;font-family: "宋体","微软雅黑";font-size: 12px;color: #333;}
+.clear{clear: both !important;}
+.none{display: none !important;}
+.fl{float: left;}
+.fr{float: right;}
+.con{width: 1002px;margin: 0 auto;}
+.scale{transform: scale(1.1); transition: transform 0.5s ease-in 0s;}
+
+.cp_main{padding: 20px 0;}
+.flw660{width: 660px;}
+.flw320{width: 320px;}
+
+/*tab*/
+.bcon{width:660px;overflow: hidden;}
+.bcon .tab_top{position: relative; padding:0 10px;height: 45px;font-size: 16px;color: #000;border-bottom: 8px solid #222;}
+.bcon .tab_top  span{display: block;position: absolute;width: 120px;padding-right: 20px;height: 46px;text-align: center;line-height: 45px;cursor: pointer;background: url(../images/icon_tab.png) no-repeat; overflow: hidden;}
+.bcon .tab_top  span.active{background: url(../images/icon_tab_on.png) no-repeat;color: #fff;z-index: 11;}
+.tab_01{z-index: 9;top: 0;left: 10px;}
+.tab_02{z-index: 8;top: 0;left: 135px;}
+.tab_03{z-index: 7;top: 0;left: 260px;}
+.tab_04{z-index: 6;top: 0;left: 385px;}
+.tab_05{z-index: 5;top: 0;left: 510px;}
+
+.tabBox{display:none;width:660px;min-height:305px;margin:15px 0;overflow:hidden;}
+.tabBox ul{width: 682px;}
+.tabBox ul li{float: left;position: relative;width: 320px;height: 268px;margin: 0 20px 18px 0;overflow: hidden;}
+.cp_img img{width: 320px;height: 268px;}
+.cp_anniu{display: none;position: absolute;z-index: 9;top: 99px;left: 99px;width: 120px;height: 44px;border: 1px solid #fff;background: url(../images/ico_tmbg.png) repeat;}
+.cp_anniu:hover{background: #000;}
+.tz_btn{display: block;width: 100px;height: 44px;line-height: 44px;font-size: 16px;color: #fff;padding-left: 20px;background: url(../images/ico_arw.png) 99px center no-repeat;}
+.cp_name{position: absolute;z-index: 7;left: 0;right: 0;bottom: 0;width: 320px;height: 53px;line-height: 53px;text-align: center;color: #fff;font-size: 25px;background: url(../images/ico_tmbg.png) repeat; overflow: hidden;}
+.cp_tmbg{display: none;position: absolute;z-index: 3;top: 0;left: 0;right: 0;bottom: 0;width: 320px;height: 268px;background: url(../images/ico_tmbg40.png) repeat;}
+.tabBox ul li:hover .cp_tmbg, .tabBox ul li:hover .cp_anniu{display: block;}
+
+.list_table{font-size: 14px;background: #fff;text-align: center;}
+.list_top{text-align: center;height: 50px;line-height: 50px;background: #222;font-size: 16px;color: #fff;}
+.list_table table{width: 100%;border-collapse:collapse;line-height: 30px;font-size: 14px;}
+.cp_table th, .cp_table td{border: 0;}
+.cp_table thead{background: #910505;color: #fff;}
+.cp_table tbody{color: #333;}
+.td_1{text-align: left;padding-left: 15px;}
+.td_3{color: #cc0707;}
+.cp_table tbody tr:nth-child(2n){background: #fff;}
+.cp_table tbody tr:nth-child(2n+1){background: #f1f1f1;}

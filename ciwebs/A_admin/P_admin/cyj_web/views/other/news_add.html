@@ -1,0 +1,217 @@
+<title>公告管理</title>
+<{include file="web_header.html"}>
+<script type="text/javascript">
+var indexid = "<{$index_id}>";
+$(document).ready(function(){
+  $("#index_id").val(indexid);
+  $("#index_id").change(function(event) {
+      $("#queryform").attr("action","<{$site_url}>/other/news/news_add");
+      $("#queryform").submit();
+    });
+})
+
+function valid()
+{
+  var gametype = "input[name='gametype[]']";
+  var lxxz = $("input[name='lxxz']:checked").val();
+  var levellx = "input[name='levellx[]']";
+  var zduser =  $("#zduser").val();
+  var showtype = $("input[name='showtype']:checked").val();
+  var state = $("input[name='state']:checked").val();
+  var traditional = $('#traditional').val();
+  var simplify = $('#simplify').val();
+  var english = $('#english').val();
+  var flag = true;
+  if(showtype == 1){
+    if(judge(levellx) == 0 && lxxz == 2)
+    {
+     // alert("請對公告適用的層級進行設置!");
+      //flag = false;
+    }else if(zduser == '' && lxxz == 1){
+      alert("請對公告適用的指定用户進行設置!");
+      flag = false;
+      }
+  }else{
+    if(state == 2){
+      if(judge(gametype) == 0)
+      {
+        alert("請對遊戲類型進行選擇!");
+        flag = false;
+      }
+    }
+  }
+
+  if(traditional == ''){
+    alert("請填寫完整的公告內容!");
+    flag = false;
+  }
+  return flag;
+}
+function judge(str)
+{
+  var flag = 0;
+  $(str).each(function(){
+    if($(this).attr('checked'))
+    {
+      flag += 1;
+    }
+  });
+  return flag;
+}
+
+function noti(){
+  var showtype = $("input[name='showtype']:checked").val();
+  var state = $("input[name='state']:checked").val();
+  var lxxz = $("input[name='lxxz']:checked").val();
+  if(showtype == 1){
+    if(lxxz==2){
+      $("#cengt").show();
+     }else if(lxxz==1){
+        $("#zd_user").show();
+     }else{
+       $("#cengt").hide();
+       $("#zd_user").hide();
+       }
+
+    $("#allt").hide();
+    $("#gamet").hide();
+    $("#user_cengt").show();
+  }else if(showtype == 2){
+     $("#zd_user").hide();
+    $("#cengt").hide();
+    $("#allt").show();
+    $("#gamet").hide();
+    $("#user_cengt").hide();
+
+    if(state == 1){
+       $("#zd_user").hide();
+      $("#cengt").hide();
+      $("#allt").show();
+      $("#gamet").hide();
+     }else if(state == 2){
+       $("#zd_user").hide();
+      $("#cengt").hide();
+      $("#allt").show();
+      $("#gamet").show();
+     }
+  }
+}
+
+$(function(){
+  noti();
+  $("input[name='showtype']").change(function(){
+    noti();
+  })
+  $("input[name='state']").change(function(){
+     state = $("input[name='state']:checked").val();
+     if(state == 1){
+       $("#zd_user").hide();
+      $("#cengt").hide();
+      $("#allt").show();
+      $("#gamet").hide();
+     }else if(state == 2){
+       $("#zd_user").hide();
+      $("#cengt").hide();
+      $("#allt").show();
+      $("#gamet").show();
+     }
+  })
+})
+
+//层级隐藏显示
+function listdiv(v,k,u){
+
+  if(v.checked && k!='all'){
+    var div = document.getElementById(k);
+    var div1 = document.getElementById(u);
+    div.style.display = "";
+    div1.style.display = "none";
+  }else{
+    document.getElementById('cengt').style.display = "none";
+    document.getElementById('zd_user').style.display = "none";
+  }
+}
+</script>
+<div id="con_wrap">
+  <div class="input_002">公告管理</div>
+  <div class="con_menu">
+<a href="javascript:window.history.go(-1)">返回上一頁</a>
+  </div>
+</div>
+<div class="content">
+<form method="get" name="myFORM" id="queryform" action="<{$site_url}>/other/news/news_add_do" onsubmit="return valid();">
+<table style="width:800px" border="0" cellspacing="0" cellpadding="0" class="m_tab">
+  <tbody><tr class="m_title_over_co">
+    <td width="30%" height="25">設置項</td>
+    <td width="70%">設置內容</td>
+  </tr>
+  <{if $sites_str}>
+    <tr>
+    <td align="center" class="table_bg1">站点选择</td>
+    <td align="left" class="table_bg1">
+        <{$sites_str}>
+    </td>
+  </tr>
+  <{/if}>
+  <tr>
+    <td align="center" class="table_bg1">顯示類型</td>
+    <td align="left" class="table_bg1">
+      <input type="radio" name="showtype" <{if $info['show_type'] == 1 || $info['show_type'] == ''}> checked="checked" <{/if}>
+        value="1">&nbsp;彈出&nbsp;&nbsp;&nbsp;
+      <input type="radio" name="showtype"  <{if $info['show_type'] == 2 }> checked="checked" <{/if}>  value="2">&nbsp;跑馬燈&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr id="allt" style="display:none">
+    <td align="center" class="table_bg1">顯示位置</td>
+    <td align="left" class="table_bg1">
+      <input type="radio" name="state" <{if $info['state'] == 1 || $info['state'] == ''}>checked="checked"<{/if}>  value="1">&nbsp;全站顯示&nbsp;&nbsp;&nbsp;
+      <input type="radio" name="state" <{if $info['state'] == 2}>checked="checked"<{/if}> value="2">&nbsp;指定頁面顯示&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr id="gamet" style="display:none">
+    <td align="center" class="table_bg1">遊戲類型</td>
+    <td align="left" class="table_bg1">
+      <input type="checkbox" name="gametype[]" <{if $sp_1}>checked="checked"<{/if}> value="1">&nbsp;體育&nbsp;&nbsp;&nbsp;
+      <input type="checkbox" name="gametype[]" <{if $fc_1}>checked="checked"<{/if}> value="2">&nbsp;彩票&nbsp;&nbsp;&nbsp;
+      <input type="checkbox" name="gametype[]" <{if $vm_1}>checked="checked"<{/if}> value="3">&nbsp;視訊&nbsp;&nbsp;&nbsp;<font style="color:red;">視訊包含電子遊戲</font>
+    </td>
+  </tr>
+  <tr id="user_cengt">
+    <td align="center" class="table_bg1">用户类型选择</td>
+    <td align="left" class="table_bg1">
+      <input type="radio" <{if $info['lxxz'] == '1'}>checked<{/if}> name="lxxz" value="1" onclick="listdiv(this,'zd_user','cengt')">&nbsp;指定用户&nbsp;&nbsp;&nbsp;
+      <input type="radio" <{if $info['lxxz'] == '2'}>checked<{/if}>  name="lxxz" value="2" onclick="listdiv(this,'cengt','zd_user')">&nbsp;层级选择&nbsp;&nbsp;&nbsp;
+      <input type="radio" <{if $info['lxxz'] == '3'}>checked<{/if}>  name="lxxz" value="3" onclick="listdiv(this,'all')">&nbsp;全部用户&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr id="cengt" style="display:none;">
+    <td align="center" class="table_bg1">層級</td>
+    <td align="left" class="table_bg1">
+      <{foreach from=$level key=i item=val}>
+      <input type="checkbox" name="levellx[]" <{if $val['is_cstate']}>checked<{/if}> value="<{$val['id']}>">&nbsp;<{$val['level_des']}>&nbsp;
+      <{/foreach}>
+    </td>
+  </tr>
+  <tr id="zd_user" style="display: none;" >
+    <td align="center" class="table_bg1">指定用户</td>
+    <td align="left" class="table_bg1"><textarea name="zduser" id="zduser" style="height:70px" cols="60" rows="3"><{$info['zduser']}></textarea></td>
+  </tr>
+
+  <tr>
+    <td align="center" class="table_bg1">简体中文</td>
+    <td align="left" class="table_bg1"><textarea name="simplify" id="simplify" style="height:70px" cols="60" rows="3"><{htmlspecialchars_decode($info['chn_simplified'])}></textarea></td>
+  </tr>
+  <tr>
+    <td align="center" colspan="2" class="table_bg1">
+      <input type="hidden" value="<{$info['id']}>" name="id">
+      <input type="submit" value="確定" class="za_button">
+      &nbsp;&nbsp;&nbsp;
+      <input type="reset" value="重置" class="za_button">
+    </td>
+  </tr>
+</tbody></table>
+</form>
+</div>
+
+<!-- 公共尾部 -->
+<{include file="web_footer.html"}>

@@ -1,0 +1,86 @@
+<{config_load file="public.conf" section="public"}>
+<!DOCTYPE html>
+<!--[if lt IE 7 ]> <html class="no-js ie6 ie" > <![endif]-->
+<!--[if IE 7 ]>    <html class="no-js ie7 ie" > <![endif]-->
+<!--[if IE 8 ]>    <html class="no-js ie8 ie" > <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<title>注单</title>
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="<{#tcss#}>/main_<{$config_css}>.css">
+<!--[if IE 6]>
+<script src="/assets/dist/scripts/lib/ie6/DD_belatedPNG_0.0.8a.js?v=2015101"></script>
+<script>
+    /* EXAMPLE */
+    DD_belatedPNG.fix('.icon');
+    /* string argument can be any CSS selector */
+    /* .png_bg example is unnecessary */
+    /* change it to what suits you! */
+</script>
+<![endif]-->
+<script src="<{#tjs#}>/main.js"></script>
+
+</head>
+
+<body>
+
+	<h3>按彩种查看</h3>
+	<div class="tab tab-dialog">
+		<table class="table table-bordered">
+					<{if empty($data)}>
+				无数据请下注
+			<{else}>
+			<thead>
+				<tr>
+
+					<th>彩种名称</th>
+					<th>笔数</th>
+
+					<th>有效下注金额</th>
+
+				</tr>
+			</thead>
+			<{/if}>
+			<tbody>
+
+			<{foreach from=$data item=v key=k}>
+				<tr>
+
+					<td class="td-hd"><{$v['name']}></td>
+
+					<td><b><{$v['count']}></b></td>
+
+					<td>
+					<{if $v['money'] != ''}>
+					<a href="/index.php/lottery/lottery/notCount?lotteryId=<{$v['name']}>">
+					<{$v['money']}>
+					</a>
+					<{else}>
+					0.00
+					<{/if}>
+					</td>
+
+				</tr>
+				<{/foreach}>
+
+			</tbody>
+		</table>
+
+	</div>
+
+	<script>
+		require([ '<{#tjs#}>/hindex.js' ], function(Account) {
+			new Account();
+		})
+	</script>
+
+</body>
+
+</html>

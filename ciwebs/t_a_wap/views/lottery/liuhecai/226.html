@@ -1,0 +1,33 @@
+<ion-content class="bet-view">
+<div class="row text-center">
+	<div class="col title-no"><{$gamename}></div>
+</div>
+<{foreach from=$config item=v1 key=k1}>
+<div class="row text-center">
+	<div class="col title-no"><{$v1['name']}></div>
+</div>
+
+<div data-title="<{$gamename}>" data-title2="<{$v1['name']}>"
+	class="text-left">
+	<div class="row">
+	<{foreach from=$v1['data'] item=v key=k}>
+	<{if is_numeric($v['input_name'])}>
+			<div class="col col-33 bet" data-id="<{$v['id']}>">
+			<div class="bet-content" ng-bind-html='"<{$v['input_name']}>"|yd:"3"'></div>
+			<div class="bet-item"></div>
+		</div>
+		<{else}>
+					<div class="col col-33 bet bet-bottom special" data-id="<{$v['id']}>">
+				<div class="bet-content"><{$v['input_name']}></div>
+				<div class="bet-item"></div>
+			</div>
+			<{/if}>
+		<{if ($k+1)%3==0}>  
+	</div>
+	<div class="row">
+	<{/if}>
+	<{/foreach}>
+	</div>
+</div>
+<{/foreach}>
+</ion-content>

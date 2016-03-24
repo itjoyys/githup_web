@@ -1,0 +1,51 @@
+<ion-view cache-view="false" hide-nav-bar="false" class="index">
+    <ion-nav-bar class="bar bar-header">
+        <ion-nav-buttons side="left"><a class="button button-icon" ng-click="uri()">返回首页</a>
+        </ion-nav-buttons>
+        <ion-nav-title>{{'PageTitle.LotteryGame'|translate}}</ion-nav-title>
+        <ion-nav-buttons side="right">
+            <button class="button button-icon icon ion-navicon" ng-click="openPopover($event)"></button>
+        </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-content scroll="false">
+        <div class="no-title">
+            <div class="left lh-23px"><span class="backgrounduser">{{username}}</span></div>
+            <div class="lh-23px" ng-click="getBankData1()"><span class="backgroundmoney"
+                                                                ng-show="loaded">{{bankData}}</span> <span
+                    ng-show="!loaded" class="my-logdins"><ion-spinner></ion-spinner></span>
+            </div>
+        </div>
+        <div class="row notice">
+            <div class="notice-icon"><i class="ion-volume-medium"></i></div>
+            <div class="col col-90 notice-content">
+                <marquee scrollamount="3"><span ng-repeat="notitem in notices">{{notitem.content}}</span></marquee>
+            </div>
+        </div>
+        <ion-content class="lottery-list">
+            <div ng-show="hasList" class="page-loading text-center padding">
+                <ion-spinner></ion-spinner>
+            </div>
+            <div class="row" ng-if="!hasList">
+                <div class="item" ng-repeat="item in lotteryList"><a ng-click="inGame(item.id)"><h3>{{item.name}}</h3>
+                    <span>{{item.openCountTime}}</span></a></div>
+                <div style="clear: both"></div>
+            </div>
+        </ion-content>
+    </ion-content>
+    <script id="my-popover.html" type="text/ng-template">
+        <ion-popover-view
+        class="my-popover" style="width:120px;height:{{testData.height}}px">
+        <ion-content scroll="false" class="popover-conten">
+            <div class="list"><a class="item" ng-click="selectMenu('notcount')">
+                <div>{{'Common.InstantBet'|translate}}</div>
+                <div ng-show="CountMoneyState==-2">
+                    <ion-spinner></ion-spinner>
+                </div>
+                <div ng-show="CountMoneyState==-1" class="ng-hide">({{'Common.ForFailure'|translate}})</div>
+                <div ng-show="CountMoneyState>=0" class="color-orange ng-hide">({{notCountMoney}})</div>
+            </a> <a class="item" ng-click="selectMenu('count')" ng-if="testData.show">
+                {{'Common.BettingRecord'|translate}} </a> <a class="item" ng-click="selectMenu('history')">
+                {{'Common.LotteryHistory'|translate}} </a> <a class="item" ng-click="selectMenu('limit')">
+                {{'Common.BetLimits'|translate}} </a></div>
+        </ion-content> </ion-popover-view></script>
+</ion-view>

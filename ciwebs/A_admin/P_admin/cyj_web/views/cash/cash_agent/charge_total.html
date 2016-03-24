@@ -1,0 +1,76 @@
+<title>费用明细</title>
+<{include file="web_header.html"}>
+<body>
+<div id="con_wrap">
+  <div class="input_002"><{$qishu['qsname']}>-費用明细</div>
+  <div class="con_menu">
+	</div>
+</div>
+
+<table style="width:600px"  class="m_tab">
+		<tr class="m_title">
+		  <td colspan="7" class="table_bg">代理：<{$agent_name}>&nbsp;&nbsp;<{$qishu['qsname']}>&nbsp;&nbsp;日期：<{$qishu['start_date']}> ~ <{$qishu['end_date']}></td>
+  </tr>
+		<tr class="m_title">
+			<td class="table_bg">會員帳號</td>
+			<td class="table_bg">行政費用</td>
+			<td class="table_bg">退傭優惠</td>
+			<td class="table_bg">退水優惠</td>
+			<td class="table_bg">存款優惠</td>
+            <td class="table_bg">其他費用</td>
+			<td class="table_bg">小計金額</td>
+		</tr>
+		<{foreach from=$alluserfee key=key item=value}>
+		 	<tr class="m_rig">
+	    	<td align="left"><{$userinfo[$key]}></td>
+			<td>
+			<{if $value['xzfee'] gt 0}>
+				<a href="charge_xz?qs_id=<{$qishu['id']}>&user_id=<{$key}>&agentid=<{$agentid}>&agent_name=<{$agent_name}>"  class="a_001"><{number_format($value['xzfee'], 2)}></a>
+			<{else}>
+				0.00
+			<{/if}>
+			</td>
+			<td>0.00</td>
+			<td>
+			<{if $value['tsfee'] gt 0}>
+				<a href="charge_ts?qs_id=<{$qishu['id']}>&user_id=<{$key}>&agentid=<{$agentid}>&agent_name=<{$agent_name}>"  class="a_001"><{number_format($value['tsfee'], 2)}></a>
+			<{else}>
+				0.00
+			<{/if}>
+			</td>
+	        <td>
+			<{if $value['ckfee'] gt 0}>
+				<a href="charge_ck?qs_id=<{$qishu['id']}>&user_id=<{$key}>&agentid=<{$agentid}>&agent_name=<{$agent_name}>"  class="a_001"><{number_format($value['ckfee'], 2)}></a>
+			<{else}>
+				0.00
+			<{/if}>
+			</td>
+	        <td>
+			<{if $value['otherfee'] gt 0}>
+				<a href="charge_qt?qs_id=<{$qishu['id']}>&user_id=<{$key}>&agentid=<{$agentid}>&agent_name=<{$agent_name}>"  class="a_001"><{number_format($value['otherfee'], 2)}></a>
+			<{else}>
+				0.00
+			<{/if}>
+			</td>
+            <td><{number_format($value['userallfee'], 2)}></td>
+    	</tr>
+<{/foreach}>
+				<tr class="m_rig" >
+	    	<td class="table_bg1">總計：</td>
+			<td class="table_bg1"><{number_format($xzfee, 2)}></td>
+			<td class="table_bg1"><{number_format($tyfee, 2)}></td>
+			<td class="table_bg1"><{number_format($tsfee, 2)}></td>
+	        <td class="table_bg1"><{number_format($ckfee, 2)}></td>
+            <td class="table_bg1"><{number_format($otherfee, 2)}></td>
+	        <td class="table_bg1"><{number_format($allfee, 2)}></td>
+    	</tr>
+
+
+</table>
+</body>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" style="clear:both">
+	<tbody><tr>
+		<td align="center" height="50"> 版权所有 建議您以 1024 X 768 以上高彩模式瀏覽本站</td>
+	</tr>
+</tbody></table>
+</body></html>

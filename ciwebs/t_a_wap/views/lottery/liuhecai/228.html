@@ -1,0 +1,16 @@
+<ion-content class="tp40">
+<div data-title="<{$gamename}>" data-title2="<{$smarty.get.gamename2}>"
+	class="text-left">
+	<{foreach from=$list item=v key=k}>
+	<div class="row">
+		<div class="col bet ban-bo" data-id="<{$v['id']}>">
+			<div class="bet-content"><{$v['input_name']}></div>
+			<div class="bet-item"></div>
+			<div class="bet-qiu">
+				<div ng-bind-html="'<{banbo_arr($k)}>'|yd:'3'"></div>
+			</div>
+		</div>
+	</div>
+	<{/foreach}>
+</div>
+</ion-content>

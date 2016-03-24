@@ -1,0 +1,82 @@
+<ion-view hide-nav-bar="false" class="lotter-view" cache-view="false">
+    <ion-side-menus enable-menu-with-back-views="true">
+        <ion-side-menu-content>
+            <ion-nav-bar class="bar bar-header lotter-bar">
+                <ion-nav-buttons side="left">
+                    <button class="button button-icon button-clear" menu-toggle="left"><span class="game-name">{{current.gameName}}</span>
+                    </button>
+                </ion-nav-buttons>
+                <ion-nav-buttons side="right"><span class="member-balance">{{current.memberBalance}}</span>
+                    <button class="button button-icon icon ion-navicon" ng-click="openPopover($event)"></button>
+                </ion-nav-buttons>
+            </ion-nav-bar>
+            <ion-content class="has-header" scroll="false">
+                <div class="lottery-content"></div>
+            </ion-content>
+            <ion-footer-bar>
+                <div class="row">
+                    <div class="col col-50">
+                        <div class="inputbox">
+                            <div class="text-left pb5"
+                                 ng-bind-html="current.count|formas:'Common.LabelSelectedCount'"></div>
+                            <div class="inputbox cel"><input type="tel" id="j-money" class="inputbox textinput"
+                                                             ng-model="current.money" ng-keyup="parseIntMoney($event)"
+                                                             placeholder="{{'Common.PlaceHolderRTAMoney'|translate}}"
+                                                             reset-field=""></div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <button class="button button-small button-bet" style="margin-right: 10px;" id="betbt"
+                                ng-click="submit($event)">{{'Common.Bet'|translate}}
+                        </button>
+                        <button class="button button-small button-reset" ng-click="clickCount()">
+                            {{'Common.LabelRemove'|translate}}
+                        </button>
+                    </div>
+                </div>
+            </ion-footer-bar>
+        </ion-side-menu-content>
+        <ion-side-menu side="left" class="view" width="200">
+            <header class="bar bar-header bar-stable"><h1 class="title">{{'Common.SystemMenu'|translate}}</h1></header>
+            <ion-content class="has-header">
+                <ion-list>
+                    <ion-item nav-clear="" menu-close="" href="#/index">{{'Common.ReturnHall'|translate}}</ion-item>
+                    <ion-item nav-clear="" menu-close="" ng-click="inGame(item.LotteryID)"
+                              collection-repeat="item in lotteryList">{{item.LotteryName}}
+                    </ion-item>
+                </ion-list>
+            </ion-content>
+        </ion-side-menu>
+    </ion-side-menus>
+    <script id="my-popover.html" type="text/ng-template">
+        <ion-popover-view
+        class="my-popover" style="width:120px;height:{{current.popoverHeight}}px">
+        <ion-content scroll="false" class="popover-conten">
+            <div class="list"><a class="item" ng-click="selectMenu('notcount')">
+                <div>{{'Common.InstantBet'|translate}}</div>
+                <div ng-show="current.CountMoneyState==-2">
+                    <ion-spinner></ion-spinner>
+                </div>
+                <div ng-show="current.CountMoneyState==-1" class="ng-hide">{{'Common.ForFailure'|translate}}</div>
+                <div ng-show="current.CountMoneyState>=0" class="color-orange ng-hide">({{current.notCountMoney}})</div>
+            </a> <a class="item" ng-click="selectMenu('count')" ng-show="current.showCount">
+                {{'Common.BettingRecord'|translate}} </a> <a class="item" ng-click="selectMenu('history')">
+                {{'Common.LotteryHistory'|translate}} </a> <a class="item" ng-click="showRole('limit')">
+                {{'Common.GameRule'|translate}} </a> <a class="item" ng-click="selectMenu('changLong')"
+                                                        ng-show="current.gameId!=1 && current.gameId!=10">
+                {{'Common.LabelChanglong'|translate}} </a> <a class="item" ng-click="selectMenu('transfer')">
+                {{'Common.Transfer'|translate}} </a> <a class="item" ng-click="selectMenu('luZhu')"
+                                                        ng-show="current.gameId!=1 && current.gameId!=10">
+                {{'Common.LabelLuZhu'|translate}} </a> <a class="item color-br-gray" href="javascript:void(0);"
+                                                          no-scroll="false">
+                <div class="color-blue"> {{'Common.LabelTotalWinLoseMoney'|translate}}</div>
+                <div ng-show="current.winLoss==-2">
+                    <ion-spinner></ion-spinner>
+                </div>
+                <div ng-show="current.winLoss==-1" class="ng-hide">{{'Common.TipsLogin'|translate}}</div>
+                <div ng-show="current.winLoss!=-1 && current.winLoss!=-2" class="color-orange ng-hide">
+                    ({{current.winLoss}})
+                </div>
+            </a></div>
+        </ion-content> </ion-popover-view></script>
+</ion-view>

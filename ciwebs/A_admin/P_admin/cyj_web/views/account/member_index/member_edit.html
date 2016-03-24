@@ -1,0 +1,147 @@
+<{include file="web_header.html"}>
+<body>
+
+<div  id="con_wrap">
+  <div  class="input_002">修改會員帳號</div>
+  <div  class="con_menu"> <a href="javascript:history.go(-1);">返回上一頁</a> </div>
+</div>
+<div  class="content">
+  <div  id="show_div"  style="position: absolute; z-index: 99; display: none;"></div>
+  <div  id="Layer1"  style="position:absolute; width:780px; height:26px; z-index:1; left: 0px; top: 406px; visibility: hidden; background-color: #FFFFFF; layer-background-color: #FFFFFF; border: 1px none #000000"></div>
+  <form  name="myFORM"  id="myFORM"  action="<{$site_url}>/account/member_index/member_edit_do?edit=1&uid=<{$rows['uid']}>"  method="POST"  class="myFORM">
+    <table  width="650"  border="0"  cellspacing="0"  cellpadding="0"  class="m_tab_ed">
+      <tbody><tr  class="m_title_over_co">
+        <td  colspan="3">基本資料設定</td>
+      </tr>
+      <tr  class="m_bc_ed">
+        <td  class="m_mem_ed"  width="70">帳號：</td>
+        <td style="text-align: left;"> <font  color="red"><{$rows['username']}>
+       <input  type="hidden" name="username" class="za_text" value="<{$rows['username']}>"></font></td>
+        <td><div  class="Validform_checktip"></div></td>
+      </tr>
+      <tr  class="m_bc_ed">
+        <td  class="m_mem_ed">密碼：</td>
+        <td><input  type="PASSWORD"  name="passwd" id="passwd" value="******"  size="12"  maxlength="12"  class="za_text"  datatype="s6-12"  nullmsg="請輸入密碼"  errormsg="密碼必須至少6個字元長，最多12個字元長，并只能有數字(0-9)，及英文大小寫字母"></td>
+        <td><div  class="Validform_checktip"></div></td>
+      </tr>
+      <tr  class="m_bc_ed">
+        <td  class="m_mem_ed">確認密碼：</td>
+        <td><input  type="PASSWORD"  name="repasswd"  id="repasswod" size="12"  maxlength="12"  recheck="passwd" class="za_text"  datatype="*"  value="******"></td>
+        <td><div  class="Validform_checktip"></div></td>
+      </tr>
+      <tr  class="m_bc_ed">
+
+        <td  class="m_mem_ed">是否可修改密碼：</td>
+        <td>是：
+          <input  class="za_select_02"  type="radio"  <{radio_check(1,$rows['change_pwd'])}>  value="1"  name="change_pwd"  id="pass_sys"  nullmsg="請選擇是否可修改密碼：">
+          	否：
+          <input  class="za_select_02"  type="radio"  value="0"  <{radio_check(0,$rows['change_pwd'])}>
+           name="change_pwd"  id="pass_sys"></td>
+        <td><div  class="Validform_checktip"></div></td>
+          </tr>
+      <tr  class="m_bc_ed">
+        <td  class="m_mem_ed">會員名稱：</td>
+        <td>线上注册会员</td>
+        <td><div  class="Validform_checktip"></div></td>
+      </tr>
+    </tbody></table>
+    <table  width="780"  border="0"  cellspacing="0"  cellpadding="0"  class="m_tab_ed">
+      <tbody><tr class="m_title_over_co">
+        <td  colspan="3">下注資料設定</td>
+      </tr>
+
+      <tr  class="m_bc_ed">
+        <td  class="m_mem_ed">匯率設定：</td>
+        <td>人民幣 目前匯率：<font  color="#FF0033"  id="mcy_now">1</font>&nbsp;(目前匯率僅供參考)</td>
+        <td><div  class="Validform_checktip"></div></td>
+      </tr>
+      <tr  class="m_bc_ed">
+        <td  class="m_mem_ed"><input  type="button"  value="修正"  class="za_button"  id="editpcbtn"   style="display: none;">
+          &nbsp;&nbsp;盤口玩法：</td>
+        <td><span  id="show_cb"><font  style="color: 960000;">香港盤,馬來盤,印尼盤,歐洲盤</font></span></td>
+        <td><div  class="Validform_checktip"></div></td>
+      </tr>
+      <tr  class="m_bc_ed"  style="display:none">
+        <td  class="m_mem_ed">投注方式：</td>
+        <td><select  name="pay_type"  id="pay_type"  class="za_select">
+            <option  value="1">現金</option>
+          </select></td>
+        <td><div  class="Validform_checktip"></div></td>
+      </tr>
+
+    </tbody></table>
+    <table  width="780"  border="0"  cellspacing="0"  cellpadding="0"  class="m_tab_ed">
+      <tbody><tr class="m_title_over_co">
+        <td  colspan="3">體育設定</td>
+      </tr>
+      <tr  class="m_bc_ed">
+        <td  class="m_mem_ed">開放球類：</td>
+        <td  width="400"><select  name="type"  id="type"  disabled=""  class="za_select">
+            <option  value="1">A盤</option>
+            <option  value="2">B盤</option>
+            <option  value="3">C盤</option>
+            <option  value="4"  selected="">D盤</option>
+
+          </select></td>
+        <td><div  class="Validform_checktip"></div></td>
+      </tr>
+    </tbody></table>
+  <table  width="780"  border="0"  cellspacing="0"  cellpadding="0"  class="m_tab_ed">
+      <tbody> <!--  <tr  class="m_title_edit">
+        <td  colspan="3">彩票設定</td>
+      </tr>
+      <tr  class="m_bc_ed">
+        <td  class="m_mem_ed">開放盤口：</td>
+        <td><select  name="abcd"  id="abcd"  disabled=""  class="za_select">
+            <option  value="A">A盤</option>
+            <option  value="B">B盤</option>
+            <option  value="C">C盤</option>
+            <option  value="D"  selected="">D盤</option>
+          </select>
+          <input  type="checkbox"  disabled=""  id="allabcd_a"  name="allabcd[]"  value="A">
+          A盤 &nbsp;&nbsp;
+          <input  type="checkbox"  disabled=""  id="allabcd_b"  name="allabcd[]"  value="B">
+          B盤 &nbsp;&nbsp;
+          <input  type="checkbox"  disabled=""  id="allabcd_c"  name="allabcd[]"  value="C">
+          C盤 &nbsp;&nbsp;
+          <input  type="checkbox"  disabled=""  id="allabcd_d"  name="allabcd[]"  value="D"  checked="">
+          D盤 &nbsp;&nbsp; </td>
+        <td><div  class="Validform_checktip"></div></td>
+      </tr>
+
+
+      <input  type="hidden"  name="minorder"  value="0">
+    </tbody></table> -->
+  <!--   <table  width="780"  border="0"  cellspacing="0"  cellpadding="0"  class="m_tab_ed">
+      <tbody><tr  class="m_title_edit">
+        <td  colspan="3">視訊設定</td>
+      </tr>
+      <tr  class="m_bc_ed"  style="display:none">
+        <td  class="m_over_co_ed"  width="120"> 賬號類型：</td>
+        <td><input  type="radio"  name="zr_test"  value="0"  id="zr_test"  checked="">正式&nbsp;&nbsp;<input  type="radio"  name="zr_test"  value="1"  id="zr_test">試用</td>
+        <td></td>
+      </tr> -->
+        <input  type="hidden"  name="minorder"  value="0">
+    <tr  align="center"  class="m_bc_ed">
+        <td  class="m_bc_td"  colspan="3">
+          <input  type="SUBMIT"  value="確定"  class="za_button">
+          &nbsp;&nbsp;&nbsp;
+          <input  type="button"  name="FormsButton2"  value="取消"  id="FormsButton2"   class="za_button">
+        </td>
+      </tr>
+
+
+  </tbody></table>
+ </form>
+ </div>
+    <script type="text/javascript">
+ $(function(){
+	//$(".registerform").Validform();  //就这一行代码！;
+
+	$("#myFORM").Validform({
+		tiptype:2,
+		showAllError:true
+	});
+})
+</script>
+ <{include file="web_footer.html"}>

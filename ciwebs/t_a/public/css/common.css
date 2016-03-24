@@ -1,0 +1,83 @@
+/*==
+  网站公用css 文件 
+==*/
+/*==IE 6.0 背景图片缓存操作==*/
+html{_filter:expression(document.execCommand("BackgroundImageCache",false,true));}
+html,body{margin:0;padding:0}
+body {font-size: 12px;color: #eee;font-family:SimSun,Microsoft YaHei;background: #4a0000;position:relative;overflow-x:hidden;}
+a{text-decoration:none;cursor:pointer; behavior:expression(this.onFocus=this.blur());  /* for IE ==*/color:#fff;}
+a:hover{color:red;}
+*:focus { outline: none; }
+/*==清除浮动==*/
+.clearfix:before, .clearfix:after { content:""; display:table;}
+.clearfix:after { clear:both;}
+.clearfix { *zoom:1;}
+/*==基础样式==*/
+.l{float:left;}.r{float:right;}.cl{clear:both;} .clearleft{clear:left;} .clearright{clear:right;}
+.tc{text-align:center;}.tr{text-align:right;}.tl{text-align:left;}
+.tdl{text-decoration:underline;}.tdn,a.tdl:hover,a.tdn:hover{text-decoration:none;}
+.b{font-weight:bold;}.n{font-weight:normal; font-style:normal;}
+.vm{vertical-align:middle;}.vtb{vertical-align:text-bottom;}.vt{vertical-align:top;}.vn{vertical-align:-2px;}
+.fa{font-family:arial;}.ft{font-family:tahoma;}.fw{font-family:Microsoft YaHei}.fs{font-family:SimSun;}
+.rel{position:relative;}.abs{position:absolute;}.ovh{overflow:hidden;}
+.dn{display:none;}.db{display:block;}.dib{display:inline-block;}.di{display:inline;}
+.cur{cursor:pointer;}
+.mc{margin:0 auto}
+.block{display:block;}
+/*==公用颜色样式==*/
+/*== css font color ==*/
+.col-yellow{color:#ff0}
+.col-red{color:#ff0000}
+.col-white{color:#fff}
+.col-advertis-yellow{color:#C4881E}
+.col-grey{color:#757575}
+.col-lightBlue{color:#00a5f3}
+.col-deepyellow{color:#fff000;}
+.col-deepgreen{color:#00ff4e;}
+.col-yellow-light{color:#ffdf9e;}
+.col-gray{color:#a1998e;}
+.col-black{color:#201900;}
+/*== css font color end==*/
+/*== css link color ==*/
+a.link-col-yellow{color:#fbd70f}
+a.link-col-yellow:hover{color:#fff}
+a.link-col-witch{color:#fff}
+a.link-col-witch:hover{color:#fbd70f}
+a.link-col-dellRed{color:#BB1515}
+a.link-col-lightyellow{color:#ff6600;}
+a.link-col-black{color:#000000;}
+a.link-col-lightgray{color:#8b8b8b;}
+a.link-col-lightgreen{color:#438967;}
+/*== css font color end==*/
+/*边框*/
+
+/*背景颜色测试*/
+.bg-yellow{background: #e8670c;}
+.bg-white{background: #fff;}
+.f{ color: #a79486;}
+/*==表单验证样式==*/
+/*== 密码强度 ==*/
+.top_testresult{font-weight: bold;font-size:12px;font-family: arail,helvetica,san-serif;color:#FFF;padding:0;margin:0 0 0 0;}
+.top_testresult span{padding:0 6px;margin:0;height: 32px;line-height: 32px;}
+.top_shortPass{background:#FF0000;}
+.top_badPass{background:#5A025A;}
+.top_goodPass{background:#0029AA;}
+.top_strongPass{background:#128511;}
+/*== us by validation ==*/
+.FormError {position: absolute;top: 300px;left: 300px;display: block;z-index: 500;}
+.FormError .FormErrorC {width: 100%;background: #ee0101;position:relative;z-index:501;color: #fff;font-family: tahoma;font-size: 11px;line-height: 14px;border: 2px solid #ddd;box-shadow: 0 0 6px #000;-moz-box-shadow: 0 0 6px #000;-webkit-box-shadow: 0 0 6px #000;padding: 4px 10px 4px 10px;border-radius: 6px;-moz-border-radius: 6px;-webkit-border-radius: 6px;}
+.FormError .FormErrorA {width: 15px;margin: -2px 0 0 13px;position:relative;z-index: 506;}
+.FormError .FormErrorABottom {box-shadow: none;-moz-box-shadow: none;-webkit-box-shadow: none;margin: 0px 0 0 12px;top:2px;}
+.FormError .FormErrorA div {border-left: 2px solid #ddd;border-right: 2px solid #ddd;box-shadow: 0 2px 3px #444;-moz-box-shadow: 0 2px 3px #444;-webkit-box-shadow: 0 2px 3px #444;font-size: 0px;height: 1px;background: #ee0101;margin: 0 auto;line-height: 0;font-size: 0;display: block;}
+.FormError .FormErrorABottom div {box-shadow: none;-moz-box-shadow: none;-webkit-box-shadow: none;}
+/*==use by jquery ui dialog==*/
+.ui-dialog-content{padding: 5px 1px;}
+.ui-dialog-title{font-size:14px;}
+#Dialog{font-size:12px;}
+#Dialog p {line-height:16px;margin:10px 0px 10px 10px;height: auto;}
+#SendForm input[type=text], #SendForm input[type=password]{border:1px solid #6A4444;-moz-border-radius: 2px;-webkit-border-radius: 2px;border-radius: 2px;box-shadow: 0 0 2px #6A4444;-moz-box-shadow: 0 0 2px #6A4444;-webkit-box-shadow: 0 0 3px #6A4444;}
+#SendForm input[type=text]:hover, #SendForm input[type=password]:hover{border:1px solid #6A4444;}
+#SendForm input[type=text]:focus, #SendForm input[type=password]:focus{border:1px solid #6A4444;}
+
+
+

@@ -1,0 +1,118 @@
+<{config_load file="public.conf" section="public"}>
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>网站资讯系统</title>
+<script type="text/javascript" src="<{#js#}>/jquery.js"></script>
+<link rel="stylesheet" href="<{#css#}>/reset.css" type="text/css" media="screen">
+<link rel="stylesheet" href="<{#css#}>/index.css" type="text/css" media="screen">
+<link rel="stylesheet" href="<{#css#}>/invalid.css" type="text/css" media="screen">
+<style type="text/css">
+    .szda{
+        font-size: 18px;
+        font-weight: bolder;
+        color: red;
+    }
+    body{
+        font-family: "Microsoft YaHei","SimSun";
+        color: #555;
+        background: #fff url('<{#images#}>/1bg-body.gif') top left repeat-y;
+        font-size: 12px;
+    }
+</style>
+<script type="text/javascript">
+    $(function() {
+        $('#main-nav').children('li').children('a').hover(function() {
+            $(this).stop().animate({paddingRight: '25px'}, 500);
+        }, function() {
+            $(this).stop().animate({paddingRight: '15px'}, 100);
+        }).click(function() {
+            var ul = $(this).parent().children('ul');
+            if (ul.size() == 1) {
+                if (ul.is(':hidden')) {
+                    $('#main-nav').children('li').children('ul').hide(300);
+                    ul.stop().show(300);
+                } else {
+                    ul.stop().hide(300);
+                }
+            }
+        });
+        $('#leftFrame').height($(window).height() - 120);
+        $('#sidebar').height($(window).height() - 95);
+        $(window).resize(function() {
+            $('#leftFrame').height($(window).height() - 120);
+            $('#sidebar').height($(window).height() - 95);
+        });
+        $('a[target="leftFrame"]').click(function() {
+            $('a[target="leftFrame"]').removeClass('szda');
+            $(this).addClass('szda');
+        });
+
+
+        $('#main-nav').children('li').each(function() {
+            if ($(this).find('li').size() < 1) {
+                $(this).hide();
+            }
+        });
+    });
+
+</script>
+</head>
+<body style="overflow: hidden;">
+<div class="body_header">
+    <div class="header_left">
+        <h1 class="header_logo">
+            <a href="javascript:void(0)">
+            <img id="logo" src="<{#images#}>/info_logo.png" ></a></h1>
+    </div>
+    <ul class="shortcut-buttons-set">
+    </ul>
+    <!-- <div id="profile-links">
+    </div> -->
+</div>
+<div id="body-wrapper">
+  <div id="sidebar" style="height: 586px;">
+    <div id="sidebar-wrapper">
+        <ul id="main-nav">
+            <li>
+                <a target="leftFrame" class="nav-top-item" style="padding-right: 15px;">
+                    文案编辑</a>
+                <ul style="">
+                    <li><a href="<{$site_url}>/site_info/site_info/website" target="leftFrame">网站信息</a></li>
+                    <li><a href="<{$site_url}>/site_info/video_info/video_index" target="leftFrame">视讯管理</a></li>
+                     <li><a href="<{$site_url}>/site_info/info_logo/logo_index" target="leftFrame">LOGO管理</a></li>
+                    <li><a href="<{$site_url}>/site_info/info_iword/iword_index" target="leftFrame">首页文案</a></li>
+                    <li><a href="<{$site_url}>/site_info/info_deposit/deposit_index" target="leftFrame">存款文案</a></li>
+                    <li><a href="<{$site_url}>/site_info/info_reg/reg_index" target="leftFrame">注册文案</a></li>
+                    <li><a href="<{$site_url}>/site_info/info_flash/flash_index" target="leftFrame">轮播图片</a></li>
+                    <li><a href="<{$site_url}>/site_info/Info_cateimg/cateimg_index" target="leftFrame">首页游戏图</a></li>
+                    <li><a href="<{$site_url}>/site_info/info_activity/activity_index" target="leftFrame">优惠活动</a></li>
+					<{if $site_id == t}>
+					<li><a href="<{$site_url}>/site_info/info_activity_wap/activity_index" target="leftFrame">WAP端优惠活动</a></li>
+					<{/if}>
+                    <li><a href="<{$site_url}>/site_info/info_float/float_index" target="leftFrame">浮动图片</a></li>
+                  <li><a href="<{$site_url}>/site_info/site_pop/pop" target="leftFrame">公告弹窗</a></li>
+                </ul>
+            </li>
+            <li>
+                <a target="leftFrame" class="nav-top-item" style="padding-right: 15px;">
+                    案件管理</a>
+                <ul style="display: none;">
+                    <li><a href="<{$site_url}>/site_info/info_case/case_index" target="leftFrame">待审案件</a></li>
+                    <li><a href="<{$site_url}>/site_info/info_case/case_index?cs=2" target="leftFrame">待审中案件</a></li>
+                    <li><a href="<{$site_url}>/site_info/info_case/case_index?cs=1" target="leftFrame">通过案件</a></li>
+                    <li><a href="<{$site_url}>/site_info/info_case/case_index?cs=3" target="leftFrame">撤销案件</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+  </div>
+  <div id="main-content">
+    <div class="clear"></div>
+    <iframe name="leftFrame" id="leftFrame" frameborder="0" src="<{$site_url}>/site_info/site_info/website" style="visibility: inherit; width: 100%; z-index: 5; border: none; height: 561px;" height="453">
+    </iframe>
+  </div>
+</div>
+</body>
+</html>

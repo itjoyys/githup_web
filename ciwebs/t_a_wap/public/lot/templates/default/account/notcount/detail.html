@@ -1,0 +1,46 @@
+<ion-view cache-view="false" hide-nav-bar="false" class="no-count">
+    <ion-nav-bar class="bar bar-header">
+        <ion-nav-buttons side="left"><a class="button button-icon icon ion-chevron-left" href="#/notcount/{{rid}}"></a>
+        </ion-nav-buttons>
+        <ion-nav-title>{{'Common.InstantBet' | translate}}</ion-nav-title>
+    </ion-nav-bar>
+    <ion-content scroll="false">
+        <div class="tips"><a>{{lotteryName}} &gt;</a><span><a>{{'LotteryReports.LabelOrderBetDetial' |
+            translate}}</a></span></div>
+        <div class="row text-center no-title pm">
+            <div class="col col-31 radiu">{{'LotteryReports.LabelLotteryNo' | translate}}</div>
+            <div class="col col-23 radiu">{{'LotteryReports.LabelOrderBetDetial' | translate}}</div>
+            <div class="col col-23 radiu">{{'LotteryReports.LabelTotalBetMoney' | translate}}</div>
+            <div class="col col-23 radiu">{{'LotteryReports.LabelPredictMoney' | translate}}</div>
+        </div>
+        <ion-content class="list detail">
+            <ion-refresher ng-show="ansycLoaded" on-refresh="getNotCount()"></ion-refresher>
+            <div ng-show="!ansycLoaded" class="page-loading text-center padding">
+                <ion-spinner></ion-spinner>
+            </div>
+            <cur-tips tip="tip"></cur-tips>
+            <div ng-show="ansycLoaded" class="row text-center" ng-repeat="item in detailData">
+                <div class="col col-31 tal">
+                    <div>{{item.LotteryNo}}</div>
+                </div>
+                <div class="col col-23 tal text-left">
+                    <div>{{item.PlayTypeName}} <span ng-if="item.Lines >0">@{{item.Lines}}</span> <span
+                            ng-if="item.BetContent != '' && item.BetContent != null">{{item.BetContent}}</span></div>
+                </div>
+                <div class="col col-23 tal">
+                    <div>{{item.TotalBetMoney.toFixed(2)}}</div>
+                </div>
+                <div class="col col-23 tal {{item.PredictWinMoney>0?'t-green':''}}{{item.PredictWinMoney<0?'t-red':''}}">
+                    <div>{{item.PredictWinMoney}}</div>
+                </div>
+            </div>
+        </ion-content>
+        <ion-footer-bar>
+            <div class="row pd0">
+                <div ng-if="sum.SumBetMoney" class="col text-right pdr-15">{{'Common.LabelTotalAmount' | translate}}��
+                    <span class="{{sum.SumBetMoney>0?'t-green':''}}{{sum.SumBetMoney<0?'t-red':''}}">{{sum.SumBetMoney.toFixed(2)}}</span>
+                </div>
+            </div>
+        </ion-footer-bar>
+    </ion-content>
+</ion-view>

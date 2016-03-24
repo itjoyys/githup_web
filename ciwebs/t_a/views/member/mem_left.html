@@ -1,0 +1,47 @@
+﻿<{config_load file="public.conf" section="public"}>
+<html lang="en" style="height:426px; width:220px;">
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+<link rel="stylesheet" href="<{#mem_css#}>/index_main.css" />
+</head>
+<script>
+window.onload=function(){
+var a_arr = document.getElementsByTagName("a");
+var i;
+var j;
+for(i=0;i<a_arr.length;i++){
+
+a_arr[i].onclick=function(){
+for(j=0;j<a_arr.length;j++){
+  a_arr[j].style.backgroundPosition='left top';
+  a_arr[j].style.color='#fff';
+}
+this.style.backgroundPosition='left bottom';
+this.style.color='#000';
+}
+}
+}
+</script>
+
+<body>
+<div id="MAContent">
+    <div id="MALeft">
+      <div id="welcome">会员中心</div>
+      <div class="sidebar">
+        <div id="sidebar-mem">会员专区</div>
+        <a target="k_memr" id="memberData" href="<{$site_url}>/index.php/member/account/userinfo"<{if $url eq 4}> style="background-position: left bottom; color: rgb(0, 0, 0)"<{/if}>>．&nbsp;我的帐户</a>
+		<a target="k_memr" id="bankSavings" href="<{$site_url}>/index.php/member/cash/setmoney"<{if $url eq 1 or $url eq 2 or $url eq 3}> style="background-position: left bottom; color: rgb(0, 0, 0)"<{/if}> >．&nbsp;银行交易</a>
+		<a target="k_memr" id="betrecord" href="<{$site_url}>/index.php/member/record/tc_record" <{if $url eq 5}> style="background-position: left bottom; color: rgb(0, 0, 0)"<{/if}> >．&nbsp;交易记录</a>
+    <a target="k_memr" id="betrecorda" href="<{$site_url}>/index.php/member/record/bb_count"<{if $url eq 6}> style="background-position: left bottom; color: rgb(0, 0, 0)"<{/if}> >．&nbsp;报表统计</a>
+    <a target="k_memr" id="betrecorda" href="<{$site_url}>/index.php/member/Spread/Spread" >．&nbsp;我要推广</a>
+    </div>
+      <div class="sidebar">
+        <div id="sidebar-msg">信息公告</div>
+        <a target="k_memr" id="hotNews" href="<{$site_url}>/index.php/member/news/latest_news" <{if $url eq 7}> style="background-position: left bottom; color: rgb(0, 0, 0)"<{/if}> >．&nbsp;最新信息</a>
+		<a target="k_memr" id="msg" href="<{$site_url}>/index.php/member/news/sms"<{if $url eq 8}> style="background-position: left bottom; color: rgb(0, 0, 0)"<{/if}> >．&nbsp;个人信息</a>
+		<a target="k_memr" id="news" href="<{$site_url}>/index.php/member/news/games_news" <{if $url eq 9}> style="background-position: left bottom; color: rgb(0, 0, 0)"<{/if}> >．&nbsp;游戏公告</a> </div>
+    </div>
+
+    </body>
+</html>

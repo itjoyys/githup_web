@@ -1,0 +1,260 @@
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>LeBo Game</title>
+		<link rel="shortcut icon" href="/public/default/images/favicon.ico">
+		<style type="text/css">
+			#banner_top {
+				width: 98%;
+				height: 100px;
+				background-image: url("/public/default/images/bg_duplicate.png");
+				text-align: center;
+				padding-top: 25px;
+			}
+			
+			.wechat {
+				width: 100%
+			}
+			
+			#horizontal {
+				margin-left: auto;
+				margin-right: auto;
+				width: 100%;
+				height: 170%;
+				display: none;
+				background-image: url(/public/default/images/horizontal_ios.jpg);
+				background-size: 100%;
+				background-repeat: no-repeat;
+			}
+			
+			#horizontal a img {
+				margin-top: 34%;
+				margin-left: 72%;
+				width: 20%
+			}
+			
+			#vertical {
+				width: 100%;
+				height: 120%;
+				text-align: center;
+				padding-top: 3%;
+				background-image: url(/public/default/images/LaunchImage_bbin_2.png);
+				background-size: 100%;
+				background-repeat: no-repeat;
+			}
+			
+			#vertical .ver_sp {
+				color: #707071;
+				font-family: 黑体;
+				display: inherit;
+				padding-top: 40%;
+				padding-bottom: 75%;
+				padding-left: 50%;
+				text-align: left;
+			}
+			
+			* {
+				margin: 0px;
+				padding: 0px;
+			}
+			
+			.anzhuang {
+				margin-top: 20%;
+			}
+			
+			.anzhuang span {
+				font-size: 16px;
+				display: block;
+			}
+			
+			.anzhuang .sp_img {
+				width: 100%;
+				top: 0px;
+				left: 0px;
+			}
+			
+			.anzhuang .sp_img img {
+				background-position: center;
+				background-size: 100%;
+				width: 90%;
+				margin: auto;
+				margin-left: 5%;
+			}
+			
+			.az,
+			.bz_1,
+			.bz_2,
+			.bz_3 {
+				color: #CB3A3F;
+				margin: 5% 5% 2% 5%;
+			}
+			
+			.anzhuang .bz_1_1,
+			.bz_2_2,
+			.bz_3_3 {
+				margin: 5% 5% 2% 5%;
+				color: #000000;
+			}
+			
+			.riqi {
+				color: #ab9984;
+				display: inherit;
+			}
+			
+			.te_sp {
+				color: #ab9984;
+				display: block;
+				background-image: url(/public/default/images/vertical_2.jpg);
+				background-position: center;
+				background-repeat: no-repeat;
+				background-size: 100% 100%;
+				line-height:25px ;
+				text-align: left;
+				padding: 20px 5px 60px 5px;
+			}
+			.anzhuang button {
+				position: relative;
+				left: 3%;
+				width: 150px;
+				height: 97px;
+				border: none;
+				outline: 0;
+				background: url("/public/default/images/bbin_icon.png") center top no-repeat;
+				background-size: 100%;
+				}
+				
+				@media screen and (max-width: 480px) and (min-width: 375px) 
+				.anzhuang button {
+					bottom: 1%;
+					width: 150px;
+					height: 97px;
+					}
+		</style>
+
+		<script type="text/javascript">
+			window.onload = function() {
+				if (isWechat()) {
+					document.getElementById("browser").style.display = 'none';
+					document.getElementById("wechat").style.display = '';
+				} else {
+					document.getElementById("browser").style.display = '';
+					if (browser.versions.mobile) {
+						document.getElementById("horizontal").style.width = '100%';
+						document.getElementById("vertical").style.display = '';
+						document.getElementById("horizontal").style.display = 'none';
+					} else {
+						document.getElementById("horizontal").style.width = '70%';
+						document.getElementById("vertical").style.display = '';
+						document.getElementById("horizontal").style.display = 'none';
+					}
+				}
+			}
+
+			function isWechat() {
+				var ua = window.navigator.userAgent.toLowerCase();
+				if (ua.match(/MicroMessenger/i) == 'micromessenger') {
+					return true;
+				} else {
+					return false;
+				}
+			}
+			var browser = {
+					versions: function() {
+						var u = navigator.userAgent,
+							app = navigator.appVersion;
+						return { //移动终端浏览器版本信息 
+							trident: u.indexOf('Trident') > -1, //IE内核 
+							presto: u.indexOf('Presto') > -1, //opera内核 
+							webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核 
+							gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核 
+							mobile: !!u.match(/AppleWebKit.*Mobile.*/), // || !!u.match(/AppleWebKit/), //是否为移动终端 
+							ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端 
+							android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器 
+							iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者QQHD浏览器 
+							iPad: u.indexOf('iPad') > -1, //是否iPad 
+							webApp: u.indexOf('Safari') == -1
+								//是否web应该程序，没有头部与底部 
+						};
+					}(),
+					language: (navigator.browserLanguage || navigator.language).toLowerCase()
+				}
+				// 	document.writeln(navigator.userAgent); 
+				// 	document.writeln("语言版本: "+browser.language); 
+				// 	document.writeln(" 是否为移动终端: "+browser.versions.mobile); 
+				// 	document.writeln(" ios终端: "+browser.versions.ios); 
+				// 	document.writeln(" android终端: "+browser.versions.android); 
+				// 	document.writeln(" 是否为iPhone: "+browser.versions.iPhone); 
+				// 	document.writeln(" 是否iPad: "+browser.versions.iPad); 
+				// 	document.writeln(navigator.userAgent);
+			function orientationChange() {
+				switch (window.orientation) {
+					case 0:
+						document.getElementById("vertical").style.display = '';
+						document.getElementById("horizontal").style.display = 'none';
+						break;
+					case 180:
+						document.getElementById("vertical").style.display = '';
+						document.getElementById("horizontal").style.display = 'none';
+						break;
+					case -90:
+						document.getElementById("vertical").style.display = '';
+						document.getElementById("horizontal").style.display = 'none';
+						break;
+					case 90:
+						document.getElementById("vertical").style.display = '';
+						document.getElementById("horizontal").style.display = 'none';
+						break;
+				}
+			}
+			window.addEventListener("onorientationchange" in window ? "orientationchange" : "resize", orientationChange, false);
+		</script>
+
+	</head>
+
+	<body>
+		<div id="wechat" style="display: none; ">
+			<img alt="" src="/public/default/images/wechat_help_sc.png" style="width: 100%">
+		</div>
+		<div id="browser">
+			<div id="horizontal">
+				<a href="itms-services://?action=download-manifest&url=https://www.leboapp.com/lebogaming_ios.plist">
+					<img alt="" src="/public/default/images/install_btn.png" style=""></a>
+				<br>
+				<br>
+				<br>
+			</div>
+			<div id="vertical">
+
+				<span class="ver_sp">
+			  <br>
+			   <strong>整合所有游戏</strong><br>
+			  随心所欲,随时随地<br>
+		       </span>
+				<div class="anzhuang" style="text-align: left; background: #e8e8e9;">
+					<span class="az" style="font-size: 32px; font-weight: bold; ">安装指南</span>
+					<span class="bz_1">步骤一：</span>
+					<span class="bz_1_1">1.登陆电脑版BBIN游戏大厅,注册手机端账号。</span>
+					<span class="bz_2">步骤二：</span>
+					<span class="bz_2_2">ios系统手机首次开启应用程式将会弹出询问视窗。</span>
+					<span class="sp_img"><img src="/public/default/images/IMG_0222.PNG" ></span>
+					<span class="bz_2_2">只需在，设置-通用-设备管理-应用,点击信任即可进入客户端。</span>
+					<span class="sp_img"><img src="/public/default/images/IMG_0223.PNG" ></span>
+					<span class="bz_3">步骤三：</span>
+					<span class="bz_3_3">安卓系统手机需要安全设置。设定-安全-未知来源</span>
+					<span class="sp_img"><img src="/public/default/images/anzhuo.png"></span>
+					<span class="bz_3">步骤四</span>
+					<span class="bz_3_3">进入App,登录账户</span>
+					<span class="sp_img"><img src="/public/default/images/login.jpg"></span>
+					<span class="bz_3_3">点击下面按钮，下载客户端。</span>
+					<button id="js-scroll-download" type="button"></button>
+
+				</div>
+
+				
+			</div>
+		</div>
+
+	</body>
+
+</html>

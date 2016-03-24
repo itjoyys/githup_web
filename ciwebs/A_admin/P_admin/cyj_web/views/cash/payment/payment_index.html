@@ -1,0 +1,150 @@
+<title>支付参数設定</title>
+<{include file="web_header.html"}>
+<{config_load file="public.conf" section="public"}>
+
+<body>
+<script>
+
+$(function(){
+	$("#add_form").submit(function(event) {
+		$("#cate").val("");
+	});
+
+	$('#add').click(function(){
+		var content = $('#add_form').html();
+	    $("#imgBox").css('display','block');
+	});
+	$(".close_b").click(function(){
+		$("#imgBox").css('display','none');
+	})
+	$("#close_door").click(function(){
+	    $("#imgBox").css('display','none');
+	});
+	$(".bank_checkbox").click(function() {
+		var check_bet='';
+		$(".bank_checkbox input").each(function() {
+
+			if($(this).attr('checked')){
+
+				check_bet += ','+$(this).val();
+			}
+		});
+		$("#check_bet").val(check_bet);
+
+	});
+
+    $(".close_x").click(function(){
+		$("#payBox").css('display','none');
+		$("#cate").val("");
+		$("#check_bet").val("");
+		$("#check_bet1").val("");
+	})
+});
+function checkform(){
+	if(!$.trim($('#name').val())){
+		alert('请输入名称');
+		return false;
+	}
+	return true;
+}
+
+</script>
+
+<style>
+	#imgBox,#payBox{position:absolute; top:35%; left:50%;margin:-100px 0 0 -200px;}
+</style>
+<div  id="con_wrap">
+  <div  class="input_002">支付参数設定</div>
+  <div  class="con_menu">
+  <a href="<{$site_url}>/cash/payment/index" style="color: red;">支付参数設定</a>
+  <a href="<{$site_url}>/cash/payment/payment_bank_list" >入款銀行設定</a>
+  <a href="<{$site_url}>/cash/payment/payment_online_list" >线上支付設定</a>
+  </div>
+</div>
+
+<div  class="content">
+
+<div  style="float:left;width:400px;">
+	<table  width="99%"  class="m_tab">
+		<tbody><tr  class="m_title_over_co">
+			<td  height="27"  colspan="3"  align="center">各类别预设设定</td>
+		</tr>
+		<tr  class="m_title_over_co">
+		    <td width="190">币别</td>
+			<td width="150">代码</td>
+			<td width="150">进行设定</td>
+		</tr>
+         <{foreach from=$cash_f key=i item=val}>
+		<tr class="m_cen <{if $i%2 == 0}>even<{/if}>">
+		    <td  align="middle"><{$val['type_name_zh']}></td>
+			<td  align="middle"><{$val['type_name']}></td>
+			<td><a href="<{$site_url}>/cash/Payment/payment_detail?id=<{$val['id']}>">详细設定</a></td>
+		</tr>
+         <{/foreach}>
+	</tbody></table>
+</div>
+<div  style="float:left;width:450px;">
+<table  width="99%"  class="m_tab">
+		<tbody>
+		<tr  class="m_title_over_co">
+			<td  height="27" colspan="12"  align="center">公司自訂設定<span  style="float:right;">[<a id="add"  href="javascript:void(0);" class="run">新增</a>]</span></td>
+		</tr>
+		<tr  class="m_title_over_co">
+			<td>编号</td>
+			<td>名称</td>
+			<td>进行设定</td>
+		</tr>
+		 <{foreach from=$cash_z key=i item=val}>
+		<tr class="m_cen <{if $i%2 == 0}>even<{/if}>">
+			<td  align="middle"><{$val['id']}></td>
+			<td  align="middle"><{$val['type_name']}></td>
+			<td>
+			<a  class="button_b" href="<{$site_url}>/cash/Payment/payment_detail?id=<{$val['id']}>">设定</a>&nbsp;&nbsp;
+				<a class="button_b" onclick="return confirm('确定删除');" href="<{$site_url}>/cash/Payment/payment_detail_del?id=<{$val['id']}>&type=del">删除</a>
+			</td>
+		</tr>
+		<{/foreach}>
+
+	</tbody></table>
+</div>
+
+</div>
+<!-- 公司新增设定弹窗 -->
+<div  id="imgBox"  style="display:none;background-color: #fff;"  class="con_menu">
+<form  action="<{$site_url}>/cash/Payment/payment_add"  method="post"  name="add_form">
+	<input  name="action"  value="add"  type="hidden">
+	<table  class="m_tab"  style="width:300px">
+		<tbody><tr  class="m_title_over_co">
+			<td  colspan="2"  height="27" align="left">
+			新增设定
+			<span  style="float:right;"><a  style="color:white;"  href="javascript:void(0)"  title="关闭窗口" id="close_door">×</a></span>
+			</td>
+		</tr>
+		<tr>
+			<td>名称</td>
+			<td><input  type="text"  name="name"  id="name"></td>
+		</tr>
+		<tr>
+			<td>複製資料</td>
+			<td>如无选择则默认复制RMB设定</td>
+		</tr>
+		<tr>
+			<td>选择预设</td>
+			<td>
+			<select  name="cp_id">
+           <{foreach from=$cash_all item=val}>
+		    <option  value="<{$val['id']}>"><{$val['type_name_zh']}>(<{$val['type_name']}>)</option>
+           <{/foreach}>
+			</select></td>
+		</tr>
+		<tr>
+			<td  colspan="2"  align="center">
+				<input  type="submit"  value="提交" >
+				<button type="reset" class="close_b">关闭</button>
+			</td>
+		</tr>
+	</tbody></table>
+</form>
+</div>
+
+<{include file="web_footer.html"}>

@@ -1,0 +1,224 @@
+<{config_load file="public.conf" section="public"}>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>线上取款</title>
+<link type="text/css" href="<{#mem_css#}>/standard.css" rel="stylesheet">
+<link rel="stylesheet" href="<{#mem_css#}>/template.css" type="text/css">
+<link rel="stylesheet" href="<{#mem_css#}>/easydialog.css" type="text/css">
+<link rel="stylesheet" href="<{#mem_css#}>/bank.css" type="text/css">
+    <style type="text/css">
+        .TdB{
+            background:#C5D9F1;
+        }
+        .hide1, .hide2{
+            display:none;
+        }
+        .TdR{
+            background:#F2DCDB;
+        }
+        .TdG{
+            background:#D8E4BC;
+        }
+        #tabalStyle td{
+            padding:1px 0;
+        }
+        #bank_content p{
+            line-height:18px;
+        }
+        #ShowBtn{
+            margin-left: 15px;
+        }
+        #ShowBtn a{
+            width:auto;
+            border:1px solid #BBBBBB;
+            display:block;
+            float:left;
+            padding:5px 10px;
+            margin:3px 5px 0 0;
+            cursor:pointer;
+        }
+        #hide1{
+            background:#C5D9F1;
+        }
+        #hide2{
+            background:#F2DCDB;
+        }
+        #hide1:hover, #hide2:hover{
+            background:#FDF5E6;
+        }
+				/*--- 按钮样式 ---*/
+	.btn_001{
+		cursor: pointer;
+		margin: 0 1px 0 0;
+		width: 85px;
+		height: 26px;
+		border: none;
+		padding-top: 2px;
+		color: #FFF;
+		font-weight: bold;
+		background: #3D3D3D url(./images/order_btn.gif) no-repeat 0 -80px;
+	}
+    </style>
+</head>
+<div id="loading" style="display:none;">
+    <span style="color:#7c3838;margin-top:20px;" id="gold0" >
+        <b>数据加载中</b>
+    </span>
+</div>
+<body id="bank_body">
+    <div id="bank_header">
+        <div id="bank_logo"></div>
+    </div>
+    <div id="bank_content">
+        <p style="padding-left:15px;padding-top:10px;" id="aheader">
+        </p>
+        <div id="ShowBtn" style="display:none;">
+              <a id="hide1"><font style="font-size:12px;">显示</font>实际有效投注额</a>
+              <a id="hide2"><font style="font-size:12px;">显示</font>优惠稽核</a>
+        </div>
+    	<div style="width:100%;overflow-x:auto;clear:both;padding-bottom:0!important;padding:0 0 18px;min-height: 100px;">
+           <table border="0" cellspacing="1" cellpadding="0" width="640" style="width: 626px;" id="tabalStyle">
+            <tbody><tr>
+                <td width="150" class="TdB" rowspan="2">存款日期区间</td>
+                <td width="55" class="TdB" rowspan="2">存款金额</td>
+                <td width="55" class="TdB" rowspan="2">存款优惠</td>
+                <td width="230" class="TdB hide1" colspan="3" style="display: none;">实际有效投注额</td>
+                <td width="470" class="TdR hide2" colspan="8" style="display: none;">优惠稽核</td>
+                <td width="340" class="TdG" colspan="5">常态稽核</td>
+            </tr>
+            <tr>
+                <td width="45" class="TdB hide1" style="display: none;">体育</td>
+                <td width="45" class="TdB hide1" style="display: none;">彩票</td>
+                <td width="45" class="TdB hide1" style="display: none;">视讯</td>
+
+                <td width="70" class="TdR hide2" style="display: none;">体育打码</td>
+                <td width="35" class="TdR hide2" style="display: none;">通过</td>
+                <td width="70" class="TdR hide2" style="display: none;">彩票打码</td>
+                <td width="35" class="TdR hide2" style="display: none;">通过</td>
+                <td width="70" class="TdR hide2" style="display: none;">视讯打码</td>
+                <td width="35" class="TdR hide2" style="display: none;">通过</td>
+                <td width="80" class="TdR hide2" style="display: none;">综合打码</td>
+                <td width="70" class="TdR hide2" style="display: none;">是否达到</td>
+
+                <td width="70" class="TdG">常态打码量</td>
+                <td width="60" class="TdG">放宽额度</td>
+                <td width="45" class="TdG">通过</td>
+                <td width="90" class="TdG">需扣除行政费用</td>
+                <td width="70" class="TdG">需扣除金额</td>
+              </tr>
+
+    </tbody></table>
+        </div>
+        <div style="padding-left:15px;padding-top:10px;">
+<p id="audit_bottom">
+</p>
+</div>
+ <div align="center" style="padding-bottom:10px;display:none;" id="fbutton">
+            <input type="button" class="btn_001" value="我要继续出款" name="continueWithdraw" id="continueWithdraw" onclick="setDepositsetDeposit('0')">
+            <input type="submit" class="btn_001" value="放弃出款" name="cancelWithdraw" id="cancelWithdraw">
+        </div>
+     </div>
+     <div id="bank_footer" align="center">
+        <p>Copyright © <{$copyright['copy_right']}> Reserved</p>
+     </div>
+<script type="text/javascript"src="<{#mem_js#}>/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+    $.ajax({
+        type: "GET",
+        data:{},
+        dataType: "json",
+        url: '/index.php/member/cash/show_data' + "?t=" + Math.random(),
+        beforeSend: function () {
+            $("#loading").css("display","block");
+        },
+        success: function (data) {
+            $("#loading").css("display","none");
+            $("#ShowBtn").css("display","block");
+            var aheader = "自出款後第一次存款开始之後<br>总有效投注："+data.bet_all+"&nbsp;（即所有有效投注额）<br>";
+            $("#aheader").html(aheader);
+
+            var abottom = get_audit_bottom(data.count_dis,data.count_xz,data.total,data.ndate)
+            $("#audit_bottom").html(abottom);
+
+            $("#tabalStyle").append(data.audithtml)
+            $("#fbutton").show();
+        }
+    })
+
+    function get_audit_bottom(dis,xz,total,ndate){
+        var audit_bottom ="";
+        if (dis > 0) {
+            audit_bottom = "<span style='color:#0202FE'>优惠稽核：</span><span style='#ff0000'>未通過優惠稽核，需扣除存款優惠："+dis+"<br></span>";
+        }
+        if (xz>0) {
+            audit_bottom += "<span style='color:#0202FE'>常态性稽核：</span><span style='color:#ff0000'>未達常態性稽核！需扣除50%行政費："+xz+"<br></span>";
+        }
+        audit_bottom += "<span style='color:#fff;background-Color:#900;padding:2px'>優惠稽核 + 常態性稽核 + 手续费 共需扣除："+total+"</span><br><br>此次出款时间为："+ndate;
+        return audit_bottom;
+    }
+})
+    document.getElementById('continueWithdraw').onclick=function() {
+		window.location.replace("get_money_1");
+	};
+    document.getElementById('cancelWithdraw').onclick=function() {
+		window.close();
+	};
+
+	var flashvars = {};
+	var params = {
+		wmode : "Transparent"//加入这个参数后，那个嵌入的swf文件就不会被致于最上顶层，而是嵌入到指定的div里面
+	};
+	//swfobject.embedSWF('flash/logo.swf', 'logo_fl', '298', '78', "11.0.0", null,flashvars,params);
+	var tabalStyle = $('#tabalStyle');
+	var hide1 = $('.hide1'), hide2 = $('.hide2');
+	$('#hide1').toggle(function(){
+        hide1 = $('.hide1');
+		$(this).find('font').html('隐藏');
+		tabalStyle.animate({'width' : '+=230'},100);
+		hide1.show();
+	},function(){
+        hide1 = $('.hide1');
+		$(this).find('font').html('显示');
+		tabalStyle.animate({'width' : '-=230'},100);
+		hide1.hide();
+	});
+	$('#hide2').toggle(function(){
+        hide2 = $('.hide2');
+		$(this).find('font').html('隐藏');
+		tabalStyle.animate({'width' : '+=470'},100);
+		hide2.show();
+	},function(){
+        hide2 = $('.hide2');
+	    $(this).find('font').html('显示');
+		tabalStyle.animate({'width' : '-=470'},100);
+		hide2.hide();
+	});
+	$("input[name=btn_001]").button();
+    $(function(){
+        $(".show_1").mouseover(function(event) {
+            $(this).css('background-Color', '#FAD8D9');
+        });
+        $(".show_1").mouseout(function(event) {
+            $(this).css('background-Color', '');
+        });
+    })
+</script>
+<style>
+#loading {
+    background:  url("<{#mem_images#}>/loading11.gif") no-repeat scroll center 30px;
+    margin: 0 auto;
+    margin-top: 150px;
+    left: 50%;
+    margin-left: -200px;
+    margin-right: auto;
+    position: absolute;
+    padding-top:10px;
+    width: 400px;
+    height:50px;
+    text-align: center;
+}
+</style>
+</body></html>

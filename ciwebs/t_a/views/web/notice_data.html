@@ -1,0 +1,40 @@
+﻿<{config_load file="public.conf" section="public"}>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="<{#css#}>/standard.css" rel="stylesheet" type="text/css" />
+    <link href="<{#css#}>/HotNewsHistory.css" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+        #title { background: url(<{#images#}>/history/title.jpg) left top no-repeat; }
+        #top { background: url(<{#images#}>/history/bg_t.jpg) left top no-repeat; width: 720px; height: 58px; }
+        #container { background: url(<{#images#}>/history/bg_c.jpg) left top repeat-y; margin: 0 auto; padding: 0 37px; width: 646px; }
+        #footer { background: url(<{#images#}>/history/bg_f.jpg) left top no-repeat; padding-top: 20px; width: 720px; height: 35px; }
+    </style>
+</head>
+<body>
+<div id="main-wrap">
+    <div id="top">
+        <div id="title"></div>
+    </div>
+    <div id="container">
+        <div class="content">
+            <div class="date"><span class="content-title">日期</span></div>
+            <div class="msg"><span class="content-title">内容</span></div>
+            <div class="clear"></div>
+        </div>
+        <div class="line"></div>
+		<{foreach key=cid item=con from=$list}>
+        <div class="content">
+            <div class="date"><span class="inner"><{$con.add_time}></span></div>
+            <div class="msg"><p class="inner-title"><{$con.chn_simplified}></p></div>
+			<div class="clear"></div>
+        </div>
+        <div class="line"></div>
+       <{/foreach}>
+    </div>
+    <div id="footer">
+    </div>
+</div>
+</body>
+</html>

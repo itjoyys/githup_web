@@ -1,0 +1,80 @@
+<{include file="info_header.html"}>
+<{config_load file="public.conf" section="public"}>
+<script type="text/javascript">
+var indexid = "<{$index_id}>";
+var DURL_HOME_URL = "<{$site_url}>/site_info/site_pop/pop_c_img_up?index_id=<{$index_id}>";
+
+$(document).ready(function(){
+  $("#index_id").val(indexid);
+  $("#index_id").change(function(event) {
+      $("#myform").attr("action","<{$site_url}>/site_info/site_pop/pop_edit");
+      $("#myform").submit();
+    });
+})
+</script>
+<script type="text/javascript" charset="utf-8" src="<{#uedit_url#}>/ueditor.config.js"></script>
+<script type="text/javascript" charset="utf-8" src="<{#uedit_url#}>/ueditor.all.min.js"> </script>
+<body>
+<style type="text/css">
+.rmsg{
+   color: red;
+   font-family: bold;
+}
+.td{
+  text-align: left;
+  padding-left: 5px;
+}
+.td input{
+    width: 250px;
+}
+.de_select{
+    float: left;
+    margin-left: 5px;
+}
+</style>
+
+<div class="content-box role">
+    <div class="content-box-header">
+        <h3>站内广告</h3>
+        <div class="clear"></div>
+    </div>
+    <div class="content-box-content">
+        <div class="default-tab" align="center" style="max-width: 650px;">
+         <form action="add_pop_do" method="post" name="add_form" id="myform">
+            <div class="tab-content default-tab">
+                <table>
+                    <thead>
+                    <tr>
+                        <th colspan="2">站内广告</th>
+                    </tr>
+                    </thead>
+                    <tr><td style="width:100px;">标题:</td>
+                    <td class="td"><input name="title" id="title" value="<{$data['title']}>" type="text" style="border-color: #ccc;width:350px;"><font class="rmsg">(必填)</font></td></tr>
+                    <{if $sites_str && !$data['id']}>
+                          <tr>
+                    <td>站点:</td><td style="float:left;"><{$sites_str}></td>
+                    </tr>
+                    <{/if}>
+                    <tr>
+                    <td>类型:</td><td> <select class="de_select" name="ad_type" id="ad_type">
+                <option value="1" <{if $data['ad_type']==1}> selected<{/if}>>中间弹窗</option>
+                <option value="3" <{if $data['ad_type']==3}> selected<{/if}>>左下角弹窗</option>
+              </select></td>
+                    </tr>
+                </table>
+                <script id="editor" type="text/plain" style="width:100%;height:300px;" name="content"><{$data['content']}></script>
+
+            </div>
+             <input name="id" id="id" value="<{$data['id']}>" type="hidden">
+             <input type="submit" value="提交" class="botton_a" style="margin-top:5px;height: 26px;background:#e86829;">
+          </form>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    UE.getEditor('editor',{
+        toolbars:[['source','bold','italic','underline','fontborder','forecolor','backcolor','fontsize','fontfamily','justifyleft','justifycenter','justifyright','indent','removeformat','customstyle','paragraph','rowspacingbottom','rowspacingtop','lineheight','spechars','insertunorderedlist','insertorderedlist','inserttable','deletetable','mergeright','mergedown','splittorows','splittocols','splittocells','mergecells','insertcol','insertrow','deletecol','deleterow','simpleupload']]
+    });
+</script>
+</body>
+</html>

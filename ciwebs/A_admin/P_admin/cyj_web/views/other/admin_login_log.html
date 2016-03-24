@@ -1,0 +1,56 @@
+<title>管理员登录日志</title>
+<{include file="web_header.html"}>
+<body>
+<div id="con_wrap">
+  <div class="input_002">管理登陆日志</div>
+  <div class="con_menu">
+    <form method="get" action="<{$site_url}>/other/log_manage/admin_login_log" name="action_form" id="queryform">
+      <a href="<{$site_url}>/other/log_manage/member_login_log" >会员登陆</a>
+      <a href="<{$site_url}>/other/log_manage/admin_login_log" style="color: rgb(255, 0, 0);">管理登陆</a>
+      <a href="<{$site_url}>/other/log_manage/admin_do_log">操作日志</a>
+      <a href="<{$site_url}>/other/log_manage/user_login_audit">自动稽核</a>
+      <br>
+      日期：
+      <input class="za_text Wdate" value="<{$start_date}>" id="start_date" name="start_date" onClick="WdatePicker()">
+      ~
+      <input class="za_text Wdate" value="<{$end_date}>" id="end_date" onClick="WdatePicker()" name="end_date">
+      帳號：
+      <input class="za_text" style="width:80px;min-width:80px;" id="username" name="username" value="<{$smarty.get.username}>">
+   IP：
+      <input class="za_text" style="width:80px;min-width:100px;" name="ip" id="ip" value="<{$smarty.get.ip}>">
+      <input class="button_d" value="查詢" type="submit">
+
+   登录是否成功：
+  <select name="state" id="is_success" class="za_select" onchange="document.getElementById('queryform').submit()">
+        <option value="3" <{select_check(3,$smarty.get.state)}>>全部</option>
+        <option value="1" <{select_check(1,$smarty.get.state)}>>成功</option>
+        <option value="0" <{select_check(0,$smarty.get.state)}>>失败</option>
+  </select>
+  &nbsp;<{$page}>
+    </form>
+  </div>
+</div>
+<div class="content">
+<table width="100%" class="m_tab">
+  <tbody>
+  <tr class="m_title_over_co">
+    <td >www</td>
+    <td >帐号</td>
+    <td >讯息</td>
+    <td >登入时间</td>
+    <td>IP位置</td>
+  </tr>
+<{foreach from=$user_login key=i item=row}>
+  <tr class="m_cen <{if $i%2 == 0}>even<{/if}>" style="height: 30px;">
+    <td><{$row['www']}></td>
+    <td><{$row['username']}></td>
+    <td><{$row['state_zh']}></td>
+    <td><{$row['login_time']}></td>
+    <td><{$row['ip']}>(<{$row['ip_address']}>)</td>
+    </tr>
+<{/foreach}>
+    </tbody>
+</table>
+</div>
+<!-- 公共尾部 -->
+<{include file="web_footer.html"}>

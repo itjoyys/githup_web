@@ -1,0 +1,122 @@
+﻿<title>新增银行卡</title>
+<{include file="web_header.html"}>
+<body>
+<script type="text/javascript">
+var indexid = "<{$index_id}>";
+$(document).ready(function(){
+  $("#index_id").val(indexid);
+  $("#index_id").change(function(event) {
+      $("#myform").attr("action","<{$site_url}>/cash/payment/payment_bank_add");
+      $("#myform").submit();
+  });
+})
+</script>
+<div  id="con_wrap">
+<div  class="input_002">新增银行卡</div>
+<div  class="con_menu">
+    <a href="javascript:history.go(-1);">返回上一頁</a>
+</div>
+</div>
+<div  style="width:600px;">
+	<form  name="addForm"  action="<{$site_url}>/cash/payment/payment_bank_add_do"  method="get"  id="myform"  class="vform">
+	<table  width="100%"  border="0"  cellspacing="0"  cellpadding="0" class="m_tab"  style="border:0px;">
+		<tbody><tr  class="m_title_over_co">
+			<td  colspan="2">新增银行卡</td>
+		<input  type="hidden"  name="index_id"  value="<{$bank['index_id']}>" >
+		</tr>
+		<{if $sites_str}>
+			<tr>
+			<td  class="table_bg1"  align="right">站点选择：</td>
+			<td><{$sites_str}></td>
+		</tr>
+		<{/if}>
+		 <tr>
+		<td  height="25"  align="center"  class="table_bg1">層級</td>
+          <td>
+          	<table  border="0"  cellpadding="1">
+          	<tbody>
+            <{foreach from=$level item=val}>
+              <tr>
+                <{foreach from=$val item=v}>
+                    <td>
+                  <input  type="checkbox" <{if $v['is_check']}>checked<{/if}> name="level[]"  value="<{$v['id']}>">&nbsp;<{$v['level_des']}>&nbsp;
+               </td>
+               <{/foreach}>
+
+              </tr>
+            <{/foreach}>
+            </tbody>
+            </table>
+            &nbsp;&nbsp;<font color="red">不選默認全部層級</font>
+          </td>
+	</tr>
+		<tr>
+			<td  class="table_bg1"  align="right">银行名稱：</td>
+			<td>
+
+				<select name="bank_type">
+				  <{foreach from=$bank_type key=i item=v}>
+			          <option value="<{$i}>" <{select_check($bank['bank_type'],$i)}>><{$v['bank_name']}></option>
+			      <{/foreach}>
+					</select>
+
+			</td>
+		</tr>
+		<tr>
+			<td  class="table_bg1"  align="right">收款帳號：</td>
+			<td>
+				<input  type="text" id="card_ID"  class="za_text" name="card_ID" style="width:250px;"  value="<{$bank['card_ID']}>">
+
+			</td>
+		</tr>
+
+		<tr>
+			<td  class="table_bg1"  align="right">開戶行：</td>
+			<td>
+				<input  type="text"  class="za_text"  name="card_address" id="card_address" style="width:250px;"  value="<{$bank['card_address']}>"></div>
+
+			</td>
+		</tr>
+			<tr>
+			<td  class="table_bg1"  align="right">收款人：</td>
+			<td>
+				<input  type="text"  class="za_text"  name="card_userName" id="card_userName" style="width:250px;"  value="<{$bank['card_userName']}>"></div>
+
+			</td>
+		</tr>
+		<tr>
+		<td height="25" align="center" class="table_bg1">停用金額</td>
+		<td><input class="za_text Validform_error" datatype="n1-9" name="stop_amount" id="stop_amount" value="<{$bank['stop_amount']}>" onkeydown="return Yh_Text.CheckNumber2();"></td>
+
+	</tr>
+		<tr>
+		<td height="25" align="center" class="table_bg1">備註</td>
+		<td><textarea class="za_text Validform_error" name="remark" id="memo" style="width:300px;height:80px;"><{$bank['remark']}></textarea></td>
+
+	</tr>
+		<tr>
+			<td  colspan="2"  align="center">
+			     <input  type="hidden"   name="id" value="<{$bank['id']}>">
+				<input  type="button"   name="subbtn" onclick="check()"  class="button_a"  value=" 確 定 ">&nbsp;&nbsp;&nbsp;&nbsp;
+				<input  type="reset"  name="cls"  value="重 置 "  class="button_a">
+			</td>
+		</tr>
+	</tbody></table>
+	</form>
+</div>
+	</tbody></table>
+<script>
+function check(){
+    var card_ID = $("#card_ID").val();
+    var card_userName = $("#card_userName").val();
+    var card_address = $("#card_address").val();
+    var card_userName = $("#card_userName").val();
+    if (card_ID == '' || card_userName == '' || card_address == '' || card_userName == '') {
+        alert('请完善表单');
+        return false;
+    };
+    $("#myform").submit();
+}
+</script>
+
+<{include file="web_footer.html"}>

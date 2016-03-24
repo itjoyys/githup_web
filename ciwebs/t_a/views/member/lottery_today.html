@@ -1,0 +1,85 @@
+<{config_load file="public.conf" section="public"}>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+<script>
+	window.onload=function(){
+    document.getElementById("page").onchange=function(){
+      document.getElementById('myFORM').submit()
+    }
+  }
+</script>
+<style>
+a{
+text-decoration:none;
+}
+</style>
+<link rel="stylesheet" href="<{#mem_css#}>/index_main.css" />
+	<link rel="stylesheet" href="<{#mem_css#}>/standard.css" />
+</head>
+<body  style="BACKGROUND: url(<{#mem_images#}>/../private/content_bg.jpg) repeat-y left top;" >
+    <div id="MAMain" style="width:767px">
+        <div id="MACenterContent">
+            <{include file='member/common.html'}>
+            <style>
+							#lottery_today a{color:#ffffff;background:#bc5a83;padding:2px}
+            </style>
+		    <div id="MMainData" style="overflow-y:scroll; height:330px">
+		        <div class="MControlNav">
+					<form name="myFORM" id="myFORM" action="" method="get">
+						 注单号：<input class="za_text" style="width:100px" name="order" value="<{$smarty.get.order}>" onKeyUp="value=value.replace(/[^\w]/ig,'')">
+			              投注时间：從 <input class="za_text Wdate" name="start_date" value="<{$s_date}>" readonly="readonly" onclick="WdatePicker()"> 至 <input class="za_text Wdate" name="end_date" value="<{$e_date}>" readonly="readonly" onclick="WdatePicker()">
+			              <input type="submit" value=" 查 询 "/>
+			    		<select name="gtype" id="gtype" onchange="document.getElementById('myFORM').submit()" class="MFormStyle" >
+							<!--<option value="0" <?if($_GET['gtype']==0){echo 'selected="selected"';}?>>六合彩</option>-->
+							<option value="0" >所有彩种</option>
+							<{foreach from=get_cp_list() key=k item=v}>
+							<option value="<{$k}>"<{select_check($k,$smarty.get.gtype)}> ><{$v}></option>
+							<{/foreach}>
+						</select>
+						<select id="page" name="page" class="za_select">
+								<{assign var=$i value=0}>
+								<{section name=total loop=$totalPage}>
+								<option value="<{$i=$i+1}><{$i}>"<{if $i == $smarty.get.page}>selected<{/if}> ><{$i}></option>
+								<{/section }>
+						</select> <{$totalPage}> 頁&nbsp;
+					</form>
+		    	</div>
+				<div class="MPanel" style="display: block">
+					<table class="MMain" border="1">
+						<tbody>
+							<tr>
+								<th>注单号</th>
+								<th>投注日期</th>
+								<th>投注类型</th>
+								<th>内容</th>
+								<th>投注额</th>
+								<th>可赢金额</th>
+								<th>派彩</th>
+							</tr>
+							<{if !empty($data)}>
+						    <{foreach from=$data item=v}>
+							<tr align="center">
+								<td><{$v['did']}></td>
+								<td><{$v['addtime']}> </td>
+								<td><a href="javascript:voild(0);" title="期号：<{$v['qishu']}>"><{$v['type']}><br/>期号：<{$v['qishu']}></a></td>
+								<td><{$v['mingxi_1']}>:<{$v['mingxi_2']}><{return_typec_cp($v['type'],$v['mingxi_3'])}></td>
+								<td><{$v['money']}></td>
+								<td><{($v['odds']-1)*$v['money']}></td>
+								<td><{return_result_cp($v)}></td>
+							</tr>
+							<{/foreach}>
+							<{else}>
+							<tr align="center">
+								<td colspan=7>暂时没有投注记录 </td>
+							</tr>
+							<{/if}>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+    </div>
+</body>
+</html>

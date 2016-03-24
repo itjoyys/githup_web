@@ -1,0 +1,19 @@
+﻿<{config_load file="public.conf" section="public"}>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Member Center</title>
+<link rel="stylesheet" href="<{#mem_css#}>/member_main.css" />
+</head>
+<frameset rows="100,426,*" cols="1000" frameborder="NO" border="0" framespacing="0" >
+<frame id="frmtop" scrolling="no"  name="frmtop" src="<{$site_url}>/index.php/member/index/mem_header" frameborder="0"></frame>
+<frame id="frmdown" scrolling="no"  name="frmdown" src="<{$site_url}>/index.php/member/index/mem_main?url=<{$url}>" frameborder="0"></frame>
+<frameset id="k_mem11" rows="*" cols="*,1000,*" frameborder="NO" border="0" framespacing="0" >
+<frame id="k_mem11" scrolling="no" name="k_meml22" src="<{$site_url}>/index.php/member/index/gray" frameborder="0"></frame>
+<frame id="frmfoot" scrolling="NO"  name="frmfoot" src="<{$site_url}>/index.php/member/index/mem_footer" frameborder="0"></frame>
+<frame id="k_mem11" scrolling="no" name="k_meml22" src="<{$site_url}>/index.php/member/index/gray" frameborder="0"></frame>
+</frameset>
+</frameset>
+
+</html>

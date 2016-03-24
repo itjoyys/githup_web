@@ -1,0 +1,89 @@
+<{include file="web_header.html"}>
+
+<script type="text/javascript">
+var enable = "<{$enable}>";
+var page = "<{$page}>";
+$(document).ready(function(){
+  $("#cp_cate").val(enable);
+  $("#cp_cate").change(function(event) {
+      $("#page").val(1);
+      $("#qishu").val("");
+      $("#date_kaijiang").val("");
+      $("#myFORM").submit();
+    });
+})
+</script>
+  <div  id="con_wrap">
+   <div  class="input_002">六合彩开奖管理</div>
+  <div  class="con_menu" style="width:680px;">
+    <{include file="result/menu.html"}>
+
+  </div>
+  </div>
+<div class="content">
+  <table width="99%" height="83" style="margin-left:0px" border="0" cellpadding="1" cellspacing="0" class="m_tab">
+   <tbody><tr class="m_title_over_co">
+      <td width="34" height="28" rowspan="2">序號</td>
+      <td rowspan="2" align="center">期數</td>
+      <td rowspan="2" align="center">開獎時間</td>
+      <td colspan="7" align="center">開獎球號</td>
+      <td colspan="3" rowspan="2" align="center">特碼</td>
+      <td colspan="3" rowspan="2" align="center">總分</td>
+      <td rowspan="2" align="center">生肖</td>
+      <td colspan="2" rowspan="2" align="center">合數</td>
+    </tr>
+    <tr class="m_title_over_co">
+      <td width="32" align="center" class="table_bg1">平1</td>
+      <td width="32" align="center" class="table_bg1">平2</td>
+      <td width="32" align="center" class="table_bg1">平3</td>
+      <td width="32" align="center" class="table_bg1">平4</td>
+      <td width="32" align="center" class="table_bg1">平5</td>
+      <td width="32" align="center" class="table_bg1">平6</td>
+      <td width="32" align="center" class="table_bg1">特碼</td>
+    </tr>
+
+
+	   <{if !empty($data) }>
+	      <{foreach from=$data key=k item=v}>
+     <tr class="m_cen <{if $k%2 == 0}>even<{/if}>">
+      <td height="25" align="center" ><{$k}></td>
+      <td height="25" align="center" ><{$v['nn']}></td>
+      <td height="25" align="center" ><{$v['nd']}></td>
+      <td height="25" align="center" ><div class="ball_r"><{$v['n1']}></div></td>
+      <td height="25" align="center" ><div class="ball_b"><{$v['n2']}></div></td>
+      <td height="25" align="center" ><div class="ball_b"><{$v['n3']}></div></td>
+      <td height="25" align="center" ><div class="ball_r"><{$v['n4']}></div></td>
+      <td height="25" align="center" ><div class="ball_g"><{$v['n5']}></div></td>
+      <td height="25" align="center" ><div class="ball_g"><{$v['n6']}></div></td>
+      <td height="25" align="center" ><div class="ball_g"><{$v['na']}></div></td>
+      <td align="center" ><font color="red"><{$v['info']['tmis_even']}></font></td>
+      <td align="center" ><font color="red"><{$v['info']['tmis_big']}></font></td>
+      <td align="center" ><font color="green"><{$v['info']['tmis_color']}></font></td>
+      <td align="center" > <font color='#f00;'><{$v['info']['sum']}>  </font></td>
+      <td align="center" ><font color="red"><{$v['info']['sumis_even']}></font></td>
+      <td align="center" ><font color="blue"><{$v['info']['sumis_big']}></font></td>
+      <td align="center" ><{$v['info']['sum_shengxiao']}></td>
+      <td align="center" ><font color="red"><{$v['info']['sum_hsdx']}></font></td>
+      <td align="center" ><font color="red"><{$v['info']['sum_hsds']}></font></td>
+    </tr>
+	<{/foreach}>
+
+<{else}>
+
+	<tr style="background-color:#FFFFFF;">
+        <td colspan="19" align="center" valign="middle">暂无数据</td>
+    </tr>
+<{/if}>
+  </tbody></table>
+
+</div>
+<script>
+  //分页跳转
+  window.onload=function(){
+    document.getElementById("page").onchange=function(){
+      document.getElementById('myFORM').submit()
+    }
+  }
+</script>
+<!-- 公共尾部 -->
+<{include file="web_footer.html"}>

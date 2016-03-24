@@ -1,0 +1,67 @@
+﻿<title>即時稽核查詢</title>
+<{include file="web_header.html"}>
+<body>
+<script type="text/javascript">
+  function tijiao(){
+  document.getElementById('loading').style.display = "block";
+  document.getElementById('content').style.display = "none";
+  return true;
+}
+</script>
+<style>
+#loading {
+    background:  url("../../../public/images/loading11.gif") no-repeat scroll center 30px;
+    /*border: 1px solid #acacac;*/
+    margin: 0 auto;
+    width: 600px;
+    height:200px;
+}
+</style>
+<div id="con_wrap">
+  <div class="input_002">即時稽核查詢</div>
+  <div class="con_menu">
+  <form method="get" action="<{$site_url}>/cash/audit/index" onSubmit="tijiao();" name="action_form">
+			帳號：
+			<input class="za_text" size="10" name="username" value="<{$username}>">&nbsp;
+			<input class="button_d" value="查詢" type="submit">
+  </form>
+	</div>
+</div>
+
+<div id="loading" style="display:none;">
+        <div style="width:253px;margin:135px auto 0;text-align:center" id="kq_box_text">
+    <b><span style="color:#7c3838" id="gold0"><b>数据正在处理中</b></span></b>
+  </div>
+</div>
+<div class="content" id="content">
+<div style="line-height:25px;font-weight:bold">
+<span style="color:#0202FE">優惠稽核：<br></span>
+自出款後第一次存款開始之後：<br>
+總有效投注：<{$audit_data['betAll']}>&nbsp;&nbsp;(所有視訊有效投注)
+<{if $username}><br>此次出款時間為：<{$now_date}><{/if}>
+<div style="width: 100%;">
+    <{$audit_data['content']}>
+</div>
+
+<br>
+<div style="margin-bottom: 5px;">
+<{if $audit_data['count_xz']}>
+    <span style="color:#ff0000">未達常態性稽核！&nbsp;需扣除行政費：<{$audit_data['count_xz']}>元<br></span>
+<{/if}>
+
+<{if $audit_data['count_dis']}>
+   <span style="color:#ff0000">未達優惠稽核！&nbsp;需扣除優惠：<{$audit_data['count_dis']}>元<br></span>
+<{/if}>
+
+<{if $audit_data['out_fee']}>
+	<span style="color:#ff0000">需扣除手續費:<{$audit_data['out_fee']}>元<br></span>
+<{/if}>
+
+<span style="color:#fff;background-Color:#900;padding:2px">優惠稽核 + 常態性稽核 + 手续费 共需扣除：<{$total}>元</span><br><br>
+
+
+</div>
+</div>
+</div>
+
+<{include file="web_footer.html"}>

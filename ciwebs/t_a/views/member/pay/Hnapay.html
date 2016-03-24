@@ -1,0 +1,38 @@
+<html>
+  <head>
+    <title>跳转......</title>
+    <meta http-equiv="content-Type" content="text/html; charset=utf-8" />
+  </head>
+  <body>
+    <form action="<{$data['req_url']}>" method="post" id="frm1">
+    <input type="hidden" name="version"  value="<{$data['version']}>">  
+    <input type="hidden" name="serialID"  value="<{$data['serialID']}>">
+    <input type="hidden" name="submitTime"  value="<{$data['submitTime']}>">
+    <input type="hidden" name="failureTime"  value="<{$data['failureTime']}>">
+    <input type="hidden" name="customerIP"  value="<{$data['customerIP']}>">
+    <input type="hidden" name="orderDetails"  value="<{$data['orderDetails']}>">
+    <input type="hidden" name="totalAmount"  value="<{$data['totalAmount']}>">
+    <input type="hidden" name="type"  value="<{$data['type']}>">
+    <input type="hidden" name="buyerMarked"  value="<{$data['buyerMarked']}>">
+    <input type="hidden" name="payType"  value="<{$data['payType']}>">
+    <input type="hidden" name="orgCode"  value="<{$data['orgCode']}>">
+    <input type="hidden" name="currencyCode"  value="<{$data['currencyCode']}>">
+    <input type="hidden" name="directFlag"  value="<{$data['directFlag']}>">
+    <input type="hidden" name="borrowingMarked"  value="<{$data['borrowingMarked']}>">
+    <input type="hidden" name="couponFlag"  value="<{$data['couponFlag']}>">
+    <input type="hidden" name="platformID"  value="<{$data['platformID']}>">
+    <input type="hidden" name="returnUrl"  value="<{$data['returnUrl']}>">
+    <input type="hidden" name="noticeUrl"  value="<{$data['noticeUrl']}>">
+    <input type="hidden" name="partnerID"  value="<{$data['partnerID']}>">
+    <input type="hidden" name="charset"  value="<{$data['charset']}>">
+    <input type="hidden" name="signType"  value="<{$data['signType']}>">
+    <input type="hidden" name="remark"  value="<{$data['remark']}>">
+    <input type="hidden" name="signMsg"   value="<{$data['signMsg']}>">
+	<input type='hidden' name='act' value="hnapay" />
+    <input type="hidden" name="form_url" value="<{$data['form_url']}>">
+    </form>
+    <script language="javascript">
+      document.getElementById("frm1").submit();
+    </script>
+  </body>
+</html>

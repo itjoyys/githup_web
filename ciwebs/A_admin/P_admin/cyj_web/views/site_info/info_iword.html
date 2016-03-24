@@ -1,0 +1,169 @@
+<{include file="info_header.html"}>
+<body>
+<script>
+var indexid = "<{$index_id}>";
+$(document).ready(function(){
+  $("#index_id").val(indexid);
+  $("#index_id").change(function(event) {
+      $("#queryform").submit();
+    });
+})
+
+function dep_config(title,id,state,code,sort){
+    $("#id").val(id);
+    $("#code").val(code);
+    $("#sort").val(sort);
+    $("#state").val(state);
+    $("#title").val(title)
+    easyDialog.open({
+          container : 'delevel',
+          fixed : false
+    });
+}
+
+function doiword(id,type,s){
+    document.location='is_do_iword?id='+id+'&type='+type+'&state='+s;
+}
+
+</script>
+<style type="text/css">
+.de_title{
+    background-color: #081425;
+    height: 30px;
+    line-height: 30px;
+    overflow: hidden;
+    color: #666;
+    padding: 0 10px;
+    font-size: 14px;
+    border-bottom: 1px solid #e5e5e5;
+    background: #f7f7f7;
+    border-radius: 4px 4px 0 0;
+}
+#delevel{
+ border-radius: 4px 4px 0 0;
+  color: #444;
+  border: 3px solid rgba(0,0,0,0);
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+#de_title{
+    font-size: 14px;
+    color: #000;
+    font-weight: 100;
+}
+
+.de_td{
+      padding: 1px 0;
+      line-height: 34px;
+}
+.de_input{
+  border-right: 1px solid #E1E3E4;
+  width: 230px;
+}
+input{
+  height: 20px;
+  border: 2px inset;
+}
+.de_select{
+  float: left;
+  margin-left: 8px;
+}
+</style>
+<body>
+<div class="content-box role">
+    <div class="content-box-header">
+        <h3>首页文案列表管理</h3>
+        <div class="clear"></div>
+    </div>
+    <div class="content-box-content">
+        <div class="default-tab">
+           <form action="iword_index" method="get" name="queryform" id="queryform">
+                <div><{$sites_str}></div>
+            </form>
+            <div class="tab-content default-tab">
+                <table>
+                    <thead>
+                    <tr>
+                        <th style="width: 50px;">代码</th>
+                        <th>文案标题</th>
+                        <th>使用联络表单</th>
+                        <th>代理登陆</th>
+                        <th>状态</th>
+                        <th>排序</th>
+                        <th>文案类型</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+    <{foreach from=$iword item=v}>
+    <tr>
+        <td><{$v['code']}></td>
+         <td><a href="#"  <{if $v['case_state']==0 }>onclick="dep_config('<{$v['title']}>','<{$v['id']}>','<{$v['state']}>','<{$v['code']}>','<{$v['sort']}>')" <{/if}>><{$v['title']}></a></td>
+
+        <td><input onclick="doiword(<{$v['id']}>,'f','<{$v['is_form']}>')" <{if $v['is_form'] }> checked <{/if}> type="checkbox"></td>
+        <td><input onclick="doiword(<{$v['id']}>,'a','<{$v['is_agent']}>')" <{if $v['is_agent'] }> checked <{/if}> type="checkbox"></td>
+        <td><{$v['state_z']}></td>
+        <td><{$v['sort']}></td>
+        <td><{$v['name']}></td>
+        <td class="td">
+            <{if $v['case_state']==0 }><a style="background: #e86829;" class="revise_a" href="iword_edit?id=<{$v['id']}>&type=<{$v['type']}>">编辑内容</a>
+            <a style="background: #000;" class="revise_a" onclick=" if(confirm('确定存储案件!!!')){document.location='iword_case?id=<{$v['id']}>&case_state=<{$v['case_state']}>&index_id=<{$index_id}>'}" href="javascript:void(0)">储存案件</a>
+            <{else}>
+            <font color="red">已建立案件</font>
+            <{/if}>
+        </td>
+    </tr>
+    <{/foreach}>
+                    </tbody>
+                </table>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+  <!-- 移动弹窗 -->
+<div id="delevel" style="display:none;background-color:white;" class="con_menu">
+  <form action="iword_title_do" method="post" name="add_form">
+    <input name="id" id="id" value="" type="hidden">
+    <table class="m_tab" style="width:300px;margin:0;">
+        <tbody><tr class="de_title">
+            <td colspan="2" height="27" class="table_bg" align="left">
+            <span id="de_title">是否确定修改!!!</span>
+            <span style="float:right;"><a style="color:white;" href="javascript:void(0)" title="关闭窗口" onclick="easyDialog.close();">×</a></span>
+            </td>
+        </tr>
+          <tr class="m_title">
+            <td>文案代码</td>
+            <td class="de_td"><input class="de_input" readonly="true" id="code" value=""></td>
+        </tr>
+        <tr class="m_title">
+            <td>标题</td>
+            <td class="de_td"><input name="title" id="title" class="de_input" value=""></td>
+        </tr>
+
+         <tr class="m_title">
+            <td>排序</td>
+            <td class="de_td"><input name="sort" id="sort" class="de_input" value="0"></td>
+        </tr>
+         <tr class="m_title">
+            <td>是否启用</td>
+            <td class="de_td">
+              <select class="de_select" name="state" id="state">
+                <option value="1">是</option>
+                <option value="2">否</option>
+              </select>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center">
+                <input type="submit" value="提交" class="botton_a">
+                <input type="reset" value="关闭" onclick="easyDialog.close();" class="botton_a">
+            </td>
+        </tr>
+    </tbody></table>
+</form>
+    </div>
+</body>
+</html>

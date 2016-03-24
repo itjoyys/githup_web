@@ -1,0 +1,23 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8' />
+    <title>setiframe</title>
+</head>
+<body>
+    <script type="text/javascript">
+        window.onload = function () {
+            var search = location.search.replace('?', '');
+
+            if (search) {
+                var height = search.split('=')[1];
+				var height = Number(height)+10;
+                var doc = parent.parent.document;
+				var ifr = window.parent.parent.document.getElementById("iframepage");
+                ifr.style.height = height+'px';
+            }
+        };
+    </script>
+</body>
+</html>

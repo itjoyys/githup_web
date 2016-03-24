@@ -1,0 +1,111 @@
+<{include file="web_header.html"}>
+<style type="text/css">
+    #rs_window{
+        width:380px;
+        left: 50%;
+        margin-left: -190px;
+        position: fixed;
+        top: 180px;
+        display: none;
+    }
+    .m_tab{
+        width: 60%;
+    }
+    table td{text-align: center;
+    background: #fff none repeat scroll 0 0;
+    border-bottom: 1px solid #fad8d9;
+    border-right: 1px solid #fad8d9;
+    }
+    tr.m_title_over_co td{
+       background-color: #fadcdc;
+       letter-spacing: 2px;
+    }
+   
+</style>
+
+<body>
+    <div  id="con_wrap">
+        <div  class="input_002">設定-视讯</div>
+        <div  class="con_menu">
+            <a style="color: rgb(59, 45, 27);" target="admin_func" href="<{$site_url}>/account/member_index/user_set?aid=<{$aid}>&uid=<{$uid}>">體育</a>
+            <a style="color: rgb(59, 45, 27);" target="admin_func" href="<{$site_url}>/account/member_index/user_fc_set?aid=<{$aid}>&uid=<{$uid}>">彩票</a>
+            <a style="color: rgb(255, 0, 0);" target="admin_func" href="<{$site_url}>/account/member_index/user_video_set?aid=<{$aid}>&uid=<{$uid}>">视讯</a>
+        </div>
+    </div>
+    <div class="content">
+
+        <!-- og -->
+        <form action="<{$site_url}>/account/member_index/user_video_set?aid=<{$aid}>&uid=<{$uid}>" method="post">
+              <input type="hidden" id="type"  name="type"  value="update_og">
+            <table width="780" border="0" cellspacing="0" cellpadding="0" class="m_tab" style="width:500px;">
+                <tbody>
+                    <tr class="m_title_over_co">
+                        <td>OG</td>
+                        <td>ID</td>
+                        <td>下限</td>
+                        <td>上限</td>
+                        <td>筹码组</td>
+                    </tr>
+                    
+                    <{foreach from=$dataog item=value key=key}>
+                    <tr>
+                        <td style="width:20px;">
+                            <input type="radio" name="video_radio[]" value="<{$value['video_id']}>" id="<{$value['video_id']}>" <{if ($og_limit == $value['video_id']) ||($og_limit ==0 && $value['default'] == 1)}>checked='checked'<{/if}>>
+                        </td>
+                        <td><{$key+1}></td>
+                        <td><{$value['min']}></td>
+                        <td><{$value['max']}></td>
+                        <td><{$value['bet_arr']}></td>
+                    </tr>
+                    <{/foreach}>
+                    <tr>
+                        <td></td>
+                        <td></td> <td></td>
+                        <td><input type="submit" value="修改"></td>
+                        <td><input type="reset" value="取消"></td>
+
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+
+        <!-- ag -->
+        <form action="<{$site_url}>/account/member_index/user_video_set?aid=<{$aid}>&uid=<{$uid}>" method="post">
+              <input type="hidden" id="type"  name="type"  value="update_ag">
+            <table width="780" border="0" cellspacing="0" cellpadding="0" class="m_tab" style="width:500px;">
+                <tbody>
+                    <tr class="m_title_over_co">
+                        <td>AG</td>
+                        <td>ID</td>
+                        <td>下限</td>
+                        <td>上限</td>
+
+                    </tr>
+                   
+                    <{foreach from=$dataag item=value key=key}>
+                    <tr>
+                        <td style="width:20px;">
+                            <input type="radio" name="video_radio[]" value="<{$value['video_id']}>" id="<{$value['video_id']}>" <{if ($ag_limit == $value['video_id']) ||($ag_limit ==0 && $value['default'] == 1)}>checked='checked'<{/if}>>
+                        </td>
+                        <td><{$value['video_id']}></td>
+                        <td><{$value['min']}></td>
+                        <td><{$value['max']}></td>
+
+                    </tr>
+                    <{/foreach}>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td><input type="submit" value="修改"></td>
+                        <td><input type="reset" value="取消"></td>
+
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+
+
+
+
+    </div>
+    <{include file="web_footer.html"}>

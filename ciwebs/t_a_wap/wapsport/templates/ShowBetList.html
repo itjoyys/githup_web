@@ -1,0 +1,52 @@
+<ion-view view-title="交易中心">
+
+  <ion-content><ion-refresher on-refresh="getbet()"></ion-refresher>  
+  <div class="betselect">
+  <div class="row">
+   <ion-radio class="sportradio col col-50" ng-repeat="item in SBD.status"
+                   ng-value="item.id"
+                   ng-model="sbetdata.status"
+                   ng-click="getbet()"
+                   name="status">
+          {{ item.name }} 
+        </ion-radio>
+  </div>
+  <div class="row">
+        <ion-radio class="sportradio col col-50" ng-repeat="item in SBD.dsorcg"
+                   ng-value="item.id"
+                   ng-model="sbetdata.dsorcg"
+                   ng-click="getbet()"
+                   name="dsorcg">
+          {{ item.name }}
+        </ion-radio>
+   </div>
+  </div> 
+  
+  <div class="row jy">
+   
+      <ion-list  class="betpagelist pbetd shadow" ng-repeat="v in betdata.pagenum"   ng-click="getbet(v)" ng-if="(v<betdata.thispage+5 && v>betdata.thispage-4)">
+        <div class="pages col col-30 " ng-class="{true: 'animated flash thispage',false: ''}[v==betdata.thispage]" ><span ng-if="v<10">0</span>{{v}} </div>      
+      </ion-list>
+    
+  </div>
+ 
+    
+   <ion-list>
+      <ion-item  class="betdatalist pbetd " ng-if="!betdata.d && !user.uid">当前选择没有数据
+      </ion-item>
+       
+      <ion-item  class="betdatalist pbetd " ng-repeat="v in betdata.d">
+      
+        <div>{{v.number}}</div>
+         <ion-scroll   direction="x" scrollbar-x="false">
+         <div class="master_guest">{{v.master_guest}}</div>
+         </ion-scroll>
+          
+        <div>{{v.bet_info}}</div>
+        <div>下注金额：<i class="ion-social-yen"></i>{{v.bet_money}}  派彩：<i class="ion-social-yen"></i>{{v.win}}</div>
+        <div>下注时间：{{v.bet_time}}</div>
+      
+      </ion-item>
+    </ion-list>
+   </ion-content>
+</ion-view>

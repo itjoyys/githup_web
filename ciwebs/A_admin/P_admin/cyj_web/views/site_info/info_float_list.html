@@ -1,0 +1,376 @@
+<{include file="info_header.html"}>
+<{config_load file="public.conf" section="public"}>
+<body>
+<script>
+var color;
+function dep_config(id,sort,eff,url,index_id,is_blank,is_inter,urltype){
+    $("#id").val(id);
+    $("#eff").val(eff);
+    $("#sort").val(sort);
+    $("#url").val(url);
+    $("#index_id").val(index_id);
+    $("#is_blank").val(is_blank);
+    $("#is_inter").val(is_inter);
+    $("#urltype").val(urltype);
+    changeurl();
+    easyDialog.open({
+          container : 'delevel',
+          fixed : false
+    });
+}
+
+function add_float(fid,index_id){
+    $('#url').val('');
+    $('#id').val('');
+    $('#fid').val('');
+    $('#index_id').val('');
+    $('#sort').val('');
+    $("#is_blank").val('');
+    $("#fid").val(fid);
+    $("#index_id").val(index_id);
+    changeurl();
+    easyDialog.open({
+          container : 'delevel',
+          fixed : false
+    });
+}
+function logo_up(id,index_id,type){
+    $("#idl").val(id);
+    $("#type").val(type);
+    $("#index_id1").val(index_id);
+    easyDialog.open({
+          container : 'logo_up',
+          fixed : false
+    });
+}
+
+function view(img,w,h){
+    var html;
+    var img = 'http://127.0.0.1/'+img;
+    html = '<img src="'+img+'" width="'+w+'"><div class="mskeImgBg"></div>';
+    lw = -w/2;
+    $(".mskelayBox").css("margin-left",-w/2);
+    $(".mskelayBox").css("margin-top",-h/2);
+    $("#view_html").html(html);
+    $(".mskelayBox").show();
+}
+jQuery(function(){
+   $(".mskeClaose").click(function(){$(".mskeLayBg,.mskelayBox").hide()}); 
+})
+
+  function changeurl(){
+    $('#urltype').hide();
+    $('#url_').hide();
+      var is_inter = $('#is_inter').val();
+      if(is_inter == 0){
+        $('#urltype').show();
+        $('#url_').hide();
+      }else{
+        $('#urltype').hide();
+        $('#url_').show();
+      }
+  }
+</script>
+<style type="text/css">
+.de_title{
+    background-color: #081425;
+    height: 30px;
+    line-height: 30px;
+    overflow: hidden;
+    color: #666;
+    padding: 0 10px;
+    font-size: 14px;
+    border-bottom: 1px solid #e5e5e5;
+    background: #f7f7f7;
+    border-radius: 4px 4px 0 0;
+}
+#delevel,#logo_up{
+  border-radius: 4px 4px 0 0;
+  color: #444;
+  border: 3px solid rgba(0,0,0,0);
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+#de_title{
+    font-size: 14px;
+    color: #000;
+    font: bold 9pt/100% Arial, Helvetica, sans-serif;
+    font-weight: 200;
+}
+.de_td{
+      padding: 1px 0;
+      line-height: 34px;
+}
+.de_input{
+   border-color:#ccc;
+   width: 230px;
+}
+input{
+   height: 20px;
+}
+.de_select{
+  float: left;
+  margin-left: 8px;
+}
+.laydate-icon{
+  float: left;
+  margin-left: 8px;
+}
+
+.view{
+  cursor:pointer;
+}
+
+.mskelayBox {
+  margin-top: -251px;
+  margin-left: -294px;
+  position: fixed;
+  left: 50%;
+  top: 40%;
+  border: 7px solid #E2E2E2;
+  z-index: 20;
+  background: #FFF;
+  display: none;
+  _display: none!important;
+}
+.mskeClaose {
+  position: absolute;
+  top: -17px;
+  right: -17px;
+  cursor: pointer;
+}
+.flash_a{
+  background: #000;padding: 3px 8px;
+  font-family: Verdana, Arial, sans-serif;
+  border-radius: 10px;
+  font-size: 12px;
+  color: #fff
+}
+.font_up{
+  background-color: #e86829;
+  color: #fff;
+  cursor: pointer;
+  padding-bottom:1px;
+  border-radius: 4px;
+  height: 20px;
+  line-height: 20px;
+}
+</style>
+<div class="content-box role">
+    <div class="content-box-header">
+        <h3><{$listtype}>图片管理  <a style="background: #e86829;" class="flash_a" href="#" onclick="add_float('<{$fid}>','<{$index_id}>')">添加</a> </h3><font style="color:red;font-size:16px;display:block;padding-top:8px">注：此处为添加数据即时生效，小心谨慎。url请填写完整路径（需要http://）,如需链接到注册等页面，请咨询客服(<strong style="color:red">最后一个为关闭按钮</strong>)</font>
+        <div class="clear"></div>
+    </div>
+    <form action="" method="get" name="queryform" id="queryform">
+        <div><{$sites_str}></div>
+    </form>
+
+    <div class="mskelayBox" style="display: none;">
+      <div id="view_html">
+      </div>
+      <img class="mskeClaose" src="<{#images#}>/mke_close.png" width="27" height="27">
+    </div>
+
+    <div class="content-box-content">
+        <div class="default-tab">
+            <div class="tab-content default-tab">
+                <table>
+                    <thead>
+                    <tr>
+                       <th style="width: 50px;">编号</th>
+                        <th >是否新开页面</th>
+                        <th>滑动效果</th>
+                        <th >浮动图片</th>
+                        <th style="width:300px;">URL地址</th>
+                        <th>内链地址</th>
+                        <th style="width: 50px;">排序</th>
+                        <th style="width:90px;">操作</th>
+                    </tr>
+
+                    </thead>
+                    <tbody>
+                    <{foreach from=$float_list item=v}>
+                    <tr>
+                        <td><{$v['id']}></td>
+                        <td><{if $v['is_blank'] eq 1}>是<{else}>否<{/if}></td>
+                        <td><{$v['eff_z']}></td>
+                        <td> 
+
+                    <{if $v['eff']}>
+                      鼠标滑出: <font href="#" class="font_up" onclick="logo_up('<{$v['id']}>','<{$v['index_id']}>','1')">【上传】</font><{if $v['img_A']}>
+                          <!--<font style="color:red;" class="view" onclick="view('<{$v['img_A']}>')">[图片]
+                        </font>-->
+                        <{/if}>&nbsp;&nbsp;
+                        鼠标滑入: <font href="#" class="font_up" onclick="logo_up('<{$v['id']}>','<{$v['index_id']}>','2')">【上传】</font><{if $v['img_B']}>
+                          <!--<font style="color:red;" class="view" onclick="view('<{$v['img_B']}>')">[图片]
+                        </font>-->
+                        <{/if}>
+                    <{else}>
+                      <font href="#" class="font_up" onclick="logo_up('<{$v['id']}>','<{$v['index_id']}>','1')">【上传】</font>
+                        <{if $v['img_A']}>
+                          <!--<font style="color:red;" class="view" onclick="view('<{$v['img_A']}>')">[图片]
+                        </font>-->
+                        <{/if}>
+
+                    <{/if}>
+                        </td>
+                        <td><{$v['url']}></td>
+                        <td><{$v['urltypezh']}></td>
+                         <td><{$v['sort']}></td>
+                        <td class="td">
+                        <a style="background: #e86829;" class="revise_a" href="javascript:void(0)" onclick="dep_config('<{$v['id']}>','<{$v['sort']}>','<{$v['eff']}>','<{$v['url']}>','<{$v['index_id']}>','<{$v['is_blank']}>','<{$v['is_inter']}>','<{$v['urltype']}>')"}">编辑</a> 
+                     <a style="background: #e86829;" class="revise_a" href="javascript:void(0)" onclick="if(confirm('确定删除!!!')){document.location='float_list_del?id=<{$v['id']}>'}">删除</a> 
+                      
+                        </td>
+                    </tr>
+                    <{/foreach}>
+                    <thead>
+                     <!--<tr>
+              <th colspan="8"> 
+            <a class="revise_a flash_a" onclick="if(confirm('确定存储案件!!!')){document.location='float_case?fid=<{$fid}>'}" href="javascript:void(0)">储存案件</a>
+                           </th>
+                            </tr>-->
+                    </thead>
+                    </tbody>
+                </table>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+  <!-- 图片上传-->
+<div id="logo_up" style="display:none;background-color:white;" class="con_menu">
+  <form action="up_float_do" method="post" enctype="multipart/form-data" name="add_form" onsubmit="return checkForm_img()" >
+    <input name="id" id="idl" value="" type="hidden">
+    <input name="type" id="type" value="" type="hidden">
+    <input name="index_id" id="index_id1" value="" type="hidden">
+    <table class="m_tab" style="width:300px;margin:0;">
+        <tbody><tr class="de_title">
+            <td colspan="2" height="27" class="table_bg" align="left">
+            <span id="de_title">上传图片</span>
+            <span style="float:right;"><a style="color:white;" href="javascript:void(0)" title="关闭窗口" onclick="easyDialog.close();">×</a></span>
+            </td>
+        </tr>
+        <tr class="m_title">
+            <td>选择文件</td>
+            <td class="de_td">
+                <div class="uploader blue">
+                <input type="text" class="filename" readonly="readonly" name="filename">
+                <input type="button" name="file" class="button" value="Browse...">
+                <input type="file" size="30" name="flash">
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center">
+                <input type="submit" value="提交" class="botton_a">
+                <input type="reset" value="关闭" onclick="easyDialog.close();" class="botton_a">
+            </td>
+        </tr>
+    </tbody></table>
+</form>
+    </div>
+
+  <!-- 移动弹窗 -->
+<div id="delevel" style="display:none;background-color:white;" class="con_menu">
+  <form action="float_list_title_do" method="post" name="add_form" onsubmit="return check_title()">
+    <input name="id" id="id" value="" type="hidden">
+    <input name="fid" id="fid" value="" type="hidden">
+    <input name="index_id" id="index_id" value="" type="hidden">
+    <table class="m_tab" style="width:300px;margin:0;">
+        <tbody><tr class="de_title">
+            <td colspan="2" height="27" class="table_bg" align="left">
+            <span id="de_title">浮动图片</span>
+            <span style="float:right;"><a style="color:white;" href="javascript:void(0)" title="关闭窗口" onclick="easyDialog.close();">×</a></span>
+            </td>
+        </tr>
+        <tr class="m_title">
+            <td>是否为内链</td>
+            <td class="de_td">
+              <select class="de_select" name="is_inter" id="is_inter" onchange="changeurl();">
+                <option value="0">是</option>
+                <option value="1">否</option>
+              </select>
+              <select class="de_select" name="urltype" id="urltype">
+                <option value="1">体育</option>
+                <option value="2">视讯</option>
+                <option value="3">电子</option>
+                <option value="4">彩票</option>
+                <option value="5">优惠活动</option>
+                <option value="6">代理联盟</option>
+                <option value="7">免费试玩</option>
+                <option value="8">常见问题</option>
+                <option value="9">关于我们</option>
+                <option value="10">联系我们</option>
+                <option value="11">会员注册</option>
+                <option value="12">存款帮助</option>
+                <option value="13">取款帮助</option>
+				<option value="14">线路检测</option>
+              </select>
+            </td>
+        </tr>
+        <tr class="m_title" id="url_">
+            <td>URL地址</td>
+            <td class="de_td"><input name="url" id="url" class="de_input" value=""></td>
+        </tr>
+         <tr class="m_title">
+            <td>排序</td>
+            <td class="de_td"><input name="sort" id="sort" class="de_input" value="" type="num"></td>
+        </tr>
+         <tr class="m_title">
+            <td>滑动效果</td>
+            <td class="de_td">
+              <select class="de_select" name="eff" id="eff">
+                <option value="1">是</option>
+                <option value="0">否</option>
+              </select>
+            </td>
+        </tr>
+        <tr class="m_title">
+            <td>新开页面</td>
+            <td class="de_td">
+              <select class="de_select" name="is_blank" id="is_blank">
+                <option value="1">是</option>
+                <option value="0">否</option>
+              </select>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center">
+                <input type="submit" value="提交" class="botton_a">
+                <input type="reset" value="关闭" onclick="easyDialog.close();" class="botton_a">
+            </td>
+        </tr>
+    </tbody></table>
+</form>
+    </div>
+</body>
+<script>
+$(function(){
+    $("input[type=file]").change(function(){$(this).parents(".uploader").find(".filename").val($(this).val());});
+    $("input[type=file]").each(function(){
+    if($(this).val()==""){$(this).parents(".uploader").find(".filename").val("");}
+    });
+});
+
+function checkForm_img (){
+   if($("input[class=filename]").val() == ''){
+      alert('请先选择图片');
+      return false;
+   }
+}
+
+
+function check_title(){
+   if($("#sort").val() == ''){
+      $("#sort").val('0')
+   }else{
+      if(isNaN($("#sort").val())){
+        $("#sort").val('0');
+         return false;
+   }
+}
+</script>
+</html>

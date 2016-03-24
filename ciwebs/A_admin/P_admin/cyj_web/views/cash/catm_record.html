@@ -1,0 +1,159 @@
+﻿<title>存取款记录查询</title>
+<{include file="web_header.html"}>
+<{config_load file="public.conf" section="public"}>
+
+<body>
+<script>
+    //分页跳转
+  window.onload=function(){
+    document.getElementById("page").onchange=function(){
+      document.getElementById('myFORM').submit()
+    }
+  }
+function show_config(id,complex,lx){
+		//var content = $('#add_form').html();
+		$("#id").val(id);
+		$("#complex").val(complex);
+		$("#complex_lx").val(lx);
+		easyDialog.open({
+			  container : 'currency_box'
+			});
+}
+
+var indexid = "<{$index_id}>";
+$(document).ready(function(){
+	$("#index_id").val(indexid);
+	$("#index_id").change(function(event) {
+      $("#myFORM").submit();
+    });
+})
+
+</script>
+<div  id="con_wrap">
+  <div  class="input_002">存取款记录查询</div>
+  <div  class="con_menu" style="width: 90%;">
+  	<form  method="get"  name="action_form" id="myFORM">
+	   <a href="<{$site_url}>/cash/catm/index" >存款與取款</a>
+       <a href="<{$site_url}>/cash/catm/catm_record" style="color:#f00;">历史查詢</a>
+      <{if $siteid == 't'}>
+      <a href="<{$site_url}>/cash/catm/catm_operation">批量存款</a><{/if}>
+       <a href="<{$site_url}>/cash/catm/conversion">额度转换</a>
+       <br><{$sites_str}>
+    时区:
+	<select name="timearea" id="area">
+  	<option value="0" <{select_check(0,$timearea)}>>美东</option>
+  	<option value="12" <{select_check(12,$timearea)}>>北京</option>
+  	</select>
+  	日期：
+	<input type="text" name="start_date" value="<{$s_date}>" id="start_date" style="min-width:90px;width:90px" m class="za_text Wdate"  onClick="WdatePicker()">
+	--
+	<input type="text" name="end_date" value="<{$e_date}>" id="end_date" style="min-width:90px;width:90px" class="za_text Wdate"  onClick="WdatePicker()">
+	帳號：
+	<input  class="za_text"  style="width:80px;min-width:80px"  name="username"  value="<{$username}>">
+    操作類型：
+    <select  name="otype"  id="otype" onchange="document.getElementById('myFORM').submit()">
+   		<option  value="">全部</option>
+        <option  value="1-1" <{select_check('1-1',$otype)}>>人工存入</option>
+        <option  value="1-2" <{select_check('1-2',$otype)}>>存款优惠</option>
+        <option  value="1-3" <{select_check('1-3',$otype)}>>负数额度归零</option>
+        <option  value="1-4" <{select_check('1-4',$otype)}>>取消出款</option>
+        <option  value="1-5" <{select_check('1-5',$otype)}>>其他</option>
+        <option  value="1-6" <{select_check('1-6',$otype)}>>体育投注余额</option>
+        <option  value="1-7" <{select_check('1-7',$otype)}>>返点优惠</option>
+        <option  value="1-8" <{select_check('1-8',$otype)}>>活动优惠</option>
+        <option  value="2-1" <{select_check('2-1',$otype)}>>重复出款</option>
+        <option  value="2-2" <{select_check('2-2',$otype)}>>公司入款存误</option>
+        <option  value="2-3" <{select_check('2-3',$otype)}>>公司负数回冲</option>
+        <option  value="2-4" <{select_check('2-4',$otype)}>>手动申请出款</option>
+        <option  value="2-5" <{select_check('2-5',$otype)}>>扣除非法下注派彩</option>
+        <option  value="2-6" <{select_check('2-6',$otype)}>>放弃存款优惠</option>
+        <option  value="2-7" <{select_check('2-7',$otype)}>>其他</option>
+        <option  value="2-8" <{select_check('2-8',$otype)}>>体育投注余额</option>
+    </select>
+	<input  class="button_d"  value="查詢"  type="submit">
+	<{$page}>
+			</form>
+	</div>
+</div>
+<div id="easyDialogBox" style="margin: -54.5px 0px 0px -150px; padding: 0px; border: none; z-index: 10000; position: fixed; top: 50%; left: 50%; display: none;">
+	<div id="currency_box" style="display: block; margin: 0px;" class="con_menu">
+<form action="<{$site_url}>/cash/catm/complex_do" method="post" name="add_form">
+	<input name="id" id="id" value="" type="hidden">
+    <input name="complex_lx" id="complex_lx" value="" type="hidden">
+	<table class="m_tab" style="width:300px;margin:0;">
+		<tbody><tr class="m_title">
+			<td colspan="2" height="27" class="table_bg" align="center">
+			<span id="title">修改打码量</span>
+			<span style="float:right;"><a style="color:white;" href="javascript:void(0)" title="关闭窗口" onclick="easyDialog.close();">×</a></span>
+			</td>
+		</tr>
+		<tr class="m_title">
+			<td>打码量</td>
+			<td><input name="complex" id="complex" value=""></td>
+		</tr>
+
+		<tr style="background-color: #fff;">
+			<td colspan="2" align="center">
+				<input type="submit" value="提交" class="button_a">
+				<input type="reset" value="关闭" onclick="easyDialog.close();" class="button_a">
+			</td>
+		</tr>
+	</tbody></table>
+</form>
+</div>
+</div>
+<table  width="100%"  class="m_tab">
+		<tbody>
+		   <tr class="m_title_over_co">
+			<td >id</td>
+			<td >會員</td>
+			<td >操作類型</td>
+			<td >交易金額</td>
+            <td >存款優惠</td>
+            <td >匯款优惠</td>
+            <td >餘額</td>
+            <td >綜合打碼量稽核</td>
+            <td >常態性稽核</td>
+			<td >交易日期</td>
+			<td >備注</td>
+			<td >操作人</td>
+		</tr>
+		<{foreach key=i from=$data item=v}>
+		<tr  class="m_cen <{if $i%2 == 0}>even<{/if}>">
+	    	<td><{$v['id']}></td>
+			<td><{$v['username']}></td>
+			<td><{$v['catm_type_zh']}></td>
+	        <td  align="right"><{$v['catm_money']}></td>
+            <td  align="right"><{$v['catm_give']}></td>
+            <td  align="right"><{$v['atm_give']}></td>
+            <td><{$v['balance']}></td>
+            <td> <{if $v['is_code_count']}><a href="#" onclick="show_config(<{$v['id']}>,<{$v['code_count']}>,'complex')">是(打碼量：<{$v['code_count']}>)</a>
+                 <{else}>否<{/if}></td>
+            <td>
+            	 <{if $v['routine_check']}>
+            	 <a href="#" onclick="show_config(<{$v['id']}>,<{$v['routine_check']}>,'normality')">是(打碼量：<{$v['routine_check']}>)</a>
+            	 <{else}>否<{/if}>
+            </td>
+	        <td><{$v['updatetime']}></td>
+	        <td><{$v['remark']}></td>
+			<td><{$v['do_admin_id']}></td>
+		</tr>
+       	<{/foreach}>
+	    <tr  class="m_cen">
+			<td  colspan="3"  style="text-align:right;">小计:</td>
+			<td  align="right"><{$catm_money+0}></td>
+            <td  align="right"><{$catm_give+0}></td>
+            <td  align="right"><{$atm_give+0}></td>
+            <td  colspan="6"></td>
+		</tr>
+		<tr  class="m_cen">
+			<td  colspan="3"  style="text-align:right;">总计:</td>
+			<td  align="right"><{$catm_count['catm_moneyc']+0}></td>
+            <td  align="right"><{$catm_count['catm_givec']+0}></td>
+            <td  align="right"><{$catm_count['atm_givec']+0}></td>
+            <td  colspan="6"></td>
+		</tr>
+
+</tbody></table>
+
+<{include file="web_footer.html"}>

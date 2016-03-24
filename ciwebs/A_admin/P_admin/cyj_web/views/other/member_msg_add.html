@@ -1,0 +1,136 @@
+<title>发布消息</title>
+<{include file="web_header.html"}>
+<body>
+<script type="text/javascript">
+var indexid = "<{$index_id}>";
+$(document).ready(function(){
+  $("#index_id").val(indexid);
+  $("#index_id").change(function(event) {
+      $("#vform").attr("action","<{$site_url}>/other/news/member_msg_add");
+      $("#vform").submit();
+  });
+})
+</script>
+<div id="con_wrap">
+  <div class="input_002">發佈消息</div>
+  <div class="con_menu">
+  <a href="javascript:history.go(-1);">返回上一頁</a></div>
+</div>
+<div style="width:660px;">
+<form method="post" name="withdrawal_form"  action="<{$site_url}>/other/news/member_msg_add_do" id="vform">
+<input type="hidden" name="id" value="">
+<table class="m_tab" style="width:100%;">
+  <tbody><tr class="m_title">
+    <td height="25" align="center" colspan="2">發送消息</td>
+  </tr>
+  <tr>
+  <{if $sites_str}>
+  <tr class="m_cen">
+    <td  height="25"  align="center" width="80" class="table_bg1">站点选择</td>
+    <td  style="text-align:left"> <{$sites_str}>
+    </td>
+  </tr>
+  <{/if}>
+    <td height="25" align="center" class="table_bg1">體系選擇</td>
+          <td>
+            <select id="wtype" name="wtype" class="za_select" onchange="wtypechange();">
+        <option value="1">全部会员</option>
+        <option value="2">层级会员</option>
+        <option value="3">会员帐号</option>
+      </select>&nbsp;
+      <span id="levels" style="display:none">
+          <select id="level" name="level[]" class="za_select" >
+      <{foreach from=$level key=i item=v}>
+        <option value="<{$v['id']}>"><{$v['level_des']}></option>
+      <{/foreach}>
+        </select>
+
+
+      </span>
+          </td>
+  </tr>
+  <tr id="members_tr" style="display:none">
+    <td height="25" align="center" class="table_bg1" width="30%">会员帐号</td>
+          <td>
+            <div style="float:left">
+            <input class="za_text" name="user" id="user" style="width:80px;height:20px;" />
+            </div>
+            <div class="Validform_checktip" style="float:left"></div>
+          </td>
+  </tr>
+  <tr class="m_cen">
+    <td height="25" align="center" class="table_bg1" width="30%">标题</td>
+          <td>
+            <div style="float:left"><input class="za_text" datatype="*2-200" nullmsg="請輸入标题！" errormsg="标题必須至少2個字元長，最多200個字元長" name="msg_title" id="title" value=""></div>
+            <div class="Validform_checktip" style="float:left"></div>
+          </td>
+  </tr>
+  <tr>
+    <td height="25" align="center" class="table_bg1">内容</td>
+    <td>
+      <div style="float:left"><textarea datatype="*2-20000" nullmsg="請輸入備註！" errormsg="備註必須至少2個字元長，最多20000個字元長" class="za_text" name="msg_info" id="content" style="width:500px;height:150px;"></textarea></div>
+      <div class="Validform_checktip" style="float:left"></div>
+    </td>
+  </tr>
+
+  <tr align="center">
+    <td colspan="2" class="table_bg1">
+      <input value="確定" type="submit" class="button_d">&nbsp;&nbsp;&nbsp;
+      <input type="reset" value="重置" class="button_d"> &nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+</tbody></table>
+</form>
+</div>
+<script language="JavaScript" type="text/JavaScript">
+var wtype = '';
+$('#wtype').val(wtype);
+
+function wtypechange()
+{
+  var type = $('#wtype').val();
+  if(type==2){
+    $('#members_tr').hide();
+    $('#levels').show();
+  }else if(type==3){
+    $('#members_tr').show();
+    $('#levels').hide();
+  }else{
+    $('#members_tr').hide();
+    $('#levels').hide();
+  }
+}
+
+</script>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" style="clear:both">
+    <tbody><tr>
+      <td align="center" height="50"></td>
+    </tr>
+  </tbody></table>
+
+
+<script>
+  $(function(){
+    $("#vform").submit(function(event) {
+      var nowindexid=$("#index_id").val();
+      if(nowindexid!=indexid){
+
+      }else{
+        if($("#content").val() == ''){
+          alert("内容不能为空！");
+          return false;
+
+        }
+        if($("#title").val() == ''){
+          alert("标题不能为空！");
+          return false;
+
+        }
+      }
+
+    });
+  })
+</script>
+
+<!-- 公共尾部 -->
+<{include file="web_footer.html"}>

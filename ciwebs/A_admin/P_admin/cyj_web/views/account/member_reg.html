@@ -1,0 +1,210 @@
+<title>會員注册設定</title>
+<{include file="web_header.html"}>
+<style type="text/css">
+	.m_tab{
+		width: 780px;
+	}
+</style>
+<script type="text/javascript">
+var indexid = "<{$index_id}>";
+$(document).ready(function(){
+	$("#index_id").val(indexid);
+	$("#index_id").change(function(event) {
+      $("#queryform").submit();
+    });
+})
+</script>
+<body>
+<div id="con_wrap">
+  <div class="input_002">會員注册設定</div>
+  <div class="con_menu" style="width:80% ; padding-top:3px;">
+  <form name="queryform" id="queryform" action="" method="get">
+  <{$sites_str}>
+  </form>
+  </div>
+</div>
+
+<div class="content">
+<form action="member_reg/member_reg_do" method="post">
+<input type="hidden" name="is_reg" value="<{$data['id']}>">
+<input type="hidden" id="iid" name="index_id" value="<{$index_id}>">
+	<table width="780" class="m_tab">
+		<tbody><tr class="m_title">
+			<td height="27" class="table_bg" colspan="2" align="middle">會員注册設定</td>
+		</tr>
+		<tr class="m_cen even">
+			<td class="table_bg1" align="center">是否啟用會員注册</td>
+			<td align="left">
+				<input value="1" <{if $data['is_work'] == 1}> checked<{/if}> type="radio" name="is_work">啟用&nbsp;&nbsp;
+				<input value="0" <{if $data['is_work'] == 0}> checked<{/if}> type="radio" name="is_work">停用&nbsp;&nbsp;
+			</td>
+		</tr>
+		<script>
+		//隐藏是否必填
+		function is_check(name){
+			var c='#is_'+name;
+			$(c).css('display','none');
+		}
+
+		//显示是否必填
+		function is_check2(name){
+			var c='#is_'+name;
+			$(c).css('display','');
+		}
+		</script>
+		<tr class="m_cen">
+			<td class="table_bg1" align="center">邮箱</td>
+			<td align="left">
+				<input value="0" <{if $data['email'] == '0-1' || $data['email'] == '0-0'}> checked<{/if}> type="radio" name="email" onclick="is_check2(this.name)">需&nbsp;&nbsp;
+				<input value="1" <{if $data['email'] == '1-1' || $data['email'] == '1-0'}> checked<{/if}> type="radio" name="email" onclick="is_check(this.name)">無需&nbsp;&nbsp;
+				<span id="is_email" style="<{if $data['email'] == '1-1' || $data['email'] == '1-0'}>display:none<{/if}>" >
+				<input value="1"  type="checkbox" name="is_email" <{if $data['email'] == '0-1'}> checked<{/if}>>是否必填&nbsp;&nbsp;
+				</span>
+			</td>
+		</tr>
+
+		<tr class="m_cen even">
+			<td class="table_bg1" align="center">證件</td>
+			<td align="left">
+				<input value="0" <{if $data['passport'] == '0-1' || $data['passport'] == '0-0'}> checked<{/if}> type="radio"  name="passport" onclick="is_check2(this.name)">需&nbsp;&nbsp;
+				<input value="1" <{if $data['passport'] == '1-1' || $data['passport'] == '1-0'}> checked<{/if}> type="radio" name="passport" onclick="is_check(this.name)">無需&nbsp;&nbsp;
+				<span id="is_passport" style="<{if $data['passport'] == '1-1' || $data['passport'] == '1-0'}>display:none<{/if}>" >
+				<input value="1"  type="checkbox" name="is_passport" <{if $data['passport'] == '0-1' }> checked<{/if}>>是否必填&nbsp;&nbsp;
+				</span>
+			</td>
+		</tr>
+		<tr class="m_cen">
+			<td class="table_bg1" align="center">QQ</td>
+			<td align="left">
+				<input value="0" <{if $data['qq'] == '0-1' || $data['qq'] == '0-0'}> checked<{/if}> type="radio" name="qq" onclick="is_check2(this.name)" onclick="is_check2(this.name)">需&nbsp;&nbsp;
+				<input value="1" <{if $data['qq'] == '1-1' || $data['qq'] == '1-0'}> checked<{/if}> type="radio" name="qq" onclick="is_check(this.name)">無需&nbsp;&nbsp;
+				<span id="is_qq" style="<{if $data['qq'] == '1-1' || $data['qq'] == '1-0'}>display:none<{/if}>" >
+				<input value="1"  type="checkbox" name="is_qqs"  <{if $data['qq'] == '0-1'}> checked<{/if}>>是否必填&nbsp;&nbsp;
+				</span>
+			</td>
+		</tr>
+
+		<tr class="m_cen even">
+			<td class="table_bg1" align="center">手機號</td>
+			<td align="left">
+				<input  type="radio" <{if $data['mobile'] == '0-1' || $data['mobile'] == '0-0'}> checked<{/if}> name="mobile" value="0"  onclick="is_check2(this.name)">需 &nbsp;&nbsp;
+				<input value="1" <{if $data['mobile'] == '1-1' || $data['mobile'] == '1-0'}> checked<{/if}> type="radio" name="mobile" onclick="is_check(this.name)">無需&nbsp;&nbsp;
+				<span id="is_mobile" style="<{if $data['mobile'] == '1-1' || $data['mobile'] == '1-0'}>display:none<{/if}>" >
+				<input value="1"  type="checkbox" name="is_mobile" <{if $data['mobile'] == '0-1'}> checked<{/if}>>是否必填&nbsp;&nbsp;
+				</span>
+			</td>
+		</tr>
+			<tr class="m_cen even">
+			<td class="table_bg1" align="center">介绍人<font color="red">【是表示显示,否表示隐藏】</td>
+			<td align="left">
+				<input  type="radio" <{if $data['is_intrs'] == '1'}> checked<{/if}> name="is_intrs" value="1">是 &nbsp;
+				<input value="0" <{if $data['is_intrs'] == '0'}> checked<{/if}> type="radio" name="is_intrs">否&nbsp;
+			</td>
+		</tr>
+			<tr class="m_cen">
+			<td class="table_bg1" align="center">姓名重复<font color="red">【是表示允许重复】</font></td>
+			<td align="left">
+				<input  type="radio" <{if $data['is_name'] == '1'}> checked<{/if}> name="is_name" value="1">是 &nbsp;
+				<input value="0" <{if $data['is_name'] == '0'}> checked<{/if}> type="radio" name="is_name">否&nbsp;
+			</td>
+		</tr>
+		<tr class="m_cen even">
+			<td class="table_bg1" align="center">银行卡号重复<font color="red">【是表示允许重复】</td>
+			<td align="left">
+				<input  type="radio" <{if $data['is_banknum'] == '1'}> checked<{/if}> name="is_banknum" value="1">是 &nbsp;
+				<input value="0" <{if $data['is_banknum'] == '0'}> checked<{/if}> type="radio" name="is_banknum">否&nbsp;
+			</td>
+		</tr>
+				<tr class="m_cen even">
+			<td class="table_bg1" align="center">QQ重复<font color="red">【是表示允许重复】</td>
+			<td align="left">
+				<input type="radio" <{if $data['is_qq'] == '1'}> checked<{/if}> name="is_qq" value="1">是 &nbsp;
+				<input value="0" <{if $data['is_qq'] == '0'}> checked<{/if}> type="radio" name="is_qq">否&nbsp;
+			</td>
+		</tr>
+			<tr class="m_cen">
+			<td class="table_bg1" align="center">邮箱重复<font color="red">【是表示允许重复】</td>
+			<td align="left">
+				<input  type="radio" <{if $data['is_mail'] == '1'}> checked<{/if}> name="is_mail" value="1">是 &nbsp;
+				<input value="0" <{if $data['is_mail'] == '0'}> checked<{/if}> type="radio" name="is_mail">否&nbsp;
+			</td>
+		</tr>
+			<tr class="m_cen even">
+			<td class="table_bg1" align="center">手机号重复<font color="red">【是表示允许重复】</td>
+			<td align="left">
+				<input  type="radio" <{if $data['is_tel'] == '1'}> checked<{/if}> name="is_tel" value="1">是 &nbsp;
+				<input value="0" <{if $data['is_tel'] == '0'}> checked<{/if}> type="radio" name="is_tel">否&nbsp;
+			</td>
+		</tr>
+		<tr class="m_cen">
+			<td class="table_bg1" align="center">验证码<font color="red">【是表示显示,否表示隐藏】</td>
+			<td align="left">
+				<input  type="radio" <{if $data['is_code'] == '1'}> checked<{/if}> name="is_code" value="1">是 &nbsp;
+				<input value="0" <{if $data['is_code'] == '0'}> checked<{/if}> type="radio" name="is_code">否&nbsp;
+			</td>
+		</tr>
+		<{if $siteid == 't'}>
+		<tr class="m_cen even">
+			<td class="table_bg1" align="center">WAP端注册是否单页面<font color="red">【是表示单页面】</td>
+			<td align="left">
+				<input  type="radio" <{if $data['is_wap_one'] == '1'}> checked<{/if}> name="is_wap_one" value="1">是 &nbsp;
+				<input value="0" <{if $data['is_wap_one'] == '0'}> checked<{/if}> type="radio" name="is_wap_one">否&nbsp;
+			</td>
+		</tr>
+		<{/if}>
+			<tr class="m_cen">
+			<td height="27" class="table_bg" colspan="2" align="middle">
+			<input class="button_d" value="確定" type="submit" name="edit">
+			</td>
+		</tr>
+	   </tbody>
+	</table>
+</form>
+</div>
+
+<div class="content">
+<form method="post" name="myFORM" id="vform" action="member_reg/reg_discount_set">
+<input type="hidden" name="result_id" value="<{$result['id']}>">
+<input type="hidden" id="iid" name="index_id" value="<{$index_id}>">
+<table width="780" class="m_tab">
+	<tbody><tr class="m_title">
+		<td colspan="2" align="center" class="table_bg" height="27">申請會員優惠設定</td>
+	</tr>
+<!-- 	<tr class="m_cen even">
+		<td width="30%" height="25" align="center" class="table_bg1">優惠日期:</td>
+		<td align="left">
+     <input class="za_text Wdate" onClick="WdatePicker()" value="<{$result['begin_date']}>"  style="width:110px;min-width:110px;" name="start_date">
+      ~
+	 <input class="za_text Wdate" onClick="WdatePicker()" value="<{$result['end_date']}>"  style="width:110px;min-width:110px;" name="end_date">
+		</td>
+	</tr> -->
+	<tr class="m_cen">
+		<td width="30%" height="25" align="center" class="table_bg1">申請會員贈送優惠</td>
+		<td align="left">
+			<div style="float:left"><input type="text" name="discount_money" class="za_text" style="width:80px" onkeydown="return Yh_Text.CheckNumber()" nullmsg="请输入金额" datatype="s" value="<{$result['discount_money']}>"> </div><div class="Validform_checktip"></div><br><div style="margin-top:-7px"><font color="red">* 為0時加入會員不贈送優惠</font></div>
+		</td>
+	</tr>
+    <tr class="m_cen even">
+		<td width="30%" height="25" align="center" class="table_bg1">優惠打碼</td>
+		<td align="left">
+			<div style="float:left"><input type="text" name="discount_bet" class="za_text" style="width:50px!important" onkeydown="return Yh_Text.CheckNumber()" nullmsg="请输入數字" datatype="s" value="<{$result['discount_bet']}>">&nbsp;倍</div><div style="float:left" class="Validform_checktip"></div><div>
+		</div></td>
+	</tr>
+	<tr class="m_cen">
+		<td width="30%" height="25" align="center" class="table_bg1">限制IP</td>
+		<td align="left">
+				<input value="1" <{if $result['is_ip'] == 1}> checked<{/if}> type="radio" name="is_ip">啟用&nbsp;&nbsp;
+				<input value="0" <{if $result['is_ip'] == 0}> checked<{/if}> type="radio" name="is_ip">停用&nbsp;&nbsp;
+		</div></td>
+	</tr>
+	<tr class="m_cen even">
+		<td colspan="2" align="center" class="table_bg1">
+			<input type="submit" name="submit" value="確定" class="za_button">&nbsp;&nbsp;
+			<!-- <input type="reset" value="重置" class="za_button"> -->
+		</td>
+	</tr>
+
+</tbody></table>
+</form>
+</div>
+<{include file="web_footer.html"}>

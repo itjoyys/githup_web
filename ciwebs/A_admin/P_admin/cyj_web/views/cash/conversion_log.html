@@ -1,0 +1,84 @@
+<title>额度转换记录查询</title>
+<{include file="web_header.html"}>
+<{config_load file="public.conf" section="public"}>
+<body>
+<script>
+    //分页跳转
+  window.onload=function(){
+    document.getElementById("page").onchange=function(){
+      document.getElementById('myFORM').submit()
+    }
+  }
+</script>
+<script>
+
+function show_config(id,complex,lx){
+    //var content = $('#add_form').html();
+    $("#level_id").val(id);
+    $("#complex").val(complex);
+    $("#complex_lx").val(lx);
+    easyDialog.open({
+        container : 'currency_box'
+      });
+}
+
+
+$(function(){
+  $("#button_e").click(function() {
+    window.location.href="catm.php";
+  });
+})
+
+</script>
+<div  id="con_wrap">
+  <div  class="input_002">额度转换记录查询</div>
+  <div  class="con_menu">
+    <form  method="get"  name="action_form" id="myFORM">
+       <a href="<{$site_url}>/cash/catm/conversion" >额度转换</a>
+       <a href="<{$site_url}>/cash/catm/conversion_log" style="color:#f00;">额度转换记录</a>
+      日期：
+  <input type="text" name="start_date" value="<{$s_date}>" id="start_date" style="min-width:90px;width:90px" m class="za_text Wdate"  onClick="WdatePicker()">
+  --
+  <input type="text" name="end_date" value="<{$e_date}>" id="end_date" style="min-width:90px;width:90px" class="za_text Wdate"  onClick="WdatePicker()">
+      帳號：
+      <input  class="za_text"  style="width:80px;min-width:80px"  name="username"  value="<{$username}>">
+            状态：
+            <select  name="status"  id="otype" onchange="document.getElementById('myFORM').submit()">
+              <option  value="all">全部</option>
+                <option  value="0" <{select_check('0',$status)}>>失败</option>
+                <option  value="1" <{select_check('1',$status)}>>成功</option>
+            </select>
+      <input  class="button_d"  value="查詢"  type="submit">
+  <{$page}>
+      </form>
+  </div>
+</div>
+
+<table  width="100%"  class="m_tab">
+    <tbody><tr class="m_title_over_co">
+      <td >现金记录ID</td>
+      <td >會員</td>
+      <td >交易平台</td>
+      <td >类型</td>
+      <td >金额</td>
+      <td >交易时间</td>
+      <td >确认时间</td>
+      <td >状态</td>
+      <td >備注</td>
+    </tr>
+   <{foreach from=$data key=i item=v}>
+    <tr class="m_cen <{if $i%2 == 0}>even<{/if}>">
+          <td><{$v['trade_id']}></td>
+          <td><{$v['username']}></td>
+          <td  align="right"><{$v['platform']}></td>
+          <td><{if $v['cash_type'] == 1}>入款<{else}>取款<{/if}></td>
+          <td  align="right"><{$v['credit']}></td>
+          <td><{$v['update_time']}></td>
+          <td><{$v['create_time']}></td>
+          <td><{if $v['status'] == 1}><font style="color:#10DC34">成功</font><{else}><font style="color:red">失败</font><{/if}></td>
+          <td><{$v['error_info']}></td>
+    </tr>
+      <{/foreach}>
+
+</tbody></table>
+<{include file="web_footer.html"}>

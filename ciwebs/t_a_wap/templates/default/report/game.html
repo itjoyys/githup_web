@@ -1,0 +1,37 @@
+<ion-view class="m-report" cache-view="false">
+    <ion-nav-bar class="bar bar-header bar-light">
+        <ion-nav-title><span ng-bind="'Member_LabelBetRecord'|translate"></span></ion-nav-title>
+        <ion-nav-buttons side="left"><a class="button button-icon icon ion-ios-arrow-back" ng-click="historyBack()"></a>
+        </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-content class="has-header" scroll="false">
+        <div class="breadcrumb">{{'Common_LabelAll'|translate}} &gt; {{'Common_LabelGame'|translate}} &gt; <span
+                class="current">{{GameName}}</span></div>
+        <div class="table-list">
+            <div class="table-head row">
+                <div class="col col-44">{{'Common_LabelGame'|translate}}</div>
+                <div class="col col-44">{{'Member_LabelCount'|translate}}</div>
+                <div class="col col-44">{{'Member_LabelAllBet'|translate}}</div>
+                <div class="col col-44">{{'Member_LabelYxBet'|translate}}</div>
+                <div class="col col-44">{{'Member_LabelWinLost'|translate}}</div>
+            </div>
+            <ion-content class="table-body table-body-nav"
+            "="">
+            <ion-refresher ng-if="ansycLoaded" on-refresh="rptGameRefresh()"></ion-refresher>
+            <div ng-if="!ansycLoaded" class="padding text-center">
+                <ion-spinner></ion-spinner>
+            </div>
+            <div ng-if="ansycLoaded" class="table-body">
+                <div class="row" ng-repeat="item in gameData" ng-click="gotoRptDetail(item.GameID,item.GameName)">
+                    <div class="col col-44 row-data">{{item.GameName}}</div>
+                    <div ng-class="{'underline':item.TotalBetNums>0}" class="col col-44 row-data">
+                        {{item.TotalBetNums}}
+                    </div>
+                    <div class="col col-44 row-data"><strong>{{item.AllBet.toFixed(2)}}</strong></div>
+                    <div class="col col-44 row-data"><strong>{{item.YxBet.toFixed(2)}}</strong></div>
+                    <div class="col col-44 row-data {{item.WinLoseMoney>0?'win':item.WinLoseMoney==0?'':'lose'}}">
+                        <strong>{{item.WinLoseMoney.toFixed(2)}}</strong></div>
+                </div>
+            </div>
+    </ion-content>
+    </div></ion-content></ion-view>

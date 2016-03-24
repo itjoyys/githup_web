@@ -1,0 +1,18 @@
+<{$header}>
+<{config_load file="public.conf" section="public"}>
+<script>
+	$(function(){
+		var nr= "<img src='<{#images#}>/new/sports.jpg' class='abs-c-banner' id='page-banner'>";
+		$("#myImg").html(nr);
+	})
+</script>
+<div id="page-container">
+  <div id="page-body" style=" width: 1075px;margin:0 auto; ">
+<!--banner end-->
+        <iframe src="<{$url}>/index.php/sports/main?token=<{$token}>&uid=<{$uid}>" frameborder="no" style="width: 1050px; height: 620px;" scrolling="no"></iframe>
+
+    </div>
+
+</div>
+<!--footer-->
+<{$bottom}>

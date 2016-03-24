@@ -1,0 +1,139 @@
+﻿<title>返点优惠添加</title>
+<{include file="web_header.html"}>
+<{config_load file="public.conf" section="public"}>
+<script>
+var indexid = "<{$index_id}>";
+var levelid = "<{$edit['level_id']}>";
+$(document).ready(function(){
+  $("#index_id").val(indexid);
+  $("#level_id").val(levelid);
+  $("#index_id").change(function(event) {
+      var iid = $(this).val();
+      window.location.href = "<{$site_url}>/cash/discount/discount_fd_add?index_id=" + iid;
+  });
+})
+</script>
+<body>
+<div id="con_wrap">
+  <div class="input_002">返點優惠設定</div>
+  <div class="con_menu">
+        <a href="<{$site_url}>/cash/discount/index">優惠統計</a>
+      <a href="<{$site_url}>/cash/discount/discount_log">優惠查詢</a>
+      <a href="<{$site_url}>/cash/discount/rakeback_log">自助返水查询</a>
+        <a href="<{$site_url}>/cash/discount/discount_fd" style="color: red;">返點優惠設定</a>
+    <a href="javascript:window.history.go(-1);">返回上一頁</a>
+  </div>
+</div>
+<div class="content">
+<form method="post" name="myFORM" id="vform" action="<{$site_url}>/cash/discount/discount_fd_add_do">
+<table style="width:500px" class="m_tab">
+  <tbody>
+  <tr class="m_title_over_co">
+    <td colspan="2" align="center">返點優惠設定</td>
+  </tr>
+  <{if $sites_str}>
+    <tr class="m_cen">
+    <td width="30%" height="25" align="center" class="table_bg1">站点</td>
+    <td align="left">
+      <{$sites_str}>
+    </td>
+  </tr>
+ <{/if}>
+  <tr class="even">
+    <td width="30%" height="25" align="center" class="table_bg1">层级选择:</td>
+    <td >
+     <select name="level_id" id="level_id" style="max-width: 89px;width:89px;">
+      <option value="0">默认</option>
+      <{foreach from=$level_data item=v}>
+      <option value="<{$v['id']}>" <{select_check($v['id'],$level_id)}> ><{$v['level_des']}></option>
+      <{/foreach}>
+    </select><font color="red">【如不开启层级返点优惠区分，选择默认即可】</font>
+  </tr>
+
+  <tr class="m_cen">
+    <td width="30%" height="25" align="center" class="table_bg1">有效總投注:</td>
+    <td align="left">
+      <input type="text" name="count_bet" class="za_text" onkeydown="return Yh_Text.CheckNumber()" nullmsg="请输入投注金额" datatype="s" value="<{$edit['count_bet']}>">以上
+  </tr>
+  <tr class="even">
+    <td width="30%" height="25" align="center" class="table_bg1">彩票優惠</td>
+    <td align="left">
+      <input type="text" name="fc_discount" class="za_text" onkeydown="return Yh_Text.CheckNumber()" nullmsg="请输入彩票优惠额度" datatype="s" value="<{$edit['fc_discount']}>">%
+    </td>
+  </tr>
+  <tr class="m_cen">
+  <td width="30%" height="25" align="center" class="table_bg1">体育優惠</td>
+    <td align="left">
+      <input type="text" name="sp_discount" class="za_text" onkeydown="return Yh_Text.CheckNumber()" nullmsg="请输入体育优惠额度" datatype="s" value="<{$edit['sp_discount']}>">%
+    </td>
+  </tr>
+  <tr class="even">
+  <td width="30%" height="25" align="center" class="table_bg1">六合彩特码B盘</td>
+    <td>
+      <input type="text" name="liuhecai_discount" class="za_text" onkeydown="return Yh_Text.CheckNumber()" nullmsg="六合彩特码B盘优惠额度" datatype="s" value="<{$edit['liuhecai_discount']}>">%
+    </td>
+  </tr>
+
+    <{foreach from=$video_config item=val}>
+      <{if $val['vtitle']}>
+      <tr class="m_cen">
+        <td width="30%" height="25" align="center" class="table_bg1"><{$val['vtitle']}></td>
+        <td align="left">
+            <input type="text" name="<{$val['vtype']}>" class="za_text" onkeydown="return Yh_Text.CheckNumber()" nullmsg="请输入<{$val['vtitle']}>额度" datatype="s" value="<{$edit[$val['vtype']]}>">%
+        </td>
+     </tr>
+     <{/if}>
+     <{if $val['dtitle']}>
+     <tr>
+      <td width="30%" height="25" align="center" class="table_bg1"><{$val['dtitle']}></td>
+      <td>
+          <input type="text" name="<{$val['dtype']}>" class="za_text" onkeydown="return Yh_Text.CheckNumber()" nullmsg="请输入<{$val['dtitle']}>额度" datatype="s" value="<{$edit[$val['dtype']]}>">%
+      </td>
+      </tr>
+  <{/if}>
+    <{if $val['stitle']}>
+     <tr style="background: #ffffff;">
+      <td width="30%" height="25" align="center" class="table_bg1"><{$val['stitle']}></td>
+      <td>
+          <input type="text" name="<{$val['stype']}>" class="za_text" onkeydown="return Yh_Text.CheckNumber()" nullmsg="请输入<{$val['stitle']}>额度" datatype="s" value="<{$edit[$val['stype']]}>">%
+        </td></tr>
+      <{/if}>
+
+    <{if $val['ftitle']}>
+     <tr>
+      <td width="30%" height="25" align="center" class="table_bg1"><{$val['ftitle']}></td>
+      <td>
+          <input type="text" name="<{$val['ftype']}>" class="za_text" onkeydown="return Yh_Text.CheckNumber()" nullmsg="请输入<{$val['ftitle']}>额度" datatype="s" value="<{$edit[$val['ftype']]}>">%
+        </td>
+      </tr>
+  <{/if}>
+  <{/foreach}>
+
+  <tr class="m_cen">
+    <td width="30%" height="25" align="center" class="table_bg1">優惠上限</td>
+    <td align="left">
+        <input type="text" name="max_discount" class="za_text" onkeydown="return Yh_Text.CheckNumber()" nullmsg="请输入优惠上限" datatype="s" value="<{$edit['max_discount']}>">
+    </td>
+  </tr>
+  <tr class="even">
+    <td colspan="2" align="center" class="table_bg1">
+      <input type="hidden" name="id" value="<{$edit['id']}>">
+      <input type="submit" name="submit" value="確定" class="za_button">&nbsp;&nbsp;
+      <input type="reset" value="重置" class="za_button">
+    </td>
+  </tr>
+
+</tbody></table>
+</form>
+</div>
+<script type="text/javascript">
+
+$(function(){
+  $("#vform").Validform({
+    tiptype:2
+  });
+});
+
+</script>
+
+<{include file="web_footer.html"}>

@@ -1,0 +1,64 @@
+<{config_load file="public.conf" section="public"}>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Document</title>
+        <link rel="stylesheet" href="<{#mem_css#}>/index_main.css" />
+        <link rel="stylesheet" href="<{#mem_css#}>/standard.css" />
+    </head>
+<style>
+#fy_page{text-align:center;width:100%;height:30px;line-height:30px;font-size: 15px;letter-spacing:5px;float:inherit;}
+#fy_page a{border: 1px solid #000000; color:#000000;text-decoration:none;padding: 0 0 0 5px;margin: 0 5px; }
+#fy_page strong{border: 1px solid #000000; color:#000000;padding: 0 0 0 5px;margin: 0 5px;background-color:#888888;}
+</style>
+    <body  style="BACKGROUND: url(<{#mem_images#}>/../private/content_bg.jpg) repeat-y left top;" >
+        <div id="MAMain" style="width:767px">
+            <div id="MACenter-content">
+                <div id="MACenterContent">
+                    <div id="MNav">
+                    <{if $new_type == 'now'}>
+                        <span class="mbtn">最新信息</span>
+                    <{else}>
+                        <a  target="k_memr" class="mbtn" href="<{$site_url}>/index.php/member/news/latest_news">最新信息</a>
+                    <{/if}>
+                        <div class="navSeparate"></div>
+                    <{if $new_type == 'his'}>
+                        <span class="mbtn">历史信息</span>
+                    <{else}>
+                        <a target="k_memr" class="mbtn" href="<{$site_url}>/index.php/member/news/histiry_news">历史信息</a>
+                    <{/if}>
+                    </div>
+                    <div id="MMainData">
+                        <table class="MMain" border="1">
+                            <thead>
+                                <tr>
+                                    <th style="width: 20%;" nowrap="">日期</th>
+                                    <th nowrap="">内容</th>
+                                </tr>
+                            </thead>
+                            <{if !empty($news) }>
+							<{foreach from=$news item=v}>
+                            <tbody>
+                                <tr class="MColor1" align="center">
+                                <td class="mouseenter"><{$v.add_time}></td>
+                                <td class="MContent <{if $new_type == 'now'}>mouseenter<{/if}>"><{$v.chn_simplified}></td>
+                                </tr>
+                            </tbody>
+                            <{/foreach}>
+                            <{else}>
+                            <tbody>
+                                <tr class="MColor1" align="center">
+                                <td class="mouseenter" align="center" colspan="2">暂无最新消息</td>
+                                </tr>
+                            </tbody>
+                            <{/if}>
+                        </table>
+                    </div>
+                    <div id="fy_page">
+                           <{$page_html}>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

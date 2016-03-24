@@ -1,0 +1,242 @@
+<title>批量存款</title>
+<{include file="web_header.html"}>
+<body>
+<div id="con_wrap">
+  <div class="input_002">批量存款</div>
+  <div class="con_menu">
+    <a href="<{$site_url}>/cash/catm/index">存款與取款</a>
+    <a href="<{$site_url}>/cash/catm/catm_record">历史查詢</a>
+    <a href="<{$site_url}>/cash/catm/catm_operation" style="color:#f00;">批量存款</a>
+    <a href="<{$site_url}>/cash/catm/conversion">额度转换</a>
+       &nbsp;&nbsp;
+  </div>
+</div>
+<div class="content">
+  <form method="post" action="<{$site_url}>/cash/catm/catm_operation_do" name="withdrawal_form">
+    <table class="m_tab" style="width:520px">
+      <tbody><tr class="m_title_over_co">
+        <td colspan="2" height="25" align="center">批量存款</td>
+      </tr>
+
+      <tr class="m_cen">
+        <td align="center"  class="table_bg1 textTr">批量方式</td>
+        <td colspan="3" align="left">
+         <select name="type_batch" id="type_batch">
+         <option value="1">按账号</option>
+         <option value="2">按层级</option></select>
+        </td>
+      </tr>
+
+      <tr class="m_cen even" id="zh">
+        <td height="25" align="center" style="width:150px" class="table_bg1 textTr">帳號</td>
+        <td align="left"><textarea name="username" id="username" style="height: 80px; width:350px" class="za_text"></textarea><br>
+        <font color="red">多個會員，請用(英文) , 號區分 如：test1,test2</font></td>
+      </tr>
+      <tr class="m_cen even" id="tier" style="display:none">
+        <td height="25" align="center" style="width:150px" class="table_bg1 textTr">层级</td>
+        <td align="left"><{$select}><br>
+
+      </tr>
+       <tr id="ck_tr" class="m_cen even">
+        <td align="center" class="table_bg1 textTr" id="sp_name">存款金額</td>
+        <td colspan="3" align="left"><input onkeydown="return Yh_Text.CheckNumber();" onblur="Calculate();Calculate_Complex();" maxlength="20" value="0" size="21" class="za_text" name="amount" id="amount"></td>
+      </tr>
+      <tr id="sp_tr" class="m_cen">
+        <td align="center" class="table_bg1 textTr">存款優惠</td>
+        <td colspan="3" align="left"><input name="ifSp" id="ifSp" value="1" type="checkbox">
+          存入，優惠金額：
+          <input type="input" class="za_text" onblur="Calculate_Complex();" style="min-width: 80px !important; width: 50px !important" onkeydown="return Yh_Text.CheckNumber()" value="0" id="spAmount" name="sp_other"></td>
+      </tr>
+      <tr id="hk_tr" class="m_cen even">
+        <td align="center" class="table_bg1 textTr">匯款優惠</td>
+        <td colspan="3" align="left"><input name="ifSp_other" id="ifSp_other" value="1" type="checkbox">
+          存入，優惠金額：
+          <input type="input" class="za_text" onblur="Calculate_Complex();" style="min-width: 80px !important; width: 50px !important" onkeydown="return Yh_Text.CheckNumber()" value="0" id="sp_other" name="spAmount"></td>
+      </tr>
+      <tr id="sp_tr2" class="m_cen">
+        <td align="center" class="table_bg1 textTr">綜合打碼量稽核</td>
+        <td colspan="3" align="left"><input name="isComplex" id="isComplex" value="1" type="checkbox">
+          稽核，打  碼  量：
+          <input type="text" class="za_text" style="min-width: 80px !important; width: 50px !important" onkeydown="return Yh_Text.CheckNumber2()" value="0" id="ComplexValue" name="ComplexValue"></td>
+      </tr>
+      <tr id="sp_tr3" class="m_cen even">
+        <td align="center" class="table_bg1 textTr">常態性稽核</td>
+        <td colspan="3" align="left"><input name="is_isnormality" id="isnormality" value="1" type="checkbox" >
+          稽核</td>
+      </tr>
+      <tr class="m_cen">
+        <td align="center"  class="table_bg1 textTr"  id="type_name">存款项目</td>
+        <td colspan="3" align="left">
+         <select name="type_memo" id="type_memo"><option value="1">人工存入</option><option value="2">存款优惠</option><option value="4">取消出款</option><option value="7">返点优惠</option><option value="8">活动优惠</option></select>
+        </td>
+      </tr>
+      <tr  id="sp_tr4" class="m_cen even">
+        <td align="center"  class="table_bg1 textTr">是否退拥</td>
+        <td colspan="3" align="left"><input  name="c_is_rebate"  type="radio"  value="1"  checked=""  class="op_type">
+          写入
+          <input  name="c_is_rebate"  type="radio"  value="0"  class="op_type">
+          取消</td>
+      </tr>
+      <tr class="m_cen">
+        <td align="center"  class="table_bg1 textTr">備注</td>
+        <td colspan="3" align="left"><textarea  name="c_remark"  style="height: 50px; width:350px"  class="za_text"></textarea></td>
+      </tr>
+      <tr  align="center" class="m_cen">
+        <td  colspan="4"  class="table_bg1">
+        <input  value="確定"  id="savebtn"  name="savebtn"  type="submit"  class="button_a">
+          &nbsp;&nbsp;
+         <input  type="reset"  value="重置"  class="button_a"><font color="red">【请勿重复点击】</font></td>
+      </tr>
+    </tbody></table>
+  </form>
+</div>
+<style>
+#kq_box_001 {
+    background: url("<{$site_url}>/../public/images/loading11.gif") no-repeat scroll center 30px;
+    /*border: 1px solid #acacac;*/
+    margin: 0 auto;
+    width: 600px;
+    height:200px;
+}
+</style>
+<div style="display: none;width:1200px" id="kq_box_001">
+
+	<div style="width:253px;margin:35px auto 0;text-align:center" id="kq_box_text">
+		<b><span style="color:#7c3838" id="gold0"><b>正在执行请勿重复操作！</b></span></b>
+	</div>
+
+</div>
+<script  language="JavaScript"  type="text/JavaScript">
+var spLimit = "100";//优惠标准
+var spRate = "1.2";//存款优惠百分比
+var spMax = "999999999";//存款优惠上限
+var Audit_COMPLEX = "30";//打码量倍数
+var AbsorbLimit = 0;//汇款优惠标准
+var AbsorbRate = 0;//汇款百分比
+var AbsorbMax = 0;//汇款优惠百分比
+
+$(function(){
+  $("#type_memo").change(function(){
+  var type_m = $("#type_memo").val();
+  if(type_m == "2" || type_m == "7" || type_m == "8")
+  {
+    $("#amount").val("0");//归0
+    $("#sp_other").val("0");//归0
+    $("#ck_tr").hide();
+    $("#de_audit").hide();
+    $("#hk_tr").hide();
+    $("#ifsp_other").attr("checked",false);
+    $("#sp_tr3").hide();
+    $("#ifSp").attr("checked",true);
+    $("#isComplex").attr("checked",true);
+    $('isnormality').attr("checked",false);
+  }else{
+    $("#ck_tr").show();
+    $("#hk_tr").show();
+    $("#sp_tr3").show();
+    $("#ifsp_other").attr("checked",false);
+    $("#ifSp").attr("checked",false);
+    $("#isComplex").attr("checked",false);
+    $('#isnormality').attr("checked",true);
+  }
+  })
+  $("#type_batch").change(function(){
+  var type_m = $("#type_batch").val();
+  if(type_m == "2")
+  {
+    $("#zh").hide();
+    $("#tier").show();
+  }else{
+    $("#zh").show();
+    $("#tier").hide();
+  }
+  })
+})
+function Calculate(){
+  var sp = 0;
+  var Absorb = 0;
+  var money=parseFloat($('#amount').val());
+  if(money>0){
+    //if($('#ifsp').attr("checked")=="checked"){
+      if(money>=parseFloat(spLimit)){
+        sp = (money*parseFloat(spRate)/100)>parseFloat(spMax)?spMax:money*parseFloat(spRate)/100;
+      }
+      $('#sp_other').val(sp);
+      if(money>=parseFloat(AbsorbLimit)){
+        Absorb = (money*parseFloat(AbsorbRate)/100)>parseFloat(AbsorbMax)?AbsorbMax:money*parseFloat(AbsorbRate)/100;
+      }
+      $('#spAmount').val(Absorb);
+  }
+}
+function Calculate_Complex(){
+  var money = parseFloat($('#amount').val());
+  var sp = parseFloat($('#spAmount').val());
+  var Absorb = parseFloat($('#sp_other').val());
+  var ComplexValue = (money+sp+Absorb)*parseInt(Audit_COMPLEX)
+  if(isNaN(ComplexValue))$('#ComplexValue').val(0);
+  else $('#ComplexValue').val(ComplexValue);
+}
+$(document).ready(function() {
+  $("#savebtn").bind("click",function(e){
+	// $(this).attr('disabled','disabled');
+      if($('#amount').val()<=0 || isNaN($('#amount').val()))
+      {
+        var type_memo=parseFloat($('#type_memo').val());
+        if(type_memo == "2" || type_memo == "7" || type_memo == "8"){
+          if($('#sp_other').val() <=0 && $('#spAmount').val() <=0){
+                     alert('优惠金额不对');
+                     return false;
+          }
+        }else{
+          alert($("#sp_name").text()+"不正确！");$('#amount').focus();return false;
+        }
+
+      }
+      var money=parseFloat($('#amount').val());
+      if(money<0 || money==NaN)
+      {
+        alert($("#sp_name").text()+"不能<=0");$('#amount').focus();return false;
+      }
+
+        var ty_name = '';
+        var str = '';
+        var spamount = parseFloat($('#spAmount').val());
+        var sp_other = parseFloat($('#sp_other').val());
+        var type_memo = parseFloat($('#type_memo').val());
+        var total = 0;
+        if(type_memo!=2){
+          if(money > 0){
+            total+=money;
+            str += $("#sp_name").text()+'：'+money+'元\n\n';
+          }
+
+        }
+        if($('#ifSp').attr("checked")=="checked" ){
+          str += '存款優惠：'+spamount+'元\n\n';
+          total+= spamount ;
+        }
+        if($('#ifSp_other').attr("checked")=="checked"){
+          str += '匯款優惠：'+sp_other+'元\n\n';
+          total+= sp_other;
+        }
+        if($('#isComplex').attr("checked")=="checked"){
+          str += '打碼量：'+$('#ComplexValue').val()+'元\n\n';
+        }
+        str += '总共存入：'+total+'元\n\n';
+        var ifcheck = '';
+        if($('#isnormality').attr("checked")=="checked")ifcheck = '是';
+        else ifcheck = '否';
+        str += '常態性稽核：'+ifcheck;
+        restr=window.confirm(str);
+        if(restr){
+            $('.content').hide();
+            $('#kq_box_001').show();
+        }
+        return restr;
+    });
+});
+
+
+</script>
+
+<{include file="web_footer.html"}>

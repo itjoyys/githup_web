@@ -1,0 +1,69 @@
+<{$header}>
+<{config_load file="public.conf" section="public"}>
+<script>
+	$(function(){
+		var nr= "<img src='<{#images#}>/new/LiveMain.jpg' class='abs-c-banner' id='page-banner'>";
+		$("#myImg").html(nr);
+	})
+</script>
+<div id="page-container">
+  <div id="page-body">
+<link rel="stylesheet" type="text/css" href="<{#css#}>/leshi.css"/>
+<script type="text/javascript">
+		$(function(){
+			$(".les_ul li").hover(function() {
+		        $(this).children(".les_box").children(".top_bg").animate({
+		            top: '0px'
+		        },
+		        200);
+				$(this).children(".les_box").children(".btm_bg").animate({
+		            bottom: '0px'
+		        },
+		        200);
+		    },function() {
+		        $(this).children(".les_box").children(".top_bg").animate({
+		            top: '-200px'
+		        },
+		        200);
+				$(this).children(".les_box").children(".btm_bg").animate({
+		            bottom: '-200px'
+		        },
+		        200);
+		    });
+		});
+
+	</script>
+<div class="les_main" style="padding: 20px 0;">
+	<div class="les_dov">
+		<ul class="les_ul">
+		     	<{foreach from=$video_config item=val}>
+             <li>
+				<div class="les_box">
+					<div class="top_bg">
+						<p class="les_ptop"><img src="<{#images#}>/ico_<{$val}>.png"></p>
+					</div>
+					<div class="btm_bg">
+						<p class="les_pbtn">
+							<a href="javascript:;" onclick="opengeme('/video/rule.html')"><span class="btn_sp">游戏规则</span></a>
+							<a href="javascript:;" <{if empty($uid)}>onclick="alert('您尚未登录，请先登录再进行游戏!')"<{else}>onclick="opengeme('/video/games/login.php?g_type=<{$val}>')"<{/if}>><span class="btn_sp">立即进入</span></a>
+						</p>
+					</div>
+				</div>
+				<div class="les_img">
+					<div class="les_ibox">
+						<img src="<{$video_imgs[$val]['img_url']}>" alt=""/>
+						<span class="les_isp"><img src="<{#images#}>/tit_<{$val}>.png" alt=""></span>
+					</div>
+				</div>
+			 </li>
+		 <{/foreach}>
+
+		</ul>
+		<div class="clear"></div>
+	</div>
+
+	</div>
+  </div>
+</div>
+<!--footer-->
+<{$bottom}>

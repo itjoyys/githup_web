@@ -1,0 +1,78 @@
+<ion-view class="m-message" cache-view="false">
+	<ion-nav-bar class="bar bar-header bar-light">
+		<ion-nav-title><span ng-bind="'Index_InformationCenter'|translate"></span></ion-nav-title>
+		<ion-nav-buttons side="left">
+			<a class="button button-icon icon ion-ios-arrow-back" ng-click="historyBack()"></a>
+		</ion-nav-buttons>
+		<ion-nav-buttons side="right">
+			<!-- <a ng-if="currentUser.TestState!=2" class="button button-icon icon ion-android-add" href="#/noticeadd"></a>--></ion-nav-buttons>
+	</ion-nav-bar>
+	<ion-content class="has-header" scroll="false">
+		<div ng-if="currentUser.TestState != 2">
+			<cur-tabs class="tab-label" on-change="onChange(index)" tab-index="{{type}}">
+				<cur-tab tabscale="col col-50" title="{{'Common_LabelNotice'| translate}}({{noticeCount}})">
+					<ion-content class="message-list">
+						<div ng-if="ansycNoticeLoaded">
+							<ion-refresher on-refresh="noticeRefresh()"></ion-refresher>
+						</div>
+						<div ng-if="!ansycNoticeLoaded" class="padding text-center">
+							<ion-spinner></ion-spinner>
+						</div>
+						<div ng-if="ansycNoticeLoaded">
+							<div class="list" ng-if="notices.length>0">
+								<div class="item" ng-click="showDetail(1,item.ID,item.ShortContent,item.StartDateTime)" ng-repeat="item in notices"><i class="icon ion-record {{item.Read==0?'':'hide'}}"></i>
+									<h3>{{item.ShortContent}}</h3>
+									<p>{{item.StartDateTime}}</p>
+								</div>
+							</div>
+							<div ng-if="notices.length==0&&!refreshData" class="text-center padding">{{'Member_LabelNoData' | translate}}</div>
+						</div>
+						<ion-infinite-scroll ng-if="moreNoticeCanBeLoaded" distance="1%" class="text-center" icon="ion-chevron-down" immediate-check="false" on-infinite="loadMoreNotice()"></ion-infinite-scroll>
+					</ion-content>
+				</cur-tab>
+				<cur-tab tabscale="col col-50" title="{{'Member_LabelSiteLetter'| translate}}({{mailCount}})">
+					<ion-content class="InternalMessage-list">
+						<div ng-if="ansycMailLoaded">
+							<ion-refresher on-refresh="mailRefresh()"></ion-refresher>
+						</div>
+						<div ng-if="!ansycMailLoaded" class="padding text-center">
+							<ion-spinner></ion-spinner>
+						</div>
+						<div ng-if="ansycMailLoaded && !refreshData">
+							<ion-list>
+								<ion-item ng-repeat="item in mails" item="item" ng-click="showDetail(2,item.MessID,item.SendType)" class="item-remove-animate"><i class="icon ion-record {{item.ReadState==0?'':'hide'}}"></i>
+									<h3>{{item.ShortContent}}</h3>
+									<p><span ng-if="item.SendType==1">{{'Index_CustomerService'|translate}}:</span> <span ng-if="item.SendType!=1">{{'Member_LabelYourself'|translate}}:</span> <span>{{item.SendDateTime.split(' ')[0]}}</span> <span class="reply" ng-if="item.IsReply!=0"
+										ng-bind="'Member_LabelReplyed'|translate"></span></p>
+									<ion-option-button class="button-assertive" ng-click="delMail(item.MessID,item.SendType)">{{'Common_LabelDelete'|translate}}</ion-option-button>
+								</ion-item>
+							</ion-list>
+							<div ng-if="mails.length==0" class="text-center padding">{{'Member_LabelNoData' | translate}}</div>
+						</div>
+						<ion-infinite-scroll ng-if="moreMailCanBeLoaded" distance="1%" icon="ion-chevron-down" class="text-center" immediate-check="false" on-infinite="loadMoreMail()"></ion-infinite-scroll>
+					</ion-content>
+				</cur-tab>
+			</cur-tabs>
+		</div>
+		<div ng-if="currentUser.TestState==2">
+			<ion-content class="message-list test-user-message">
+				<div ng-if="ansycNoticeLoaded">
+					<ion-refresher on-refresh="noticeRefresh()"></ion-refresher>
+				</div>
+				<div ng-if="!ansycNoticeLoaded" class="padding text-center">
+					<ion-spinner></ion-spinner>
+				</div>
+				<div ng-if="ansycNoticeLoaded">
+					<div class="list">
+						<div class="item" ng-click="showDetail(1,item.ID,item.ShortContent,item.StartDateTime)" ng-repeat="item in notices"><i class="icon ion-record {{item.Read==0?'':'hide'}}"></i>
+							<h3>{{item.ShortContent}}</h3>
+							<p>{{item.StartDateTime}}</p>
+						</div>
+						<div ng-if="notices.length==0" class="text-center padding">{{'Member_LabelNoData' | translate}}</div>
+					</div>
+				</div>
+				<ion-infinite-scroll ng-if="moreNoticeCanBeLoaded" distance="1%" class="text-center" icon="ion-chevron-down" immediate-check="false" on-infinite="loadMoreNotice()"></ion-infinite-scroll>
+			</ion-content>
+		</div>
+	</ion-content>
+</ion-view>

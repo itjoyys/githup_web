@@ -1,0 +1,60 @@
+<title>会员消息管理</title>
+<{include file="web_header.html"}>
+<script>
+    //分页跳转
+  window.onload=function(){
+    document.getElementById("page").onchange=function(){
+      document.getElementById('queryform').submit()
+    }
+  }
+</script>
+
+<body>
+<div id="con_wrap">
+  <div class="input_002">会员消息管理</div>
+  <div class="con_menu">
+  <form name="queryform" id="queryform" action="" method="get">
+    <a href="<{$site_url}>/other/news/member_msg_add">发布新消息</a>&nbsp;&nbsp;
+  日期：
+  <input type="text" id="date_start" name="start_date"  value="<{$start_date}>" onClick="WdatePicker()" class="za_text Wdate">
+  --
+  <input type="text" id="date_end" name="end_date"  value="<{$end_date}>" onClick="WdatePicker()" style="min-width:80px;width:80px" class="za_text Wdate">
+    類型：
+  <select name="type" class="za_select" id="type" onchange="document.getElementById('queryform').submit()">
+      <option value="">全部</option>
+        <option value="1" <{select_check(1,$smarty.get.type)}>>普通通知</option>
+        <option value="2" <{select_check(2,$smarty.get.type)}>>優惠通知</option>
+        <option value="3" <{select_check(3,$smarty.get.type)}>>出入款通知</option>
+    </select>
+    帳號：
+  <input type="text" name="username" class="za_text" value="<{$smarty.get.username}>" size="10">&nbsp;&nbsp;
+  <input class="button_d" value="查詢" type="submit">
+  &nbsp;<{$page}>
+
+  </form>
+  </div>
+</div>
+<div class="content">
+<table  class="m_tab" width="100%">
+    <tbody><tr class="m_title_over_co">
+                <td align="center" width="300px">标题</td>
+                <td align="center">内容</td>
+                <td align="center" width="150px">發送日期</td>
+                <td align="center" width="50px">操作</td>
+              </tr>
+              <{foreach from=$user_msg key=i item=v}>
+             <tr class="m_cen <{if $i%2 == 0}>even<{/if}>">
+                <td align="center"><{$v['msg_title']}></td>
+                <td align="center"><{$v['msg_info']}></td>
+                <td align="center"><{$v['msg_time']}></td>
+                <td align="center">
+                <a href="javascript:void(0)" onclick="if(confirm('确定要删除这条信息吗?')){window.location.href='<{$site_url}>/other/news/member_msg_act?id=<{$v['msg_id']}>'}" >删除</a>
+                </td>
+             </tr>
+              <{/foreach}>
+
+              </tbody></table>
+</div>
+
+<!-- 公共尾部 -->
+<{include file="web_footer.html"}>

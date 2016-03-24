@@ -1,0 +1,182 @@
+<title>额度转换</title>
+<{include file="web_header.html"}>
+<style type="text/css">
+  .m_cen{
+    height: 30px;
+  }
+</style>
+<body>
+<div  id="con_wrap">
+  <div  class="input_002">额度转换</div>
+  <div  class="con_menu">
+    <form  method="get" action="<{$site_url}>/cash/catm/conversion" name="search_form" >
+       <a href="<{$site_url}>/cash/catm/conversion" style="color:#f00;">额度转换</a>
+       <a href="<{$site_url}>/cash/catm/conversion_log" >额度转换记录</a>
+      會員帳號：
+      <input size="20"  name="username"  class="za_text"  value="<{$user['username']}>">
+      &nbsp;&nbsp;
+      <input  class="button_d"  value="查詢"  type="submit">
+    </form>
+  </div>
+</div>
+<div  class="content">
+  <form  id="myform" method="POST" action="<{$site_url}>/cash/catm/conversion_do">
+    <input  type="hidden"  id="userid" name="userid"  value="<{$user['uid']}>">
+    <input  type="hidden"  id="agent_id" name="agent_id"  value="<{$user['agent_id']}>">
+    <input  type="hidden"  name="username"  value="<{$user['username']}>">
+    <input  type="hidden"  name="index_id"  value="<{$user['index_id']}>">
+    <table  class="m_tab"  style="width:550px">
+      <tbody><tr  class="m_title_over_co">
+        <td  colspan="4" align="center">额度转换</td>
+      </tr>
+      <tr class="m_cen even">
+        <td align="center"  style="width:120px"  class="table_bg1 textTr">帳號</td>
+        <td style="width: 150px;" align="left"><{$user['username']}></td>
+        <td align="center"  style="width:120px"  class="table_bg1 textTr">姓名</td>
+        <td style="width: 120px;" align="left"><{$user['pay_name']}></td>
+      </tr>
+      <tr class="m_cen">
+        <td align="center"  class="table_bg1 textTr">系统余額</td>
+        <td colspan="3" align="left"><span  id="money1"><{$user['money']}></span> 元</td>
+
+      </tr>
+      <tr class="m_cen even">
+        <td align="center"  class="table_bg1 textTr">CT余額</td>
+        <td align="left"><span  id="ct_money"><{$data_u['ct_money']}></span> 元</td>
+        <td align="center"  class="table_bg1 textTr">MG余額</td>
+        <td align="left"><span  id="mg_money"><{$data_u['mg_money']}></span> 元</td>
+      </tr>
+       <tr class="m_cen">
+        <td align="center"  class="table_bg1 textTr">BBIN余額</td>
+        <td align="left"><span  id="bbin_money"><{$data_u['bbin_money']}></span> 元</td>
+         <td align="center"  class="table_bg1 textTr">AG余額</td>
+        <td align="left"><span  id="ag_money"><{$data_u['ag_money']}></span> 元</td>
+      </tr>
+      <tr class="m_cen even">
+        <td align="center"  class="table_bg1 textTr">OG余額</td>
+        <td align="left"><span  id="og_money"><{$data_u['og_money']}></span> 元</td>
+          <td align="center"  class="table_bg1 textTr">LB余額</td>
+        <td align="left"><span  id="lebo_money"><{$data_u['lebo_money']}></span> 元</td>
+
+      </tr>
+           <tr class="m_cen even">
+        <td align="center"  class="table_bg1 textTr">PT余額</td>
+        <td align="left"><span  id="og_money"><{$data_u['pt_money']}></span> 元</td>
+          <td align="center"  class="table_bg1 textTr"></td>
+        <td align="left"><span  id="lebo_money"></span></td>
+
+      </tr>
+
+       <tr id="ck_tr" class="m_cen">
+        <td align="center" class="table_bg1 textTr" id="sp_name">转换金額</td>
+        <td colspan="3" align="left"><input onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" maxlength="10" value="0" size="21" class="za_text" name="amount" id="amount"><font style="color:red;">(请输入整数)</font></td>
+      </tr>
+      <tr class="m_cen even">
+        <td align="center"  class="table_bg1 textTr"  id="type_name">转出项目</td>
+        <td colspan="3" align="left">
+            <select name="type_out" id="type_out">
+            <option value="sport">系统余額</option>
+            <option value="mg">MG游戏厅</option>
+            <option value="ag">AG游戏厅</option>
+            <option value="og">OG游戏厅</option>
+            <option value="ct">CT游戏厅</option>
+            <option value="lebo">LEBO游戏厅</option>
+            <option value="bbin">BBIN游戏厅</option>
+            <option value="pt">PT游戏厅</option>
+            </select>
+        </td>
+      </tr>
+        <tr class="m_cen">
+        <td align="center"  class="table_bg1 textTr"  id="type_name">转入项目</td>
+        <td colspan="3" align="left">
+            <select name="type_in" id="type_in">
+            <option value="sport">系统余額</option>
+            <option value="mg">MG游戏厅</option>
+            <option value="ag">AG游戏厅</option>
+            <option value="og">OG游戏厅</option>
+            <option value="ct">CT游戏厅</option>
+            <option value="lebo">LEBO游戏厅</option>
+            <option value="bbin">BBIN游戏厅</option>
+            <option value="pt">PT游戏厅</option>
+            </select>
+        </td>
+      </tr>
+      <tr class="m_cen even">
+        <td align="center"  class="table_bg1 textTr">備注</td>
+        <td colspan="3" align="left"><textarea  name="c_remark"  style="height: 50px; width:350px"  class="za_text"></textarea></td>
+      </tr>
+      <tr class="m_cen">
+        <td align="center" class="table_bg1 textTr">會員備注</td>
+        <td colspan="3" align="left"><{$user['about']}></td>
+      </tr>
+      <tr align="center" class="m_cen even">
+        <td  colspan="4"  class="table_bg1">
+        <input  value="確定"  id="savebtn"  name="savebtn"  type="submit"  class="button_a">
+          &nbsp;&nbsp;
+         <input  type="reset"  value="重置"  class="button_a"></td>
+      </tr>
+    </tbody></table>
+  </form>
+</div>
+<style>
+#kq_box_001 {
+    background: url("<{$site_url}>/../public/images/loading11.gif") no-repeat scroll center 30px;
+    /*border: 1px solid #acacac;*/
+    margin: 0 auto;
+    width: 600px;
+    height:200px;
+}
+</style>
+<div style="display: none;width:1200px" id="kq_box_001">
+
+	<div style="width:253px;margin:35px auto 0;text-align:center" id="kq_box_text">
+		<b><span style="color:#7c3838" id="gold0"><b>正在执行请勿重复操作！</b></span></b>
+	</div>
+
+</div>
+<script type="text/javascript">
+var sport_money = "<{$user['money']}>";
+var ag_money = "<{$data_u['ag_money']}>";
+var og_money = "<{$data_u['og_money']}>";
+var mg_money = "<{$data_u['mg_money']}>";
+var ct_money = "<{$data_u['ct_money']}>";
+var lebo_money = "<{$data_u['lebo_money']}>";
+var bbin_money = "<{$data_u['bbin_money']}>";
+$(document).ready(function() {
+
+    $("#savebtn").bind("click",function(e){
+    	  var type_out = $('#type_out').val();
+        var type_in = $('#type_in').val();
+        var tmp_money = type_out + '_money';
+        var amount = $('#amount').val();
+          if($('#userid').val()=="")
+		  {
+		      alert("請先查詢會員！");return false;
+		  }
+		  if(amount == "" || amount == '0')
+		  {
+		      alert("请输入转换金额！");return false;
+		  }
+		   if(amount < 0)
+		  {
+		      alert("转换金额必须大于1元！");return false;
+		  }
+      if (amount > eval(tmp_money)) {
+            alert("金额不能大于可用余额！");return false;
+        };
+		  if (type_out != 'sport' && type_in != 'sport') {
+              alert('额度转换,只能在系统余额和视讯余额之间转换,视讯余额之间不能直接转换!');
+              return false;
+          }
+          if (type_out == type_in) {
+             alert('额度转换不能在同平台之间!');
+             return false;
+          }
+          $('.content').hide();
+          $('#kq_box_001').show();
+    })
+})
+
+</script>
+<!-- 公共尾部 -->
+<{include file="web_footer.html"}>

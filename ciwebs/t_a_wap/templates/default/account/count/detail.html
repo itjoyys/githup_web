@@ -1,0 +1,62 @@
+<ion-view cache-view="false" hide-nav-bar="false" class="count">
+    <ion-nav-bar class="bar bar-header">
+        <ion-nav-buttons side="left"><a class="button button-icon icon ion-chevron-left"
+                                        href="#/countByDay/{{rid}}/{{day}}"></a></ion-nav-buttons>
+        <ion-nav-title>{{'Common.BettingRecord'|translate}}</ion-nav-title>
+    </ion-nav-bar>
+    <ion-content scroll="false">
+        <div class="row tips">
+            <div class="col text-left">{{name}}</div>
+            <div class="col text-right day">{{day}} {{whatDay}}</div>
+        </div>
+        <div class="row text-center title-no detail">
+            <div class="col col-31 tle">{{'LotteryReports.LabelBetDetail'|translate}}</div>
+            <div class="col col-23 tle">{{'LotteryReports.LabelTotalBetMoney'|translate}}</div>
+            <div class="col col-23 tle">{{'LotteryReports.LabelWinORLose'|translate}}</div>
+            <div class="col col-23 tle">{{'LotteryReports.LabelBetDateTime'|translate}}</div>
+        </div>
+        <ion-content class="list detail">
+            <ion-refresher ng-show="ansycLoaded" on-refresh="reflash()"></ion-refresher>
+            <div ng-if="!ansycLoaded" class="page-loading text-center padding">
+                <ion-spinner></ion-spinner>
+            </div>
+            <cur-tips tip="tip"></cur-tips>
+            <div ng-if="ansycLoaded" class="row day" ng-repeat="item in detailData">
+                <div class="col col-31 text-left tal">
+                    <div class="cont">
+                        <div class="item-data">{{item.LotteryNo}}</div>
+                        <div class="item-data">{{item.PlayTypeName}}</div>
+                        <div class="item-data" ng-if="item.Lines>0">@{{item.Lines}}</div>
+                        <div class="item-data" ng-if="item.BetContent != '' && item.BetContent != null">
+                            {{item.BetContent}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col col-23 text-center tal pdt-15">
+                    <div class="cont pdt-15">{{item.TotalBetMoney}}</div>
+                </div>
+                <div class="col col-23 text-center tal pdt-15">
+                    <div class="cont {{item.WinLoseMoney>0?'t-green':''}} {{item.WinLoseMoney<0?'t-red':''}}">
+                        {{item.WinLoseMoney}}
+                    </div>
+                </div>
+                <div class="col col-23 tal">
+                    <div class="cont ct">{{item.BetDateTime}}</div>
+                </div>
+            </div>
+            <ion-infinite-scroll ng-if="moreDataCanBeLoaded" distance="1%" immediate-check="false"
+                                 icon="ion-chevron-down"
+                                 on-infinite="getCountByDateAndLotteryId()"></ion-infinite-scroll>
+        </ion-content>
+        <ion-footer-bar>
+            <div class="row">
+                <div class="col col-50 text-valign-center pdl-15">{{'Common.LabelTotalAmount' |
+                    translate}}：{{countLottery.SumTotalBetMoney}}
+                </div>
+                <div class="col col-50 text-valign-center">{{'Common.LabelTotalLoseOrWin' | translate}}： <a
+                        class="{{countLottery.SumWinLoseMoney>0?'t-green':''}} {{countLottery.SumWinLoseMoney<0?'t-red':''}}">{{countLottery.SumWinLoseMoney}}</a>
+                </div>
+            </div>
+        </ion-footer-bar>
+    </ion-content>
+</ion-view>

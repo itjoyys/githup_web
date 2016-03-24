@@ -1,0 +1,82 @@
+<{config_load file="public.conf" section="public"}>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+<link rel="stylesheet" href="<{#mem_css#}>/index_main.css" />
+<script src="<{#mem_js#}>/jquery-1.8.3.min.js"></script>
+</head>
+<body
+	style="BACKGROUND: url(<{#mem_images#}>/../private/content_bg.jpg) repeat-y left top;">
+	<div id="MAMain" style="width: 767px">
+		<div id="MACenter-content">
+			<div id="MACenterContent">
+				<div id="MNav">
+					<span class="mbtn">我要推广</span>
+					<div class="navSeparate"></div>
+					   <a target="k_memr"  class="mbtn"
+				href="<{$site_url}>/index.php/member/spread/spread_top">排行榜</a>
+				</div>
+				<div id="MMainData" style="overflow-y: scroll; height: 370px">
+						<table class="MMain" border="1">
+							<thead>
+								    <tr><th colspan="20" style="background-color: #C5D9F1;">推广资料</th></tr>
+								<tr>
+									<th align=middle>帐号</th>
+									<th align=middle>推广人数</th>
+									<th align=middle>收益</th>
+									<th align=middle>推广网址</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td align=middle><{$sdata['username']}></td>
+									<td align=middle><{$sdata['spread_num']}></td>
+									<td align=middle><{$sdata['spread_money']}></td>
+									<td align=middle><{$surl}></td>
+								</tr>
+							</tbody>
+						</table>
+							<table class="MMain" border="1">
+							<thead>
+								  <tr><th colspan="20" style="background-color: #C5D9F1;">推广返利比例</th></tr>
+								<tr>
+								   <th align=middle>有效打码</th>
+								   <{foreach from=$video_types item=val}>
+									<th align=middle><{$title[$val]}></th>
+								   <{/foreach}>
+								</tr>
+							</thead>
+							<tbody>
+							     <{foreach from=$disdata item=v}>
+							       <tr>
+							        <td align=middle><{$v['count_bet']}></td>
+							        <{foreach from=$video_types item=vi}>
+									<td align=middle><{$v[$vi]}></td>
+								    <{/foreach}>
+									</tr>
+								  <{/foreach}>
+
+							</tbody>
+						</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+
+<style>
+.button_d {
+	background: -moz-linear-gradient(center top, white, #ededed) repeat
+		scroll 0 0 rgba(0, 0, 0, 0);
+	border: 1px solid #b7b7b7;
+	color: #3d3934;
+	border-radius: 0.5em;
+	box-shadow: 0 1px 2px rgba(97, 97, 97, 0.2);
+	font: 12px/100% Arial, Helvetica, sans-serif;
+	padding: 0.45em 0.5em 0.5em;
+	display: inline-block;
+	cursor: pointer;
+}
+</style>

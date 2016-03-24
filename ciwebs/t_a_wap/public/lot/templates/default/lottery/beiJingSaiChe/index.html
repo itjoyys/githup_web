@@ -1,0 +1,42 @@
+<div class="cur-lottery">
+    <div class="perio">
+        <div class="pre-perio">
+            <div class="col item"><span class="span-fl">{{baseInfo.PrePeriodNumber}}{{'LotteryReports.LabelPeriod'|translate}}</span>
+                <div class="div-fr" ng-bind-html="baseInfo.PreResult|yd:'7'"></div>
+            </div>
+        </div>
+        <div class="cur-perio">
+            <div class="col item"><span>{{baseInfo.CurrentPeriod}}{{'LotteryReports.LabelPeriod'|translate}} {{'Common.LabelClosePan'|translate}}:</span>
+                <span class="time">{{baseInfo.CloseTime}}</span> <span>{{'Common.LabelOpenResult'|translate}}:</span>
+                <span class="time">{{baseInfo.OpenTime}}</span></div>
+        </div>
+    </div>
+    <div class="lottery-bet">
+        <cur-menus>
+            <cur-menu title="{{'Common.LabelLiangMian'|translate}}"
+                      url="templates/default/lottery/beiJingSaiChe/liangmian.html"></cur-menu>
+            <cur-menu title="{{'Common.Lottery_4_GuanYaHe'|translate}}"
+                      url="templates/default/lottery/beiJingSaiChe/guanya.html"></cur-menu>
+            <cur-menu title="{{'Common.GuanJun'|translate}}"
+                      url="templates/default/lottery/beiJingSaiChe/qiu1.html"></cur-menu>
+            <cur-menu title="{{'Common.YaJun'|translate}}"
+                      url="templates/default/lottery/beiJingSaiChe/qiu2.html"></cur-menu>
+            <cur-menu title="{{'Common.DiSanMing'|translate}}"
+                      url="templates/default/lottery/beiJingSaiChe/qiu3.html"></cur-menu>
+            <cur-menu title="{{'Common.DiSiMing'|translate}}"
+                      url="templates/default/lottery/beiJingSaiChe/qiu4.html"></cur-menu>
+            <cur-menu title="{{'Common.DiWuMing'|translate}}"
+                      url="templates/default/lottery/beiJingSaiChe/qiu5.html"></cur-menu>
+            <cur-menu title="{{'Common.DiLiuMing'|translate}}"
+                      url="templates/default/lottery/beiJingSaiChe/qiu6.html"></cur-menu>
+            <cur-menu title="{{'Common.DiQiMing'|translate}}"
+                      url="templates/default/lottery/beiJingSaiChe/qiu7.html"></cur-menu>
+            <cur-menu title="{{'Common.DiBaMing'|translate}}"
+                      url="templates/default/lottery/beiJingSaiChe/qiu8.html"></cur-menu>
+            <cur-menu title="{{'Common.DiJiuMing'|translate}}"
+                      url="templates/default/lottery/beiJingSaiChe/qiu9.html"></cur-menu>
+            <cur-menu title="{{'Common.DiShiMing'|translate}}"
+                      url="templates/default/lottery/beiJingSaiChe/qiu10.html"></cur-menu>
+        </cur-menus>
+    </div>
+</div>

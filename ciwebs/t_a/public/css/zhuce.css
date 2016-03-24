@@ -1,0 +1,14 @@
+/* CSS Document */
+
+.zhuce{ border:1px solid  #F0F0F0; margin-top:30px; border-radius:4px;}
+.legend{ margin-left:20px; color:#951413; font-weight:bolder;}
+.table1 { width:700px; margin-left:50px; margin-top:10px; margin-bottom:20px;}
+.table1 tr td { height:40px;}
+.table1 tr td input{ height:20px;}
+.name{ font-size:14px; color:#656264;}
+#tishi{ color:#901413;}
+.buttion{ width:700px; text-align:center; margin-top:20px; margin:0 auto; margin-top:20px;}
+.beizhu ul li { margin-left:20px; color:#656264; line-height:25px;}
+.rule{ color:#901413;}
+.buttion input[type="submit"]{ padding:8px 15px; background:#981413; border:0px; color:#FFF; border-radius:4px;}
+.buttion input[type="reset"]{ padding:8px 15px; background:#981413; border:0px; color:#FFF; border-radius:4px;}

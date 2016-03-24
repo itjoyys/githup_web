@@ -1,0 +1,65 @@
+<{config_load file="public.conf" section="public"}>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+        <link rel="stylesheet" href="<{#mem_css#}>/index_main.css" />
+        <link rel="stylesheet" href="<{#mem_css#}>/standard.css" />
+    </head>
+    <style type="text/css">
+       .pagelink{
+          text-decoration: underline;
+       }
+    </style>
+    <body style="BACKGROUND: url(<{#mem_images#}>/../private/content_bg.jpg) repeat-y left top;">
+        <div id="MAMain">
+            <div id="MACenter-content">
+                <div id="MACenterContent">
+                    <div id="MNav"> <a  target="k_memr" <{if $shiwan == 1}>onclick="alert('试玩账号不能存取款，请注册正式账号！')"<{else}> href="<{$site_url}>/index.php/member/cash/zr_money"<{/if}> class="mbtn">额度转换</a>
+                        <div class="navSeparate"></div>
+                        <span class="mbtn">线上存款</span>
+                        <div class="navSeparate"></div>
+                        <a target="k_memr" <{if $shiwan == 1}>onclick="alert('试玩账号不能存取款，请注册正式账号！')"<{else}>href="<{$site_url}>/index.php/member/cash/getmoney"<{/if}> class="mbtn">线上取款</a>
+                    </div>
+                    <div style="margin-top: 8px;overflow-y:scroll; height:370px">
+                        <table class="MMain MNoBorder">
+                            <tbody>
+                                <{foreach key=k item=v from=$deposit}>
+                                    <{if $v['type'] eq 1}>
+                                    <{assign var="UserName" value="../income/Index"}>
+                                    <{else if $v['type'] eq 2}>
+                                    <{assign var="UserName" value="bank"}>
+                                    <{else if}>
+                                    <{assign var="UserName" value="../income/Hk_card"}>
+                                    <{/if}>
+                                    <tr>
+                                        <td nowrap="" class="">
+                                        <a class="pagelink" href="javascript:void(0);" onclick="<{if $shiwan == 1}>alert('试玩账号不能存取款，请注册正式账号！')<{else}>open_bw('<{$UserName}>');<{/if}>"><{$v['title']}></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="MNotice">
+                                        <div id="notices">
+                                        <div><{$v['content']}></div>
+                                        </div>
+                                        </td>
+                                    </tr>
+                                <{/foreach}>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+
+<style>
+TABLE.MMain TD A{float:left;}
+</style>
+
+<script>
+    function open_bw(url){
+        window.open(url,'newwindow','height=580,width=800,top=20,left=200,toolbar=no,menubar=no,scrollbars=yes,resizable=yes,location=no,status=no')
+    }
+</script>

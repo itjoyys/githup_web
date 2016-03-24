@@ -1,0 +1,54 @@
+<ion-view cache-view="false" class="m-bank">
+	<ion-nav-bar class="bar bar-header bar-light">
+		<ion-nav-buttons side="left">
+			<a class="button button-icon icon ion-ios-arrow-back" ng-click="ionicBack()"></a>
+		</ion-nav-buttons>
+		<ion-nav-title>{{'Common_LabelBankInfo'|translate}}</ion-nav-title>
+	</ion-nav-bar>
+	<ion-content class="has-header">
+		<div ng-if="!ansycLoaded" class="text-center padding"><ion-spinner></ion-spinner></div>
+		<div ng-show="ansycLoaded">
+			<form name="mdfBankForm" novalidate="novalidate" ng-submit="mdfBankForm.$valid?mdfBank(mdfBankData):'return false'">
+				<div class="list">
+					<label class="item item-select">
+						<select name="BankID" ng-model="mdfBankData.BankID" required="required">
+							<option value="">{{'Member_LabelChooseBank'|translate}}</option>
+							<option value="{{item.BankID}}" ng-repeat="item in bankData">{{item.BankName}}</option>
+						</select>
+					</label>
+					<p class="item-warn text-assertive" ng-show="(mdfBankForm.$submitted || mdfBankForm.BankID.$touched)&&(mdfBankForm.BankID.$error.required)">*{{'Member_TipsPleaseChooseBank'|translate}}</p>
+					<label class="item item-select" ng-show="showProvince">
+						<select name="BankProvince" ng-model="mdfBankData.BankProvince" ng-required="{{showProvince}}" ng-change="getCityData(mdfBankData.BankProvince)">
+							<option value="">{{'Member_LabelBelongProvince'|translate}}</option>
+							<option value="{{item.Name}}" ng-repeat="item in provinceData">{{item.Name}}</option>
+						</select>
+					</label>
+					<p class="item-warn text-assertive" ng-show="(mdfBankForm.$submitted || mdfBankForm.BankProvince.$touched)&&mdfBankForm.BankProvince.$error.required&&showProvince">*{{'Member_TipsPleaseChooseProvince'|translate}}</p>
+					<label class="item item-select" ng-show="showProvince">
+						<select name="BankCity" ng-model="mdfBankData.BankCity" ng-required="{{showProvince}}">
+							<option value="">{{'Member_LabelBelongCity'|translate}}</option>
+							<option value="{{item.Name}}" ng-selected="mdfBankData.BankCity==item.Name" ng-repeat="item in cityData">{{item.Name}}</option>
+						</select>
+					</label>
+					<!--<p class="item-warn text-assertive" ng-show="(mdfBankForm.$submitted|| mdfBankForm.BankCity.$touched)&&mdfBankForm.BankCity.$error.required&&showProvince">*{{'Member_TipsPleaseChooseCity'|translate}}</p>
+					<div class="item item-input">
+						<input type="text" name="BankBranchName" ng-model="mdfBankData.BankBranchName" placeholder="{{'Member_LabelBankAddress'|translate}}" required="" ng-pattern="/^[\s\S]{2,30}$/" reset-field="">
+					</div>
+					<p class="item-warn text-assertive" ng-show="(mdfBankForm.$submitted || mdfBankForm.BankBranchName.$touched)&&mdfBankForm.BankBranchName.$error.required">*{{'Member_TipsPleaseBankAddress'|translate}}</p>
+					<p class="item-warn text-assertive" ng-show="(mdfBankForm.$submitted || mdfBankForm.BankBranchName.$touched)&&mdfBankForm.BankBranchName.$error.pattern">*{{'Member_LabelPleaseInputAccount'|formats:['30']}}</p>-->
+					<div class="item item-input">
+						<input type="tel" class="uc-set-scroll" name="BankAccount" ng-model="mdfBankData.BankAccount" placeholder="{{'Member_LabelBankAccount'|translate}}" ng-keyup="parseNum($event)" required="" ng-pattern="/^[0-9]{16,19}$/" reset-field="">
+					</div>
+					<p class="item-warn text-assertive" ng-show="(mdfBankForm.$submitted || mdfBankForm.BankAccount.$touched)&&(mdfBankForm.BankAccount.$error.required)">*{{'Member_LabelPleaseInputBank'|translate}}</p>
+					<p class="item-warn text-assertive" ng-show="(mdfBankForm.$submitted || mdfBankForm.BankAccount.$touched)&&(mdfBankForm.BankAccount.$error.pattern)">*{{'Member_LabelPleaseInputNumber'|formats:['16','19']}}</p>
+				</div>
+				<div class="padding">
+					<p>{{'Member_LabelBankRealName'|translate}}：<span>{{realName}}</span></p>
+					<p>{{'Common_LabelWithdrawalPassword'|translate}}：<span>{{qkpwd}}</span></p>
+					<button ng-class="'button button-block button-positive'" type="submit">{{'Common_ButtonSure'|translate}}</button>
+				</div>
+				<div ng-if="ucFlag" style="height:300px;">&nbsp;</div>
+			</form>
+		</div>
+	</ion-content>
+</ion-view>

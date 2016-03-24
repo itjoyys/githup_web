@@ -1,0 +1,85 @@
+<ion-view class="m-mdfpwd" cache-view="false">
+    <ion-nav-bar class="bar bar-header bar-light">
+        <ion-nav-buttons side="left"><a class="button button-icon icon ion-ios-arrow-back" ng-href="#/center"></a>
+        </ion-nav-buttons>
+        <ion-nav-title>{{'Common_ButtonChangePassword'|translate}}</ion-nav-title>
+    </ion-nav-bar>
+    <ion-content class="has-header">
+        <cur-tabs class="tab-label">
+            <cur-tab tabscale="col col-50" title="{{'Common_LabelLoginPassword'|translate}}">
+                <form name="mdfLoginPwdForm" novalidate="novalidate"
+                      ng-submit="mdfLoginPwdForm.$valid?mdfLoginPwd(mdfLoginPwdData):'return false'">
+                    <div class="list list-inset">
+                        <div class="item item-input"><input type="password" name="OldLoginPwd"
+                                                            placeholder="{{'Member_LabelInputOldPwd'|translate}}"
+                                                            ng-model="mdfLoginPwdData.OldLoginPwd" required=""
+                                                            ng-minlength="6" ng-maxlength="11"
+                                                            ng-pattern="/[a-zA-Z0-9]{6,11}$/" reset-field=""></div>
+                        <p class="item-warn text-assertive"
+                           ng-if="((mdfLoginPwdForm.$submitted || mdfLoginPwdForm.OldLoginPwd.$touched)&&(mdfLoginPwdForm.OldLoginPwd.$error.required||mdfLoginPwdForm.OldLoginPwd.$error.maxlength))">
+                            * {{'Member_PasswordRule'|translate}}</p>
+                        <div class="item item-input"><input type="password" name="NewLoginPwd"
+                                                            placeholder="{{'Member_LabelInputNewPwd'|translate}}"
+                                                            ng-required="mdfLoginPwdData.OldLoginPwd.length>0"
+                                                            ng-model="mdfLoginPwdData.NewLoginPwd" ng-minlength="6"
+                                                            ng-maxlength="11" ng-pattern="/[a-zA-Z0-9]{6,11}$/"
+                                                            reset-field=""></div>
+                        <p class="item-warn text-assertive"
+                           ng-if="((mdfLoginPwdForm.$submitted || mdfLoginPwdForm.NewLoginPwd.$touched)&&(mdfLoginPwdForm.NewLoginPwd.$error.pattern||mdfLoginPwdForm.NewLoginPwd.$error.minlength||mdfLoginPwdForm.NewLoginPwd.$error.maxlength||mdfLoginPwdForm.NewLoginPwd.$error.required))">
+                            * {{'Member_PasswordRule'|translate}}</p>
+                        <div class="item item-input"><input type="password" class="uc-set-scroll" name="NewLoginPwdRpt"
+                                                            placeholder="{{'Member_LabelInputNewPwdAgain'|translate}}"
+                                                            ng-model="mdfLoginPwdData.NewLoginPwdRpt"
+                                                            ng-required="mdfLoginPwdData.NewLoginPwd.length>0"
+                                                            ng-pattern="mdfLoginPwdData.NewLoginPwd" reset-field="">
+                        </div>
+                        <p class="item-warn text-assertive"
+                           ng-if="((mdfLoginPwdForm.$submitted || mdfLoginPwdForm.NewLoginPwdRpt.$touched)&&(mdfLoginPwdForm.NewLoginPwdRpt.$error.pattern||mdfLoginPwdForm.NewLoginPwdRpt.$error.required))">
+                            * {{'Common_TipsPwdDifferent'|translate}}</p>
+                        <button class="button button-block button-positive" type="submit">
+                            {{'Common_ButtonSureEdit'|translate}}
+                        </button>
+                    </div>
+                    <div ng-if="ucFlag" style="height:300px;">&nbsp;</div>
+                </form>
+            </cur-tab>
+            <cur-tab tabscale="col col-50" title="{{'Common_LabelWithdrawalPassword'|translate}}">
+                <form name="mdfWithPwdForm" id="mdfWithPwdForm" novalidate="novalidate"
+                      ng-submit="mdfWithPwdForm.$valid?mdfWithPwd(mdfWithPwdData):'return false'">
+                    <div class="list list-inset">
+                        <div class="item item-input"><input type="password" name="OldWithdrawPwd"
+                                                            ng-model="mdfWithPwdData.OldWithdrawPwd"
+                                                            placeholder="{{'Member_LabelInputOldPwd'|translate}}"
+                                                            ng-pattern="/^[0-9]{4}$/" ng-keyup="parseNum($event)" required="" reset-field=""
+                                                            maxlength="4"></div>
+                        <p class="item-warn text-assertive"
+                           ng-if="((mdfWithPwdForm.$submitted || mdfWithPwdForm.OldWithdrawPwd.$touched)&&(mdfWithPwdForm.OldWithdrawPwd.$error.required||mdfWithPwdForm.OldWithdrawPwd.$error.pattern))">
+                            * {{'Member_PasswordRule1'|translate}}</p>
+                        <div class="item item-input"><input type="password" name="NewWithDrawPwd"
+                                                            placeholder="{{'Member_LabelInputNewPwd'|translate}}"
+                                                            ng-model="mdfWithPwdData.NewWithDrawPwd"
+                                                            ng-required="mdfWithPwdData.OldWithdrawPwd.length>0"
+                                                            ng-pattern="/^[0-9]{4}$/" ng-keyup="parseNum($event)" reset-field="" maxlength="4">
+                        </div>
+                        <p class="item-warn text-assertive"
+                           ng-if="((mdfWithPwdForm.$submitted || mdfWithPwdForm.NewWithDrawPwd.$touched)&&(mdfWithPwdForm.NewWithDrawPwd.$error.pattern||mdfWithPwdForm.NewWithDrawPwd.$error.required))">
+                            * {{'Member_PasswordRule1'|translate}}</p>
+                        <div class="item item-input"><input class="uc-set-scroll" name="NewWithDrawPwdRpt"
+                                                            placeholder="{{'Member_LabelInputNewPwdAgain'|translate}}"
+                                                            ng-model="mdfWithPwdData.NewWithDrawPwdRpt"
+                                                            ng-required="mdfWithPwdData.NewWithDrawPwd.length>0"
+                                                            ng-pattern="mdfWithPwdData.NewWithDrawPwd" reset-field=""
+                                                            maxlength="4" ng-keyup="parseNum($event)" type="password"></div>
+                        <p class="item-warn text-assertive"
+                           ng-if="((mdfWithPwdForm.$submitted || mdfWithPwdForm.NewWithDrawPwdRpt.$touched)&&(mdfWithPwdForm.NewWithDrawPwdRpt.$error.pattern||mdfWithPwdForm.NewWithDrawPwdRpt.$error.required))">
+                            * {{'Common_TipsPwdDifferent'|translate}}</p>
+                        <button class="button button-block button-positive" type="submit">
+                            {{'Common_ButtonSureEdit'|translate}}
+                        </button>
+                    </div>
+                    <div ng-if="ucFlag" style="height:300px;">&nbsp;</div>
+                </form>
+            </cur-tab>
+        </cur-tabs>
+    </ion-content>
+</ion-view>

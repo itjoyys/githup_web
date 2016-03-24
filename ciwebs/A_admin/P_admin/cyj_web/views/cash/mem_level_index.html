@@ -1,0 +1,122 @@
+﻿<title>会员查询</title>
+<{include file="web_header.html"}>
+<{config_load file="public.conf" section="public"}>
+<script>
+  window.onload=function(){
+     //分页跳转
+    document.getElementById("page").onchange=function(){
+       document.getElementById('myFORM').submit()
+      }
+  }
+
+$(document).ready(function(){
+   $(".off_level").change(function(){
+      var new_level = $(this).val();
+      var uid = $(this).attr("uid");
+      //new_level = new_level +'_'+uid;
+      $(this).next().val(new_level);
+   })
+
+    $("#check_b").click(function() {
+        $('.check_b').attr("checked",this.checked);
+    });
+    var $subBox2 = $(".check_b");
+    $subBox2.click(function(){
+        $("#check_b").attr("checked",$subBox.length == $(".check_b:checked").length ? true : false);
+    });
+
+     $("#check_a").click(function() {
+        $('.check_a').attr("checked",this.checked);
+    });
+    var $subBox2 = $(".check_a");
+    $subBox2.click(function(){
+        $("#check_a").attr("checked",$subBox.length == $(".check_a:checked").length ? true : false);
+    });
+
+})
+
+</script>
+<style type="text/css">
+  .m_tab td, .m_tab_2 td {
+    padding: 5px 3px;
+}
+</style>
+<body>
+<div id="con_wrap">
+    <div class="input_002">会员查询</div>
+    <div class="con_menu" style="width:680px;">
+     <form method="get" name="action_form" action="" id="myFORM">
+     <a href="javascript:history.go(-1);">返回上一页</a>
+     <input  type="button"  name="append"  value="会员详情列表" onclick="document.location='<{$site_url}>/cash/account_level/mem_cash_list?index_id=<{$index_id}>&level_id=<{$level_id}>'"  class="za_button">
+    <input type="hidden" name="index_id" value="<{$index_id}>">
+    <input type="hidden" name="id" value="<{$level_id}>">
+    账号:<input type="text" name="username" value="<{$username}>">
+    <input type="submit" value="查询"  class="button_a">
+  &nbsp;<{$page}>&nbsp;
+    </form>
+  </div>
+  </div>
+
+<div class="content" style="width:1280px">
+<div style="width:300px;float:left;"><form method="get" action="<{$site_url}>/cash/account_level/mem_level_do" id="form1" name="form1">
+<table width="300" class="m_tab" style="float: left;">
+    <tbody><tr class="m_title_over_co">
+      <td >【已锁定会员列表】</td>
+      <td >层级</td>
+  </tr>
+    <{foreach from=$data_l key=i item=v}>
+      <tr class="m_cen <{if $i%2 == 0}>even<{/if}>">
+      <td align="left"><input style="vertical-align:middle;" value="0" class="lock check_a" type="checkbox" name="lockeds[<{$v['uid']}>]"><{$v['username']}></td>
+      <td>
+      <select class="off_level" uid="<{$v['uid']}>" style="min-width: 100px;width:100px;">
+      <{foreach from=$off_level item=vv}>
+      <option value="<{$vv['id']}>" <{select_check($v['level_id'],$vv['id'])}> ><{$vv['level_des']}>【<{$vv['level_name']}>】</option>
+      <{/foreach}>
+      </select>
+      <input value="" type="hidden" name="new[<{$v['uid']}>]" >
+      </td>
+      </tr>
+      <{/foreach}>
+        <tr align="center"><td align="left"><input style="vertical-align:middle;" value="1" class="lock" type="checkbox" id="check_a" >全选</td>
+      <td class="table_bg1">
+      <{if $data_l}>
+      <input value="确定" type="submit" class="button_d">&nbsp;&nbsp;&nbsp;<{/if}>
+</td>
+
+    </tr>
+</tbody>
+</table>
+</form></div>
+<div style="width:300px;float:left;margin-left:10px;">
+<form method="get" action="<{$site_url}>/cash/account_level/mem_level_do" id="form1" name="form1">
+<table width="300" class="m_tab" style="float: left;">
+    <tbody><tr class="m_title_over_co">
+      <td >【未锁定会员列表】</td>
+      <td >层级</td>
+  </tr>
+    <{foreach from=$data_n key=i item=v}>
+      <tr class="m_cen <{if $i%2 == 0}>even<{/if}>">
+      <td align="left"><input style="vertical-align:middle;" value="1" class="lock check_b" name="lockeds[<{$v['uid']}>]" type="checkbox" ><{$v['username']}></td>
+      <td>
+      <select class="off_level" style="min-width: 100px;width:100px;" uid="<{$v['uid']}>">
+      <{foreach from=$off_level item=vv}>
+      <option value="<{$vv['id']}>" <{select_check($v['level_id'],$vv['id'])}> ><{$vv['level_des']}>【<{$vv['level_name']}>】</option>
+      <{/foreach}>
+      </select>
+      <input value="" type="hidden" name="new[<{$v['uid']}>]" >
+      </td>
+      </tr>
+      <{/foreach}>
+        <tr align="center"><td align="left"><input style="vertical-align:middle;" value="1" class="lock" name="lockeds[<{$v['uid']}>]" type="checkbox" id="check_b" >全选</td>
+      <td class="table_bg1"><{if $data_n}>
+      <input value="确定" type="submit" class="button_d">&nbsp;&nbsp;&nbsp;<{/if}>
+</td>
+
+    </tr>
+</tbody>
+</table>
+</form></div>
+
+</div>
+
+<{include file="web_footer.html"}>

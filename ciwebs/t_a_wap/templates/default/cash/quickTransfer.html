@@ -1,0 +1,38 @@
+<ion-view cache-view="false" class="m-cash">
+    <ion-nav-bar class="bar bar-header bar-light">
+        <ion-nav-buttons side="left"><a class="button button-icon icon ion-ios-arrow-back" ng-href="#/transfer"></a>
+        </ion-nav-buttons>
+        <ion-nav-title>{{'Member_LabelOneKeyTrans'|translate}}</ion-nav-title>
+    </ion-nav-bar>
+    <ion-content class="q-transfer has-header">
+        <div ng-if="currentUser.State==2" cur-lock=""></div>
+        <div ng-if="currentUser.State==0" class="row"><h5>{{'Member_TipsTransAllIn' | translate}}</h5>
+            <div class="col col-50 relative" ng-repeat="wallet in walletList"
+                 ng-class="{unchoose:wallet.State==0||wallet.LoadingState == 2||wallet.IsOnline == 1}"
+                 ng-if="wallet.OpenState==1">
+                <div class="item" ng-class="{'item-load':wallet.TransferLoading==1}"
+                     ng-click="allIn(wallet.GameClassID)">
+                    <div ng-if="wallet.TransferLoading==1" class="item-load-icon">
+                        <ion-spinner></ion-spinner>
+                    </div>
+                    <i class="item-done icon ion-checkmark-circled" ng-if="wallet.TransferLoading==0"></i> <i
+                        class="item-error icon ion-close-circled"
+                        ng-click="showError(wallet.GameClassID);$event.stopPropagation();"
+                        ng-if="wallet.TransferLoading==2"></i> <img ng-if="wallet.GameClassID==0"
+                                                                    ng-src="{{CDNURL+'images/icon-wallet.png'}}"> <img
+                        ng-if="wallet.GameClassID==1" ng-src="{{CDNURL+'images/icon-egame.png'}}"> <img
+                        ng-if="wallet.GameClassID==2" ng-src="{{CDNURL+'images/icon-lottery.png'}}"> <img
+                        ng-if="wallet.GameClassID==3" ng-src="{{CDNURL+'images/icon-ag.png'}}"> <img
+                        ng-if="wallet.GameClassID==4" ng-src="{{CDNURL+'images/icon-lebo.png'}}"><img
+                        ng-if="wallet.GameClassID==5" ng-src="{{CDNURL+'images/icon-bbin.png'}}">
+                    <p>{{wallet.GameClassName}}</p>
+                    <p ng-if="wallet.LoadingState == 0 && classLoading==0">{{wallet.walletBalance}}</p>
+                    <p ng-if="wallet.LoadingState == 2 || classLoading==2">{{'Member_LabelLoadFail'|translate}}</p>
+                    <p ng-if="(wallet.LoadingState == 1 || classLoading==1) && wallet.LoadingState != 2 && classLoading!=2">
+                        <ion-spinner></ion-spinner>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,210 @@
+<title>生成红包設定</title>
+<{config_load file="public.conf" section="public"}>
+<{include file="web_header.html"}>
+
+<style type="text/css">
+	.m_tab{
+		width: 780px;
+	}
+</style>
+<script type="text/javascript">
+var indexid = "<{$index_id}>";
+var pic = "<{$pic}>";
+var path = "<{#images#}>";
+$(document).ready(function(){
+	$("#index_id").val(indexid);
+	$("#pic").val(pic);
+
+			if(pic!=0){
+				$("#picpath").show();
+				$("#picpath").attr("src",path+"/red_bag0"+pic+".jpg");;
+
+			}
+
+	$("#index_id").change(function(event) {
+      $("#queryform").submit();
+    });
+})
+</script>
+   <SCRIPT LANGUAGE="JavaScript">
+   <!--//
+   function textCounter(field, countfield, maxlimit) {
+   // 函数，3个参数，表单名字，表单域元素名，限制字符；
+   if (field.value.length > maxlimit)
+   //如果元素区字符数大于最大字符数，按照最大字符数截断；
+   field.value = field.value.substring(0, maxlimit);
+   else
+   //在记数区文本框内显示剩余的字符数；
+   countfield.value = maxlimit - field.value.length;
+   }
+   //-->
+   </SCRIPT>
+<body>
+<div id="con_wrap">
+  <div class="input_002">红包設定</div>
+  <div class="con_menu">
+  <a href="/index.php/other/red_bag/index" style="color: red;">返回上一级</a>
+
+  </div>
+</div>
+
+<div class="content">
+<form action="<{$site_url}>/other/red_bag/set_bag_do" method="post">
+
+<input type="hidden" id="iid" name="index_id" value="<{$index_id}>">
+	<table width="780" class="m_tab">
+		<tbody><tr class="m_title">
+			<td height="27" class="table_bg" colspan="2" align="middle">配置設定</td>
+		</tr>
+		<input type="hidden" value="<{$index_id}>" />
+		<tr class="m_cen">
+			<td class="table_bg1" align="center">活动标题</td>
+			<td align="left">
+				<input name="title" value="<{$bag_info['title']}>">
+			</td>
+		</tr>
+		<tr class="m_cen">
+			<td class="table_bg1" align="center">红包总额</td>
+			<td align="left">
+				<input name="total" value="<{$bag_info['totle_money']}>">
+			</td>
+		</tr>
+
+		<tr class="m_cen even">
+			<td class="table_bg1" align="center">红包个数</td>
+			<td align="left">
+				<input  name="num" value="<{$bag_info['red_num']}>">
+				<span style="color: red">建议您将个数设置在3000以内！</span>
+			</td>
+		</tr>
+		<tr class="m_cen">
+			<td class="table_bg1" align="center">红包最小金额</td>
+			<td align="left">
+				<input name="min" value="<{$bag_info['min_inpoint']}>">
+			</td>
+		</tr>
+	<tr class="m_cen">
+		<td width="30%" height="25" align="center" class="table_bg1">打码倍数设定</td>
+		<td align="left">
+		<input name="bet_set" value="<{$bag_info['amount_inpoint']}>"><span style="color:red">不填则默认为0则无限制</span>
+	</td>
+	</tr>
+	<tr class="m_cen" style="height:70px">
+		<td width="30%" height="25" align="center" class="table_bg1">选择效果图</td>
+		<td align="left" style="height:70px">
+		<div style="float: left;margin-top: 15px;width: 100px;">
+		<select name="pic" id="pic" >
+			<option value="0">请选择</option>
+			<option value="1"  <{if $bag_info['pic'] ==1}>checked="checked"<{/if}>>图1</option>
+			<option value="2"  <{if $bag_info['pic'] ==2}>checked="checked"<{/if}>>图2</option>
+			<option value="3"  <{if $bag_info['pic'] ==3}>checked="checked"<{/if}>>图3</option>
+
+		</select>
+		</div>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<div style="float: left;">
+		<a name='fff' href='javascript:void(0);' onclick='picBig();'>
+		<img src="<{#images#}>/red_bag01.jpg" alt="" style="display: none;height:50px" id="picpath">
+
+		</a>
+		</div>
+	</td>
+
+	</tr>
+	<tr class="m_cen even">
+		<td width="30%" height="25" align="center" class="table_bg1">是否限制IP</td>
+		<td align="left">
+		<input name="is_ip"  value="1" type="radio" <{if $bag_info['is_ip'] ==1}>checked="checked"<{/if}> >是
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<input name="is_ip"  value="2" type="radio" <{if $bag_info['is_ip'] ==2}>checked="checked"<{/if}>>否
+	</td>
+	</tr>
+
+		<tr class="m_cen ">
+			<td class="table_bg1" align="center">活动开始时间</td>
+			<td align="left">
+				<input
+					type="text" name="starttime"
+					value="<{$bag_info['starttime']}>" id="start_date" class="za_text Wdate"
+					onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" style="width:170px">
+				<span style="color: red">活动开始时间不得小于当前时间</span>
+			</td>
+		</tr>
+
+		<tr class="m_cen even">
+			<td class="table_bg1" align="center">活动结束时间</td>
+			<td align="left">
+				<input type="text" name="endtime"
+					value="<{$bag_info['endtime']}>" id="end_date"
+					class="za_text Wdate"
+					onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" style="width:170px" >
+					<span style="color: red">红包活动时间间隔请设置在48小时以内！</span>
+			</td>
+
+		</tr>
+
+ <tr class="m_cen ">
+<td  height="25"  align="center">可参加活动会员的分组</td>
+      <td>
+      	<table  border="0"  cellpadding="1">
+      	<tbody>
+        <{foreach from=$level item=val}>
+          <tr align="left">
+            <{foreach from=$val item=v}>
+                <td>
+              <input  type="checkbox"  name="level[]"  value="<{$v['id']}>"  <{if $v['is_check']}>checked<{/if}>>&nbsp;<{$v['level_des']}>&nbsp;
+           </td>
+           <{/foreach}>
+
+          </tr>
+        <{/foreach}>
+        </tbody>
+        </table>
+        &nbsp;&nbsp;<font color="red">不選默認全部層級</font>
+      </td>
+</tr>
+			<tr class="m_cen even">
+			<td height="27" class="table_bg" colspan="2" align="middle">
+			<input class="button_d" value="確定" type="submit" name="edit" onClick="return confirm('确定红包配置?');">
+			</td>
+		</tr>
+		<input type="hidden" value="<{$id}>" name="id">
+	   </tbody>
+	</table>
+</form>
+
+</div>
+
+<script type="text/javascript">
+	$(function(){
+		$("#pic").change(function(){
+			var pic = $('#pic').val();
+			var path = "<{#images#}>";
+			if(pic!=0){
+				$("#picpath").show();
+				$("#picpath").attr("src",path+"/red_bag0"+pic+".jpg");;
+
+			}
+
+		})
+
+			})
+</script>
+<div id="divCenter" align="center" style="position: absolute; z-index: 9; display: none; background-color: #eee; width:700px; height:500px;left:400px;top:10px;" onclick="picClose();">
+<img src="XXXXXX" id="big_pic" style="height:446px"/ ></div>
+
+<script>
+function picBig() {
+var v = document.getElementById('divCenter');
+var pic = $('#picpath').attr('src');
+$("#big_pic").attr("src",pic);
+v.style.display = "block";
+}
+
+function picClose() {
+var v = document.getElementById('divCenter');
+v.style.display = "none";
+}
+</script>
+
+<{include file="web_footer.html"}>

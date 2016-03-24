@@ -1,0 +1,149 @@
+﻿<title>優惠統計</title>
+<{include file="web_header.html"}>
+<{config_load file="public.conf" section="public"}>
+
+<body>
+<script type="text/javascript">
+var indexid = "<{$index_id}>";
+$(document).ready(function(){
+  $("#index_id").val(indexid);
+  $("#index_id").change(function(event) {
+      $("#myform").attr("action","<{$site_url}>/cash/discount/index");
+      $("#myform").submit();
+  });
+})
+function tijiao(){
+  document.getElementById('loading').style.display = "block";
+  document.getElementById('content').style.display = "none";
+  return true;
+}
+</script>
+<style>
+#loading {
+    background:  url("../../../public/images/loading11.gif") no-repeat scroll center 30px;
+    /*border: 1px solid #acacac;*/
+    margin: 0 auto;
+    width: 600px;
+    height:200px;
+}
+</style>
+<div  id="con_wrap">
+  <div  class="input_002">優惠統計</div>
+  <div  class="con_menu">
+	  <a href="<{$site_url}>/cash/discount/index" style="color:red;">優惠統計</a>
+	  <a href="<{$site_url}>/cash/discount/discount_log">優惠查詢</a>
+	  <a href="<{$site_url}>/cash/discount/rakeback_log">自助返水查询</a>
+      <a href="<{$site_url}>/cash/discount/discount_fd">返點優惠設定</a>
+  </div>
+</div>
+<div id="loading" style="display:none;">
+        <div style="width:253px;margin:135px auto 0;text-align:center" id="kq_box_text">
+    <b><span style="color:#7c3838" id="gold0"><b>数据正在处理中</b></span></b>
+  </div>
+</div>
+<div  class="content" id="content">
+<form  method="post" name="myform" id="myform" action="<{$site_url}>/cash/discount/dis_count" onSubmit="tijiao();">
+<input  type="hidden"  id="userid"  name="userid"  value="">
+<input  type="hidden"  name="username"  value="">
+<table  style="width:680px"  class="m_tab">
+  <tbody><tr  class="m_title">
+    <td  colspan="2"  height="25"  align="center">退水優惠</td>
+  </tr>
+  <{if $sites_str}>
+  <tr class="m_cen">
+    <td  height="25"  align="center" width="80" class="table_bg1">站点选择</td>
+    <td  style="text-align:left"> <{$sites_str}>
+    </td>
+  </tr>
+  <{/if}>
+  <tr class="m_cen even">
+    <td  height="25"  align="center" width="90" class="table_bg1">日期查詢</td>
+    <td  style="text-align:left">
+         <INPUT name="date_start" class="za_text Wdate" style="width: 100px; min-width: 100px;" onclick="WdatePicker()" type="text" size="10" maxlength="11" value="<{$start_date}>">
+            --
+         <INPUT name="date_end" class="za_text Wdate" style="width: 100px; min-width: 100px;" onclick="WdatePicker()" type="text" size="10" maxlength="10" value="<{$end_date}>">
+         <INPUT class="za_button" style="margin-top: 5px;" onclick="myform.date_start.value='<{$n_week}>';myform.date_end.value='<{$now_date}>'" type="Button" value="本周">
+         <INPUT class="za_button" style="margin-top: 5px;" onclick="myform.date_start.value='<{$l_week}>';myform.date_end.value='<{$l_week_2}>'" type="Button" value="上周">
+         <INPUT class="za_button" style="margin-top: 5px;" onclick="myform.date_start.value='<{$l_date}>';myform.date_end.value='<{$l_date}>'" type="Button" value="昨天"><font color="red">【请勿跨月份查询】</font>
+    </td>
+  </tr>
+  <tr class="m_cen">
+    <td  height="25"  align="center"  class="table_bg1">體系選擇</td>
+    <td align="left">
+      <select  id="wtype"  name="wtype"  class="za_select">
+        <option  value="1">股東</option>
+       <!--  <option  value="3">会员</option> -->
+      </select>
+      &nbsp;&nbsp;
+      <select  id="wtype_name"  name="sh_name"  class="za_select">
+       <{foreach from=$agent_sh item=val}>
+        <option  value="<{$val['id']}>"><{$val['agent_name']}></option>
+       <{/foreach}>
+      </select>
+
+          </td>
+  </tr>
+  <tr  id="members_tr"  style="display:none">
+    <td  height="25"  align="center"  class="table_bg1">体系选择</td>
+          <td>
+      <textarea  name="members"  id="members"  class="za_text"  style="width:350px;height:100px;"></textarea><br>
+      多个会员帐号之间用引文逗号(,)隔开
+          </td>
+  </tr>
+  <tr class="m_cen even">
+    <td  height="25"  align="center"  class="table_bg1">顯示條件</td>
+    <td align="left">
+      <select  name="condition"  class="za_select">
+        <option  value="Y">有優惠</option>
+      </select>
+          </td>
+  </tr>
+    <tr class="m_cen">
+    <td  height="25"  align="center"  class="table_bg1">層級</td>
+    <td>
+            <table  border="0"  cellpadding="1">
+            <tbody>
+            <{foreach from=$level item=val}>
+              <tr>
+                <{foreach from=$val item=v}>
+                    <td align="left">
+                  <input  type="checkbox"  name="level[]"  value="<{$v['id']}>">&nbsp;<{$v['level_des']}>&nbsp;
+               </td>
+               <{/foreach}>
+
+              </tr>
+            <{/foreach}>
+            </tbody>
+            </table>
+            &nbsp;&nbsp;<font  color="red">不選默認全部層級</font>
+     </td>
+  </tr>
+  <tr class="m_cen even" align="center">
+    <td  colspan="2"  class="table_bg1">
+      <input  value="確定"  id="savebtn1"  name="savebtn1"  type="submit"  class="button_a">
+        </td>
+  </tr>
+</tbody></table>
+</form>
+</div>
+<script language="JavaScript" type="text/JavaScript">
+
+$(document).ready(function(e) {
+    $("#wtype").bind("change",function(b){
+      if($(this).val()=="1")
+      {
+        $("#members_tr").hide();
+        $("#wtype_name").show();
+      }
+      else
+      {
+        $("#members_tr").show();
+        $("#wtype_name").hide();
+      }
+    });
+});
+
+
+</script>
+
+<{include file="web_footer.html"}>

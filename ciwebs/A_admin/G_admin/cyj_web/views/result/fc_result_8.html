@@ -1,0 +1,105 @@
+<{include file="web_header.html"}>
+
+<script type="text/javascript">
+var enable = "<{$enable}>";
+var page = "<{$page}>";
+$(document).ready(function(){
+  $("#cp_cate").val(enable);
+  $("#cp_cate").change(function(event) {
+      $("#page").val(1);
+      $("#qishu").val("");
+      $("#date_kaijiang").val("");
+      $("#myFORM").submit();
+    });
+})
+</script>
+<script>
+
+  //分页跳转
+  window.onload=function(){
+    document.getElementById("page").onchange=function(){
+      document.getElementById('myFORM').submit()
+    }
+  }
+</script>
+</head>
+<body>
+	  <div  id="con_wrap">
+   <div  class="input_002">北京快乐8开奖管理</div>
+<div  class="con_menu" style="width:680px;">
+      <{include file="result/menu.html"}>
+  </div>
+  </div>
+
+<div id="pageMain">
+  <table width="100%" height="100%" border="0" cellspacing="0" cellpadding="5">
+    <tr>
+      <td valign="top">
+
+    <table width="100%" border="0" cellpadding="5" cellspacing="1" class="m_tab" style="margin-top:5px;">
+            <tr class="m_title_over_co">
+              <td align="center"><strong>彩票类别</strong></td>
+              <td align="center"><strong>彩票期号</strong></td>
+              <td align="center"><strong>开奖时间</strong></td>
+              <td align="center"><strong>1球</strong></td>
+              <td align="center"><strong>2球</strong></td>
+              <td align="center"><strong>3球</strong></td>
+              <td align="center"><strong>4球</strong></td>
+        <td height="25" align="center"><strong>5球</strong></td>
+        <td align="center"><strong>6球</strong></td>
+        <td align="center"><strong>7球</strong></td>
+        <td align="center"><strong>8球</strong></td>
+        <td align="center"><strong>9球</strong></td>
+        <td align="center"><strong>10球</strong></td>
+		<td align="center"><strong>11球</strong></td>
+              <td align="center"><strong>12球</strong></td>
+              <td align="center"><strong>13球</strong></td>
+              <td align="center"><strong>14球</strong></td>
+        <td height="25" align="center"><strong>15球</strong></td>
+        <td align="center"><strong>16球</strong></td>
+        <td align="center"><strong>17球</strong></td>
+        <td align="center"><strong>18球</strong></td>
+        <td align="center"><strong>19球</strong></td>
+        <td align="center"><strong>20球</strong></td>
+          </tr>
+
+		<{if !empty($data) }>
+	      <{foreach from=$data key=key item=rows}>
+      <tr align="center" class="m_cen <{if $key%2 == 0}>even<{/if}>" >
+        <td height="25" align="center" valign="middle">北京快乐8</td>
+        <td align="center" valign="middle"><{$rows['qishu']}></td>
+        <td align="center" valign="middle"><{$rows['datetime']}></td>
+        <td align="center" valign="middle">  <div class="ball_r"><{$rows['ball_1']}></div></td>
+        <td align="center" valign="middle">  <div class="ball_r"><{$rows['ball_2']}></div></td>
+        <td align="center" valign="middle">  <div class="ball_r"><{$rows['ball_3']}></div></td>
+        <td align="center" valign="middle">  <div class="ball_r"><{$rows['ball_4']}></div></td>
+        <td align="center" valign="middle">  <div class="ball_r"><{$rows['ball_5']}></div></td>
+        <td align="center" valign="middle">  <div class="ball_r"><{$rows['ball_6']}></div></td>
+        <td align="center" valign="middle">  <div class="ball_r"><{$rows['ball_7']}></div></td>
+        <td align="center" valign="middle">  <div class="ball_r"><{$rows['ball_8']}></div></td>
+        <td align="center" valign="middle">  <div class="ball_r"><{$rows['ball_9']}></div></td>
+        <td align="center" valign="middle">  <div class="ball_r"><{$rows['ball_10']}></div></td>
+		 <td align="center" valign="middle">  <div class="ball_r"><{$rows['ball_11']}></div></td>
+        <td align="center" valign="middle">  <div class="ball_r"><{$rows['ball_12']}></div></td>
+        <td align="center" valign="middle">  <div class="ball_r"><{$rows['ball_13']}></div></td>
+        <td align="center" valign="middle">  <div class="ball_r"><{$rows['ball_14']}></div></td>
+        <td align="center" valign="middle">  <div class="ball_r"><{$rows['ball_15']}></div></td>
+        <td align="center" valign="middle">  <div class="ball_r"><{$rows['ball_16']}></div></td>
+        <td align="center" valign="middle">  <div class="ball_r"><{$rows['ball_17']}></div></td>
+        <td align="center" valign="middle">  <div class="ball_r"><{$rows['ball_18']}></div></td>
+        <td align="center" valign="middle">  <div class="ball_r"><{$rows['ball_19']}></div></td>
+        <td align="center" valign="middle"> <div class="ball_r"><{$rows['ball_20']}></div></td>
+
+        </tr>
+<{/foreach}>
+<{else}>
+	<tr style="background-color:#FFFFFF;">
+        <td colspan="25" align="center" valign="middle">暂无数据</td>
+    </tr>
+<{/if}>
+    </table></td>
+    </tr>
+  </table>
+</div>
+<!-- 公共尾部 -->
+<{include file="web_footer.html"}>

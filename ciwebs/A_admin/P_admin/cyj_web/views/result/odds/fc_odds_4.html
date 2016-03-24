@@ -1,0 +1,295 @@
+<title>重慶快樂十分即時赔率</title>
+<{include file="web_header.html"}>
+<body>
+<script type="text/javascript">
+var type = "<{$type}>";
+$(document).ready(function(){
+    $(".addinput").click(function(){
+       var ol_odds = $(this).text();
+       ol_odds = ol_odds.replace(/^\s+|\s+$/g,"");
+       var htype = $(this).attr("id");
+       var btype = $(this).attr("btype");
+       $("#oddse").val(ol_odds);
+       $("#ball_type").val(btype);
+       $("#h_type").val(htype);
+       $("#fctype").val(type);
+        easyDialog.open({
+            container : 'currency_box'
+          });
+    })
+  $("#temppid").val(type);
+  $("#temppid").change(function(event) {
+      $("#myFORM").submit();
+    });
+})
+</script>
+<style type="text/css">
+  .addinput{
+    cursor:pointer;
+    background:#BFEFDB;
+  }
+</style>
+<div  id="con_wrap">
+<div class="input_002">重慶快樂十分即時赔率</div>
+<div class="con_menu">
+<form  name="myFORM"  id="myFORM"  action="<{$site_url}>/result/Odds_set/index_fc"  method="get">
+    <select class="za_select" name="type" id="temppid" onchange="document.getElementById('myFROM').submit">
+        <option value="">请选择彩票类型</option>
+        <option value="7">六合彩</option>
+        <option value="5">福彩3D</option>
+        <option value="6">排列三</option>
+        <option value="2">重慶時時彩</option>
+        <option value="10">天津時時彩</option>
+        <option value="11">江西時時彩</option>
+        <option value="12">新疆時時彩</option>
+        <option value="8">北京快乐8</option>
+        <option value="3">北京赛车PK拾</option>
+        <option value="1">廣東快樂十分</option>
+        <option <{if $type eq 4}>selected="selected"<{/if}>  value="4">重慶快樂十分</option>
+        <option value="13">江苏快3</option>
+        <option value="14">吉林快3</option>
+      </select>
+       <input type="button" name="btn1" onclick="if(confirm('确定将赔率初始化？？？')){document.location='<{$site_url}>/result/Odds_set/odds_set_initializtion?type=<{$type}>'}" style="color:red" id="btn1" value="赔率初始化" class="button_d">
+</form>
+</div>
+
+</div>
+<div id="easyDialogBox" style="margin: -54.5px 0px 0px -150px; padding: 0px; border: none; z-index: 10000; position: fixed; top: 50%; left: 50%; display: none;">
+  <div id="currency_box" style="display: block; margin: 0px;" class="con_menu">
+<form action="<{$site_url}>/result/Odds_set/odds_set_do" method="post" name="add_form">
+    <input name="id" id="id" value="" type="hidden">
+    <input name="fctype" id="fctype" value="" type="hidden">
+  <table class="m_tab" style="width:300px;margin:0;">
+    <tbody><tr class="m_title">
+      <td colspan="2" height="27" class="table_bg" align="center">
+      <span id="title">修改赔率</span>
+      <span style="float:right;"><a style="color:white;" href="javascript:void(0)" title="关闭窗口" onclick="easyDialog.close();">×</a></span>
+      </td>
+    </tr>
+    <tr class="m_title">
+      <td>赔率值</td>
+      <td><input name="odds" id="oddse" value=""></td>
+    </tr>
+
+    <tr style="background-color: #fff;">
+      <td colspan="2" align="center">
+        <input name="ball_type" type="hidden" id="ball_type" value="">
+        <input name="h_type" type="hidden" id="h_type" value="">
+        <input type="submit" value="提交" class="button_a">
+        <input type="reset" value="关闭" onclick="easyDialog.close();" class="button_a">
+      </td>
+    </tr>
+  </tbody></table>
+</form>
+</div>
+</div>
+<div class="content">
+<table width="1000" border="0" cellspacing="0" class="table_line" height="0" id="ball_1">
+   <tbody>
+   <tr class="m_title_over_co"><td colspan="30"> <strong >第一球/第二球/第三球/第三球/第四球/第五球/第六球/第七球/第八球 </strong></td></tr>
+         <tr class="m_title_over_co">
+              <td height="28" align="center" nowrap="nowrap" class="table_bg1">號碼</td>
+              <td align="center" nowrap="nowrap" class="table_bg1">赔率</td>
+              <td height="28" align="center" nowrap="nowrap" class="table_bg1">號碼</td>
+              <td align="center" nowrap="nowrap" class="table_bg1">赔率</td>
+              <td height="28" align="center" nowrap="nowrap" class="table_bg1">號碼</td>
+              <td align="center" nowrap="nowrap" class="table_bg1">赔率</td>
+              <td height="28" align="center" nowrap="nowrap" class="table_bg1">號碼</td>
+              <td align="center" nowrap="nowrap" class="table_bg1">赔率</td>
+              <td height="28" align="center" nowrap="nowrap" class="table_bg1">號碼</td>
+              <td align="center" nowrap="nowrap" class="table_bg1">赔率</td>
+              <td height="28" align="center" nowrap="nowrap" class="table_bg1">號碼</td>
+              <td align="center" nowrap="nowrap" class="table_bg1">赔率</td>
+              <td height="28" align="center" nowrap="nowrap" class="table_bg1">號碼</td>
+              <td align="center" nowrap="nowrap" class="table_bg1">赔率</td>
+    </tr>
+             <tr class="baise">
+             <td height="32" align="center" class="zdnum">1</td>
+              <td height="32" align="center" btype="1" class="zdnum addinput" id="h1" style="color:#f00;"><{$data['0']['h1']}>
+             </td>
+              <td height="32" align="center" class="zdnum">2</td>
+              <td height="32" align="center" btype="1" class="zdnum addinput" id="h2" style="color:#f00;"><{$data['0']['h2']}>
+             </td>
+              <td height="32" align="center" class="zdnum">3</td>
+              <td height="32" align="center" btype="1" class="zdnum addinput" id="h3" style="color:#f00;"><{$data['0']['h3']}>
+             </td>
+              <td height="32" align="center" class="zdnum">4</td>
+              <td height="32" align="center" btype="1" class="zdnum addinput" id="h4" style="color:#f00;"><{$data['0']['h4']}>
+            </td>
+              <td height="32" align="center" class="zdnum">5</td>
+              <td  height="32" align="center" btype="1" class="zdnum addinput" id="h5" style="color:#f00;"><{$data['0']['h5']}>
+            </td>
+          <td height="32" align="center" class="zdnum">6</td>
+              <td  height="32" align="center" btype="1" class="zdnum addinput" id="h6" style="color:#f00;"><{$data['0']['h6']}>
+             </td>
+            <td height="32" align="center" class="zdnum">7</td>
+              <td  height="32" align="center" btype="1" class="zdnum addinput" id="h7" style="color:#f00;"><{$data['0']['h7']}>
+             </td>
+             </tr>
+
+
+          <tr class="baise">
+            <td height="32" align="center" class="zdnum">8</td>
+              <td  height="32" align="center" btype="1" class="zdnum addinput" id="h8" style="color:#f00;"><{$data['0']['h8']}>
+             </td>
+            <td height="32" align="center" class="zdnum">9</td>
+              <td height="32" align="center" btype="1" class="zdnum addinput" id="h9" style="color:#f00;"><{$data['0']['h9']}>
+             </td>
+            <td height="32" align="center" class="zdnum">10</td>
+              <td  height="32" align="center" btype="1" class="zdnum addinput" id="h10" style="color:#f00;"><{$data['0']['h10']}>
+           </td>
+
+             <td height="32" align="center" class="zdnum">11</td>
+              <td height="32" align="center" btype="1" class="zdnum addinput" id="h11" style="color:#f00;"><{$data['0']['h11']}>
+             </td>
+              <td height="32" align="center" class="zdnum">12</td>
+              <td height="32" align="center" btype="1" class="zdnum addinput" id="h12" style="color:#f00;"><{$data['0']['h12']}>
+             </td>
+              <td height="32" align="center" class="zdnum">13</td>
+              <td height="32" align="center" btype="1" class="zdnum addinput" id="h13" style="color:#f00;"><{$data['0']['h13']}>
+             </td>
+              <td height="32" align="center" class="zdnum">14</td>
+              <td height="32" align="center" btype="1" class="zdnum addinput" id="h14" style="color:#f00;"><{$data['0']['h14']}>
+            </td>
+            </tr>
+          <tr class="baise">
+              <td height="32" align="center" class="zdnum">15</td>
+              <td  height="32" align="center" btype="1" class="zdnum addinput" id="h15" style="color:#f00;"><{$data['0']['h15']}>
+            </td>
+
+             <td height="32" align="center" class="zdnum">16</td>
+              <td height="32" align="center" btype="1" class="zdnum addinput" id="h16" style="color:#f00;"><{$data['0']['h16']}>
+             </td>
+              <td height="32" align="center" class="zdnum">17</td>
+              <td height="32" align="center" btype="1" class="zdnum addinput" id="h17" style="color:#f00;"><{$data['0']['h17']}>
+             </td>
+              <td height="32" align="center" class="zdnum">18</td>
+              <td height="32" align="center" btype="1" class="zdnum addinput" id="h18" style="color:#f00;"><{$data['0']['h18']}>
+             </td>
+              <td height="32" align="center" class="zdnum">19</td>
+              <td height="32" align="center" btype="1" class="zdnum addinput" id="h19" style="color:#f00;"><{$data['0']['h19']}>
+            </td>
+              <td height="32" align="center" class="zdnum">20</td>
+              <td  height="32" align="center" btype="1" class="zdnum addinput" id="h20" style="color:#f00;"><{$data['0']['h20']}>
+            </td>
+
+             <td height="32" align="center" class="zdnum">大</td>
+              <td height="32" align="center" btype="1" class="zdnum addinput" id="h21" style="color:#f00;"><{$data['0']['h21']}>
+             </td>
+
+             </tr>
+           <tr class="baise">
+              <td height="32" align="center" class="zdnum">小</td>
+              <td height="32" align="center" btype="1" class="zdnum addinput" id="h22" style="color:#f00;"><{$data['0']['h22']}>
+             </td>
+              <td height="32" align="center" class="zdnum">单</td>
+              <td height="32" align="center" btype="1" class="zdnum addinput" id="h23" style="color:#f00;"><{$data['0']['h23']}>
+             </td>
+               <td height="32" align="center" class="zdnum">双</td>
+              <td height="32" align="center" btype="1" class="zdnum addinput" id="h24" style="color:#f00;"><{$data['0']['h24']}>
+             </td>
+               <td height="32" align="center" class="zdnum">尾大</td>
+              <td height="32" align="center" btype="1" class="zdnum addinput" id="h25" style="color:#f00;"><{$data['0']['h25']}>
+             </td>
+
+             <td height="32" align="center" class="zdnum">尾小</td>
+              <td height="32" align="center" btype="1" class="zdnum addinput" id="h26" style="color:#f00;"><{$data['0']['h26']}>
+             </td>
+              <td height="32" align="center" class="zdnum">和单</td>
+              <td height="32" align="center" btype="1" class="zdnum addinput" id="h27" style="color:#f00;"><{$data['0']['h27']}>
+             </td>
+              <td height="32" align="center" class="zdnum">和双</td>
+              <td height="32" align="center" btype="1" class="zdnum addinput" id="h28" style="color:#f00;"><{$data['0']['h28']}>
+             </td>
+             </tr>
+           <tr class="baise">
+               <td height="32" align="center" class="zdnum">东</td>
+              <td height="32" align="center" btype="1" class="zdnum addinput" id="h29" style="color:#f00;"><{$data['0']['h29']}>
+             </td>
+               <td height="32" align="center" class="zdnum">南</td>
+              <td height="32" align="center" btype="1" class="zdnum addinput" id="h30" style="color:#f00;"><{$data['0']['h30']}>
+             </td>
+
+             <td height="32" align="center" class="zdnum">西</td>
+              <td height="32" align="center" btype="1" class="zdnum addinput" id="h31" style="color:#f00;"><{$data['0']['h31']}>
+             </td>
+              <td height="32" align="center" class="zdnum">北</td>
+              <td height="32" align="center" btype="1" class="zdnum addinput" id="h32" style="color:#f00;"><{$data['0']['h32']}>
+             </td>
+              <td height="32" align="center" class="zdnum">中</td>
+              <td height="32" align="center" btype="1" class="zdnum addinput" id="h33" style="color:#f00;"><{$data['0']['h33']}>
+             </td>
+               <td height="32" align="center" class="zdnum">发</td>
+              <td height="32" align="center" btype="1" class="zdnum addinput" id="h34" style="color:#f00;"><{$data['0']['h34']}>
+             </td>
+               <td height="32" align="center" class="zdnum">白</td>
+              <td height="32" align="center" btype="1" class="zdnum addinput" id="h35" style="color:#f00;"><{$data['0']['h35']}>
+             </td>
+          </tr>
+          </tbody></table>
+
+
+
+
+            <table width="1000" border="0" cellspacing="0" class="table_line" height="0" id="ball_1">
+   <tbody>
+   <tr class="m_title_over_co"><td colspan="30"> <strong >总和龙虎</strong></td></tr>
+         <tr class="m_title_over_co">
+              <td height="28" align="center" nowrap="nowrap" class="table_bg1">號碼</td>
+              <td align="center" nowrap="nowrap" class="table_bg1">赔率</td>
+              <td height="28" align="center" nowrap="nowrap" class="table_bg1">號碼</td>
+              <td align="center" nowrap="nowrap" class="table_bg1">赔率</td>
+              <td height="28" align="center" nowrap="nowrap" class="table_bg1">號碼</td>
+              <td align="center" nowrap="nowrap" class="table_bg1">赔率</td>
+              <td height="28" align="center" nowrap="nowrap" class="table_bg1">號碼</td>
+              <td align="center" nowrap="nowrap" class="table_bg1">赔率</td>
+              <td height="28" align="center" nowrap="nowrap" class="table_bg1">號碼</td>
+              <td align="center" nowrap="nowrap" class="table_bg1">赔率</td>
+              <td height="28" align="center" nowrap="nowrap" class="table_bg1">號碼</td>
+              <td align="center" nowrap="nowrap" class="table_bg1">赔率</td>
+              <td height="28" align="center" nowrap="nowrap" class="table_bg1">號碼</td>
+              <td align="center" nowrap="nowrap" class="table_bg1">赔率</td>
+              <td height="28" align="center" nowrap="nowrap" class="table_bg1">號碼</td>
+              <td align="center" nowrap="nowrap" class="table_bg1">赔率</td>
+              <td height="28" align="center" nowrap="nowrap" class="table_bg1">號碼</td>
+              <td align="center" nowrap="nowrap" class="table_bg1">赔率</td>
+
+    </tr>
+             <tr class="baise">
+             <td height="32" align="center" class="zdnum">总和大</td>
+              <td height="32" align="center" btype="9" class="zdnum addinput" id="h1" style="color:#f00;"><{$data['8']['h1']}>
+             </td>
+              <td height="32" align="center" class="zdnum">总和小</td>
+              <td height="32" align="center" btype="9" class="zdnum addinput" id="h2" style="color:#f00;"><{$data['8']['h2']}>
+             </td>
+              <td height="32" align="center" class="zdnum">总和单</td>
+              <td height="32" align="center" btype="9" class="zdnum addinput" id="h3" style="color:#f00;"><{$data['8']['h3']}>
+             </td>
+              <td height="32" align="center" class="zdnum">总和双</td>
+              <td height="32" align="center" btype="9" class="zdnum addinput" id="h4" style="color:#f00;"><{$data['8']['h4']}>
+            </td>
+              <td height="32" align="center" class="zdnum">总和尾大</td>
+              <td  height="32" align="center" btype="9" class="zdnum addinput" id="h5" style="color:#f00;"><{$data['8']['h5']}>
+            </td>
+          <td height="32" align="center" class="zdnum">总和尾小</td>
+              <td  height="32" align="center" btype="9" class="zdnum addinput" id="h6" style="color:#f00;"><{$data['8']['h6']}>
+             </td>
+            <td height="32" align="center" class="zdnum">龙</td>
+              <td  height="32" align="center" btype="9" class="zdnum addinput" id="h7" style="color:#f00;"><{$data['8']['h7']}>
+             </td>
+            <td height="32" align="center" class="zdnum">虎</td>
+              <td  height="32" align="center" btype="9" class="zdnum addinput" id="h8" style="color:#f00;"><{$data['8']['h8']}>
+             </td>
+            <td height="32" align="center" class="zdnum"></td>
+              <td height="32" align="center" btype="9" >
+             </td>
+          </tr>
+          </tbody></table>
+
+
+
+
+</div>
+
+<!-- 公共尾部 -->
+<{include file="web_footer.html"}>

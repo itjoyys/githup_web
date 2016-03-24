@@ -1,0 +1,90 @@
+#direction #PT-switcher-wrap {
+    margin: 1.5em auto;
+    width: 960px;
+}
+#direction ul.mtab-menual {
+    list-style: none;
+    border-bottom: 3px solid #2A457C;
+}
+#direction ul.mtab-menual li {
+    background-color: #428FC7;
+    display: inline-block;
+    vertical-align: bottom;
+    margin-right: 4px;
+    padding: 1px 10px;
+    cursor: pointer;
+    border-bottom: 0;
+    border-radius: 5px 5px 0 0;
+    transition: background-color .4s;
+}
+#direction ul.mtab-menual li.mtab {
+    background-color: #2A457C;
+    color: #FFF;
+}
+#MemberExclusive_area .eventtext p{padding-left:0px}
+#direction.advertis-event ul.mtab-menual li,ul#PT-switcher-wrap li{
+    float:left;
+    color:#A7A7A7;
+    text-align:center;
+    line-height:22px;
+    list-style-type:none;
+    width:92px;
+    float:left;
+    height:22px;
+    margin-left:5px;
+    cursor: pointer;
+    display:inline;
+    border-bottom: 2px solid #A7A7A7;
+}
+#direction.advertis-event ul.mtab-menual li:hover,ul#PT-switcher-wrap li {
+    color:#FFF;
+    border-bottom: 2px solid #FFF;
+}
+#direction ul {
+    list-style-type: none;
+    padding-left: 12px;
+}
+#direction menu {
+    margin: 1.5em 0;
+}
+#MemberExclusive_area .memExclusive a {
+    background-position: 50% 0;
+    cursor: pointer;
+    width: 100%;
+}
+#MemberExclusive_area {
+    margin: 15px auto;
+}
+#MemberExclusive_area .MemberExclusive {
+    width: 100%;
+    margin-bottom: 5px;
+    clear: both;
+}
+#MemberExclusive_area .memExclusive, #MemberExclusive_area .memExclusive a {
+    background-position: 50% 0;
+    cursor: pointer;
+    width: 100%;
+    text-decoration: none;
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+#MemberExclusive_area .memExclusive a {
+    display: block;
+    text-decoration: none;
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+#MemberExclusive_area .memExclusive a img {
+    border: none;
+}
+#direction ul, menu, dir {
+    display: block;
+    list-style-type: none;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    -webkit-padding-start: 40px;
+}

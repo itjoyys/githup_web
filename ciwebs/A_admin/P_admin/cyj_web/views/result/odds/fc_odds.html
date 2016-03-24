@@ -1,0 +1,69 @@
+<title>廣東快樂十分即時赔率</title>
+<{include file="web_header.html"}>
+<body>
+	<div id="con_wrap">
+		<div class="input_002">廣東快樂十分即時赔率</div>
+		<div class="con_menu">
+			<script type="text/javascript">
+				var type = "<{$type}>";
+				$(document).ready(function() {
+					$("#temppid").val(type);
+					$("#temppid").change(function(event) {
+						$("#myFORM").submit();
+					});
+				})
+			</script>
+			<form name="myFORM" id="myFORM"
+				action="<{$site_url}>/result/Odds_set/index_fc" method="get">
+				<select class="za_select" name="type" id="temppid"
+					onchange="document.getElementById('myFROM').submit">
+					<option value="">请选择彩票类型</option> <{foreach from=$fc_games item=v}>
+					<option value="<{$v['type']}>"<{select_check($v['id'],$smarty.get.type)}>><{$v['name']}></option>
+					<{/foreach}>
+				</select>
+			</form>
+		</div>
+
+	</div>
+	<div class="content">
+		<{foreach from=$data item=v}>
+		<table width="1000" border="0" cellspacing="0" class="table_line"
+			height="0" id="ball_1">
+			<tbody>
+				<tr class="m_title_over_co">
+					<td colspan="30"><strong><{$v['name']}> </strong></td>
+				</tr>
+				<tr class="m_title_over_co">
+					<td height="28" align="center" nowrap="nowrap" class="table_bg1">號碼</td>
+					<td align="center" nowrap="nowrap" class="table_bg1">赔率</td>
+					<td height="28" align="center" nowrap="nowrap" class="table_bg1">號碼</td>
+					<td align="center" nowrap="nowrap" class="table_bg1">赔率</td>
+					<td height="28" align="center" nowrap="nowrap" class="table_bg1">號碼</td>
+					<td align="center" nowrap="nowrap" class="table_bg1">赔率</td>
+					<td height="28" align="center" nowrap="nowrap" class="table_bg1">號碼</td>
+					<td align="center" nowrap="nowrap" class="table_bg1">赔率</td>
+					<td height="28" align="center" nowrap="nowrap" class="table_bg1">號碼</td>
+					<td align="center" nowrap="nowrap" class="table_bg1">赔率</td>
+					<td height="28" align="center" nowrap="nowrap" class="table_bg1">號碼</td>
+					<td align="center" nowrap="nowrap" class="table_bg1">赔率</td>
+				</tr>
+				<tr class="baise">
+					<{foreach from=$v['data'] key=key item=v1}>
+
+					<td height="32" align="center" class="zdnum"><{$v1['input_name']}></td>
+					<td height="32" align="center" class="zdnum addinput" id="h1"
+						style="color: #f00;"><{$v1['odds_value']}>(<{$v1['odds_min']}>~<{$v1['odds_max']}>)</td> <{if
+					($key+1)%6==0}>
+				</tr>
+				<tr class="baise"><{/if}> <{/foreach}>
+				</tr>
+
+
+				<{/foreach}>
+	</div>
+
+
+
+	<!-- 公共尾部 -->
+
+	<{include file="web_footer.html"}>

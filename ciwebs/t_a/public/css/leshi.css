@@ -1,0 +1,24 @@
+
+img {vertical-align: middle;}
+a{text-decoration: none;}
+input, select, textarea{list-style: none;padding: 0;margin: 0;background: transparent;border: 0;outline: none;font-family:"宋体","微软雅黑";font-size: 14px;color: #333;}
+.clear{clear: both !important;}
+.none{display: none !important;}
+
+.les_main{padding: 50px 0;}
+.les_dov{width: 1000px;margin: 0 auto;overflow: hidden;}
+.les_dov ul{width: 1040px;}
+.les_dov li{float: left;position: relative;width: 310px;height: 400px;margin: 0 35px 30px 0;}
+.les_img{position: absolute;z-index: 11;top: 0;left: 0;width: 310px;height: 400px;border-radius: 4px;overflow: hidden;}
+.les_box{position: relative;z-index: 12;width: 310px;height: 400px;border-radius: 4px;overflow: hidden;}
+.top_bg{position: absolute;z-index: 13;width: 310px;height: 200px;background: url(../images/ico_tmbg.png) repeat;top: -200px;text-align: center;}
+.btm_bg{position: absolute;z-index: 13;width: 310px;height: 200px;background: url(../images/ico_tmbg.png) repeat;bottom: -200px;text-align: center;}
+
+.les_ibox{position: relative;}
+.les_isp{position: absolute;bottom: 0;left: 0;right: 0;width: 310px;height: 68px;background: url(../images/ico_tmbg.png) repeat;line-height: 68px;text-align: center;color: #fff;font-size: 30px;}
+.les_isp img{height: 68px;}
+.les_ptop{padding-top: 76px;}
+.les_ptop img{height: 100px;}
+.les_pbtn{padding-top: 80px;}
+.btn_sp{display: inline-block;padding: 10px 20px;background: #680202;font-size: 14px;color: #fff;margin: 0 10px;border-radius: 4px;}
+

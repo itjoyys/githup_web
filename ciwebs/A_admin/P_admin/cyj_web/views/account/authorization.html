@@ -1,0 +1,196 @@
+﻿<{include file="web_header.html"}>
+<{config_load file="public.conf" section="public"}>
+<body>
+<style type="text/css">
+  .Validform_checktip {color:#FA0B42;}
+  .m_title_edit td{height: 25px;font-weight: bold;}
+</style>
+
+<script type="text/javascript">
+$(function() {
+   $("#check_a").click(function() {
+        $('.check_a').attr("checked",this.checked);
+    });
+    var $subBox = $(".check_a");
+    $subBox.click(function(){
+        $("#check_a").attr("checked",$subBox.length == $(".check_a:checked").length ? true : false);
+    });
+
+    $("#check_b").click(function() {
+        $('.check_b').attr("checked",this.checked);
+    });
+    var $subBox2 = $(".check_b");
+    $subBox2.click(function(){
+        $("#check_b").attr("checked",$subBox.length == $(".check_b:checked").length ? true : false);
+    });
+    $("#check_c").click(function() {
+        $('.check_c').attr("checked",this.checked);
+    });
+    var $subBox2 = $(".check_c");
+    $subBox2.click(function(){
+        $("#check_c").attr("checked",$subBox.length == $(".check_c:checked").length ? true : false);
+    });
+
+    $("#check_d").click(function() {
+        $('.check_d').attr("checked",this.checked);
+    });
+    var $subBox2 = $(".check_d");
+    $subBox2.click(function(){
+        $("#check_d").attr("checked",$subBox.length == $(".check_d:checked").length ? true : false);
+    });
+
+    $("#check_e").click(function() {
+        $('.check_e').attr("checked",this.checked);
+    });
+    var $subBox2 = $(".check_e");
+    $subBox2.click(function(){
+        $("#check_e").attr("checked",$subBox.length == $(".check_e:checked").length ? true : false);
+    });
+
+    $("#check_f").click(function() {
+        $('.check_f').attr("checked",this.checked);
+    });
+    var $subBox2 = $(".check_f");
+    $subBox2.click(function(){
+        $("#check_f").attr("checked",$subBox.length == $(".check_f:checked").length ? true : false);
+    });
+
+    $("#mem_auth").click(function() {
+        $('.mem_auth').attr("checked",this.checked);
+    });
+    var $subBox2 = $(".mem_auth");
+    $subBox2.click(function(){
+        $("#mem_auth").attr("checked",$subBox.length == $(".mem_auth:checked").length ? true : false);
+    });
+
+    var mem_val_1;
+    $(".mem_auth input[type=checkbox]").click(function(){
+        var mem_val = $(this).val();
+        if (mem_val.charAt(1) == '2') {
+            mem_val_1 = '.'+ mem_val.charAt(0) + '1';
+            if(!$(mem_val_1).attr("checked")){
+                return false;
+            }
+        }else{
+            mem_val_1 = '.'+ mem_val.charAt(0) + '2';
+            $(mem_val_1).attr("checked",false);
+        }
+    })
+});
+</script>
+
+<div  id="con_wrap">
+  <div  class="input_002">管理子帳號</div>
+  <div  class="con_menu">
+  <a  href="javascript:history.go(-1);">返回上一頁</a> </div>
+</div>
+<div  class="content">
+  <form action="authorization_do"  method="POST">
+    <table  width="650"  border="0"  cellspacing="0"  cellpadding="0"  class="m_tab_ed">
+      <tbody><tr class="m_title_over_co">
+        <td colspan="4">子账号权限管理</td>
+      </tr>
+      <tr  class="m_bc_ed">
+        <td  class="m_co_ed">帳號：</td>
+        <td colspan="3"><{$username}></td>
+        <td></td>
+      </tr>
+      <tr  class="m_bc_ed">
+        <td class="m_co_ed">在线存提款最大金额：</td>
+        <td><input  type="text"  id="online_max"  name="online_max" value="<{$online_max}>"  class="za_text"></td>
+        <td style="text-align: left;" colspan="2"><font style="color:red">*设置0表示无法操控公司入款线上入款出款</font></td>
+      </tr>
+      <tr  class="m_bc_ed">
+        <td class="m_co_ed">人工存提最大金额：</td>
+        <td><input  type="text"  id="catm_max"  name="catm_max" value="<{$catm_max}>" class="za_text"></td>
+        <td colspan="2"><font style="color:red;">*设置0表示无法人工存取提款</font></td>
+      </tr>
+      <tr class="m_title_over_co">
+        <td colspan="4">账号管理 <input type="checkbox"  id="check_a" style="vertical-align:middle;" value="a" ><font style="color:red">全选</font></td>
+      </tr>
+      <{foreach from=$a_arr item=v}>
+      <tr  class="m_bc_ed">
+         <{foreach from=$v item=j key=k}>
+           <td class="m_co_ed" style="text-align: left;"><input  type="checkbox"  name="quanxian[]" class="check_a" <{if $j['k2']}> checked <{/if}> value="a<{$k}>" ><{$j['k1']}><{if $k==5}><font style="color:red">【请勿勾选】</font><{/if}></td>
+         <{/foreach}>
+      </tr>
+      <{/foreach}>
+
+       <tr class="m_title_over_co">
+        <td  colspan="4">即时注单<input type="checkbox"  id="check_b" style="vertical-align:middle;" value="b" ><font style="color:red">全选</font></td>
+      </tr>
+      <{foreach from=$b_arr item=v}>
+      <tr  class="m_bc_ed">
+         <{foreach from=$v item=j key=k}>
+           <td class="m_co_ed" style="text-align: left;"><input  type="checkbox"  name="quanxian[]" class="check_b" <{if $j['k2']}> checked <{/if}> value="b<{$k}>" ><{$j['k1']}></td>
+         <{/foreach}>
+      </tr>
+      <{/foreach}>
+
+       <tr class="m_title_over_co">
+        <td  colspan="4">报表查询<input type="checkbox"  id="check_c" style="vertical-align:middle;" value="c" ><font style="color:red">全选</font></td>
+      </tr>
+      <{foreach from=$c_arr item=v}>
+      <tr  class="m_bc_ed">
+         <{foreach from=$v item=j key=k}>
+           <td class="m_co_ed" style="text-align: left;"><input  type="checkbox"  name="quanxian[]" class="check_c" <{if $j['k2']}> checked <{/if}> value="c<{$k}>" ><{$j['k1']}></td>
+         <{/foreach}>
+      </tr>
+      <{/foreach}>
+      <tr class="m_title_over_co">
+        <td  colspan="4">赛果/赔率<input type="checkbox"  id="check_d" style="vertical-align:middle;" value="d" ><font style="color:red">全选</font></td>
+      </tr>
+      <{foreach from=$d_arr item=v}>
+      <tr  class="m_bc_ed">
+         <{foreach from=$v item=j key=k}>
+           <td class="m_co_ed" style="text-align: left;"><input  type="checkbox"  name="quanxian[]" class="check_d" <{if $j['k2']}> checked <{/if}>value="d<{$k}>" ><{$j['k1']}></td>
+         <{/foreach}>
+      </tr>
+      <{/foreach}>
+       <tr class="m_title_over_co">
+        <td  colspan="4">现金系统<input type="checkbox"  id="check_e" style="vertical-align:middle;" value="e" ><font style="color:red">全选</font></td>
+      </tr>
+      <{foreach from=$e_arr item=v}>
+      <tr  class="m_bc_ed">
+         <{foreach from=$v item=j key=k}>
+           <td class="m_co_ed" style="text-align: left;"><input  type="checkbox"  name="quanxian[]" class="check_e" <{if $j['k2']}> checked <{/if}> value="e<{$k}>" <{if $j['k2']}> checked <{/if}> ><{$j['k1']}></td>
+         <{/foreach}>
+      </tr>
+      <{/foreach}>
+
+        <tr class="m_title_over_co">
+        <td  colspan="4">其它<input type="checkbox"  id="check_f" style="vertical-align:middle;" value="f" ><font style="color:red">全选</font></td>
+      </tr>
+      <{foreach from=$f_arr item=v}>
+      <tr  class="m_bc_ed">
+         <{foreach from=$v item=j key=k}>
+           <td class="m_co_ed" style="text-align: left;"><input  type="checkbox"  name="quanxian[]" class="check_f" <{if $j['k2']}> checked <{/if}> value="f<{$k}>" ><{$j['k1']}></td>
+         <{/foreach}>
+      </tr>
+      <{/foreach}>
+
+      <tr class="m_title_over_co">
+        <td  colspan="4">会员资料细项<input type="checkbox"  id="mem_auth" style="vertical-align:middle;" value="mem_auth" ><font style="color:red">全选</font></td>
+      </tr>
+       <{foreach from=$mem_meau item=vm}>
+
+      <tr  class="m_bc_ed">
+         <{foreach from=$vm item=z key=k}>
+            <td class="m_co_ed mem_auth" style="text-align: left;"><{$z['name']}>：
+           <input  type="checkbox" class="mem_auth <{$k}>1" <{if $z['val'][1]['k2']}> checked <{/if}> name="mem_auth[]"  value="<{$k}>1" ><{$z['val'][1]['k1']}>
+           <input  type="checkbox" class="mem_auth <{$k}>2" <{if $z['val'][2]['k2']}> checked <{/if}> name="mem_auth[]"  value="<{$k}>2" ><{$z['val'][2]['k1']}></td>
+         <{/foreach}>
+      </tr>
+      <{/foreach}>
+
+    <tr class="m_bc_ed">
+      <td height="27" class="table_bg" colspan="4" align="middle">
+        <input value="<{$uid}>" type="hidden" name="uid">
+        <input class="button_d" value="確定" type="submit" name="edit">
+      </td>
+    </tr>
+    </tbody></table>
+
+  </form>
+</div>
+<{include file="web_footer.html"}>

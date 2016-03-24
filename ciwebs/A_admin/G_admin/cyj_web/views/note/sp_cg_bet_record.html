@@ -1,0 +1,187 @@
+<{include file="web_header.html"}>
+<script>
+	window.onload=function(){
+	  document.getElementById("page").onchange=function(){
+      	document.getElementById('myFORM').submit();
+      }
+
+       document.getElementById("note_type").onchange=function(){
+          var gurl = $("#note_type").val();
+          window.location.href = "<{$site_url}>/note/bet_record/"+gurl;
+      }
+	}
+	var indexid = "<{$smarty.get.index_id}>";
+	$(document).ready(function(){
+        $("#note_type").get(0).selectedIndex=0;
+		$("#index_id").val(indexid);
+	})
+
+	$(function(){
+	    $("#index_id").change(function(event) {
+	      $("#myFORM").submit();
+	    });
+	  })
+</script>
+<body>
+
+<div id="con_wrap">
+<div class="input_002">体育注單 </div>
+<div class="con_menu">
+<form id="myFORM" action="<{$site_url}>/note/Bet_record/sp_bet_record" method="get" name="FrmData">
+<{$note_types}>
+&nbsp;类型:<select  id="sp_lx"  name="sp_lx" onchange="document.getElementById('myFORM').submit()"  class="za_select">
+                      <option>体育单式</option>
+                      <option  value="cg" <{select_check('cg',$smarty.get.sp_lx)}>>体育串关</option>
+                    </select>状态:
+                    <select  id="ltype"  name="ltype" onchange="document.getElementById('myFORM').submit()"  class="za_select">
+                      <option  value="-1" <{select_check('-1',$smarty.get.ltype)}>>全部</option>
+                        <option  value="0" <{select_check('0',$smarty.get.ltype)}>>未結算</option>
+                        <option  value="1" <{select_check('1',$smarty.get.ltype)}> >已結算</option>
+                    </select> &nbsp;
+                </div>
+                 会员帐号：<input  type="TEXT"  name="username"  id="username"  value="<{$smarty.get.username}>"  class="za_text"  style="width:75px;min-width:75px">
+                    注单号：<input  type="TEXT"  name="number"  id="number"   value="<{$smarty.get.number}>" class="za_text"  style="width:110px;">
+	&nbsp;日期：<input type="text" name="start_date" value="<{$start_date}>" id="start_date" class="za_text Wdate" onClick="WdatePicker({dateFmt:'yyyy-MM-dd'})">
+	--
+	<input type="text" name="end_date" value="<{$end_date}>" id="end_date" class="za_text Wdate" onClick="WdatePicker({dateFmt:'yyyy-MM-dd'})">
+	<input type="SUBMIT" value="確定" class="za_button">
+  &nbsp; <{$page}>
+		<input type="hidden" name="gid" value="<{$smarty.get.gid}>">
+		<input type="hidden" name="did" value="<{$smarty.get.did}>">
+    <input type="hidden" name="itype" value="<{$itype}>">
+		</form>
+</div>
+</div>
+<div class="content" >
+    <table width="99%" border="0" cellspacing="0" cellpadding="0" class="m_tab" >
+        <tbody>
+            <tr class="m_title_over_co">
+                <td>注单号</td>
+                <td>下注時間</td>
+                <td>所屬上級</td>
+                <td>帳號</td>
+                <td>串关数量</td>
+
+
+                <td>订单详情</td>
+                <td>下注金額</td>
+                <td>可贏金額</td>
+                <td>結果</td>
+            </tr>
+            <{if !is_array($data)}>
+            <tr class="m_rig" style="display:;">
+                <td height="70" align="center" colspan="10"><font color="#3B2D1B">暫無數據。</font></td>
+            </tr>
+            <{/if}>
+            <{foreach from=$data item=val key=key}>
+            <tr class="m_cen <{if $key%2 == 0}>even<{/if}>">
+                <td align="center"><{$val['number']}></td>
+                <td align="center"><{$val['bet_time']}></td>
+                <td align="center"><{$val['agent_zh']}></td>
+                <td align="center"><{$val['username']}></td>
+                <td align="center"><font color="#E20A0A"><{$val['cg_count']}></font></td>
+                <td align="center">
+                    <input class="content" type="submit" onclick="getinformation(<{$val['gid']}>)" value="查看详情">
+                </td>
+                <td><{$val['bet_money']}></td>
+                <td><{$val['bet_win']}></td>
+                <td><{ifstatus($val['status'])}></td>
+            </tr>
+            <{/foreach}>
+            <tr class="m_rig" style="background-Color: #EBF0F1;">
+                <td colspan="10" align="center">
+                    <b><font color="#ff0000">&nbsp;小計：<{$count_x}>笔
+                        &nbsp;&nbsp;<{$money_x}>元</font></b></td>
+            </tr>
+            <tr class="m_rig" style="background-Color: #EBF0F1;">
+                <td colspan="10" align="center"><b><font color="#ff0000">&nbsp;总計：<{$count_all['num']}>笔
+                        &nbsp;<{$count_all['money']}>元</font></b></td>
+            </tr>
+
+        </tbody>
+    </table>
+</div>
+<style>
+.mytr td{
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background: #f7b64b none repeat scroll 0 0;
+    border-color: #e78f08 #e78f08 #eaa12a;
+    border-image: none;
+    border-style: solid;
+    border-width: 1px;
+    color: #fff;
+    font-size: 14px;
+
+    overflow: hidden;
+
+}
+.mytr a {
+    background: #fff none repeat scroll 0 0;
+    border-radius: 2px;
+    color: #c77405;
+    display: block;
+    float: right;
+    font-family: arial;
+    font-size: 14px;
+    font-weight: normal;
+    height: 16px;
+    line-height: 16px;
+    margin-top: 0px;
+    overflow: hidden;
+    text-align: center;
+    text-decoration: none;
+    width: 16px;
+    cursor:pointer;
+}
+</style>
+<div style="display:none; left: 0;margin-left: auto;margin-right: auto;position: fixed;right: 0;top:50px;width:700px;max-height:400px;overflow-y:scroll;overflow-x:visible;" id="xq">
+
+    <table width="99%" border="0" cellspacing="0" cellpadding="0" class="m_tab" >
+        <tbody>
+            <tr class="mytr" style="background: #fff;height:16px;line-height: 16px;">
+                <td colspan="3">注单详情
+                <a style="display: block;" onclick="xq.style.display='none'">X</a>
+                </td>
+            </tr>
+            <tr class="m_title_over_co" id="justid">
+                <td>赛事</td>
+                <td>主客队</td>
+                <td>注单详情</td>
+            </tr>
+
+        </tbody>
+    </table>
+</div>
+<script>
+function getinformation(gid){
+    $.ajax({
+        type: "POST",
+        url: "<{$site_url}>/note/bet_record/getinformation",
+        data: "gid="+gid,
+        success: function(msg){
+          msg=eval(msg);
+          var i=msg.length;
+          var tr = "";
+          var thisclass="";
+          for(var j=0;j<i;j++){
+             if(j%2==0){
+                 thisclass="m_cen even candel";
+             }else{
+                 thisclass="m_cen candel";
+             }
+             tr+="<tr class='"+thisclass+"'><td>"+msg[j].match_name+"</td><td>"+msg[j].master_guest+"</td><td><font color='#FF0033'>"+msg[j].bet_info+"</font></td></tr>";
+          }
+
+          $(".candel").remove();
+          $("#justid").after(tr);
+          $("#xq").show();
+        }
+    });
+}
+</script>
+<!-- 公共尾部 -->
+
+<{include file="web_footer.html"}>

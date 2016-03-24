@@ -1,0 +1,103 @@
+<title>退水优惠</title>
+<{include file="web_header.html"}>
+<body>
+<div id="con_wrap">
+  <div class="input_002"><{$qishu['qsname']}>-退水優惠</div>
+  <div class="con_menu"> <a href="javascript:history.go(-1);">返回上一頁</a> </div>
+</div>
+<table style="width:90%" class="m_tab">
+  <tr class="m_title">
+    <td colspan="24" class="table_bg">會員：<{$username}>&nbsp;&nbsp;期數：<{$qishu['qsname']}>&nbsp;&nbsp;日期：<{$qishu['start_date']}> ~ <{$qishu['end_date']}></td>
+  </tr>
+  <tr class="m_title">
+  		<td rowspan="2">返水日期</td>
+		<td rowspan="2">有效總<br>投注</td>
+		<td colspan="10">有效投注</td>
+		<td colspan="10">返點</td>
+        <td rowspan="2">人工存入返點</td>
+		<td rowspan="2">優惠金<br>小計</td>
+	</tr>
+    <tr class="m_title">
+    	<td>體育</td>
+        <td>彩票</td>
+        <td>LEBO</td>
+        <td>MG視訊</td>
+        <td>MG電子</td>
+        <td>BB視訊</td>
+        <td>BB電子</td>
+        <td>AG</td>
+        <td>CT</td>
+        <td>OG</td>
+        <td>體育</td>
+        <td>彩票</td>
+        <td>LEBO</td>
+        <td>MG視訊</td>
+        <td>MG電子</td>
+        <td>BB視訊</td>
+        <td>BB電子</td>
+        <td>AG</td>
+        <td>CT</td>
+        <td>OG</td>
+    </tr>
+<{foreach from=$tsfee key=key item=value}>
+			<tr class="m_cen">
+        	<td><{$value["do_time"]}></td>
+			<td><{intval($value['betall'])}></td>
+			<td><{intval($value['sp_bet'])}></td>
+            <td><{intval($value['fc_bet'])}></td>
+            <td><{intval($value['lebo_bet'])}></td>
+            <td><{intval($value['mg_bet'])}></td>
+            <td><{intval($value['mgdz_bet'])}></td>
+            <td><{intval($value['bbin_bet'])}></td>
+            <td><{intval($value['bbdz_bet'])}></td>
+            <td><{intval($value['ag_bet'])}></td>
+            <td><{intval($value['ct_bet'])}></td>
+            <td><{intval($value['og_bet'])}></td>
+            <td><{number_format($value['sp_fd'], 2)}></td>
+            <td><{number_format($value['fc_fd'], 2)}></td>
+            <td><{number_format($value['lebo_fd'], 2)}></td>
+            <td><{number_format($value['mg_fd'], 2)}></td>
+            <td><{number_format($value['mgdz_fd'], 2)}></td>
+            <td><{number_format($value['bbin_fd'], 2)}></td>
+            <td><{number_format($value['bbdz_fd'], 2)}></td>
+            <td><{number_format($value['ag_fd'], 2)}></td>
+            <td><{number_format($value['ct_fd'], 2)}></td>
+            <td><{number_format($value['og_fd'], 2)}></td>
+            <td><{number_format($value['rgcrts'], 2)}></td>
+			<td><{number_format($value['total_e_fd'], 2)}></td>
+		</tr>
+ <{/foreach}>
+		<tr  class="m_title">
+		<td align="right">總計：</td>
+		<td><{intval($betall)}></td>
+		<td><{intval($sp_bet)}></td>
+        <td><{intval($fc_bet)}></td>
+        <td><{intval($lebo_bet)}></td>
+        <td><{intval($mg_bet)}></td>
+        <td><{intval($mgdz_bet)}></td>
+        <td><{intval($bbin_bet)}></td>
+        <td><{intval($bbdz_bet)}></td>
+        <td><{intval($ag_bet)}></td>
+        <td><{intval($ct_bet)}></td>
+        <td><{intval($og_bet)}></td>
+        <td><{number_format($sp_fd, 2)}></td>
+        <td><{number_format($fc_fd, 2)}></td>
+        <td><{number_format($lebo_fd, 2)}></td>
+        <td><{number_format($mg_fd, 2)}></td>
+        <td><{number_format($mgdz_fd, 2)}></td>
+        <td><{number_format($bbin_fd, 2)}></td>
+        <td><{number_format($bbdz_fd, 2)}></td>
+        <td><{number_format($ag_fd, 2)}></td>
+        <td><{number_format($ct_fd, 2)}></td>
+        <td><{number_format($og_fd, 2)}></td>
+        <td><{number_format($rgcrts, 2)}></td>
+		<td><{number_format($total_e_fd, 2)}></td>
+	</tr>
+</table>
+</body>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" style="clear:both">
+	<tbody><tr>
+		<td align="center" height="50"> 版权所有 建議您以 1024 X 768 以上高彩模式瀏覽本站</td>
+	</tr>
+</tbody></table>
+</body></html>

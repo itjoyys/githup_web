@@ -1,0 +1,101 @@
+<{config_load file="public.conf" section="public" }>
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<title>xljc</title>
+<style>
+@CHARSET "UTF-8";
+@import url("reset.css");
+
+ body {background:url(<{#images#}>/jcbj11.png) no-repeat center top;font-family:"微软雅黑";font-size:13px;padding:0;margin:0;margin-top:-20px}
+ #header {width:100%;height:248px;background:url(<{#images#}>/headerbg.jpg) no-repeat center top;}
+ #header .logo {width:255px;height:192px;margin:0 auto;padding-top:29px;}
+ 
+#contentbg {width:100%;overflow:hidden;}
+#contentbg .content {width:900px;overflow:hidden;margin:0 auto;padding:200px 50px 20px;background:url(<{#images#}>/bg.jpg) no-repeat center top;}
+
+#contentbg .content .left h2 {display:block;width:460px;height:42px;margin:0 auto;color:#502c1e;font-size:20px;text-align:left;text-indent:65px;}
+#contentbg .content .left h2 span {font-size:12px;}
+
+#contentbg .content .left h2 {margin:0;text-indent:0px;}
+#contentbg .content .left {width:520px;min-height:550px;float:left;}
+#contentbg .content .right {width:340px;min-height:550px;float:right;}
+ 
+#contentbg .content .left .top {width:520px;overflow:hidden;}
+#contentbg .content .left .bottom {width:520px;overflow:hidden;}
+#contentbg .content .right p {line-height:200%;font-size:12px;color:#502c1e;}
+#contentbg .content .right p span {font-size:14px; color:#502c1e;}
+#contentbg .content .right>a {float:left;display:block;width:164px;height:45px;line-height:45px;font-family:"微软雅黑";font-size:13px;text-indent:15px;text-indent:-9999px;}
+#contentbg .content .right a.bt01{background:url(<{#images#}>/online.png) no-repeat;margin-right:10px;}
+#contentbg .content .right a.bt02{background:url(<{#images#}>/button_note.png) no-repeat;}
+
+#contentbg .content .right .download {clear:both;padding-bottom:20px;}
+#contentbg .content .right .download h2 {line-height:50px;color:#814600;font-size:16px;}
+#contentbg .content .right .download a {line-height:30px;color:#814600;text-decoration:none;padding:2px 5px;margin:5px;}
+#contentbg .content .right .download a:hover {color:#f60;border-bottom:2px solid #f60;}
+
+
+ .footer p{text-align:center;color:#69410e;}
+ 
+.tline{width:520px;height:35px;margin-bottom:3px;font-size:13px;position: relative;}
+.formclass {width:100%;overflow:hidden;}
+.formclass input{line-height:31px;height:31px;font-family:"微软雅黑"; color:#fee633;margin:0;padding:0;border:none;  }
+.formclass input.msinput{background:rgb(212, 180, 19); border:#ccc 0px solid ;color:#fff;text-align:center;width:83px;position:absolute;top:0px;left:0px;}
+.formclass input.urlinput{background:rgb(212, 180, 19); border:0px solid #ccc;color:#fff;width:215px;padding-left:15px;position:absolute;top:0px;left:140px;}
+.formclass input.buttonopen{width:114px;height:34px;background:url(<{#images#}>/button.png) no-repeat center center; cursor:pointer;border:none;position:absolute;top:0px;left:380px;}
+.tline img {position:absolute;top:6px;left:100px;}
+.formclass center {display:block;width:520px;height:40px;position: relative;}
+.formclass center input {background:rgb(212, 180, 19);color:#fff; height:30px;cursor:pointer;border:none;margin:0;padding: 0 44px;position:absolute;top:0px;left:140px;}
+
+</style>
+	<div class="right">
+        		<!-- <h2 style="margin-bottom:0px;margin:0 auto;width:170px;">线路检测中心<span></span></h2> -->
+		<div id="Dialog" style="display:none"></div>
+        		<div class="left">
+			<div class="top">
+<!--				<h2>最新网址 <span>WEB SITE</span></h2>-->
+				<script language="javascript">
+				
+					tim=1
+					setInterval("tim++",100)
+					b=1
+					var autourl=new Array()
+					autourl[1]='http://baidu.com';
+                    autourl[2]='http://baidu.com';
+					autourl[3]='http://baidu.com';
+                    autourl[4]='http://baidu.com';
+					autourl[5]='http://baidu.com';
+                    autourl[6]='http://baidu.com';
+					autourl[7]='http://baidu.com';
+					autourl[8]='http://baidu.com';
+					autourl[9]='http://baidu.com';
+				</script>
+            
+			
+			</div>
+	
+		</div>
+        	</div>
+<script src="<{#js#}>/jquery-1.7.2.min.js" type="text/javascript"></script>
+<script>
+function butt(){
+document.write("<form class='formclass' id='csform' name=autof style='padding:0px;  margin-left:125px;margin-top:25px;'>")
+for(var i=1;i<autourl.length;i++)document.write("<div class='tline'><input type=text class='msinput' name=txt"+i+" value=测试中……><img src='<{#images#}>/arrow.png' border='0' /><input class='urlinput' type=text name=url"+i+">&nbsp;<input type='button'  onclick='window.open(this.form.url"+i+".value)' class='buttonopen'></div>")
+document.write("<center><a href='/index.php/Index/detect' target='mem_index'><input type=button value=重新检测刷新访问速度 class='buttonsubmit'></a></center></form>")
+}
+butt()
+function auto(url){
+document.getElementById('csform')["url"+b].value=url
+if(tim>200)
+{document.getElementById('csform')["txt"+b].value="链接超时"}
+else
+{document.getElementById('csform')["txt"+b].value=tim*10+"ms"}
+b++
+}
+function run(){for(var i=1;i<autourl.length;i++)document.write("<img src="+autourl[i]+"/"+Math.random()+" width=1 height=1 onerror=auto('"+autourl[i]+"') style='display:none'>")}
+run()
+</script>
+<div style="heirht:125px"></div>
+</body>

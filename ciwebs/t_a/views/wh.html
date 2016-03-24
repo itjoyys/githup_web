@@ -1,0 +1,337 @@
+<{config_load file="public.conf" section="public"}>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-cn">
+
+<head>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8" />
+    <title><{$sitename}> 维护中心</title>
+    <script type="text/javascript" src="<{#js#}>/jquery.min.js"></script>
+<style>
+body {
+    font-size: 12px;
+    background: #000000 url(http://<{$domain
+}>/wh/images/whbg.jpg); margin: 0px; padding: 0px; font-family: Microsoft YaHei, "微软雅黑", sans-serif;
+}
+
+.main {
+margin: 50px auto;
+width: 750px;
+}
+
+.mt3 {
+margin-top: 3px;
+}
+
+.clear {
+clear: both;
+}
+
+.none {
+display: none;
+}
+
+.show {
+display: block;
+}
+
+.xs {
+cursor: pointer;
+}
+
+.wbf {
+width: 30px;
+}
+
+.mt3 {
+margin-top: 3px;
+}
+
+.w5 {
+width: 120px;
+}
+
+.info {
+float: left;
+width: 150px;
+height: 100px;
+}
+
+.webinfo {
+background: #000;
+width: 750px;
+height: 200px;
+}
+
+.webinfo_content {
+width: 750px;
+height: 200px;
+position: relative;
+top: -200px;
+color: #fff
+}
+
+.info_main {
+width: 150px;
+height: 100px;
+background: #000;
+position: relative;
+left: 0;
+top: 0px;
+z-index: 1px;
+}
+
+.info_main_ {
+ 
+border: #ffffff solid 0px;
+position: relative;
+left: 0;
+top: -100px;
+z-index: 2px;
+width: 150px;
+height: 100px;
+color: #fff;
+text-align: center;
+font-size: 14px;
+line-height: 30px;
+}
+
+.info_main_ marquee {
+padding: 0px 10px;
+width: 100px;
+}
+
+
+.siteinfo {
+width: 750px;
+font-size: 14px;
+background: #000;
+line-height: 35px;
+height: 35px;
+color: #fff;
+border-bottom: #B00505 solid 1px;
+-moz-border-radius: 10px 10px 0px 0px;
+      /* Gecko browsers */
+-webkit-border-radius: 10px 10px 0px 0px;
+   /* Webkit browsers */
+border-radius: 10px 10px 0px 0px;
+            /* W3C syntax */
+}
+
+.siteinfo div {
+line-height: 35px;
+height: 35px;
+float: left
+}
+
+.sitename {
+background: #B00505;
+padding: 0px 20px;
+width: 260px;
+overflow: hidden;
+text-align: center;
+-moz-border-radius: 10px 0px 0px 0px;
+      /* Gecko browsers */
+-webkit-border-radius: 10px 0px 0px 0px;
+   /* Webkit browsers */
+border-radius: 10px 0px 0px 0px;
+            /* W3C syntax */
+}
+
+.whcenter {
+padding-left: 20px;
+}
+
+a:link,a:visited {
+color: #fff;
+text-decoration: none
+}
+
+.ico {
+font-size: 30px;
+float: left;
+margin: 30px 0px 0px 30px;
+}
+
+.notice {
+padding: 0px 20px;
+line-height: 30px;
+font-size: 15px;
+margin-top: 20px;
+color: #FFAA00
+}
+
+.service {
+float: right;
+padding-right: 30px;
+margin-top: 20px;
+}
+
+.domain {
+margin-left: 300px;
+}
+
+.startname {
+width: 80px;
+margin: 0px auto;
+background: #000;
+-moz-border-radius: 15px 0px 15px 0px;
+      /* Gecko browsers */
+-webkit-border-radius: 15px 0px 15px 0px;
+   /* Webkit browsers */
+border-radius: 15px 0px 15px 0px;
+            /* W3C syntax */
+}
+.wh {
+background: #000
+}
+
+.whz {
+background: #C10B0B; 
+}
+
+.close {
+background: #373737;color: #999
+}
+    </style>
+</head>
+<body>
+<div class="main">
+    <div class="siteinfo">
+    <div class="sitename"><{$sitename}></div> 
+    <div class="whcenter">维护中心</div>
+    <div class="domain"> <a href="http://<{$domain}>" >网站首页</a></div>
+    </div>
+    <{if $webhome==1}>
+    <div class="webinfo">
+        
+    </div>
+    <div class="webinfo_content">
+        <div class="ico">(^_^)/ 我们的系统正在维护中，请稍后再访问！</div>
+        <div class="clear"></div>
+        <div class="notice"><{$status['webhome_msg']}></div>
+        <div class="service"><{$domain}> | <a href="<{$kefu}>" target=_blank>Online Service/在线客服</a>  | <a href="http://<{$domain}>" >网站首页</a></div>
+    </div>
+    <script>
+    $('.webinfo').fadeTo("slow",'0.5')
+    </script>
+    <{else}>
+    <{foreach from=$modules item=v}>
+     <{if $v['cate_type']!='webhome' and  $v['cate_type']!='webend' }>
+       
+       
+      
+    <div class="info">
+        <div class="info_main <{if $status[$v['cate_type']]==1}>wh<{/if}>"></div>
+        <div class="info_main_">
+            <div>
+           [ <{$v['name']}> ]
+               <br>
+               <div class="startname"  id="<{$v['cate_type']}>">
+                 
+                  开始游戏
+
+               </div>
+            <{if $status[$v['cate_type']]==1}>
+           
+            <marquee   id="<{$v['cate_type']}>_msg">  </marquee>
+            <{/if}>
+            </div>
+        </div>
+    </div>
+    
+    <{/if}>
+    <{/foreach}>
+ <script type="text/javascript">
+var data=<{$status_json}>;
+var playurl=<{$playurl}>;
+var siteopen=<{$siteopen}>;
+var modules=<{$modules_}>;
+function opengeme(url){
+     
+
+    newWin=window.open(url,'games','width=900,height=600,fullscreen=1,scrollbars=0,location=no');
+    window.opener=null; 
+    //window.open('','_self'); //ie7
+    //window.close();
+}
+    $(document).ready(function(){
+        $(window).bind("resize", auto_wh);
+        $(".info_main").fadeTo("slow",'0.6')
+    })
+    window.onscroll = function() {
+    auto_wh()
+}
+x=$('.info')
+$.each(x,function(e,f){
+    o=$(f).find('div:eq(3)')
+    att=o.attr('id')
+    $.each(playurl,function(c,d){
+            
+            if(c==att){
+
+                if(d.type==1) $(o).html('<a href="javascript:;" onclick="opengeme(\''+d.url+'\')">开始游戏<a>');
+                else $(o).html('<a href="'+d.url+'" target=iframepage>开始游戏<a>');
+            }
+        })
+})
+
+$.each(data,function(i,v){
+     
+    if(i.indexOf('_msg')>0){
+        o=$('#'+i); 
+        a=i.split('_msg');
+        $('#'+a[0]).html('维护中');
+        $('#'+a[0]).addClass('whz')
+        o.html('公告：'+v);
+    }else{
+        
+    }
+})
+$.each(modules,function(i,v){
+    open=false;
+    $.each(siteopen,function(a,b){
+        $.each(b,function(c,d){
+             
+            if(v.cate_type==d) {
+                
+                open=true;
+                return false; 
+            }
+        })
+    })
+    if(open==false){
+        obj=$('#'+v.cate_type);
+        obj.html('敬请期待')
+        obj.addClass('close')
+        obj_=obj.parent().parent().parent();
+        obj_.find('div:first').addClass('wh')
+        obj_.find('marquee').html('');
+    }
+})
+$('.info_main_').mouseover(function(){
+    $(this).parent().find('.info_main').stop();
+    $(this).parent().find('.info_main').fadeTo("slow",'0.3')
+})
+$('.info_main_').mouseleave(function(){
+     $(this).parent().find('.info_main').stop();
+    $(this).parent().find('.info_main').fadeTo("slow",'0.6')
+})
+    function auto_wh(){
+       /* h = $(window).height();
+        w = $(window).width();
+        scrollTop = $(window).scrollTop();
+        header_h = $('.header').height();
+        $(".left").height(h - header_h - 1)
+        $("#right").height(h - header_h - 1)
+        $("#right").width(w - 230)
+        $("#right_sport_main").height(h - header_h - 75 + scrollTop)
+        $("#right_sport_main").css({
+            'z-index': 11000
+        })*/
+    }
+</script>
+<{/if}>
+</div>
+</body>
+
+</html>

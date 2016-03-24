@@ -1,0 +1,48 @@
+<{include file="web_header.html"}>
+<body>
+<div  id="con_wrap">
+<div  class="input_002">會員體系管理</div>
+<div  class="con_menu">
+<form  name="myFORM"  id="myFORM" action="<{$site_url}>/account/account_search"  method="get">
+層級查詢：&nbsp;
+<select  name="search_type" id="search_type">
+	<{foreach from=$get_account_level item=v key=k}>
+	<option value="<{$k}>" <{select_check($k,$smarty.get.search_type)}> ><{$v}> </option>
+	<{/foreach}>
+</select>
+帳號:
+<input  type="text"  name="account"  class="za_text"  value="<{$smarty.get.account}>">&nbsp;&nbsp;
+<input  type="submit"  name="subbtn"  class="za_button"  value="查 詢">
+</form>
+
+</div>
+</div>
+<div  class="content">
+
+  <table  width="1024"  border="0"  cellspacing="0"  cellpadding="0"  bgcolor="E3D46E"  class="m_tab">
+  <tbody><tr  class="m_title_over_co">
+    <td>序號</td>
+    <td>股东</td>
+    <td>总代理</td>
+    <td>代理商</td>
+    <td>会员</td>
+    </tr>
+    <{if !empty($user)}>
+    <{foreach from=$user item=v key=k}>
+	<tr>
+	  <td align="center"><{$k+1}></td>
+    <td align="center"><{$v['s_h']}></td>
+    <td align="center"><{$v['u_a']}></td>
+    <td align="center"><{$v['a_t']}></td>
+    <td align="center"><{$v['username']}></td>
+	</tr>
+	<{/foreach}>
+	<{else}>
+	  <tr class="m_rig" style="display:;">
+        <td height="70" align="center" colspan="16"><font color="#3B2D1B">暫無數據。</font></td>
+      </tr>
+	<{/if}>
+    </tbody>
+  </table>
+</div>
+ <{include file="web_footer.html"}>

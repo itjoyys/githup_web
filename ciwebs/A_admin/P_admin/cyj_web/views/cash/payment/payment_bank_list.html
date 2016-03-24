@@ -1,0 +1,91 @@
+<title>入款銀行設定</title>
+<{include file="web_header.html"}>
+<{config_load file="public.conf" section="public"}>
+
+<body>
+<script type="text/javascript">
+var indexid = "<{$index_id}>";
+$(document).ready(function(){
+  $("#index_id").val(indexid);
+  $("#index_id").change(function(event) {
+      $("#myFORM").submit();
+    });
+})
+</script>
+<div  id="con_wrap">
+  <div  class="input_002">入款銀行設定</div>
+  <div  class="con_menu">
+      <a href="<{$site_url}>/cash/payment/index">支付参数設定</a>
+  <a href="<{$site_url}>/cash/payment/payment_bank_list" style="color: red;">入款銀行設定</a>
+  <a href="<{$site_url}>/cash/payment/payment_online_list" >线上支付設定</a>
+    <a href="<{$site_url}>/cash/payment/payment_bank_add" >新增银行卡</a>
+    <form name="myFORM" id="myFORM" action="" method="GET">
+       <{$sites_str}>
+      状态：
+       <select  name="is_delete" onchange="document.getElementById('myFORM').submit()" id="status" class="za_select">
+           <option value="0" <{select_check(0,$is_delete)}>>启用</option>
+           <option value="2" <{select_check(2,$is_delete)}>>停用</option>
+      </select>
+      银行：
+      <select name="type" onchange="document.getElementById('myFORM').submit()"  id="bank_type" class="za_select">
+       <option value="0" >全部</option>
+          <{foreach from=$bank_type key=i item=v}>
+          <option value="<{$i}>" <{select_check($type,$i)}>><{$v['bank_name']}></option>
+          <{/foreach}>
+          </select>&nbsp;&nbsp;帳號：
+          <input name="card_num" class="za_text" type="text" id="card_id" value="<{$card_num}>" size="20" maxlength="20"/>
+      <input type="submit" name="buname" value="查询" class="za_button">
+
+      </form>
+
+
+  </div>
+</div>
+
+<table width="100%" class="m_tab" border="0" cellspacing="0" cellpadding="0">
+	<tr class="m_title_over_co" align="center">
+        <td width="120" height="20">銀行類型</td>
+        <td width="20%" height="20">開戶行</td>
+        <td width="20%" height="20">帳號信息</td>
+        <td width="150" height="20">层级信息</td>
+        <td width="40" height="20">狀態</td>
+        <td height="20">備注</td>
+        <td height="20">操作</td>
+    </tr>
+	<{foreach from=$banks key=i item=v}>
+      <tr class="m_cen <{if $i%2 == 0}>even<{/if}>">
+      <td align="center"><{$v['bank_type_zh']}></td>
+      <td align="center"><{$v['card_address']}></td>
+      <td align="center">
+            帳號：<{$v['card_ID']}><br>
+      收款人：<{$v['card_userName']}><br>
+      停用金額：<{$v['stop_amount']}>元
+     </td>
+     <td align="center">
+		   <{$v['level_des']}>
+    </td>
+		<td align="center">
+      <{if $v['is_delete'] == '2'}>
+      <span style="color:#FF00FF;">停用</span>
+      <{else}>
+      <span style="color:##1E20CA;">正常</span>
+      <{/if}>
+    </td>
+
+    <td align="center"><{$v['remark']}></td>
+		<td align="center">
+         <a href="<{$site_url}>/cash/payment/payment_bank_add?index_id=<{$v['index_id']}>&id=<{$v['id']}>" >修改</a>&nbsp;&nbsp;/&nbsp;&nbsp;
+         <a href="<{$site_url}>/cash/payment/payment_bank_log?index_id=<{$v['index_id']}>&id=<{$v['id']}>" >存款记录</a>&nbsp;&nbsp;/&nbsp;&nbsp;
+         <{if $v['is_delete'] == '2'}>
+         <a href="#" onclick="if(confirm('是否要启用？'))document.location='<{$site_url}>/cash/payment/payment_bank_do?type=0&id=<{$v['id']}>';">启用</a>&nbsp;&nbsp;/&nbsp;&nbsp;
+         <{else}>
+         <a href="#" onclick="if(confirm('是否要停用？'))document.location='<{$site_url}>/cash/payment/payment_bank_do?type=2&id=<{$v['id']}>';">停用</a>&nbsp;&nbsp;/&nbsp;&nbsp;
+         <{/if}>
+         <a href="#" onclick="if(confirm('是否要删除？'))document.location='<{$site_url}>/cash/payment/payment_bank_do?type=1&id=<{$v['id']}>';">删除</a>
+</td>
+		</tr>
+<{/foreach}>
+
+</table>
+
+<{include file="web_footer.html"}>

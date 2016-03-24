@@ -1,0 +1,132 @@
+<{config_load file="public.conf" section="public"}>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script src="<{#mem_js#}>/jquery-1.8.3.min.js"></script>
+		<script src="<{#mem_js#}>/PCASClass.js"></script>
+		<link rel="stylesheet" href="<{#mem_css#}>/bank.css" type="text/css">
+		<link rel="stylesheet" href="<{#mem_css#}>/index_main.css" />
+		<link rel="stylesheet" href="<{#mem_css#}>/standard.css" />
+	</head>
+	<div id="bank_header">
+		<div id="bank_logo"></div>
+	</div>
+	<body style="">
+		<div id="MAMain" style="width:100%">
+			<div id="MACenter-content" style="width:800px;margin:0 auto;">
+				<div id="MACenterContent">
+					<div id="bank_content" style="width:600px; height:400px;">
+						<div class="main_nr">
+							<FORM id="form1" method="post" name="form1" action="index/hk_money_do">
+								<input type="hidden" name="into" value="true" />
+								<input type="hidden" name="class" value="<{$class}>" />
+								<input type="hidden" name="method" value="<{$method}>" />
+								<h3 id="pay_title " class="star">为保护您的资金安全﹐请确实填写您的银行卡资料﹐以免有心人士窃取﹐谢谢!</h3>
+								<table width="90%" border="0" cellspacing="0" cellpadding="0" class="tab_bank">
+									<tbody>
+										<tr>
+											<td height="25" align="center" class="m_bc_ed" width="30%">真实姓名 : </td>
+											<td colspan="2"><{$userinfo["pay_name"]}></td>
+										</tr>
+										<tr>
+											<td height="25" align="center" class="m_bc_ed" width="30%">取款密码 : </td>
+											<td colspan="2"><{$userinfo["qk_pwd"]}></td>
+										</tr>
+										<tr>
+											<td height="25" align="center" class="m_bc_ed">出款银行： </td>
+											<td>
+												<SELECT id="IntoBank" name="pay_card" class="txt4_3" style="width:131px">
+													<option value="">請選擇取款銀行</option>
+													<{foreach key=k item=v from=$bank_arr}>
+													<option value="<{$v['id']}>"><{$v['bank_name']}></option>
+													<{/foreach}>
+												</SELECT>
+											</td>
+											<td width="400"></td>
+										</tr>
+										<tr>
+											<th height="25" align="center" class="m_bc_ed"><span class="star">*</span>省份:</th>
+											<td><select name="province" style="width:131px" id="province"></select></td>
+											<td><div class="Validform_checktip">请选择您所在省份！</div></td>
+										</tr>
+										<tr>
+											<th height="25" align="center" class="m_bc_ed"><span class="star">*</span>城市:</th>
+											<td><select name="city" style="width:131px" id="city"></td>
+											<td><div class="Validform_checktip">请选择您所在城市！</div></td>
+										</tr>
+										<tr>
+											<td height="25" align="center" class="m_bc_ed"><span class="star">*</span>银行账号： </td>
+											<td colspan="2"><INPUT id="pay_num" class="txt4_3" onkeyup="value=this.value.replace(/\D+/g,'')" type="text" name="pay_num" ></td>
+										</tr>
+										<tr align="center">
+											<td colspan="3" class="table_bg1">
+											<input value=提交信息 onclick="SubInfo()" type="button" name=SubTran id="SubTran" class="btn_001">
+											&nbsp;&nbsp;&nbsp;
+											<input type="reset" value="重置" class="btn_001">
+											&nbsp;&nbsp;&nbsp; </td>
+										</tr>
+									</tbody>
+								</table>
+							</form>
+						</div>
+						<div id="note">
+							<h1>备注：</h1>
+							<p>1.标记有&nbsp;<span class="star">*</span>&nbsp;者为必填项目。</p>
+							<p>2.手机与取款密码为取款金额时的凭证,请会员务必填写详细资料。</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="bank_footer" style="text-align: center;background:none;">
+				<p>Copyright ? <{$copyright['copy_right']}> Reserved</p>
+			</div>
+		</div>
+	</body>
+</html>
+
+	<script>
+		new PCAS("province","city");
+	</script>
+	<style type="text/css">
+		H3{text-indent: 2em;}
+		body{font-size:12px}
+		.m_bc_ed{text-align:right;height:30px;line-height:30px}
+		.tab_bank{font-size:12px}
+		.star{margin-left:10px}
+		.btn_001{cursor: pointer;margin: 0 1px 0 0;width: 85px;height: 26px;border: none;padding-top: 2px;color: #FFF;font-weight: bold;background: #3D3D3D url(../public/images/order_btn.gif) no-repeat 0 -80px;}
+		select,input{height:20px;line-height:20px;}
+	</style>
+
+	<SCRIPT language=javascript type=text/javascript>
+	function SubInfo(){
+		var IntoBank=$('#IntoBank').val();
+		if(IntoBank==''){
+			alert('请选择出款银行');
+			$('IntoBank').focus();
+			return false;
+		}
+		var account = $("#pay_num").val();
+		var reg = /^([0-9]{16,19})$/g; // 以19位数字开头，以19位数字结尾
+		if(!reg.test(account))
+		{
+			alert("格式错误，银行卡号为16-19位纯数字！");
+			return false;
+		}
+		if($('#province').val()==''){
+			alert('请选择省份！');
+			return false;
+		}
+		if($('#city').val()==''){
+			alert('请选择城市！');
+			return false;
+		}
+		$('#form1').submit();
+	}
+
+	//是否是中文
+	function isChinese(str){
+		return /[\u4E00-\u9FA0]/.test(str);
+	}
+	</SCRIPT>

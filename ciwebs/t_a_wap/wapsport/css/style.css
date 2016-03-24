@@ -1,0 +1,254 @@
+.button,.title,body {
+    font-family: '微软雅黑',Microsoft YaHei,Tahoma,HelveticaNeue-Light,Helvetica Neue Light,Helvetica Neue,Helvetica,Arial,sans-serif;
+}
+
+hr {
+    border-top: #333 solid 1px;
+}
+
+.none {
+    display: none;
+}
+
+.c1 {
+    color: #bf3535;
+}
+
+.c2 {
+    color: #1f9706;
+}
+
+.pane {
+     background: #0683bc url(../img/bg.jpg);
+   background-size: cover; 
+ }
+.pane_r {
+ 
+    background-image: -webkit-radial-gradient(top, circle cover, hsla(10, 85%, 50%, 0.8) 0%, hsla(60, 50%, 57%,1) 80%);
+}
+
+.username {
+    margin-left: 8px;
+}
+
+.reftime,.username {
+    line-height: 35px;
+}
+
+.item {
+    border: 0;
+    background: none;
+    transform: translate3d(0px,0px,0px) scale(1);
+}
+
+.scroll-content {
+    margin-top: 1px;
+}
+
+.bar.bar-stable {
+    border: #fff 0;
+    background: rgba(0,0,0,.1);
+    box-shadow: -1px 1px 2px rgba(0,0,0,.5);
+    color: #fff;
+}
+
+.bar.bar-stable .title {
+    color: #fff;
+}
+
+.bar-stable .button.button-clear {
+    color: #fff;
+}
+
+.bet_match_list {
+    padding: 0;
+    color: #eee;
+}
+
+.matchselect .row {
+    padding: 0;
+}
+
+.matchselect .col {
+    padding: 5px;
+}
+
+.match_info {
+    color: #333;
+    text-align: center;
+    text-shadow: 0 1px 0 hsla(0,0%,100%,.23);
+    font-weight: bolder;
+}
+
+.shadow {
+    padding: 0;
+    box-shadow: inset 1px 1px hsla(0,0%,100%,.2);
+}
+
+.legnamelist .item-content,.sportradio .item-content {
+    background: hsla(0,0%,100%,.2);
+    color: #fff;
+}
+
+.menu {
+        background-image: -webkit-radial-gradient(top, circle cover, hsla(198, 85%, 50%, 0.8) 0%, hsla(60, 30%, 57%,1) 80%);
+background-size: cover;
+}
+
+.item-complex .item-content {
+    background: rgba(0,0,0,.2);
+    color: #fff;
+}
+
+.item-radio input:checked+.radio-content .item-content {
+    background: hsla(0,0%,100%,.3);
+    color: #fff;
+}
+
+.bet_match_list .matchname {
+    color: #000;
+    text-align: left;
+    line-height: 20px;
+}
+
+.bet_match_list .m_title {
+    color: #963;
+}
+
+.bet_match_list .item {
+    padding: 15px 0;
+}
+
+.text-center {
+    text-align: center;
+}
+.master_guest{ }
+.scroll-view.scroll-x{overflow-x:hidden;}
+
+.bet,.bethr {
+    margin-top: 7px;
+    margin-right: 2px;
+    border: 0;
+    background: hsla(0,0%,100%,.3);
+}
+
+.bethr {
+    background: hsla(0,0%,100%,.5);
+}
+
+.betname {
+    margin-bottom: -6px;
+    margin-top: 3px;
+    padding: 1px;
+     background: rgba(255,255,255,.6);
+}
+
+.betname .ion-ios-refresh-outline {
+    line-height: 40px;
+}
+
+.betrow {
+    padding: 0;
+}
+
+.betdatalist {
+    background: rgba(0,0,0,.1);
+}
+
+.betselect .col,.betselect .row {
+    padding: 0;
+}
+
+.betselect .item {
+    margin: 1px;
+    margin-bottom: 5px;
+    background: hsla(0,0%,100%,.1);
+    box-shadow: inset 1px 1px hsla(0,0%,100%,.2);
+}
+
+.matchsel .item {
+    margin-bottom: 1px;
+
+     overflow:none;
+}
+.item-content{ overflow:none;}
+.jy {
+    margin: -6px 0 -2px;
+    padding: 0;
+    background: hsla(0,0%,100%,.2);
+}
+
+.bar.bar-assertive,.bar.bar-assertive.bar-footer {
+    background: rgba(0,0,0,.1);
+}
+
+.bar.bar-assertive {
+    border-top: rgba(0,0,0,.2) solid 1px;
+    box-shadow: -1px 1px 1px #000;
+    color: #333;
+}
+
+.bar.bar-assertive .usermoney {
+    color: rgba(0,0,0,.73);
+    font-weight: bolder;
+    font-family: '微软雅黑',Microsoft YaHei,Tahoma;
+    line-height: 35px;
+}
+
+.bar.bar-assertive .button {
+    background: rgba(0,0,0,.5);
+}
+
+.modal {
+    background-size: cover;
+    box-shadow: 1px 1px 3px #000;
+}
+
+.betmodel .modal,.modal {
+    background-image: -webkit-radial-gradient(top, circle cover, hsla(198, 85%, 50%, 0.8) 0%, hsla(200, 80%, 57%,1) 80%);
+}
+.button-clear.button-clear{color:#ffffff;}
+.modal .item {
+    color: #000;
+}
+
+.bar {
+    border: 0;
+    background: rgba(0,0,0,.1);
+    box-shadow: -1px 1px 2px rgba(0,0,0,.5);
+}
+
+.bar h1 {
+    color: #fff;
+}
+
+.pbetd {
+    margin-top: 2px;
+    margin-right: 1px;
+    border: 1px;
+    background: hsla(0,0%,100%,.3);
+    box-shadow: inset 1px 1px hsla(0,0%,100%,.2);
+}
+
+.betmoneyinput {
+    background: hsla(0,0%,100%,.5);
+}
+
+.buttionitem {
+    padding: 0 10px;
+}
+
+.betpagelist {
+    padding: 10px;
+}
+
+.betpagelist .thispage {
+    color: #9F0202;
+}
+.sportlogin{
+    text-decoration : none
+}
+.item.activated,.item .item-content.activated{ background: rgba(0,0,0,.4);}
+.redcard{background: #ff0000;color: #fff;font-size: 8px; padding: 1px 2px;-moz-border-radius: 3px;      /* Gecko browsers */
+    -webkit-border-radius: 3px;   /* Webkit browsers */
+    border-radius:3px;            /* W3C syntax */}

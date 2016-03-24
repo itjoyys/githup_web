@@ -1,0 +1,38 @@
+<ion-view cache-view="false" class="m-bank">
+	<ion-nav-bar class="bar bar-header bar-light">
+		<ion-nav-buttons side="left">
+			<a class="button button-icon icon ion-ios-arrow-back" ng-href="#/center">	</a>
+		</ion-nav-buttons>
+		<ion-nav-title>{{'Common_LabelBankInfo'|translate}}</ion-nav-title>
+		<!--<ion-nav-buttons side="right">
+			<a class="button button-icon icon ion-android-add" ng-show="" ng-click="addBank()"></a>
+		</ion-nav-buttons>-->
+	</ion-nav-bar>
+	<ion-content class="has-header">
+		<ion-refresher on-refresh="pageRefresh()"></ion-refresher>
+		<div class="padding" ng-show="showAdd">
+			<a class="button button-block button-addbank" ng-click="addBank()">{{'Common_LabelAddBankNumber'|translate}}</a>
+		</div>
+		<div class="list list-bank">
+			<div class="item item-avatar bank-round" ng-repeat="item in bankData">
+				<!--<div class="row">
+					<div class="col col-66"><img ng-src="{{item.BankLogo}}"></div>
+					<div class="col col-33">
+						<a ng-click="mdfBank(item.MemberBankID)"><img ng-src="{{CDNURL+'images/icon-modify.png'}}"></a>
+						<a ng-click="delBank(item.MemberBankID)"><img ng-src="{{CDNURL+'images/icon-close.png'}}"></a>
+					</div>
+				</div>-->
+				<div class="row">
+					<div class="col">
+						<p><span ng-bind="'Member_LabelBankRealName'|translate"></span>： <span>{{item.BankNickName}}</span></p>
+						<p><span ng-bind="'Member_LabelBankAccount'|translate"></span>： <span>{{item.BankAccount}}</span></p>
+						<p><span ng-bind="'Member_LabelBank'|translate"></span>： <span>{{item.BankName}}</span></p>
+						<p><span ng-bind="'Member_LabelBankAddress'|translate"></span>： <span ng-if="item.BankProvince">{{item.BankProvince+'-'}}</span> <span ng-if="item.BankCity">{{item.BankCity}}</span> 
+						<!--<span>{{item.BankBranchName}}</span>-->
+						</p>
+					</div>
+				</div>
+			 </div>
+		 </div>
+	 </ion-content>
+ </ion-view>

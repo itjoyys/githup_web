@@ -1,0 +1,142 @@
+<title>代理注册設定</title>
+<{include file="web_header.html"}>
+<{config_load file="public.conf" section="public"}>
+<script type="text/javascript">
+var indexid = "<{$index_id}>";
+$(document).ready(function(){
+	$("#index_id").val(indexid);
+	$("#index_id").change(function(event) {
+      $("#queryform").submit();
+    });
+})
+</script>
+<body>
+<div id="con_wrap">
+  <div class="input_002">代理注册設定</div>
+  <div class="con_menu" style="width:80% ; padding-top:3px;">
+  <form name="queryform" id="queryform" action="<{$site_url}>/account/agent_reg/agent_set" method="get">
+  <{$sites_str}>
+  </form>
+  </div>
+</div>
+
+<div class="content" style="width:580px;">
+<form action="<{$site_url}>/account/agent_reg/agent_set_do" method="post">
+<input type="hidden" name="id" value="<{$data['id']}>">
+<input type="hidden" id="iid" name="index_id" value="<{$index_id}>">
+	<table width="780" class="m_tab">
+		<tbody><tr class="m_title">
+			<td height="27" class="table_bg" colspan="2" align="middle">代理注册設定</td>
+		</tr>
+		<tr class="m_cen even">
+			<td class="table_bg1" align="center">是否啟用代理注册</td>
+			<td align="left">
+				<input value="1" <{if $data['is_daili'] == 1}> checked<{/if}> type="radio" name="is_daili">啟用&nbsp;&nbsp;
+				<input value="0" <{if $data['is_daili'] == 0}> checked<{/if}> type="radio" name="is_daili">停用&nbsp;&nbsp;
+			</td>
+		</tr>
+		<script>
+			//隐藏是否必填
+			function is_check(name){
+				var c='#'+name;
+				$(c).css('display','none');
+			}
+
+			//显示是否必填
+			function is_check2(name){
+				var c='#'+name;
+				$(c).css('display','');
+			}
+		</script>
+		<tr class="m_cen">
+			<td class="table_bg1" align="center">中文昵称</td>
+			<td align="left">
+				<input value="0" <{if $data['is_zh_name'] == '0-1' || $data['is_zh_name'] == '0-0'}> checked<{/if}> type="radio" name="is_zh_name" onclick="is_check2(this.name)">需&nbsp;&nbsp;
+				<input value="1" <{if $data['is_zh_name'] == '1-1' || $data['is_zh_name'] == '1-0'}> checked<{/if}> type="radio" name="is_zh_name" onclick="is_check(this.name)">無需&nbsp;&nbsp;
+				<span id="is_zh_name" style="<{if $data['is_zh_name'] == '1-1' || $data['is_zh_name'] == '1-0'}>display:none<{/if}>" >
+				<input value="1"  type="checkbox" name="is_zh_name_true" <{if $data['is_zh_name'] == '0-1'}> checked<{/if}>>是否必填&nbsp;&nbsp;
+				</span>
+			</td>
+		</tr>
+		<tr class="m_cen even">
+			<td class="table_bg1" align="center">邮箱</td>
+			<td align="left">
+				<input value="0" <{if $data['is_email'] == '0-1' || $data['is_email'] == '0-0'}> checked<{/if}> type="radio" name="is_email" onclick="is_check2(this.name)">需&nbsp;&nbsp;
+				<input value="1" <{if $data['is_email'] == '1-1' || $data['is_email'] == '1-0'}> checked<{/if}> type="radio" name="is_email" onclick="is_check(this.name)">無需&nbsp;&nbsp;
+				<span id="is_email" style="<{if $data['is_email'] == '1-1' || $data['is_email'] == '1-0'}>display:none<{/if}>" >
+				<input value="1"  type="checkbox" name="is_email_true" <{if $data['is_email'] == '0-1'}> checked<{/if}>>是否必填&nbsp;&nbsp;
+				</span>
+			</td>
+		</tr>
+		<tr class="m_cen">
+			<td class="table_bg1" align="center">英文昵称</td>
+			<td align="left">
+				<input value="0" <{if $data['is_en_name'] == '0-1' || $data['is_en_name'] == '0-0'}> checked<{/if}> type="radio" name="is_en_name" onclick="is_check2(this.name)">需&nbsp;&nbsp;
+				<input value="1" <{if $data['is_en_name'] == '1-1' || $data['is_en_name'] == '1-0'}> checked<{/if}> type="radio" name="is_en_name" onclick="is_check(this.name)">無需&nbsp;&nbsp;
+				<span id="is_en_name" style="<{if $data['is_en_name'] == '1-1' || $data['is_en_name'] == '1-0'}>display:none<{/if}>" >
+				<input value="1"  type="checkbox" name="is_en_name_true" <{if $data['is_en_name'] == '0-1'}> checked<{/if}>>是否必填&nbsp;&nbsp;
+				</span>
+			</td>
+		</tr>
+
+		<tr class="m_cen even">
+			<td class="table_bg1" align="center">證件</td>
+			<td align="left">
+				<input value="0" <{if $data['is_card'] == '0-1' || $data['is_card'] == '0-0'}> checked<{/if}> type="radio"  name="is_card" onclick="is_check2(this.name)">需&nbsp;&nbsp;
+				<input value="1" <{if $data['is_card'] == '1-1' || $data['is_card'] == '1-0'}> checked<{/if}> type="radio" name="is_card" onclick="is_check(this.name)">無需&nbsp;&nbsp;
+				<span id="is_card" style="<{if $data['is_card'] == '1-1' || $data['is_card'] == '1-0'}>display:none<{/if}>" >
+				<input value="1"  type="checkbox" name="is_card_true" <{if $data['is_card'] == '0-1'}> checked<{/if}>>是否必填&nbsp;&nbsp;
+				</span>
+			</td>
+		</tr>
+		<tr class="m_cen">
+			<td class="table_bg1" align="center">QQ</td>
+			<td align="left">
+				<input value="0" <{if $data['is_qq'] == '0-1' || $data['is_qq'] == '0-0'}> checked<{/if}> type="radio" name="is_qq" onclick="is_check2(this.name)" onclick="is_check2(this.name)">需&nbsp;&nbsp;
+				<input value="1" <{if $data['is_qq'] == '1-1' || $data['is_qq'] == '1-0'}> checked<{/if}> type="radio" name="is_qq" onclick="is_check(this.name)">無需&nbsp;&nbsp;
+				<span id="is_qq" style="<{if $data['is_qq'] == '1-1' || $data['is_qq'] == '1-0'}>display:none<{/if}>" >
+				<input value="1"  type="checkbox" name="is_qq_true" <{if $data['is_qq'] == '0-1'}> checked<{/if}>>是否必填&nbsp;&nbsp;
+				</span>
+			</td>
+		</tr>
+
+		<tr class="m_cen">
+			<td class="table_bg1" align="center">手機號</td>
+			<td align="left">
+				<input  type="radio" <{if $data['is_phone'] == '0-1' || $data['is_phone'] == '0-0'}> checked<{/if}> name="is_phone" value="0"  onclick="is_check2(this.name)">需 &nbsp;&nbsp;
+				<input value="1" <{if $data['is_phone'] == '1-1' || $data['is_phone'] == '1-0'}> checked<{/if}> type="radio" name="is_phone" onclick="is_check(this.name)">無需&nbsp;&nbsp;
+				<span id="is_phone" style="<{if $data['is_phone'] == '1-1' || $data['is_phone'] == '1-0'}>display:none<{/if}>" >
+				<input value="1"  type="checkbox" name="is_phone_true" <{if $data['is_phone'] == '0-1'}> checked<{/if}>>是否必填&nbsp;&nbsp;
+				</span>
+			</td>
+		</tr>
+			<tr class="m_cen even">
+			<td class="table_bg1" align="center">推广网址</td>
+			<td align="left">
+				<input  type="radio" <{if $data['from_url_form'] == '0-1' || $data['from_url_form'] == '0-0'}> checked<{/if}> name="from_url_form" value="0"  onclick="is_check2(this.name)">需 &nbsp;&nbsp;
+				<input value="1" <{if $data['from_url_form'] == '1-1' || $data['from_url_form'] == '1-0'}> checked<{/if}> type="radio" name="from_url_form" onclick="is_check(this.name)">無需&nbsp;&nbsp;
+				<span id="from_url_form" style="<{if $data['from_url_form'] == '1-1' || $data['from_url_form'] == '1-0'}>display:none<{/if}>" >
+				<input value="1"  type="checkbox" name="rom_url_form_true" <{if $data['from_url_form'] == '0-1'}> checked<{/if}>>是否必填&nbsp;&nbsp;
+				</span>
+			</td>
+		</tr>
+			<tr class="m_cen">
+			<td class="table_bg1" align="center">其它方式</td>
+			<td align="left">
+				<input  type="radio" <{if $data['other_method_form'] == '0-1' || $data['other_method_form'] == '0-0'}> checked<{/if}> name="other_method_form" value="0"  onclick="is_check2(this.name)">需 &nbsp;&nbsp;
+				<input value="1" <{if $data['other_method_form'] == '1-1' || $data['other_method_form'] == '1-0'}> checked<{/if}> type="radio" name="other_method_form" onclick="is_check(this.name)">無需&nbsp;&nbsp;
+				<span id="other_method_form" style="<{if $data['other_method_form'] == '1-1' || $data['other_method_form'] == '1-0'}>display:none<{/if}>" >
+				<input value="1"  type="checkbox" name="other_method_form_true" <{if $data['other_method_form'] == '0-1'}> checked<{/if}>>是否必填&nbsp;&nbsp;
+				</span>
+			</td>
+		</tr>
+			<tr class="m_cen even">
+			<td height="27" class="table_bg" colspan="2" align="middle">
+			<input class="button_d" value="確定" type="submit" name="edit">
+			</td>
+		</tr>
+	   </tbody>
+	</table>
+</form>
+</div>
+<{include file="web_footer.html"}>

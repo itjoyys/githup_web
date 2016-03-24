@@ -1,0 +1,22 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body onLoad="document.dinpayForm.submit();">
+正在跳转 ...
+<form name="dinpayForm" method="post" action="<{$data['req_url']}>">
+	<input type="hidden" name="MerNo" value="<{$data['MerNo']}>">
+	<input type="hidden" name="BillNo" value="<{$data['BillNo']}>">
+	<input type="hidden" name="Amount" value="<{$data['Amount']}>">
+	<input type="hidden" name="ReturnURL" value="<{$data['ReturnURL']}>" >
+	<input type="hidden" name="AdviceURL" value="<{$data['AdviceURL']}>" >
+	<input type="hidden" name="orderTime" value="<{$data['orderTime']}>">
+	<input type="hidden" name="defaultBankNumber" value="<{$data['defaultBankNumber']}>">
+	<input type="hidden" name="SignInfo" value="<{$data['SignInfo']}>">
+	<input type="hidden" name="Remark" value="<{$data['Remark']}>">
+	<input type="hidden" name="products" value="<{$data['products']}>">
+	<input type="hidden" name="act" value="ecpss">
+	<input Type="hidden" Name="form_url" value="<{$data['form_url']}>"/>
+	</form>
+</body>
+</html>

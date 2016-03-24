@@ -1,0 +1,22 @@
+<div class="cur-lottery">
+    <div class="perio">
+        <div class="pre-perio">
+            <div class="col item"><span class="span-fl">{{baseInfo.PrePeriodNumber}}{{'LotteryReports.LabelPeriod'|translate}}</span>
+                <div class="div-fr" ng-bind-html="baseInfo.PreResult|yd"></div>
+            </div>
+        </div>
+        <div class="cur-perio">
+            <div class="col item"><span>{{baseInfo.CurrentPeriod}}{{'LotteryReports.LabelPeriod'|translate}} {{'Common.LabelClosePan'|translate}}:</span>
+                <span class="time">{{baseInfo.CloseTime}}</span> <span>{{'Common.LabelOpenResult'|translate}}:</span>
+                <span class="time">{{baseInfo.OpenTime}}</span></div>
+        </div>
+    </div>
+    <div class="lottery-bet">
+        <cur-menus width="74" top="64">
+             <{foreach from=$list item=v key=k}>     
+            <cur-menu title="<{$v['name']}>"
+                      url="/lottery/fc_games_type?gameid=<{$v['gameid']}>&LotteryId=<{$v['fc_type']}>&gamename=<{$v['name']}>"></cur-menu>
+            <{/foreach}>
+        </cur-menus>
+    </div>
+</div>

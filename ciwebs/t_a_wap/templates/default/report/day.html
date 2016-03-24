@@ -1,0 +1,48 @@
+<ion-view class="m-report" cache-view="false">
+	<ion-nav-bar class="bar bar-header bar-light">
+		<ion-nav-title>{{'Member_LabelBetRecord'|translate}}</ion-nav-title>
+		<ion-nav-buttons side="left">
+		<a class="button button-icon icon ion-ios-arrow-back" ng-href="{{backUrl}}"></a>
+		</ion-nav-buttons>
+	</ion-nav-bar>
+	<ion-content class="has-header" scroll="false">
+		<div class="tabs-striped tabs-top">
+			<div class="tabs">
+				<a class="tab-item tab-item-25 today active" ng-click="getreport('today');">{{'Common_LabelToday'|translate}}</a>
+				<a class="tab-item tab-item-25 yesterday" ng-click="getreport('yesterday');">{{'Common_LabelYesterday'|translate}}</a>
+				<a class="tab-item tab-item-25 theweeky " ng-click="getreport('theweeky');">{{'Common_LabelTheweeky'|translate}}</a>
+				<a class="tab-item tab-item-25 lastweek" ng-click="getreport('lastweek');">{{'Common_LabelLastweek'|translate}}</a>
+			</div>
+		</div>
+		<div class="table-list">
+			<div class="table-head row">
+				<div class="col col-44">{{'Common_LabelGame'|translate}}</div>
+				<div class="col col-44">{{'Member_LabelCount'|translate}}</div>
+				<div class="col col-44">{{'Member_LabelAllBet'|translate}}</div>
+				<div class="col col-44">{{'Member_LabelYxBet'|translate}}</div>
+				<div class="col col-44">{{'Member_LabelWinLost'|translate}}</div>
+			</div>
+			<ion-content class="table-body table-body-nav">
+				<ion-refresher ng-if="ansycLoaded" on-refresh="dayRefresh()"></ion-refresher>
+				<div ng-if="!ansycLoaded" class="padding text-center">
+					<ion-spinner></ion-spinner>
+				</div>
+				<div ng-if="ansycLoaded" class="table-body">
+					<div class="row" ng-repeat="item in dayData"  ng-click="gotoRptGame(item.GameClassID,item.GameClassName)">
+						<div class="col col-44 row-data">{{item.GameClassName}}</div>
+						<div ng-class="{'underline':item.TotalBetNums>0}" class="col col-44 row-data">{{item.TotalBetNums}}</div>
+						<div class="col col-44 row-data">
+							<strong>{{item.AllBet.toFixed(2)}}</strong>
+						</div>
+						<div class="col col-44 row-data">
+							<strong>{{item.YxBet.toFixed(2)}}</strong>
+						</div>
+						<div class="col col-44 row-data {{item.WinLoseMoney>0?'win':item.WinLoseMoney==0?'':'lose'}}">
+							<strong>{{item.WinLoseMoney.toFixed(2)}}</strong>
+						</div>
+					</div>
+				</div>
+			</ion-content>
+		</div>
+	</ion-content>
+</ion-view>

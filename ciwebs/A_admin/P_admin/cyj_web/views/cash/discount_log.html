@@ -1,0 +1,84 @@
+﻿<title>優惠查詢</title>
+<{include file="web_header.html"}>
+<body>
+<script>
+var indexid = "<{$index_id}>";
+$(document).ready(function(){
+  $("#index_id").val(indexid);
+  $("#index_id").change(function(event) {
+      //$("#myform").attr("action","<{$site_url}>/cash/discount/index");
+      $("#myform").submit();
+  });
+})
+
+window.onload=function(){
+document.getElementById("month").onchange=function(){
+  document.getElementById('myform').submit();
+}
+document.getElementById("year").onchange=function(){
+  document.getElementById('myform').submit();
+}
+}
+</script>
+<div id="con_wrap">
+  <div class="input_002">優惠查詢</div>
+  <div class="con_menu">
+     <a href="<{$site_url}>/cash/discount/index">優惠統計</a>
+      <a href="<{$site_url}>/cash/discount/discount_log" style="color: red;">優惠查詢</a>
+      <a href="<{$site_url}>/cash/discount/rakeback_log">自助返水查询</a>
+      <a href="<{$site_url}>/cash/discount/discount_fd">返點優惠設定</a>
+  <form name="myform" action="<{$site_url}>/cash/discount/discount_log" id="myform" method="get">
+  <{$sites_str}>
+     年月份選擇：
+       <select name="year" id="year" class="za_select">
+           <option value="2016" <{select_check('2016',$year)}>> 2016年</option>
+           <option value="2015" <{select_check('2015',$year)}>> 2015年</option>
+        </select>
+        <select name="month" id="month" class="za_select">
+            <{foreach from=$month_arr item=v}>
+            <option value="<{$v}>" <{select_check($v,$month)}>> <{$v}>月</option>
+           <{/foreach}>
+        </select>
+   </form>
+  </div>
+</div>
+<div class="content">
+<form method="post" name="myFORM">
+<input type="hidden" id="userid" name="userid" value="">
+<input type="hidden" name="username" value="">
+<table width="99%" class="m_tab">
+	<tbody><tr class="m_title">
+		<td colspan="11" height="25" align="center">優惠查詢</td>
+	</tr>
+
+	<tr class="m_title">
+		<td>編號</td>
+		<td>事件</td>
+		<td>返水區間(起)</td>
+		<td>返水區間(迄)</td>
+		<td>人數/金額</td>
+		<td>創建日期</td>
+		<td>創建者</td>
+		<td>综合打码倍数</td>
+		<td>查詢明細</td>
+	</tr>
+<{foreach from=$data key=i item=v}>
+	<tr class="m_cen <{if $i%2 == 0}>even<{/if}>">
+		<td align="center"><{$v['id']}></td>
+		<td align="center"><{$v['event']}></td>
+		<td align="center"><{$v['back_time_start']}></td>
+		<td align="center"><{$v['back_time_end']}></td>
+		<td align="center"><{($v['people_num'])}> / <{$v['money']}></td>
+		<td align="center"><{$v['addtime']}></td>
+		<td align="center"><{$v['admin_user']}></td>
+		<td align="center"><{$v['bet']}></td>
+		<td align="center"><a href="<{$site_url}>/cash/discount/discount_user_list?id=<{$v['id']}>">明細</a></td>
+	</tr>
+<{/foreach}>
+
+
+	</tbody></table>
+</form>
+</div>
+
+<{include file="web_footer.html"}>

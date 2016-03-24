@@ -1,0 +1,87 @@
+<title>代理商审核管理</title>
+<{include file="web_header.html"}>
+<{config_load file="public.conf" section="public"}>
+
+<body>
+<script  language="javascript">
+var indexid = "<{$index_id}>";
+$(document).ready(function(){
+	$("#index_id").val(indexid);
+	$("#index_id").change(function(event) {
+      $("#myFORM").submit();
+    });
+
+    $("#is_delete").val('<{$is_delete}>');
+    $("#type").val('<{$type}>');
+})
+    //分页跳转
+window.onload=function(){
+  document.getElementById("page").onchange=function(){
+    document.getElementById('myFORM').submit()
+  }
+}
+</script>
+<div  id="con_wrap">
+   <div  class="input_002">代理商审核管理</div>
+   <div  class="con_menu">
+    <form  name="myFORM"  id="myFORM"  action="#"  method="get">
+        <a href="<{$site_url}>/account/agent_reg/agent_set">代理注册设定</a>
+        <{$sites_str}>
+  状态：
+      <select  id="is_delete"  name="is_delete" onchange="document.getElementById('myFORM').submit()"  class="za_select">
+
+        <option  value="">全部</option>
+        <option  value="0">已添加</option>
+        <option  value="5">未处理</option>
+      </select>
+      搜索内容：
+  <select name="type" id="type">
+  <option value="">请选择</option>
+    <option value="agent_name">姓名</option>
+    <option value="agent_login_user">帐号</option>
+    <option value="mobile">电话</option>
+    <option value="email">email</option>
+    <option value="qq">QQ</option>
+    </select>
+      <input  type="text"  name="uname"  value="<{$uname}>"  class="za_text"  style="width:120px;"  id="uname">
+      <input  type="submit"  name="buname"  value="搜索"   class="za_button">
+  &nbsp;<{$page}>
+      </form>
+  </div>
+  </div>
+  <div  class="content">
+  <table  border="0" width="100%" cellspacing="0"  cellpadding="0"  class="m_tab">
+    <tbody>
+      <tr class="m_title_over_co">
+      <td >中文昵称</td>
+      <td >账号</td>
+      <td >电话</td>
+      <td>email/msn_qq</td>
+      <td >姓名</td>
+      <td >状态</td>
+      <td >申请时间</td>
+      <td>推广网址</td>
+      <td>功能</td>
+    </tr>
+    <{foreach from=$agent key=i item=rows}>
+    <{$wtype}>
+    <tr class="m_cen <{if $i%2 == 0}>even<{/if}>">
+  		<td><{$rows["agent_name"]}></td>
+  		<td><{$rows["agent_login_user"]}></td>
+  		<td><{$rows['mobile']}></td>
+  		<td><{$rows["email"]}>&nbsp;/&nbsp;<{$rows["qq"]}></td>
+  		<td><{$rows["realname"]}></td>
+  		<td><{$rows['state_a']}></td>
+  		<td><{$rows['add_date']}></td>
+  		<td><{$rows["from_url"]}></td>
+      <td> <{if $rows['is_delete'] == 5}><a href="<{$site_url}>/account/agent_reg/agent_apply_do?id=<{$rows['id']}>&r_name=<{$rows['agent_name']}>&r_user=<{$rows['agent_login_user']}>&atype=5&iid=<{$rows['index_id']}>" onClick="">新增账号</a> &nbsp;/ &nbsp;<{/if}>
+          <a href="<{$site_url}>/account/agent_reg/agent_data?id=<{$rows['id']}>">详细内容</a> &nbsp;/ &nbsp;
+          <a style="color:#EC1717;" onClick="return confirm('删除该用户成为代理的请求？');" href="<{$site_url}>/account/agent_reg/agent_del?id=<{$rows['id']}>&type=del">删除</a>
+      </td>
+    </tr>
+<{/foreach}>
+  </tbody>
+</table>
+</div>
+
+<{include file="web_footer.html"}>

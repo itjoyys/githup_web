@@ -1,0 +1,622 @@
+﻿<title>出款监控</title>
+<{include file="web_header.html"}>
+<{config_load file="public.conf" section="public"}>
+<body>
+ <style>
+.payBox td{color: #333;}
+.payBox_1 td{color: #333;}
+.m_title_a{text-align: center;}
+
+.button_do {
+   border-top: 1px solid #96d1f8;
+   background: #65a9d7;
+   color: #fff;
+   background: -webkit-gradient(linear, left top, left bottom, from(#3e779d), to(#65a9d7));
+   background: -webkit-linear-gradient(top, #3e779d, #65a9d7);
+   background: -moz-linear-gradient(top, #3e779d, #65a9d7);
+   background: -ms-linear-gradient(top, #3e779d, #65a9d7);
+   background: -o-linear-gradient(top, #3e779d, #65a9d7);
+   padding: 2px 8px;
+   -webkit-border-radius: 25px;
+   -moz-border-radius: 25px;
+   border-radius: 25px;
+   -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   box-shadow: rgba(0,0,0,1) 0 1px 0;
+   text-shadow: rgba(0,0,0,.4) 0 1px 0;
+   color: white;
+   font-size: 12px;
+   font-family: Helvetica, Arial, Sans-Serif;
+   text-decoration: none;
+   vertical-align: middle;
+   }
+.button_do:hover {
+   border-top-color: #28597a;
+   background: #28597a;
+   color: #ccc;
+   }
+.button_do:active {
+   border-top-color: #1b435e;
+   background: #1b435e;
+   }
+
+ </style>
+<script src="<{#js#}>/swfobject.js" type="text/javascript"></script>
+<script language="JavaScript" src="<{#js#}>/easydialog.min.js"></script>
+<link rel="stylesheet" href="<{#css#}>/easydialog.css" type="text/css">
+<script type="text/javascript">
+
+var listen='<{$listen}>';
+$(document).ready(function(){
+		var gssound = '<{$gs_state}>';
+		var cksound = '<{$ck_state}>';
+		var xssound = '<{$xs_state}>';
+		var gstype = $("#gstype").is(':checked');
+		var xstype = $("#xstype").is(':checked');
+		var outtype = $("#outtype").is(':checked');
+                if(listen==2){
+                    if(gssound==1 && gstype==true){
+            $('body').append('<embed src="<{#sound#}>/gsrk2.swf" autostart="true" width=0 height=0 loop="false">');
+		}
+		if(cksound==1 && outtype==true){
+	     	$('body').append('<embed src="<{#sound#}>/chukuan2.swf" autostart="true" width=0 height=0 loop="false">');
+		}
+		if(xssound==1 && xstype==true){
+	     	$('body').append('<embed src="<{#sound#}>/xsrk2.swf" autostart="true" width=0 height=0 loop="false">');
+		}
+            }else{
+                 if(gssound==1 && gstype==true){
+            $('body').append('<embed src="<{#sound#}>/gsrk.swf" autostart="true" width=0 height=0 loop="false">');
+		}
+		if(cksound==1 && outtype==true){
+	     	$('body').append('<embed src="<{#sound#}>/chukuan.swf" autostart="true" width=0 height=0 loop="false">');
+		}
+		if(xssound==1 && xstype==true){
+	     	$('body').append('<embed src="<{#sound#}>/xsrk.swf" autostart="true" width=0 height=0 loop="false">');
+		}   
+            }
+		
+	//用户名弹窗
+	$(".uname").click(function(){
+		$(".payBox").css('display', 'block');
+		var uid = $(this).attr("did");
+		var username_id = $(this).text();
+		$.ajax({
+			type: "GET",
+			url: "<{$site_url}>/cash/Out_record/user_cash_ajax",
+			dataType:'json',
+			data: {uid:uid},
+			success: function(msg){
+				$("#a_1").text(username_id);
+				$("#a_2_1").text(msg.in_all_money);
+				$("#a_2_2").text(msg.count_in+'笔');
+				$("#a_3_1").text(msg.out_all_money);
+				$("#a_3_2").text(msg.count_out+'笔');
+				$("#a_4_1").text(msg.owen_money);
+				$("#a_5_1").text(msg.data1.cash_num);
+				$("#a_5_2").text(msg.data1.cash_type);
+				$("#a_6_1").text(msg.data2.cash_num);
+				$("#a_6_2").text(msg.data2.cash_type);
+				$("#a_7_1").text(msg.data3.cash_num);
+				$("#a_7_2").text(msg.data3.cash_type);
+			}
+		});
+	});
+
+	$(".button_a_b").click(function() {
+		$(".payBox").css('display', 'none');
+		$(".payBox_1").css('display', 'none');
+	});
+
+	//出款金额弹窗
+	$(".outward_money_show").click(function() {
+		$(".payBox_1").css('display', 'block');
+		var uid = $(this).attr("did");
+		var username_id_1=$(this).siblings(".username_tan").find('a').text();
+		$.ajax({
+			type: "get",
+			url: "<{$site_url}>/cash/out_record/user_data_ajax",
+			dataType: "json",
+			data: {uid:uid},
+			success: function(msg){
+				$(".b_1_1").val(msg.username);
+				$(".b_2_1").val(msg.pay_name);
+				$(".b_3_1").val(msg.pay_card);
+				$(".b_4_1").val(msg.pay_num);
+				$(".b_5_1").val(msg.city[0]);
+				$(".b_6_1").val(msg.city[1]);
+				$(".b_7_1").val(msg.mobile);
+				$(".b_8_1").val(msg.about);
+			}
+		});
+
+	});
+
+})
+function getlisten(){
+    var listen = document.getElementsByName("listen");
+    for(var i=0;i<listen.length;i++)
+    {
+       if(listen[i].checked)
+             var value1 = listen[i].value;
+    }
+    if(value1==2){
+        return 2;
+    }else{
+        return 1;
+    }
+}
+//确定 拒绝 取消
+function do_sure(id,type,am){
+        var listen=getlisten();
+	var url = '<{$site_url}>';
+	var url_s = '&gstype=<{$gstype}>&xstype=<{$xstype}>&outtype=<{$outtype}>&listen='+listen;
+        
+               if (type == 1) {
+                    url = url + '/cash/out_record/out_do?jk=1&type=1&id='+id+'&am='+am+url_s;
+                }else if(type == 2){
+                        url = url + '/cash/out_record/out_do?jk=1&type=2&id='+id+'&am='+am+url_s;
+                }else if(type == 3){
+                        url = url + '/cash/out_record/out_cancel?jk=1&id='+id+'&am='+am+url_s;
+                }else if(type == 4){
+                        url = url + '/cash/out_record/out_ready?jk=1&id='+id+'&am='+am+url_s;
+                } 
+                
+
+	
+	if(confirm("是否确定执行操作？")){
+        location.href = url;
+	}else{
+		return false;
+	}
+}
+function ruturn_check(){
+
+var gstype = $("#gstype").is(':checked');
+var xstype = $("#xstype").is(':checked');
+var outtype = $("#outtype").is(':checked');
+var str='';
+ 		if(gstype==true){
+  			str +="gstype=1&";
+  		}else{
+  			str +="gstype=2&";
+  			xssound = 2;
+  		}
+  		if(xstype==true){
+  			str +="xstype=1&";
+  		}else{
+  			str +="xstype=2&";
+  			xssound = 2;
+  		}
+  		if(outtype==true){
+  			str +="outtype=1";
+  		}else{
+  			str +="outtype=2";
+  			cksound = 2;
+  		}
+                
+		var listen = document.getElementsByName("listen");
+                for(var i=0;i<listen.length;i++)
+                {
+                   if(listen[i].checked)
+                         var value1 = listen[i].value;
+                }
+                if(value1==2){
+                    str+='&listen='+2;
+                }else{
+                    str+='&listen='+1;
+                }
+       
+  		window.location.href="<{$site_url}>/cash/monitor/index?"+str;
+}
+//修改行政费
+function show_config2(id,lx,is_fav){
+	$("#expenese_id").val(id);
+	$("#expenese_num").val(lx);
+
+	if (is_fav > 0) {
+	   $("#favnum").show();
+       $("#favnum").val(is_fav);
+	}else{
+       $("#favnum").hide();
+	}
+	easyDialog.open({
+		  container : 'currency_box2'
+	});
+}
+</script>
+<script type="text/javascript"> 
+    function jsCopy(id){
+        var e = document.getElementById(id);
+        e.select(); //选择对象
+        document.execCommand("Copy"); //执行浏览器复制命令
+        //alert('复制成功，可粘贴');
+    }
+</script>
+监控类别：
+
+<input type="checkbox" <{if $gstype==1}> checked="checked" <{/if}> name="gstype"  id="gstype" vaue=<{$gstype}>  onchange="ruturn_check()">公司入款&nbsp;
+<input type="checkbox" <{if $xstype==1}> checked="checked" <{/if}> name="xstype" id="xstype" vaue=<{$xstype}> onchange="ruturn_check()">线上入款&nbsp;
+<input type="checkbox" <{if $outtype==1}> checked="checked" <{/if}> name="outtype" id="outtype" vaue=<{$outtype}> onchange="ruturn_check()">出款管理&nbsp;
+<input type="radio" name="listen" value="1" <{if $listen!=2}>checked="checked"<{/if}> />铃声1 &nbsp;
+<input type="radio" name="listen" value="2" <{if $listen==2}>checked="checked"<{/if}> />铃声2
+<input type="button" name="btn1" onclick="ruturn_check() "  id="btn1" value="立即刷新" class="button_do" style="color:#fff;"><font color="red">【页面30秒自动刷新一次】</font>
+<{if $gstype==1}>
+<div id="con_wrap">
+  <div class="input_002">公司入款</div>
+  <div class="con_menu" style="font-weight: bold;min-height: 30px;"></div>
+</div>
+<div class="content">
+	<table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#E3D46E" class="m_tab">
+		<tbody>
+		  <tr class="m_title_over_co">
+			<td>层级</td>
+			<td>订单号</td>
+			<td>代理商</td>
+			<td>會員帳號</td>
+		    <td>會員銀行帳戶</td>
+			<td>存入金額</td>
+	        <td>存入銀行帳戶</td>
+			<td>狀態</td>
+			<td>首存</td>
+			<td>操縱者</td>
+			<td>時間</td>
+		</tr>
+	<{foreach from=$data_gs key=i item=val}>
+			<tr class="m_cen <{if $i%2 == 0}>even<{/if}>">
+			<td><{$val['level_des']}></td>
+			<td><{$val['order_num']}></td>
+			<td><{$val['agent_user']}></td>
+			<td><{$val['username']}></td>
+			<td style="text-align:left;">
+			    銀行：<{$val['bank_style_zh']}><br>
+			    存款人：<{$val['in_name']}><br>
+			    方式：<{$val['in_type_zh']}><br></td>
+			<td style="text-align:left;">
+			    存入金額：<{$val['deposit_num']}>
+            <br>存款優惠：<{$val['favourable_num']}>
+			<br>其他優惠：<{$val['other_num']}>
+			<br>存入總金額：<{$val['deposit_money']}>
+			</td>
+			<td style="text-align:left;">
+			     銀行帳號：<{$val['card_ID']}><br>
+			     銀行：<{$val['bank_type_zh']}><br>
+			     卡主姓名：<{$val['card_userName']}><br>
+			     备注：<{$val['remark']}>
+			</td>
+			<td>
+			 <a style="color:#fff;" class="button_do" href="javascript:void(0);" onclick="if(confirm('要將狀態改為已取消的狀態嗎?')){document.location='<{$site_url}>/cash/bank_record/bank_record_do?type=s0&id=<{$val['id']}>&uid=<{$val['uid']}>&am=<{$val['deposit_money']}>&order_num=<{$val['order_num']}>&index_id=<{$val['index_id']}>&gstype=<{$gstype}>&xstype=<{$xstype}>&outtype=<{$outtype}>&jk=1&listen='+getlisten();}">取消</a>
+			&nbsp;<a style="color:#fff;" class="button_do" href="javascript:void(0);" onclick="if(confirm('要將狀態改為已確定的狀態嗎?')){document.location='<{$site_url}>/cash/bank_record/bank_record_do?type=s1&id=<{$val['id']}>&uid=<{$val['uid']}>&am=<{$val['deposit_money']}>&index_id=<{$val['index_id']}>&order_num=<{$val['order_num']}>&gstype=<{$gstype}>&xstype=<{$xstype}>&outtype=<{$outtype}>&jk=1&listen='+getlisten();}">確認存款</a>
+			</td>
+			<td><{$val['is_first_zh']}></td>
+			<td><{$val['admin_user']}></td>
+			<td>
+			 系統時間：<{$val['log_time']}>(美东)<br>
+             操作時間：<{$val['do_time']}>(美东)
+		   </td>
+
+		</tr>
+<{/foreach}>
+	</tbody></table>
+
+</div>
+<{/if}>
+<{if $outtype==1}>
+<div id="con_wrap">
+  <div class="input_002">出款管理</div>
+</div>
+<div class="content">
+	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="m_tab">
+		<tbody><tr class="m_title_over_co">
+			<td>站别</td>
+			<td>層級</td>
+			<td>代理商</td>
+			<td>會員帳號</td>
+            <td>首次</td>
+			<td>提出額度</td>
+			<td>手續費</td>
+			<td>優惠金額</td>
+			<td>行政費</td>
+			<td>出款金額</td>
+            <td>账户余额</td>
+			<td>優惠扣除</td>
+			<td>出款日期</td>
+			<td>稽核</td>
+			<td>状态</td>
+			<td>操作者</td>
+		</tr>
+        <{foreach from=$data_ck key=i item=v}>
+		<tr class="m_cen <{if $i%2 == 0}>even<{/if}>">
+			<td><{$v['do_url']}></td>
+			<td  class="test_id" style="display:none;"><{$v['uid']}></td>
+			<td><{$v['level_des']}></td>
+			<td><{$v['agent_user']}></td>
+			<td><a href="javascript:void(0);" class="uname" style="text-decoration: underline;" did="<{$v['uid']}>"><{$v['username']}></a></td>
+			<td><{if $v['outward_style'] ==1 }>是<{/if}></td>
+            <td><{$v['outward_num']}></td>
+			<td><a href="javascript:void(0);" <{if $v['out_status']==0}> onclick="show_config1('<{$v['id']}>','<{$v['charge']}>')"<{/if}> style="text-decoration: underline;"> <{$v['charge']}></a></td>
+			<td><{$v['favourable_num']}></td>
+			<td><a href="javascript:void(0);" style="text-decoration: underline;"
+			<{if $v['out_status']==0}> onclick="show_config2('<{$v['id']}>','<{$v['expenese_num']}>','<{$v['favourable_num']}>')" <{/if}>><{$v['expenese_num']}></a> </td>
+			<td><a href="javascript:void(0);" style="text-decoration: underline;" class="outward_money_show" did="<{$v['uid']}>"><{$v['outward_money']}></a></td>
+			<td><{$v['balance']}></td>
+            <td><{if $v['favourable_out']==1}>
+                '是'<{else}>
+                '否'<{/if}></td>
+            <td><{$v['out_time']}></td>
+			<td><{if $v['out_status'] == 0}><a target="_blank" href="<{$site_url}>/cash/audit/index?username=<{$v['username']}>&end_date=<{$v['out_time']}>" style="text-decoration: underline;">稽核</a><{/if}></td>
+			<td>
+
+            <{if $v['out_status'] == 4}>
+            <font style="color:red;">正在出款&nbsp;&nbsp;</font>
+            <{else}><a href='javascript:void(0);' style="color:#fff;" class="button_do" onclick="do_sure('<{$v['id']}>','4','<{$v['outward_money']}>')" >预备出款</a><{/if}>
+            <a href='javascript:void(0);' onclick="do_sure('<{$v['id']}>','1','<{$v['outward_money']}>')" style="color:#fff;" class="button_do" >确定</a>
+			<a href='javascript:void(0);' onclick="do_sure('<{$v['id']}>',3,'<{$v['outward_money']}>')" style="color:#fff;" class="button_do" >取消</a>
+			<a href='javascript:void(0);' onclick="do_sure('<{$v['id']}>','2','<{$v['outward_money']}>')" style="color:#fff;" class="button_do" >拒绝</a>
+			</td>
+			<td><{$v['admin_user']}></td>
+		</tr>
+        <{/foreach}>
+	</tbody></table>
+</div>
+<{/if}>
+<{if $xstype==1}>
+<div id="con_wrap">
+  <div class="input_002">线上入款</div>
+</div>
+<div class="content">
+	<table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#E3D46E" class="m_tab">
+		<tbody>
+		  <tr class="m_title_over_co">
+			<td>层级</td>
+			<td>订单号</td>
+			<td>代理商</td>
+			<td>會員帳號</td>
+			<td>存入金額</td>
+			<td>狀態</td>
+			<td>支付方式</td>
+			<td>首存</td>
+			<td>時間</td>
+		</tr>
+		<{foreach from=$data_xs key=i item=val}>
+		<tr class="m_cen <{if $i%2 == 0}>even<{/if}>">
+		<td><{$val['level_des']}></td>
+		<td><{$val['order_num']}></td>
+		<td><{$val['agent_user']}></td>
+		<td><{$val['username']}></td>
+		<td style="text-align:left;">
+		    存入金額：<{$val['deposit_num']}>
+		<br>存款優惠：<{$val['favourable_num']}>
+		<br>其他優惠：<{$val['other_num']}>
+		<br>存入總金額：<{$val['deposit_money']}>
+		</td>
+		<td>
+		 '未支付' <{if $val['status'] == 0}><font ><a onclick="if(confirm('要將狀態改為不在提醒嗎?')){document.location='<{$site_url}>/cash/bank_record/online_sound_no?id=<{$val['id']}>&gstype=<{$gstype}>&xstype=<{$xstype}>&outtype=<{$outtype}>&jk=1&listen='+getlisten();}" style="cursor:pointer;">不再提醒</a></font><{/if}>
+
+		</td>
+		<td><{$val['pay_type']}></td>
+		<td><{$val['is_first_zh']}></td>
+		<td>時間：<{$val['log_time']}>(美东)</td>
+		</tr>
+		<{/foreach}>
+</tbody>
+</table>
+</div>
+<{/if}>
+<div id="sound"></div>
+
+
+ <!-- 用户名弹窗 -->
+<div class="payBox" style="margin: -216px 0px 0px -150px; padding: 0px; border: none; z-index: 10000; position: fixed; top: 50%; left: 50%; display: none;background:#fff">
+<div id="currency_box" style="display: block; margin: 0px;" class="con_menu">
+  <table class="m_tab" style="width:250px;margin:0;">
+    <tbody><tr class="m_title">
+      <td colspan="3" height="27" class="table_bg" align="center">
+      <span id="a_1"></span>
+      <span style="float:right;"><a style="color:white;" href="javascript:void(0)" title="关闭窗口" class="button_a_b">×</a></span>
+      </td>
+    </tr>
+    <tr class="m_title_a even">
+      <td>入款总额</td>
+      <td width="90" id="a_2_1"></td>
+      <td width="90" id="a_2_2"></td>
+    </tr>
+
+      <tr class="m_title_a">
+
+      <td height="0">出款总额</td>
+      <td id="a_3_1"></td>
+      <td id="a_3_2"></td>
+    </tr>
+  		<tr class="m_title_a even">
+  			<td width="70">盈利情况</td>
+  			<td colspan="2" id="a_4_1"></td>
+
+  		</tr>
+  		<tr class="m_title">
+  			<td colspan="3">最近3笔入款金额</td>
+  		</tr>
+
+  		<tr class="m_title_a even">
+  			<td>入款一</td>
+  			<td id="a_5_1"></td>
+  			<td id="a_5_2"></td>
+  		</tr>
+  		<tr class="m_title_a">
+  			<td>入款二</td>
+  			<td id="a_6_1"></td>
+  			<td id="a_6_2"></td>
+  		</tr>
+  		<tr class="m_title_a even">
+  			<td>入款三</td>
+  			<td id="a_7_1"></td>
+  			<td id="a_7_2"></td>
+  		</tr>
+
+        <tr>
+      <td colspan="3" align="center">
+        <input type="button" value="关闭" class="button_a close_x button_a_b">
+      </td>
+    </tr>
+  </tbody>
+  </table>
+</div>
+</div>
+
+<!--修改手续费-->
+<div id="easyDialogBox" style="margin: -54.5px 0px 0px -150px; padding: 0px; border: none; z-index: 10000; position: fixed; top: 50%; left: 50%; display: none;">
+<div id="currency_box1" style="display: block; margin: 0px;" class="con_menu">
+<form action="<{$site_url}>/cash/Out_record/charge?jk=1" method="post" name="add_form">
+	<input name="id" id="id" value="" type="hidden">
+	<table class="m_tab" style="width:300px;margin:0;">
+		<tbody><tr class="m_title">
+			<td colspan="2" height="27" class="table_bg" align="center">
+			<span id="title">修改手续费</span>
+			<span style="float:right;"><a style="color:white;" href="javascript:void(0)" title="关闭窗口" onclick="easyDialog.close();">×</a></span>
+			</td>
+		</tr>
+		<tr class="m_title">
+			<td>手续费</td>
+			<td><input name="charge" id="charge" value=""></td>
+		</tr>
+		<tr>
+			<td colspan="2" align="center">
+				<input type="submit" value="提交" class="button_a">
+				<input type="reset" value="关闭" onclick="easyDialog.close();" class="button_a">
+			</td>
+		</tr>
+	</tbody>
+</table>
+</form>
+</div>
+</div>
+
+ <!-- 出款金额弹窗 -->
+<div class="payBox_1" style="margin: -216px 0px 0px -150px; padding: 0px; border: none; z-index: 10000; position: fixed; top:50%; left: 50%; display: none;background:#fff;"><div id="currency_box" style="display: block; margin: 0px;" class="con_menu">
+
+  <input name="level_id_1" id="level_id_1" value="" type="hidden">
+  <table class="m_tab" style="width:280px;margin:0;">
+    <tbody><tr class="m_title">
+      <td colspan="3" height="27" class="table_bg" align="center">
+      <span id="title">會員帳戶資料</span>
+      <span style="float:right;"><a style="color:white;" href="javascript:void(0)" title="关闭窗口" class="button_a_b">×</a></span>
+      </td>
+    </tr>
+    <tr class="m_title_a">
+      <td>會員账号</td>
+      <td width="80">
+        <input class="b_1_1" id="copy_b_1" readonly="readonly" style="border:0px;background: none;">
+      </td>
+      <td style="color: red; cursor: pointer;" onclick="jsCopy('copy_b_1');">复制</td>
+    </tr>
+    <tr class="m_title_a even">
+      <td>會員姓名</td>
+      <td width="80">
+      <input class="b_2_1" id="copy_b_2" readonly="readonly" style="border:0px;background: none;">
+      </td>
+      <td style="color: red; cursor: pointer;width: 30px;" onclick="jsCopy('copy_b_2');">复制</td>
+    </tr>
+    <tr>
+      <td height="0" style="text-align:center;">銀行名稱</td>
+      <td id="RMB_1" style="text-align:center;">
+      <input class="b_3_1" id="copy_b_3" readonly="readonly" style="border:0px;background: none;">
+      </td>
+      <td style="color: red; cursor: pointer;width: 30px;" onclick="jsCopy('copy_b_3');">复制</td>
+    </tr>
+	<tr class="m_title_a even">
+	  <td width="70">銀行帳號</td>
+	  <td>
+      <input class="b_4_1" id="copy_b_4" readonly="readonly" style="border:0px;background: none;">
+      </td>
+	  <td style="color: red; cursor: pointer;width: 30px;" onclick="jsCopy('copy_b_4');">复制</td>
+	</tr>
+	<tr class="m_title_a">
+	  <td width="70">省份</td>
+	  <td>
+	  <input class="b_5_1" id="copy_b_5" readonly="readonly" style="border:0px;background: none;">
+	  </td>
+	  <td style="color: red; cursor: pointer;width: 30px;" onclick="jsCopy('copy_b_5');">复制</td>
+	</tr>
+
+	<tr class="m_title_a even">
+	  <td>城市</td>
+	  <td>
+	  <input class="b_6_1" id="copy_b_6" readonly="readonly" style="border:0px;background: none;">
+	  </td>
+	  <td style="color: red; cursor: pointer;width: 30px;" onclick="jsCopy('copy_b_6');">复制</td>
+	</tr>
+	<tr class="m_title_a">
+	  <td>聯繫電話</td>
+	  <td>
+	  <input class="b_7_1" id="copy_b_7" readonly="readonly" style="border:0px;background: none;">
+	  </td>
+	  <td style="color: red; cursor: pointer;width: 30px;" onclick="jsCopy('copy_b_7');">复制</td>
+	</tr>
+	<tr class="m_title_a even">
+	  <td>備注</td>
+	  <td>
+	  <input class="b_8_1" id="copy_b_8" readonly="readonly" style="border:0px;background: none;">
+	  </td>
+	  <td style="color: red; cursor: pointer;width: 30px;" onclick="jsCopy('copy_b_8');">复制</td>
+	</tr>
+
+    <tr>
+      <td colspan="3" align="center">
+        <input type="button" value="关闭" class="button_a close_x button_a_b">
+      </td>
+    </tr>
+  </tbody></table>
+
+</div></div>
+
+<!--修改行政费-->
+<div id="easyDialogBox" style="margin: -54.5px 0px 0px -150px; padding: 0px; border: none; z-index: 10000; position: fixed; top: 50%; left: 50%; display: none;">
+	<div id="currency_box2" style="display: block; margin: 0px;" class="con_menu">
+<form action="<{$site_url}>/cash/out_record/expenese_num" method="post" name="add_form">
+	<input name="id" id="expenese_id" value="" type="hidden">
+	<table class="m_tab" style="width:300px;margin:0;">
+		<tbody><tr class="m_title">
+			<td colspan="2" height="27" class="table_bg" align="center">
+			<span id="title">修改行政费</span>
+			<span style="float:right;"><a style="color:white;" href="javascript:void(0)" title="关闭窗口" onclick="easyDialog.close();">×</a></span>
+			</td>
+		</tr>
+		<tr class="m_title">
+			<td>行政费</td>
+			<td><input name="expenese_num" id="expenese_num" value=""></td>
+		</tr>
+		<tr class="m_title" id="favnum">
+			<td>优惠金额</td>
+			<td style="padding-left: 25px;">
+				<select style="float: left;" id="isfav" name="is_fav">
+					<option value="1">是</option>
+					<option value="0">否</option>
+				</select>
+			</td>
+		</tr>
+		<tr style="background-color: #fff;">
+			<td colspan="2" align="center">
+				<input type="submit" value="提交" class="button_a">
+				<input type="reset" value="关闭" onclick="easyDialog.close();" class="button_a">
+			</td>
+		</tr>
+	</tbody></table>
+</form>
+</div>
+</div>
+<script type="text/javascript">
+var retime = 30;
+function setRefresh()
+{
+	ruturn_check();
+}
+$(document).ready(function()
+{
+	var time = (retime == 0 || retime == -1) ? -1 : "" + retime;
+	if(time != -1)
+	{
+		setTimeout("setRefresh()", time * 1000);
+	}
+})
+</script>
+<{include file="web_footer.html"}>

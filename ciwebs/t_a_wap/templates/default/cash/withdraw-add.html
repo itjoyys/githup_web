@@ -1,0 +1,33 @@
+<div class="tab-bable">
+	<div class="tab-content">
+		<div class="tab-pane active">
+			<div class="item item-input">
+				<input type="tel" ng-model="withdrawData.applyMoney" reset-field=""
+					ng-keyup="parseIntMoney($event)"
+					placeholder="{{'Member_LabelWithdrawOutAmount'|translate}}">
+			</div>
+			<p class="item-warn text-light">{{'Member_LabelLowerLimit'|translate}}{{
+				withdrawLimit.LimitData.MinWithdrawalMoney}}，{{'Member_LabelMUpLimit'|translate}}{{
+				withdrawLimit.LimitData.MaxWithdrawalMoney}}</p>
+			<label class="item item-select">
+				<select ng-model="withdrawData.memberBankID" ng-change="getMemberAccount()">
+					<option value="0">{{'Member_LabelChooseBank'|translate}}</option>
+					<option value="{{item.MemberBankID}}" ng-repeat="item in bankData">{{item.BankName + ' ' +item.BankAccount}}</option>
+				</select>
+			</label>
+			<div class="item item-input">
+				<input type="password" class="uc-set-scroll" maxlength="8"
+					ng-model="withdrawData.withdrawPwd"
+					placeholder="{{'Common_LabelWithdrawalPassword'|translate}}">
+			</div>
+			<button id="btnWithdraw" class="button button-block button-positive"
+				ng-click="saveWithdraw()">{{'Common_ButtonSureSubmit'|translate}}</button>
+			<label class="item item-input" ng-show="OutAudit>0">{{'Common_LabelWithdrawMayBeChargeFees'|translate}}
+				(<span ng-bind="OutAudit"></span>){{'Member_LabelCoin'|translate}}
+				{{'Member_LabelPoundage'|translate}}<!-- <span
+				ng-bind="(withdrawData.applyMoney*Poundage).toFixed(2)"></span> -->
+			</label>
+			<div ng-if="ucFlag" style="height: 300px;">&nbsp;</div>
+		</div>
+	</div>
+</div>

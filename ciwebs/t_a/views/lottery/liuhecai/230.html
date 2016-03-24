@@ -1,0 +1,258 @@
+<{config_load file="public.conf" section="public"}>
+<!doctype html>
+<!--[if lt IE 7 ]> <html class="no-js ie6 ie" > <![endif]-->
+<!--[if IE 7 ]>    <html class="no-js ie7 ie" > <![endif]-->
+<!--[if IE 8 ]>    <html class="no-js ie8 ie" > <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html class="no-js">
+<!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<title>六合彩</title>
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="<{#tcss#}>/main_<{$config_css}>.css?v=2015101">
+<!--[if IE 6]>
+<script src="/assets/dist/scripts/lib/ie6/DD_belatedPNG_0.0.8a.js?v=2015101"></script>
+<script>
+    /* EXAMPLE */
+    DD_belatedPNG.fix('.icon');
+    /* string argument can be any CSS selector */
+    /* .png_bg example is unnecessary */
+    /* change it to what suits you! */
+</script>
+<![endif]-->
+<script type="text/javascript">
+        window.onload = function () {
+				var height = 750;
+                var doc = parent.document;
+				var ifr = window.parent.document.getElementById("iframepage");
+                ifr.style.height = height+'px';
+
+        };
+    </script>
+<script>
+	var ry_lottery_config = {
+		assets : '/public/timages/{0}?v=2015101',
+		currency : '￥',
+		locale : 'zh_cn',
+		officalDomain : '<{$url}>'
+	};
+</script>
+
+<script src="<{#tjs#}>/main.js?v=2015101"></script>
+
+</head>
+<body>
+
+    <div class="container">
+
+<!--#nav START-->
+<div id="nav" class="nav clearfix">
+   <{include
+			file='lottery/title_head.html'}>
+</div>
+<!--#nav END-->
+
+
+<!--.summary START-->
+<div class="summary" id="summary">
+&nbsp;&nbsp;
+<span> 期数 <b class="box ib timer"><{$now_qishu}>期</b></span>
+               <!--  <a class="live fr" target="_blank" href="http://www.6hbd.me/marksix/shipin">
+
+                    <img src="<{#timages#}>/live.gif" />
+                </a> --><i title="声音开关" class="icon1 sound-on fr"></i>
+    <div class="summary-prev fr" id="pre-result">
+    <span class="fl"><{$type_name_c}></span>
+        <span class="fl mr6"><b id="prev-issue">0</b>期结果</span>
+        <span class="summary-prev-hkc" id="prev-bs"></span>
+    </div>
+ <!--    <span class="notify">
+        <span id="marquee" width="370" height="24" style="display: none"></span>
+    </span> -->
+</div>
+<!--.summary END-->
+<!--.play START-->
+<div id="play" class="play hkc" style="height:754px;">
+    <div class="play-hd clearfix">
+        <span class="fl">
+
+            玩法
+            ：
+        </span>
+        <ul class="play-category fl" id="play-tab">
+					<{foreach from=$list item=v key=k}>
+					<li><a id="nav-<{$v['gameid']}>" <{if $smarty.get.gameid==$v['gameid']}>class="current"<{/if}>
+						href="/index.php/lottery/lottery/index?type=liuhecai&gameid=<{$v['gameid']}>">
+							<{$v['name']}></a></li> <{/foreach}>
+        </ul>
+    </div>
+
+
+    <div class="play-bd clearfix">
+        <div class="main-bd">
+            <div class="clearfix summary">
+            						<div class="fr nav-button" id="sub-tabs">
+							<{foreach from=$config item=v key=k}>
+		<a id="" class="button<{if $gamename2==$v['name']}> current<{/if}>"  title="<{$v['name']}>"
+		href="/index.php/lottery/lottery/index?gameid=<{$smarty.get.gameid}>&type=liuhecai&gamename2=<{$v['name']}>"><{$v['name']}></a>
+	<{/foreach}>
+						</div>
+
+                        <span>
+
+                            距离封盘
+                            <b class="box ib timer close-timer" id="close-timer" data-timer="128157">&nbsp;</b>
+                        </span>
+            </div>
+            <div id="parlay-ctn" class="mt10">
+
+<div class="ban-bo padded-icon">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    号码</th>
+                <th>
+                    赔率</th>
+                <th>
+
+                    金额
+                </th>
+                <th>
+                    球号</th>
+                <th>
+                    号码</th>
+                <th>
+                    赔率</th>
+                <th>
+
+                    金额
+                </th>
+                <th>
+                    球号</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr>
+                  <{foreach from=$odds_arr item=v key=k}>
+                        <td class="table-odd">
+                            <{$v['input_name']}><{if $v['type2']=='尾数'}>尾<{/if}>
+                        </td>
+                        <td class="odds-text"><span data-id="<{$v['id']}>"><{$v['odds_value']}></span></td>
+                        <td>
+                            <input type="text" class="input" data-id="<{$v['id']}>" data-odds="<{$v['odds_value']}>" />
+                        </td>
+                        <td>
+                            <div class="clearfix">
+                            <{foreach from=$qiu[$v['input_name']] item=v1 key=k1 }>
+                                    <span class="fl icon b-<{func_set_style($v1)}>"><{$v1}></span>
+                             <{/foreach}>
+                            </div>
+                        </td>
+                        <{if ($k+1)%2 ==0}>
+                        </tr>
+                        <tr>
+                        <{/if}>
+                        <{/foreach}>
+                </tr>
+        </tbody>
+    </table>
+</div>
+
+
+							<{if $is_login}><form class="form normal-form mt10 tac need-auth" action="" id="parlay-form">
+
+        <button class="button parlay bet-button" data-action="parlay">
+
+            下注
+        </button>
+        <button class="button button-secondary bet-button" data-action="reset" type="reset">
+
+            重置
+        </button>
+    </form><{else}>
+								<div class="fr">
+								<a href="javascript:;" onclick="alert('请先登录！');"><img src="<{#timages#}>/je_2.png" ></a>
+								<img alt=" " src="<{#timages#}>/je_3.png">
+								</div><{/if}>
+
+
+            </div>
+
+        </div>
+        <div class="aside">
+			<!--amount START-->
+			<div class="amount  need-auth">
+				<{if $is_login}>
+				<div class="available-amount box">
+					<span>可用金额</span>
+					<b id="j-balance">￥0.00</b>
+				</div>
+				<div class="betting-amount box">
+					<span>即时下注</span>
+					<a href="javascript:void(0)" data-href="/index.php/lottery/lottery/notCount" class="odfi" title="即时注单"><b id="j-orders">￥0.00</b></a>
+				</div>
+				<{/if}>
+			</div>
+			<!--amount END-->
+        </div>
+    </div>
+
+</div>
+<script type="text/html" id="tpl-prev-balls">
+    {{#balls}}
+    <i class="icon ball-style b-{{color}}">{{number}}</i>{{sx}}
+    {{/balls}}
+</script>
+
+<input type="hidden" value="230" id="h-nav-top" />
+<input type="hidden" value="0" id="h-nav-sub" />
+<!--.play START-->
+
+    </div>
+
+
+
+
+    <script>
+        require(['<{#tjs#}>/liuhecai.js'], function (App) {
+            new App();
+        })
+    </script>
+
+
+    <div id="j-confirm-tpl" class="hide ">
+        <div class="confirm-parlay">
+            <h3>
+
+                共计
+                ：{{currency}}<em>{{total}}</em>/<em>{{sum}}</em>
+
+                注
+                ，
+
+                您确定要下注吗？
+
+            </h3>
+            <ul class="{{col}}">
+                {{#items}}
+                <li><span>{{category}}【{{name}}】</span>@{{odds}} X {{amount}}</li>
+                {{/items}}
+            </ul>
+        </div>
+    </div>
+
+    <iframe id="myifr" style="display: none" src=""></iframe>
+
+    <object style="height: 0; width: 0; overflow: hidden;" classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0" width="0" height="0" id="asound" align="absmiddle">
+        <param name="allowScriptAccess" value="sameDomain">
+        <param name="movie" value="<{#timages#}>/asound.swf?v=2015101">
+        <param name="quality" value="high">
+        <embed src="<{#timages#}>/asound.swf?v=2015101" quality="high" width="0" height="0" name="asound" align="absmiddle" allowscriptaccess="sameDomain" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer">
+    </object>
+</body>
+</html>

@@ -1,0 +1,104 @@
+﻿<title>现金系统</title>
+<{include file="web_header.html"}>
+<{config_load file="public.conf" section="public"}>
+
+<body>
+<script>
+    //分页跳转
+  window.onload=function(){
+    document.getElementById("page").onchange=function(){
+      document.getElementById('myFORM').submit()
+    }
+  }
+</script>
+<div id="con_wrap">
+<div class="input_002">現金系統</div>
+<div class="con_menu" style="width:1080px;">
+<form id="myFORM" method="get" name="myFORM">
+<{if $is_guanliyuan!= 0}>
+代理账号：
+  <select  name="agent_id" onchange="document.getElementById('myFORM').submit()" id="mem_agent_select"   class="za_select">
+        <option  value="">全部</option>
+    <{foreach from=$agent_up item=v}>
+    <option value="<{$v['id']}>" <{select_check($v['id'],$smarty.get.agent_id)}>><{$v['agent_name']}> 【<{$v['agent_login_user']}>】</option>
+    <{/foreach}>
+    </select>
+<{/if}>
+帳號:
+<input type="text" name="username" style="min-width:100px;width:100px;"class="za_text" value="<{$username}>">
+時區:
+<select name="timearea" id="area">
+    <option value="0" <{select_check(0,$timearea)}>>美东</option>
+    <option value="12" <{select_check(12,$timearea)}>>北京</option>
+    </select>
+存入日期:
+ <input class="za_text Wdate" onClick="WdatePicker()" value="<{$s_date}>"  name="start_date">至
+ <input class="za_text Wdate" onClick="WdatePicker()" value="<{$e_date}>"  name="end_date">
+方式:
+ <select name="deptype" class="za_select" onchange="document.getElementById('myFORM').submit()">
+  <option value="" >全部方式</option>
+   <option value="1" <{select_check(1,$deptype)}>>額度轉換</option>
+  <option value="2" <{select_check(2,$deptype)}>>体育下注</option>
+  <option value="15" <{select_check(15,$deptype)}>>体育派彩</option>
+  <option value="3" <{select_check(3,$deptype)}>>彩票下注</option>
+  <option value="14" <{select_check(14,$deptype)}>>彩票派彩</option>
+  <option value="wx" <{select_check('wx',$deptype)}>>注单无效</option>
+  <option value="cel" <{select_check('cel',$deptype)}>>注单取消</option>
+  <option value="10" <{select_check(10,$deptype)}>>线上入款</option>
+  <option value="11" <{select_check(11,$deptype)}>>公司入款</option>
+  <option value="xsqk" <{select_check('xsqk',$deptype)}>>线上取款</option>
+  <option value="9" <{select_check(9,$deptype)}>>优惠退水</option>
+  <option value="ot" <{select_check('ot',$deptype)}>>优惠活动</option>
+  <option value="1-12-3" <{select_check('1-12-3',$deptype)}>>人工存入</option>
+  <option value="2-12-4" <{select_check('2-12-4',$deptype)}>>人工取出</option>
+  <option value="12" <{select_check('12',$deptype)}>>人工存款與取款</option>
+  <option value="in" <{select_check('in',$deptype)}>>入款明细</option>
+  <option value="out" <{select_check('out',$deptype)}>>出款明细</option>
+</select>
+  <input type="SUBMIT" name="SUBMIT" value="查詢" class="za_button">
+ <{$page}>&nbsp;
+ </div>
+</form>
+</div>
+
+<div class="content">
+      <table width="100%" cellpadding="0" class="m_tab">
+        <tbody><tr class="m_title_over_co">
+          <td>會員帳號</td>
+          <td>幣別</td>
+          <td>类型</td>
+          <td>交易别</td>
+          <td>交易金額</td>
+          <td>余额</td>
+          <td>交易日期</td>
+          <td>備註</td>
+        </tr>
+     <{foreach from=$record key=i item=val}>
+        <tr class="m_cen <{if $i%2 == 0}>even<{/if}>">
+          <td><{$val['username']}></td>
+          <td>人民幣</td>
+          <td><{$val['cash_type_zh']}></td>
+          <td><{$val['cash_do_type_zh']}></td>
+          <td style="text-align:right"><{$val['cash_num']}>
+          <{if $val['cash_type'] == 12 || $val['cash_type'] == 11 || $val['cash_type'] == 10 || $val['cash_type'] == 6|| $val['cash_type'] == 9}>(+<{$val['discount_num']}>)<{/if}>
+
+          </td>
+          <td><{$val['cash_balance']}></td>
+          <td><{$val['cash_date']}></td>
+          <td><{$val['remark']}></td>
+        </tr>
+        <{/foreach}>
+        <tr class="m_rig2">
+          <td colspan="3" class="count_td"></td>
+          <td class="count_td">小計</td>
+          <td colspan="5"><{$count_c}></td>
+        </tr>
+         <tr class="m_rig2">
+          <td colspan="3" class="count_td"></td>
+          <td class="count_td">总计</td>
+          <td colspan="5"><{($all_count['Cnum']+$all_count['Dnum'])}>&nbsp;(<{$all_count['allnum']}>笔)</td>
+        </tr>
+      </tbody></table>
+</div>
+
+<{include file="web_footer.html"}>

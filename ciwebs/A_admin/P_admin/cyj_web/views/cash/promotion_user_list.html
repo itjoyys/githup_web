@@ -1,0 +1,33 @@
+<title>给予优惠详情</title>
+<{include file="web_header.html"}>
+<body>
+<div id="con_wrap">
+  <div class="input_002">给予优惠详情</div>
+  <div class="con_menu">
+   <a href="javascript:window.history.go(-1)">返回上一頁</a>
+  </div>
+</div>
+<div class="content">
+<table width="50%" class="m_tab">
+  <tbody>
+    <tr class="m_title_over_co">
+        <td >代理商</td>
+        <td >會員</td>
+        <td >优惠金额</td>
+    </tr>
+    <{foreach from=$listData key=i item=val}>
+    <tr class="m_cen <{if $i%2 == 0}>even<{/if}>">
+        <td nowrap="nowrap"><{$val['agent_user']}></td>
+        <td nowrap="nowrap"><{$val['username']}></td>
+        <td><{$val['pm_money']}></td>
+    </tr>
+    <{/foreach}>
+    <tr class="m_title">
+        <td colspan="2">總计：<font><{count($listData)}>人 </font></td>
+        <td>總金额：<{$pm_count}></td>
+        
+  </tr>
+</tbody></table>
+</div>
+
+<{include file="web_footer.html"}>

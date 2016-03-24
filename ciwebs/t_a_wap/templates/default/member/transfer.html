@@ -1,0 +1,31 @@
+<ion-view cache-view="false" class="transfer">
+    <ion-nav-bar class="bar bar-header">
+        <ion-nav-buttons side="left"><a class="button button-icon icon ion-chevron-left" href="{{backUrl}}"></a>
+        </ion-nav-buttons>
+        <ion-nav-title>{{'PageTitle.GameTransfer'|translate}}</ion-nav-title>
+        <ion-nav-buttons side="right"><a style="line-height:35px; font-size:18px;" ng-show="visibleButton==0"
+                                         ng-click="goUrl()">{{'Common.TopUp'|translate}}</a></ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-content>
+        <div class="content">
+            <div class="show-txt"><p>{{'LotteryMember.MemberBalance'|translate}}：</p>
+                <p class="show-money"><a ng-click="getBankData()"><span ng-show="loaded">{{bankData}}</span> <span
+                        ng-show="!loaded" class="my-logdins"><ion-spinner></ion-spinner></span> <i
+                        ng-click="getBankData()" class="ion-android-refresh"></i></a></p>
+            </div>
+            <div>{{'Common.LabelSelectAmount'|translate}}</div>
+            <div class="row">
+                <div class="item wt"><input type="tel" id="actumalTextBox"
+                                            placeholder="{{'Common.PlaceHolderRTAMoney'|translate}}"
+                                            ng-model="transerModel.actualMoney" ng-keyup="parseIntMoney($event)"
+                                            reset-field="close()"></div>
+                <div class="item pd" ng-repeat="m in amountList" ng-click="chooseMoneyFun($index,$event)">{{m}}</div>
+                <div class="item-button text-center">
+                    <button id="but" class="button button-block" disabled="" ng-click="transferSubmit()">
+                        {{'Common.Submit'|translate}}
+                    </button>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

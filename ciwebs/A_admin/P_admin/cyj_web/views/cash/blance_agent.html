@@ -1,0 +1,61 @@
+<title>会员餘額統計</title>
+<{include file="web_header.html"}>
+<{config_load file="public.conf" section="public"}>
+
+<body>
+<script type="text/javascript">
+var indexid = "<{$index_id}>";
+var agent_id = "<{$agent_id}>";
+$(document).ready(function(){
+	$("#index_id").val(indexid);
+	$("#agent_id").val(agent_id);
+	$("#index_id,#agent_id").change(function(event) {
+      $("#myFORM").submit();
+    });
+})
+</script>
+<div id="con_wrap">
+  	<div class="input_002">会员餘額統計</div>
+  	<form id="myFORM" action="<{$site_url}>/cash/Blance/blance_agent" method="get" name="myFORM">
+  	<div class="con_menu" ><a href="javascript:;history.go(-1);">返回上一页</a></div>&nbsp;
+      帳號：<input class="za_text" size="10" style="margin-top:5px;" name="agentname" value="<{$smarty.get.agentname}>">&nbsp;
+     <input class="button_d" value="查詢" type="submit"/>
+      &nbsp;
+      <input type="hidden" name="type" style="margin-left: 10px;" value="<{$type}>"/>
+  	<{$page}>&nbsp;
+  	</form>
+</div>
+<div style="width:900px;">
+<form action="" method="POST" name="form">
+<table width="100%" border="0" cellpadding="4" cellspacing="1" class="m_tab">
+	<tbody>
+	<tr class="m_title_over_co">
+		<td width="200"><div align="center">代理</div></td>
+		<td width="100"><div align="center">启用</div></td>
+		<td width="100"><div align="center">停用</div></td>
+		<td width="250"><div align="center">更新时间</div></td>
+	</tr>
+
+
+</div>
+		</td>
+	</tr>
+	<{foreach from=$data_on item=v key=i}>
+	<tr class="m_cen <{if $i%2==0}>even<{/if}>">
+		<td><div align="center"><{$v['agent_user']}></div></td>
+		<td><div align="right" class="EnableBalance"><a href="<{$site_url}>/cash/Blance/get_user?agent_id=<{$v['agent_id']}>&type=<{$smarty.get.type}>"><{$v['yes']}></a></div></td>
+		<td><div align="right" class="UpdateTime"><a href="<{$site_url}>/cash/Blance/get_user?agent_id=<{$v['agent_id']}>&type=<{$smarty.get.type}>"><{$v['no']}></a></div></td>
+		<td><div align="center" class="UpdateTime"><{$u_date}></div></td>
+	</tr>
+	<{/foreach}>
+    <tr>
+		<td class="table_bg1"><div align="center">總計：</div></td>
+		<td class="table_bg1"><div align="right" class="EnableBalance"><{$sum+0}></div></td>
+		<td class="table_bg1"><div align="right" class="EnableBalance"><{$sums+0}></div></td>
+		<td class="table_bg1"></td>
+	</tr>
+
+</tbody></table>
+ </form></div>
+
+<{include file="web_footer.html"}>

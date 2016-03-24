@@ -1,0 +1,88 @@
+<title>公告管理</title>
+<{include file="web_header.html"}>
+<body>
+<script type="text/javascript">
+var indexid = "<{$index_id}>";
+$(document).ready(function(){
+  $("#index_id").val(indexid);
+  $("#index_id").change(function(event) {
+      $("#queryform").submit();
+    });
+})
+</script>
+<style>
+  .m_bc_ed td{padding-left: 0px;}
+</style>
+<body>
+<div id="con_wrap">
+  <div class="input_002">公告管理</div>
+  <div class="con_menu">
+  <form method="get" action="" id="queryform" >
+  <{$sites_str}>
+    状态:
+  <select name="is_delete" onchange="document.getElementById('queryform').submit()">
+      <option value="0" <{select_check(0,$smarty.get.is_delete)}>>启用</option>
+      <option value="2" <{select_check(2,$smarty.get.is_delete)}>>停用</option>
+  </select>
+
+  日期：
+  <input type="text" id="date_start" name="start_date" value="<{$smarty.get.start_date}>" onClick="WdatePicker()"  class="za_text Wdate">
+    --
+  <input type="text" id="date_end" name="end_date" value="<{$smarty.get.end_date}>" onClick="WdatePicker()"  class="za_text Wdate">
+  內容查詢:
+  <input class="za_text" type="text" size="15" name="chn_simplified" id="query" value="<{$smarty.get.chn_simplified}>">
+
+  <input type="submit" class="button_a" value=" 查 詢 ">&nbsp;
+  <input type="button" class="button_a" value="發佈公告" onclick="document.location.href='<{$site_url}>/other/news/news_add'">
+  </form>
+
+  </div>
+</div>
+<div class="content">
+<table class="m_tab" style="width:100%">
+  <tbody><tr class="m_title">
+    <td colspan="8">
+      <span align="center">公告管理</span>
+    </td>
+  </tr>
+  <tr class="m_title" >
+    <td width="120px" >发布時間</td>
+    <td width="30%">顯示内容：<!-- 顯示語系： -->
+    <select name="langague" onchange="" id="langague">
+         <option value="chn_simplified" >简体中文</option>
+   </select>
+    </td>
+    <td width="140px;">發佈者</td>
+    <td width="60px;">顯示類型</td>
+    <td width="65px;">遊戲類型</td>
+    <td width="135px;">層級</td>
+    <td width="60px;">顯示位置</td>
+    <td width="175px" style="text-align:center;">功能</td>
+
+  </tr>
+<{foreach from=$data key=i item=rows}>
+  <tr class="m_cen <{if $i%2 == 0}>even<{/if}>">
+    <td style="text-align:center;"><{$rows['add_time'] }></td>
+    <td width="30%"><{$rows['chn_simplified']}></td>
+    <td><{$rows['name']}></td>
+    <td><{$rows['show_type_zh']}></td>
+    <td><{$rows['game_type_zh']}></td>
+    <td><{$rows['level_power_zh']}></td>
+    <td><{$rows['state_zh']}></td>
+    <td>
+    <a class="za_button" href="<{$site_url}>/other/news/news_add?id=<{$rows['id']}>">修改</a>
+    /<{if $rows['is_delete'] == 0 }>
+    <a class="za_button" href="<{$site_url}>/other/news/news_act?id=<{$rows['id']}>&type=2" onclick="return confirm('确认停用')">停用</a>/
+    <{else}>
+    <a class="za_button" href="<{$site_url}>/other/news/news_act?id=<{$rows['id']}>&type=0" onclick="return confirm('确认启用')">启用</a>
+    <{/if}>
+    / <a class="za_button" href="<{$site_url}>/other/news/news_act?id=<{$rows['id']}>&type=1" onclick="return confirm('确认删除')">删除</a>
+    </td>
+  </tr>
+  <{/foreach}>
+</tbody>
+</table>
+</div>
+
+<!-- 公共尾部 -->
+<{include file="web_footer.html"}>

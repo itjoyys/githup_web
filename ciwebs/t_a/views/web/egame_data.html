@@ -1,0 +1,293 @@
+<{config_load file="public.conf" section="public"}>
+<link rel="stylesheet" type="text/css" href="<{#css#}>/dzcss/css.css"/>
+<script type="text/javascript">
+function load_bravado_link(code, g_type,sw) {
+    var userid = '<{$uid}>';
+    var Url = new Array();
+    Url['mg'] = "<{$site_url}>/index.php/games/Logingame/index?gameid=" + code + "&g_type=" + g_type;
+    Url['ag'] = "<{$site_url}>/index.php/games/Logingame/index?gameid=" + code + "&g_type=" + g_type;
+    Url['bbin'] = "<{$site_url}>/index.php/video/login?g_type=bbin";
+    Url['pt'] = "<{$site_url}>/index.php/games/Logingame/loginpt?gameid=" + code + "&g_type=" + g_type;
+    Url['eg'] = "<{$site_url}>/index.php/games/Logingame/index?gameid=" + code + "&g_type=" + g_type + "&sw=" + sw;
+
+    //Url['gpi'] = "<{$site_url}>/index.php/games/Logingame/index?gameid=" + code + "&g_type=" + g_type;
+
+    if (userid =="") {
+      if(g_type == 'eg' && sw == 0){
+            getPager('-','shiwan_reg');
+        }else{
+          alert("您需要先登录才能游戏");
+        }
+    }else{
+        window.open(Url[g_type], '_blank', 'width=1000,height=800,top=0,left=0,status=no,toolbar=no,scrollbars=yes,resizable=no,personalbar=no');
+    }
+}
+//试玩
+function demo_link(code, g_type) {
+  window.open("<{$site_url}>/index.php/games/Logingame/PtDemo?gameid=" + code + "&g_type=" + g_type, '_blank', 'width=1000,height=800,top=0,left=0,status=no,toolbar=no,scrollbars=yes,resizable=no,personalbar=no');
+}
+
+function setTab(e) {
+  $('.off').removeClass('off');
+  $('#one' + e).addClass('off');
+}
+
+$(function(){
+  $(".games_menu div.games_bravado_container").each(function(i){
+    $(this).mouseover(function(){
+      $(this).find("div.game_button_play").show();
+      $(this).find("div.game_button_try").show();
+    }).mouseout(function(){
+      $(this).find("div.game_button_play").hide();
+      $(this).find("div.game_button_try").hide();
+    });
+  });
+});
+
+
+function getdata(ele,gtype,lim,search) {
+  $('#tab1').css('position','relative');
+  if(lim == 0){$('#nowpage').html(1);}
+  $.ajax({
+      type: 'GET',
+      url: '/index.php/Index/egame',
+      data: 'type='+gtype+'&top='+ele+'&lim='+lim+'&search='+search,
+      beforeSend: function(){
+        $('div#tab1').prepend('<div id="xxoo"><img src="<{#images#}>/dzi/ajax-loader-white.gif" id="xxoo1" width="150" height="150"/></div>');
+        $('#xxoo').css({
+            padding:        0,
+            margin:         0,
+            width:          '100%',
+            height:         '100%',
+            top:            '0',
+            left:           '0',
+            textAlign:      'center',
+            color:          '#000',
+            border:         'none',
+            "position":     "absolute",
+            "z-index":      1000,
+            "opacity":      0.7,
+            "background-color": "#000000"
+        });
+        $('#xxoo1').css({
+            'margin-top': '23%'
+        });
+      },
+      dataType: 'json',
+      success: function(msg){
+        var games = '';
+        var top = '<li><a href="javascript:void(0)" style="width: 94px;" onclick="getdata(0,\''+msg[0].typeOf+'\',0);currPage();">所有游戏</a></li>';
+        top += '<li><a href="javascript:void(0)" style="width: 94px;" onclick="getdata(1,\''+msg[0].typeOf+'\',0);currPage();" class="">拉霸</a></li>';
+        top += '<li><a href="javascript:void(0)" style="width: 94px;" onclick="getdata(2,\''+msg[0].typeOf+'\',0);currPage();" class="">桌面游戏</a></li>';
+        top += '<li><a href="javascript:void(0)" style="width: 94px;" onclick="getdata(3,\''+msg[0].typeOf+'\',0);currPage();" class="">视频扑克</a></li>';
+        top += '<li><a href="javascript:void(0)" style="width: 94px;" onclick="getdata(4,\''+msg[0].typeOf+'\',0);currPage();" class="">其它游戏</a></li>';
+
+      if(msg[0].gameid != undefined){
+        switch(msg[0].typeOf){
+          case 'MG':
+            games += '<ul id="gamelist">';
+            for(var i=0; i < msg.length; i++){
+              games += '<li><div class="game_text" id="'+ msg[i].gameid +'">'+ msg[i].name +'</div><div class="game_logo"><a href="javascript:load_bravado_link(\'' + msg[i].gameid + '\', \'mg\');"><img src="<{#images#}>/dzi/mg/'+ msg[i].image +'"></a></div></li>';
+            }
+            games += '</ul>';
+            break;
+
+          case 'AG':
+            games += '<ul id="ajax-content" style="display: block;">';
+            for(var i=0; i < msg.length; i++){
+              games += '<li class="game_item" style="display: list-item;"><div class="game_title"><div class="game_title_text">'+ msg[i].name +'</div><span class="game_star"><a class="star_favor" href="javascript:;"></a></span><div class="clear"></div></div><a href="javascript:load_bravado_link(\'' + msg[i].gameid + '\', \'' + msg[i].type + '\');"><img src="<{#images#}>/dzi/ag/'+msg[i].image+'"></a><a class="enter-game" href="javascript:load_bravado_link(\'' + msg[i].gameid + '\', \'ag\');" title="进入游戏"></a><div class="clear"></div></li>';
+            }
+            games += '</ul>';
+            break;
+
+          case 'BBIN':
+            games += '<div style="padding-left:10px">';
+            for(var i=0; i < msg.length; i++){
+              games += '<div class="game_bbin"><div class="bbin_bg"><div class="bbin_img"><a class="img_bg"><img src="<{#images#}>/dzi/bbin/'+msg[i].image+'" /></a><div class="bbin_tit"><h3>'+ msg[i].name +' </h3></div></div><div class="bbin_hide"><div class="bbin-game-ctl-links"><a href="javascript:load_bravado_link(\'' + msg[i].gameid + '\', \'bbin\');" class="bbin_jinru">进入游戏</a><a href="javascript:opengeme(\'/video/rule.html\');" class="bbin_guize">规则说明</a><a href="javascript:window.open(\'/shared/download/download.html\',\'\',\'width=1040,height=706,fullscreen=1,scrollbars=0,location=no\');" class="bbin_shuom">下载专区</a></div></div></div></div>';
+            }
+            games += '</div>';
+            break;
+          case 'PT':
+            for(var i=0; i < msg.length; i++){
+              games += '<div class="games_bravado_container"><div class="games"><div class="image"><img src="<{#images#}>/dzi/pt/'+msg[i].image+'"></div><div class="name"><div class="opacity_content"><div class="opacity_background"></div><div class="opacity_content"><div>'+ msg[i].name +'</div></div></div></div><div class="game_button_play" ><div class="game_button_play_bg"><a href="javascript:load_bravado_link(\'' + msg[i].gameid + '\', \'pt\');">立即游戏 </a></div></div><div class="game_button_try"><div class="game_button_try_bg"><a href="javascript:demo_link(\'' + msg[i].gameid + '\', \'pt\');">立即试玩 </a></div><div class="game_button_play_bg"><a href="http://cdn.fruitfarm88.com/generic/d/setupglx.exe" target=\'_blank\'>客户端下载 </a></div></div></div></div>';
+            }
+            break;
+          case 'GPI':
+            for(var i=0; i < msg.length; i++){
+              games += '<div class="games_bravado_container"><div class="games" id="' + msg[i].gameid + '"><div class="image"><img src="<{#images#}>/dzi/gpi/'+ msg[i].image +'"></div><div class="name"><div class="opacity_content"><div class="opacity_background"></div><div class="opacity_content"><div>'+ msg[i].name +'</div></div></div></div><div class="game_button_play" ><div class="game_button_play_bg"><a href="javascript:load_bravado_link(\'' + msg[i].gameid + '\', \'gpi\');">立即游戏 </a></div></div><div class="game_button_try"><div class="game_button_try_bg"><a href="javascript:opengeme(\'/video/rule.html\');">游戏规则 </a></div></div></div></div>';
+            }
+            break;
+          case 'EG':
+            games += '<ul id="gamelist" class="zhu-gamecss">';
+            for(var i=0; i < msg.length; i++){
+              games += '<li><div class="game_text" id="'+ msg[i].gameid +'">'+ msg[i].name +'</div><div class="game_logo"><a href="javascript:load_bravado_link(\'' + msg[i].gameid + '\', \'eg\',1);"><img src="<{#images#}>/dzi/pk/'+ msg[i].image +'"></a></div><div class="zhu-gameBottom"><a href="javascript:load_bravado_link(\'' + msg[i].gameid + '\', \'eg\',0);">免费试玩</a><a href="javascript:load_bravado_link(\'' + msg[i].gameid + '\', \'eg\',1);" class="zhu-start">开始游戏</a></div></li>';
+            }
+            games += '</ul>';
+            break;
+
+          
+
+          default:
+          games = '<h2 style="margin-left:20px;font-size:18px;">此分类暂无数据</h2><br/><h3 style="margin-left:20px;font-size:18px;">敬请期待！</h3>';
+            break;
+        }
+      }else{
+        games += "<h2 style='margin-left:20px;font-size:18px;'>此分类暂无数据</h2><br/><h3 style='margin-left:20px;font-size:18px;'>敬请期待！</h3>";
+      }
+        $('#ul_1').html(top);
+        $('.games_menu').html(games);
+        $('#top_id').val(msg[0].top_id);
+        $('#current_page').val(msg[0].page);
+        $('#totlepage').val(msg[0].allpage);
+        $('#etype').val(msg[0].typeOf);
+        $('.active').removeClass('active');
+        $('#ul_1>li').eq(ele).find("a").addClass("active");
+        $('#xxoo').remove();
+        $('#tab1').css('position','static');
+        $(".games_menu div.games_bravado_container").each(function(i){
+            $(this).mouseover(function(){
+                $(this).find("div.game_button_play").show();
+                $(this).find("div.game_button_try").show();
+            }).mouseout(function(){
+                $(this).find("div.game_button_play").hide();
+                $(this).find("div.game_button_try").hide();
+            });
+        });
+
+      }
+    });
+}
+
+function currPage() {
+  $('.btndiv>li').css('backgroundColor','#5e0e0e');
+  $('.fristpage').css('backgroundColor','#a42919');
+}
+</script>
+<div class="tab1" id="tab1">
+      <div class="divgmenu">
+        <ul class="ul_ul">
+          <{foreach from=$game_module item=val key=k}>
+          <li id="one<{$k}>" class="<{if $k==0}>off<{/if}> <{if $val eq 'EG'}>zhu-hotIcon<{/if}> zhu_gameClass" onclick="setTab(<{$k}>);getdata(0,'<{$val}>',0);currPage();"> <img src="<{#images#}>/dzi/pk/<{$val}>_game.png" alt="" /><span><{$val}>电子游戏</span></li>
+          <{/foreach}>
+        </ul>
+      </div>
+      <div class="menudiv">
+        <div id="con_one_1">
+          <div class="cur GPI_Game">
+            <ul class="game_category" id="ul_1">
+              <li><a href="javascript:void(0)" class="active" style="width: 94px;" onclick="getdata(0,'<{$gametype}>',0)">所有游戏</a></li>
+              <li><a href="javascript:void(0)" style="width: 94px;" onclick="getdata(1,'<{$gametype}>',0)" class="">拉霸</a></li>
+              <li><a href="javascript:void(0)" style="width: 94px;" onclick="getdata(2,'<{$gametype}>',0)" class="">桌面游戏</a></li>
+              <li><a href="javascript:void(0)" style="width: 94px;" onclick="getdata(3,'<{$gametype}>',0)" class="">视频扑克</a></li>
+              <li><a href="javascript:void(0)" style="width: 94px;" onclick="getdata(4,'<{$gametype}>',0)" class="">其它游戏</a></li>
+            </ul>
+            <div class="search"><input type="text" id="serch_input" class="serch_input"><a href="javascript:;" class="serch_but">确定</a></div>
+            <div class="games_menu" style="display: block;">
+
+            </div>
+            <span class="games_menu_bg"></span>
+          </div>
+<input type='hidden' id='top_id' value="0" />
+<input type='hidden' id='current_page' value="<{$page}>" />
+<input type='hidden' id='totlepage' value="<{$allpage}>" />
+<input type='hidden' id='etype' value="<{$gametype}>" />
+        </div>
+        <div id='page_navigation' style="padding-bottom: 10px; margin-top: 10px;">
+          <ul class="btndiv">
+            <li class="fristpage btn">首页</li>
+            <li class="prevpage btn">上一页</li>
+            <li class="currpage btn">当前页：<b id="nowpage">1</b></li>
+            <li class="nextpage btn">下一页</li>
+            <li class="lastpage btn">尾页</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+<script type="text/javascript">
+$(document).ready(function(){
+  //首页
+  $('.btndiv>li.fristpage').on('click', function() {
+    var curpage = parseInt($('#current_page').val());
+    if(curpage > 0){
+      var tid = $('#top_id').val();
+      var type = $('#etype').val();
+      $('.btndiv>li').css('backgroundColor','#5e0e0e');
+      $(this).css('backgroundColor','#a42919');
+      $('#nowpage').html(1);
+      getdata(tid,type,0);
+    }else{
+      return false;
+    }
+  });
+  //上一页
+  $('.btndiv>li.prevpage').on('click', function() {
+    var curpage = parseInt($('#current_page').val());
+    if(curpage > 0){
+      var tid = $('#top_id').val();
+      var type = $('#etype').val();
+      var prve = curpage - 1;
+      $('.btndiv>li').css('backgroundColor','#5e0e0e');
+      $(this).css('backgroundColor','#a42919');
+      $('#nowpage').html(curpage);
+      getdata(tid,type,prve);
+    }else{
+      return false;
+    }
+  });
+  //下一页
+  $('.btndiv>li.nextpage').on('click', function() {
+    var curpage = parseInt($('#current_page').val());
+    var totlepage = parseInt($('#totlepage').val());
+    if(curpage >= 0 && totlepage > 1 && curpage < (totlepage - 1)){
+      var tid = $('#top_id').val();
+      var type = $('#etype').val();
+      var next = curpage + 1;
+      $('.btndiv>li').css('backgroundColor','#5e0e0e');
+      $(this).css('backgroundColor','#a42919');
+      $('#nowpage').html(next + 1);
+      getdata(tid,type,next);
+    }else{
+      return false;
+    }
+  });
+  //尾页
+  $('.btndiv>li.lastpage').on('click', function() {
+    var curpage = parseInt($('#current_page').val());
+    var totlepage = parseInt($('#totlepage').val());
+    var last = totlepage - 1;
+    if (curpage < last) {
+      var tid = $('#top_id').val();
+      var type = $('#etype').val();
+      $('.btndiv>li').css('backgroundColor','#5e0e0e');
+      $(this).css('backgroundColor','#a42919');
+      $('#nowpage').html(totlepage);
+      getdata(tid,type,last);
+    }else{
+      return false;
+    }
+  });
+  //搜索
+  $('.serch_but').on('click', function() {
+    var tid = $('#top_id').val();
+    var type = $('#etype').val();
+    $('#nowpage').html(1);
+    var search = $('#serch_input').val();
+    if(search=="" || search == null ){
+      alert("请输入游戏名称！");
+      return false;
+    }
+    getdata(tid,type,0,search);
+  });
+
+  /*var ulwidth = parseInt(998 - ($('.divgmenu>.ul_ul>li').length * 8));
+  var liwidth = Math.floor(ulwidth / $('.divgmenu>.ul_ul>li').length);
+  $('.divgmenu>.ul_ul>li').width(liwidth);*/
+
+});
+$(document).ready(function() {
+  getdata(0,'<{$jgame}>',0);
+  setTab("<{$dz_i}>");
+  currPage();
+});
+</script>

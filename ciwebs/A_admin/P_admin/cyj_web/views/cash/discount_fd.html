@@ -1,0 +1,100 @@
+﻿<title>返點優惠設定</title>
+<{include file="web_header.html"}>
+<{config_load file="public.conf" section="public"}>
+
+<body>
+<script>
+var indexid = "<{$index_id}>";
+$(document).ready(function(){
+  $("#index_id").val(indexid);
+  $("#index_id").change(function(event) {
+      $("#myform").submit();
+  });
+    $("#level_id").change(function(event) {
+      $("#myform").submit();
+  });
+})
+</script>
+<div id="con_wrap">
+  <div class="input_002">返點優惠設定</div>
+  <div class="con_menu">
+      <a href="<{$site_url}>/cash/discount/index">優惠統計</a>
+      <a href="<{$site_url}>/cash/discount/discount_log">優惠查詢</a>
+      <a href="<{$site_url}>/cash/discount/rakeback_log">自助返水查询</a>
+      <a href="<{$site_url}>/cash/discount/discount_fd" style="color: red;">返點優惠設定</a>
+	  <a href="<{$site_url}>/cash/discount/discount_fd_add?index_id=<{$index_id}>">新增</a><font color="red">【只需要改动最下面那条记录的六合彩特码B盘】</font>
+    <form name="myform" action="<{$site_url}>/cash/discount/discount_fd" id="myform" method="get">
+  <{$sites_str}>
+  返点层级：<select name="level_id" id="level_id">
+  <option value="0">默认</option>
+  <{foreach from=$level_data item=v}>
+  <option value="<{$v['id']}>" <{select_check($v['id'],$level_id)}> ><{$v['level_des']}></option>
+  <{/foreach}>
+</select>
+   </form>
+  </div>
+</div>
+<div class="content">
+<form method="post" name="myFORM">
+<input type="hidden" id="userid" name="userid" value="">
+<input type="hidden" name="username" value="">
+<table width="100%" class="m_tab">
+	<tbody><tr class="m_title_over_co">
+		<td>有效總投注</td>
+		<td>彩票優惠</td>
+		<td>體育優惠</td>
+    <td>六合彩特码B盘</td>
+
+    <{foreach from=$video_config item=val}>
+        <{if $val['vtitle']}>
+          <td><{$val['vtitle']}></td>
+        <{/if}>
+        <{if $val['dtitle']}>
+          <td><{$val['dtitle']}></td>
+        <{/if}>
+         <{if $val['stitle']}>
+          <td><{$val['stitle']}></td>
+        <{/if}>
+        <{if $val['ftitle']}>
+          <td><{$val['ftitle']}></td>
+        <{/if}>
+    <{/foreach}>
+
+		<td>優惠上限</td>
+		<td>功能</td>
+	</tr>
+	<{foreach from=$data key=i item=v}>
+	<tr class="m_cen <{if $i%2 == 0}>even<{/if}>">
+		<td align="center"><{$v['count_bet']}></td>
+		<td align="center"><{$v['fc_discount']}>%</td>
+		<td align="center"><{$v['sp_discount']}> %</td>
+    <td align="center"><{$v['liuhecai_discount']}> %</td>
+        <{foreach from=$video_config item=val}>
+            <{if $val['vtype']}>
+              <td align="center"><{$v[$val['vtype']]}> %</td>
+            <{/if}>
+            <{if $val['dtype']}>
+              <td align="center"><{$v[$val['dtype']]}> %</td>
+            <{/if}>
+            <{if $val['stype']}>
+              <td align="center"><{$v[$val['stype']]}> %</td>
+            <{/if}>
+            <{if $val['ftype']}>
+              <td align="center"><{$v[$val['ftype']]}> %</td>
+            <{/if}>
+        <{/foreach}>
+
+
+
+		<td align="center"><{$v['max_discount']}></td>
+		<td align="center">
+		    <input type="button" name="append" value="修改" onclick="document.location='<{$site_url}>/cash/discount/discount_fd_add?id=<{$v['id']}>'" class="za_button">
+		    <input type="button" onclick="if(confirm('是否要刪除此優惠設定？')) document.location='<{$site_url}>/cash/discount/discount_fd_del?id=<{$v['id']}>'" name="append" value="刪除" class="za_button">
+		</td>
+	</tr>
+	<{/foreach}>
+	</tbody></table>
+</form>
+</div>
+
+<{include file="web_footer.html"}>

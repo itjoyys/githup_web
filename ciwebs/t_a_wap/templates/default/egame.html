@@ -1,0 +1,49 @@
+<ion-view class="m-message" cache-view="false">
+    <ion-nav-bar class="bar bar-header bar-light">
+        <ion-nav-title>{{'Common_LabelVideoGame' | translate}}</span></ion-nav-title>
+        <ion-nav-buttons side="left"><a class="button button-icon icon ion-ios-arrow-back" ng-click="historyBack()"></a>
+        </ion-nav-buttons>
+        <ion-nav-buttons side="right">
+            <!-- <a ng-if="currentUser.TestState!=2" class="button button-icon icon ion-android-add" href="#/noticeadd"></a>--></ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-content class="has-header" scroll="false">
+        <div class="row notice item" >
+           <p style="text-align: center;display: block;width: 100%;"> 请确保手机显示设置为"自动旋转屏幕"</p>
+        </div>
+        <ion-content class="egame-list">
+            <div class="notice row search-box">
+                <input type="text" ng-model="Search" placeholder="请输入游戏名称" class="search-input ng-valid ng-touched ng-dirty ng-valid-parse" style="">
+                <span><i class="icon-sousuo">&nbsp;</i></span>
+           </div>
+            <div ng-if="ansycNoticeLoaded">
+                <ion-refresher on-refresh="egameRefresh()"></ion-refresher>
+            </div>
+            <div ng-if="!ansycEgameLoaded" class="padding text-center">
+                <ion-spinner></ion-spinner>
+            </div>
+            <div ng-if="ansycEgameLoaded">
+                <div class="gamelist" ng-if="egames.length>0">
+                    <div class="row">
+                        <div ng-repeat="item in egames|filter:Search|orderBy:'name'" class="col col-33">
+                            <div class="egamebox">
+                                <a href="#/inegame/{{item.gameid}}/{{item.type}}" target="_blank" ><img
+                                        ng-src="{{item.image}}">
+                                    <p>{{item.name}}</p></a>
+                                <span ng-repeat="subItem in stateGameList| filter:{ GameClassID: 1 }:true"
+                                      ng-if="subItem.State==0"
+                                      class="tapes">{{'Common_LabelMaintain' | translate}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div ng-if="egames.length==0&&!refreshData" class="text-center padding">
+                    {{'Member_LabelNoData' | translate}}
+                </div>
+            </div>
+            <ion-infinite-scroll ng-if="moreEgameCanBeLoaded" distance="1%" class="text-center"
+                                 icon="ion-chevron-down" immediate-check="false"
+                                 on-infinite="loadMoreEgame()"></ion-infinite-scroll>
+        </ion-content>
+        </div>
+    </ion-content>
+</ion-view>

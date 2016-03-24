@@ -1,0 +1,10 @@
+@CHARSET "UTF-8";
+#InviteWindow{text-align:left;position:absolute;z-index:8889;font-size:12px;top:50px;left:10px;width:439px;height:159px;visibility:hidden;background:url(images/invite_bg.gif);}
+#InviteWindow #invite_bg{display:none;}
+#invite_title{height:27px;line-height:27px;color:#fff;text-indent:12px;cursor:move;}
+#invite_text{line-height:14px;padding:13px 7px 0 156px;height:80px;overflow:hidden;}
+#invite_text p{padding:10px 0 0 0;margin:0;text-indent:24px;}
+#invite_btn{position:absolute;padding-left:250px;bottom:10px;}
+#invite_btn button{width:66px;height:22px;line-height:22px;font-size:12px;font-weight:bold;text-align:center;border:none;margin:0 0 0 16px;background:url(images/invite_bt.gif);cursor:hand;}
+#previewTr #InviteWindow{position:relative;visibility:visible;top:0;left:0;}
+#previewTr #pre_invite_title{height:27px;line-height:27px;color:#fff;text-indent:12px;cursor:default;}

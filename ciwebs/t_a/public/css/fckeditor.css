@@ -1,0 +1,268 @@
+/**default css style**/
+#direction p,#direction li{
+	line-height:22px;
+}
+#direction address,
+#direction blockquote,
+#direction dd,
+#direction dl, #direction dt, #direction fieldset, #direction form,
+#direction h1, #direction h2, #direction h3, #direction h4,
+#direction h5, #direction h6, #direction noframes,
+#direction ol, #direction p, #direction ul, #direction center,
+#direction dir, #direction hr, #direction menu, #direction pre { display: block }
+#direction li { display: list-item }
+#direction table { display: table}
+#direction tr { display: table-row }
+#direction thead { display: table-header-group }
+#direction tbody { display: table-row-group }
+#direction tfoot { display: table-footer-group }
+#direction col { display: table-column }
+#direction colgroup { display: table-column-group }
+#direction td, #direction th { display: table-cell; }
+#direction caption { display: table-caption }
+#direction th { font-weight: bolder; text-align: center }
+#direction caption { text-align: center }
+#direction h1 { font-size: 2em; margin: .67em 0 }
+#direction h2 { font-size: 1.5em; margin: .75em 0 }
+#direction h3 { font-size: 1.17em; margin: .83em 0 }
+#direction h4,#direction p,
+#direction blockquote, #direction ul,
+#direction fieldset, #direction form,
+#direction ol, #direction dl, #direction dir,
+#direction menu { margin: 1.5em 0 }
+#direction table h4,#direction table p,
+#direction table blockquote, #direction table ul,
+#direction table fieldset, #direction table form,
+#direction table ol, #direction table dl, #direction table dir,
+#direction table menu { margin:0 }
+#direction h5 { font-size: .83em; margin: 1.5em 0 }
+#direction h6 { font-size: .75em; margin: 1.67em 0 }
+#direction h1,#direction h2,#direction h3,#direction h4,
+#direction h5,#direction h6,#direction b,#direction strong { font-weight: bolder }
+#direction blockquote { margin-left: 40px; margin-right: 40px }
+#direction i, #direction cite, #direction em,
+#direction var, #direction address { font-style: italic }
+#direction pre, #direction tt, #direction code,
+#direction kbd, #direction samp { font-family: monospace }
+#direction pre { white-space: pre }
+#direction button, #direction textarea,
+#direction input, #direction object,
+#direction select { display:inline-block; }
+#direction big { font-size: 1.17em }
+#direction small, #direction ub, #direction sup { font-size: .83em }
+#direction sub { vertical-align: sub }
+#direction sup { vertical-align: super }
+#direction table { border-spacing: 2px; }
+#direction thead, #direction tbody,
+#direction tfoot { vertical-align: middle }
+#direction td, #direction th { vertical-align: inherit }
+#direction s, #direction strike, #direction del { text-decoration: line-through }
+#direction hr { border: 1px inset }
+#direction ol, #direction ul, #direction dir,
+#direction menu, #direction dd { margin-left: 40px }
+
+#direction ul { 
+    list-style-type: disc;
+    padding-left: 12px;
+}
+#direction ol { 
+    list-style-type: decimal; 
+    padding-left: 15px;
+}
+#direction ol #direction ul, #direction ul ol,
+#direction ul ul, #direction ol ol { margin-top: 0; margin-bottom: 0 }
+#direction u, #direction ins { text-decoration: underline }
+#direction br:before { content: "\A" }
+#direction :before,#direction :after { white-space: pre-line }
+#direction center { text-align: center }
+#direction abbr,#direction acronym { font-variant: small-caps; letter-spacing: 0.1em }
+#direction :link,#direction :visited { text-decoration: underline }
+/* #direction :focus { outline: thin dotted invert } */
+/* Begin bidirectionality settings (do not change) */
+#direction BDO[DIR="ltr"] { direction: ltr; unicode-bidi: bidi-override }
+#direction BDO[DIR="rtl"] { direction: rtl; unicode-bidi: bidi-override }
+#direction *[DIR="ltr"] { direction: ltr; unicode-bidi: embed }
+#direction *[DIR="rtl"] { direction: rtl; unicode-bidi: embed }
+#direction .marker { background-color: Yellow; }
+
+#direction ul.mtab-menual{
+	margin-left:0px;
+}
+/**promotion-style (for new promotion)**/
+.promotion-style p,.promotion-style li{
+    line-height:22px;
+}
+.promotion-style address,
+.promotion-style blockquote,
+.promotion-style dd,
+.promotion-style dl, .promotion-style dt, .promotion-style fieldset, .promotion-style form,
+.promotion-style h1, .promotion-style h2, .promotion-style h3, .promotion-style h4,
+.promotion-style h5, .promotion-style h6, .promotion-style noframes,
+.promotion-style ol, .promotion-style p, .promotion-style ul, .promotion-style center,
+.promotion-style dir, .promotion-style hr, .promotion-style menu, .promotion-style pre { display: block }
+.promotion-style li { display: list-item }
+.promotion-style table { display: table}
+.promotion-style tr { display: table-row }
+.promotion-style thead { display: table-header-group }
+.promotion-style tbody { display: table-row-group }
+.promotion-style tfoot { display: table-footer-group }
+.promotion-style col { display: table-column }
+.promotion-style colgroup { display: table-column-group }
+.promotion-style td, .promotion-style th { display: table-cell; }
+.promotion-style caption { display: table-caption }
+.promotion-style th { font-weight: bolder; text-align: center }
+.promotion-style caption { text-align: center }
+.promotion-style h1 { font-size: 2em; margin: .67em 0 }
+.promotion-style h2 { font-size: 1.5em; margin: .75em 0 }
+.promotion-style h3 { font-size: 1.17em; margin: .83em 0 }
+.promotion-style h4,.promotion-style p,
+.promotion-style blockquote, .promotion-style ul,
+.promotion-style fieldset, .promotion-style form,
+.promotion-style ol, .promotion-style dl, .promotion-style dir,
+.promotion-style menu { margin: 1.5em 0 }
+.promotion-style table h4,.promotion-style table p,
+.promotion-style table blockquote, .promotion-style table ul,
+.promotion-style table fieldset, .promotion-style table form,
+.promotion-style table ol, .promotion-style table dl, .promotion-style table dir,
+.promotion-style table menu { margin:0 }
+.promotion-style h5 { font-size: .83em; margin: 1.5em 0 }
+.promotion-style h6 { font-size: .75em; margin: 1.67em 0 }
+.promotion-style h1,.promotion-style h2,.promotion-style h3,.promotion-style h4,
+.promotion-style h5,.promotion-style h6,.promotion-style b,.promotion-style strong { font-weight: bolder }
+.promotion-style blockquote { margin-left: 40px; margin-right: 40px }
+.promotion-style i, .promotion-style cite, .promotion-style em,
+.promotion-style var, .promotion-style address { font-style: italic }
+.promotion-style pre, .promotion-style tt, .promotion-style code,
+.promotion-style kbd, .promotion-style samp { font-family: monospace }
+.promotion-style pre { white-space: pre }
+.promotion-style button, .promotion-style textarea,
+.promotion-style input, .promotion-style object,
+.promotion-style select { display:inline-block; }
+.promotion-style big { font-size: 1.17em }
+.promotion-style small, .promotion-style ub, .promotion-style sup { font-size: .83em }
+.promotion-style sub { vertical-align: sub }
+.promotion-style sup { vertical-align: super }
+.promotion-style table { border-spacing: 2px; }
+.promotion-style thead, .promotion-style tbody,
+.promotion-style tfoot { vertical-align: middle }
+.promotion-style td, .promotion-style th { vertical-align: inherit }
+.promotion-style s, .promotion-style strike, .promotion-style del { text-decoration: line-through }
+.promotion-style hr { border: 1px inset }
+.promotion-style ol, .promotion-style ul, .promotion-style dir,
+.promotion-style menu, .promotion-style dd { margin-left: 40px }
+
+.promotion-style ul { 
+    list-style-type: disc;
+    padding-left: 24px;
+}
+.promotion-style ol { 
+    list-style-type: decimal; 
+    padding-left: 24px;
+}
+.promotion-style ol .promotion-style ul, .promotion-style ul ol,
+.promotion-style ul ul, .promotion-style ol ol { margin-top: 0; margin-bottom: 0 }
+.promotion-style u, .promotion-style ins { text-decoration: underline }
+.promotion-style br:before { content: "\A" }
+.promotion-style :before,.promotion-style :after { white-space: pre-line }
+.promotion-style center { text-align: center }
+.promotion-style abbr,.promotion-style acronym { font-variant: small-caps; letter-spacing: 0.1em }
+.promotion-style :link,.promotion-style :visited { text-decoration: underline }
+/* .promotion-style :focus { outline: thin dotted invert } */
+/* Begin bidirectionality settings (do not change) */
+.promotion-style BDO[DIR="ltr"] { direction: ltr; unicode-bidi: bidi-override }
+.promotion-style BDO[DIR="rtl"] { direction: rtl; unicode-bidi: bidi-override }
+.promotion-style *[DIR="ltr"] { direction: ltr; unicode-bidi: embed }
+.promotion-style *[DIR="rtl"] { direction: rtl; unicode-bidi: embed }
+.promotion-style .marker { background-color: Yellow; }
+
+.promotion-style ul.mtab-menual{
+    margin-left:0px;
+}
+table{
+border-width:1px;
+}
+/* 優惠 */
+#MemberExclusive_area {
+    margin: 15px auto;
+}
+#MemberExclusive_area .eventtext {
+    width: 100%;
+    display: none;
+}
+#MemberExclusive_area .eventtext img{
+    display:block; 
+}
+#MemberExclusive_area .MemberExclusive{
+    width: 100%;
+    margin-bottom: 5px;
+    clear: both;
+}
+#MemberExclusive_area .memExclusive,
+#MemberExclusive_area .memExclusive a{
+    background-position: 50% 0;
+    cursor: pointer;
+    width: 100%;
+}
+#MemberExclusive_area .memExclusive a{
+    display: block;
+}
+
+/*Dialog*/
+#ele-mem-exclusive-dialog-area {
+    margin: 15px 12px;
+    text-align: left;
+    display:none;
+}
+#ele-mem-exclusive-dialog-area .eventtext-dialog {
+    width: 100%;
+    display: none;
+}
+#ele-mem-exclusive-dialog-area .eventtext-dialog img{
+    display:block; 
+}
+#ele-mem-exclusive-dialog-area .js-mem-exclusive-dialog{
+    display:inline-block; 
+    margin: 5px;
+}
+#ele-mem-exclusive-dialog-area .eventcontent-dialog,
+#ele-mem-exclusive-dialog-area .eventcontent-dialog a{
+    background-position: 50% 0;
+    cursor: pointer;
+    width: 100%;
+}
+#ele-mem-exclusive-dialog-area .eventcontent-dialog a{
+    display: block;
+}
+#js-mem-exclusive-box-up{
+    position : absolute;
+    left : 14px;
+    top : 150px;
+    background: url("../images/buttons.png") -40px 3px no-repeat;
+    opacity : 0;
+    width: 20px;
+    height: 63px;
+    cursor: pointer;
+    background-color: #eee;
+    z-index: 1;
+}
+#js-mem-exclusive-box-down{
+    position : absolute;
+    right : 16px;
+    top : 150px;
+    background: url("../images/buttons.png") -60px 3px no-repeat;
+    width: 20px;
+    height: 63px;
+    cursor: pointer;
+    opacity : 0;
+    background-color: #eee;
+    z-index: 1;
+}
+#js-mem-exclusive-box-content{
+    overflow:auto;
+    height : 100%;
+    padding-right: 16px;
+    padding-bottom: 12px;
+}
+#js-mem-exclusive-box.ui-dialog-content{
+    padding: .5em 1em .5em 1.1em;
+}

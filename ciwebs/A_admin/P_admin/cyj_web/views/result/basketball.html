@@ -1,0 +1,141 @@
+<title>篮球赛程</title>
+<{include file="web_header.html"}>
+<{config_load file="public.conf" section="public"}>
+  <link rel="stylesheet" type="text/css" href="<{#css#}>/mem_body_result.css">
+   <link rel="stylesheet" type="text/css" href="<{#css#}>/mem_body_ft.css">
+  <div id="con_wrap">
+    <div class="input_002">篮球赛程</div>
+    <div class="con_menu">
+      <form name="game_result" action="" method="get" id="game_result">
+      <a href="<{$site_url}>/result/sp_result/football" target="_self">足球</a>
+      <a href="<{$site_url}>/result/sp_result/basketball" style="color:red;" target="_self">籃球</a>
+      <a href="<{$site_url}>/result/sp_result/tennis" target="_self">網球</a>
+      <a href="<{$site_url}>/result/Sp_result/volleyball" target="_self">排球</a>
+      <a href="<{$site_url}>/result/Sp_result/basebal" target="_self">棒球</a>
+      <a href="<{$site_url}>/result/Sp_result/champion" target="_self">冠军</a>
+	  选择日期 :
+	  <input style="width:75px;height:18px;" name="date" type="text" id="date_kaijiang" value="<{$date}>"  onClick="WdatePicker()" size="10" maxlength="10" readonly class="Wdate" />
+	  <input type="submit" class="za_button" value="搜索" style="line-height:10px;">
+
+      <span id="pg_txt"></span></form>
+    </div>
+  </div>
+  <div class="content" id="MRSU">
+    <table border="0" cellpadding="0" cellspacing="0" id="box">
+      <tbody>
+        <tr>
+          <td>
+            <table border="0" cellspacing="0" cellpadding="0" class="game">
+              <tbody>
+                <tr>
+                  <th class="time">时间</th>
+                  <th class="rsu">赛果</th>
+                </tr>
+              </tbody>
+            </table>
+            <table border="0" cellspacing="0" cellpadding="0" class="game">
+              <tbody>
+<{foreach from=$data item=rows key=i}>
+                <tr>
+                  <td colspan="6" class="b_hline">
+                    <span id="leg_<{$i}>" onclick="$('.leg_<{$i}>').toggle()" class="showleg">
+                      <span id="LegOpen"></span>
+                    </span>
+                    <span class="leg_bar"><{$rows["Match_ID"]}><{$rows["Match_Name"]}>
+                    </span>
+                  </td>
+                </tr>
+                <tbody class="leg_<{$i}>">
+                <tr class="b_cen" id="TR_100_1453860" style="display:">
+                  <td rowspan="9" class="time"><{$rows["Match_Time"]}></td>
+                  <td class="team">比賽隊伍</td>
+                  <td colspan="2" class="team_out">
+                    <table border="0" cellpadding="0" cellspacing="0" class="team_main">
+                      <tbody>
+                        <tr class="b_cen">
+                          <td width="12"></td>
+                          <td class="team_c"><{$rows["Match_Master"]}></td>
+                          <td class="vs">vs.</td>
+                          <td class="team_h"><{$rows["Match_Guest"]}></td>
+                          <td width="12"></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+                <tr class="b_cen" id="TR_1_100_1453860" style="display:">
+                  <td>第1節</td>
+                  <td>
+                    <strong><{$rows["MB_Inball_1st"]}></strong>
+                  </td>
+                  <td>
+                    <strong><{$rows["TG_Inball_1st"]}></strong>
+                  </td>
+                </tr>
+                <tr class="b_cen" id="TR_2_100_1453860" style="display:">
+                  <td>第2節</td>
+                  <td>
+                    <strong><{$rows["MB_Inball_2st"]}></strong>
+                  </td>
+                  <td>
+                    <strong><{$rows["TG_Inball_2st"]}></strong>
+                  </td>
+                </tr>
+                <tr class="b_cen" id="TR_3_100_1453860" style="display:">
+                  <td>第3節</td>
+                  <td>
+                    <strong><{$rows["MB_Inball_3st"]}></strong>
+                  </td>
+                  <td>
+                    <strong><{$rows["TG_Inball_3st"]}></strong>
+                  </td>
+                </tr>
+                <tr class="b_cen" id="TR_4_100_1453860" style="display:">
+                  <td>第4節</td>
+                  <td>
+                    <strong><{$rows["MB_Inball_4st"]}></strong>
+                  </td>
+                  <td>
+                    <strong><{$rows["TG_Inball_4st"]}></strong>
+                  </td>
+                </tr>
+                <tr id="TR_5_100_1453860" style="display:" class="hr">
+                  <td class="hr_title">上半</td>
+                  <td class="hr_main"><{$rows["MB_Inball_HR"]}></td>
+                  <td class="hr_main"><{$rows["TG_Inball_HR"]}></td>
+                </tr>
+                <tr id="TR_6_100_1453860" style="display:" class="hr">
+                  <td class="hr_title">下半</td>
+                  <td class="hr_main"><{$rows["MB_Inball_ER"]}></td>
+                  <td class="hr_main"><{$rows["TG_Inball_ER"]}></td>
+                </tr>
+                <tr class="b_cen" id="TR_7_100_1453860" style="display:">
+                  <td>加時</td>
+                  <td>
+                  <{if $rows["MB_Inball_Add"] > 0}>
+                      <{$rows["MB_Inball_Add"]}>
+                  <{/if}>
+                  </td>
+                  <td>
+                  <{if $rows["TG_Inball_Add"] > 0}>
+                      <{$rows["TG_Inball_Add"]}>
+                  <{/if}>
+                  </td>
+                </tr>
+                <tr id="TR_8_100_1453860" style="display:" class="full">
+                  <td class="full_title">全場</td>
+                  <td class="full_main"><{$rows["MB_Inball"]}></td>
+                  <td class="full_main"><{$rows["TG_Inball"]}></td>
+                </tr>
+                </tbody>
+<{/foreach}>
+              </tbody>
+            </table>
+
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+<!-- 公共尾部 -->
+<{include file="web_footer.html"}>

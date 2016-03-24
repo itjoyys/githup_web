@@ -1,0 +1,42 @@
+﻿body{text-align:center;background-color:#eaeaea;padding:0;margin:0;font-size:12px}
+.wrapCss{width:1280px;margin:120px auto 0;overflow:hidden}
+.bg001{background:url("../images/bg_super_001.jpg") no-repeat center top;width:100%;height:137px}
+.bg002{background:url("../images/bg_super_002.jpg") no-repeat center center;width:100%;height:244px;position:relative}
+.bg005{background:url("../images/bg_super_003.jpg") no-repeat center top;width:100%;height:112px}
+
+.bg001_ag{background:url("../images/gs_bg_001.jpg") no-repeat center top;width:100%;height:137px}
+.bg002_ag{background:url("../images/gs_bg_002.jpg") no-repeat center center;width:100%;height:244px;position:relative}
+.bg005_ag{background:url("../images/gs_bg_003.jpg") no-repeat center top;width:100%;height:112px}
+
+.bg001_dl{background:url("../images/daili_bg_001.jpg") no-repeat center top;width:100%;height:137px}
+.bg002_dl{background:url("../images/daili_bg_002.jpg") no-repeat center center;width:100%;height:244px;position:relative}
+.bg005_dl{background:url("../images/daili_bg_003.jpg") no-repeat center top;width:100%;height:112px}
+
+
+.copyright{text-align:center;}
+
+table{font-size:12px}
+.div_warp{position:absolute;right:426px;width:360px;}
+.tab_001{margin-left:155px;margin-top:105px}
+
+.tab_001 tr td{background:url("../images/sign001.gif") no-repeat 10px center;padding-left:15px;width:70px;}
+.tab_001 tr td a:hover{text-decoration:underline}
+a{color:#fff; text-decoration:none;}
+
+.tab_002{
+	margin: 40px 0 0 0;
+    width: 300px;
+	padding: 0 0 0 40px;
+}
+.tab_002{color:#046689;}
+.tab_002 tr td{line-height:38px}
+.td_001{text-align:right;width:60px}
+.td_002,.td_003{text-align:left;padding-left:15px;}
+.td_003{width:50px;overflow:hidden;}
+.login{display:block;border:none;width:102px;height:30px;cursor:pointer;line-height:46px;font-weight:bold;color:#046689; float:left; margin-left:30px; margin-top:5px; background-color: transparent;}
+.a_001{color:#3D3934; float:left; line-height:42px;display:inline;margin-left:20px; margin-top:5px;}
+
+.login_{ background: url("../images/login.png") no-repeat; height: 333px; width: 530px; margin: 150px auto;}
+.tab_{padding-top: 90px; padding-left: 110px;}
+.tab_ .input_{ height: 37px; line-height: 40px; width: 200px; border: 0px; background: #ffffff; border-bottom: #999999 solid 1px;outline:none; padding: 0px 5px;}
+.sublogin{ background:none;border: #333333 solid 0px; width: 100px; margin-left: -30px; height: 45px; font-family: "Microsoft yahei", Arial; cursor: pointer; line-height: 45px;}

@@ -1,0 +1,53 @@
+<ion-view class="m-report" cache-view="false">
+	<ion-nav-bar class="bar bar-header bar-light">
+		<ion-nav-title>{{'Member_LabelBetRecord'|translate}}</ion-nav-title>
+		<ion-nav-buttons side="left">
+			<a class="button button-icon icon ion-ios-arrow-back" ng-click="historyBack()"></a>
+		</ion-nav-buttons>
+	</ion-nav-bar>
+	<ion-content class="has-header" scroll="false">
+		<div class="table-list">
+			<div class="table-head row">
+				<div class="col col-44 relative">{{'Member_LabelTime'|translate}}<div class="line"></div></div>
+				<div class="col col-44">{{'Member_LabelCount'|translate}}</div>
+				<div class="col col-44">{{'Member_LabelAllBet'|translate}}</div>
+				<div class="col col-44">{{'Member_LabelYxBet'|translate}}</div>
+				<div class="col col-44">{{'Member_LabelWinLost'|translate}}</div>
+			</div>
+			<ion-content class="table-body">
+				<ion-refresher ng-if="ansycLoaded" on-refresh="weekRefresh()"></ion-refresher>
+				<div ng-if="!ansycLoaded" class="padding text-center"><ion-spinner></ion-spinner></div>
+				<div ng-if="ansycLoaded" ng-repeat="item in weekData" class="row" ng-click="item.TotalBetNums>0?gotoDay(item.AccountDate):'return false;'">
+					<div class="col col-44 text-left relative">{{item.AccountDate}}<br>{{item.WhatDay}}
+						<div class="arrow"></div>
+					</div>
+					<div ng-class="{'underline':item.TotalBetNums>0}" class="col col-44 row-data">{{item.TotalBetNums}}</div>
+					<div class="col col-44 row-data"> 
+						<strong>{{item.AllBet.toFixed(2)}}</strong>
+					</div>
+					<div class="col col-44 row-data"> 
+						<strong>{{item.YxBet.toFixed(2)}}</strong>
+					</div>
+					<div class="col col-44 row-data {{item.WinLoseMoney>0?'win':item.WinLoseMoney==0?'':'lose'}}">
+						<strong>{{item.WinLoseMoney.toFixed(2)}}</strong>
+					</div>
+				</div>
+			</ion-content>
+			<ion-footer-bar>
+				<div class="row table-footer" ng-show="allData.WinLoseMoney!=null">
+					<div class="col col-44">
+						<div class="button button-clear">{{'Common_LabelTotal'|translate}}</div>
+					</div>
+					<div class="col col-44">
+						<div class="button button-clear">{{allData.TotalBetNums}}</div>
+					</div>
+					<div class="col col-44">
+						<div class="button {{allData.WinLoseMoney>0?'bg-win':(allData.WinLoseMoney==0)?'bg-default':'bg-lose'}}">
+							{{allData.WinLoseMoney.toFixed(2)}}
+						</div>
+					</div>
+				</div>
+			</ion-footer-bar>
+		</div>
+	</ion-content>
+</ion-view>

@@ -1,0 +1,32 @@
+<html>
+  <head>
+    <title>跳转......</title>
+    <meta http-equiv="content-Type" content="text/html; charset=utf-8" />
+  </head>
+  <body>
+    <form action="<{$data['req_url']}>" method="post" id="frm1">
+      <input type="hidden" name="Mer_code" value="<{$data['Mer_code']}>">
+      <input type="hidden" name="Billno" value="<{$data['Billno']}>">
+      <input type="hidden" name="Amount" value="<{$data['Amount']}>" >
+      <input type="hidden" name="Date" value="<{$data['Date']}>">
+      <input type="hidden" name="Currency_Type" value="<{$data['Currency_Type']}>">
+      <input type="hidden" name="Gateway_Type" value="<{$data['Gateway_Type']}>">
+      <input type="hidden" name="Lang" value="<{$data['Lang']}>">
+      <input type="hidden" name="Merchanturl" value="<{$data['Merchanturl']}>">
+      <input type="hidden" name="FailUrl" value="<{$data['FailUrl']}>">
+      <input type="hidden" name="ErrorUrl" value="<{$data['ErrorUrl']}>">
+      <input type="hidden" name="Attach" value="<{$data['Attach']}>">
+      <input type="hidden" name="DispAmount" value="<{$data['DispAmount']}>">
+      <input type="hidden" name="OrderEncodeType" value="<{$data['OrderEncodeType']}>">
+      <input type="hidden" name="RetEncodeType" value="<{$data['RetEncodeType']}>">
+      <input type="hidden" name="Rettype" value="<{$data['Rettype']}>">
+      <input type="hidden" name="ServerUrl" value="<{$data['ServerUrl']}>">
+      <input type="hidden" name="SignMD5" value="<{$data['SignMD5']}>">
+	  <input type="hidden" name="act" value="ips">
+      <input type="hidden" name="form_url" value="<{$data['form_url']}>">
+    </form>
+    <script language="javascript">
+      document.getElementById("frm1").submit();
+    </script>
+  </body>
+</html>
